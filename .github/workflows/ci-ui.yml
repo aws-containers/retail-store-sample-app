@@ -29,3 +29,6 @@ jobs:
         MAVEN_OPTS: "-Dorg.slf4j.simpleLogger.log.org.apache.maven.cli.transfer.Slf4jMavenTransferListener=warn"
       run: |
         src/ui/scripts/ci.sh
+    - name: Build container image
+      run: |
+        scripts/build-image.sh -s ui -t ci

@@ -25,3 +25,6 @@ jobs:
     - name: Run
       run: |
         src/catalog/scripts/ci.sh
+    - name: Build container image
+      run: |
+        scripts/build-image.sh -s catalog -t ci

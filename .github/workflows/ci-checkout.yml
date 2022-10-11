@@ -26,3 +26,6 @@ jobs:
     - name: Run
       run: |
         bash src/checkout/scripts/ci.sh
+    - name: Build container image
+      run: |
+        scripts/build-image.sh -s checkout -t ci
