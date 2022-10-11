@@ -1,0 +1,17 @@
+name: Compose CI
+
+on:
+  pull_request:
+    branches:
+    - main
+
+jobs:
+  build:
+    name: CI
+    runs-on: ubuntu-latest
+    steps:
+    - name: Check out code
+      uses: actions/checkout@v3
+    - name: Build Images
+      run: |
+        (cd deploy/docker-compose && docker-compose build)
