@@ -3,9 +3,9 @@ name: Checkout CI
 on:
   push:
     branches:
-    - master
-    paths:
-    - 'src/main/**'
+    - main
+    #paths:
+    #- 'src/main/**'
   pull_request:
     branches:
     - main

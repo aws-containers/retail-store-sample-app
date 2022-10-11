@@ -4,8 +4,8 @@ on:
   push:
     branches:
     - main
-    paths:
-    - 'src/catalog/**'
+    #paths:
+    #- 'src/catalog/**'
   pull_request:
     branches:
     - main
