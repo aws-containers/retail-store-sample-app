@@ -58,8 +58,8 @@ parse_params() {
   cnb=false
   arm=false
   quiet=false
-  builder='paketobuildpacks/builder:base'
-  repository='watchn'
+  builder='nil'
+  repository='aws-containers'
   tag='latest'
   service='*'
 
@@ -123,6 +123,7 @@ function build()
   dockerfile="Dockerfile"
   docker_build_args=''
   pack_args=''
+  image_name="retail-store-sample-$component"
 
   if [ -f "$component_dir/scripts/build.source" ]; then
     source "$component_dir/scripts/build.source"
@@ -136,12 +137,12 @@ function build()
     fi
 
     msg "Running pack build..."
-    pack $quiet_args --no-color build watchn-$component:build --builder $builder --path $component_dir --tag $repository/$component:$cnb_tag $pack_args
+    pack $quiet_args --no-color build $image_name:build --builder $builder --path $component_dir --tag $repository/$image_name:$cnb_tag $pack_args
 
     if [ "$push" = true ] ; then
       msg "Pushing image for ${GREEN}$component${NOFORMAT}..."
 
-      docker push -q $repository/watchn-$component:$cnb_tag
+      docker push -q $repository/$image_name:$cnb_tag
     fi
   fi
 
@@ -154,10 +155,10 @@ function build()
       fi
 
       msg "Running Docker buildx..."
-      docker buildx build --progress plain $push_args --platform linux/amd64,linux/arm64 $quiet_args -f "$component_dir/$dockerfile" $docker_build_args -t $repository/$component:$tag $component_dir
+      docker buildx build --progress plain $push_args --platform linux/amd64,linux/arm64 $quiet_args -f "$component_dir/$dockerfile" $docker_build_args -t $repository/$image_name:$tag $component_dir
     else
       msg "Running Docker build..."
-      docker build $quiet_args -f "$component_dir/$dockerfile" $docker_build_args -t $repository/$component:$tag $component_dir
+      docker build $quiet_args -f "$component_dir/$dockerfile" $docker_build_args -t $repository/$image_name:$tag $component_dir
 
       if [ "$push" = true ] ; then
         msg "Pushing image for ${GREEN}$component${NOFORMAT}..."
