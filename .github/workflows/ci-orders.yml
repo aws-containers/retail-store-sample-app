@@ -1,4 +1,4 @@
-name: UI CI
+name: Orders CI
 
 on:
   push:

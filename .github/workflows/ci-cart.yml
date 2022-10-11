@@ -1,4 +1,4 @@
-name: UI CI
+name: Cart CI
 
 on:
   push:
