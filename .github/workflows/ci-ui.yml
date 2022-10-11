@@ -22,6 +22,7 @@ jobs:
     - name: Set up JDK
       uses: actions/setup-java@v3
       with:
+        distribution: corretto
         java-version: 17
     - name: Run
       env:
