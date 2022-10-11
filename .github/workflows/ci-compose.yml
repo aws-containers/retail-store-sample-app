@@ -1,6 +1,11 @@
 name: Compose CI
 
 on:
+  push:
+    branches:
+    - main
+    #paths:
+    #- 'src/ui/**'
   pull_request:
     branches:
     - main
