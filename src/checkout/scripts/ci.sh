@@ -6,6 +6,6 @@ DIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" &>/dev/null && pwd -P)
 
 cd $DIR
 
-npm install
+npm ci
 
 npm run test:e2e
