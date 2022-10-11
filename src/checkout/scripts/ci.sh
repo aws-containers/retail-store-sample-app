@@ -8,4 +8,4 @@ cd $DIR
 
 npm install
 
-npm test
+npm run test:e2e
