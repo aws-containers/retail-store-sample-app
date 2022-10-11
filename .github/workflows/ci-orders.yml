@@ -1,0 +1,30 @@
+name: UI CI
+
+on:
+  push:
+    branches:
+    - main
+    paths:
+    - 'src/orders/**'
+  pull_request:
+    branches:
+    - main
+    paths:
+    - 'src/orders/**'
+
+jobs:
+  build:
+    name: CI
+    runs-on: ubuntu-latest
+    steps:
+    - name: Check out code
+      uses: actions/checkout@v2
+    - name: Set up JDK
+      uses: actions/setup-java@v1
+      with:
+        java-version: 17
+    - name: Run
+      env:
+        MAVEN_OPTS: "-Dorg.slf4j.simpleLogger.log.org.apache.maven.cli.transfer.Slf4jMavenTransferListener=warn"
+      run: |
+        src/orders/scripts/ci.sh

@@ -1,0 +1,27 @@
+name: Catalog CI
+
+on:
+  push:
+    branches:
+    - main
+    paths:
+    - 'src/catalog/**'
+  pull_request:
+    branches:
+    - main
+    paths:
+    - 'src/catalog/**'
+
+jobs:
+  build:
+    name: CI
+    runs-on: ubuntu-latest
+    steps:
+    - name: Check out code
+      uses: actions/checkout@v2
+    - uses: actions/setup-go@v1
+      with:
+        go-version: '^1.18.1'
+    - name: Run
+      run: |
+        src/catalog/scripts/ci.sh
