@@ -1,0 +1,17 @@
+chaos:
+  monkey:
+    enabled: true
+    assaults:
+      latencyActive: false
+      level: 1
+      watchedCustomServices:
+        - com.amazon.sample.carts.controllers.CartsController.get
+        - com.amazon.sample.carts.controllers.CartsController.delete
+        - com.amazon.sample.carts.controllers.ItemsController.get
+        - com.amazon.sample.carts.controllers.ItemsController.getItems
+        - com.amazon.sample.carts.controllers.ItemsController.addToCart
+        - com.amazon.sample.carts.controllers.ItemsController.removeItem
+        - com.amazon.sample.carts.controllers.ItemsController.updateItem
+    watcher:
+      restController: true
+      service: false

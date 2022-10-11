@@ -1,0 +1,14 @@
+{
+  "$id": "order-created-event.schema.json",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Order Created Event",
+  "description": "Order Created Event payload",
+  "type": "object",
+  "properties": {
+    "order": {
+      "description": "Order snapshot",
+      "$ref": "order.schema.json"
+    }
+  },
+  "required": [ "order" ]
+}

@@ -1,0 +1,17 @@
+{{- if .Values.mysql.create }}
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "catalog.mysql.fullname" . }}
+  labels:
+    {{- include "catalog.mysql.labels" . | nindent 4 }}
+spec:
+  type: {{ .Values.mysql.service.type }}
+  ports:
+    - port: {{ .Values.mysql.service.port }}
+      targetPort: mysql
+      protocol: TCP
+      name: mysql
+  selector:
+    {{- include "catalog.mysql.selectorLabels" . | nindent 4 }}
+{{- end }}

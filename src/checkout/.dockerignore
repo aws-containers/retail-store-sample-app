@@ -1,0 +1,6 @@
+chart
+scripts
+dist
+node_modules
+Dockerfile
+.dockerignore

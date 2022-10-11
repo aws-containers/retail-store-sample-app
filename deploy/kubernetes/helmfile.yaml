@@ -1,0 +1,57 @@
+repositories:
+# Stable repo of official helm charts
+- name: "stable"
+  url: "https://charts.helm.sh/stable"
+
+releases:
+- name: "activemq"
+  namespace: "retail-sample"
+  chart: ./activemq/chart
+  wait: true
+
+- name: "catalog"
+  namespace: "retail-sample"
+  chart: ../../src/catalog/chart
+  wait: true
+  values:
+  - components.yaml.gotmpl
+
+- name: "carts"
+  namespace: "retail-sample"
+  chart: ../../src/cart/chart
+  wait: true
+  values:
+  - components.yaml.gotmpl
+
+- name: "orders"
+  namespace: "retail-sample"
+  chart: ../../src/orders/chart
+  wait: true
+  values:
+  - components.yaml.gotmpl
+  - messaging:
+      activemq: 
+        brokerUrl: "tcp://activemq-0.activemq:61616"
+
+- name: "checkout"
+  namespace: "retail-sample"
+  chart: ../../src/checkout/chart
+  wait: true
+  values:
+  - components.yaml.gotmpl
+
+- name: "assets"
+  namespace: "retail-sample"
+  chart: ../../src/assets/chart
+  wait: true
+  values:
+  - components.yaml.gotmpl
+
+- name: "ui"
+  namespace: "retail-sample"
+  chart: ../../src/ui/chart
+  wait: true
+  timeout: 600
+  values:
+    - components.yaml.gotmpl
+    - ingress.yaml.gotmpl

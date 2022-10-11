@@ -1,0 +1,11 @@
+excludes:
+  scopes:
+  - pattern: "provided"
+    reason: "PROVIDED_DEPENDENCY_OF"
+    comment: "Packages provided at runtime by the JDK or container only."
+  - pattern: "test"
+    reason: "TEST_DEPENDENCY_OF"
+    comment: "Packages for testing only."
+  - pattern: "devDependencies"
+    reason: "DEV_DEPENDENCY_OF"
+    comment: "Packages for development only."

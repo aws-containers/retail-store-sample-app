@@ -1,0 +1,17 @@
+{{- if .Values.configMap.create -}}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "orders.configMapName" . }}
+data:
+  SPRING_PROFILES_ACTIVE: mysql,default
+  {{- if .Values.messaging.activemq.brokerUrl }}
+  SPRING_ACTIVEMQ_BROKERURL: {{ .Values.messaging.activemq.brokerUrl }}
+  {{- end }}
+  {{- if .Values.messaging.activemq.user }}
+  SPRING_ACTIVEMQ_USER: {{ .Values.messaging.activemq.user }}
+  {{- end }}
+  {{- if .Values.messaging.activemq.password }}
+  SPRING_ACTIVEMQ_PASSWORD: {{ .Values.messaging.activemq.password }}
+  {{- end }}
+{{- end }}

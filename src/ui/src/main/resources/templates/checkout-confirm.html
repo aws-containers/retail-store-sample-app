@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{fragments/layout :: layout (~{::body},'checkout')}">
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <!-- breadcrumb-->
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/home">Home</a></li>
+                    <li aria-current="page" class="breadcrumb-item active">Checkout</li>
+                </ol>
+            </nav>
+        </div>
+        <div id="checkout" class="col-md-12 col-lg-8">
+            <div class="box">
+                <h1>Checkout</h1>
+                <div class="nav flex-column flex-sm-row nav-pills">
+                    <a href="#" class="nav-link flex-sm-fill text-sm-center"> <i class="fa fa-map-marker"></i>Address</a>
+                    <a href="#" class="nav-link flex-sm-fill text-sm-center"> <i class="fa fa-truck"></i>Delivery Method</a>
+                    <a href="#" class="nav-link flex-sm-fill text-sm-center"> <i class="fa fa-money"></i>Payment Method</a>
+                    <a href="#" class="nav-link flex-sm-fill text-sm-center active"> <i class="fa fa-eye"></i>Order Review</a>
+                </div>
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th colspan="2">Product</th>
+                            <th>Quantity</th>
+                            <th>Unit price</th>
+                            <th>Discount</th>
+                            <th>Total</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="item : ${checkout.items}" class="cart-item">
+                            <td><a href="#" th:href="@{/catalog/{itemId}(itemId=${item.id})}"><img th:src="${item.imageUrl}" alt="White Blouse Armani"></a></td>
+                            <td class="item-name"><a href="#" th:href="@{/catalog/{itemId}(itemId=${item.id})}" th:text="${item.name}">White Blouse Armani</a></td>
+                            <td class="item-quantity" th:text="${item.quantity}">
+                                1
+                            </td>
+                            <td class="item-price">$<th:block th:text="${item.unitCost}">123</th:block></td>
+                            <td>$0</td>
+                            <td class="item-subtotal">$<th:block th:text="${item.totalCost}">123</th:block></td>
+                        </tr>
+                        </tbody>
+                        <tfoot>
+                        <tr>
+                            <th colspan="5">Total</th>
+                            <th colspan="2" class="cart-subtotal">$<th:block th:text="${checkout.subtotal}">446</th:block></th>
+                        </tr>
+                        </tfoot>
+                    </table>
+                </div>
+                <form method="POST" id="checkoutForm" action="/checkout/confirm">
+                    <div class="box-footer d-flex justify-content-between"><a href="/cart" class="btn btn-outline-secondary"><i class="fa fa-chevron-left"></i>Back to Basket</a>
+                        <button type="submit" class="btn btn-primary">Order<i class="fa fa-chevron-right"></i></button>
+                    </div>
+                </form>
+            </div>
+            <!-- /.box-->
+        </div>
+        <!-- /.col-lg-9-->
+        <div th:replace="fragments/order.html
+          :: orderSummary">
+        </div>
+        <!-- /.col-lg-3-->
+    </div>
+</div>
+</body></html>

@@ -1,0 +1,38 @@
+version: '2'
+
+services:
+  catalog:
+    build:
+      context: .
+      dockerfile: ../../images/go/Dockerfile
+      args:
+        MAIN_PATH: main.go
+    image: microservices-demo/catalog
+    hostname: catalog
+    depends_on:
+    - catalog-db
+    restart: always
+    cap_drop:
+      - all
+    read_only: true
+    security_opt:
+      - no-new-privileges:true
+    environment:
+      - reschedule=on-node-failure
+      - DB_PASSWORD=${MYSQL_PASSWORD}
+    ports:
+      - "8081:8080"
+  # nosemgrep: yaml.docker-compose.security.writable-filesystem-service.writable-filesystem-service
+  catalog-db:
+    image: mysql:5.7
+    hostname: catalog-db
+    restart: always
+    security_opt:
+      - no-new-privileges:true
+    environment:
+      - reschedule=on-node-failure
+      - MYSQL_ROOT_PASSWORD=${MYSQL_PASSWORD}
+      - MYSQL_ALLOW_EMPTY_PASSWORD=true
+      - MYSQL_DATABASE=sampledb
+      - MYSQL_USER=catalog_user
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD}

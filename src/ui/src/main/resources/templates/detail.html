@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{fragments/layout :: layout (~{::body},'catalog')}">
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <!-- breadcrumb-->
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/home">Home</a></li>
+                    <li class="breadcrumb-item"><a href="/catalog">Catalog</a></li>
+                    <li aria-current="page" class="breadcrumb-item active" th:text="${item.name}">White Blouse Armani</li>
+                </ol>
+            </nav>
+        </div>
+        <div class="col-lg-12 order-1 order-lg-2">
+            <div id="productMain" class="row">
+                <div class="col-md-6">
+                    <div data-slider-id="1" class="owl-carousel shop-detail-carousel">
+                        <div class="item"> <img th:src="${item.imageUrl}" alt="" class="img-fluid"></div>
+                    </div>
+                    <div class="ribbon new">
+                        <div class="theribbon">NEW</div>
+                        <div class="ribbon-background"></div>
+                    </div>
+                    <!-- /.ribbon-->
+                </div>
+                <div class="col-md-6">
+                    <div class="box">
+                        <h1 class="text-center" th:text="${item.name}">White Blouse Armani</h1>
+                        <p class="goToDescription"><a href="#details" class="scroll-to">Scroll to product details, material &amp; care and sizing</a></p>
+                        <p class="price">$<th:block th:text="${item.price}">124.00</th:block></p>
+                        <p class="text-center buttons">
+                        <form action="/cart" id="addToCart" method="POST">
+                            <input type="hidden" name="productId" th:value="${item.id}"/>
+                            <a href="#" class="btn btn-primary" onclick="this.closest('form').submit();return false;"><i class="fa fa-shopping-cart"></i> Add to cart</a>
+
+                            <a href="basket.html" class="btn btn-outline-primary"><i class="fa fa-heart"></i> Add to wishlist</a>
+                        </form>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div id="details" class="box">
+                <p></p>
+                <h4>Product details</h4>
+                <p th:text="${item.description}">White lace top, woven, has a round neck, short sleeves, has knitted lining attached</p>
+                <hr>
+                <div class="social">
+                    <h4>Show it to your friends</h4>
+                    <p><a href="#" class="external facebook"><i class="fa fa-facebook"></i></a><a href="#" class="external gplus"><i class="fa fa-google-plus"></i></a><a href="#" class="external twitter"><i class="fa fa-twitter"></i></a><a href="#" class="email"><i class="fa fa-envelope"></i></a></p>
+                </div>
+            </div>
+            <div class="row same-height-row recommendations">
+                <div class="col-md-3 col-sm-6">
+                    <div class="box same-height">
+                        <h3>You may also like these products</h3>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6" th:each="recommended : ${recommendations}">
+                    <div class="product same-height">
+                       <a href="detail.html"><img src="img/product2.jpg" th:src="${recommended.imageUrl}" alt="" class="img-fluid"></a>
+                        <div class="text">
+                            <h3 th:text="${recommended.name}">Fur coat</h3>
+                            <p class="price">$<th:block th:text="${recommended.price}">124.00</th:block></p>
+                        </div>
+                    </div>
+                    <!-- /.product-->
+                </div>
+            </div>
+        </div>
+        <!-- /.col-md-9-->
+    </div>
+</div>
+</body></html>

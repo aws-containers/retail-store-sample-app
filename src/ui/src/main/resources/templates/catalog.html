@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{fragments/layout :: layout (~{::body},'catalog')}">
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <!-- breadcrumb-->
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/home">Home</a></li>
+                    <li aria-current="page" class="breadcrumb-item active">Catalog</li>
+                </ol>
+            </nav>
+        </div>
+        <div class="col-lg-3">
+            <!--
+            *** MENUS AND FILTERS ***
+            _________________________________________________________
+            -->
+            <div class="card sidebar-menu mb-4">
+                <div class="card-header">
+                    <h3 class="h4 card-title">Categories</h3>
+                </div>
+                <div class="card-body">
+                    <ul class="nav nav-pills flex-column category-menu">
+                        <li>
+                            <ul class="list-unstyled">
+                                <li><a href="category.html" class="nav-link" th:each="tag : ${tags}"
+                                       th:text="${tag.displayName}"
+                                       th:href="@{/catalog(page=1,size=${catalog.size},tag=${tag.name})}"
+                                       th:classappend="${selectedTag == tag.name} ? 'active' : ''">T-shirts</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!-- *** MENUS AND FILTERS END ***-->
+        </div>
+        <div class="col-lg-9">
+            <div class="box info-bar">
+                <div class="row">
+                    <div class="col-md-12 col-lg-4 products-showing">Showing <strong th:text="${catalog.products.size()}">12</strong> of <strong th:text="${catalog.totalRecords}">25</strong> products</div>
+                    <div class="col-md-12 col-lg-7 products-number-sort">
+                        <form class="form-inline d-block d-lg-flex justify-content-between flex-column flex-md-row">
+                            <div class="products-number"><strong>Show</strong>
+                                <a th:href="@{/catalog(page=${catalog.page},size=3,tag=${selectedTag})}" class="btn btn-sm" th:classappend="${3 == catalog.size} ? 'btn-primary' : 'btn-outline-secondary'">3</a>
+                                <a th:href="@{/catalog(page=${catalog.page},size=9,tag=${selectedTag})}" class="btn btn-sm" th:classappend="${9 == catalog.size} ? 'btn-primary' : 'btn-outline-secondary'">9</a>
+                                <a href="#" class="btn btn-outline-secondary btn-sm">All</a><span>products</span>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="row products">
+                <div class="col-lg-4 col-md-6" th:each="item : ${catalog.products}">
+                    <div class="product">
+                        <a class="detail-image" th:href="@{/catalog/{itemId}(itemId=${item.id})}"><img src="img/product1.jpg" th:src="${item.imageUrl}" alt="" class="img-fluid"></a>
+                        <div class="text">
+                            <h3><a href="detail.html" th:text="${item.name}">Fur coat with very but very very long name</a></h3>
+                            <p class="price">
+                                <del></del>$<th:block th:text="${item.price}">143.00</th:block>
+                            </p>
+                            <p class="buttons">
+                            <form action="/cart" method="POST">
+                                <input type="hidden" name="productId" th:value="${item.id}"/>
+                                <a href="#" th:href="@{/catalog/{itemId}(itemId=${item.id})}" class="btn btn-outline-secondary detail-link">View detail</a>
+                                <a href="#" onclick="this.closest('form').submit();return false;" class="btn btn-primary"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+                            </form>
+                            </p>
+                        </div>
+                        <!-- /.text-->
+                    </div>
+                    <!-- /.product            -->
+                </div>
+                <!-- /.products-->
+            </div>
+            <div class="pages">
+                <nav aria-label="Page navigation example" class="d-flex justify-content-center">
+                    <ul class="pagination">
+                        <li class="page-item"><a href="#" aria-label="Previous" class="page-link"><span aria-hidden="true">«</span><span class="sr-only">Previous</span></a></li>
+                        <li class="page-item" th:each="i : ${#numbers.sequence(1, catalog.totalPages)}" th:classappend="${i == catalog.page} ? 'active' : ''" >
+                            <a th:href="@{/catalog(page=${i},size=${catalog.size},tag=${selectedTag})}" class="page-link" th:text="${i}">1</a>
+                        </li>
+                        <li class="page-item"><a href="#" aria-label="Next" class="page-link"><span aria-hidden="true">»</span><span class="sr-only">Next</span></a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+        <!-- /.col-lg-9-->
+    </div>
+</div>
+</body></html>

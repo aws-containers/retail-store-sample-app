@@ -1,0 +1,18 @@
+{{- if .Values.configMap.create -}}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "carts.configMapName" . }}
+data:
+  SPRING_PROFILES_ACTIVE: dynamodb
+  {{- if (eq "dynamodb" .Values.persistence) }}
+  CARTS_DYNAMODB_TABLENAME: {{ .Values.dynamodb.tableName }}
+  CARTS_DYNAMODB_CREATETABLE: "{{ .Values.dynamodb.createTable }}"
+  {{- if .Values.dynamodb.create }}
+  CARTS_DYNAMODB_CREATETABLE: "true"
+  AWS_ACCESS_KEY_ID: key
+  AWS_SECRET_ACCESS_KEY: secret
+  CARTS_DYNAMODB_ENDPOINT: http://carts-dynamodb:8000
+  {{- end }}
+  {{- end }}
+{{- end }}

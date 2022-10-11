@@ -1,0 +1,7 @@
+apiVersion: v2
+name: orders
+description: A Helm chart for the orders service
+
+type: application
+
+version: 0.0.1

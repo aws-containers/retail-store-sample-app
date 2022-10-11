@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{fragments/layout :: layout (~{::body},'checkout')}">
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <!-- breadcrumb-->
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/home">Home</a></li>
+                    <li aria-current="page" class="breadcrumb-item active">Checkout</li>
+                </ol>
+            </nav>
+        </div>
+        <div id="checkout" class="col-md-12 col-lg-8">
+            <div class="box">
+                <h1>Checkout</h1>
+                <div class="nav flex-column flex-sm-row nav-pills">
+                    <a href="#" class="nav-link flex-sm-fill text-sm-center"> <i class="fa fa-map-marker"></i>Address</a>
+                    <a href="#" class="nav-link flex-sm-fill text-sm-center"> <i class="fa fa-truck"></i>Delivery Method</a>
+                    <a href="#" class="nav-link flex-sm-fill text-sm-center active"> <i class="fa fa-money"></i>Payment Method</a>
+                    <a href="#" class="nav-link flex-sm-fill text-sm-center disabled"> <i class="fa fa-eye"></i>Order Review</a>
+                </div>
+                <form method="POST" id="checkoutForm" action="/checkout/payment">
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="cc-name">Name on card</label>
+                            <input type="text" class="form-control" id="cc-name" name="ccName" placeholder="" required>
+                            <small class="text-muted">Full name as displayed on card</small>
+                            <div class="invalid-feedback">
+                                Name on card is required
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="cc-number">Credit card number</label>
+                            <input type="text" class="form-control" id="cc-number" name="ccNumber" placeholder="" required>
+                            <div class="invalid-feedback">
+                                Credit card number is required
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3 mb-3">
+                            <label for="cc-expiration">Expiration</label>
+                            <input type="text" class="form-control" id="cc-expiration" name="ccExpiration" placeholder="" required>
+                            <div class="invalid-feedback">
+                                Expiration date required
+                            </div>
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <label for="cc-expiration">CVV</label>
+                            <input type="text" class="form-control" id="cc-cvv" name="ccCvv" placeholder="" required>
+                            <div class="invalid-feedback">
+                                Security code required
+                            </div>
+                        </div>
+                    </div>
+                    <div class="box-footer d-flex justify-content-between"><a href="/cart" class="btn btn-outline-secondary"><i class="fa fa-chevron-left"></i>Back to Basket</a>
+                        <button type="submit" class="btn btn-primary">Next<i class="fa fa-chevron-right"></i></button>
+                    </div>
+                </form>
+            </div>
+            <!-- /.box-->
+        </div>
+        <!-- /.col-lg-9-->
+        <div th:replace="fragments/order.html
+          :: orderSummary">
+        </div>
+        <!-- /.col-lg-3-->
+    </div>
+</div>
+</body></html>

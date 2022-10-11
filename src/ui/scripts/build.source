@@ -1,0 +1,2 @@
+dockerfile='../../images/java17/Dockerfile'
+docker_build_args='--build-arg JAR_PATH=target/ui-0.0.1-SNAPSHOT.jar'

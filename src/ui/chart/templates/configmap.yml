@@ -1,0 +1,11 @@
+{{- if .Values.configMap.create -}}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "ui.configMapName" . }}
+data:
+  ENDPOINTS_CATALOG: {{ .Values.endpoints.catalog }}
+  ENDPOINTS_CARTS: {{ .Values.endpoints.carts }}
+  ENDPOINTS_ORDERS: {{ .Values.endpoints.orders }}
+  ENDPOINTS_ASSETS: {{ .Values.endpoints.assets }}
+{{- end }}

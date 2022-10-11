@@ -1,0 +1,16 @@
+{{- if and (.Values.istio.enabled) (.Values.ingress.tls) }}
+apiVersion: cert-manager.io/v1alpha2
+kind: Certificate
+metadata:
+  name: ingress-cert
+  namespace: istio-system
+spec:
+  secretName: {{ .Values.istio.tls.secretName }}
+  dnsNames:
+  {{- range .Values.istio.tls.hosts }}
+  - {{ . | quote }}
+  {{- end }}
+  issuerRef:
+    name: {{ .Values.istio.tls.issuer.name }}
+    kind: {{ .Values.istio.tls.issuer.kind }}
+{{- end }}

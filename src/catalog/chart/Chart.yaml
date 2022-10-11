@@ -1,0 +1,7 @@
+apiVersion: v2
+name: catalog
+description: A Helm chart for the catalog service
+
+type: application
+
+version: 0.0.1

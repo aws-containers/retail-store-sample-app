@@ -1,0 +1,10 @@
+{
+  "modelPackage" : "com.example.v3client.model",
+  "apiPackage"   : "com.example.v3client.api",
+  "invokerPackage" : "com.example.v3client",
+  "groupId" : "com.example.v3",
+  "artifactId"  : "v3client",
+  "fullJavaUtil" : true,
+  "dateLibrary" : "java8",
+  "library" :  "resttemplate"
+}

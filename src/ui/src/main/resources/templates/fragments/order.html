@@ -1,0 +1,30 @@
+<div class="col-md-12 col-lg-4" th:fragment="orderSummary" xmlns:th="http://www.thymeleaf.org">
+    <div id="order-summary" class="box">
+        <div class="box-header">
+            <h3 class="mb-0">Order Summary</h3>
+        </div>
+        <p class="text-muted">Shipping and additional costs will be added during checkout.</p>
+        <div class="table-responsive">
+            <table class="table">
+                <tbody>
+                <tr>
+                    <td>Order subtotal</td>
+                    <th>$<th:block th:text="${checkout.subtotal}">446</th:block></th>
+                </tr>
+                <tr th:if="${checkout.tax > -1}">
+                    <td>Tax</td>
+                    <th>$<th:block th:text="${checkout.tax}">446</th:block></th>
+                </tr>
+                <tr th:if="${checkout.shipping > -1}">
+                    <td>Shipping and handling</td>
+                    <th>$<th:block th:text="${checkout.shipping}">446</th:block></th>
+                </tr>
+                <tr class="total" th:if="${checkout.total > -1}">
+                    <td>Total</td>
+                    <th>$<th:block th:text="${checkout.total}">446</th:block></th>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
