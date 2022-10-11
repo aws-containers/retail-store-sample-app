@@ -1,0 +1,28 @@
+name: Checkout CI
+
+on:
+  push:
+    branches:
+    - master
+    paths:
+    - 'src/main/**'
+  pull_request:
+    branches:
+    - main
+    paths:
+    - 'src/checkout/**'
+
+jobs:
+  build:
+    name: CI
+    runs-on: ubuntu-latest
+    steps:
+    - name: Check out code
+      uses: actions/checkout@v2
+    - name: Set up Nodejs
+      uses: actions/setup-node@v1
+      with:
+        node-version: 16
+    - name: Run
+      run: |
+        bash src/checkout/scripts/ci.sh
