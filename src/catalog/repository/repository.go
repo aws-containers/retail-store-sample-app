@@ -3,8 +3,8 @@ package repository
 import (
 	"fmt"
 
-	"github.com/niallthomson/microservices-demo/catalog/config"
-	"github.com/niallthomson/microservices-demo/catalog/model"
+	"github.com/aws-containers/retail-store-sample-app/catalog/config"
+	"github.com/aws-containers/retail-store-sample-app/catalog/model"
 	"github.com/prometheus/client_golang/prometheus"
 )
 

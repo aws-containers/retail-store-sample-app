@@ -7,13 +7,13 @@ import (
 	"strings"
 	"time"
 
+	"github.com/aws-containers/retail-store-sample-app/catalog/config"
+	"github.com/aws-containers/retail-store-sample-app/catalog/model"
 	"github.com/dlmiddlecote/sqlstats"
 	"github.com/golang-migrate/migrate/v4"
 	_ "github.com/golang-migrate/migrate/v4/database/mysql"
 	_ "github.com/golang-migrate/migrate/v4/source/file"
 	"github.com/jmoiron/sqlx"
-	"github.com/niallthomson/microservices-demo/catalog/config"
-	"github.com/niallthomson/microservices-demo/catalog/model"
 	"github.com/prometheus/client_golang/prometheus"
 )
 

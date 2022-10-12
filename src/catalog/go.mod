@@ -1,4 +1,4 @@
-module github.com/niallthomson/microservices-demo/catalog
+module github.com/aws-containers/retail-store-sample-app/catalog
 
 go 1.18
 

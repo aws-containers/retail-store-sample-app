@@ -5,10 +5,10 @@ import (
 	"strconv"
 	"strings"
 
+	"github.com/aws-containers/retail-store-sample-app/catalog/api"
+	"github.com/aws-containers/retail-store-sample-app/catalog/httputil"
+	"github.com/aws-containers/retail-store-sample-app/catalog/model"
 	"github.com/gin-gonic/gin"
-	"github.com/niallthomson/microservices-demo/catalog/api"
-	"github.com/niallthomson/microservices-demo/catalog/httputil"
-	"github.com/niallthomson/microservices-demo/catalog/model"
 )
 
 // Controller example

@@ -41,7 +41,11 @@ function ort()
   $ORT_PATH report \
     -i $component_output_dir/analyzer-result.json \
     -o $component_output_dir \
-    --report-formats NoticeTemplate,StaticHtml
+    --report-formats NoticeTemplate,StaticHtml,SpdxDocument
+
+  $ORT_PATH download \
+    -i $component_output_dir/analyzer-result.json \
+    -o $component_output_dir/src
 }
 
 if [ -f "$output_dir" ]; then
@@ -52,6 +56,6 @@ fi
 #ort 'ui' 'maven'
 #ort 'cart' 'maven'
 #ort 'orders' 'maven'
-#ort 'checkout' 'npm'
+ort 'checkout' 'npm'
 
-golicenses 'catalog'
+#golicenses 'catalog'

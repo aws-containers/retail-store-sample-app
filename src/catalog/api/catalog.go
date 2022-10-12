@@ -1,8 +1,8 @@
 package api
 
 import (
-	"github.com/niallthomson/microservices-demo/catalog/model"
-	"github.com/niallthomson/microservices-demo/catalog/repository"
+	"github.com/aws-containers/retail-store-sample-app/catalog/model"
+	"github.com/aws-containers/retail-store-sample-app/catalog/repository"
 )
 
 // CatalogAPI type
