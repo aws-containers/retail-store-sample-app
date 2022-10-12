@@ -1,7 +1,12 @@
 import json
 import os
 import re
+import urllib.parse
+import urllib.request
+import csv
+from urllib.error import HTTPError
 from jinja2 import Template
+from os.path import exists
 
 license = "LICENSE"
 notice = "NOTICE"
@@ -10,8 +15,10 @@ generic_licenses = {
   "Apache-2.0": "https://www.apache.org/licenses/LICENSE-2.0.txt",
   "MIT": "https://spdx.org/licenses/MIT.txt",
   "ISC": "https://spdx.org/licenses/ISC.txt",
+  "BSD-2-Clause": "https://spdx.org/licenses/BSD-2-Clause.txt",
   "BSD-3-Clause": "https://spdx.org/licenses/BSD-3-Clause.txt",
-  "MPL-2.0": "https://www.mozilla.org/media/MPL/2.0/index.815ca599c9df.txt"
+  "MPL-2.0": "https://www.mozilla.org/media/MPL/2.0/index.815ca599c9df.txt",
+  "LGPL-2.1-or-later": "https://www.gnu.org/licenses/old-licenses/lgpl-2.1.txt"
 }
 
 def find_license(path):
@@ -43,50 +50,96 @@ template = """# Open Source Software Attribution
 
 This software depends on external packages and source code.
 The applicable license information is listed below:
-{% for package in packages %}
-----
 
-### {{ package.name }} - {{ package.url }}
+{% for package in packages %}----
 
-{{ package.license }}{% endfor %}
+### {{ package.name }}{% if package.url is not none %} - {{ package.url }}{% endif %}
+
+{{ package.license }}
+
+{% endfor %}
 """
 
-component = 'checkout'
+component = 'orders'
 
 base_path = '../reports/license-report/{}'.format(component)
 src_path = '{}/src'.format(base_path)
 
-f = open('{}/analyzer-result.json'.format(base_path))
-
-data = json.load(f)
+analyzer_path = '{}/analyzer-result.json'.format(base_path)
+go_licenses_path = '{}/licenses.csv'.format(base_path)
 
 packages = []
 
-for i in data['analyzer']['result']['packages']:
-  package = i['package']
+if exists(analyzer_path):
+  f = open(analyzer_path)
 
-  id = package['id']
+  data = json.load(f)
 
-  package_manager, group, package_name, version = id.split(':')
+  for i in data['analyzer']['result']['packages']:
+    package = i['metadata']
 
-  name = ''
+    id = package['id']
 
-  if(group == ''):
-    group = 'unknown'
-    name = package_name
-  else:
-    name = '{}:{}'.format(group, package_name)
+    package_manager, group, package_name, version = id.split(':')
 
-  url = package['vcs']['url']
+    name = ''
 
-  package_src_path = '{}/{}/{}/{}/{}'.format(src_path, package_manager, group, package_name,version)
+    if(group == ''):
+      group = 'unknown'
+      name = package_name
+    else:
+      name = '{}:{}'.format(group, package_name)
 
-  license_text = find_license(package_src_path)
+    url = package['homepage_url']
 
-  if(license_text is not None):
-    packages.append({"name": name, "url": url, "license": license_text})
-  else:
-    print('Warning: Skipping package {}'.format(id))
+    package_src_path = '{}/{}/{}/{}/{}'.format(src_path, package_manager, urllib.parse.quote_plus(group), urllib.parse.quote_plus(package_name),version)
+
+    license_text = find_license(package_src_path)
+
+    if(license_text is None):
+      if 'spdx_expression' in package['declared_licenses_processed']:
+        license_name = package['declared_licenses_processed']['spdx_expression']
+
+        print('Warning: Defaulting to generic {} for {}'.format(license_name, id))
+
+        if license_name in generic_licenses:
+          license_url = generic_licenses[license_name]
+          license_text = urllib.request.urlopen(license_url).read().decode('utf-8')
+        else:
+          print('Warning: License {} missing from URL map'.format(license_name))
+
+    if license_text is not None:
+      packages.append({"name": name, "url": url, "license": license_text})
+    else:
+      print('Warning: No license entry for {}'.format(id))
+elif exists(go_licenses_path):
+  with open(go_licenses_path, newline='') as csvfile:
+    reader = csv.reader(csvfile, delimiter=',',quotechar='|')
+    for row in reader:
+      name = row[0]
+      license_url = row[1]
+      license_name = row[2]
+
+      actual_license_url = None
+
+      if 'github.com' in license_url:
+        actual_license_url = license_url.replace('blob', 'raw')
+      elif 'golang.org/x' in name:
+        actual_license_url = 'https://go.dev/LICENSE?m=text'
+
+      if actual_license_url is not None:
+        try:
+          license_text = urllib.request.urlopen(actual_license_url).read().decode('utf-8')
+
+          packages.append({"name": name, "url": None, "license": license_text})
+        except HTTPError as err:
+          print('Failed to fetch {}'.format(actual_license_url))
+      else:
+        print('Warning: No license entry for {}'.format(name))
+
+else:
+  print('Failed to find results file')
+  quit()
 
 j2_template = Template(template)
 
