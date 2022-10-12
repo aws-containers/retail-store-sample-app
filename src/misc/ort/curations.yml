@@ -3,6 +3,10 @@
     comment: "This uses BSD-3-Clause license"
     declared_license_mapping:
       "BSD License": "BSD-3-Clause"
+- id: "Maven:com.h2database:h2"
+  curations:
+    comment: "Licensed under MPL2.0, must provide link to source"
+    homepage_url: "https://github.com/h2database/h2database"
 - id: "Maven:com.amazonaws:aws-java-sdk-core"
   curations:
     comment: "Project has lots of tags, slows source downloads"
