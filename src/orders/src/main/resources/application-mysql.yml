@@ -10,10 +10,10 @@ spring:
       jdbc-url: ${spring.datasource.writer.url}
       username:
       password:
-      driverClassName: com.mysql.jdbc.Driver
+      driverClassName: org.mariadb.jdbc.Driver
 
     reader:
       jdbc-url: ${spring.datasource.reader.url}
       username:
       password:
-      driverClassName: com.mysql.jdbc.Driver
+      driverClassName: org.mariadb.jdbc.Driver
