@@ -45,3 +45,11 @@ Open the frontend in a browser window:
 ```
 http://localhost
 ```
+
+## Security
+
+See [CONTRIBUTING](CONTRIBUTING.md#security-issue-notifications) for more information.
+
+## License
+
+This project is licensed under the MIT-0 License.
