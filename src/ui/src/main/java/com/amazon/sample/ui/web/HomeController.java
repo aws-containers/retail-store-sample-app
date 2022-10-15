@@ -27,7 +27,7 @@ public class HomeController extends BaseController {
 
     @GetMapping("/home")
     public String home(final Model model, final ServerHttpRequest request) {
-        model.addAttribute("catalog", this.catalogService.getProducts("", "" ,1, 5));
+        model.addAttribute("catalog", this.catalogService.getProducts("", "" ,1, 4));
 
         populateCommon(request, model);
 

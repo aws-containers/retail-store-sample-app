@@ -1,44 +1,72 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" th:replace="~{fragments/layout :: layout (~{::body},'home')}">
 <body>
-<div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
-  <div class="carousel-inner">
-    <div class="carousel-item active">
-      <img th:src="@{/assets/img/hero1.jpg}" class="d-block w-100" style="max-height: 500px; object-fit: cover" alt="..."/>
+<section class="section-intro bg-primary padding-y-lg">
+    <div class="container">
+        <article class="my-5">
+            <h1 class="display-4 text-white"> Shop for top products <br> in our store  </h1>
+            <p class="lead text-white">Latest Products, Low Prices</p>
+        </article>
     </div>
-    <div class="carousel-item">
-      <img th:src="@{/assets/img/hero2.jpg}" class="d-block w-100" style="max-height: 500px; object-fit: cover" alt="..."/>
-    </div>
-    <div class="carousel-item">
-      <img th:src="@{/assets/img/hero3.jpg}" class="d-block w-100" style="max-height: 500px; object-fit: cover" alt="..."/>
-    </div>
-  </div>
-  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Previous</span>
-  </button>
-  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Next</span>
-  </button>
-</div>
-<section class="py-5">
-    <div class="container px-4 px-lg-5 mt-5">
-        <
-        <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-            <div class="col mb-5" th:each="item : ${catalog.products}">
-                <div class="card h-100">
-                    <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
-                    <div class="card-body p-4">
-                        <div class="text-center">
-                            <h5 class="fw-bolder">Fancy Product</h5>
-                            $<span th:text="${item.price}">143.00</span>
-                        </div>
-                    </div>
-                    <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                        <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">View options</a></div>
-                    </div>
+</section>
+<div>
+    <div class="container pt-4">
+        <div class="mt-4">
+            <h2 style="margin-bottom: 20px">Hot products!</h2>
+            <div class="row gx-4 gx-lg-5 row-cols-4 justify-content-center">
+                <div class="col mb-5" th:each="item : ${catalog.products}">
+                    <div th:replace="~{fragments/product_card :: card(${item}) }"></div>
                 </div>
+            </div>
+        </div>
+    </div>
+</div>
+<section class="padding-y border-top bg-white">
+    <div class="container">
+
+        <header class="section-heading mt-2 mb-5">
+            <h3 class="section-title">Why choose us</h3>
+        </header>
+
+        <div class="row mb-4">
+            <div class="col-lg-4 col-md-6">
+                <figure class="itemside align-items-center mb-4">
+                    <div class="aside">
+					<span class="rounded-circle shadow-sm text-primary icon-lg" style="background-color: #dbe9ff !important">
+						<i class="bi bi-heart-fill"></i>
+					</span>
+                    </div>
+                    <figcaption class="info">
+                        <h6 class="title">We love our customers!</h6>
+                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</p>
+                    </figcaption>
+                </figure>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <figure class="itemside align-items-center  mb-4">
+                    <div class="aside">
+					<span class="rounded-circle shadow-sm text-primary icon-lg" style="background-color: #dbe9ff !important">
+						<i class="bi bi-currency-dollar"></i>
+					</span>
+                    </div>
+                    <figcaption class="info">
+                        <h6 class="title">Lowest prices</h6>
+                        <p>Aenean commodo ligula eget dolor. Aenean massa.</p>
+                    </figcaption>
+                </figure>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <figure class="itemside align-items-center  mb-4">
+                    <div class="aside">
+					<span class="rounded-circle shadow-sm text-primary icon-lg" style="background-color: #dbe9ff !important">
+						<i class="bi bi-box2-fill"></i>
+					</span>
+                    </div>
+                    <figcaption class="info">
+                        <h6 class="title">Reliable shipping</h6>
+                        <p>Com sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
+                    </figcaption>
+                </figure>
             </div>
         </div>
     </div>

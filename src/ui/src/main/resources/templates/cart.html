@@ -1,69 +1,88 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" th:replace="~{fragments/layout :: layout (~{::body},'cart')}">
 <body>
-<div class="container">
-    <div class="row">
-        <div class="col-lg-12">
-            <!-- breadcrumb-->
-            <nav aria-label="breadcrumb">
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="/home">Home</a></li>
-                    <li aria-current="page" class="breadcrumb-item active">Shopping cart</li>
-                </ol>
-            </nav>
-        </div>
-        <div id="basket" class="col">
-            <div class="box">
-                <h1>Shopping cart</h1>
-                <p class="text-muted">You currently have <span class="num-items" th:text="${fullCart.numItems}"></span> item(s) in your cart.</p>
-                <div class="table-responsive">
-                    <table class="table">
-                        <thead>
-                        <tr>
-                            <th colspan="2">Product</th>
-                            <th>Quantity</th>
-                            <th>Unit price</th>
-                            <th>Discount</th>
-                            <th colspan="2">Total</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr th:each="item : ${fullCart.items}" class="cart-item">
-                            <td><a href="#" th:href="@{/catalog/{itemId}(itemId=${item.id})}"><img th:src="${item.imageUrl}" alt="White Blouse Armani"></a></td>
-                            <td class="item-name"><a href="#" th:href="@{/catalog/{itemId}(itemId=${item.id})}" th:text="${item.name}">White Blouse Armani</a></td>
-                            <td class="item-quantity" th:text="${item.quantity}">
-                                1
-                            </td>
-                            <td class="item-price">$<th:block th:text="${item.price}">123</th:block></td>
-                            <td>$0</td>
-                            <td class="item-subtotal">$<th:block th:text="${item.totalPrice}">123</th:block></td>
-                            <td>
-                                <form action="/cart/remove" method="POST">
-                                <input type="hidden" name="productId" th:value="${item.id}"/>
-                                <a class="remove-item" href="#" onclick="this.closest('form').submit();return false;"><i class="fa fa-trash-o"></i></a>
-                                </form>
-                            </td>
-                        </tr>
-                        </tbody>
-                        <tfoot>
-                        <tr>
-                            <th colspan="5">Total</th>
-                            <th colspan="2" class="cart-subtotal">$<th:block th:text="${fullCart.subtotal}">446</th:block></th>
-                        </tr>
-                        </tfoot>
-                    </table>
-                </div>
-                <!-- /.table-responsive-->
-                <div class="box-footer d-flex justify-content-between flex-column flex-lg-row">
-                    <div class="left"><a href="/catalog" class="btn btn-outline-secondary"><i class="fa fa-chevron-left"></i> Continue shopping</a></div>
-                    <div class="right">
-                        <a href="/checkout" class="btn btn-primary">Proceed to checkout <i class="fa fa-chevron-right"></i></a>
+<section class="bg-primary padding-y-sm">
+    <div class="container">
+        <ol class="breadcrumb ondark mb-0">
+            <li class="breadcrumb-item"><a href="/home">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Cart</li>
+        </ol>
+    </div>
+</section>
+<section class="padding-y">
+    <div class="container">
+
+        <!-- =================== COMPONENT CART+SUMMARY ====================== -->
+        <div class="row">
+            <div class="col-lg-9">
+
+                <div class="card">
+                    <div class="content-body">
+                        <h4 class="card-title mb-4">Shopping cart</h4>
+
+                        <div th:if="${fullCart.items.size() == 0}">
+                            You don't have any items in your cart!
+                        </div>
+                        <article class="row gy-3 mb-4" th:each="item : ${fullCart.items}"
+                                 th:if="${fullCart.items.size() > 0}">
+                            <div class="col-lg-5">
+                                <figure class="itemside me-lg-5">
+                                    <div class="aside" style="height: 80px"><img
+                                            style="max-height: 100%; max-width: 100%" src="images/items/13.webp"
+                                            th:src="${item.imageUrl}" class="img-sm img-thumbnail"></div>
+                                    <figcaption class="info">
+                                        <a href="#" class="title" th:text="${item.name}">Blazer Suit Dress Jacket for
+                                            Men</a>
+                                    </figcaption>
+                                </figure>
+                            </div>
+                            <div class="col-lg-2 col-sm-4 col-6">
+                                <div class="price-wrap lh-sm">
+                                    <var class="price h6">$
+                                        <th:block th:text="${item.totalPrice}">123</th:block>
+                                    </var> <br>
+                                    <small class="text-muted"> $
+                                        <th:block th:text="${item.price}">123</th:block>
+                                        / per item </small>
+                                </div> <!-- price-wrap .// -->
+                            </div>
+                            <div class="col-lg col-sm-4">
+                                <div class="float-lg-end">
+                                    <form action="/cart/remove" method="POST">
+                                        <input type="hidden" name="productId" th:value="${item.id}"/>
+                                        <button type="submit" class="btn btn-light text-danger">Remove</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </article> <!-- row.// -->
+
+                    </div> <!-- card-body .// -->
+
+                </div> <!-- card.// -->
+
+            </div> <!-- col.// -->
+            <aside class="col-lg-3">
+
+                <div class="card">
+                    <div class="card-body">
+                        <dl class="dlist-align">
+                            <dt>Total:</dt>
+                            <dd class="text-end text-dark h5"> $
+                                <th:block th:text="${fullCart.subtotal}">446</th:block>
+                            </dd>
+                        </dl>
+
+                        <div class="d-grid gap-2 my-3">
+                            <a href="/checkout" class="btn btn-success w-100"> Checkout </a>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <!-- /.box-->
+
+            </aside>
+
         </div>
-        <!-- /.col-lg-12-->
+        <br><br>
     </div>
-</div>
-</body></html>
+</section>
+</body>
+</html>
