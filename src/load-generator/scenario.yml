@@ -1,14 +1,8 @@
 config:
   target: "http://localhost:8888"
   phases:
-    - duration: 20
-      arrivalRate: 3
-  environments:
-    kubernetes:
-      target: "http://ui.ui.svc"
-      phases:
-        - duration: 1200
-          arrivalRate: 10
+    - duration: 0
+      arrivalRate: 1
   variables:
     productIds:
     - '6d62d909-f957-430e-8689-b5129c0bb75e'
@@ -19,7 +13,7 @@ config:
     - 'f4ebd070-b4ba-11ea-b3de-0242ac130004'
 
 scenarios:
-  - name: "Default"
+  - name: "Test"
     flow:
       - get:
           url: "/home"
