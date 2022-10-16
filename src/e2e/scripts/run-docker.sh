@@ -73,6 +73,6 @@ setup_colors
 
 cd $script_dir/../
 
-docker build -t aws-containers/retail-sample-app-e2e:local .
+docker build -q -t aws-containers/retail-sample-app-e2e:local .
 
 docker run -i --rm --network $network -e "ENDPOINT=${args[0]}" aws-containers/retail-sample-app-e2e:local
