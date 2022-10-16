@@ -46,7 +46,7 @@
                 </div>
             </div>
             <div class="row products mt-3">
-                <div class="col-lg-4 col-md-6" th:each="item : ${catalog.products}">
+                <div class="col-lg-4 col-md-6 products" th:each="item : ${catalog.products}">
                     <div th:replace="~{fragments/product_card :: card(${item}) }"></div>
                 </div>
             </div>

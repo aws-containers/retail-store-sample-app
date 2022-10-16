@@ -11,19 +11,17 @@
 </section>
 <section class="padding-y">
     <div class="container">
-
-        <!-- =================== COMPONENT CART+SUMMARY ====================== -->
         <div class="row">
             <div class="col-lg-9">
 
-                <div class="card">
+                <div class="card basket" id="basket">
                     <div class="content-body">
                         <h4 class="card-title mb-4">Shopping cart</h4>
 
                         <div th:if="${fullCart.items.size() == 0}">
                             You don't have any items in your cart!
                         </div>
-                        <article class="row gy-3 mb-4" th:each="item : ${fullCart.items}"
+                        <article class="row gy-3 mb-4 cart-item" th:each="item : ${fullCart.items}"
                                  th:if="${fullCart.items.size() > 0}">
                             <div class="col-lg-5">
                                 <figure class="itemside me-lg-5">
@@ -31,36 +29,36 @@
                                             style="max-height: 100%; max-width: 100%" src="images/items/13.webp"
                                             th:src="${item.imageUrl}" class="img-sm img-thumbnail"></div>
                                     <figcaption class="info">
-                                        <a href="#" class="title" th:text="${item.name}">Blazer Suit Dress Jacket for
+                                        <a href="#" class="title item-name" th:text="${item.name}">Blazer Suit Dress Jacket for
                                             Men</a>
                                     </figcaption>
                                 </figure>
                             </div>
                             <div class="col-lg-2 col-sm-4 col-6">
                                 <div class="price-wrap lh-sm">
-                                    <var class="price h6">$
+                                    <var class="price h6 item-price">$
                                         <th:block th:text="${item.totalPrice}">123</th:block>
                                     </var> <br>
                                     <small class="text-muted"> $
                                         <th:block th:text="${item.price}">123</th:block>
                                         / per item </small>
-                                </div> <!-- price-wrap .// -->
+                                </div>
                             </div>
                             <div class="col-lg col-sm-4">
                                 <div class="float-lg-end">
                                     <form action="/cart/remove" method="POST">
                                         <input type="hidden" name="productId" th:value="${item.id}"/>
-                                        <button type="submit" class="btn btn-light text-danger">Remove</button>
+                                        <button type="submit" class="btn btn-light text-danger remove-item">Remove</button>
                                     </form>
                                 </div>
                             </div>
-                        </article> <!-- row.// -->
+                        </article>
 
-                    </div> <!-- card-body .// -->
+                    </div>
 
-                </div> <!-- card.// -->
+                </div>
 
-            </div> <!-- col.// -->
+            </div>
             <aside class="col-lg-3">
 
                 <div class="card">

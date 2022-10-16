@@ -1,10 +1,10 @@
-<div class="card h-100" th:fragment="card (product)" xmlns:th="http://www.thymeleaf.org">
+<div class="card h-100 product" th:fragment="card (product)" xmlns:th="http://www.thymeleaf.org">
     <img class="card-img-top" src="/assets/img/sample_product.jpg" th:src="${item.imageUrl}" alt="..." />
     <ul class="list-group list-group-flush">
         <li class="list-group-item">
             <div class="py-2">
                 <div>
-                    <a th:href="@{/catalog/{itemId}(itemId=${product.id})}" href="#"><h5 class="fw-bolder" th:text="${product.name}">Fancy Product</h5></a>
+                    <a class="product-link" th:href="@{/catalog/{itemId}(itemId=${product.id})}" href="#"><h5 class="fw-bolder" th:text="${product.name}">Fancy Product</h5></a>
                     <div class="mb-2" th:insert="fragments/stars.html :: stars"/>
                     <div>$<span th:text="${product.price}">143.00</span></div>
                 </div>

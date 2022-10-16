@@ -31,7 +31,7 @@
                             <p class="text-center buttons">
                             <form action="/cart" id="addToCart" method="POST">
                                 <input type="hidden" name="productId" th:value="${item.id}"/>
-                                <a href="#" class="btn btn-dark" onclick="this.closest('form').submit();return false;"><i class="bi bi-cart"></i> Add to cart</a>
+                                <a href="#" id="add-to-cart" class="btn btn-dark" onclick="this.closest('form').submit();return false;"><i class="bi bi-cart"></i> Add to cart</a>
 
                                 <a href="basket.html" class="btn btn-outline-dark"><i class="bi bi-heart"></i> Add to wishlist</a>
                             </form>
