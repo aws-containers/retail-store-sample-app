@@ -11,6 +11,7 @@ on:
     - main
     paths:
     - 'src/checkout/**'
+    - 'images/**'
 
 jobs:
   build:

@@ -11,6 +11,7 @@ on:
     - main
     paths:
     - 'src/orders/**'
+    - 'images/**'
 
 jobs:
   build:

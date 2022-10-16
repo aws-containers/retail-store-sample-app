@@ -11,6 +11,7 @@ on:
     - main
     paths:
     - 'src/cart/**'
+    - 'images/**'
 
 jobs:
   build:
