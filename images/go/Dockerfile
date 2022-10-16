@@ -1,15 +1,15 @@
 # Build Stage
 FROM amazonlinux:2 as build-env
 
-RUN yum install -y git golang
+RUN yum install -y git golang && \
+    yum clean all
 
 ARG MAIN_PATH
 
 ENV GOPROXY direct
 
-RUN mkdir -p ${GOPATH}/src ${GOPATH}/bin
+RUN mkdir -p "${GOPATH}/src" "${GOPATH}/bin" /appsrc
 
-RUN mkdir /appsrc
 WORKDIR /appsrc
 
 COPY . .

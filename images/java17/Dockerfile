@@ -14,8 +14,8 @@ RUN ./mvnw dependency:go-offline -B
 
 COPY ./src ./src
 
-RUN ./mvnw -DskipTests package
-RUN mv /$JAR_PATH /app.jar
+RUN ./mvnw -DskipTests package && \
+    mv /$JAR_PATH /app.jar
 
 # Package Stage
 FROM amazoncorretto:17-al2-full
@@ -42,4 +42,4 @@ COPY --chown=appuser:appuser --from=build-env /app.jar .
 
 EXPOSE 8080
 
-CMD exec java $JAVA_OPTS -jar /app/app.jar
+ENTRYPOINT ["sh", "-c", "java $JAVA_OPTS -jar /app/app.jar"]

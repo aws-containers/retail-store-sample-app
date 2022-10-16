@@ -2,7 +2,8 @@
 FROM amazonlinux:2
 
 RUN curl -sL https://rpm.nodesource.com/setup_16.x | bash - && \
-  yum install -y gcc-c++ make nodejs
+    yum install -y gcc-c++ make nodejs && \
+    yum clean all
 
 WORKDIR /app
 
