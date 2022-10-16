@@ -8,8 +8,9 @@ WORKDIR /app
 
 # Only copy the package.json file to work directory
 COPY package.json .
+COPY package-lock.json .
 # Install all Packages
-RUN npm install
+RUN npm ci
 # Copy all other source code to work directory
 ADD . /app
 # TypeScript
