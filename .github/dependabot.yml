@@ -16,6 +16,10 @@ updates:
     directory: "/src/checkout"
     schedule:
       interval: "monthly"
+  - package-ecosystem: "gomod"
+    directory: "/src/catalog"
+    schedule:
+      interval: "monthly"
   - package-ecosystem: "npm"
     directory: "/src/e2e"
     schedule:
@@ -24,3 +28,4 @@ updates:
     directory: "/src/load-generator"
     schedule:
       interval: "monthly"
+  
