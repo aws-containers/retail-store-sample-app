@@ -15,6 +15,6 @@
     "webdriver-manager": "^12.1.8"
   },
   "dependencies": {
-    "jasmine-spec-reporter": "^6.0.0"
+    "jasmine-spec-reporter": "^7.0.0"
   }
 }
