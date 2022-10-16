@@ -34,10 +34,8 @@ export class CheckoutService {
       let shipping = -1;
 
       if(shippingRates) {
-        console.log('Query shipping rates')
         for ( let i = 0; i < shippingRates.rates.length; i++ ) {
           if(shippingRates.rates[i].token == request.deliveryOptionToken) {
-            console.log('Found shipping rate')
             shipping = shippingRates.rates[i].amount;
           }
         }

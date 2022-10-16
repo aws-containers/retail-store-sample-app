@@ -17,7 +17,6 @@ export class HttpOrdersService implements IOrdersService {
       lastName: "Doe",
       items: []
     }).then((value) => {
-      console.log(value.body)
       return value.body;
     });
   }
