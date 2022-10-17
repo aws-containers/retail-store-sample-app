@@ -1,7 +1,0 @@
-apiVersion: v2
-name: assets
-description: A Helm chart for the assets service
-
-type: application
-
-version: 0.0.1
