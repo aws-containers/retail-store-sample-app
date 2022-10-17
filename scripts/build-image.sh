@@ -62,6 +62,7 @@ parse_params() {
   repository='aws-containers'
   tag='latest'
   service='*'
+  expected_ref=''
 
   while :; do
     case "${1-}" in
@@ -79,6 +80,10 @@ parse_params() {
       ;;
     -r | --repository)
       repository="${2-}"
+      shift
+      ;;
+    --expected-ref)
+      expected_ref="${2-}"
       shift
       ;;
     -t | --tag)
@@ -125,6 +130,12 @@ function build()
   pack_args=''
   image_name="retail-store-sample-$component"
 
+  if [ -z "$expected_ref" ]; then
+    ref="$repository/$image_name:$tag"
+  else
+    ref="$expected_ref"
+  fi
+
   if [ -f "$component_dir/scripts/build.source" ]; then
     source "$component_dir/scripts/build.source"
   fi
@@ -137,12 +148,12 @@ function build()
     fi
 
     msg "Running pack build..."
-    pack $quiet_args --no-color build $image_name:build --builder $builder --path $component_dir --tag $repository/$image_name:$cnb_tag $pack_args
+    pack $quiet_args --no-color build $image_name:build --builder $builder --path $component_dir --tag "$ref-cnb" $pack_args
 
     if [ "$push" = true ] ; then
       msg "Pushing image for ${GREEN}$component${NOFORMAT}..."
 
-      docker push -q $repository/$image_name:$cnb_tag
+      docker push -q "$ref-cnb"
     fi
   fi
 
@@ -155,10 +166,10 @@ function build()
       fi
 
       msg "Running Docker buildx..."
-      docker buildx build --progress plain $push_args --platform linux/amd64,linux/arm64 $quiet_args -f "$component_dir/$dockerfile" $docker_build_args -t $repository/$image_name:$tag $component_dir
+      docker buildx build --progress plain $push_args --platform linux/amd64,linux/arm64 $quiet_args -f "$component_dir/$dockerfile" $docker_build_args -t $ref $component_dir
     else
       msg "Running Docker build..."
-      docker build $quiet_args -f "$component_dir/$dockerfile" $docker_build_args -t $repository/$image_name:$tag $component_dir
+      docker build $quiet_args -f "$component_dir/$dockerfile" $docker_build_args -t $ref $component_dir
 
       if [ "$push" = true ] ; then
         msg "Pushing image for ${GREEN}$component${NOFORMAT}..."
