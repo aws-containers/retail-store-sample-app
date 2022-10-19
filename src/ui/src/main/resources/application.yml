@@ -11,10 +11,13 @@ endpoints:
   checkout: http://localhost:8085
   logging: false
 
-watchn:
+retail:
   ui:
     metadata:
       region: "none"
+    banner: ""
+
+
 
 management:
   endpoints:

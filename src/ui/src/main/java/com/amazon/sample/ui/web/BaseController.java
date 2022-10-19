@@ -23,6 +23,7 @@ import com.amazon.sample.ui.services.Metadata;
 import com.amazon.sample.ui.services.carts.CartsService;
 import com.amazon.sample.ui.web.util.SessionIDUtil;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.server.reactive.ServerHttpRequest;
 import org.springframework.ui.Model;
 import org.springframework.web.server.ServerWebExchange;
@@ -37,6 +38,9 @@ public class BaseController {
     protected CartsService cartsService;
 
     protected Metadata metadata;
+
+    @Value("${retail.ui.banner}")
+    protected String bannerText;
 
     public BaseController(CartsService cartsService, Metadata metadata) {
         this.cartsService = cartsService;
@@ -61,6 +65,7 @@ public class BaseController {
     }
 
     protected void populateMetadata(Model model) {
+        model.addAttribute("bannerText", this.bannerText);
         model.addAttribute("metadata", metadata);
     }
 
