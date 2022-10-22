@@ -18,7 +18,6 @@
 
 package com.amazon.sample.orders.services;
 
-import com.google.common.collect.Lists;
 import com.amazon.sample.orders.entities.OrderEntity;
 import com.amazon.sample.orders.entities.OrderItemEntity;
 import com.amazon.sample.orders.messaging.OrdersEventHandler;
@@ -30,6 +29,8 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
 
 @Service
 @Slf4j
@@ -63,6 +64,7 @@ public class OrderService {
     }
 
     public List<OrderEntity> list() {
-        return Lists.newArrayList(this.readRepository.findAll());
+      return StreamSupport.stream(this.readRepository.findAll().spliterator(), false)
+        .collect(Collectors.toList());
     }
 }
