@@ -7,6 +7,10 @@
   curations:
     comment: "Licensed under MPL2.0, must provide link to source"
     homepage_url: "https://github.com/h2database/h2database"
+- id: "com.rabbitmq:amqp-client"
+  curations:
+    comment: "Tri-licensed, using Apache-2.0"
+    concluded_license: "Apache-2.0"
 - id: "Maven:com.amazonaws:aws-java-sdk-core"
   curations:
     comment: "Project has lots of tags, slows source downloads"
