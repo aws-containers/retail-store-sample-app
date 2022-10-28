@@ -53,14 +53,14 @@ The applicable license information is listed below:
 
 {% for package in packages %}----
 
-### {{ package.name }}{% if package.url is not none %} - {{ package.url }}{% endif %}
+### {{ package.name }} @{{ package.version }}{% if package.url is not none %} - {{ package.url }}{% endif %}
 
 {{ package.license }}
 
 {% endfor %}
 """
 
-component = 'orders'
+component = 'catalog'
 
 base_path = '../reports/license-report/{}'.format(component)
 src_path = '{}/src'.format(base_path)
@@ -109,16 +109,18 @@ if exists(analyzer_path):
           print('Warning: License {} missing from URL map'.format(license_name))
 
     if license_text is not None:
-      packages.append({"name": name, "url": url, "license": license_text})
+      packages.append({"name": name, "url": url, "license": license_text, "version": version})
     else:
       print('Warning: No license entry for {}'.format(id))
 elif exists(go_licenses_path):
   with open(go_licenses_path, newline='') as csvfile:
     reader = csv.reader(csvfile, delimiter=',',quotechar='|')
+    next(reader, None)
     for row in reader:
       name = row[0]
-      license_url = row[1]
-      license_name = row[2]
+      version = row[1]
+      license_url = row[2]
+      license_name = row[3]
 
       actual_license_url = None
 
@@ -131,7 +133,7 @@ elif exists(go_licenses_path):
         try:
           license_text = urllib.request.urlopen(actual_license_url).read().decode('utf-8')
 
-          packages.append({"name": name, "url": None, "license": license_text})
+          packages.append({"name": name, "url": None, "license": license_text, "version": version})
         except HTTPError as err:
           print('Failed to fetch {}'.format(actual_license_url))
       else:
