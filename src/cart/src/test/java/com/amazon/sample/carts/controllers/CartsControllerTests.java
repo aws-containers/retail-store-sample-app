@@ -29,7 +29,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
-import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultActions;
 
@@ -135,7 +134,7 @@ public class CartsControllerTests {
 
     @Test
     void testDeleteItem() throws Exception {
-        ResultActions actions = mockMvc.perform(delete("/carts/"+POPULATED_CART_ID+"/items/1")
+        mockMvc.perform(delete("/carts/"+POPULATED_CART_ID+"/items/1")
                 .contentType(MediaType.APPLICATION_JSON_VALUE)
                 .accept(MediaType.APPLICATION_JSON_VALUE))
                 .andExpect(status().isAccepted());

@@ -20,13 +20,9 @@ package com.amazon.sample.carts.services;
 
 import com.amazonaws.services.dynamodbv2.AmazonDynamoDB;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper;
-import com.amazonaws.services.dynamodbv2.model.GetItemRequest;
 import com.amazon.sample.carts.configuration.DynamoDBConfiguration;
 import com.amazon.sample.carts.configuration.DynamoDBProperties;
-import com.amazon.sample.carts.repositories.CartEntity;
-import com.amazon.sample.carts.repositories.ItemEntity;
 import org.junit.jupiter.api.Tag;
-import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -40,8 +36,6 @@ import org.springframework.test.context.ContextConfiguration;
 import org.testcontainers.containers.GenericContainer;
 import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @SpringBootTest(
     classes = {DynamoDBCartServiceTests.TestConfiguration.class, DynamoDBProperties.class},
@@ -89,7 +83,7 @@ public class DynamoDBCartServiceTests extends AbstractServiceTests {
         @Override
         public void initialize(ConfigurableApplicationContext configurableApplicationContext) {
             String endpoint = String.format("carts.dynamodb.endpoint=http://%s:%s",
-                    dynamodbContainer.getContainerIpAddress(),
+                    dynamodbContainer.getHost(),
                     dynamodbContainer.getMappedPort(DYNAMODB_PORT));
 
             TestPropertyValues.of(endpoint).applyTo(configurableApplicationContext);
