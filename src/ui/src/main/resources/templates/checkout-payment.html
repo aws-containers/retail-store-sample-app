@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{fragments/checkout :: checkout (~{::body}, 3)}">
+<body>
+<form method="POST" id="checkoutForm" action="/checkout/payment">
+    <div class="row">
+        <div class="col-md-6 mb-3">
+            <label for="cc-name">Name on card</label>
+            <input type="text" class="form-control" id="cc-name" name="ccName" placeholder="" required>
+            <small class="text-muted">Full name as displayed on card</small>
+            <div class="invalid-feedback">
+                Name on card is required
+            </div>
+        </div>
+        <div class="col-md-6 mb-3">
+            <label for="cc-number">Credit card number</label>
+            <input type="text" class="form-control" id="cc-number" name="ccNumber" placeholder="" required>
+            <div class="invalid-feedback">
+                Credit card number is required
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3 mb-3">
+            <label for="cc-expiration">Expiration</label>
+            <input type="text" class="form-control" id="cc-expiration" name="ccExpiration" placeholder="" required>
+            <div class="invalid-feedback">
+                Expiration date required
+            </div>
+        </div>
+        <div class="col-md-3 mb-3">
+            <label for="cc-expiration">CVV</label>
+            <input type="text" class="form-control" id="cc-cvv" name="ccCvv" placeholder="" required>
+            <div class="invalid-feedback">
+                Security code required
+            </div>
+        </div>
+    </div>
+    <div class="box-footer d-flex justify-content-between"><a href="/cart" class="btn btn-outline-secondary"><i class="fa fa-chevron-left"></i>Back to Basket</a>
+        <button type="submit" class="btn btn-primary">Next<i class="fa fa-chevron-right"></i></button>
+    </div>
+</form>
+</body></html>

@@ -1,0 +1,22 @@
+<div class="card h-100 product" th:fragment="card (product)" xmlns:th="http://www.thymeleaf.org">
+    <img class="card-img-top" src="/assets/img/sample_product.jpg" th:src="${item.imageUrl}" alt="..." />
+    <ul class="list-group list-group-flush">
+        <li class="list-group-item">
+            <div class="py-2">
+                <div>
+                    <a th:href="@{/catalog/{itemId}(itemId=${product.id})}" href="#"><h5 class="fw-bolder" th:text="${product.name}">Fancy Product</h5></a>
+                    <div class="mb-2" th:insert="fragments/stars.html :: stars"/>
+                    <div>$<span th:text="${product.price}">143.00</span></div>
+                </div>
+            </div>
+        </li>
+        <li class="list-group-item">
+            <div class="my-2">
+                <form action="/cart" method="POST">
+                    <input type="hidden" name="productId" th:value="${product.id}"/>
+                    <a href="#" onclick="this.closest('form').submit();return false;" class="btn btn-dark mt-auto"><i class="bi bi-cart pe-2"></i>Add to cart</a>
+                </form>
+            </div>
+        </li>
+    </ul>
+</div>

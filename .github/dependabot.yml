@@ -1,0 +1,31 @@
+version: 2
+updates:
+  - package-ecosystem: "maven"
+    directory: "/src/cart"
+    schedule:
+      interval: "monthly"
+  - package-ecosystem: "maven"
+    directory: "/src/orders"
+    schedule:
+      interval: "monthly"
+  - package-ecosystem: "maven"
+    directory: "/src/ui"
+    schedule:
+      interval: "monthly"
+  - package-ecosystem: "npm"
+    directory: "/src/checkout"
+    schedule:
+      interval: "monthly"
+  - package-ecosystem: "gomod"
+    directory: "/src/catalog"
+    schedule:
+      interval: "monthly"
+  - package-ecosystem: "npm"
+    directory: "/src/e2e"
+    schedule:
+      interval: "monthly"
+  - package-ecosystem: "npm"
+    directory: "/src/load-generator"
+    schedule:
+      interval: "monthly"
+  

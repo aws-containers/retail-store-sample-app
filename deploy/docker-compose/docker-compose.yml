@@ -1,0 +1,150 @@
+version: '2'
+
+services:
+  ui:
+    ports:
+    - 8888:8080
+    environment:
+      - JAVA_OPTS=-XX:MaxRAMPercentage=75.0 -Djava.security.egd=file:/dev/urandom
+      - SERVER_TOMCAT_ACCESSLOG_ENABLED=true
+      - ENDPOINTS_CATALOG=http://catalog:8080
+      - ENDPOINTS_CARTS=http://carts:8080
+      - ENDPOINTS_ORDERS=http://orders:8080
+      - ENDPOINTS_CHECKOUT=http://checkout:8080
+      - ENDPOINTS_ASSETS=http://assets:8080
+    hostname: ui
+    build:
+      context: ../../src/ui
+      dockerfile: ../../images/java17/Dockerfile
+      args:
+        JAR_PATH: target/ui-0.0.1-SNAPSHOT.jar
+    restart: always
+    mem_limit: 256m
+    cap_drop:
+      - ALL
+
+  catalog:
+    hostname: catalog
+    build:
+      context: ../../src/catalog
+      dockerfile: ../../images/go/Dockerfile
+    restart: always
+    environment:
+      - GIN_MODE=release
+      - DB_PASSWORD=${MYSQL_PASSWORD}
+    mem_limit: 128m
+    cap_drop:
+      - ALL
+
+  catalog-db:
+    image: mariadb:10.9
+    hostname: catalog-db
+    restart: always
+    environment:
+      - MYSQL_ROOT_PASSWORD=${MYSQL_PASSWORD}
+      - MYSQL_ALLOW_EMPTY_PASSWORD=true
+      - MYSQL_DATABASE=sampledb
+      - MYSQL_USER=catalog_user
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+    mem_limit: 128m
+
+  carts:
+    hostname: carts
+    build:
+      context: ../../src/cart
+      dockerfile: ../../images/java17/Dockerfile
+      args:
+        JAR_PATH: target/carts-0.0.1-SNAPSHOT.jar
+    restart: always
+    environment:
+      - JAVA_OPTS=-XX:MaxRAMPercentage=75.0 -Djava.security.egd=file:/dev/urandom
+      - SERVER_TOMCAT_ACCESSLOG_ENABLED=true
+      - SPRING_PROFILES_ACTIVE=dynamodb
+      - CARTS_DYNAMODB_ENDPOINT=http://carts-db:8000
+      - CARTS_DYNAMODB_CREATETABLE=true
+      - AWS_ACCESS_KEY_ID=key
+      - AWS_SECRET_ACCESS_KEY=dummy
+    mem_limit: 256m
+    cap_drop:
+      - ALL
+
+  carts-db:
+    image: amazon/dynamodb-local:1.20.0
+    hostname: carts-db
+    restart: always
+    mem_limit: 128m
+    
+  orders:
+    hostname: orders
+    build:
+      context: ../../src/orders
+      dockerfile: ../../images/java17/Dockerfile
+      args:
+        JAR_PATH: target/orders-0.0.1-SNAPSHOT.jar
+    restart: always
+    environment:
+      - JAVA_OPTS=-XX:MaxRAMPercentage=75.0 -Djava.security.egd=file:/dev/urandom
+      - SERVER_TOMCAT_ACCESSLOG_ENABLED=true
+      - SPRING_PROFILES_ACTIVE=mysql,rabbitmq
+      - SPRING_DATASOURCE_WRITER_URL=jdbc:mariadb://orders-db:3306/orders
+      - SPRING_DATASOURCE_WRITER_USERNAME=orders_user
+      - SPRING_DATASOURCE_WRITER_PASSWORD=${MYSQL_PASSWORD}
+      - SPRING_DATASOURCE_READER_URL=jdbc:mariadb://orders-db:3306/orders
+      - SPRING_DATASOURCE_READER_USERNAME=orders_user
+      - SPRING_DATASOURCE_READER_PASSWORD=${MYSQL_PASSWORD}
+      - SPRING_RABBITMQ_HOST=rabbitmq
+    mem_limit: 256m
+    cap_drop:
+      - ALL
+
+  orders-db:
+    image: mariadb:10.9
+    hostname: orders-db
+    restart: always
+    environment:
+      - MYSQL_ROOT_PASSWORD=${MYSQL_PASSWORD}
+      - MYSQL_ALLOW_EMPTY_PASSWORD=true
+      - MYSQL_DATABASE=orders
+      - MYSQL_USER=orders_user
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+    mem_limit: 128m
+
+  checkout:
+    build:
+      context: ../../src/checkout
+      dockerfile: ../../images/nodejs/Dockerfile
+    hostname: checkout
+    restart: always
+    read_only: true
+    tmpfs:
+      - /tmp:rw,noexec,nosuid
+    environment:
+      - REDIS_URL=redis://checkout-redis:6379
+      - ENDPOINTS_ORDERS=http://orders:8080
+    mem_limit: 256m
+    cap_drop:
+      - ALL
+
+  checkout-redis:
+    image: redis:6-alpine
+    hostname: checkout-redis
+    restart: always
+    mem_limit: 128m
+
+  assets:
+    hostname: assets
+    environment:
+      - PORT=8080
+    build:
+      context: ../../src/assets
+      dockerfile: Dockerfile
+    restart: always
+    mem_limit: 64m
+    cap_drop:
+      - ALL
+
+  rabbitmq:
+    image: rabbitmq:3-management
+    ports:
+      - "5672:5672"
+      - "15672:15672"

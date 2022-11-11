@@ -1,0 +1,221 @@
+/**
+ * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * SPDX-License-Identifier: MIT-0
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy of this
+ * software and associated documentation files (the "Software"), to deal in the Software
+ * without restriction, including without limitation the rights to use, copy, modify,
+ * merge, publish, distribute, sublicense, and/or sell copies of the Software, and to
+ * permit persons to whom the Software is furnished to do so.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED,
+ * INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A
+ * PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+ * HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+ * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+ * SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ */
+
+a {
+  text-decoration: none;
+}
+
+.bg-primary {
+  color: white;
+}
+
+footer a {
+  color: rgba(255,255,255,.7);
+}
+
+.p-y-lg {
+  padding-bottom: 80px;
+  padding-top: 80px;
+}
+
+.p-y-sm {
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+.p-y-m {
+  padding-top: 45px;
+  padding-bottom: 45px;
+}
+
+.breadcrumb.custom a {
+  color: inherit;
+  opacity: .75;
+}
+
+.breadcrumb.custom .breadcrumb-item {
+  color: #fff;
+}
+
+.breadcrumb.custom .breadcrumb-item::before {
+  color: #fff;
+  opacity: .6;
+}
+
+.breadcrumb-item.active {
+  color: #6c7781;
+}
+
+.breadcrumb-item+.breadcrumb-item {
+  padding-left: 10px;
+}
+
+.home-icon {
+  width: 75px;
+  height: 75px;
+  font-size: 30px;
+}
+
+.couplet {
+  position: relative;
+  display: flex;
+  width: 100%;
+}
+
+.couplet .picture {
+  position: relative;
+  flex-shrink: 0;
+}
+
+.couplet .description {
+  padding-left: 14px;
+  flex-grow: 1;
+}
+
+.icon-xs, .icon-sm, .icon-md, .home-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  flex-shrink: 0;
+  flex-grow: 0;
+}
+
+.content-body {
+  flex: 1 1 auto;
+  padding: 28px;
+}
+
+.btn-remove {
+  background-color: #fff;
+  border-color: #d3d8de;
+}
+
+.stepper {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  margin-top: 30px;
+  position: relative;
+  display: flex;
+  border-radius: 30px;
+}
+.stepper .step {
+  width: 100%;
+  text-align: center;
+  position: relative;
+  flex-grow: 1;
+  font-size: 14px;
+  line-height: 24px;
+}
+.stepper .step:before {
+  height: 4px;
+  position: absolute;
+  content: " ";
+  width: 100%;
+  right: 50%;
+  top: 10px;
+}
+.stepper .step:first-child:before {
+  display: none;
+}
+.stepper .icon {
+  z-index: 10;
+  color: #fff;
+  text-align: center;
+  background: #c2c7cd;
+  display: inline-block;
+  position: relative;
+  width: 25px;
+  height: 25px;
+  border-radius: 25px;
+  
+}
+.stepper .text {
+  display: block;
+  padding-top: 5px;
+  text-align: center;
+  color: #9da1a7;
+}
+.stepper .step.current:after {
+  width: 50%;
+  right: 0%;
+  top: 10px;
+  height: 5px;
+  content: " ";
+  z-index: 5;
+  position: absolute;
+}
+.stepper .step.current .icon {
+  background: #03a726;
+  color: #fff;
+}
+.stepper .step.current .text {
+  color: #9da1a7;
+}
+.stepper .step.current:last-child:after {
+  display: none;
+}
+
+.sidebarlist-align {
+  display: flex;
+}
+[class*=sidebarlist-] {
+  margin-bottom: 5px;
+}
+
+.sidebarlist-align dd {
+  flex-grow: 1;
+}
+.sidebarlist-align dt {
+  width: 150px;
+  word-wrap: break-word;
+  font-weight: normal;
+}
+[class*=sidebarlist-] dd {
+  margin-bottom: 0;
+}
+.box {
+  padding: 13px;
+  border-radius: 6px;
+  border: 1px solid #dee2e6;
+}
+.box img {
+  max-width: 100%}
+.item-selector {
+  position: relative;
+  margin-right: 5px;
+}
+.item-selector:hover:not(.active) {
+  border-color: #69a3fc;
+}
+.item-selector .item-candidate {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  z-index: 1;
+  mix-blend-mode: darken;
+}
+.item-selector input:checked~.item-candidate {
+  background-color: rgba(231, 239, 255, 0.5);
+  border-color: #0e6cf8;
+}

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{fragments/checkout :: checkout (~{::body}, 2)}">
+<body>
+<form th:object="${checkoutDeliveryMethodRequest}" method="POST" id="checkoutForm" action="/checkout/delivery">
+    <div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('token')}">
+        Please select a delivery method.
+    </div>
+    <div class="row mb-3">
+        <div class="col-lg-4 mb-3" th:each="option : ${checkout.shippingOptions}">
+            <div class="box item-selector">
+                <label>
+                    <input type="radio" th:field="*{token}" name="delivery" th:name="'delivery-'+${option.token}" th:value="${option.token}">
+                    <b class="item-candidate"></b>
+                    <span>
+                        <th:block th:text="${option.name}">Express</th:block><br>
+                        <small class="text-muted">Estimated <th:block th:text="${option.estimatedDays}">7</th:block> days</small>
+                    </span>
+                </label>
+            </div>
+        </div>
+    </div>
+    <div class="box-footer d-flex justify-content-between"><a href="/cart" class="btn btn-outline-secondary"><i class="fa fa-chevron-left"></i>Back to Basket</a>
+        <button type="submit" class="btn btn-primary">Next<i class="fa fa-chevron-right"></i></button>
+    </div>
+</form>
+</body></html>

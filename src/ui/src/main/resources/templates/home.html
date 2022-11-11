@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{fragments/layout :: layout (~{::body},'home')}">
+<body>
+<section class="bg-primary p-y-lg">
+    <div class="container">
+        <article class="my-5">
+            <h1 class="display-4 text-white"> Shop for top products <br> in our store  </h1>
+            <p class="lead text-white">Latest Products, Low Prices</p>
+        </article>
+    </div>
+</section>
+<div>
+    <div class="container pt-4">
+        <div class="mt-4">
+            <h2 style="margin-bottom: 20px">Hot products!</h2>
+            <div class="row gx-4 gx-lg-5 row-cols-4 justify-content-center">
+                <div class="col mb-5" th:each="item : ${catalog.products}">
+                    <div th:replace="~{fragments/product_card :: card(${item}) }"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<section class="p-y-m border-top bg-white">
+    <div class="container">
+
+        <header class="mt-2 mb-5">
+            <h3>Why choose us</h3>
+        </header>
+
+        <div class="row mb-4">
+            <div class="col-lg-4 col-md-6">
+                <figure class="couplet align-items-center mb-4">
+                    <div class="picture">
+                        <span class="rounded-circle shadow-sm text-primary home-icon" style="background-color: #dbe9ff !important">
+                            <i class="bi bi-heart-fill"></i>
+                        </span>
+                    </div>
+                    <figcaption class="description">
+                        <h6 class="title">We love our customers!</h6>
+                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</p>
+                    </figcaption>
+                </figure>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <figure class="couplet align-items-center  mb-4">
+                    <div class="picture">
+                        <span class="rounded-circle shadow-sm text-primary home-icon" style="background-color: #dbe9ff !important">
+                            <i class="bi bi-currency-dollar"></i>
+                        </span>
+                    </div>
+                    <figcaption class="description">
+                        <h6 class="title">Lowest prices</h6>
+                        <p>Aenean commodo ligula eget dolor. Aenean massa.</p>
+                    </figcaption>
+                </figure>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <figure class="couplet align-items-center  mb-4">
+                    <div class="picture">
+                        <span class="rounded-circle shadow-sm text-primary home-icon" style="background-color: #dbe9ff !important">
+                            <i class="bi bi-box2-fill"></i>
+                        </span>
+                    </div>
+                    <figcaption class="description">
+                        <h6 class="title">Reliable shipping</h6>
+                        <p>Com sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
+                    </figcaption>
+                </figure>
+            </div>
+        </div>
+    </div>
+</section>
+</body>
+</html>

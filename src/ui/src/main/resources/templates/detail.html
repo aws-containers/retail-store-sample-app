@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{fragments/layout :: layout (~{::body},'catalog')}">
+<body>
+<section class="bg-primary p-y-sm">
+    <div class="container">
+        <ol class="breadcrumb custom mb-0">
+            <li class="breadcrumb-item"><a href="/home">Home</a></li>
+            <li class="breadcrumb-item"><a href="/catalog">Catalog</a></li>
+            <li aria-current="page" class="breadcrumb-item active" th:text="${item.name}">White Blouse Armani</li>
+        </ol>
+    </div>
+</section>
+<div class="bg-light p-4">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 order-1 order-lg-2">
+                <div id="productMain" class="row">
+                    <div class="col-md-4">
+                        <div data-slider-id="1" class="owl-carousel shop-detail-carousel">
+                            <div class="item"> <img th:src="${item.imageUrl}" alt="" class="img-fluid" style="border-radius: 10px"></div>
+                        </div>
+                    </div>
+                    <div class="col-md-8">
+                        <div class="box">
+                            <h1 th:text="${item.name}">White Blouse Armani</h1>
+                            <div class="price">$<th:block th:text="${item.price}">124.00</th:block></div>
+                            <div class="mb-3" th:insert="fragments/stars.html :: stars">
+                            </div>
+                            <p th:text="${item.description}">White lace top, woven, has a round neck, short sleeves, has knitted lining attached</p>
+                            <hr>
+                            <p class="text-center buttons">
+                            <form action="/cart" id="addToCart" method="POST">
+                                <input type="hidden" name="productId" th:value="${item.id}"/>
+                                <a href="#" id="add-to-cart" class="btn btn-dark" onclick="this.closest('form').submit();return false;"><i class="bi bi-cart"></i> Add to cart</a>
+
+                                <a href="basket.html" class="btn btn-outline-dark"><i class="bi bi-heart"></i> Add to wishlist</a>
+                            </form>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body></html>

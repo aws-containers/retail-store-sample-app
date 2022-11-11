@@ -1,0 +1,20 @@
+{
+  "name": "e2e",
+  "version": "1.0.0",
+  "description": "TODO",
+  "main": "conf.js",
+  "scripts": {
+    "test": "protractor conf.js",
+    "postinstall": "./node_modules/protractor/bin/webdriver-manager update --versions.chrome=90.0.4430.212"
+  },
+  "keywords": [],
+  "author": "",
+  "devDependencies": {
+    "protractor": "^7.0.0",
+    "npm-run-all": "^4.1.5",
+    "webdriver-manager": "^12.1.8"
+  },
+  "dependencies": {
+    "jasmine-spec-reporter": "^7.0.0"
+  }
+}

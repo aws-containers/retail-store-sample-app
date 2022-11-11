@@ -1,0 +1,12 @@
+spring:
+  resources:
+    cache:
+      cachecontrol:
+        cache-public: true
+        no-cache: false
+        no-store: false
+        must-revalidate: false
+        max-age: 31536000
+
+server:
+  shutdown: graceful

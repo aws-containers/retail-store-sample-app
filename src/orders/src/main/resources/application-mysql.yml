@@ -1,0 +1,19 @@
+spring:
+  jpa:
+    generate-ddl: true
+    show-sql: false
+    hibernate:
+      ddl-auto: update
+
+  datasource:
+    writer:
+      jdbc-url: ${spring.datasource.writer.url}
+      username:
+      password:
+      driverClassName: org.mariadb.jdbc.Driver
+
+    reader:
+      jdbc-url: ${spring.datasource.reader.url}
+      username:
+      password:
+      driverClassName: org.mariadb.jdbc.Driver

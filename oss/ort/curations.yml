@@ -1,0 +1,124 @@
+- id: "Maven:antlr:antlr"
+  curations:
+    comment: "This uses BSD-3-Clause license"
+    declared_license_mapping:
+      "BSD License": "BSD-3-Clause"
+- id: "Maven:com.h2database:h2"
+  curations:
+    comment: "Licensed under MPL2.0, must provide link to source"
+    homepage_url: "https://github.com/h2database/h2database"
+- id: "Maven:com.rabbitmq:amqp-client"
+  curations:
+    comment: "Tri-licensed, using Apache-2.0"
+    concluded_license: "Apache-2.0"
+- id: "Maven:org.hibernate:hibernate-core"
+  curations:
+    comment: "LGPL license needs source archive in S3"
+    source_artifact:
+      url: "https://amazon-source-code-downloads.s3.us-east-1.amazonaws.com/aws/containers/retail-store-sample-app/hibernate-core-5.6.11.Final-sources.zip"
+      hash:
+        value: "f6332e6fbc4634e7aeccd24a5c527a2da31e9f11"
+        algorithm: "SHA-1"
+- id: "Maven:org.hibernate.common:hibernate-commons-annotations"
+  curations:
+    comment: "LGPL license needs source archive in S3"
+    source_artifact:
+      url: "https://amazon-source-code-downloads.s3.us-east-1.amazonaws.com/aws/containers/retail-store-sample-app/hibernate-commons-annotations-5.1.2.Final-sources.zip"
+      hash:
+        value: "f61bcf5c598d45f10dc79688ebce6b4d1c2c5bd5"
+        algorithm: "SHA-1"
+- id: "Maven:org.mariadb.jdbc:mariadb-java-client"
+  curations:
+    comment: "LGPL license needs source archive in S3"
+    source_artifact:
+      url: "https://amazon-source-code-downloads.s3.us-east-1.amazonaws.com/aws/containers/retail-store-sample-app/mariadb-java-client-3.0.8-sources.zip"
+      hash:
+        value: "67e0b7cf195939aea77dfde0f16696c53772b345"
+        algorithm: "SHA-1"
+- id: "Maven:antlr:antlr:2.7.7"
+  curations:
+    comment: "Missing source archive"
+    source_artifact:
+      url: "https://www.antlr2.org/download/antlr-2.7.7.tar.gz"
+      hash:
+        value: "802655c343cc7806aaf1ec2177a0e663ff209de1"
+        algorithm: "SHA-1"
+# Misc AWS SDK libraries below
+- id: "Maven:com.amazonaws:aws-java-sdk-core"
+  curations:
+    comment: "Project has lots of tags, slows source downloads"
+    source_artifact:
+      url: https://github.com/aws/aws-sdk-java/archive/refs/tags/1.12.319.zip
+      hash: 
+        value: "9e82d121a10cb6267f774108d2c0f9f0"
+        algorithm: "MD5"
+    vcs:
+      type: "Git"
+      url: "git@github.com:aws/aws-sdk-java123.git"
+      revision: "1.12.319"
+      path: ""
+- id: "Maven:com.amazonaws:aws-java-sdk-dynamodb"
+  curations:
+    comment: "Project has lots of tags, slows source downloads"
+    source_artifact:
+      url: https://github.com/aws/aws-sdk-java/archive/refs/tags/1.12.319.zip
+      hash: 
+        value: "9e82d121a10cb6267f774108d2c0f9f0"
+        algorithm: "MD5"
+    vcs:
+      type: "Git"
+      url: "git@github.com:aws/aws-sdk-java123.git"
+      revision: "1.12.319"
+      path: ""
+- id: "Maven:com.amazonaws:aws-java-sdk-kms"
+  curations:
+    comment: "Project has lots of tags, slows source downloads"
+    source_artifact:
+      url: https://github.com/aws/aws-sdk-java/archive/refs/tags/1.12.319.zip
+      hash: 
+        value: "9e82d121a10cb6267f774108d2c0f9f0"
+        algorithm: "MD5"
+    vcs:
+      type: "Git"
+      url: "git@github.com:aws/aws-sdk-java123.git"
+      revision: "1.12.319"
+      path: ""
+- id: "Maven:com.amazonaws:aws-java-sdk-s3"
+  curations:
+    comment: "Project has lots of tags, slows source downloads"
+    source_artifact:
+      url: https://github.com/aws/aws-sdk-java/archive/refs/tags/1.12.319.zip
+      hash: 
+        value: "9e82d121a10cb6267f774108d2c0f9f0"
+        algorithm: "MD5"
+    vcs:
+      type: "Git"
+      url: "git@github.com:aws/aws-sdk-java123.git"
+      revision: "1.12.319"
+      path: ""
+- id: "Maven:com.amazonaws:aws-java-sdk-sts"
+  curations:
+    comment: "Project has lots of tags, slows source downloads"
+    source_artifact:
+      url: https://github.com/aws/aws-sdk-java/archive/refs/tags/1.12.319.zip
+      hash: 
+        value: "9e82d121a10cb6267f774108d2c0f9f0"
+        algorithm: "MD5"
+    vcs:
+      type: "Git"
+      url: "git@github.com:aws/aws-sdk-java123.git"
+      revision: "1.12.319"
+      path: ""
+- id: "Maven:com.amazonaws:jmespath-java"
+  curations:
+    comment: "Project has lots of tags, slows source downloads"
+    source_artifact:
+      url: https://github.com/aws/aws-sdk-java/archive/refs/tags/1.12.319.zip
+      hash: 
+        value: "9e82d121a10cb6267f774108d2c0f9f0"
+        algorithm: "MD5"
+    vcs:
+      type: "Git"
+      url: "git@github.com:aws/aws-sdk-java123.git"
+      revision: "1.12.319"
+      path: ""

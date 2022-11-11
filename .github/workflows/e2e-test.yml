@@ -1,0 +1,36 @@
+name: E2E Test
+
+on:
+  pull_request:
+    branches:
+    - main
+    paths:
+    - 'src/**'
+    - 'images/**'
+    - 'deploy/docker-compose/**'
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: Test
+    runs-on: ubuntu-latest
+    steps:
+    - name: Check out code
+      uses: actions/checkout@v3
+
+    - name: Set up Docker Buildx
+      id: buildx
+      uses: docker/setup-buildx-action@v2
+
+    - name: Expose GitHub Runtime
+      uses: crazy-max/ghaction-github-runtime@v2
+
+    - name: Build Images
+      run: |
+        (cd deploy/docker-compose && docker-compose build -q)
+        
+    - name: Run Tests
+      run: |
+        (cd deploy/docker-compose && MYSQL_PASSWORD='test123' docker-compose up -d)
+        (cd src/e2e && bash ./scripts/run-docker.sh -n docker-compose_default 'http://ui:8080')
+        (cd deploy/docker-compose && docker-compose down)

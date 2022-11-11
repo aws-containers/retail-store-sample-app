@@ -1,0 +1,4 @@
+chaos:
+  monkey:
+    assaults:
+      latencyActive: true

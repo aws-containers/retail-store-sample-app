@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{fragments/checkout :: checkout (~{::body}, 4)}">
+<body>
+<div class="row">
+    <div class="col-md-6" th:each="item : ${checkout.items}">
+        <div class="couplet mb-4">
+            <div class="picture">
+                <img th:src="${item.imageUrl}" style="height: 60px" src="bootstrap5-ecommerce/images/items/14.webp"
+                                    class="border img-sm rounded">
+            </div>
+            <div class="description">
+                <p th:text="${item.name}"> Leather Wallet for Men Original blue </p> <span
+                    class="text-muted"><th:block th:text="${item.quantity}">1</th:block> x $<th:block th:text="${item.unitCost}">123</th:block> </span> <br> <strong class="price">
+                $400.90 </strong>
+            </div>
+        </div>
+    </div>
+</div>
+<form method="POST" id="checkoutForm" action="/checkout/confirm">
+    <div class="box-footer d-flex justify-content-between"><a href="/cart" class="btn btn-outline-secondary"><i class="fa fa-chevron-left"></i>Back to Basket</a>
+        <button type="submit" class="btn btn-primary">Order<i class="fa fa-chevron-right"></i></button>
+    </div>
+</form>
+</body>
+</html>

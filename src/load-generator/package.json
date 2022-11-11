@@ -1,0 +1,14 @@
+{
+  "name": "load-generator",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "generator": "artillery run scenario.yml"
+  },
+  "author": "",
+  "license": "MIT-0",
+  "devDependencies": {
+    "artillery": "^2.0.0-23"
+  }
+}

@@ -1,0 +1,26 @@
+server:
+  port: ${port:8080}
+  codec.max-in-memory-size: 10MB
+  compression.enabled: true
+
+endpoints:
+  catalog: http://localhost:8081
+  carts: http://localhost:8082
+  orders: http://localhost:8083
+  assets: http://localhost:8084
+  checkout: http://localhost:8085
+  logging: false
+
+retail:
+  ui:
+    metadata:
+      region: "none"
+    banner: ""
+
+
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'

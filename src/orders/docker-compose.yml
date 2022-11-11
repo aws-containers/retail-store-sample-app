@@ -1,0 +1,75 @@
+version: '3.4'
+
+services:
+  orders:
+    build:
+      context: .
+      dockerfile: ../../images/java17/Dockerfile
+      args:
+        JAR_PATH: target/orders-0.0.1-SNAPSHOT.jar
+    image: microservices-demo/orders
+    hostname: orders
+    restart: always
+    cap_drop:
+      - all
+    cap_add:
+      - NET_BIND_SERVICE
+    read_only: true
+    security_opt:
+      - no-new-privileges:true
+    tmpfs:
+      - /tmp:rw,noexec,nosuid
+    environment:
+      - reschedule=on-node-failure
+      - SERVER_TOMCAT_ACCESSLOG_ENABLED=true
+      - SPRING_PROFILES_ACTIVE=mysql,activemq
+      - SPRING_DATASOURCE_WRITER_URL=jdbc:mysql://orders-db:3306/orders
+      - SPRING_DATASOURCE_WRITER_USERNAME=orders_user
+      - SPRING_DATASOURCE_WRITER_PASSWORD=${MYSQL_PASSWORD}
+      - SPRING_DATASOURCE_READER_URL=jdbc:mysql://orders-db:3306/orders
+      - SPRING_DATASOURCE_READER_USERNAME=orders_user
+      - SPRING_DATASOURCE_READER_PASSWORD=${MYSQL_PASSWORD}
+      - SPRING_DATASOURCE_WRITER_MAXIMUMPOOLSIZE=20
+      - SPRING_RABBITMQ_HOST=rabbitmq
+    ports:
+      - "8083:8080"
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:8080/actuator/health || exit 1"]
+      interval: 10s
+      timeout: 10s
+      retries: 3
+      start_period: 15s
+
+  # nosemgrep: yaml.docker-compose.security.writable-filesystem-service.writable-filesystem-service
+  orders-db:
+    image: mysql:5.7
+    hostname: orders-db
+    restart: always
+    security_opt:
+      - no-new-privileges:true
+    environment:
+      - reschedule=on-node-failure
+      - MYSQL_ROOT_PASSWORD=${MYSQL_PASSWORD}
+      - MYSQL_ALLOW_EMPTY_PASSWORD=true
+      - MYSQL_DATABASE=orders
+      - MYSQL_USER=orders_user
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+    ports:
+      - "3306:3306"
+    healthcheck:
+      test: ["CMD-SHELL", "mysql -u root -p${MYSQL_PASSWORD} -e 'SELECT 1 cache'"]
+      interval: 1s
+      timeout: 3s
+      retries: 30
+
+  # nosemgrep: yaml.docker-compose.security.writable-filesystem-service.writable-filesystem-service
+  rabbitmq:
+    image: rabbitmq:3-management
+    hostname: rabbitmq
+    restart: always
+    security_opt:
+      - no-new-privileges:true
+    ports:
+      - "61616:61616"
+      - "8161:8161"
+  

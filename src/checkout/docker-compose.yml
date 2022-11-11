@@ -1,0 +1,51 @@
+version: '2'
+
+services:
+  checkout:
+    build:
+      context: .
+      dockerfile: ../../images/nodejs16/Dockerfile
+    image: microservices-demo/checkout
+    hostname: checkout
+    restart: always
+    cap_drop:
+      - all
+    cap_add:
+      - NET_BIND_SERVICE
+    read_only: true
+    tmpfs:
+      - /tmp:rw,noexec,nosuid
+    environment:
+      - REDIS_URL=redis://checkout-redis:6379
+    ports:
+      - "8085:8080"
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:8080/health || exit 1"]
+      interval: 10s
+      timeout: 10s
+      retries: 3
+    depends_on:
+      checkout-redis:
+        condition: service_healthy
+
+  checkout-redis:
+    image: redis:6.0-alpine
+    hostname: checkout-redis
+    restart: always
+    ports:
+      - "6379:6379"
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 1s
+      timeout: 3s
+      retries: 30
+
+  waiter:
+    image: busybox:1.33.0
+    restart: 'no'
+    cap_drop:
+      - all
+    command: echo 'Ready'
+    depends_on:
+      checkout:
+        condition: service_healthy

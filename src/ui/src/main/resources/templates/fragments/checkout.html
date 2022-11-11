@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:fragment="checkout (template1, step)" th:replace="~{fragments/layout :: layout (~{::body},'checkout')}">
+<body>
+<section class="bg-primary p-y-sm">
+    <div class="container">
+        <ol class="breadcrumb custom mb-0">
+            <li class="breadcrumb-item"><a href="/home">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Checkout</li>
+        </ol>
+    </div>
+</section>
+<div class="bg-light py-4">
+    <div class="container">
+        <div class="row">
+            <main class="col-lg-8">
+                <article class="card">
+                    <div class="content-body">
+                        <h5 class="card-title">Guest checkout</h5>
+                        <ul class="stepper my-5">
+                            <li class="step current">
+                                <span class="icon">1</span>
+                                <span class="text">Customer</span>
+                            </li>
+                            <li class="step" th:classappend="${step >= 2} ? 'current' : ''">
+                                <span class="icon">2</span>
+                                <span class="text">Shipping</span>
+                            </li>
+                            <li class="step" th:classappend="${step >= 3} ? 'current' : ''">
+                                <span class="icon">3</span>
+                                <span class="text">Payment</span>
+                            </li>
+                            <li class="step" th:classappend="${step >= 4} ? 'current' : ''">
+                                <span class="icon">4</span>
+                                <span class="text">Review</span>
+                            </li>
+                        </ul>
+                        <hr/>
+                        <div class="mt-4">
+                            <th:block th:include="${template1}"/>
+                        </div>
+                    </div>
+                </article>
+            </main>
+            <aside class="col-xl-4 col-lg-4">
+                <article class="ms-lg-4 mt-4 mt-lg-0" style="max-width: 320px">
+                    <h6 class="card-title">Summary</h6>
+
+                    <dl class="sidebarlist-align">
+                        <dt>Total price:</dt>
+                        <dd class="text-end"> $<th:block th:text="${checkout.subtotal}">446</th:block> </dd>
+                    </dl>
+                    <dl class="sidebarlist-align" th:if="${checkout.tax > -1}">
+                        <dt>Tax:</dt>
+                        <dd class="text-end"> $<th:block th:text="${checkout.tax}">446</th:block> </dd>
+                    </dl>
+                    <dl class="sidebarlist-align" th:if="${checkout.shipping > -1}">
+                        <dt>Shipping cost:</dt>
+                        <dd class="text-end"> $<th:block th:text="${checkout.shipping}">446</th:block> </dd>
+                    </dl>
+                    <hr>
+                    <dl class="sidebarlist-align" th:if="${checkout.total > -1}">
+                        <dt> Total: </dt>
+                        <dd class="text-end"> <strong class="text-dark">$<th:block th:text="${checkout.total}">446</th:block></strong> </dd>
+                    </dl>
+                </article>
+            </aside>
+        </div>
+    </div>
+</div>
+</body></html>

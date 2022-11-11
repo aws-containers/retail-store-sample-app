@@ -1,0 +1,195 @@
+openapi: 3.0.1
+info:
+  title: OpenAPI definition
+  version: v0
+servers:
+  - url: http://localhost:8080
+    description: Generated server url
+paths:
+  /carts/{customerId}/items:
+    get:
+      tags:
+        - carts
+      summary: Retrieve items from a cart
+      operationId: getItems
+      parameters:
+        - name: customerId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Item'
+    post:
+      tags:
+        - carts
+      summary: Add an item to a cart
+      operationId: addItem
+      parameters:
+        - name: customerId
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Item'
+        required: true
+      responses:
+        "201":
+          description: Created
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Item'
+    patch:
+      tags:
+        - carts
+      summary: Update an item in a cart
+      operationId: updateItem
+      parameters:
+        - name: customerId
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Item'
+        required: true
+      responses:
+        "202":
+          description: Accepted
+  /carts/{customerId}:
+    get:
+      tags:
+        - carts
+      summary: Retrieve a cart
+      operationId: getCart
+      parameters:
+        - name: customerId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Cart'
+    delete:
+      tags:
+        - carts
+      summary: Delete a cart
+      operationId: deleteCart
+      parameters:
+        - name: customerId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "202":
+          description: Accepted
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Cart'
+  /carts/{customerId}/merge:
+    get:
+      tags:
+        - carts
+      summary: Merge two carts contents
+      operationId: mergeCarts
+      parameters:
+        - name: customerId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: sessionId
+          in: query
+          required: true
+          schema:
+            type: string
+      responses:
+        "202":
+          description: Accepted
+  /carts/{customerId}/items/{itemId}:
+    get:
+      tags:
+        - carts
+      summary: Retrieve an item from a cart
+      operationId: getItem
+      parameters:
+        - name: customerId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: itemId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Item'
+    delete:
+      tags:
+        - carts
+      summary: Delete an item from a cart
+      operationId: deleteItem
+      parameters:
+        - name: customerId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: itemId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "202":
+          description: Accepted
+components:
+  schemas:
+    Item:
+      type: object
+      properties:
+        itemId:
+          type: string
+        quantity:
+          type: integer
+          format: int32
+        unitPrice:
+          type: integer
+          format: int32
+    Cart:
+      type: object
+      properties:
+        customerId:
+          type: string
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/Item'

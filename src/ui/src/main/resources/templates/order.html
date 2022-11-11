@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{fragments/layout :: layout (~{::body},'order')}">
+<body>
+<section class="bg-primary p-y-sm">
+    <div class="container">
+        <ol class="breadcrumb custom mb-0">
+            <li class="breadcrumb-item"><a href="/home">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Order</li>
+        </ol>
+    </div>
+</section>
+<section class="p-y-m">
+    <div class="container">
+        <div class="row">
+            <article class="card">
+                <div class="card-body">
+                    <div class="mt-4 mx-auto text-center" style="max-width:600px">
+                        <div class="my-3"><h4>Thank you for order</h4>
+                            <p>Your order number is <b id="orderId" th:text="${order.orderId}">123</b></p>
+                            <p>A confirmation email will be sent to <b id="orderEmail" th:text="${order.customerEmail}">you@example.com</b>
+                                with tracking information.</p>
+                        </div>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </div>
+</section>
+</body>
+</html>

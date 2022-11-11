@@ -1,0 +1,29 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: load-generator
+spec:
+  containers:
+  - name: artillery
+    image: artilleryio/artillery:2.0.0-23
+    args:
+    - "run"
+    - "-t"
+    - "ui.ui.svc"
+    - "/scripts/scenario.yml"
+    volumeMounts:
+    - name: scripts
+      mountPath: /scripts
+  initContainers:
+  - name: setup
+    image: public.ecr.aws/aws-containers/retail-store-sample-load-generator
+    command:
+    - cp
+    - "/artillery/scenario.yml"
+    - "/scripts/scenario.yml"
+    volumeMounts:
+    - name: scripts
+      mountPath: "/scripts"
+  volumes:
+  - name: workdir
+    emptyDir: {}

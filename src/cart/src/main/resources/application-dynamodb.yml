@@ -1,0 +1,5 @@
+carts:
+  dynamodb:
+    endpoint:
+    createTable: false
+    tableName: Items

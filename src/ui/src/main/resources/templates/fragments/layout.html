@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:fragment="layout (template, menu)">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Retail Store Sample App</title>
+
+        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+
+        <link rel="stylesheet" th:href="@{/webjars/bootstrap-icons/font/bootstrap-icons.css}">
+        <link rel="stylesheet" th:href="@{/webjars/bootstrap/dist/css/bootstrap.min.css}">
+        <link rel="stylesheet" th:href="@{/assets/css/styles.css}">
+    </head>
+    <body class="d-flex flex-column min-vh-100 bg-light">
+        <section style="background-color: #e9ecef">
+          <div class="container" style="text-align: center" th:if="${bannerText != null}" th:text="${bannerText}">
+              Conditional banner
+          </div>
+      </section>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container">
+                <a class="navbar-brand" href="/home">Retail Store Sample</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
+                        <li class="nav-item"><a id="menu-home" class="nav-link active" aria-current="page" href="/home">Home</a></li>
+                        <li class="nav-item"><a id="menu-catalog" class="nav-link" href="/catalog">Catalog</a></li>
+                    </ul>
+                    <a id="go-cart" class="btn btn-outline-dark" href="/cart">
+                        <i class="bi-cart-fill me-1"></i>
+                        Cart
+                        <span class="badge bg-dark text-white ms-1 rounded-pill" th:text="${cart.numItems}">0</span>
+                    </a>
+                </div>
+            </div>
+        </nav>
+        <div>
+          <th:block th:include="${template}"/>
+        </div>
+        <footer class="text-center text-lg-start bg-primary mt-auto">
+          <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
+            <div class="container text-center text-md-start">
+              <div class="row mt-5">
+                <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+                  <h6 class="text-uppercase fw-bold mb-4">
+                    Our store
+                  </h6>
+                  <p>
+                    Watches?
+                  </p>
+                </div>
+                <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+                  <h6 class="text-uppercase fw-bold mb-4">
+                    Categories
+                  </h6>
+                  <p>
+                    <a href="#!">Smart</a>
+                  </p>
+                  <p>
+                    <a href="#!">Dress</a>
+                  </p>
+                  <p>
+                    <a href="#!">Luxury</a>
+                  </p>
+                  <p>
+                    <a href="#!">Casual</a>
+                  </p>
+                </div>
+                <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+                  <h6 class="text-uppercase fw-bold mb-4">
+                    Useful links
+                  </h6>
+                  <p>
+                    <a href="#!">About us</a>
+                  </p>
+                  <p>
+                    <a href="#!">Terms</a>
+                  </p>
+                  <p>
+                    <a href="#!">FAQ</a>
+                  </p>
+                  <p>
+                    <a href="#!">Blog</a>
+                  </p>
+                </div>
+                <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+                  <h6 class="text-uppercase fw-bold mb-4">Contact</h6>
+                  <p>
+                    <i class="bi bi-envelope-fill"></i>
+                    Email
+                  </p>
+                  <p>
+                    <i class="bi bi-telephone-fill"></i>
+                    Phone
+                  </p>
+                </div>
+              </div>
+            </div>
+          </section>
+        </footer>
+        <div style="position: static !important;"></div>
+
+        <script src="https://cdn.jsdelivr.net/npm/tiny-slider@2.9.2/dist/min/tiny-slider.js" integrity="sha256-CApIX5Te4OdXVy1iWP+5+qG/iHa+8apfYOFagdVMRwk=" crossorigin="anonymous"></script>
+        <script th:src="@{/webjars/bootstrap/dist/js/bootstrap.min.js}"></script>
+
+        <script src="js/scripts.js"></script>
+    </body>
+</html>

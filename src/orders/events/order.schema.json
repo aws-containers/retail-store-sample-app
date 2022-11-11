@@ -1,0 +1,22 @@
+{
+  "$id": "order.schema.json",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Order",
+  "description": "An order within the store",
+  "required": [ "id", "firstName", "lastName" ],
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "firstName": {
+      "type": "string"
+    },
+    "lastName": {
+      "type": "string"
+    },
+    "email": {
+      "type": "string"
+    }
+  }
+}
