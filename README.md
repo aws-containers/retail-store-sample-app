@@ -12,14 +12,14 @@ The application has been deliberately over-engineered to generate multiple de-co
 
 ![Architecture](/docs/images/architecture.png)
 
-| Component | Language | Dependencies        | Description                                                                 |
+| Component | Language | Container Image     | Description                                                                 |
 |-----------|----------|---------------------|-----------------------------------------------------------------------------|
-| UI        | Java     | None                | Aggregates API calls to the various other services and renders the HTML UI. |
-| Catalog   | Go       | MySQL               | Product catalog API                                                         |
-| Carts     | Java     | DynamoDB or MongoDB | User shopping carts API                                                     |
-| Orders    | Java     | MySQL               | User orders API                                                             |
-| Checkout  | Node     | Redis               | API to orchestrate the checkout process                                     |
-| Assets    | Nginx    |                     | Serves static assets like images related to the product catalog             |
+| UI ![ui workflow](https://github.com/aws-containers/retail-store-sample-app/actions/workflows/ci-ui.yml/badge.svg)        | Java     | [Link](https://gallery.ecr.aws/aws-containers/retail-store-sample-ui)       | Aggregates API calls to the various other services and renders the HTML UI. |
+| Catalog ![catalog workflow](https://github.com/aws-containers/retail-store-sample-app/actions/workflows/ci-catalog.yml/badge.svg)   | Go       | [Link](https://gallery.ecr.aws/aws-containers/retail-store-sample-catalog)  | Product catalog API                                                         |
+| Carts  ![cart workflow](https://github.com/aws-containers/retail-store-sample-app/actions/workflows/ci-cart.yml/badge.svg)   | Java     | [Link](https://gallery.ecr.aws/aws-containers/retail-store-sample-cart)     | User shopping carts API                                                     |
+| Orders  ![orders workflow](https://github.com/aws-containers/retail-store-sample-app/actions/workflows/ci-orders.yml/badge.svg)  | Java     | [Link](https://gallery.ecr.aws/aws-containers/retail-store-sample-orders)   | User orders API                                                             |
+| Checkout ![checkout workflow](https://github.com/aws-containers/retail-store-sample-app/actions/workflows/ci-checkout.yml/badge.svg) | Node     | [Link](https://gallery.ecr.aws/aws-containers/retail-store-sample-checkout) | API to orchestrate the checkout process                                     |
+| Assets  ![ui workflow](https://github.com/aws-containers/retail-store-sample-app/actions/workflows/ci-assets.yml/badge.svg)  | Nginx    | [Link](https://gallery.ecr.aws/aws-containers/retail-store-sample-assets)   | Serves static assets like images related to the product catalog             |
 
 ## Quickstart
 
@@ -41,7 +41,7 @@ cd deploy/docker-compose
 Use `docker-compose` to run the application containers:
 
 ```
-docker-compose up
+MYSQL_PASSWORD='<some password>' docker-compose up
 ```
 
 Open the frontend in a browser window:
