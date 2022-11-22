@@ -163,10 +163,12 @@ function build()
   fi
 
   if [ "$cnb" != true ] || [ "$all" = true ]; then
-    push_args="--load"
+    push_args=""
 
     if [ "$push" = true ] ; then
       push_args="--push"
+    elif [ "$multi_arch" != true ]; then
+      push_args="--load"
     fi
 
     cache_args=""
