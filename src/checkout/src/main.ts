@@ -34,6 +34,9 @@ async function bootstrap() {
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api', app, document);
 
+  // Starts listening for shutdown hooks
+  app.enableShutdownHooks();
+
   const port = process.env.PORT || 8080
 
   await app.listen(port);
