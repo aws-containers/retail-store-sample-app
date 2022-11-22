@@ -163,7 +163,7 @@ function build()
   fi
 
   if [ "$cnb" != true ] || [ "$all" = true ]; then
-    push_args=""
+    push_args="--load"
 
     if [ "$push" = true ] ; then
       push_args="--push"
