@@ -47,4 +47,4 @@ jobs:
         
     - name: Build container image
       run: |
-        scripts/build-image.sh -s checkout -t ci --actions-cache --multi-arch
+        scripts/build-image.sh -s checkout -t ci --actions-cache
