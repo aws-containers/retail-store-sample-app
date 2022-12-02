@@ -4,11 +4,11 @@ server:
   compression.enabled: true
 
 endpoints:
-  catalog: http://localhost:8081
-  carts: http://localhost:8082
-  orders: http://localhost:8083
-  assets: http://localhost:8084
-  checkout: http://localhost:8085
+  catalog: false #http://localhost:8081
+  carts: false #http://localhost:8082
+  orders: false #http://localhost:8083
+  assets: false #http://localhost:8084
+  checkout:  false #http://localhost:8085
   logging: false
 
 retail:

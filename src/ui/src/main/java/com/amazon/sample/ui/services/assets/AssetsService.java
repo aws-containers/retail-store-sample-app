@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * SPDX-License-Identifier: MIT-0
  *
@@ -16,16 +16,12 @@
  * SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-let Checkout = require('./Checkout');
+package com.amazon.sample.ui.services.assets;
 
-class CheckoutDelivery extends Checkout {
+import org.springframework.http.ResponseEntity;
 
-  constructor(baseUrl) {
-    super(baseUrl);
-  }
+import reactor.core.publisher.Mono;
 
-  async populate(shippingToken) {
-    return element(by.css('.item-selector')).click();
-  }
+public interface AssetsService <N> {
+    Mono<ResponseEntity<N>> getImage(String path);
 }
-module.exports = CheckoutDelivery;
