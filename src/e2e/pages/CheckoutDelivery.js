@@ -25,7 +25,7 @@ class CheckoutDelivery extends Checkout {
   }
 
   async populate(shippingToken) {
-    return element(by.css('.border-oncheck')).click();
+    return element(by.css('.item-selector')).click();
   }
 }
 module.exports = CheckoutDelivery;
