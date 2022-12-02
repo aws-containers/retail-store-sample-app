@@ -2,6 +2,12 @@
 
 This is a sample application designed to illustrate various concepts related to containers on AWS. It presents a sample retail store application including a product catalog, shopping cart and checkout.
 
+It provides:
+- A distributed component architecture in various languages and frameworks
+- Utilization of a variety of different persistence backends for different components like MySQL, DynamoDB and Redis
+- The ability to run in various container orchestration technologies like Docker Compose, Kubernetes etc.
+- Pre-built containers image for both x86-64 and ARM64 CPU architectures
+
 **This project is intended for educational purposes only and not for production use.**
 
 ![Screenshot](/docs/images/screenshot.png)
