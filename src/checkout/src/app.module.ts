@@ -24,6 +24,9 @@ import { TerminusModule } from '@nestjs/terminus';
 import { CheckoutModule } from './checkout/checkout.module';
 import { LoggerMiddleware } from './middleware/logger.middleware';
 import { PrometheusModule } from '@willsoto/nestjs-prometheus';
+import { OpenTelemetryModule } from '@metinseylan/nestjs-opentelemetry';
+import { SimpleSpanProcessor } from '@opentelemetry/sdk-trace-base';
+import { OTLPTraceExporter } from '@opentelemetry/exporter-trace-otlp-http'
 
 @Module({
   imports: [
@@ -32,7 +35,12 @@ import { PrometheusModule } from '@willsoto/nestjs-prometheus';
     }),
     TerminusModule,
     PrometheusModule.register(),
-    CheckoutModule
+    CheckoutModule,
+    OpenTelemetryModule.forRoot({
+      spanProcessor: new SimpleSpanProcessor(
+        new OTLPTraceExporter()
+      ),
+    }),
   ],
   controllers: [AppController],
   providers: [],
