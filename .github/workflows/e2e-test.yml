@@ -34,7 +34,7 @@ jobs:
 
     - name: Build Images
       run: |
-        (cd deploy/docker-compose && COMPOSE_DOCKER_CLI_BUILD=1 DOCKER_BUILDKIT=1 docker-compose build -q)
+        scripts/build-image.sh -r 'public.ecr.aws/aws-containers' -t e2e --actions-cache
         
     - name: Run Tests
       run: |
