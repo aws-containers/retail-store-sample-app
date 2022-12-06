@@ -23,31 +23,31 @@ custom_build(
 custom_build(
   'retail-store-sample-ui',
   '../../scripts/build-image.sh -s ui --expected-ref $EXPECTED_REF',
-  ['../../src/ui'],
+  ['../../src/ui', '../../images/java17'],
 )
 
 custom_build(
   'retail-store-sample-cart',
   '../../scripts/build-image.sh -s cart --expected-ref $EXPECTED_REF',
-  ['../../src/cart'],
+  ['../../src/cart', '../../images/java17'],
 )
 
 custom_build(
   'retail-store-sample-orders',
   '../../scripts/build-image.sh -s orders --expected-ref $EXPECTED_REF',
-  ['../../src/orders'],
+  ['../../src/orders', '../../images/java17'],
 )
 
 custom_build(
   'retail-store-sample-checkout',
   '../../scripts/build-image.sh -s checkout --expected-ref $EXPECTED_REF',
-  ['../../src/checkout'],
+  ['../../src/checkout', '../../images/nodejs'],
 )
 
 custom_build(
   'retail-store-sample-catalog',
   '../../scripts/build-image.sh -s catalog --expected-ref $EXPECTED_REF',
-  ['../../src/catalog'],
+  ['../../src/catalog', '../../images/go'],
 )
 
 k8s_resource('ui', port_forwards='8888:8080')

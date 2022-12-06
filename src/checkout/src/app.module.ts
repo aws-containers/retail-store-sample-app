@@ -24,6 +24,11 @@ import { TerminusModule } from '@nestjs/terminus';
 import { CheckoutModule } from './checkout/checkout.module';
 import { LoggerMiddleware } from './middleware/logger.middleware';
 import { PrometheusModule } from '@willsoto/nestjs-prometheus';
+import { OpenTelemetryModule } from 'nestjs-otel';
+
+const OpenTelemetryModuleConfig = OpenTelemetryModule.forRoot({
+  
+});
 
 @Module({
   imports: [
@@ -32,7 +37,8 @@ import { PrometheusModule } from '@willsoto/nestjs-prometheus';
     }),
     TerminusModule,
     PrometheusModule.register(),
-    CheckoutModule
+    CheckoutModule,
+    OpenTelemetryModuleConfig,
   ],
   controllers: [AppController],
   providers: [],

@@ -17,6 +17,8 @@
 package api
 
 import (
+	"context"
+
 	"github.com/aws-containers/retail-store-sample-app/catalog/model"
 	"github.com/aws-containers/retail-store-sample-app/catalog/repository"
 )
@@ -26,20 +28,20 @@ type CatalogAPI struct {
 	repository repository.Repository
 }
 
-func (a *CatalogAPI) GetProducts(tags []string, order string, pageNum, pageSize int) ([]model.Product, error) {
-	return a.repository.List(tags, order, pageNum, pageSize)
+func (a *CatalogAPI) GetProducts(tags []string, order string, pageNum, pageSize int, ctx context.Context) ([]model.Product, error) {
+	return a.repository.List(tags, order, pageNum, pageSize, ctx)
 }
 
-func (a *CatalogAPI) GetProduct(id string) (*model.Product, error) {
-	return a.repository.Get(id)
+func (a *CatalogAPI) GetProduct(id string, ctx context.Context) (*model.Product, error) {
+	return a.repository.Get(id, ctx)
 }
 
-func (a *CatalogAPI) GetTags() ([]model.Tag, error) {
-	return a.repository.Tags()
+func (a *CatalogAPI) GetTags(ctx context.Context) ([]model.Tag, error) {
+	return a.repository.Tags(ctx)
 }
 
-func (a *CatalogAPI) GetSize(tags []string) (int, error) {
-	return a.repository.Count(tags)
+func (a *CatalogAPI) GetSize(tags []string, ctx context.Context) (int, error) {
+	return a.repository.Count(tags, ctx)
 }
 
 // NewCatalogAPI constructor

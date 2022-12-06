@@ -18,6 +18,7 @@ package main
 
 import (
 	"context"
+	"fmt"
 	"log"
 	"net/http"
 	"os"
@@ -37,6 +38,15 @@ import (
 	"github.com/sethvargo/go-envconfig/pkg/envconfig"
 	ginprometheus "github.com/zsais/go-gin-prometheus"
 
+	"go.opentelemetry.io/contrib/detectors/aws/ec2"
+	"go.opentelemetry.io/contrib/instrumentation/github.com/gin-gonic/gin/otelgin"
+	"go.opentelemetry.io/contrib/propagators/aws/xray"
+	"go.opentelemetry.io/otel"
+	"go.opentelemetry.io/otel/exporters/otlp/otlptrace"
+	"go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc"
+	"go.opentelemetry.io/otel/propagation"
+	sdktrace "go.opentelemetry.io/otel/sdk/trace"
+
 	swaggerFiles "github.com/swaggo/files"
 	ginSwagger "github.com/swaggo/gin-swagger"
 )
@@ -50,6 +60,8 @@ import (
 
 // @host localhost:8080
 // @BasePath /
+
+var tracer = otel.Tracer("gin-server")
 
 func main() {
 	ctx := context.Background()
@@ -69,7 +81,10 @@ func main() {
 		log.Fatal(err)
 	}
 
-	r := gin.Default()
+	r := gin.New()
+	r.Use(gin.LoggerWithConfig(gin.LoggerConfig{
+		SkipPaths: []string{"/health"},
+	}))
 
 	p := ginprometheus.NewPrometheus("gin")
 	p.Use(r)
@@ -83,13 +98,22 @@ func main() {
 	}
 
 	catalog := r.Group("/catalogue")
-	{
-		catalog.GET("", c.GetProducts)
 
-		catalog.GET("/size", c.CatalogSize)
-		catalog.GET("/tags", c.ListTags)
-		catalog.GET("/product/:id", c.GetProduct)
+	_, otelPresent := os.LookupEnv("OTEL_SERVICE_NAME")
+
+	if otelPresent {
+		tp, err := initTracer(ctx)
+		if err != nil {
+			log.Fatal(err)
+		}
+		catalog.Use(otelgin.Middleware("catalog-server", otelgin.WithTracerProvider(tp)))
 	}
+
+	catalog.GET("", c.GetProducts)
+
+	catalog.GET("/size", c.CatalogSize)
+	catalog.GET("/tags", c.ListTags)
+	catalog.GET("/product/:id", c.GetProduct)
 
 	r.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
 	r.GET("/health", func(c *gin.Context) {
@@ -128,4 +152,22 @@ func main() {
 	}
 
 	log.Println("Server exiting")
+}
+
+func initTracer(ctx context.Context) (*sdktrace.TracerProvider, error) {
+	client := otlptracegrpc.NewClient()
+	exporter, err := otlptrace.New(ctx, client)
+	if err != nil {
+		return nil, fmt.Errorf("creating OTLP trace exporter: %w", err)
+	}
+	idg := xray.NewIDGenerator()
+	ec2ResourceDetector := ec2.NewResourceDetector()
+	resource, err := ec2ResourceDetector.Detect(context.Background())
+	tp := sdktrace.NewTracerProvider(
+		sdktrace.WithBatcher(exporter),
+		sdktrace.WithIDGenerator(idg),
+		sdktrace.WithResource(resource),
+	)
+	otel.SetTextMapPropagator(propagation.NewCompositeTextMapPropagator(propagation.TraceContext{}, propagation.Baggage{}))
+	return tp, nil
 }

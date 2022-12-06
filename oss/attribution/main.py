@@ -9,7 +9,7 @@ from jinja2 import Template
 from os.path import exists
 import sys
 
-license = "LICENSE"
+license = "^LICENSE"
 notice = "NOTICE"
 
 generic_licenses = {
@@ -127,8 +127,8 @@ elif exists(go_licenses_path):
     for row in reader:
       name = row[0]
       version = row[1]
-      license_url = row[2]
-      license_name = row[3]
+      license_name = row[2]
+      license_url = row[3]
 
       actual_license_url = None
 

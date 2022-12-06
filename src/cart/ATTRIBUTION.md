@@ -7658,7 +7658,7 @@ twall[at]users[dot]sf[dot]net.
 
 ----
 
-### org.apache.commons:commons-compress @1.21 - https://commons.apache.org/proper/commons-compress/
+### org.apache.commons:commons-compress @1.22 - https://commons.apache.org/proper/commons-compress/
 
                                  Apache License
                            Version 2.0, January 2004
@@ -7863,7 +7863,7 @@ twall[at]users[dot]sf[dot]net.
    limitations under the License.
 
 
-[Source code](https://repo.maven.apache.org/maven2/org/apache/commons/commons-compress/1.21/commons-compress-1.21-sources.jar)
+[Source code](https://repo.maven.apache.org/maven2/org/apache/commons/commons-compress/1.22/commons-compress-1.22-sources.jar)
 
 ----
 
@@ -21322,7 +21322,7 @@ SOFTWARE.
 
 ----
 
-### org.testcontainers:testcontainers @1.17.5 - https://testcontainers.org
+### org.testcontainers:testcontainers @1.17.6 - https://testcontainers.org
 
 The MIT License (MIT)
 
@@ -21347,7 +21347,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 
-[Source code](https://repo.maven.apache.org/maven2/org/testcontainers/testcontainers/1.17.5/testcontainers-1.17.5-sources.jar)
+[Source code](https://repo.maven.apache.org/maven2/org/testcontainers/testcontainers/1.17.6/testcontainers-1.17.6-sources.jar)
 
 ----
 

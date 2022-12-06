@@ -17,6 +17,7 @@
 package repository
 
 import (
+	"context"
 	"fmt"
 
 	"github.com/aws-containers/retail-store-sample-app/catalog/config"
@@ -25,10 +26,10 @@ import (
 )
 
 type Repository interface {
-	List(tags []string, order string, pageNum, pageSize int) ([]model.Product, error)
-	Count(tags []string) (int, error)
-	Get(id string) (*model.Product, error)
-	Tags() ([]model.Tag, error)
+	List(tags []string, order string, pageNum, pageSize int, ctx context.Context) ([]model.Product, error)
+	Count(tags []string, ctx context.Context) (int, error)
+	Get(id string, ctx context.Context) (*model.Product, error)
+	Tags(ctx context.Context) ([]model.Tag, error)
 	Collector() prometheus.Collector
 	ReaderCollector() prometheus.Collector
 }

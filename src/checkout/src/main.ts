@@ -16,12 +16,16 @@
  * SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
+import otelSDK from './tracing';
 import { ValidationPipe } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 import { AppModule } from './app.module';
 
 async function bootstrap() {
+  // Start SDK before nestjs factory create
+  await otelSDK.start();
+  
   const app = await NestFactory.create(AppModule);
   app.useGlobalPipes(new ValidationPipe());
 
