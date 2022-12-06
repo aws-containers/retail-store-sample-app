@@ -1,0 +1,23 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+bases:
+- ../../base
+images:
+- name: retail-store-sample-assets
+  newName: public.ecr.aws/aws-containers/retail-store-sample-assets
+  newTag: latest
+- name: retail-store-sample-catalog
+  newName: public.ecr.aws/aws-containers/retail-store-sample-catalog
+  newTag: latest
+- name: retail-store-sample-cart
+  newName: public.ecr.aws/aws-containers/retail-store-sample-cart
+  newTag: latest
+- name: retail-store-sample-checkout
+  newName: public.ecr.aws/aws-containers/retail-store-sample-checkout
+  newTag: latest
+- name: retail-store-sample-ui
+  newName: public.ecr.aws/aws-containers/retail-store-sample-ui
+  newTag: latest
+- name: retail-store-sample-orders
+  newName: public.ecr.aws/aws-containers/retail-store-sample-orders
+  newTag: latest

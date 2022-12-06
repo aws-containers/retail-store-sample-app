@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: checkout
   labels:
-    app.kubernetes.io/created-by: eks-workshop
+    app.kubernetes.io/created-by: retail-store-sample
     app.kubernetes.io/type: app
 spec:
   replicas: 1
@@ -22,7 +22,7 @@ spec:
         app.kubernetes.io/name: checkout
         app.kubernetes.io/instance: checkout
         app.kubernetes.io/component: service
-        app.kubernetes.io/created-by: eks-workshop
+        app.kubernetes.io/created-by: retail-store-sample
     spec:
       serviceAccountName: checkout
       securityContext:
