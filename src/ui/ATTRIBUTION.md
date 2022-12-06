@@ -440,7 +440,7 @@ http://www.apache.org/licenses/LICENSE-2.0
 
 ----
 
-### com.fasterxml.jackson.core:jackson-databind @2.14.0-rc1 - https://github.com/FasterXML/jackson
+### com.fasterxml.jackson.core:jackson-databind @2.14.1 - https://github.com/FasterXML/jackson
 
 
                                  Apache License
@@ -646,7 +646,7 @@ http://www.apache.org/licenses/LICENSE-2.0
    limitations under the License.
 
 
-[Source code](https://repo.maven.apache.org/maven2/com/fasterxml/jackson/core/jackson-databind/2.14.0-rc1/jackson-databind-2.14.0-rc1-sources.jar)
+[Source code](https://repo.maven.apache.org/maven2/com/fasterxml/jackson/core/jackson-databind/2.14.1/jackson-databind-2.14.1-sources.jar)
 
 ----
 
@@ -7612,7 +7612,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 ----
 
-### io.swagger:swagger-annotations @1.6.8 - https://github.com/swagger-api/swagger-core/modules/swagger-annotations
+### io.swagger:swagger-annotations @1.6.9 - https://github.com/swagger-api/swagger-core/modules/swagger-annotations
 
 
                                  Apache License
@@ -7818,7 +7818,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
    limitations under the License.
 
 
-[Source code](https://repo.maven.apache.org/maven2/io/swagger/swagger-annotations/1.6.8/swagger-annotations-1.6.8-sources.jar)
+[Source code](https://repo.maven.apache.org/maven2/io/swagger/swagger-annotations/1.6.9/swagger-annotations-1.6.9-sources.jar)
 
 ----
 
@@ -19607,7 +19607,7 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 ----
 
-### org.webjars.npm:bootstrap @5.2.2 - https://www.webjars.org
+### org.webjars.npm:bootstrap @5.2.3 - https://www.webjars.org
 
 The MIT License (MIT)
 
@@ -19633,11 +19633,11 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 
 
-[Source code](https://repo.maven.apache.org/maven2/org/webjars/npm/bootstrap/5.2.2/bootstrap-5.2.2-sources.jar)
+[Source code](https://repo.maven.apache.org/maven2/org/webjars/npm/bootstrap/5.2.3/bootstrap-5.2.3-sources.jar)
 
 ----
 
-### org.webjars.npm:bootstrap-icons @1.9.1 - https://www.webjars.org
+### org.webjars.npm:bootstrap-icons @1.10.2 - https://www.webjars.org
 
 The MIT License (MIT)
 
@@ -19662,7 +19662,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 
 
-[Source code](https://repo.maven.apache.org/maven2/org/webjars/npm/bootstrap-icons/1.9.1/bootstrap-icons-1.9.1-sources.jar)
+[Source code](https://repo.maven.apache.org/maven2/org/webjars/npm/bootstrap-icons/1.10.2/bootstrap-icons-1.10.2-sources.jar)
 
 ----
 
