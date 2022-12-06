@@ -1,0 +1,41 @@
+# -*- mode: Python -*-
+
+os. putenv ( 'TAG' , 'tilt' )
+
+docker_compose('docker-compose.yml')
+
+custom_build(
+  'public.ecr.aws/aws-containers/retail-store-sample-assets:tilt',
+  '../../scripts/build-image.sh -s assets --expected-ref $EXPECTED_REF',
+  ['../../src/assets'],
+)
+
+custom_build(
+  'public.ecr.aws/aws-containers/retail-store-sample-ui:tilt',
+  '../../scripts/build-image.sh -s ui --expected-ref $EXPECTED_REF',
+  ['../../src/ui', '../../images/java17'],
+)
+
+custom_build(
+  'public.ecr.aws/aws-containers/retail-store-sample-cart:tilt',
+  '../../scripts/build-image.sh -s cart --expected-ref $EXPECTED_REF',
+  ['../../src/cart', '../../images/java17'],
+)
+
+custom_build(
+  'public.ecr.aws/aws-containers/retail-store-sample-orders:tilt',
+  '../../scripts/build-image.sh -s orders --expected-ref $EXPECTED_REF',
+  ['../../src/orders', '../../images/java17'],
+)
+
+custom_build(
+  'public.ecr.aws/aws-containers/retail-store-sample-checkout:tilt',
+  '../../scripts/build-image.sh -s checkout --expected-ref $EXPECTED_REF',
+  ['../../src/checkout', '../../images/nodejs'],
+)
+
+custom_build(
+  'public.ecr.aws/aws-containers/retail-store-sample-catalog:tilt',
+  '../../scripts/build-image.sh -s catalog --expected-ref $EXPECTED_REF',
+  ['../../src/catalog', '../../images/go'],
+)

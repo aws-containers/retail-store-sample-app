@@ -34,10 +34,10 @@ jobs:
 
     - name: Build Images
       run: |
-        (cd deploy/docker-compose && COMPOSE_DOCKER_CLI_BUILD=1 DOCKER_BUILDKIT=1 docker-compose build -q)
+        scripts/build-image.sh -r 'public.ecr.aws/aws-containers' -t e2e --actions-cache
         
     - name: Run Tests
       run: |
-        (cd deploy/docker-compose && MYSQL_PASSWORD='test123' docker-compose up -d)
+        (cd deploy/docker-compose && TAG=e2e MYSQL_PASSWORD='test123' docker-compose up -d)
         (cd src/e2e && bash ./scripts/run-docker.sh -n docker-compose_default 'http://ui:8080')
         (cd deploy/docker-compose && docker-compose down)

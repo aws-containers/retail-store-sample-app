@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: catalog
   labels:
-    app.kubernetes.io/created-by: eks-workshop
+    app.kubernetes.io/created-by: retail-store-sample
     app.kubernetes.io/type: app
 spec:
   replicas: 1
@@ -22,7 +22,7 @@ spec:
         app.kubernetes.io/name: catalog
         app.kubernetes.io/instance: catalog
         app.kubernetes.io/component: service
-        app.kubernetes.io/created-by: eks-workshop
+        app.kubernetes.io/created-by: retail-store-sample
     spec:
       serviceAccountName: catalog
       securityContext:
