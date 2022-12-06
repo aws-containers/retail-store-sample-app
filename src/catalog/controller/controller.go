@@ -78,7 +78,7 @@ func (c *Controller) GetProducts(ctx *gin.Context) {
 		return
 	}
 
-	products, err := c.api.GetProducts(tags, order, page, size)
+	products, err := c.api.GetProducts(tags, order, page, size, ctx.Request.Context())
 	if err != nil {
 		httputil.NewError(ctx, http.StatusNotFound, err)
 		return
@@ -101,7 +101,7 @@ func (c *Controller) GetProducts(ctx *gin.Context) {
 func (c *Controller) GetProduct(ctx *gin.Context) {
 	id := ctx.Param("id")
 
-	product, err := c.api.GetProduct(id)
+	product, err := c.api.GetProduct(id, ctx.Request.Context())
 	if err != nil {
 		httputil.NewError(ctx, http.StatusNotFound, err)
 		return
@@ -131,7 +131,7 @@ func (c *Controller) CatalogSize(ctx *gin.Context) {
 		tags = []string{}
 	}
 
-	count, err := c.api.GetSize(tags)
+	count, err := c.api.GetSize(tags, ctx.Request.Context())
 	if err != nil {
 		httputil.NewError(ctx, http.StatusNotFound, err)
 		return
@@ -153,7 +153,7 @@ func (c *Controller) CatalogSize(ctx *gin.Context) {
 // @Failure 500 {object} httputil.HTTPError
 // @Router /catalogue/tags [get]
 func (c *Controller) ListTags(ctx *gin.Context) {
-	accounts, err := c.api.GetTags()
+	accounts, err := c.api.GetTags(ctx.Request.Context())
 	if err != nil {
 		httputil.NewError(ctx, http.StatusNotFound, err)
 		return

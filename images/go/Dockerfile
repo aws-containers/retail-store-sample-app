@@ -6,8 +6,6 @@ RUN yum install -y git golang && \
 
 ARG MAIN_PATH
 
-ENV GOPROXY direct
-
 RUN mkdir -p "${GOPATH}/src" "${GOPATH}/bin" /appsrc
 
 WORKDIR /appsrc
@@ -39,5 +37,9 @@ USER appuser
 
 COPY --chown=appuser:appuser --from=build-env /appsrc/main /app/
 COPY --chown=appuser:appuser db/ /app/db/
+
+COPY ./ATTRIBUTION.md ./LICENSES.md
+
+ENV GIN_MODE=release
 
 ENTRYPOINT ["/app/main"]

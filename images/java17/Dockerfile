@@ -20,8 +20,10 @@ RUN ./mvnw -DskipTests package && \
 # Package Stage
 FROM amazoncorretto:17-al2-full
 
+ARG aws_opentelemetry_agent_version=1.20.0
+
 RUN yum install -y \
-    shadow-utils && \
+    shadow-utils wget && \
     yum clean all
 
 ENV APPUSER=appuser
@@ -35,9 +37,15 @@ RUN useradd \
     --uid "$APPUID" \
     "$APPUSER"
 
+RUN wget https://github.com/aws-observability/aws-otel-java-instrumentation/releases/download/v${aws_opentelemetry_agent_version}/aws-opentelemetry-agent.jar -O /opt/aws-opentelemetry-agent.jar && \
+    wget https://raw.githubusercontent.com/aws-observability/aws-otel-java-instrumentation/v${aws_opentelemetry_agent_version}/licenses/licenses.md -O aws-opentelemetry-agent-licenses.md
+ENV JAVA_TOOL_OPTIONS=-javaagent:/opt/aws-opentelemetry-agent.jar
+ENV OTEL_JAVAAGENT_ENABLED=false
+
 WORKDIR /app
 USER appuser
 
+COPY ./ATTRIBUTION.md ./LICENSES.md
 COPY --chown=appuser:appuser --from=build-env /app.jar .
 
 EXPOSE 8080

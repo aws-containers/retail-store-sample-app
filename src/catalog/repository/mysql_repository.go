@@ -17,6 +17,7 @@
 package repository
 
 import (
+	"context"
 	"errors"
 	"fmt"
 	"log"
@@ -31,6 +32,7 @@ import (
 	_ "github.com/golang-migrate/migrate/v4/source/file"
 	"github.com/jmoiron/sqlx"
 	"github.com/prometheus/client_golang/prometheus"
+	"github.com/signalfx/splunk-otel-go/instrumentation/github.com/jmoiron/sqlx/splunksqlx"
 )
 
 // ErrNotFound is returned when there is no product for a given ID.
@@ -87,7 +89,7 @@ func newMySQLRepository(config config.DatabaseConfiguration) (Repository, error)
 func createConnection(connectionString string) (*sqlx.DB, error) {
 	log.Printf("Connecting to %s\n", connectionString)
 
-	db, err := sqlx.Open("mysql", connectionString)
+	db, err := splunksqlx.Open("mysql", connectionString)
 	if err != nil {
 		return nil, err
 	}
@@ -119,7 +121,7 @@ func migrateMySQL(connectionString string) error {
 	return nil
 }
 
-func (s *mySQLRepository) List(tags []string, order string, pageNum, pageSize int) ([]model.Product, error) {
+func (s *mySQLRepository) List(tags []string, order string, pageNum, pageSize int, ctx context.Context) ([]model.Product, error) {
 	var products []model.Product
 	query := baseQuery
 
@@ -144,7 +146,7 @@ func (s *mySQLRepository) List(tags []string, order string, pageNum, pageSize in
 
 	query += ";"
 
-	err := s.readerDb.Select(&products, query, args...)
+	err := s.readerDb.SelectContext(ctx, &products, query, args...)
 	if err != nil {
 		log.Println("database error", err)
 		return []model.Product{}, ErrDBConnection
@@ -161,7 +163,7 @@ func (s *mySQLRepository) List(tags []string, order string, pageNum, pageSize in
 	return products, nil
 }
 
-func (s *mySQLRepository) Count(tags []string) (int, error) {
+func (s *mySQLRepository) Count(tags []string, ctx context.Context) (int, error) {
 	query := "SELECT COUNT(DISTINCT product.product_id) FROM product JOIN product_tag ON product.product_id=product_tag.product_id JOIN tag ON product_tag.tag_id=tag.tag_id"
 
 	var args []interface{}
@@ -187,7 +189,7 @@ func (s *mySQLRepository) Count(tags []string) (int, error) {
 	defer sel.Close()
 
 	var count int
-	err = sel.QueryRow(args...).Scan(&count)
+	err = sel.QueryRowContext(ctx, args...).Scan(&count)
 
 	if err != nil {
 		log.Println("database error", err)
@@ -197,13 +199,13 @@ func (s *mySQLRepository) Count(tags []string) (int, error) {
 	return count, nil
 }
 
-func (s *mySQLRepository) Get(id string) (*model.Product, error) {
+func (s *mySQLRepository) Get(id string, ctx context.Context) (*model.Product, error) {
 	query := baseQuery + " WHERE product.product_id =? GROUP BY product.product_id;"
 
 	log.Printf("query: %s", query)
 
 	var product model.Product
-	err := s.readerDb.Get(&product, query, id)
+	err := s.readerDb.GetContext(ctx, &product, query, id)
 	if err != nil {
 		log.Println("database error", err)
 		return nil, ErrNotFound
@@ -214,10 +216,10 @@ func (s *mySQLRepository) Get(id string) (*model.Product, error) {
 	return &product, nil
 }
 
-func (s *mySQLRepository) Tags() ([]model.Tag, error) {
+func (s *mySQLRepository) Tags(ctx context.Context) ([]model.Tag, error) {
 	var tags []model.Tag
 	query := "SELECT name, display_name FROM tag;"
-	rows, err := s.readerDb.Query(query)
+	rows, err := s.readerDb.QueryContext(ctx, query)
 	if err != nil {
 		log.Println("database error", err)
 		return []model.Tag{}, ErrDBConnection

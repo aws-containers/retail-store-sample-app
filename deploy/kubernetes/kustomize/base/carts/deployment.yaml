@@ -16,7 +16,7 @@ spec:
     metadata:
       annotations:
         prometheus.io/path: /actuator/prometheus
-        prometheus.io/port: "8080"
+        prometheus.io/port: "80801"
         prometheus.io/scrape: "true"
       labels:
         app.kubernetes.io/name: carts
