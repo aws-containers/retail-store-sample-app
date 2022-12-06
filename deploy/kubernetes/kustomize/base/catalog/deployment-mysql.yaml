@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: catalog-mysql
   labels:
-    app.kubernetes.io/created-by: eks-workshop
+    app.kubernetes.io/created-by: retail-store-sample
     app.kubernetes.io/team: database
 spec:
   replicas: 1
@@ -18,7 +18,7 @@ spec:
         app.kubernetes.io/name: catalog
         app.kubernetes.io/instance: catalog
         app.kubernetes.io/component: mysql
-        app.kubernetes.io/created-by: eks-workshop
+        app.kubernetes.io/created-by: retail-store-sample
         app.kubernetes.io/team: database
     spec:
       containers:

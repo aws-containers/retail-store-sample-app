@@ -59,7 +59,7 @@ parse_params() {
   multi_arch=false
   quiet=false
   builder='nil'
-  repository='aws-containers'
+  repository='public.ecr.aws/aws-containers'
   tag='latest'
   service='*'
   expected_ref=''

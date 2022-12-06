@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: assets
   labels:
-    app.kubernetes.io/created-by: eks-workshop
+    app.kubernetes.io/created-by: retail-store-sample
 spec:
   replicas: 1
   selector:
@@ -21,7 +21,7 @@ spec:
         app.kubernetes.io/name: assets
         app.kubernetes.io/instance: assets
         app.kubernetes.io/component: service
-        app.kubernetes.io/created-by: eks-workshop
+        app.kubernetes.io/created-by: retail-store-sample
     spec:
       serviceAccountName: assets
       securityContext:

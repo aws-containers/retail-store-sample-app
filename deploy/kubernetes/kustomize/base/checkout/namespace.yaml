@@ -3,4 +3,4 @@ kind: Namespace
 metadata:
   name: checkout
   labels:
-    app.kubernetes.io/created-by: eks-workshop
+    app.kubernetes.io/created-by: retail-store-sample
