@@ -13,11 +13,7 @@ services:
       - ENDPOINTS_CHECKOUT=http://checkout:8080
       - ENDPOINTS_ASSETS=http://assets:8080
     hostname: ui
-    build:
-      context: ../../src/ui
-      dockerfile: ../../images/java17/Dockerfile
-      args:
-        JAR_PATH: target/ui-0.0.1-SNAPSHOT.jar
+    image: public.ecr.aws/aws-containers/retail-store-sample-ui:${TAG}
     restart: always
     mem_limit: 256m
     cap_drop:
@@ -25,9 +21,7 @@ services:
 
   catalog:
     hostname: catalog
-    build:
-      context: ../../src/catalog
-      dockerfile: ../../images/go/Dockerfile
+    image: public.ecr.aws/aws-containers/retail-store-sample-catalog:${TAG}
     restart: always
     environment:
       - GIN_MODE=release
@@ -50,11 +44,7 @@ services:
 
   carts:
     hostname: carts
-    build:
-      context: ../../src/cart
-      dockerfile: ../../images/java17/Dockerfile
-      args:
-        JAR_PATH: target/carts-0.0.1-SNAPSHOT.jar
+    image: public.ecr.aws/aws-containers/retail-store-sample-cart:${TAG}
     restart: always
     environment:
       - JAVA_OPTS=-XX:MaxRAMPercentage=75.0 -Djava.security.egd=file:/dev/urandom
@@ -76,11 +66,7 @@ services:
     
   orders:
     hostname: orders
-    build:
-      context: ../../src/orders
-      dockerfile: ../../images/java17/Dockerfile
-      args:
-        JAR_PATH: target/orders-0.0.1-SNAPSHOT.jar
+    image: public.ecr.aws/aws-containers/retail-store-sample-orders:${TAG}
     restart: always
     environment:
       - JAVA_OPTS=-XX:MaxRAMPercentage=75.0 -Djava.security.egd=file:/dev/urandom
@@ -110,9 +96,7 @@ services:
     mem_limit: 128m
 
   checkout:
-    build:
-      context: ../../src/checkout
-      dockerfile: ../../images/nodejs/Dockerfile
+    image: public.ecr.aws/aws-containers/retail-store-sample-checkout:${TAG}
     hostname: checkout
     restart: always
     read_only: true
@@ -135,9 +119,7 @@ services:
     hostname: assets
     environment:
       - PORT=8080
-    build:
-      context: ../../src/assets
-      dockerfile: Dockerfile
+    image: public.ecr.aws/aws-containers/retail-store-sample-assets:${TAG}
     restart: always
     mem_limit: 64m
     cap_drop:
