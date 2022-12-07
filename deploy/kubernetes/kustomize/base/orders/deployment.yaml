@@ -90,10 +90,10 @@ spec:
             periodSeconds: 5
           resources:
             limits:
-              memory: 1Gi
+              memory: 256Mi
             requests:
-              cpu: 250m
-              memory: 1Gi
+              cpu: 128m
+              memory: 256Mi
           volumeMounts:
             - mountPath: /tmp
               name: tmp-volume
