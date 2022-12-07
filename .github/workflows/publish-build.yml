@@ -37,6 +37,8 @@ jobs:
         kubectl kustomize deploy/kubernetes/kustomize/overlays/published-images/ > dist/kubernetes/deploy.yaml
         envsubst '$TAG' < deploy/docker-compose/docker-compose.yml > dist/docker-compose/docker-compose.yml
         
+        rm -f ./yq
+        
     - uses: stefanzweifel/git-auto-commit-action@v4
       with:
         commit_message: "Release ${{ github.event.inputs.tag }}"
