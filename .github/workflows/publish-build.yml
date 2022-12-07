@@ -32,7 +32,7 @@ jobs:
         wget https://github.com/mikefarah/yq/releases/download/v4.30.4/yq_linux_amd64 -O yq
         chmod +x yq
         
-        ./yq '.images.[].newTag |= env(TAG)' deploy/kubernetes/kustomize/overlays/published-images/kustomization.yaml
+        ./yq -i '.images.[].newTag |= env(TAG)' deploy/kubernetes/kustomize/overlays/published-images/kustomization.yaml
         mkdir -p dist/kubernetes dist/docker-compose
         kubectl kustomize deploy/kubernetes/kustomize/overlays/published-images/ > dist/kubernetes/deploy.yaml
         envsubst '$TAG' < deploy/docker-compose/docker-compose.yml > dist/docker-compose/docker-compose.yml
