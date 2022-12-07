@@ -27,35 +27,68 @@ The application has been deliberately over-engineered to generate multiple de-co
 | ![cart workflow](https://github.com/aws-containers/retail-store-sample-app/actions/workflows/ci-cart.yml/badge.svg)   | Java     | [Link](https://gallery.ecr.aws/aws-containers/retail-store-sample-cart)     | User shopping carts API                                                     |
 | ![orders workflow](https://github.com/aws-containers/retail-store-sample-app/actions/workflows/ci-orders.yml/badge.svg)  | Java     | [Link](https://gallery.ecr.aws/aws-containers/retail-store-sample-orders)   | User orders API                                                             |
 | ![checkout workflow](https://github.com/aws-containers/retail-store-sample-app/actions/workflows/ci-checkout.yml/badge.svg) | Node     | [Link](https://gallery.ecr.aws/aws-containers/retail-store-sample-checkout) | API to orchestrate the checkout process                                     |
-| ![ui workflow](https://github.com/aws-containers/retail-store-sample-app/actions/workflows/ci-assets.yml/badge.svg)  | Nginx    | [Link](https://gallery.ecr.aws/aws-containers/retail-store-sample-assets)   | Serves static assets like images related to the product catalog             |
+| ![assets workflow](https://github.com/aws-containers/retail-store-sample-app/actions/workflows/ci-assets.yml/badge.svg)  | Nginx    | [Link](https://gallery.ecr.aws/aws-containers/retail-store-sample-assets)   | Serves static assets like images related to the product catalog             |
 
 ## Quickstart
 
 The following sections provide quickstart instructions for various platforms. All of these assume that you have cloned this repository locally and are using a CLI thats current directory is the root of the code repository.
+
+### Kubernetes
+
+This deployment method will run the application in an existing Kubernetes cluster.
+
+Pre-requisites:
+- Kubernetes cluster
+- `kubectl` installed locally
+
+Use `kubectl` to run the application:
+
+```
+kubectl apply -f https://raw.githubusercontent.com/aws-containers/retail-store-sample-app/main/dist/kubernetes/deploy.yaml
+kubectl wait --for=condition=available deployments -l app.kubernetes.io/created-by=retail-store-sample -A
+```
+
+Get the URL for the frontend load balancer like so:
+
+```
+kubectl get svc -n ui-lb
+```
+
+To remove the application use `kubectl` again:
+
+```
+kubectl delete -f https://raw.githubusercontent.com/aws-containers/retail-store-sample-app/main/dist/kubernetes/deploy.yaml
+```
 
 ### Docker Compose
 
 This deployment method will run the application on your local machine using `docker-compose`, and will build the containers as part of the deployment.
 
 Pre-requisites:
-- Docker and Docker Compose installed locally
+- Docker installed locally
 
 Change directory to the Docker Compose deploy directory:
 
 ```
-cd deploy/docker-compose
+cd dist/docker-compose
 ```
 
-Use `docker-compose` to run the application containers:
+Use `docker compose` to run the application containers:
 
 ```
-MYSQL_PASSWORD='<some password>' docker-compose up
+MYSQL_PASSWORD='<some password>' docker compose up -f dist/docker-compose/docker-compose.yml
 ```
 
 Open the frontend in a browser window:
 
 ```
 http://localhost:8888
+```
+
+To stop the containers in `docker compose` use Ctrl+C. To delete all the containers and related resources run:
+
+```
+docker compose -f dist/docker-compose/docker-compose.yml down
 ```
 
 ## Security
