@@ -1,13 +1,6 @@
 name: E2E Test
 
 on:
-  pull_request:
-    branches:
-    - main
-    paths:
-    - 'src/**'
-    - 'images/**'
-    - 'deploy/docker-compose/**'
   workflow_dispatch:
 
 jobs:
