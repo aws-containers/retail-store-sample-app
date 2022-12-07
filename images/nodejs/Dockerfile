@@ -1,6 +1,6 @@
 FROM amazonlinux:2
 
-RUN yum install -y libstdc++.i686 glibc.i686 tar gzip xz && \
+RUN yum install -q -y libstdc++.i686 glibc.i686 tar gzip xz && \
     yum clean all
 
 ARG TARGETARCH

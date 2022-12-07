@@ -1,7 +1,7 @@
 # Build Stage
 FROM amazonlinux:2 as build-env
 
-RUN yum install -y git golang && \
+RUN yum install -q -y git golang && \
     yum clean all
 
 ARG MAIN_PATH
@@ -21,7 +21,7 @@ ENV APPUSER=appuser
 ENV APPUID=1000
 ENV APPGID=1000
 
-RUN yum install -y \
+RUN yum install -q -y \
     shadow-utils && \
     yum clean all
 

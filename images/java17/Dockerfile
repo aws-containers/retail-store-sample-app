@@ -10,11 +10,11 @@ COPY .mvn .mvn
 COPY mvnw .
 COPY pom.xml .
 
-RUN ./mvnw dependency:go-offline -B
+RUN ./mvnw dependency:go-offline -B -q
 
 COPY ./src ./src
 
-RUN ./mvnw -DskipTests package && \
+RUN ./mvnw -DskipTests package -q && \
     mv /$JAR_PATH /app.jar
 
 # Package Stage
@@ -22,7 +22,7 @@ FROM amazoncorretto:17-al2-full
 
 ARG aws_opentelemetry_agent_version=1.20.0
 
-RUN yum install -y \
+RUN yum install -q -y \
     shadow-utils wget && \
     yum clean all
 
