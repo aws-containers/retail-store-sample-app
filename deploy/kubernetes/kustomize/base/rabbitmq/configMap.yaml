@@ -14,13 +14,8 @@
 # OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 # SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-apiVersion: kustomize.config.k8s.io/v1beta1
-kind: Kustomization
-resources:
-- catalog
-- carts
-- checkout
-- assets
-- orders
-- ui
-- rabbitmq
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: rabbitmq
+data:
