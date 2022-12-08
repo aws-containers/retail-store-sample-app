@@ -13,26 +13,14 @@
 # HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
 # OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 # SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-apiVersion: kustomize.config.k8s.io/v1beta1
-kind: Kustomization
-bases:
-  - ../../base
-images:
-  - name: retail-store-sample-assets
-    newName: public.ecr.aws/aws-containers/retail-store-sample-assets
-    newTag: 0.1.0
-  - name: retail-store-sample-catalog
-    newName: public.ecr.aws/aws-containers/retail-store-sample-catalog
-    newTag: 0.1.0
-  - name: retail-store-sample-cart
-    newName: public.ecr.aws/aws-containers/retail-store-sample-cart
-    newTag: 0.1.0
-  - name: retail-store-sample-checkout
-    newName: public.ecr.aws/aws-containers/retail-store-sample-checkout
-    newTag: 0.1.0
-  - name: retail-store-sample-ui
-    newName: public.ecr.aws/aws-containers/retail-store-sample-ui
-    newTag: 0.1.0
-  - name: retail-store-sample-orders
-    newName: public.ecr.aws/aws-containers/retail-store-sample-orders
-    newTag: 0.1.0
+
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: ui
+data:
+  ENDPOINTS_CATALOG: http://catalog.catalog.svc:80
+  ENDPOINTS_CARTS: false
+  ENDPOINTS_ORDERS: false
+  ENDPOINTS_ASSETS: false
+  ENDPOINTS_CHECKOUT: false
