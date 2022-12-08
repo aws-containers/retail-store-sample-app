@@ -19,6 +19,7 @@ kind: Deployment
 metadata:
   name: orders
   labels:
+    app.kubernetes.io/created-by: retail-store-sample
     app.kubernetes.io/type: app
 spec:
   replicas: 1
