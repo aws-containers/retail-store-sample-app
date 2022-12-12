@@ -421,7 +421,7 @@ spec:
       - envFrom:
         - configMapRef:
             name: assets
-        image: public.ecr.aws/aws-containers/retail-store-sample-assets:0.1.0
+        image: public.ecr.aws/aws-containers/retail-store-sample-assets:0.2.0
         imagePullPolicy: IfNotPresent
         livenessProbe:
           httpGet:
@@ -491,7 +491,7 @@ spec:
         envFrom:
         - configMapRef:
             name: carts
-        image: public.ecr.aws/aws-containers/retail-store-sample-cart:0.1.0
+        image: public.ecr.aws/aws-containers/retail-store-sample-cart:0.2.0
         imagePullPolicy: IfNotPresent
         livenessProbe:
           httpGet:
@@ -506,10 +506,10 @@ spec:
           protocol: TCP
         resources:
           limits:
-            memory: 256Mi
+            memory: 512Mi
           requests:
             cpu: 128m
-            memory: 256Mi
+            memory: 512Mi
         securityContext:
           capabilities:
             drop:
@@ -618,7 +618,7 @@ spec:
         envFrom:
         - configMapRef:
             name: catalog
-        image: public.ecr.aws/aws-containers/retail-store-sample-catalog:0.1.0
+        image: public.ecr.aws/aws-containers/retail-store-sample-catalog:0.2.0
         imagePullPolicy: IfNotPresent
         livenessProbe:
           httpGet:
@@ -743,7 +743,7 @@ spec:
       - envFrom:
         - configMapRef:
             name: checkout
-        image: public.ecr.aws/aws-containers/retail-store-sample-checkout:0.1.0
+        image: public.ecr.aws/aws-containers/retail-store-sample-checkout:0.2.0
         imagePullPolicy: IfNotPresent
         livenessProbe:
           httpGet:
@@ -817,6 +817,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
+    app.kubernetes.io/created-by: retail-store-sample
     app.kubernetes.io/type: app
   name: orders
   namespace: orders
@@ -875,7 +876,7 @@ spec:
         envFrom:
         - configMapRef:
             name: orders
-        image: public.ecr.aws/aws-containers/retail-store-sample-orders:0.1.0
+        image: public.ecr.aws/aws-containers/retail-store-sample-orders:0.2.0
         imagePullPolicy: IfNotPresent
         livenessProbe:
           httpGet:
@@ -896,10 +897,10 @@ spec:
           successThreshold: 3
         resources:
           limits:
-            memory: 256Mi
+            memory: 512Mi
           requests:
             cpu: 128m
-            memory: 256Mi
+            memory: 512Mi
         securityContext:
           capabilities:
             drop:
@@ -1029,7 +1030,7 @@ spec:
         envFrom:
         - configMapRef:
             name: ui
-        image: public.ecr.aws/aws-containers/retail-store-sample-ui:0.1.0
+        image: public.ecr.aws/aws-containers/retail-store-sample-ui:0.2.0
         imagePullPolicy: IfNotPresent
         livenessProbe:
           httpGet:
