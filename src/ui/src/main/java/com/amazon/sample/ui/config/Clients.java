@@ -65,12 +65,16 @@ public class Clients {
     @Value("${endpoints.logging}")
     private boolean logging;
 
+    @Value("${endpoints.http.keep-alive}")
+    private boolean keepAlive;
+
     private WebClient createWebClient(ObjectMapper mapper, WebClient.Builder webClientBuilder) {
         TcpClient tcpClient = TcpClient.create()
                 .option(ChannelOption.CONNECT_TIMEOUT_MILLIS, 1000) // Connection Timeout
                 .doOnConnected(connection ->
                         connection.addHandlerLast(new ReadTimeoutHandler(10)) // Read Timeout
                                 .addHandlerLast(new WriteTimeoutHandler(10))); // Write Timeout
+
         ExchangeStrategies strategies = ExchangeStrategies
                 .builder()
                 .codecs(clientDefaultCodecsConfigurer -> {
@@ -79,7 +83,7 @@ public class Clients {
                 }).build();
 
         return webClientBuilder
-                .clientConnector(new ReactorClientHttpConnector(HttpClient.from(tcpClient)))
+                .clientConnector(new ReactorClientHttpConnector(HttpClient.from(tcpClient).keepAlive(keepAlive)))
                 .exchangeStrategies(strategies)
                 .filters( exchangeFilterFunctions -> {
                     if(logging) {

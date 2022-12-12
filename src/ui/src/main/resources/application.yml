@@ -10,14 +10,14 @@ endpoints:
   assets: false #http://localhost:8084
   checkout:  false #http://localhost:8085
   logging: false
+  http:
+    keep-alive: true
 
 retail:
   ui:
     metadata:
       region: "none"
     banner: ""
-
-
 
 management:
   endpoints:
