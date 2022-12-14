@@ -1,14 +1,21 @@
 variable "environment_name" {
-  # default = "test"
+  type = string
 }
 
 variable "vpc_id" {
   type = string
-  # default = "vpc-e4678d9f"
 }
 
-variable "subnets" {
+variable "subnet_ids" {
   description = "List of subnet IDs used by database subnet group created"
   type        = list(string)
-  # default = ["subnet-07d7fba3c2caa131b", "subnet-865eb9da"]
+}
+
+variable "tags" {
+  description = "A map of tags to add to all resources"
+  default     = {}
+}
+
+variable "availability_zones" {
+  type = list(string)
 }

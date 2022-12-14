@@ -10,8 +10,8 @@ module "catalog_rds" {
     one = {}
   }
 
-  vpc_id = var.vpc_id
-  subnets = var.subnets
+  vpc_id = module.vpc.inner.vpc_id
+  subnets = module.vpc.inner.private_subnets
 
   allowed_security_groups = [aws_security_group.catalog_rds_ingress.id]
 
@@ -30,7 +30,7 @@ module "catalog_rds" {
   db_cluster_parameter_group_name   = "${var.environment_name}-catalog"
   db_cluster_parameter_group_family = "aurora-mysql5.7"
 
-  # tags = local.tags
+  tags             = module.tags.result
 }
 
 resource "random_string" "catalog_db_master" {
@@ -41,7 +41,20 @@ resource "random_string" "catalog_db_master" {
 resource "aws_security_group" "catalog_rds_ingress" {
   name        = "${var.environment_name}-catalog-db"
   description = "Allow inbound traffic to catalog MySQL"
-  vpc_id      = var.vpc_id
+  vpc_id      = module.vpc.inner.vpc_id
 
-  # tags = local.tags
+  tags             = module.tags.result
+}
+
+module "rds_vpc" {
+  source = "../vpc"
+
+  environment_name = var.environment_name
+  tags             = module.tags.result
+}
+
+module "rds_tags" {
+  source = "../tags"
+
+  environment_name = var.environment_name
 }

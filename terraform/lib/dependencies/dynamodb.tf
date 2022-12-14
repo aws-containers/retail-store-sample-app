@@ -22,5 +22,12 @@ module "dynamodb-carts" {
             projection_type = "ALL"
         }
     ]
+    
+    tags             = module.tags.result
+}
 
+module "ddb_tags" {
+  source = "../tags"
+
+  environment_name = var.environment_name
 }
