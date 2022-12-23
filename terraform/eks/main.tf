@@ -43,27 +43,46 @@ module "retail_app_eks" {
   tags             = module.tags.result
 }
 
-# Setup deploying role cluster with auth
-resource "null_resource" "setup_cluster_access" {
-  provisioner "local-exec" {
-    interpreter = ["bash", "-exc"]
-    command     = "aws eks --region ${data.aws_region.current.name} update-kubeconfig --name ${module.retail_app_eks.eks_cluster_id}"
-  }
+locals {
+  kubeconfig = yamlencode({
+    apiVersion      = "v1"
+    kind            = "Config"
+    current-context = "terraform"
+    clusters = [{
+      name = module.retail_app_eks.eks_cluster_id
+      cluster = {
+        certificate-authority-data = module.retail_app_eks.cluster_object.eks_cluster_certificate_authority_data
+        server                     = module.retail_app_eks.cluster_endpoint
+      }
+    }]
+    contexts = [{
+      name = "terraform"
+      context = {
+        cluster = module.retail_app_eks.eks_cluster_id
+        user    = "terraform"
+      }
+    }]
+    users = [{
+      name = "terraform"
+      user = {
+        token = data.aws_eks_cluster_auth.this.token
+      }
+    }]
+  })
+}
 
-  depends_on = [
-    module.retail_app_eks
-  ]
+resource "local_file" "kubeconfig" {
+  content  = local.kubeconfig
+  filename = "kubeconfig_${module.retail_app_eks.eks_cluster_id}"
 }
 
 # Apply YAML kubernetes-manifest configurations
 resource "null_resource" "apply_deployment" {
   provisioner "local-exec" {
     interpreter = ["bash", "-exc"]
-    command     = "kubectl apply -k ${var.filepath_manifest}"
+    environment = {
+      KUBECONFIG = local_file.kubeconfig.filename
+    }
+    command = "kubectl apply -k ${var.filepath_manifest}"
   }
-
-  depends_on = [
-    module.retail_app_eks,
-    resource.null_resource.setup_cluster_access
-  ]
 }
