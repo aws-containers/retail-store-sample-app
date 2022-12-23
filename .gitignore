@@ -8,3 +8,4 @@
 reports
 env
 oss-output
+kubeconfig_*

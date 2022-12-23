@@ -51,10 +51,25 @@ module "eks_cluster" {
   }
 
   managed_node_groups = {
-    mg_5 = {
-      node_group_name      = "managed-ondemand"
+    node_group_1 = {
+      node_group_name      = "managed-nodegroup-1"
       instance_types       = ["m5.large"]
-      subnet_ids           = var.subnet_ids
+      subnet_ids           = [var.subnet_ids[0]]
+      desired_size         = 1
+      force_update_version = true
+    }
+    node_group_2 = {
+      node_group_name      = "managed-nodegroup-2"
+      instance_types       = ["m5.large"]
+      subnet_ids           = [var.subnet_ids[1]]
+      desired_size         = 1
+      force_update_version = true
+    }
+    node_group_3 = {
+      node_group_name      = "managed-nodegroup-3"
+      instance_types       = ["m5.large"]
+      subnet_ids           = [var.subnet_ids[2]]
+      desired_size         = 1
       force_update_version = true
     }
   }
@@ -86,10 +101,6 @@ module "eks_cluster_kubernetes_addons" {
   enable_amazon_eks_kube_proxy         = true
   enable_amazon_eks_aws_ebs_csi_driver = true
 
-  enable_prometheus                    = true
-  enable_amazon_prometheus             = true
-  amazon_prometheus_workspace_endpoint = module.managed_prometheus.workspace_prometheus_endpoint
-
   enable_aws_for_fluentbit                 = true
   aws_for_fluentbit_create_cw_log_group    = false
   aws_for_fluentbit_cw_log_group_retention = 30
@@ -97,27 +108,9 @@ module "eks_cluster_kubernetes_addons" {
     create_namespace = true
   }
 
-  enable_kyverno                 = true
-  enable_kyverno_policies        = true
-  enable_kyverno_policy_reporter = true
-
   tags = var.tags
 
   depends_on = [
-    module.eks_cluster,
-    module.managed_prometheus
+    module.eks_cluster
   ]
-}
-
-#---------------------------------------------------------------
-# Supporting Resources
-#---------------------------------------------------------------
-
-module "managed_prometheus" {
-  source  = "terraform-aws-modules/managed-service-prometheus/aws"
-  version = "~> 2.1"
-
-  workspace_alias = var.environment_name
-
-  tags = var.tags
 }
