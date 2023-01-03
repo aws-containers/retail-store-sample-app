@@ -24,7 +24,7 @@
     "@nestjs/common": "^9.2.1",
     "@nestjs/config": "^2.2.0",
     "@nestjs/core": "^9.2.1",
-    "@nestjs/platform-express": "^9.0.0",
+    "@nestjs/platform-express": "^9.2.1",
     "@nestjs/swagger": "^6.1.2",
     "@nestjs/terminus": "^9.1.1",
     "@opentelemetry/auto-instrumentations-node": "^0.35.0",
