@@ -62,7 +62,7 @@
     <dependency>
       <groupId>com.amazonaws</groupId>
       <artifactId>aws-java-sdk-dynamodb</artifactId>
-      <version>1.12.358</version>
+      <version>1.12.376</version>
     </dependency>
     <dependency>
       <groupId>com.amazonaws</groupId>
@@ -78,7 +78,7 @@
     <dependency>
       <groupId>org.springdoc</groupId>
       <artifactId>springdoc-openapi-ui</artifactId>
-      <version>1.6.13</version>
+      <version>1.6.14</version>
     </dependency>
 
     <dependency>
