@@ -22,7 +22,6 @@ import (
 	"fmt"
 	"log"
 	"strings"
-	"time"
 
 	"github.com/aws-containers/retail-store-sample-app/catalog/config"
 	"github.com/aws-containers/retail-store-sample-app/catalog/model"
@@ -46,11 +45,10 @@ var baseQuery = "SELECT product.product_id AS id, product.name, product.descript
 type mySQLRepository struct {
 	db       *sqlx.DB
 	readerDb *sqlx.DB
-	//logger log.Logger
 }
 
 func newMySQLRepository(config config.DatabaseConfiguration) (Repository, error) {
-	connectionString := fmt.Sprintf("%s:%s@tcp(%s)/%s", config.User, config.Password, config.Endpoint, config.Name)
+	connectionString := fmt.Sprintf("%s:%s@tcp(%s)/%s?timeout=%ds", config.User, config.Password, config.Endpoint, config.Name, config.ConnectTimeout)
 
 	if config.Migrate {
 		err := migrateMySQL(connectionString)
@@ -62,16 +60,15 @@ func newMySQLRepository(config config.DatabaseConfiguration) (Repository, error)
 
 	var readerDb *sqlx.DB
 
-	db, err := createConnection(connectionString)
+	db, err := createConnection(config.Endpoint, config.User, config.Password, config.Name, config.ConnectTimeout)
 	if err != nil {
 		log.Println("Error: Unable to connect to database", err)
 		return nil, err
 	}
 
 	if len(config.ReadEndpoint) > 0 {
-		readerConnectionString := fmt.Sprintf("%s:%s@tcp(%s)/%s", config.User, config.Password, config.ReadEndpoint, config.Name)
 
-		readerDb, err = createConnection(readerConnectionString)
+		readerDb, err = createConnection(config.ReadEndpoint, config.User, config.Password, config.Name, config.ConnectTimeout)
 		if err != nil {
 			log.Println("Error: Unable to connect to reader database", err)
 			return nil, err
@@ -86,15 +83,15 @@ func newMySQLRepository(config config.DatabaseConfiguration) (Repository, error)
 	}, nil
 }
 
-func createConnection(connectionString string) (*sqlx.DB, error) {
-	log.Printf("Connecting to %s\n", connectionString)
+func createConnection(endpoint string, username string, password string, name string, timeout int) (*sqlx.DB, error) {
+	log.Printf("Connecting to %s/%s?timeout=%ds", endpoint, name, timeout)
 
+	connectionString := fmt.Sprintf("%s:%s@tcp(%s)/%s?timeout=%ds", username, password, endpoint, name, timeout)
 	db, err := splunksqlx.Open("mysql", connectionString)
 	if err != nil {
 		return nil, err
 	}
 
-	// Check if DB connection can be made, only for logging purposes, should not fail/exit
 	err = db.Ping()
 	if err != nil {
 		return nil, err
@@ -104,6 +101,8 @@ func createConnection(connectionString string) (*sqlx.DB, error) {
 }
 
 func migrateMySQL(connectionString string) error {
+	log.Println("Running database migration...")
+
 	m, err := migrate.New(
 		"file://db/migrations",
 		"mysql://"+connectionString,
@@ -154,9 +153,6 @@ func (s *mySQLRepository) List(tags []string, order string, pageNum, pageSize in
 	for i, s := range products {
 		products[i].Tags = strings.Split(s.TagString, ",")
 	}
-
-	// DEMO: Change 0 to 850
-	time.Sleep(0 * time.Millisecond)
 
 	products = cut(products, pageNum, pageSize)
 
