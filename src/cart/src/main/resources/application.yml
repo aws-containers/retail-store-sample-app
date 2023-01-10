@@ -8,7 +8,9 @@ server:
   port: ${port:8080}
 ---
 spring:
-  profiles: "!mongo"
+  config:
+    activate:
+      on-profile: "!mongo"
   autoconfigure:
     exclude:
       - org.springframework.boot.autoconfigure.mongo.MongoAutoConfiguration

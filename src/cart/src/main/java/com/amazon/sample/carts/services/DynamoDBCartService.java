@@ -31,7 +31,7 @@ import com.amazon.sample.carts.repositories.ItemEntity;
 import com.amazon.sample.carts.repositories.dynamo.entities.DynamoItemEntity;
 import lombok.extern.slf4j.Slf4j;
 
-import javax.annotation.PostConstruct;
+import jakarta.annotation.PostConstruct;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
