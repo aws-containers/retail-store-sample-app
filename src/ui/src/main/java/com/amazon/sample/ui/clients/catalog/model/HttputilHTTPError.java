@@ -48,7 +48,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   HttputilHTTPError.JSON_PROPERTY_CODE,
   HttputilHTTPError.JSON_PROPERTY_MESSAGE
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-06-30T15:47:44.774503-07:00[America/Los_Angeles]")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-06-30T15:47:44.774503-07:00[America/Los_Angeles]")
 public class HttputilHTTPError {
   public static final String JSON_PROPERTY_CODE = "code";
   private Integer code;
