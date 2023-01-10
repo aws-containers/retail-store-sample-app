@@ -55,7 +55,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   ModelProduct.JSON_PROPERTY_PRICE,
   ModelProduct.JSON_PROPERTY_TAG
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-06-30T15:47:44.774503-07:00[America/Los_Angeles]")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-06-30T15:47:44.774503-07:00[America/Los_Angeles]")
 public class ModelProduct {
   public static final String JSON_PROPERTY_COUNT = "count";
   private Integer count;

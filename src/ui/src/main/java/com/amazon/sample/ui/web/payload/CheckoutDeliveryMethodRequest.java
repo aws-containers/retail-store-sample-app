@@ -20,8 +20,8 @@ package com.amazon.sample.ui.web.payload;
 
 import lombok.Data;
 
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.Pattern;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.Pattern;
 
 @Data
 public class CheckoutDeliveryMethodRequest {

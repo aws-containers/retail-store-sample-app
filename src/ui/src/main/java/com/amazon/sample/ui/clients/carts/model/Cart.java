@@ -51,7 +51,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   Cart.JSON_PROPERTY_CUSTOMER_ID,
   Cart.JSON_PROPERTY_ITEMS
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-07-01T20:15:13.760294-07:00[America/Los_Angeles]")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-07-01T20:15:13.760294-07:00[America/Los_Angeles]")
 public class Cart {
   public static final String JSON_PROPERTY_CUSTOMER_ID = "customerId";
   private String customerId;

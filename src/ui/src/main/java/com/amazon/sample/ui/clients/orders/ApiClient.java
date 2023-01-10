@@ -81,7 +81,7 @@ import com.amazon.sample.ui.clients.orders.auth.HttpBasicAuth;
 import com.amazon.sample.ui.clients.orders.auth.HttpBearerAuth;
 import com.amazon.sample.ui.clients.orders.auth.ApiKeyAuth;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-01-19T15:03:36.090791-08:00[America/Los_Angeles]")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-01-19T15:03:36.090791-08:00[America/Los_Angeles]")
 public class ApiClient {
     public enum CollectionFormat {
         CSV(","), TSV("\t"), SSV(" "), PIPES("|"), MULTI(null);
