@@ -19,6 +19,7 @@ The following environment variables are available for configuring the service:
 | DB_USER | The username for authenticating to the database | `catalog_user` |
 | DB_PASSWORD | The password for authenticating to the database | |
 | DB_MIGRATE | Whether to run the database migration function on startup | `true` |
+| DB_CONNECT_TIMEOUT | Database connection timeout in seconds | `5` |
 
 ## Running
 
