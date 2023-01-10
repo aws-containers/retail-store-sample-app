@@ -67,7 +67,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 ----
 
-### github.com/aws/aws-sdk-go @v1.44.118
+### github.com/aws/aws-sdk-go @v1.44.152
 
 
                                  Apache License
@@ -276,7 +276,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 ----
 
-### github.com/aws/aws-sdk-go/internal/sync/singleflight @v1.44.118
+### github.com/aws/aws-sdk-go/internal/sync/singleflight @v1.44.152
 
 Copyright (c) 2009 The Go Authors. All rights reserved.
 
@@ -337,7 +337,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 ----
 
-### github.com/cenkalti/backoff/v4 @v4.1.3
+### github.com/cenkalti/backoff/v4 @v4.2.0
 
 The MIT License (MIT)
 
@@ -1813,7 +1813,7 @@ SOFTWARE.
 
 ----
 
-### github.com/go-sql-driver/mysql @v1.6.0
+### github.com/go-sql-driver/mysql @v1.7.0
 
 Mozilla Public License Version 2.0
 ==================================
@@ -4797,7 +4797,7 @@ SOFTWARE.
 
 ----
 
-### github.com/swaggo/swag @v1.8.7
+### github.com/swaggo/swag @v1.8.8
 
 MIT License
 
@@ -4853,7 +4853,7 @@ SOFTWARE.
 
 ----
 
-### go.opentelemetry.io/otel @v1.11.1
+### go.opentelemetry.io/otel @v1.11.2
 
                                  Apache License
                            Version 2.0, January 2004
@@ -5121,7 +5121,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 ----
 
-### golang.org/x/net @v0.0.0-20220923203811-8be639271d50
+### golang.org/x/net @v0.1.0
 
 Copyright (c) 2009 The Go Authors. All rights reserved.
 
@@ -5155,7 +5155,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 ----
 
-### golang.org/x/sys @v0.0.0-20220926163933-8cfa568d3c25
+### golang.org/x/sys @v0.1.0
 
 Copyright (c) 2009 The Go Authors. All rights reserved.
 
@@ -5189,7 +5189,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 ----
 
-### golang.org/x/text @v0.3.7
+### golang.org/x/text @v0.4.0
 
 Copyright (c) 2009 The Go Authors. All rights reserved.
 
@@ -5466,7 +5466,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 ----
 
-### google.golang.org/grpc @v1.50.1
+### google.golang.org/grpc @v1.51.0
 
 
                                  Apache License
