@@ -13,7 +13,7 @@ module "orders_rds" {
   vpc_id = var.vpc_id
   subnets = var.subnet_ids
 
-  allowed_security_groups = [aws_security_group.orders_rds_ingress.id]
+  allowed_security_groups = [var.orders_security_group_id]
 
   master_password        = random_string.orders_db_master.result
   create_random_password = false
@@ -36,12 +36,4 @@ module "orders_rds" {
 resource "random_string" "orders_db_master" {
   length  = 10
   special = false
-}
-
-resource "aws_security_group" "orders_rds_ingress" {
-  name        = "${var.environment_name}-orders-db"
-  description = "Allow inbound traffic to orders MySQL"
-  vpc_id      = var.vpc_id
-
-  tags             = var.tags
 }

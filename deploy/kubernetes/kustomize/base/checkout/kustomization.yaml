@@ -22,6 +22,4 @@ resources:
 - configMap.yaml
 - serviceAccount.yaml
 - service.yaml
-- service-redis.yaml
 - deployment.yaml
-- deployment-redis.yaml

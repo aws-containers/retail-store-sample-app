@@ -1,0 +1,12 @@
+apiVersion: vpcresources.k8s.aws/v1beta1
+kind: SecurityGroupPolicy
+metadata:
+  name: checkout
+  namespace: checkout
+spec:
+  podSelector:
+    matchLabels:
+      app.kubernetes.io/component: service
+  securityGroups:
+    groupIds:
+    - $(CHECKOUT_SG_ID)

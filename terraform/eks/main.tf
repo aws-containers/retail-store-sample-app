@@ -31,6 +31,10 @@ module "dependencies" {
   vpc_id             = module.vpc.inner.vpc_id
   subnet_ids         = module.vpc.inner.private_subnets
   availability_zones = module.vpc.inner.azs
+
+  catalog_security_group_id  = aws_security_group.catalog.id
+  orders_security_group_id   = aws_security_group.orders.id
+  checkout_security_group_id = aws_security_group.checkout.id
 }
 
 module "retail_app_eks" {
@@ -39,6 +43,7 @@ module "retail_app_eks" {
   environment_name = var.environment_name
   cluster_version  = "1.24"
   vpc_id           = module.vpc.inner.vpc_id
+  vpc_cidr         = module.vpc.inner.vpc_cidr_block
   subnet_ids       = module.vpc.inner.private_subnets
   tags             = module.tags.result
 }
@@ -71,18 +76,17 @@ locals {
   })
 }
 
-resource "local_file" "kubeconfig" {
-  content  = local.kubeconfig
-  filename = "kubeconfig_${module.retail_app_eks.eks_cluster_id}"
-}
-
-# Apply YAML kubernetes-manifest configurations
 resource "null_resource" "apply_deployment" {
   provisioner "local-exec" {
     interpreter = ["bash", "-exc"]
     environment = {
-      KUBECONFIG = local_file.kubeconfig.filename
+      KUBECONFIG = base64encode(local.kubeconfig)
+
+      CARTS_IAM_ROLE = module.iam_assumable_role_carts.iam_role_arn
+      CHECKOUT_SG_ID = aws_security_group.checkout.id
+      ORDERS_SG_ID   = aws_security_group.orders.id
+      CATALOG_SG_ID  = aws_security_group.catalog.id
     }
-    command = "kubectl apply -k ${var.filepath_manifest}"
+    command = "kubectl apply -l is-namespace!=yes -k ${var.filepath_manifest} --kubeconfig <(echo $KUBECONFIG | base64 -d)"
   }
 }

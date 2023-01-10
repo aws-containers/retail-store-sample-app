@@ -18,6 +18,11 @@ variable "vpc_id" {
   type        = string
 }
 
+variable "vpc_cidr" {
+  description = "VPC ID used to create EKS cluster."
+  type        = string
+}
+
 variable "subnet_ids" {
   description = "List of private subnet IDs used by EKS cluster nodes."
   type        = list(string)

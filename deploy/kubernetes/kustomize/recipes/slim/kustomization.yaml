@@ -20,6 +20,7 @@ bases:
 - ../../base/catalog
 - ../../base/ui
 components:
+- ../../components/dependencies/standalone/catalog-db
 - ../../components/published-images
 patches:
 - ui-configMap.yaml

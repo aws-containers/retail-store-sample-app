@@ -1,0 +1,10 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+bases:
+- ../../base
+components:
+- ../../components/dependencies/standalone/catalog-db
+- ../../components/dependencies/standalone/orders-db
+- ../../components/dependencies/standalone/carts-db
+- ../../components/dependencies/standalone/checkout-redis
+- ../../components/dependencies/standalone/rabbitmq

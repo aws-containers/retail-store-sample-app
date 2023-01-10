@@ -19,5 +19,4 @@ kind: ConfigMap
 metadata:
   name: checkout
 data:
-  REDIS_URL: redis://checkout-redis:6379
   ENDPOINTS_ORDERS: http://orders.orders.svc:80

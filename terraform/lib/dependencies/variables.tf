@@ -19,3 +19,15 @@ variable "tags" {
 variable "availability_zones" {
   type = list(string)
 }
+
+variable "catalog_security_group_id" {
+  type = string
+}
+
+variable "orders_security_group_id" {
+  type = string
+}
+
+variable "checkout_security_group_id" {
+  type = string
+}

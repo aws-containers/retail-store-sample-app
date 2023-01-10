@@ -6,5 +6,5 @@ variable "environment_name" {
 variable "filepath_manifest" {
   type        = string
   description = "Path to Containers Retail Sample's Kubernetes resources, written using Kustomize"
-  default     = "../../deploy/kubernetes/kustomize/base/"
+  default     = "../../deploy/kubernetes/kustomize/recipes/full"
 }

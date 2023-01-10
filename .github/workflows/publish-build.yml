@@ -34,7 +34,7 @@ jobs:
         
         ./yq -i '.images.[].newTag |= env(TAG)' deploy/kubernetes/kustomize/components/published-images/kustomization.yaml
         mkdir -p dist/kubernetes dist/docker-compose
-        kubectl kustomize deploy/kubernetes/kustomize/recipes/basic/ > dist/kubernetes/deploy.yaml
+        kubectl kustomize deploy/kubernetes/kustomize/recipes/standalone/ > dist/kubernetes/deploy.yaml
         envsubst '$TAG' < deploy/docker-compose/docker-compose.yml > dist/docker-compose/docker-compose.yml
         
         rm -f ./yq

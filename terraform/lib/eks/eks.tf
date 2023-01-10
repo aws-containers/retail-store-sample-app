@@ -1,9 +1,5 @@
-#---------------------------------------------------------------
-# EKS Cluster
-#---------------------------------------------------------------
-
 module "eks_cluster" {
-  source = "github.com/aws-ia/terraform-aws-eks-blueprints?ref=v4.19.0"
+  source = "github.com/aws-ia/terraform-aws-eks-blueprints?ref=v4.20.0"
 
   cluster_name    = var.environment_name
   cluster_version = var.cluster_version
@@ -11,14 +7,8 @@ module "eks_cluster" {
   vpc_id             = var.vpc_id
   private_subnet_ids = var.subnet_ids
 
-  #----------------------------------------------------------------------------------------------------------#
-  # Security groups used in this module created by the upstream modules terraform-aws-eks (https://github.com/terraform-aws-modules/terraform-aws-eks).
-  #   Upstream module implemented Security groups based on the best practices doc https://docs.aws.amazon.com/eks/latest/userguide/sec-group-reqs.html.
-  #   So, by default the security groups are restrictive. Users needs to enable rules for specific ports required for App requirement or Add-ons
-  #   See the notes below for each rule used in these examples
-  #----------------------------------------------------------------------------------------------------------#
   node_security_group_additional_rules = {
-    # Extend node-to-node security group rules. Recommended and required for the Add-ons
+
     ingress_self_all = {
       description = "Node to node all ports/protocols"
       protocol    = "-1"
@@ -27,7 +17,7 @@ module "eks_cluster" {
       type        = "ingress"
       self        = true
     }
-    # Recommended outbound traffic for Node groups
+
     egress_all = {
       description      = "Node all egress"
       protocol         = "-1"
@@ -37,9 +27,7 @@ module "eks_cluster" {
       cidr_blocks      = ["0.0.0.0/0"]
       ipv6_cidr_blocks = ["::/0"]
     }
-    # Allows Control Plane Nodes to talk to Worker nodes on all ports. Added this to simplify the example and further avoid issues with Add-ons communication with Control plane.
-    # This can be restricted further to specific port based on the requirement for each Add-on e.g., metrics-server 4443, spark-operator 8080, karpenter 8443 etc.
-    # Change this according to your security requirements if needed
+
     ingress_cluster_to_node_all_traffic = {
       description                   = "Cluster API to Nodegroup all traffic"
       protocol                      = "-1"
@@ -77,29 +65,31 @@ module "eks_cluster" {
   tags = var.tags
 }
 
+resource "aws_security_group_rule" "dns_udp" {
+  type              = "ingress"
+  from_port         = 53
+  to_port           = 53
+  protocol          = "udp"
+  cidr_blocks       = [var.vpc_cidr]
+  security_group_id = module.eks_cluster.cluster_primary_security_group_id
+}
+
+resource "aws_security_group_rule" "dns_tcp" {
+  type              = "ingress"
+  from_port         = 53
+  to_port           = 53
+  protocol          = "tcp"
+  cidr_blocks       = [var.vpc_cidr]
+  security_group_id = module.eks_cluster.cluster_primary_security_group_id
+}
+
 module "eks_cluster_kubernetes_addons" {
-  source = "github.com/aws-ia/terraform-aws-eks-blueprints//modules/kubernetes-addons?ref=v4.19.0"
+  source = "github.com/aws-ia/terraform-aws-eks-blueprints//modules/kubernetes-addons?ref=v4.20.0"
 
   eks_cluster_id               = module.eks_cluster.eks_cluster_id
   eks_cluster_endpoint         = module.eks_cluster.eks_cluster_endpoint
   eks_oidc_provider            = module.eks_cluster.oidc_provider
   eks_cluster_version          = module.eks_cluster.eks_cluster_version
-  eks_worker_security_group_id = module.eks_cluster.worker_node_security_group_id
-  auto_scaling_group_names     = module.eks_cluster.self_managed_node_group_autoscaling_groups
-
-  # EKS Addons
-  enable_amazon_eks_vpc_cni = true
-  amazon_eks_vpc_cni_config = {
-    most_recent = true
-  }
-
-  enable_amazon_eks_coredns = true
-  amazon_eks_coredns_config = {
-    most_recent = true
-  }
-
-  enable_amazon_eks_kube_proxy         = true
-  enable_amazon_eks_aws_ebs_csi_driver = true
 
   enable_aws_for_fluentbit                 = true
   aws_for_fluentbit_create_cw_log_group    = false
@@ -109,8 +99,73 @@ module "eks_cluster_kubernetes_addons" {
   }
 
   tags = var.tags
+}
+
+locals {
+  kubeconfig = yamlencode({
+    apiVersion      = "v1"
+    kind            = "Config"
+    current-context = "terraform"
+    clusters = [{
+      name = module.eks_cluster.eks_cluster_id
+      cluster = {
+        certificate-authority-data = module.eks_cluster.eks_cluster_certificate_authority_data
+        server                     = module.eks_cluster.eks_cluster_endpoint
+      }
+    }]
+    contexts = [{
+      name = "terraform"
+      context = {
+        cluster = module.eks_cluster.eks_cluster_id
+        user    = "terraform"
+      }
+    }]
+    users = [{
+      name = "terraform"
+      user = {
+        token = data.aws_eks_cluster_auth.this.token
+      }
+    }]
+  })
+}
+
+resource "null_resource" "kubectl_set_env" {
+  triggers = {
+    cluster_arns = module.eks_cluster.eks_cluster_arn
+  }
+
+  provisioner "local-exec" {
+    interpreter = ["/bin/bash", "-c"]
+    environment = {
+      KUBECONFIG = base64encode(local.kubeconfig)
+    }
+
+    command = <<-EOT
+      sleep 30
+      kubectl set env daemonset aws-node -n kube-system POD_SECURITY_GROUP_ENFORCING_MODE=standard --kubeconfig <(echo $KUBECONFIG | base64 --decode)
+      sleep 10
+    EOT
+  }
+}
+
+data "aws_eks_addon_version" "latest" {
+  for_each = toset(["vpc-cni"])
+
+  addon_name         = each.value
+  kubernetes_version = var.cluster_version
+  most_recent        = true
+}
+
+resource "aws_eks_addon" "vpc_cni" {
+  cluster_name         = module.eks_cluster.eks_cluster_id
+  addon_name           = "vpc-cni"
+  addon_version        = data.aws_eks_addon_version.latest["vpc-cni"].version
+  resolve_conflicts    = "OVERWRITE"
+  configuration_values = "{\"env\":{\"ENABLE_POD_ENI\":\"true\"}}"
+
+  tags = var.tags
 
   depends_on = [
-    module.eks_cluster
+    null_resource.kubectl_set_env
   ]
 }

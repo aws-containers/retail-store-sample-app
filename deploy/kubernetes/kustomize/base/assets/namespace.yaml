@@ -20,3 +20,4 @@ metadata:
   name: assets
   labels:
     app.kubernetes.io/created-by: retail-store-sample
+    is-namespace: yes

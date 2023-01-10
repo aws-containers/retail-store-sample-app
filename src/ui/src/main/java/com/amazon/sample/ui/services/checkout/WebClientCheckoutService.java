@@ -94,7 +94,6 @@ public class WebClientCheckoutService implements CheckoutService {
     public Mono<CheckoutSubmittedResponse> submit(String sessionId) {
         return api.checkoutControllerSubmitCheckout(sessionId)
             .zipWith(this.cartsService.deleteCart(sessionId), (e, f) -> {
-                log.error("{}", e);
                 return new CheckoutSubmittedResponse(mapper.submitted(e), f);
             });
     }

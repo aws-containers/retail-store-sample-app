@@ -5,3 +5,7 @@ output "inner" {
 output "availability_zones" {
   value = local.azs
 }
+
+output "vpc_cidr" {
+  value = var.vpc_cidr
+}

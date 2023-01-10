@@ -8,11 +8,7 @@ default_registry(settings.get('default_registry', 'public.ecr.aws/aws-containers
 
 allow_k8s_contexts(k8s_context())
 
-#namespace_create('rabbitmq')
-#helm_repo('bitnami', 'https://charts.bitnami.com/bitnami')
-#helm_resource('rabbitmq', 'bitnami/rabbitmq', namespace='rabbitmq')
-
-k8s_yaml(kustomize('kustomize/base'))
+k8s_yaml(kustomize('kustomize/recipes/dev'))
 
 custom_build(
   'retail-store-sample-assets',

@@ -19,10 +19,7 @@ kind: Kustomization
 namespace: orders
 resources:
 - namespace.yaml
-- secrets.yaml
 - configMap.yaml
 - serviceAccount.yaml
 - service.yaml
-- service-mysql.yaml
 - deployment.yaml
-- deployment-mysql.yaml
