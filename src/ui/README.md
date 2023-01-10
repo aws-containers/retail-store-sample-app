@@ -1,18 +1,54 @@
-# UI Service
+# AWS Containers Retail Sample - UI Service
 
-## Run CI Tests
+| Language | Persistence |
+|---|---|
+| Java | N/A |
 
-Run:
+This service provides the frontend for the retail store, serving the HTML UI and aggregating calls to the backend API components.
+
+## Configuration
+
+The following environment variables are available for configuring the service:
+
+| Name | Description | Default |
+|---|---|---|
+| PORT | The port which the server will listen on | `8080` |
+| ENDPOINTS_CATALOG | The endpoint of the catalog API. If set to `false` uses a mock implementation. | `false` |
+| ENDPOINTS_CARTS | The endpoint of the carts API. If set to `false` uses a mock implementation. | `false` |
+| ENDPOINTS_ORDERS | The endpoint of the orders API. If set to `false` uses a mock implementation. | `false` |
+| ENDPOINTS_CHECKOUT | The endpoint of the checkout API. If set to `false` uses a mock implementation. | `false` |
+| ENDPOINTS_ASSETS | The endpoint of the assets service. If set to `false` uses a mock implementation. | `false` |
+| RETAIL_UI_BANNER | Sets text for a banner which will be displayed at the top of the UI on every page. | `""` |
+
+## Running
+
+There are two main options for running the service:
+
+### Local
+
+Pre-requisites:
+- Java 17 installed
+
+Run the Spring Boot application like so:
 
 ```
-./scripts/ci.sh
+./mvnw spring-boot:run
 ```
 
-## Notes
+Test the application by visiting `http://localhost:8080` in a web browser.
 
-Run checkstyle:
+### Docker
+
+A `docker-compose.yml` file is included to run the service in Docker:
 
 ```
-mvn checkstyle:check
+docker compose up
 ```
 
+Test the application by visiting `http://localhost:8080` in a web browser.
+
+To clean up:
+
+```
+docker compose down
+```
