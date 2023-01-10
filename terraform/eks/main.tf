@@ -87,6 +87,6 @@ resource "null_resource" "apply_deployment" {
       ORDERS_SG_ID   = aws_security_group.orders.id
       CATALOG_SG_ID  = aws_security_group.catalog.id
     }
-    command = "kubectl apply -l is-namespace!=yes -k ${var.filepath_manifest} --kubeconfig <(echo $KUBECONFIG | base64 -d)"
+    command = "kubectl apply -l is-namespace!=yes -k ${var.kustomization_path} --kubeconfig <(echo $KUBECONFIG | base64 -d)"
   }
 }

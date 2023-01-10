@@ -3,8 +3,8 @@ variable "environment_name" {
   default = "retail-store"
 }
 
-variable "filepath_manifest" {
+variable "kustomization_path" {
   type        = string
-  description = "Path to Containers Retail Sample's Kubernetes resources, written using Kustomize"
+  description = "Path to kustomization that will deploy the sample application in the EKS cluster"
   default     = "../../deploy/kubernetes/kustomize/recipes/full"
 }
