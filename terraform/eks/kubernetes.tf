@@ -18,7 +18,7 @@ resource "kubernetes_config_map_v1" "catalog_db" {
 
   data = {
     endpoint = "${module.dependencies.catalog_db_endpoint}:${module.dependencies.catalog_db_port}"
-    name     = "${module.dependencies.catalog_db_database_name}?timeout=5s"
+    name     = module.dependencies.catalog_db_database_name
   }
 }
 
