@@ -33,7 +33,7 @@
     "@opentelemetry/sdk-node": "^0.34.0",
     "@willsoto/nestjs-prometheus": "^4.7.0",
     "class-transformer": "^0.5.1",
-    "class-validator": "^0.13.2",
+    "class-validator": "^0.14.0",
     "nestjs-otel": "^5.0.0",
     "prom-client": "^14.1.0",
     "redis": "^4.5.1",
