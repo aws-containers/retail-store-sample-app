@@ -11,6 +11,8 @@ It provides:
 
 NOTE: This will create resources in your AWS account which will incur costs. You are responsible for these costs, and should understand the resources being created before proceeding.
 
+WARNING: Currently this Terraform provides sensitive like passwords via environment variables which is NOT best practice. This will be transitioned to AWS Secrets Manager integration pending merging of [this PR in the Terraform AWS provider](https://github.com/hashicorp/terraform-provider-aws/pull/28871).
+
 ## Usage
 
 Pre-requisites for this are:
