@@ -1,6 +1,6 @@
 FROM amazonlinux:2
 
-RUN yum install -q -y libstdc++.i686 glibc.i686 tar gzip xz && \
+RUN yum install -q -y libstdc++.i686 glibc.i686 tar gzip xz shadow-utils && \
     yum clean all
 
 ENV APPUSER=appuser
