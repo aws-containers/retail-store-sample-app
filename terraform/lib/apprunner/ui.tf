@@ -9,10 +9,10 @@ module "app_runner_ui" {
       image_configuration = {
         port = 8080
         runtime_environment_variables = {
-          ENDPOINTS_CATALOG  = "https://${module.app_runner_catalog.vpc_ingress_connection_domain_name}"
+          ENDPOINTS_CATALOG  = "https://${aws_apprunner_vpc_ingress_connection.catalog.domain_name}"
           ENDPOINTS_CARTS    = "https://${module.app_runner_carts.vpc_ingress_connection_domain_name}"
           ENDPOINTS_CHECKOUT = "https://${module.app_runner_checkout.vpc_ingress_connection_domain_name}"
-          ENDPOINTS_ORDERS   = "https://${module.app_runner_orders.vpc_ingress_connection_domain_name}"
+          ENDPOINTS_ORDERS   = "https://${aws_apprunner_vpc_ingress_connection.orders.domain_name}"
           ENDPOINTS_ASSETS   = "https://${module.app_runner_assets.vpc_ingress_connection_domain_name}"
         }
       }
