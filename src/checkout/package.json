@@ -25,7 +25,7 @@
     "@nestjs/config": "^2.2.0",
     "@nestjs/core": "^9.2.1",
     "@nestjs/platform-express": "^9.2.1",
-    "@nestjs/swagger": "^6.1.2",
+    "@nestjs/swagger": "^6.1.4",
     "@nestjs/terminus": "^9.1.4",
     "@opentelemetry/auto-instrumentations-node": "^0.35.0",
     "@opentelemetry/exporter-trace-otlp-grpc": "^0.34.0",
