@@ -27,3 +27,11 @@ variable "subnet_ids" {
   description = "List of private subnet IDs used by EKS cluster nodes."
   type        = list(string)
 }
+
+variable "istio_enabled" {
+  description = "Boolean value that enables istio."
+  type        = bool 
+  default     = false
+
+
+}

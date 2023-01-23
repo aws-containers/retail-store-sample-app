@@ -8,3 +8,9 @@ variable "kustomization_path" {
   description = "Path to kustomization that will deploy the sample application in the EKS cluster"
   default     = "../../deploy/kubernetes/kustomize/recipes/full"
 }
+
+variable "istio_enabled" {
+  description = "Boolean value that enables istio."
+  type        = bool 
+  default     = false
+}
