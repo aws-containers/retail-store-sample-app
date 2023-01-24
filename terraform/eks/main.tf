@@ -35,6 +35,7 @@ module "dependencies" {
   catalog_security_group_id  = aws_security_group.catalog.id
   orders_security_group_id   = aws_security_group.orders.id
   checkout_security_group_id = aws_security_group.checkout.id
+  allowed_security_group_ids = [module.retail_app_eks.cluster_object.worker_node_security_group_id]
 }
 
 module "retail_app_eks" {
@@ -47,7 +48,7 @@ module "retail_app_eks" {
   subnet_ids       = module.vpc.inner.private_subnets
   tags             = module.tags.result
 
-  enable_tetrate_istio = var.istio_enabled
+  istio_enabled = var.istio_enabled
 }
 
 locals {

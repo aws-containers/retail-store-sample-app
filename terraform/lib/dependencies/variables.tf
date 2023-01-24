@@ -31,3 +31,8 @@ variable "orders_security_group_id" {
 variable "checkout_security_group_id" {
   type = string
 }
+
+variable "allowed_security_group_ids" {
+  type    = list(string)
+  default = []
+}

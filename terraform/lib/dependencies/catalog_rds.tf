@@ -13,7 +13,7 @@ module "catalog_rds" {
   vpc_id = var.vpc_id
   subnets = var.subnet_ids
 
-  allowed_security_groups = [var.catalog_security_group_id]
+  allowed_security_groups = concat(var.allowed_security_group_ids, [var.catalog_security_group_id])
 
   master_password        = random_string.catalog_db_master.result
   create_random_password = false
