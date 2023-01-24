@@ -31,7 +31,7 @@ spec:
     args:
     - "run"
     - "-t"
-    - "ui.ui.svc"
+    - "http://ui.ui.svc"
     - "/scripts/scenario.yml"
     volumeMounts:
     - name: scripts
@@ -47,7 +47,7 @@ spec:
     - name: scripts
       mountPath: "/scripts"
   volumes:
-  - name: workdir
+  - name: scripts
     emptyDir: {}
 EOF
 ```
