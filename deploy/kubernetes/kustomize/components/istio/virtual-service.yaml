@@ -6,7 +6,7 @@ spec:
   hosts:
   - "*"
   gateways:
-  - watchn
+  - retail-store-sample
   http:
   - match:
     - uri:
