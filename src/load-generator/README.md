@@ -38,7 +38,7 @@ spec:
       mountPath: /scripts
   initContainers:
   - name: setup
-    image: public.ecr.aws/aws-containers/retail-store-sample-load-generator:0.2.0
+    image: public.ecr.aws/aws-containers/retail-store-sample-utils:load-gen.0.2.0
     command:
     - cp
     - "/artillery/scenario.yml"
