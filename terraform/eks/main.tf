@@ -35,6 +35,7 @@ module "dependencies" {
   catalog_security_group_id  = aws_security_group.catalog.id
   orders_security_group_id   = aws_security_group.orders.id
   checkout_security_group_id = aws_security_group.checkout.id
+  allowed_security_group_ids = [module.retail_app_eks.cluster_object.worker_node_security_group_id]
 }
 
 module "retail_app_eks" {
