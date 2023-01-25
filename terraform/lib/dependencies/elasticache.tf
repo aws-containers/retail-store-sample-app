@@ -9,5 +9,5 @@ module "checkout-elasticache-redis" {
   transit_encryption_enabled = false
   tags                       = var.tags
 
-  allowed_security_group_ids = [var.checkout_security_group_id]
+  allowed_security_group_ids = concat(var.allowed_security_group_ids, [var.checkout_security_group_id])
 }

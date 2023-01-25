@@ -16,7 +16,7 @@ module "orders_mq_broker" {
   audit_log_enabled          = false
   encryption_enabled         = false
 
-  allowed_security_group_ids = [var.orders_security_group_id]
+  allowed_security_group_ids = concat(var.allowed_security_group_ids, [var.orders_security_group_id])
 
   tags             = var.tags
 }
