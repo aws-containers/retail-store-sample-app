@@ -15,14 +15,14 @@ require (
 	github.com/swaggo/gin-swagger v1.5.3
 	github.com/swaggo/swag v1.8.10
 	github.com/zsais/go-gin-prometheus v0.1.0
-	go.opentelemetry.io/contrib/detectors/aws/ec2 v1.12.0
+	go.opentelemetry.io/contrib/detectors/aws/ec2 v1.13.0
 	go.opentelemetry.io/otel v1.12.0
 	go.opentelemetry.io/otel/exporters/otlp/otlptrace v1.11.2
 	go.opentelemetry.io/otel/sdk v1.12.0
 )
 
 require (
-	github.com/aws/aws-sdk-go v1.44.152 // indirect
+	github.com/aws/aws-sdk-go v1.44.184 // indirect
 	github.com/cenkalti/backoff/v4 v4.2.0 // indirect
 	github.com/go-logr/logr v1.2.3 // indirect
 	github.com/go-logr/stdr v1.2.2 // indirect
