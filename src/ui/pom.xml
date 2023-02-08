@@ -5,7 +5,7 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>3.0.1</version>
+		<version>3.0.2</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.amazon.sample</groupId>
@@ -139,7 +139,7 @@
 		<dependency>
 			<groupId>org.webjars.npm</groupId>
 			<artifactId>bootstrap-icons</artifactId>
-			<version>1.10.2</version>
+			<version>1.10.3</version>
 		</dependency>
 	</dependencies>
 
@@ -182,7 +182,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-checkstyle-plugin</artifactId>
-				<version>3.2.0</version>
+				<version>3.2.1</version>
 				<configuration>
 					<configLocation>../misc/style/java/checkstyle.xml</configLocation>
 				</configuration>
