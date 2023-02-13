@@ -6,3 +6,4 @@ env
 oss-output
 kubeconfig_*
 .envrc
+node_modules/
