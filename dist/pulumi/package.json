@@ -1,0 +1,12 @@
+{
+    "name": "zephyr-eks",
+    "devDependencies": {
+        "@types/node": "^16"
+    },
+    "dependencies": {
+        "typescript": "^4.0.0",
+        "@pulumi/pulumi": "^3.0.0",
+        "@pulumi/awsx": "^1.0.0",
+        "@pulumi/eks": "^1.0.0"
+    }
+}
