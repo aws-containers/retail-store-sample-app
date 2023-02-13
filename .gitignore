@@ -1,11 +1,8 @@
 .DS_Store
-*.tfvars
-.terraform
-*.tfstate*
-*.lock.hcl
 *.log
 .vscode
 reports
 env
 oss-output
 kubeconfig_*
+.envrc
