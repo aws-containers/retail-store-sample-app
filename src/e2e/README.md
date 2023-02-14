@@ -1,4 +1,4 @@
-# Retail Store Sample App - End-to-End Tests
+# Zephyr Archaeotech Emporium - End-to-End Tests
 
 This component provides a suite of end-to-end tests that exercise a broad set of functionality of the application as a whole. They are designed to be cross-cutting and treat the application as a black box rather than a set of distinct components.
 

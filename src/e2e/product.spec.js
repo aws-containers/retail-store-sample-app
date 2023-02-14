@@ -33,7 +33,7 @@ describe('when on product', function() {
   });
 
   it('should have title', function() {
-    expect(product.getTitle()).toEqual('Retail Store Sample App');
+    expect(product.getTitle()).toEqual('Zephyr Archaeotech Emporium');
   });
 
   it('should have breadcrumb', function() {
