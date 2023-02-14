@@ -1,4 +1,4 @@
-# AWS Containers Retail Sample - UI Service
+# Zephyr Archaeotech Emporium - UI Service
 
 | Language | Persistence |
 |---|---|

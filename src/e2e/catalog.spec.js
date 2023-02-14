@@ -31,7 +31,7 @@ describe('when on catalog', function() {
   });
 
   it('should have title', function() {
-    expect(catalog.getTitle()).toEqual('Retail Store Sample App');
+    expect(catalog.getTitle()).toEqual('Zephyr Archaeotech Emporium');
   });
 
   it('should have breadcrumb', function() {
