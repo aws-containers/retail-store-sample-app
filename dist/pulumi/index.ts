@@ -1337,7 +1337,8 @@ const uiDeployment = new k8s.apps.v1.Deployment("ui-deployment", {
                             name: uiConfigMap.metadata.name,
                         },
                     }],
-                    image: "public.ecr.aws/aws-containers/retail-store-sample-ui:0.2.0",
+                    // image: "public.ecr.aws/aws-containers/retail-store-sample-ui:0.2.0",
+                    image: "pulumi/zephyr-ui:0.2.0",
                     imagePullPolicy: "IfNotPresent",
                     livenessProbe: {
                         httpGet: {
