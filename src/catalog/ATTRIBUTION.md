@@ -67,7 +67,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 ----
 
-### github.com/aws/aws-sdk-go @v1.44.152
+### github.com/aws/aws-sdk-go @v1.44.184
 
 
                                  Apache License
@@ -276,7 +276,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 ----
 
-### github.com/aws/aws-sdk-go/internal/sync/singleflight @v1.44.152
+### github.com/aws/aws-sdk-go/internal/sync/singleflight @v1.44.184
 
 Copyright (c) 2009 The Go Authors. All rights reserved.
 
@@ -4505,7 +4505,7 @@ SUBDIRECTORIES
 
 ----
 
-### github.com/signalfx/splunk-otel-go @v1.1.0
+### github.com/signalfx/splunk-otel-go @v1.2.0
 
                                  Apache License
                            Version 2.0, January 2004
@@ -4797,7 +4797,7 @@ SOFTWARE.
 
 ----
 
-### github.com/swaggo/swag @v1.8.8
+### github.com/swaggo/swag @v1.8.10
 
 MIT License
 
@@ -4853,7 +4853,7 @@ SOFTWARE.
 
 ----
 
-### go.opentelemetry.io/otel @v1.11.2
+### go.opentelemetry.io/otel @v1.12.0
 
                                  Apache License
                            Version 2.0, January 2004
@@ -5121,7 +5121,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 ----
 
-### golang.org/x/net @v0.1.0
+### golang.org/x/net @v0.4.0
 
 Copyright (c) 2009 The Go Authors. All rights reserved.
 
@@ -5155,7 +5155,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 ----
 
-### golang.org/x/sys @v0.1.0
+### golang.org/x/sys @v0.3.0
 
 Copyright (c) 2009 The Go Authors. All rights reserved.
 
@@ -5189,7 +5189,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 ----
 
-### golang.org/x/text @v0.4.0
+### golang.org/x/text @v0.5.0
 
 Copyright (c) 2009 The Go Authors. All rights reserved.
 
@@ -5257,7 +5257,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 ----
 
-### google.golang.org/genproto @v0.0.0-20220314164441-57ef72a4c106
+### google.golang.org/genproto @v0.0.0-20221118155620-16455021b5e6
 
 
                                  Apache License
@@ -5466,7 +5466,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 ----
 
-### google.golang.org/grpc @v1.51.0
+### google.golang.org/grpc @v1.52.0
 
 
                                  Apache License
