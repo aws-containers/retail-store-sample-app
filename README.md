@@ -14,4 +14,4 @@ This application can be deployed locally via Docker Compose; use the `docker-com
 
 ## Deploying to Kubernetes
 
-This application can be deployed to Kubernetes directly; use the `deploy.yaml` file in the `kubernetes` folder.
+This application can be deployed to Kubernetes directly; use the `deploy.yaml` file in the `deploy/kubernetes` folder.
