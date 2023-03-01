@@ -1,9 +1,11 @@
 .DS_Store
-*.log
-.vscode
-reports
-env
-oss-output
-kubeconfig_*
 .envrc
+*.log
+.metals
+.vscode
+env
+kubeconfig
+kubeconfig_*
 node_modules/
+oss-output
+reports
