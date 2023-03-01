@@ -18,7 +18,7 @@ require (
 	go.opentelemetry.io/contrib/detectors/aws/ec2 v1.13.0
 	go.opentelemetry.io/otel v1.14.0
 	go.opentelemetry.io/otel/exporters/otlp/otlptrace v1.12.0
-	go.opentelemetry.io/otel/sdk v1.12.0
+	go.opentelemetry.io/otel/sdk v1.14.0
 )
 
 require (
