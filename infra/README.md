@@ -15,4 +15,18 @@ Then follow these steps:
 5. Set your desired AWS region with `pulumi config set aws:region <region-name>`.
 6. Run `pulumi up`.
 
-After the stack is finished deploying, use `pulumi stack output` to retrieve the Kubeconfig for the newly-created EKS cluster. Use this with `kubectl` to retrieve the DNS name of the load balancer created for the UI service. Use this DNS name in your browser to access the application.
+After the stack is finished deploying, use `pulumi stack output` to retrieve the Kubeconfig for the newly-created EKS cluster:
+
+```shell
+pulumi stack output kubeconfig > kubeconfig
+```
+
+You can then use this Kubeconfig with `kubectl` to interact with the EKS cluster in order to view nodes, Pods, Services, Deployments, ConfigMaps, etc.
+
+As an example, here is how to get the DNS name of the load balancer for the UI service:
+
+```shell
+KUBECONFIG=kubeconfig kubectl -n ui get svc ui-lb
+```
+
+Use the DNS name displayed in the `EXTERNAL-IP` column in your browser to access the application. Be sure to specify `http://` in order to connect; there is no SSL/TLS support currently.
