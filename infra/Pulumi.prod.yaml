@@ -1,0 +1,6 @@
+config:
+  zephyr-eks:desiredClusterSize: "3"
+  zephyr-eks:eksNodeInstanceType: t3.medium
+  zephyr-eks:maxClusterSize: "6"
+  zephyr-eks:minClusterSize: "3"
+  zephyr-eks:vpcNetworkCidr: 10.0.0.0/16
