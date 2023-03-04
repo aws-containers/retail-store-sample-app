@@ -37,67 +37,67 @@ const eksCluster = new eks.Cluster("eks-cluster", {
 const eksProvider = new k8s.Provider("eks-provider", {kubeconfig: eksCluster.kubeconfig});
 
 // Define consistent labels for each component
-const assetsLabels = { 
+const assetsLabels = {
     "app.kubernetes.io/name": "zephyr-app",
     "app.kubernetes.io/component": "assets",
     "app.kubernetes.io/managed-by": "pulumi"
 }
 
-const cartsLabels = { 
+const cartsLabels = {
     "app.kubernetes.io/name": "zephyr-app",
     "app.kubernetes.io/component": "carts",
     "app.kubernetes.io/managed-by": "pulumi"
 }
 
-const cartsDbLabels = { 
+const cartsDbLabels = {
     "app.kubernetes.io/name": "zephyr-app",
     "app.kubernetes.io/component": "carts-dynamodb",
     "app.kubernetes.io/managed-by": "pulumi"
 }
 
-const catalogLabels = { 
+const catalogLabels = {
     "app.kubernetes.io/name": "zephyr-app",
     "app.kubernetes.io/component": "catalog",
     "app.kubernetes.io/managed-by": "pulumi"
 }
 
-const catalogDbLabels = { 
+const catalogDbLabels = {
     "app.kubernetes.io/name": "zephyr-app",
     "app.kubernetes.io/component": "catalog-mysql",
     "app.kubernetes.io/managed-by": "pulumi"
 }
 
-const checkoutLabels = { 
+const checkoutLabels = {
     "app.kubernetes.io/name": "zephyr-app",
     "app.kubernetes.io/component": "checkout",
     "app.kubernetes.io/managed-by": "pulumi"
 }
 
-const checkoutDbLabels = { 
+const checkoutDbLabels = {
     "app.kubernetes.io/name": "zephyr-app",
     "app.kubernetes.io/component": "checkout-redis",
     "app.kubernetes.io/managed-by": "pulumi"
 }
 
-const ordersLabels = { 
+const ordersLabels = {
     "app.kubernetes.io/name": "zephyr-app",
     "app.kubernetes.io/component": "orders",
     "app.kubernetes.io/managed-by": "pulumi"
 }
 
-const ordersDbLabels = { 
+const ordersDbLabels = {
     "app.kubernetes.io/name": "zephyr-app",
     "app.kubernetes.io/component": "orders-mysql",
     "app.kubernetes.io/managed-by": "pulumi"
 }
 
-const rabbitmqLabels = { 
+const rabbitmqLabels = {
     "app.kubernetes.io/name": "zephyr-app",
     "app.kubernetes.io/component": "rabbitmq",
     "app.kubernetes.io/managed-by": "pulumi"
 }
 
-const uiLabels = { 
+const uiLabels = {
     "app.kubernetes.io/name": "zephyr-app",
     "app.kubernetes.io/component": "ui",
     "app.kubernetes.io/managed-by": "pulumi"
@@ -547,6 +547,8 @@ const uiLbService = new k8s.core.v1.Service("ui-lb-service", {
         type: "LoadBalancer",
     },
 }, { provider: eksProvider });
+
+const repository = new awsx.ecr.Repository("repository");
 
 // Create Deployments for the various application components
 const assetsDeployment = new k8s.apps.v1.Deployment("assets-deployment", {
@@ -1306,6 +1308,15 @@ const rabbitmqDeployment = new k8s.apps.v1.Deployment("rabbitmq-deployment", {
     },
 }, { provider: eksProvider });
 
+const uiImage = new awsx.ecr.Image("ui-image", {
+    repositoryUrl: repository.url,
+    dockerfile: "../images/java17/Dockerfile",
+    path: "../src/ui",
+    args: {
+        JAR_PATH: "target/ui-0.0.1-SNAPSHOT.jar",
+    },
+});
+
 const uiDeployment = new k8s.apps.v1.Deployment("ui-deployment", {
     metadata: {
         labels: uiLabels,
@@ -1337,8 +1348,7 @@ const uiDeployment = new k8s.apps.v1.Deployment("ui-deployment", {
                             name: uiConfigMap.metadata.name,
                         },
                     }],
-                    // image: "public.ecr.aws/aws-containers/retail-store-sample-ui:0.2.0",
-                    image: "pulumi/zephyr-ui:0.2.0",
+                    image: uiImage.imageUri,
                     imagePullPolicy: "IfNotPresent",
                     livenessProbe: {
                         httpGet: {
