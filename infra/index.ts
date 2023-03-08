@@ -548,7 +548,9 @@ const uiLbService = new k8s.core.v1.Service("ui-lb-service", {
     },
 }, { provider: eksProvider });
 
-const repository = new awsx.ecr.Repository("repository");
+const repository = new awsx.ecr.Repository("repository", {
+    forceDelete: true,
+});
 
 // Create Deployments for the various application components
 const assetsDeployment = new k8s.apps.v1.Deployment("assets-deployment", {
