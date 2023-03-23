@@ -1,4 +1,0 @@
-config:
-  zephyr-local:mySqlPassword:
-    secure: AAABAPf0HCqoxEC4woSfnRuc4L+q7xYJyI1w2aeVpJL+XUnY83OcfoHa/q8=
-  zephyr-local:srcRepoPath: /Users/slowe/Work/Code/Repos/zephyr-app
