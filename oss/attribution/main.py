@@ -8,6 +8,7 @@ from urllib.error import HTTPError
 from jinja2 import Template
 from os.path import exists
 import sys
+import pathlib
 
 license = "^LICENSE"
 notice = "NOTICE"
@@ -15,6 +16,7 @@ notice = "NOTICE"
 generic_licenses = {
   "Apache-2.0": "https://www.apache.org/licenses/LICENSE-2.0.txt",
   "MIT": "https://spdx.org/licenses/MIT.txt",
+  "MIT-0": "https://raw.githubusercontent.com/aws/mit-0/master/MIT-0",
   "ISC": "https://spdx.org/licenses/ISC.txt",
   "BSD-2-Clause": "https://spdx.org/licenses/BSD-2-Clause.txt",
   "BSD-3-Clause": "https://spdx.org/licenses/BSD-3-Clause.txt",
@@ -24,30 +26,30 @@ generic_licenses = {
   "EPL-2.0": "https://www.eclipse.org/org/documents/epl-2.0/EPL-2.0.txt"
 }
 
+exact_licenses = ['LICENSE', 'LICENSE.md', 'LICENSE.txt']
+
+def extract_license(license_path):
+  text_file = open(license_path, "r")
+
+  data = text_file.read()
+  
+  text_file.close()
+
+  return data
+
 def find_license(path):
-  for root, directories, files in os.walk(path):
+  files = sorted(pathlib.Path(path).glob('LICENSE*'))
 
-    for name in files:
+  candidates = []
 
-      if re.search(license, name, re.IGNORECASE):
-        if ".java" in name:
-          break
-        elif ".py" in name:
-          break
-        elif ".js" in name:
-          break
+  for file in files:
+    if(file.name in exact_licenses):
+      return extract_license(os.path.join(path, file.name))
+    else:
+      candidates.append(file.name)
 
-        license_path = os.path.join(root, name)
-
-        text_file = open(license_path, "r")
-
-        data = text_file.read()
-        
-        #close file
-        text_file.close()
-
-        return data
-      
+  if(len(candidates) > 0):
+    return extract_license(os.path.join(path, candidates[0]))
 
 template = """# Open Source Software Attribution
 
