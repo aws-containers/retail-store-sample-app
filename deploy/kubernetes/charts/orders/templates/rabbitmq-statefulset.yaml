@@ -1,0 +1,50 @@
+{{- if .Values.rabbitmq.create }}
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: {{ include "orders.rabbitmq.fullname" . }}
+  labels:
+    {{- include "orders.rabbitmq.labels" . | nindent 4 }}
+spec:
+  replicas: 1
+  serviceName: {{ include "orders.rabbitmq.fullname" . }}
+  selector:
+    matchLabels:
+      {{- include "orders.rabbitmq.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      {{- with .Values.rabbitmq.podAnnotations }}
+      annotations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      labels:
+        {{- include "orders.rabbitmq.selectorLabels" . | nindent 8 }}
+    spec:
+      {{- with .Values.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      containers:
+        - name: rabbitmq
+          image: "{{ .Values.rabbitmq.image.repository }}:{{ .Values.rabbitmq.image.tag }}"
+          imagePullPolicy: {{ .Values.rabbitmq.image.pullPolicy }}
+          ports:
+          - name: amqp
+            containerPort: 5672
+            protocol: TCP
+          - name: http
+            containerPort: 15672
+            protocol: TCP
+      {{- with .Values.rabbitmq.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.rabbitmq.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.rabbitmq.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+{{- end }}

@@ -1,0 +1,14 @@
+mysql:
+  create: false
+
+  endpoint: ${database_endpoint}
+
+  secret:
+    username: ${database_username}
+    password: ${database_password}
+
+securityGroups:
+  create: true
+
+  securityGroupIds:
+  - ${security_group_id}

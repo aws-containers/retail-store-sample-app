@@ -1,0 +1,17 @@
+{{- if .Values.redis.create }}
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "checkout.redis.fullname" . }}
+  labels:
+    {{- include "checkout.redis.labels" . | nindent 4 }}
+spec:
+  type: {{ .Values.redis.service.type }}
+  ports:
+    - port: {{ .Values.redis.service.port }}
+      targetPort: redis
+      protocol: TCP
+      name: redis
+  selector:
+    {{- include "checkout.redis.selectorLabels" . | nindent 4 }}
+{{- end }}

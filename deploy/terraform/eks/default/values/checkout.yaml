@@ -1,0 +1,14 @@
+redis:
+  create: false
+
+  address: ${redis_address}
+  port: ${redis_port}
+
+endpoints:
+  orders: http://orders.orders.svc:80
+
+securityGroups:
+  create: true
+
+  securityGroupIds:
+  - ${security_group_id}

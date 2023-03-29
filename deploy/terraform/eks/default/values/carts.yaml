@@ -1,0 +1,7 @@
+serviceAccount:
+  annotations:
+    eks.amazonaws.com/role-arn: ${role_arn}
+
+dynamodb:
+  tableName: ${table_name}
+  create: false

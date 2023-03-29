@@ -1,0 +1,10 @@
+{{- if .Values.configMap.create -}}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "catalog.configMapName" . }}
+data:
+  DB_ENDPOINT: {{ include "catalog.mysql.endpoint" . }}
+  DB_READ_ENDPOINT: {{ include "catalog.mysql.reader.endpoint" . }}
+  DB_NAME: {{ .Values.mysql.database }}
+{{- end }}
