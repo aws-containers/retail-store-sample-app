@@ -84,6 +84,8 @@ jobs:
         kind load docker-image public.ecr.aws/aws-containers/retail-store-sample-ui:$IMAGE_TAG
 
         (cd deploy/kubernetes/charts && helmfile apply --wait)
+        
+        sleep 60
 
         cat <<EOF | kubectl apply -f -
         apiVersion: v1
