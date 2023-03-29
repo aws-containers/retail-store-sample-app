@@ -1,0 +1,7 @@
+apiVersion: v2
+name: ui
+description: A Helm chart for the AWS retail store containers sample application UI service
+
+type: application
+
+version: 0.0.1

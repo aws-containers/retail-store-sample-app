@@ -1,0 +1,23 @@
+mysql:
+  create: false
+
+  endpoint: ${database_endpoint}
+
+  secret:
+    username: ${database_username}
+    password: ${database_password}
+
+rabbitmq:
+  create: false
+  
+  address: ${rabbitmq_endpoint}
+
+  secret:
+    username: ${rabbitmq_username}
+    password: ${rabbitmq_password}
+
+securityGroups:
+  create: true
+
+  securityGroupIds:
+  - ${security_group_id}

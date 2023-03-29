@@ -1,0 +1,8 @@
+{{- if .Values.configMap.create -}}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "assets.configMapName" . }}
+data:
+  PORT: '8080'
+{{- end }}

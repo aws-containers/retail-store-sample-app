@@ -8,6 +8,7 @@ It provides:
 - The ability to run in various container orchestration technologies like Docker Compose, Kubernetes etc.
 - Pre-built containers image for both x86-64 and ARM64 CPU architectures
 - All components instrumented for Prometheus metrics and OpenTelemetry OTLP tracing
+- Support for Istio on Kubernetes
 - Load generator which exercises all of the infrastructure
 
 **This project is intended for educational purposes only and not for production use.**

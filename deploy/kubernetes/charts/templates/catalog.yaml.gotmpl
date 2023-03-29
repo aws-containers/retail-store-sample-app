@@ -1,0 +1,11 @@
+{{if env "TILT_MODE" }}
+image:
+  repository: retail-store-sample-catalog
+  tag: dev
+{{end}}
+
+{{if env "RANDOM_PASSWORD" }}
+mysql:
+  secret:
+    password: {{ env "RANDOM_PASSWORD" | default "" }}
+{{end}}

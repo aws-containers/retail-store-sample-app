@@ -1,0 +1,16 @@
+endpoints:
+  catalog: http://catalog.catalog.svc:80
+  carts: http://carts.carts.svc:80
+  orders: http://orders.orders.svc:80
+  assets: http://assets.assets.svc:80
+  checkout: http://checkout.checkout.svc:80
+
+%{ if istio_enabled }
+istio:
+  enabled: true
+  hosts:
+  - "*"
+%{ else }
+service:
+  type: LoadBalancer
+%{ endif }

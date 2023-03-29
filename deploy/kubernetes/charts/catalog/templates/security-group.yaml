@@ -1,0 +1,15 @@
+{{- if .Values.securityGroups.create }}
+apiVersion: vpcresources.k8s.aws/v1beta1
+kind: SecurityGroupPolicy
+metadata:
+  name: {{ include "catalog.fullname" . }}
+  labels:
+    {{- include "catalog.labels" . | nindent 4 }}
+spec:
+  podSelector:
+    matchLabels:
+      {{- include "catalog.selectorLabels" . | nindent 6 }}
+  securityGroups:
+    groupIds:
+      {{- toYaml .Values.securityGroups.securityGroupIds | nindent 6 }}
+{{- end }}

@@ -1,0 +1,7 @@
+apiVersion: v2
+name: carts
+description: A Helm chart for the AWS retail store containers sample application carts service
+
+type: application
+
+version: 0.0.1

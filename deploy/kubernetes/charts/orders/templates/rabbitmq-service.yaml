@@ -1,0 +1,21 @@
+{{- if .Values.rabbitmq.create }}
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "orders.rabbitmq.fullname" . }}
+  labels:
+    {{- include "orders.rabbitmq.labels" . | nindent 4 }}
+spec:
+  type: {{ .Values.rabbitmq.service.type }}
+  ports:
+    - port: {{ .Values.rabbitmq.service.amqp.port }}
+      targetPort: amqp
+      protocol: TCP
+      name: amqp
+    - port: {{ .Values.rabbitmq.service.http.port }}
+      targetPort: http
+      protocol: TCP
+      name: http
+  selector:
+    {{- include "orders.rabbitmq.selectorLabels" . | nindent 4 }}
+{{- end }}

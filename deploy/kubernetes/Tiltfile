@@ -8,7 +8,14 @@ default_registry(settings.get('default_registry', 'public.ecr.aws/aws-containers
 
 allow_k8s_contexts(k8s_context())
 
-k8s_yaml(kustomize('kustomize/recipes/dev'))
+random_password = local("bash scripts/generate_password.sh")
+
+def helmfile(file):
+  watch_file(file)
+  update_env={'TILT_MODE': '1', 'RANDOM_PASSWORD': random_password}
+  return local("helmfile -f %s template" % file, env = update_env)
+
+k8s_yaml(helmfile("charts/helmfile.yaml"))
 
 custom_build(
   'retail-store-sample-assets',
