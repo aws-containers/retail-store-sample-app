@@ -47,6 +47,8 @@ module "retail_app_eks" {
   vpc_cidr         = module.vpc.inner.vpc_cidr_block
   subnet_ids       = module.vpc.inner.private_subnets
   tags             = module.tags.result
+
+  istio_enabled = var.istio_enabled
 }
 
 locals {

@@ -91,6 +91,7 @@ module "eks_cluster_kubernetes_addons" {
   eks_oidc_provider            = module.eks_cluster.oidc_provider
   eks_cluster_version          = module.eks_cluster.eks_cluster_version
 
+  enable_tetrate_istio                     = var.istio_enabled
   enable_aws_for_fluentbit                 = true
   aws_for_fluentbit_create_cw_log_group    = false
   aws_for_fluentbit_cw_log_group_retention = 30
