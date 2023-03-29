@@ -21,12 +21,12 @@
     "test:e2e": "jest --config ./test/jest-e2e.json"
   },
   "dependencies": {
-    "@nestjs/common": "^9.3.1",
+    "@nestjs/common": "^9.3.10",
     "@nestjs/config": "^2.2.0",
-    "@nestjs/core": "^9.2.1",
-    "@nestjs/platform-express": "^9.2.1",
+    "@nestjs/core": "^9.3.10",
+    "@nestjs/platform-express": "^9.3.10",
     "@nestjs/swagger": "^6.1.4",
-    "@nestjs/terminus": "^9.2.1",
+    "@nestjs/terminus": "^9.2.2",
     "@opentelemetry/auto-instrumentations-node": "^0.35.0",
     "@opentelemetry/exporter-trace-otlp-grpc": "^0.34.0",
     "@opentelemetry/resource-detector-aws": "^1.2.1",
@@ -45,7 +45,7 @@
   "devDependencies": {
     "@nestjs/cli": "^9.3.0",
     "@nestjs/schematics": "^9.0.4",
-    "@nestjs/testing": "^9.2.1",
+    "@nestjs/testing": "^9.3.10",
     "@types/express": "^4.17.15",
     "@types/jest": "28.1.4",
     "@types/node": "^18.14.2",
