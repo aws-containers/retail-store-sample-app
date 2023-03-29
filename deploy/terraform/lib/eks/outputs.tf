@@ -27,3 +27,8 @@ output "addons_blocker_id" {
   description = "Output that can be used to block other resources until addons are created"
   value       = null_resource.addons_blocker.id
 }
+
+output "configure_kubectl" {
+  description = "Command to update kubeconfig for this cluster"
+  value       = "aws eks --region ${data.aws_region.current.name} update-kubeconfig --name ${module.eks_cluster.cluster_name}"
+}

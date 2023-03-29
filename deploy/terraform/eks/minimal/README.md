@@ -1,13 +1,10 @@
-# AWS Containers Retail Sample - EKS Terraform (Default)
+# AWS Containers Retail Sample - EKS Terraform (Minimal)
 
-This Terraform module creates all the necessary infrastructure and deploys the retail sample application on [Amazon Elastic Kubernetes Service](https://aws.amazon.com/eks/) (EKS). This configuration will deploy all application dependencies using AWS managed services such as Amazon RDS and Amazon DynamoDB.
+This Terraform module creates all the necessary infrastructure for the retail sample application on [Amazon Elastic Kubernetes Service](https://aws.amazon.com/eks/) (EKS). This configuration will only provision the EKS cluster and other foundational infrastructure such as the VPC. It will not deploy services to fulfill application dependencies such as Amazon RDS or Amazon DynamoDB (see [default configuration](../default/)).
 
 It provides:
 - VPC with public and private subnets
 - EKS cluster and managed node groups in multiple availability zones
-- All application dependencies such as RDS, DynamoDB table, Elasticache etc.
-- Deployment of application component Helm charts
-- (Optional) Istio support
 
 NOTE: This will create resources in your AWS account which will incur costs. You are responsible for these costs, and should understand the resources being created before proceeding.
 
@@ -42,17 +39,8 @@ aws eks --region us-west-2 update-kubeconfig --name retail-store
 Run the above command and then test the cluster is accessible:
 
 ```shell
-kubectl get svc -n ui ui-lb
+kubectl get nodes
 ```
-
-The output will look something like this:
-
-```
-NAME    TYPE           CLUSTER-IP      EXTERNAL-IP                                                              PORT(S)        AGE
-ui-lb   LoadBalancer   172.20.196.69   aec46b0c98b974cc28201c38dbba79b6-1234567678.us-west-2.elb.amazonaws.com   80:32154/TCP   18h
-```
-
-Enter the domain name from the `EXTERNAL-IP` column in a web browser to access the application.
 
 ## Reference
 
@@ -63,7 +51,7 @@ This section documents the variables and outputs of the Terraform configuration.
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | `environment_name` | Name of the environment which will be used for all resources created | `string` | `retail-store` | yes |
-| `istio_enabled` | Flag to enable Istio, which will install Istio in the EKS cluster and configure the application component appropriately | `bool` | `false` | no |
+| `istio_enabled` | Flag to enable Istio, which will install Istio in the EKS cluster | `bool` | `false` | no |
 
 ### Outputs
 
