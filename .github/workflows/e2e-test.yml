@@ -1,11 +1,17 @@
 name: E2E Test
 
 on:
+  push:
+    branches:
+    - main
+  pull_request:
+    branches:
+    - main
   workflow_dispatch:
 
 jobs:
-  build:
-    name: Run E2E Tests
+  docker:
+    name: Docker E2E Tests
     runs-on: ubuntu-latest
     steps:
     - name: Check out code
@@ -27,10 +33,75 @@ jobs:
 
     - name: Build Images
       run: |
-        scripts/build-image.sh -r 'public.ecr.aws/aws-containers' -t e2e --actions-cache
+        scripts/build-image.sh -r 'public.ecr.aws/aws-containers' -t e2e
         
     - name: Run Tests
       run: |
         (cd deploy/docker-compose && TAG=e2e MYSQL_PASSWORD='test123' docker-compose up -d)
-        (cd src/e2e && bash ./scripts/run-docker.sh -n docker-compose_default 'http://ui:8080')
+        (bash scripts/e2e-compose.sh)
         (cd deploy/docker-compose && docker-compose down)
+
+  kubernetes:
+    name: Kubernetes E2E Tests
+    runs-on: ubuntu-latest
+    steps:
+    - name: Check out code
+      uses: actions/checkout@v3
+
+    - name: Set up Docker Buildx
+      id: e2e-buildx
+      uses: docker/setup-buildx-action@v2
+
+    - name: Set up QEMU
+      id: e2e-qemu
+      uses: docker/setup-qemu-action@v2
+      with:
+        image: tonistiigi/binfmt:latest
+        platforms: all
+
+    - name: Build Images
+      run: |
+        scripts/build-image.sh -r 'public.ecr.aws/aws-containers' -t e2e
+
+    - name: Setup helmfile
+      uses: mamezou-tech/setup-helmfile@v1.2.0
+
+    - name: Create k8s Kind Cluster
+      uses: helm/kind-action@v1.4.0
+      with:
+        cluster_name: kind
+        version: v0.17.0
+        
+    - name: Deploy
+      env:
+        IMAGE_TAG: e2e
+      run: |
+        kind load docker-image public.ecr.aws/aws-containers/retail-store-sample-assets:$IMAGE_TAG
+        kind load docker-image public.ecr.aws/aws-containers/retail-store-sample-catalog:$IMAGE_TAG
+        kind load docker-image public.ecr.aws/aws-containers/retail-store-sample-cart:$IMAGE_TAG
+        kind load docker-image public.ecr.aws/aws-containers/retail-store-sample-checkout:$IMAGE_TAG
+        kind load docker-image public.ecr.aws/aws-containers/retail-store-sample-orders:$IMAGE_TAG
+        kind load docker-image public.ecr.aws/aws-containers/retail-store-sample-ui:$IMAGE_TAG
+
+        (cd deploy/kubernetes/charts && helmfile apply --wait)
+
+        cat <<EOF | kubectl apply -f -
+        apiVersion: v1
+        kind: Service
+        metadata:
+          name: ui-nodeport
+        spec:
+          type: NodePort
+          selector:
+            app.kubernetes.io/name: ui
+            app.kubernetes.io/instance: ui
+            app.kubernetes.io/component: service
+          ports:
+            - port: 80
+              targetPort: http
+              nodePort: 30000
+        EOF
+
+    - name: Test
+      run: |
+        bash scripts/e2e-kind.sh
