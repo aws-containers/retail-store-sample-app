@@ -10,7 +10,8 @@ from os.path import exists
 import sys
 import pathlib
 
-license = "^LICENSE"
+license = "^(LICENSE|LICENCE)($|\.md|\.txt)"
+license_specific = "^(LICENSE|LICENCE)([\.-]{})(\.md|\.txt)?"
 notice = "NOTICE"
 
 generic_licenses = {
@@ -26,8 +27,6 @@ generic_licenses = {
   "EPL-2.0": "https://www.eclipse.org/org/documents/epl-2.0/EPL-2.0.txt"
 }
 
-exact_licenses = ['LICENSE', 'LICENSE.md', 'LICENSE.txt']
-
 def extract_license(license_path):
   text_file = open(license_path, "r")
 
@@ -37,19 +36,21 @@ def extract_license(license_path):
 
   return data
 
-def find_license(path):
-  files = sorted(pathlib.Path(path).glob('LICENSE*'))
-
+def find_license(path, license_name):
   candidates = []
 
-  for file in files:
-    if(file.name in exact_licenses):
-      return extract_license(os.path.join(path, file.name))
-    else:
-      candidates.append(file.name)
+  for root, directories, files in os.walk(path):
+    for name in files:
+      if re.search(license_specific.format(license_name), name, re.IGNORECASE):
+        return extract_license(os.path.join(root, name))
+      if re.search(license, name, re.IGNORECASE):
+        return extract_license(os.path.join(root, name))
 
-  if(len(candidates) > 0):
-    return extract_license(os.path.join(path, candidates[0]))
+def fetch_http_license(url):
+  try:
+    return urllib.request.urlopen(url).read().decode('utf-8')
+  except HTTPError as err:
+    print('Failed to fetch {}'.format(url))
 
 template = """# Open Source Software Attribution
 
@@ -104,10 +105,17 @@ if exists(analyzer_path):
 
     package_src_path = '{}/{}/{}/{}/{}'.format(src_path, package_manager, urllib.parse.quote_plus(group), urllib.parse.quote_plus(package_name),version)
 
-    license_text = find_license(package_src_path)
+    license_name = None
+
+    if 'concluded_license' in package:
+      license_name = package['concluded_license']
+    elif 'spdx_expression' in package['declared_licenses_processed']:
+      license_name = package['declared_licenses_processed']['spdx_expression']
+
+    license_text = find_license(package_src_path, license_name)
 
     if(license_text is None):
-      if 'spdx_expression' in package['declared_licenses_processed']:
+      if license_name is not None:
         license_name = package['declared_licenses_processed']['spdx_expression']
 
         print('Warning: Defaulting to generic {} for {}'.format(license_name, id))
@@ -140,12 +148,23 @@ elif exists(go_licenses_path):
         actual_license_url = 'https://go.dev/LICENSE?m=text'
 
       if actual_license_url is not None:
-        try:
-          license_text = urllib.request.urlopen(actual_license_url).read().decode('utf-8')
+        license_text = fetch_http_license(actual_license_url)
 
-          packages.append({"name": name, "url": None, "license": license_text, "version": version, "source_url": None})
-        except HTTPError as err:
-          print('Failed to fetch {}'.format(actual_license_url))
+        if license_text is None:
+          parts = actual_license_url.split('/', 5)
+          base_url = '/'.join(parts[:-1])
+          license_text = fetch_http_license("{}/raw/{}/LICENSE".format(base_url, version))
+
+        if license_text is None:
+          print('Warning: Defaulting to generic {} for {}'.format(license_name, name))
+
+          if license_name in generic_licenses:
+            generic_license_url = generic_licenses[license_name]
+            license_text = urllib.request.urlopen(generic_license_url).read().decode('utf-8')
+          else:
+            print('Warning: License {} missing from URL map'.format(license_name))
+
+        packages.append({"name": name, "url": None, "license": license_text, "version": version, "source_url": None})
       else:
         print('Warning: No license entry for {}'.format(name))
 

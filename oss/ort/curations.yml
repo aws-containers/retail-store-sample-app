@@ -1,3 +1,11 @@
+- id: "NPM::type-fest"
+  curations:
+    comment: "Dual-licensed, using MIT"
+    concluded_license: "MIT"
+- id: "NPM::json-schema"
+  curations:
+    comment: "Dual-licensed, using BSD-3-Clause"
+    concluded_license: "BSD-3-Clause"
 - id: "Maven:antlr:antlr"
   curations:
     comment: "This uses BSD-3-Clause license"
