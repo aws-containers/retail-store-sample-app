@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: org.webjars:swagger-ui:4.15.5">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/org/webjars/swagger-ui/4.15.5/swagger-ui-4.15.5.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/org/webjars/swagger-ui/4.15.5/swagger-ui-4.15.5-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/org/webjars/swagger-ui/4.15.5/swagger-ui-4.15.5-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

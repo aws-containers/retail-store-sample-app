@@ -19,9 +19,12 @@
 
 package com.amazon.sample.events.orders;
 
+import com.amazon.sample.orders.entities.OrderItemEntity;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+
+import java.util.List;
 
 
 /**
@@ -35,7 +38,8 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
     "id",
     "firstName",
     "lastName",
-    "email"
+    "email",
+    "orderItems"
 })
 public class Order {
 
@@ -62,7 +66,18 @@ public class Order {
     private String lastName;
     @JsonProperty("email")
     private String email;
+    @JsonProperty("orderItems")
+    private List<OrderItemEntity> orderItems;
 
+    @JsonProperty("orderItems")
+    public void setOrderItems(List<OrderItemEntity> orderItems) {
+        this.orderItems = orderItems;
+    }
+
+    @JsonProperty("orderItems")
+    public List<OrderItemEntity> getOrderItems() {
+        return orderItems;
+    }
     /**
      * 
      * (Required)

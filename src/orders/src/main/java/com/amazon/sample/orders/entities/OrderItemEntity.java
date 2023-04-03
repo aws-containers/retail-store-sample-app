@@ -48,6 +48,10 @@ public class OrderItemEntity {
 
     private int price;
 
+    private String name;
+
+    private int totalCost;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @MapsId("orderId")
     private OrderEntity order;

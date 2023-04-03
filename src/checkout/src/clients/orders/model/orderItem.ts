@@ -34,18 +34,29 @@ export class OrderItem {
     'price'?: number;
     'productId'?: string;
     'quantity'?: number;
-
+    'totalCost'?: number;
+    'name'?: string;
     static discriminator: string | undefined = undefined;
 
     static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
         {
-            "name": "price",
+            "name": "unitCost",
             "baseName": "price",
             "type": "number"
         },
         {
-            "name": "productId",
+            "name": "id",
             "baseName": "productId",
+            "type": "string"
+        },
+        {
+            "name": "name",
+            "baseName": "name",
+            "type": "string"
+        },
+        {
+            "name": "totalCost",
+            "baseName": "totalCost",
             "type": "string"
         },
         {

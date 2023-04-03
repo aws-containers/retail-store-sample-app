@@ -140,7 +140,8 @@ export class OrdersApi {
             json: true,
             body: ObjectSerializer.serialize(orderRequest, "Order")
         };
-
+        console.log("----- SENDING ORDER RQ --------- ");
+        console.log(localVarRequestOptions.body);
         let authenticationPromise = Promise.resolve();
         authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
 
