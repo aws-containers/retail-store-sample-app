@@ -57,7 +57,7 @@ export class OrderItem {
         {
             "name": "totalCost",
             "baseName": "totalCost",
-            "type": "string"
+            "type": "number"
         },
         {
             "name": "quantity",
