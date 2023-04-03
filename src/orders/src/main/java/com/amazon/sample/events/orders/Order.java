@@ -78,6 +78,7 @@ public class Order {
     public List<OrderItemEntity> getOrderItems() {
         return orderItems;
     }
+
     /**
      * 
      * (Required)

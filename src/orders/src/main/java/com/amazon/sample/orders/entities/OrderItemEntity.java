@@ -54,5 +54,6 @@ public class OrderItemEntity {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @MapsId("orderId")
+
     private OrderEntity order;
 }
