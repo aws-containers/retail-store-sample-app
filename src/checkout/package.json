@@ -39,7 +39,7 @@
     "redis": "^4.5.1",
     "reflect-metadata": "^0.1.13",
     "request": "^2.88.2",
-    "rimraf": "^3.0.2",
+    "rimraf": "^4.4.1",
     "rxjs": "^7.2.0"
   },
   "devDependencies": {
