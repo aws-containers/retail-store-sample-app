@@ -10,7 +10,8 @@ pull_request_rules:
       - base=main
       - author=dependabot[bot]
       - status-success=CI
-      - status-success=Run E2E Tests
+      - status-success=Docker E2E Tests
+      - status-success=Kubernetes E2E Tests
       - -title~=(WIP|wip)
       - -label~=(blocked|do-not-merge)
       - -merged
