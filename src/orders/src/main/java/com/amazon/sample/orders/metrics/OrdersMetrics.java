@@ -48,46 +48,52 @@ public class OrdersMetrics {
         this.meterRegistry = meterRegistry;
         this.orderCreatedCounter = meterRegistry.counter("orders_created");
         this.pocketWatchCounter = Counter.builder("watch.orders")
-                .tag("type","pocketWatch")
+                .tag("type",POCKET_WATCH)
                 .description("The number of orders placed for Pocket watch")
                 .register(meterRegistry);
         this.woodWatchCounter = Counter.builder("watch.orders")
-                .tag("type","woodWatch")
+                .tag("type",WOOD_WATCH)
                 .description("The number of orders placed for Wood watch")
                 .register(meterRegistry);
         this.classicWatchCounter = Counter.builder("watch.orders")
-                .tag("type","classicWatch")
+                .tag("type",CHRONOGRAF_WATCH)
                 .description("The number of orders placed for Classic watch")
                 .register(meterRegistry);
         this.gentlemanWatchCounter = Counter.builder("watch.orders")
-                .tag("type","gentlemanWatch")
+                .tag("type",GENTLEMAN_WATCH)
                 .description("The number of orders placed for Gentleman watch")
                 .register(meterRegistry);
+    }
+
+    private void incrementCounter(Counter counter, int times){
+        for(int i=0;i<times;i++){
+            counter.increment();
+        }
     }
 
     @TransactionalEventListener
     public void onOrderCreated(OrderCreatedEvent event) {
 
         this.orderCreatedCounter.increment();
-        System.out.println("--- num of orders " + event.getOrder().getOrderItems().size());
-        for (OrderItemEntity orderentity : event.getOrder().getOrderItems()) {
-            System.out.println(" ---- ORDER = " + orderentity.getPrice());
-            System.out.println(" ---- ORDER = " + orderentity.getQuantity());
-            System.out.println(" ---- ORDER = " + orderentity.getProductId());
-            System.out.println(" ---- ORDER = " + orderentity.getTotalCost());
-            System.out.println(" ---- ORDER = " + orderentity.getName());
-        }
+//        System.out.println("--- num of orders " + event.getOrder().getOrderItems().size());
+//        for (OrderItemEntity orderentity : event.getOrder().getOrderItems()) {
+//            System.out.println(" ---- ORDER = " + orderentity.getPrice());
+//            System.out.println(" ---- ORDER = " + orderentity.getQuantity());
+//            System.out.println(" ---- ORDER = " + orderentity.getProductId());
+//            System.out.println(" ---- ORDER = " + orderentity.getTotalCost());
+//            System.out.println(" ---- ORDER = " + orderentity.getName());
+//        }
         for (OrderItemEntity orderentity : event.getOrder().getOrderItems()) {
             switch(orderentity.getName()){
-                case POCKET_WATCH: this.pocketWatchCounter.increment();break;
-                case WOOD_WATCH: this.woodWatchCounter.increment();break;
-                case CHRONOGRAF_WATCH: this.classicWatchCounter.increment();break;
-                case GENTLEMAN_WATCH: this.gentlemanWatchCounter.increment();break;
+                case POCKET_WATCH: incrementCounter(this.pocketWatchCounter,orderentity.getQuantity());break;
+                case WOOD_WATCH: incrementCounter(this.woodWatchCounter,orderentity.getQuantity());break;
+                case CHRONOGRAF_WATCH: incrementCounter(this.classicWatchCounter,orderentity.getQuantity());break;
+                case GENTLEMAN_WATCH: incrementCounter(this.gentlemanWatchCounter,orderentity.getQuantity());break;
             }
         }
         int totalPrice = event.getOrder().getOrderItems().stream().map(x -> x.getTotalCost()).reduce(0, Integer::sum);
-        System.out.println("---TOTAL Price  " + totalPrice);
+       // System.out.println("---TOTAL Price  " + totalPrice);
         meterRegistry.gauge("watch.orderTotal", new AtomicInteger(totalPrice));
-        System.out.print("___ Added to Gauage ---------");
+       // System.out.print("___ Added to Gauage ---------");
     }
 }
