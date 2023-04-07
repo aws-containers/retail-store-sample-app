@@ -21,7 +21,6 @@ package com.amazon.sample.orders.metrics;
 import com.amazon.sample.events.orders.OrderCreatedEvent;
 import com.amazon.sample.orders.entities.OrderItemEntity;
 import io.micrometer.core.instrument.Counter;
-import io.micrometer.core.instrument.Gauge;
 import io.micrometer.core.instrument.MeterRegistry;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.event.TransactionalEventListener;
@@ -33,7 +32,6 @@ public class OrdersMetrics {
 
     private Counter orderCreatedCounter;
     private MeterRegistry meterRegistry;
-    private Gauge orderTotal;
     private Counter pocketWatchCounter;
     private Counter woodWatchCounter;
     private Counter gentlemanWatchCounter;
@@ -75,14 +73,6 @@ public class OrdersMetrics {
     public void onOrderCreated(OrderCreatedEvent event) {
 
         this.orderCreatedCounter.increment();
-//        System.out.println("--- num of orders " + event.getOrder().getOrderItems().size());
-//        for (OrderItemEntity orderentity : event.getOrder().getOrderItems()) {
-//            System.out.println(" ---- ORDER = " + orderentity.getPrice());
-//            System.out.println(" ---- ORDER = " + orderentity.getQuantity());
-//            System.out.println(" ---- ORDER = " + orderentity.getProductId());
-//            System.out.println(" ---- ORDER = " + orderentity.getTotalCost());
-//            System.out.println(" ---- ORDER = " + orderentity.getName());
-//        }
         for (OrderItemEntity orderentity : event.getOrder().getOrderItems()) {
             switch(orderentity.getName()){
                 case POCKET_WATCH: incrementCounter(this.pocketWatchCounter,orderentity.getQuantity());break;
@@ -92,8 +82,7 @@ public class OrdersMetrics {
             }
         }
         int totalPrice = event.getOrder().getOrderItems().stream().map(x -> x.getTotalCost()).reduce(0, Integer::sum);
-       // System.out.println("---TOTAL Price  " + totalPrice);
         meterRegistry.gauge("watch.orderTotal", new AtomicInteger(totalPrice));
-       // System.out.print("___ Added to Gauage ---------");
+
     }
 }
