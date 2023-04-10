@@ -82,7 +82,7 @@ services:
     
   orders:
     hostname: orders
-    image: microservices-demo/orders:latest
+    image: public.ecr.aws/aws-containers/retail-store-sample-orders:0.2.0
     restart: always
     ports:
     - 8083:8080
@@ -114,7 +114,7 @@ services:
     mem_limit: 128m
 
   checkout:
-    image: microservices-demo/checkout:latest
+    image: public.ecr.aws/aws-containers/retail-store-sample-checkout:0.2.0
     hostname: checkout
     restart: always
     read_only: true
