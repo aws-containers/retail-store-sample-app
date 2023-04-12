@@ -25,6 +25,8 @@ import io.micrometer.core.instrument.MeterRegistry;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.event.TransactionalEventListener;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.concurrent.atomic.AtomicInteger;
 
 @Component
@@ -32,57 +34,33 @@ public class OrdersMetrics {
 
     private Counter orderCreatedCounter;
     private MeterRegistry meterRegistry;
-    private Counter pocketWatchCounter;
-    private Counter woodWatchCounter;
-    private Counter gentlemanWatchCounter;
-    private Counter classicWatchCounter;
-
-    public static final String POCKET_WATCH = "Pocket Watch";
-    public static final String GENTLEMAN_WATCH = "Gentleman";
-    public static final String CHRONOGRAF_WATCH = "Chronograf Classic";
-    public static final String WOOD_WATCH = "Wood Watch";
+    private Map<String,Counter> watchCounters = new HashMap<>();
 
     public OrdersMetrics(MeterRegistry meterRegistry) {
         this.meterRegistry = meterRegistry;
         this.orderCreatedCounter = meterRegistry.counter("orders_created");
-        this.pocketWatchCounter = Counter.builder("watch.orders")
-                .tag("type",POCKET_WATCH)
-                .description("The number of orders placed for Pocket watch")
-                .register(meterRegistry);
-        this.woodWatchCounter = Counter.builder("watch.orders")
-                .tag("type",WOOD_WATCH)
-                .description("The number of orders placed for Wood watch")
-                .register(meterRegistry);
-        this.classicWatchCounter = Counter.builder("watch.orders")
-                .tag("type",CHRONOGRAF_WATCH)
-                .description("The number of orders placed for Classic watch")
-                .register(meterRegistry);
-        this.gentlemanWatchCounter = Counter.builder("watch.orders")
-                .tag("type",GENTLEMAN_WATCH)
-                .description("The number of orders placed for Gentleman watch")
-                .register(meterRegistry);
     }
 
-    private void incrementCounter(Counter counter, int times){
-        for(int i=0;i<times;i++){
-            counter.increment();
-        }
-    }
 
     @TransactionalEventListener
     public void onOrderCreated(OrderCreatedEvent event) {
-
         this.orderCreatedCounter.increment();
         for (OrderItemEntity orderentity : event.getOrder().getOrderItems()) {
-            switch(orderentity.getName()){
-                case POCKET_WATCH: incrementCounter(this.pocketWatchCounter,orderentity.getQuantity());break;
-                case WOOD_WATCH: incrementCounter(this.woodWatchCounter,orderentity.getQuantity());break;
-                case CHRONOGRAF_WATCH: incrementCounter(this.classicWatchCounter,orderentity.getQuantity());break;
-                case GENTLEMAN_WATCH: incrementCounter(this.gentlemanWatchCounter,orderentity.getQuantity());break;
-            }
+             getCounter(orderentity).increment(orderentity.getQuantity());
         }
         int totalPrice = event.getOrder().getOrderItems().stream().map(x -> x.getTotalCost()).reduce(0, Integer::sum);
         meterRegistry.gauge("watch.orderTotal", new AtomicInteger(totalPrice));
 
+    }
+
+    private Counter getCounter(OrderItemEntity orderentity) {
+        if(null == watchCounters.get(orderentity.getProductId())){
+            Counter counter = Counter.builder("watch.orders")
+                    .tag("type",orderentity.getName())
+                    .description("The number of orders placed for" +  orderentity.getName())
+                    .register(meterRegistry);
+            watchCounters.put(orderentity.getProductId(),counter);
+        }
+        return watchCounters.get(orderentity.getProductId());
     }
 }

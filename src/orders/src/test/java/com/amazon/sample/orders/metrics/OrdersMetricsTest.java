@@ -40,7 +40,8 @@ import static org.assertj.core.api.BDDAssertions.then;
 public class OrdersMetricsTest {
 
     private MeterRegistry meterRegistry;
-
+    private final String POCKET_WATCH = "Pocket Watch";
+    private final String WOOD_WATCH = "Wood Watch";
     @BeforeEach
     void setUp() {
         meterRegistry = new SimpleMeterRegistry();
@@ -63,18 +64,21 @@ public class OrdersMetricsTest {
         order.setFirstName("John");
         order.setId("id");
         order.setLastName("Doe");
+
         List<OrderItemEntity> orderItems = new ArrayList<>();
         OrderItemEntity item = new OrderItemEntity();
-        item.setName(OrdersMetrics.POCKET_WATCH);
+        item.setName(POCKET_WATCH);
         item.setQuantity(5);
         item.setPrice(100);
         item.setTotalCost(500);
+        item.setProductId("Product1");
         orderItems.add(item);
         item = new OrderItemEntity();
-        item.setName(OrdersMetrics.WOOD_WATCH);
+        item.setName(WOOD_WATCH);
         item.setQuantity(2);
         item.setPrice(50);
         item.setTotalCost(100);
+        item.setProductId("Product2");
         orderItems.add(item);
 
         order.setOrderItems(orderItems);
@@ -85,11 +89,11 @@ public class OrdersMetricsTest {
         then(counter).isNotNull();
         then(counter.count()).isEqualTo(1);
 
-        var woodWatchCounter = meterRegistry.get("watch.orders").tags("type",OrdersMetrics.WOOD_WATCH).counter();
+        var woodWatchCounter = meterRegistry.get("watch.orders").tags("type",WOOD_WATCH).counter();
         then(woodWatchCounter).isNotNull();
         then(woodWatchCounter.count()).isEqualTo(2);
 
-        var pocketWatchCounter = meterRegistry.get("watch.orders").tags("type",OrdersMetrics.POCKET_WATCH).counter();
+        var pocketWatchCounter = meterRegistry.get("watch.orders").tags("type",POCKET_WATCH).counter();
         then(pocketWatchCounter).isNotNull();
         then(pocketWatchCounter.count()).isEqualTo(5);
 
