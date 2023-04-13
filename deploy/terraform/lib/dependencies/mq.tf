@@ -3,7 +3,8 @@ locals {
 }
 
 module "orders_mq_broker" {
-  source = "cloudposse/mq-broker/aws"
+  source  = "cloudposse/mq-broker/aws"
+  version = "3.0.0"
 
   name                       = "${var.environment_name}_orders_mq-broker"
   vpc_id                     = var.vpc_id
