@@ -9,3 +9,4 @@ reports
 env
 oss-output
 kubeconfig_*
+.idea

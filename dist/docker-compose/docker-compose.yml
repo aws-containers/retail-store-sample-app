@@ -84,6 +84,8 @@ services:
     hostname: orders
     image: public.ecr.aws/aws-containers/retail-store-sample-orders:0.2.0
     restart: always
+    ports:
+    - 8083:8080
     environment:
       - JAVA_OPTS=-XX:MaxRAMPercentage=75.0 -Djava.security.egd=file:/dev/urandom
       - SERVER_TOMCAT_ACCESSLOG_ENABLED=true
@@ -118,6 +120,8 @@ services:
     read_only: true
     tmpfs:
       - /tmp:rw,noexec,nosuid
+    ports:
+    - 8084:8080
     environment:
       - REDIS_URL=redis://checkout-redis:6379
       - ENDPOINTS_ORDERS=http://orders:8080

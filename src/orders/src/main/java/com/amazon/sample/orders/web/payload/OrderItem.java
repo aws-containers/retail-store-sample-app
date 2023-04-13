@@ -27,4 +27,11 @@ public class OrderItem {
     private int quantity;
 
     private int price;
+
+    private String name;
+
+    private int totalCost;
+
+    private int unitCost;
+
 }

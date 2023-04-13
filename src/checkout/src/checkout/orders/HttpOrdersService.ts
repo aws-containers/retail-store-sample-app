@@ -33,7 +33,7 @@ export class HttpOrdersService implements IOrdersService {
       email: checkout.request.customerEmail,
       firstName: "John",
       lastName: "Doe",
-      items: []
+      items: checkout.request.items
     }).then((value) => {
       return value.body;
     });

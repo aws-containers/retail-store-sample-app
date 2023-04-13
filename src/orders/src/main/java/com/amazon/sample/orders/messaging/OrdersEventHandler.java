@@ -19,12 +19,13 @@
 package com.amazon.sample.orders.messaging;
 
 import com.amazon.sample.events.orders.Order;
-import com.amazon.sample.events.orders.OrderCreatedEvent;
+
 import com.amazon.sample.orders.entities.OrderEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.event.TransactionalEventListener;
+import com.amazon.sample.events.orders.OrderCreatedEvent;
 
 @Component
 public class OrdersEventHandler {
@@ -46,6 +47,7 @@ public class OrdersEventHandler {
         order.setFirstName(entity.getFirstName());
         order.setLastName(entity.getLastName());
         order.setEmail(entity.getEmail());
+        order.setOrderItems(entity.getItems());
 
         OrderCreatedEvent event = new OrderCreatedEvent();
         event.setOrder(order);
