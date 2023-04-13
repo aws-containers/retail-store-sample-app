@@ -108,11 +108,20 @@ mysql:
 
   affinity: {}
 
+  persistentVolume:
+    enabled: true
+    annotations: {}
+    labels: {}
+    accessModes:
+    - ReadWriteOnce
+    size: 10Gi
+    # storageClass: gp2
+
 rabbitmq:
   create: true
 
   address: ""
-  
+
   secret:
     create: true
     name: orders-rabbitmq
@@ -138,6 +147,15 @@ rabbitmq:
   tolerations: []
 
   affinity: {}
+
+  persistentVolume:
+    enabled: true
+    annotations: {}
+    labels: {}
+    accessModes:
+    - ReadWriteOnce
+    size: 10Gi
+    # storageClass: gp2
 
 securityGroups:
   create: false

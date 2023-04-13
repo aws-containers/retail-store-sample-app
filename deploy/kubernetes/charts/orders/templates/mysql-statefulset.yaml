@@ -43,6 +43,11 @@ spec:
                 secretKeyRef:
                   name: {{ .Values.mysql.secret.name }}
                   key: password
+          args:
+            - "--ignore-db-dir=lost+found"
+          volumeMounts:
+            - name: data
+              mountPath: /var/lib/mysql
           ports:
             - name: mysql
               containerPort: 3306
@@ -59,4 +64,34 @@ spec:
       tolerations:
         {{- toYaml . | nindent 8 }}
       {{- end }}
+{{- if .Values.mysql.persistentVolume.enabled }}
+  volumeClaimTemplates:
+    - metadata:
+        name: data
+        {{- if .Values.mysql.persistentVolume.annotations }}
+        annotations:
+{{ toYaml .Values.mysql.persistentVolume.annotations | indent 10 }}
+        {{- end }}
+        {{- if .Values.mysql.persistentVolume.labels }}
+        labels:
+{{ toYaml .Values.mysql.persistentVolume.labels | indent 10 }}
+        {{- end }}
+      spec:
+        accessModes:
+{{ toYaml .Values.mysql.persistentVolume.accessModes | indent 8 }}
+        resources:
+          requests:
+            storage: "{{ .Values.mysql.persistentVolume.size }}"
+      {{- if .Values.mysql.persistentVolume.storageClass }}
+      {{- if (eq "-" .Values.mysql.persistentVolume.storageClass) }}
+        storageClassName: ""
+      {{- else }}
+        storageClassName: "{{ .Values.mysql.persistentVolume.storageClass }}"
+      {{- end }}
+      {{- end }}
+{{- else }}
+      volumes:
+      - name: data
+        emptyDir: {}
+{{- end }}
 {{- end }}

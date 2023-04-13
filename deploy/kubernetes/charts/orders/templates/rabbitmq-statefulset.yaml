@@ -35,6 +35,9 @@ spec:
           - name: http
             containerPort: 15672
             protocol: TCP
+          volumeMounts:
+          - name: data
+            mountPath: "/var/lib/rabbitmq/mnesia"
       {{- with .Values.rabbitmq.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
@@ -47,4 +50,35 @@ spec:
       tolerations:
         {{- toYaml . | nindent 8 }}
       {{- end }}
+
+{{- if .Values.rabbitmq.persistentVolume.enabled }}
+  volumeClaimTemplates:
+    - metadata:
+        name: data
+        {{- if .Values.rabbitmq.persistentVolume.annotations }}
+        annotations:
+{{ toYaml .Values.rabbitmq.persistentVolume.annotations | indent 10 }}
+        {{- end }}
+        {{- if .Values.rabbitmq.persistentVolume.labels }}
+        labels:
+{{ toYaml .Values.rabbitmq.persistentVolume.labels | indent 10 }}
+        {{- end }}
+      spec:
+        accessModes:
+{{ toYaml .Values.rabbitmq.persistentVolume.accessModes | indent 8 }}
+        resources:
+          requests:
+            storage: "{{ .Values.rabbitmq.persistentVolume.size }}"
+      {{- if .Values.rabbitmq.persistentVolume.storageClass }}
+      {{- if (eq "-" .Values.rabbitmq.persistentVolume.storageClass) }}
+        storageClassName: ""
+      {{- else }}
+        storageClassName: "{{ .Values.rabbitmq.persistentVolume.storageClass }}"
+      {{- end }}
+      {{- end }}
+{{- else }}
+      volumes:
+      - name: data
+        emptyDir: {}
+{{- end }}
 {{- end }}

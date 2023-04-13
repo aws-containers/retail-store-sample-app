@@ -103,6 +103,15 @@ mysql:
 
   affinity: {}
 
+  persistentVolume:
+    enabled: true
+    annotations: {}
+    labels: {}
+    accessModes:
+    - ReadWriteOnce
+    size: 10Gi
+    # storageClass: gp2
+
 securityGroups:
   create: false
 
