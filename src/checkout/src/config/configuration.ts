@@ -25,5 +25,8 @@ export default () => ({
     reader: {
       url: process.env.REDIS_READER_URL || '',
     }
+  },
+  shipping: {
+    prefix: process.env.SHIPPING_NAME_PREFIX || ''
   }
 });

@@ -38,9 +38,10 @@ const orderServiceProvider = {
 
 const shippingServiceProvider = {
   provide: 'ShippingService',
-  useFactory: () => {
-    return new MockShippingService();
+  useFactory: (configService: ConfigService) => {
+    return new MockShippingService(configService.get('shipping.prefix'));
   },
+  inject: [ConfigService],
 };
 
 const repositoryProvider = {
