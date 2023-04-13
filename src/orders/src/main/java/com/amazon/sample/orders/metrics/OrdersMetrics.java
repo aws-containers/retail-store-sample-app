@@ -38,9 +38,11 @@ public class OrdersMetrics {
 
     public OrdersMetrics(MeterRegistry meterRegistry) {
         this.meterRegistry = meterRegistry;
-        this.orderCreatedCounter = meterRegistry.counter("orders_created");
+        this.orderCreatedCounter = Counter.builder("watch.orders")
+                    .tag("productId", "*")
+                    .description("The number of orders placed")
+                    .register(meterRegistry);
     }
-
 
     @TransactionalEventListener
     public void onOrderCreated(OrderCreatedEvent event) {
@@ -50,14 +52,13 @@ public class OrdersMetrics {
         }
         int totalPrice = event.getOrder().getOrderItems().stream().map(x -> x.getTotalCost()).reduce(0, Integer::sum);
         meterRegistry.gauge("watch.orderTotal", new AtomicInteger(totalPrice));
-
     }
 
     private Counter getCounter(OrderItemEntity orderentity) {
+        System.out.println("Getting counter for "+orderentity.getProductId());
         if(null == watchCounters.get(orderentity.getProductId())){
             Counter counter = Counter.builder("watch.orders")
-                    .tag("type",orderentity.getName())
-                    .description("The number of orders placed for" +  orderentity.getName())
+                    .tag("productId", orderentity.getProductId())
                     .register(meterRegistry);
             watchCounters.put(orderentity.getProductId(),counter);
         }
