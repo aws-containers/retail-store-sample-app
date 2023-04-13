@@ -109,13 +109,13 @@ mysql:
   affinity: {}
 
   persistentVolume:
-    enabled: false
+    enabled: true
     annotations: {}
     labels: {}
     accessModes:
     - ReadWriteOnce
     size: 10Gi
-    storageClass: gp2
+    # storageClass: gp2
 
 rabbitmq:
   create: true
@@ -149,13 +149,13 @@ rabbitmq:
   affinity: {}
 
   persistentVolume:
-    enabled: false
+    enabled: true
     annotations: {}
     labels: {}
     accessModes:
     - ReadWriteOnce
     size: 10Gi
-    storageClass: gp2
+    # storageClass: gp2
 
 securityGroups:
   create: false
