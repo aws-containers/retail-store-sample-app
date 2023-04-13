@@ -40,8 +40,8 @@ import static org.assertj.core.api.BDDAssertions.then;
 public class OrdersMetricsTest {
 
     private MeterRegistry meterRegistry;
-    private final String POCKET_WATCH = "Pocket Watch";
-    private final String WOOD_WATCH = "Wood Watch";
+    private final String PRODUCT_1 = "Product1";
+    private final String PRODUCT_2 = "Product2";
     @BeforeEach
     void setUp() {
         meterRegistry = new SimpleMeterRegistry();
@@ -67,33 +67,33 @@ public class OrdersMetricsTest {
 
         List<OrderItemEntity> orderItems = new ArrayList<>();
         OrderItemEntity item = new OrderItemEntity();
-        item.setName(POCKET_WATCH);
+        item.setName("Pocket Watch");
         item.setQuantity(5);
         item.setPrice(100);
         item.setTotalCost(500);
-        item.setProductId("Product1");
+        item.setProductId(PRODUCT_1);
         orderItems.add(item);
         item = new OrderItemEntity();
-        item.setName(WOOD_WATCH);
+        item.setName("Wood Watch");
         item.setQuantity(2);
         item.setPrice(50);
         item.setTotalCost(100);
-        item.setProductId("Product2");
+        item.setProductId(PRODUCT_2);
         orderItems.add(item);
 
         order.setOrderItems(orderItems);
         event.setOrder(order);
         ordersMetrics.onOrderCreated(event);
 
-        var counter = meterRegistry.find("orders_created").counter();
+        var counter = meterRegistry.get("watch.orders").tags("productId","*").counter();
         then(counter).isNotNull();
         then(counter.count()).isEqualTo(1);
 
-        var woodWatchCounter = meterRegistry.get("watch.orders").tags("type",WOOD_WATCH).counter();
+        var woodWatchCounter = meterRegistry.get("watch.orders").tags("productId",PRODUCT_2).counter();
         then(woodWatchCounter).isNotNull();
         then(woodWatchCounter.count()).isEqualTo(2);
 
-        var pocketWatchCounter = meterRegistry.get("watch.orders").tags("type",POCKET_WATCH).counter();
+        var pocketWatchCounter = meterRegistry.get("watch.orders").tags("productId",PRODUCT_1).counter();
         then(pocketWatchCounter).isNotNull();
         then(pocketWatchCounter.count()).isEqualTo(5);
 
