@@ -1,5 +1,6 @@
 module "catalog_rds" {
   source  = "terraform-aws-modules/rds-aurora/aws"
+  version = "7.7.1"
 
   name = "${var.environment_name}-catalog"
   engine = "aurora-mysql"
