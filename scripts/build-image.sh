@@ -59,7 +59,7 @@ parse_params() {
   multi_arch=false
   quiet=false
   builder='nil'
-  repository='public.ecr.aws/aws-containers'
+  repository=''
   tag='latest'
   service='*'
   expected_ref=''
@@ -140,7 +140,11 @@ function build()
   tag="${tag_prefix}${tag}"
 
   if [ -z "$expected_ref" ]; then
-    ref="$repository/$image_name:$tag"
+    if [ -z "$repository" ]; then
+      ref="$image_name:$tag"
+    else
+      ref="$repository/$image_name:$tag"
+    fi
   else
     ref="$expected_ref"
   fi
