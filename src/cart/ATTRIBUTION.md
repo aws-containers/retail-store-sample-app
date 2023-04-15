@@ -5,7 +5,7 @@ The applicable license information is listed below:
 
 ----
 
-### com.amazonaws:aws-java-sdk-core @1.12.417 - https://aws.amazon.com/sdkforjava
+### com.amazonaws:aws-java-sdk-core @1.12.440 - https://aws.amazon.com/sdkforjava
 
 Apache License
 Version 2.0, January 2004
@@ -66,7 +66,7 @@ Note: Other license terms may apply to certain, identified software files contai
 
 ----
 
-### com.amazonaws:aws-java-sdk-dynamodb @1.12.417 - https://aws.amazon.com/sdkforjava
+### com.amazonaws:aws-java-sdk-dynamodb @1.12.440 - https://aws.amazon.com/sdkforjava
 
 Apache License
 Version 2.0, January 2004
@@ -127,7 +127,7 @@ Note: Other license terms may apply to certain, identified software files contai
 
 ----
 
-### com.amazonaws:aws-java-sdk-kms @1.12.417 - https://aws.amazon.com/sdkforjava
+### com.amazonaws:aws-java-sdk-kms @1.12.440 - https://aws.amazon.com/sdkforjava
 
 Apache License
 Version 2.0, January 2004
@@ -188,7 +188,7 @@ Note: Other license terms may apply to certain, identified software files contai
 
 ----
 
-### com.amazonaws:aws-java-sdk-s3 @1.12.417 - https://aws.amazon.com/sdkforjava
+### com.amazonaws:aws-java-sdk-s3 @1.12.440 - https://aws.amazon.com/sdkforjava
 
 Apache License
 Version 2.0, January 2004
@@ -249,7 +249,7 @@ Note: Other license terms may apply to certain, identified software files contai
 
 ----
 
-### com.amazonaws:aws-java-sdk-sts @1.12.417 - https://aws.amazon.com/sdkforjava
+### com.amazonaws:aws-java-sdk-sts @1.12.440 - https://aws.amazon.com/sdkforjava
 
 Apache License
 Version 2.0, January 2004
@@ -310,7 +310,7 @@ Note: Other license terms may apply to certain, identified software files contai
 
 ----
 
-### com.amazonaws:jmespath-java @1.12.417 - https://aws.amazon.com/sdkforjava
+### com.amazonaws:jmespath-java @1.12.440 - https://aws.amazon.com/sdkforjava
 
 Apache License
 Version 2.0, January 2004
@@ -3148,7 +3148,7 @@ http://www.apache.org/licenses/LICENSE-2.0
 
 ----
 
-### de.codecentric:chaos-monkey-spring-boot @2.7.0 - https://github.com/codecentric/chaos-monkey-spring-boot/chaos-monkey-dependencies/chaos-monkey-spring-boot
+### de.codecentric:chaos-monkey-spring-boot @3.0.0 - https://github.com/codecentric/chaos-monkey-spring-boot/chaos-monkey-dependencies/chaos-monkey-spring-boot
 
 
                                  Apache License
@@ -3354,7 +3354,7 @@ http://www.apache.org/licenses/LICENSE-2.0
    limitations under the License.
 
 
-[Source code](https://repo.maven.apache.org/maven2/de/codecentric/chaos-monkey-spring-boot/2.7.0/chaos-monkey-spring-boot-2.7.0-sources.jar)
+[Source code](https://repo.maven.apache.org/maven2/de/codecentric/chaos-monkey-spring-boot/3.0.0/chaos-monkey-spring-boot-3.0.0-sources.jar)
 
 ----
 
@@ -3374,7 +3374,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 ----
 
-### io.micrometer:micrometer-commons @1.10.4 - https://github.com/micrometer-metrics/micrometer
+### io.micrometer:micrometer-commons @1.10.5 - https://github.com/micrometer-metrics/micrometer
 
 
                                  Apache License
@@ -3580,11 +3580,11 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
    limitations under the License.
 
 
-[Source code](https://repo.maven.apache.org/maven2/io/micrometer/micrometer-commons/1.10.4/micrometer-commons-1.10.4-sources.jar)
+[Source code](https://repo.maven.apache.org/maven2/io/micrometer/micrometer-commons/1.10.5/micrometer-commons-1.10.5-sources.jar)
 
 ----
 
-### io.micrometer:micrometer-core @1.10.4 - https://github.com/micrometer-metrics/micrometer
+### io.micrometer:micrometer-core @1.10.5 - https://github.com/micrometer-metrics/micrometer
 
 
                                  Apache License
@@ -3790,11 +3790,11 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
    limitations under the License.
 
 
-[Source code](https://repo.maven.apache.org/maven2/io/micrometer/micrometer-core/1.10.4/micrometer-core-1.10.4-sources.jar)
+[Source code](https://repo.maven.apache.org/maven2/io/micrometer/micrometer-core/1.10.5/micrometer-core-1.10.5-sources.jar)
 
 ----
 
-### io.micrometer:micrometer-observation @1.10.4 - https://github.com/micrometer-metrics/micrometer
+### io.micrometer:micrometer-observation @1.10.5 - https://github.com/micrometer-metrics/micrometer
 
 
                                  Apache License
@@ -4000,11 +4000,11 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
    limitations under the License.
 
 
-[Source code](https://repo.maven.apache.org/maven2/io/micrometer/micrometer-observation/1.10.4/micrometer-observation-1.10.4-sources.jar)
+[Source code](https://repo.maven.apache.org/maven2/io/micrometer/micrometer-observation/1.10.5/micrometer-observation-1.10.5-sources.jar)
 
 ----
 
-### io.micrometer:micrometer-registry-prometheus @1.10.4 - https://github.com/micrometer-metrics/micrometer
+### io.micrometer:micrometer-registry-prometheus @1.10.5 - https://github.com/micrometer-metrics/micrometer
 
 
                                  Apache License
@@ -4210,7 +4210,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
    limitations under the License.
 
 
-[Source code](https://repo.maven.apache.org/maven2/io/micrometer/micrometer-registry-prometheus/1.10.4/micrometer-registry-prometheus-1.10.4-sources.jar)
+[Source code](https://repo.maven.apache.org/maven2/io/micrometer/micrometer-registry-prometheus/1.10.5/micrometer-registry-prometheus-1.10.5-sources.jar)
 
 ----
 
@@ -5264,7 +5264,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 ----
 
-### io.swagger.core.v3:swagger-annotations @2.2.7 - https://github.com/swagger-api/swagger-core/modules/swagger-annotations
+### io.swagger.core.v3:swagger-annotations @2.2.8 - https://github.com/swagger-api/swagger-core/modules/swagger-annotations
 
 
                                  Apache License
@@ -5470,11 +5470,11 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
    limitations under the License.
 
 
-[Source code](https://repo.maven.apache.org/maven2/io/swagger/core/v3/swagger-annotations/2.2.7/swagger-annotations-2.2.7-sources.jar)
+[Source code](https://repo.maven.apache.org/maven2/io/swagger/core/v3/swagger-annotations/2.2.8/swagger-annotations-2.2.8-sources.jar)
 
 ----
 
-### io.swagger.core.v3:swagger-core @2.2.7 - https://github.com/swagger-api/swagger-core/modules/swagger-core
+### io.swagger.core.v3:swagger-core @2.2.8 - https://github.com/swagger-api/swagger-core/modules/swagger-core
 
 
                                  Apache License
@@ -5680,11 +5680,11 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
    limitations under the License.
 
 
-[Source code](https://repo.maven.apache.org/maven2/io/swagger/core/v3/swagger-core/2.2.7/swagger-core-2.2.7-sources.jar)
+[Source code](https://repo.maven.apache.org/maven2/io/swagger/core/v3/swagger-core/2.2.8/swagger-core-2.2.8-sources.jar)
 
 ----
 
-### io.swagger.core.v3:swagger-models @2.2.7 - https://github.com/swagger-api/swagger-core/modules/swagger-models
+### io.swagger.core.v3:swagger-models @2.2.8 - https://github.com/swagger-api/swagger-core/modules/swagger-models
 
 
                                  Apache License
@@ -5890,7 +5890,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
    limitations under the License.
 
 
-[Source code](https://repo.maven.apache.org/maven2/io/swagger/core/v3/swagger-models/2.2.7/swagger-models-2.2.7-sources.jar)
+[Source code](https://repo.maven.apache.org/maven2/io/swagger/core/v3/swagger-models/2.2.8/swagger-models-2.2.8-sources.jar)
 
 ----
 
@@ -7436,7 +7436,7 @@ twall[at]users[dot]sf[dot]net.
 
 ----
 
-### net.minidev:accessors-smart @2.4.8 - https://urielch.github.io/
+### net.minidev:accessors-smart @2.4.9 - https://urielch.github.io/
 
                                  Apache License
                            Version 2.0, January 2004
@@ -7642,11 +7642,11 @@ twall[at]users[dot]sf[dot]net.
 
 
 
-[Source code](https://repo.maven.apache.org/maven2/net/minidev/accessors-smart/2.4.8/accessors-smart-2.4.8-sources.jar)
+[Source code](https://repo.maven.apache.org/maven2/net/minidev/accessors-smart/2.4.9/accessors-smart-2.4.9-sources.jar)
 
 ----
 
-### net.minidev:json-smart @2.4.8 - https://urielch.github.io/
+### net.minidev:json-smart @2.4.10 - https://urielch.github.io/
 
                                  Apache License
                            Version 2.0, January 2004
@@ -7852,7 +7852,7 @@ twall[at]users[dot]sf[dot]net.
 
 
 
-[Source code](https://repo.maven.apache.org/maven2/net/minidev/json-smart/2.4.8/json-smart-2.4.8-sources.jar)
+[Source code](https://repo.maven.apache.org/maven2/net/minidev/json-smart/2.4.10/json-smart-2.4.10-sources.jar)
 
 ----
 
@@ -9535,7 +9535,7 @@ twall[at]users[dot]sf[dot]net.
 
 ----
 
-### org.apache.tomcat.embed:tomcat-embed-core @10.1.5 - https://tomcat.apache.org/
+### org.apache.tomcat.embed:tomcat-embed-core @10.1.7 - https://tomcat.apache.org/
 
 
                                  Apache License
@@ -10397,11 +10397,11 @@ version(s), and exceptions or additional permissions here}."
   You may add additional accurate notices of copyright ownership.
 
 
-[Source code](https://repo.maven.apache.org/maven2/org/apache/tomcat/embed/tomcat-embed-core/10.1.5/tomcat-embed-core-10.1.5-sources.jar)
+[Source code](https://repo.maven.apache.org/maven2/org/apache/tomcat/embed/tomcat-embed-core/10.1.7/tomcat-embed-core-10.1.7-sources.jar)
 
 ----
 
-### org.apache.tomcat.embed:tomcat-embed-el @10.1.5 - https://tomcat.apache.org/
+### org.apache.tomcat.embed:tomcat-embed-el @10.1.7 - https://tomcat.apache.org/
 
 
                                  Apache License
@@ -10607,11 +10607,11 @@ version(s), and exceptions or additional permissions here}."
    limitations under the License.
 
 
-[Source code](https://repo.maven.apache.org/maven2/org/apache/tomcat/embed/tomcat-embed-el/10.1.5/tomcat-embed-el-10.1.5-sources.jar)
+[Source code](https://repo.maven.apache.org/maven2/org/apache/tomcat/embed/tomcat-embed-el/10.1.7/tomcat-embed-el-10.1.7-sources.jar)
 
 ----
 
-### org.apache.tomcat.embed:tomcat-embed-websocket @10.1.5 - https://tomcat.apache.org/
+### org.apache.tomcat.embed:tomcat-embed-websocket @10.1.7 - https://tomcat.apache.org/
 
 
                                  Apache License
@@ -10817,7 +10817,7 @@ version(s), and exceptions or additional permissions here}."
    limitations under the License.
 
 
-[Source code](https://repo.maven.apache.org/maven2/org/apache/tomcat/embed/tomcat-embed-websocket/10.1.5/tomcat-embed-websocket-10.1.5-sources.jar)
+[Source code](https://repo.maven.apache.org/maven2/org/apache/tomcat/embed/tomcat-embed-websocket/10.1.7/tomcat-embed-websocket-10.1.7-sources.jar)
 
 ----
 
@@ -13948,7 +13948,7 @@ THE SOFTWARE.
 
 ----
 
-### org.ow2.asm:asm @9.1 - http://asm.ow2.io/
+### org.ow2.asm:asm @9.3 - http://asm.ow2.io/
 
 
  ASM: a very small and fast Java bytecode manipulation framework
@@ -13980,7 +13980,7 @@ THE SOFTWARE.
  THE POSSIBILITY OF SUCH DAMAGE.
 
 
-[Source code](https://repo.maven.apache.org/maven2/org/ow2/asm/asm/9.1/asm-9.1-sources.jar)
+[Source code](https://repo.maven.apache.org/maven2/org/ow2/asm/asm/9.3/asm-9.3-sources.jar)
 
 ----
 
@@ -14333,7 +14333,7 @@ SOFTWARE.
 
 ----
 
-### org.slf4j:slf4j-api @2.0.6 - http://www.slf4j.org
+### org.slf4j:slf4j-api @2.0.7 - http://www.slf4j.org
 
 Copyright (c) 2004-2022 QOS.ch Sarl (Switzerland)
 All rights reserved.
@@ -14361,11 +14361,11 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 
 
-[Source code](https://repo.maven.apache.org/maven2/org/slf4j/slf4j-api/2.0.6/slf4j-api-2.0.6-sources.jar)
+[Source code](https://repo.maven.apache.org/maven2/org/slf4j/slf4j-api/2.0.7/slf4j-api-2.0.7-sources.jar)
 
 ----
 
-### org.springdoc:springdoc-openapi-common @1.6.14 - https://springdoc.org/springdoc-openapi-common/
+### org.springdoc:springdoc-openapi-common @1.6.15 - https://springdoc.org/springdoc-openapi-common/
 
 
                                  Apache License
@@ -14571,11 +14571,11 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
    limitations under the License.
 
 
-[Source code](https://repo.maven.apache.org/maven2/org/springdoc/springdoc-openapi-common/1.6.14/springdoc-openapi-common-1.6.14-sources.jar)
+[Source code](https://repo.maven.apache.org/maven2/org/springdoc/springdoc-openapi-common/1.6.15/springdoc-openapi-common-1.6.15-sources.jar)
 
 ----
 
-### org.springdoc:springdoc-openapi-ui @1.6.14 - https://springdoc.org/springdoc-openapi-ui/
+### org.springdoc:springdoc-openapi-ui @1.6.15 - https://springdoc.org/springdoc-openapi-ui/
 
 
                                  Apache License
@@ -14781,11 +14781,11 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
    limitations under the License.
 
 
-[Source code](https://repo.maven.apache.org/maven2/org/springdoc/springdoc-openapi-ui/1.6.14/springdoc-openapi-ui-1.6.14-sources.jar)
+[Source code](https://repo.maven.apache.org/maven2/org/springdoc/springdoc-openapi-ui/1.6.15/springdoc-openapi-ui-1.6.15-sources.jar)
 
 ----
 
-### org.springdoc:springdoc-openapi-webmvc-core @1.6.14 - https://springdoc.org/springdoc-openapi-webmvc-core/
+### org.springdoc:springdoc-openapi-webmvc-core @1.6.15 - https://springdoc.org/springdoc-openapi-webmvc-core/
 
 
                                  Apache License
@@ -14991,11 +14991,11 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
    limitations under the License.
 
 
-[Source code](https://repo.maven.apache.org/maven2/org/springdoc/springdoc-openapi-webmvc-core/1.6.14/springdoc-openapi-webmvc-core-1.6.14-sources.jar)
+[Source code](https://repo.maven.apache.org/maven2/org/springdoc/springdoc-openapi-webmvc-core/1.6.15/springdoc-openapi-webmvc-core-1.6.15-sources.jar)
 
 ----
 
-### org.springframework:spring-aop @6.0.5 - https://github.com/spring-projects/spring-framework
+### org.springframework:spring-aop @6.0.7 - https://github.com/spring-projects/spring-framework
 
 
                                  Apache License
@@ -15201,11 +15201,11 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
    limitations under the License.
 
 
-[Source code](https://repo.maven.apache.org/maven2/org/springframework/spring-aop/6.0.5/spring-aop-6.0.5-sources.jar)
+[Source code](https://repo.maven.apache.org/maven2/org/springframework/spring-aop/6.0.7/spring-aop-6.0.7-sources.jar)
 
 ----
 
-### org.springframework:spring-beans @6.0.5 - https://github.com/spring-projects/spring-framework
+### org.springframework:spring-beans @6.0.7 - https://github.com/spring-projects/spring-framework
 
 
                                  Apache License
@@ -15411,11 +15411,11 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
    limitations under the License.
 
 
-[Source code](https://repo.maven.apache.org/maven2/org/springframework/spring-beans/6.0.5/spring-beans-6.0.5-sources.jar)
+[Source code](https://repo.maven.apache.org/maven2/org/springframework/spring-beans/6.0.7/spring-beans-6.0.7-sources.jar)
 
 ----
 
-### org.springframework:spring-context @6.0.5 - https://github.com/spring-projects/spring-framework
+### org.springframework:spring-context @6.0.7 - https://github.com/spring-projects/spring-framework
 
 
                                  Apache License
@@ -15621,11 +15621,11 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
    limitations under the License.
 
 
-[Source code](https://repo.maven.apache.org/maven2/org/springframework/spring-context/6.0.5/spring-context-6.0.5-sources.jar)
+[Source code](https://repo.maven.apache.org/maven2/org/springframework/spring-context/6.0.7/spring-context-6.0.7-sources.jar)
 
 ----
 
-### org.springframework:spring-core @6.0.5 - https://github.com/spring-projects/spring-framework
+### org.springframework:spring-core @6.0.7 - https://github.com/spring-projects/spring-framework
 
 
                                  Apache License
@@ -15831,11 +15831,11 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
    limitations under the License.
 
 
-[Source code](https://repo.maven.apache.org/maven2/org/springframework/spring-core/6.0.5/spring-core-6.0.5-sources.jar)
+[Source code](https://repo.maven.apache.org/maven2/org/springframework/spring-core/6.0.7/spring-core-6.0.7-sources.jar)
 
 ----
 
-### org.springframework:spring-expression @6.0.5 - https://github.com/spring-projects/spring-framework
+### org.springframework:spring-expression @6.0.7 - https://github.com/spring-projects/spring-framework
 
 
                                  Apache License
@@ -16041,11 +16041,11 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
    limitations under the License.
 
 
-[Source code](https://repo.maven.apache.org/maven2/org/springframework/spring-expression/6.0.5/spring-expression-6.0.5-sources.jar)
+[Source code](https://repo.maven.apache.org/maven2/org/springframework/spring-expression/6.0.7/spring-expression-6.0.7-sources.jar)
 
 ----
 
-### org.springframework:spring-jcl @6.0.5 - https://github.com/spring-projects/spring-framework
+### org.springframework:spring-jcl @6.0.7 - https://github.com/spring-projects/spring-framework
 
 
                                  Apache License
@@ -16251,11 +16251,11 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
    limitations under the License.
 
 
-[Source code](https://repo.maven.apache.org/maven2/org/springframework/spring-jcl/6.0.5/spring-jcl-6.0.5-sources.jar)
+[Source code](https://repo.maven.apache.org/maven2/org/springframework/spring-jcl/6.0.7/spring-jcl-6.0.7-sources.jar)
 
 ----
 
-### org.springframework:spring-test @6.0.5 - https://github.com/spring-projects/spring-framework
+### org.springframework:spring-test @6.0.7 - https://github.com/spring-projects/spring-framework
 
 
                                  Apache License
@@ -16461,11 +16461,11 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
    limitations under the License.
 
 
-[Source code](https://repo.maven.apache.org/maven2/org/springframework/spring-test/6.0.5/spring-test-6.0.5-sources.jar)
+[Source code](https://repo.maven.apache.org/maven2/org/springframework/spring-test/6.0.7/spring-test-6.0.7-sources.jar)
 
 ----
 
-### org.springframework:spring-tx @6.0.5 - https://github.com/spring-projects/spring-framework
+### org.springframework:spring-tx @6.0.7 - https://github.com/spring-projects/spring-framework
 
 
                                  Apache License
@@ -16671,11 +16671,11 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
    limitations under the License.
 
 
-[Source code](https://repo.maven.apache.org/maven2/org/springframework/spring-tx/6.0.5/spring-tx-6.0.5-sources.jar)
+[Source code](https://repo.maven.apache.org/maven2/org/springframework/spring-tx/6.0.7/spring-tx-6.0.7-sources.jar)
 
 ----
 
-### org.springframework:spring-web @6.0.5 - https://github.com/spring-projects/spring-framework
+### org.springframework:spring-web @6.0.7 - https://github.com/spring-projects/spring-framework
 
 
                                  Apache License
@@ -16881,11 +16881,11 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
    limitations under the License.
 
 
-[Source code](https://repo.maven.apache.org/maven2/org/springframework/spring-web/6.0.5/spring-web-6.0.5-sources.jar)
+[Source code](https://repo.maven.apache.org/maven2/org/springframework/spring-web/6.0.7/spring-web-6.0.7-sources.jar)
 
 ----
 
-### org.springframework:spring-webmvc @6.0.5 - https://github.com/spring-projects/spring-framework
+### org.springframework:spring-webmvc @6.0.7 - https://github.com/spring-projects/spring-framework
 
 
                                  Apache License
@@ -17091,11 +17091,11 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
    limitations under the License.
 
 
-[Source code](https://repo.maven.apache.org/maven2/org/springframework/spring-webmvc/6.0.5/spring-webmvc-6.0.5-sources.jar)
+[Source code](https://repo.maven.apache.org/maven2/org/springframework/spring-webmvc/6.0.7/spring-webmvc-6.0.7-sources.jar)
 
 ----
 
-### org.springframework.boot:spring-boot @3.0.3 - https://spring.io/projects/spring-boot
+### org.springframework.boot:spring-boot @3.0.5 - https://spring.io/projects/spring-boot
 
 
                                  Apache License
@@ -17300,11 +17300,11 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
    See the License for the specific language governing permissions and
    limitations under the License.
 
-[Source code](https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot/3.0.3/spring-boot-3.0.3-sources.jar)
+[Source code](https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot/3.0.5/spring-boot-3.0.5-sources.jar)
 
 ----
 
-### org.springframework.boot:spring-boot-actuator @3.0.3 - https://spring.io/projects/spring-boot
+### org.springframework.boot:spring-boot-actuator @3.0.5 - https://spring.io/projects/spring-boot
 
 
                                  Apache License
@@ -17509,11 +17509,11 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
    See the License for the specific language governing permissions and
    limitations under the License.
 
-[Source code](https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-actuator/3.0.3/spring-boot-actuator-3.0.3-sources.jar)
+[Source code](https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-actuator/3.0.5/spring-boot-actuator-3.0.5-sources.jar)
 
 ----
 
-### org.springframework.boot:spring-boot-actuator-autoconfigure @3.0.3 - https://spring.io/projects/spring-boot
+### org.springframework.boot:spring-boot-actuator-autoconfigure @3.0.5 - https://spring.io/projects/spring-boot
 
 
                                  Apache License
@@ -17718,11 +17718,11 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
    See the License for the specific language governing permissions and
    limitations under the License.
 
-[Source code](https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-actuator-autoconfigure/3.0.3/spring-boot-actuator-autoconfigure-3.0.3-sources.jar)
+[Source code](https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-actuator-autoconfigure/3.0.5/spring-boot-actuator-autoconfigure-3.0.5-sources.jar)
 
 ----
 
-### org.springframework.boot:spring-boot-autoconfigure @3.0.3 - https://spring.io/projects/spring-boot
+### org.springframework.boot:spring-boot-autoconfigure @3.0.5 - https://spring.io/projects/spring-boot
 
 
                                  Apache License
@@ -17927,11 +17927,11 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
    See the License for the specific language governing permissions and
    limitations under the License.
 
-[Source code](https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-autoconfigure/3.0.3/spring-boot-autoconfigure-3.0.3-sources.jar)
+[Source code](https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-autoconfigure/3.0.5/spring-boot-autoconfigure-3.0.5-sources.jar)
 
 ----
 
-### org.springframework.boot:spring-boot-configuration-metadata @3.0.3 - https://spring.io/projects/spring-boot
+### org.springframework.boot:spring-boot-configuration-metadata @3.0.5 - https://spring.io/projects/spring-boot
 
 
                                  Apache License
@@ -18136,11 +18136,11 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
    See the License for the specific language governing permissions and
    limitations under the License.
 
-[Source code](https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-configuration-metadata/3.0.3/spring-boot-configuration-metadata-3.0.3-sources.jar)
+[Source code](https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-configuration-metadata/3.0.5/spring-boot-configuration-metadata-3.0.5-sources.jar)
 
 ----
 
-### org.springframework.boot:spring-boot-properties-migrator @3.0.3 - https://spring.io/projects/spring-boot
+### org.springframework.boot:spring-boot-properties-migrator @3.0.5 - https://spring.io/projects/spring-boot
 
 
                                  Apache License
@@ -18345,11 +18345,11 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
    See the License for the specific language governing permissions and
    limitations under the License.
 
-[Source code](https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-properties-migrator/3.0.3/spring-boot-properties-migrator-3.0.3-sources.jar)
+[Source code](https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-properties-migrator/3.0.5/spring-boot-properties-migrator-3.0.5-sources.jar)
 
 ----
 
-### org.springframework.boot:spring-boot-starter @3.0.3 - https://spring.io/projects/spring-boot
+### org.springframework.boot:spring-boot-starter @3.0.5 - https://spring.io/projects/spring-boot
 
 
                                  Apache License
@@ -18555,11 +18555,11 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
    limitations under the License.
 
 
-[Source code](https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-starter/3.0.3/spring-boot-starter-3.0.3-sources.jar)
+[Source code](https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-starter/3.0.5/spring-boot-starter-3.0.5-sources.jar)
 
 ----
 
-### org.springframework.boot:spring-boot-starter-actuator @3.0.3 - https://spring.io/projects/spring-boot
+### org.springframework.boot:spring-boot-starter-actuator @3.0.5 - https://spring.io/projects/spring-boot
 
 
                                  Apache License
@@ -18765,11 +18765,11 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
    limitations under the License.
 
 
-[Source code](https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-starter-actuator/3.0.3/spring-boot-starter-actuator-3.0.3-sources.jar)
+[Source code](https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-starter-actuator/3.0.5/spring-boot-starter-actuator-3.0.5-sources.jar)
 
 ----
 
-### org.springframework.boot:spring-boot-starter-data-mongodb @3.0.3 - https://spring.io/projects/spring-boot
+### org.springframework.boot:spring-boot-starter-data-mongodb @3.0.5 - https://spring.io/projects/spring-boot
 
 
                                  Apache License
@@ -18975,11 +18975,11 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
    limitations under the License.
 
 
-[Source code](https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-starter-data-mongodb/3.0.3/spring-boot-starter-data-mongodb-3.0.3-sources.jar)
+[Source code](https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-starter-data-mongodb/3.0.5/spring-boot-starter-data-mongodb-3.0.5-sources.jar)
 
 ----
 
-### org.springframework.boot:spring-boot-starter-json @3.0.3 - https://spring.io/projects/spring-boot
+### org.springframework.boot:spring-boot-starter-json @3.0.5 - https://spring.io/projects/spring-boot
 
 
                                  Apache License
@@ -19185,11 +19185,11 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
    limitations under the License.
 
 
-[Source code](https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-starter-json/3.0.3/spring-boot-starter-json-3.0.3-sources.jar)
+[Source code](https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-starter-json/3.0.5/spring-boot-starter-json-3.0.5-sources.jar)
 
 ----
 
-### org.springframework.boot:spring-boot-starter-log4j2 @3.0.3 - https://spring.io/projects/spring-boot
+### org.springframework.boot:spring-boot-starter-log4j2 @3.0.5 - https://spring.io/projects/spring-boot
 
 
                                  Apache License
@@ -19395,11 +19395,11 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
    limitations under the License.
 
 
-[Source code](https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-starter-log4j2/3.0.3/spring-boot-starter-log4j2-3.0.3-sources.jar)
+[Source code](https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-starter-log4j2/3.0.5/spring-boot-starter-log4j2-3.0.5-sources.jar)
 
 ----
 
-### org.springframework.boot:spring-boot-starter-test @3.0.3 - https://spring.io/projects/spring-boot
+### org.springframework.boot:spring-boot-starter-test @3.0.5 - https://spring.io/projects/spring-boot
 
 
                                  Apache License
@@ -19605,11 +19605,11 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
    limitations under the License.
 
 
-[Source code](https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-starter-test/3.0.3/spring-boot-starter-test-3.0.3-sources.jar)
+[Source code](https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-starter-test/3.0.5/spring-boot-starter-test-3.0.5-sources.jar)
 
 ----
 
-### org.springframework.boot:spring-boot-starter-tomcat @3.0.3 - https://spring.io/projects/spring-boot
+### org.springframework.boot:spring-boot-starter-tomcat @3.0.5 - https://spring.io/projects/spring-boot
 
 
                                  Apache License
@@ -19815,11 +19815,11 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
    limitations under the License.
 
 
-[Source code](https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-starter-tomcat/3.0.3/spring-boot-starter-tomcat-3.0.3-sources.jar)
+[Source code](https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-starter-tomcat/3.0.5/spring-boot-starter-tomcat-3.0.5-sources.jar)
 
 ----
 
-### org.springframework.boot:spring-boot-starter-validation @3.0.3 - https://spring.io/projects/spring-boot
+### org.springframework.boot:spring-boot-starter-validation @3.0.5 - https://spring.io/projects/spring-boot
 
 
                                  Apache License
@@ -20025,11 +20025,11 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
    limitations under the License.
 
 
-[Source code](https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-starter-validation/3.0.3/spring-boot-starter-validation-3.0.3-sources.jar)
+[Source code](https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-starter-validation/3.0.5/spring-boot-starter-validation-3.0.5-sources.jar)
 
 ----
 
-### org.springframework.boot:spring-boot-starter-web @3.0.3 - https://spring.io/projects/spring-boot
+### org.springframework.boot:spring-boot-starter-web @3.0.5 - https://spring.io/projects/spring-boot
 
 
                                  Apache License
@@ -20235,11 +20235,11 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
    limitations under the License.
 
 
-[Source code](https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-starter-web/3.0.3/spring-boot-starter-web-3.0.3-sources.jar)
+[Source code](https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-starter-web/3.0.5/spring-boot-starter-web-3.0.5-sources.jar)
 
 ----
 
-### org.springframework.boot:spring-boot-test @3.0.3 - https://spring.io/projects/spring-boot
+### org.springframework.boot:spring-boot-test @3.0.5 - https://spring.io/projects/spring-boot
 
 
                                  Apache License
@@ -20444,11 +20444,11 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
    See the License for the specific language governing permissions and
    limitations under the License.
 
-[Source code](https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-test/3.0.3/spring-boot-test-3.0.3-sources.jar)
+[Source code](https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-test/3.0.5/spring-boot-test-3.0.5-sources.jar)
 
 ----
 
-### org.springframework.boot:spring-boot-test-autoconfigure @3.0.3 - https://spring.io/projects/spring-boot
+### org.springframework.boot:spring-boot-test-autoconfigure @3.0.5 - https://spring.io/projects/spring-boot
 
 
                                  Apache License
@@ -20653,221 +20653,11 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
    See the License for the specific language governing permissions and
    limitations under the License.
 
-[Source code](https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-test-autoconfigure/3.0.3/spring-boot-test-autoconfigure-3.0.3-sources.jar)
+[Source code](https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-test-autoconfigure/3.0.5/spring-boot-test-autoconfigure-3.0.5-sources.jar)
 
 ----
 
-### org.springframework.data:spring-data-commons @3.0.2 - https://spring.io/projects/spring-data
-
-
-                                 Apache License
-                           Version 2.0, January 2004
-                        https://www.apache.org/licenses/
-
-   TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
-
-   1. Definitions.
-
-      "License" shall mean the terms and conditions for use, reproduction,
-      and distribution as defined by Sections 1 through 9 of this document.
-
-      "Licensor" shall mean the copyright owner or entity authorized by
-      the copyright owner that is granting the License.
-
-      "Legal Entity" shall mean the union of the acting entity and all
-      other entities that control, are controlled by, or are under common
-      control with that entity. For the purposes of this definition,
-      "control" means (i) the power, direct or indirect, to cause the
-      direction or management of such entity, whether by contract or
-      otherwise, or (ii) ownership of fifty percent (50%) or more of the
-      outstanding shares, or (iii) beneficial ownership of such entity.
-
-      "You" (or "Your") shall mean an individual or Legal Entity
-      exercising permissions granted by this License.
-
-      "Source" form shall mean the preferred form for making modifications,
-      including but not limited to software source code, documentation
-      source, and configuration files.
-
-      "Object" form shall mean any form resulting from mechanical
-      transformation or translation of a Source form, including but
-      not limited to compiled object code, generated documentation,
-      and conversions to other media types.
-
-      "Work" shall mean the work of authorship, whether in Source or
-      Object form, made available under the License, as indicated by a
-      copyright notice that is included in or attached to the work
-      (an example is provided in the Appendix below).
-
-      "Derivative Works" shall mean any work, whether in Source or Object
-      form, that is based on (or derived from) the Work and for which the
-      editorial revisions, annotations, elaborations, or other modifications
-      represent, as a whole, an original work of authorship. For the purposes
-      of this License, Derivative Works shall not include works that remain
-      separable from, or merely link (or bind by name) to the interfaces of,
-      the Work and Derivative Works thereof.
-
-      "Contribution" shall mean any work of authorship, including
-      the original version of the Work and any modifications or additions
-      to that Work or Derivative Works thereof, that is intentionally
-      submitted to Licensor for inclusion in the Work by the copyright owner
-      or by an individual or Legal Entity authorized to submit on behalf of
-      the copyright owner. For the purposes of this definition, "submitted"
-      means any form of electronic, verbal, or written communication sent
-      to the Licensor or its representatives, including but not limited to
-      communication on electronic mailing lists, source code control systems,
-      and issue tracking systems that are managed by, or on behalf of, the
-      Licensor for the purpose of discussing and improving the Work, but
-      excluding communication that is conspicuously marked or otherwise
-      designated in writing by the copyright owner as "Not a Contribution."
-
-      "Contributor" shall mean Licensor and any individual or Legal Entity
-      on behalf of whom a Contribution has been received by Licensor and
-      subsequently incorporated within the Work.
-
-   2. Grant of Copyright License. Subject to the terms and conditions of
-      this License, each Contributor hereby grants to You a perpetual,
-      worldwide, non-exclusive, no-charge, royalty-free, irrevocable
-      copyright license to reproduce, prepare Derivative Works of,
-      publicly display, publicly perform, sublicense, and distribute the
-      Work and such Derivative Works in Source or Object form.
-
-   3. Grant of Patent License. Subject to the terms and conditions of
-      this License, each Contributor hereby grants to You a perpetual,
-      worldwide, non-exclusive, no-charge, royalty-free, irrevocable
-      (except as stated in this section) patent license to make, have made,
-      use, offer to sell, sell, import, and otherwise transfer the Work,
-      where such license applies only to those patent claims licensable
-      by such Contributor that are necessarily infringed by their
-      Contribution(s) alone or by combination of their Contribution(s)
-      with the Work to which such Contribution(s) was submitted. If You
-      institute patent litigation against any entity (including a
-      cross-claim or counterclaim in a lawsuit) alleging that the Work
-      or a Contribution incorporated within the Work constitutes direct
-      or contributory patent infringement, then any patent licenses
-      granted to You under this License for that Work shall terminate
-      as of the date such litigation is filed.
-
-   4. Redistribution. You may reproduce and distribute copies of the
-      Work or Derivative Works thereof in any medium, with or without
-      modifications, and in Source or Object form, provided that You
-      meet the following conditions:
-
-      (a) You must give any other recipients of the Work or
-          Derivative Works a copy of this License; and
-
-      (b) You must cause any modified files to carry prominent notices
-          stating that You changed the files; and
-
-      (c) You must retain, in the Source form of any Derivative Works
-          that You distribute, all copyright, patent, trademark, and
-          attribution notices from the Source form of the Work,
-          excluding those notices that do not pertain to any part of
-          the Derivative Works; and
-
-      (d) If the Work includes a "NOTICE" text file as part of its
-          distribution, then any Derivative Works that You distribute must
-          include a readable copy of the attribution notices contained
-          within such NOTICE file, excluding those notices that do not
-          pertain to any part of the Derivative Works, in at least one
-          of the following places: within a NOTICE text file distributed
-          as part of the Derivative Works; within the Source form or
-          documentation, if provided along with the Derivative Works; or,
-          within a display generated by the Derivative Works, if and
-          wherever such third-party notices normally appear. The contents
-          of the NOTICE file are for informational purposes only and
-          do not modify the License. You may add Your own attribution
-          notices within Derivative Works that You distribute, alongside
-          or as an addendum to the NOTICE text from the Work, provided
-          that such additional attribution notices cannot be construed
-          as modifying the License.
-
-      You may add Your own copyright statement to Your modifications and
-      may provide additional or different license terms and conditions
-      for use, reproduction, or distribution of Your modifications, or
-      for any such Derivative Works as a whole, provided Your use,
-      reproduction, and distribution of the Work otherwise complies with
-      the conditions stated in this License.
-
-   5. Submission of Contributions. Unless You explicitly state otherwise,
-      any Contribution intentionally submitted for inclusion in the Work
-      by You to the Licensor shall be under the terms and conditions of
-      this License, without any additional terms or conditions.
-      Notwithstanding the above, nothing herein shall supersede or modify
-      the terms of any separate license agreement you may have executed
-      with Licensor regarding such Contributions.
-
-   6. Trademarks. This License does not grant permission to use the trade
-      names, trademarks, service marks, or product names of the Licensor,
-      except as required for reasonable and customary use in describing the
-      origin of the Work and reproducing the content of the NOTICE file.
-
-   7. Disclaimer of Warranty. Unless required by applicable law or
-      agreed to in writing, Licensor provides the Work (and each
-      Contributor provides its Contributions) on an "AS IS" BASIS,
-      WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or
-      implied, including, without limitation, any warranties or conditions
-      of TITLE, NON-INFRINGEMENT, MERCHANTABILITY, or FITNESS FOR A
-      PARTICULAR PURPOSE. You are solely responsible for determining the
-      appropriateness of using or redistributing the Work and assume any
-      risks associated with Your exercise of permissions under this License.
-
-   8. Limitation of Liability. In no event and under no legal theory,
-      whether in tort (including negligence), contract, or otherwise,
-      unless required by applicable law (such as deliberate and grossly
-      negligent acts) or agreed to in writing, shall any Contributor be
-      liable to You for damages, including any direct, indirect, special,
-      incidental, or consequential damages of any character arising as a
-      result of this License or out of the use or inability to use the
-      Work (including but not limited to damages for loss of goodwill,
-      work stoppage, computer failure or malfunction, or any and all
-      other commercial damages or losses), even if such Contributor
-      has been advised of the possibility of such damages.
-
-   9. Accepting Warranty or Additional Liability. While redistributing
-      the Work or Derivative Works thereof, You may choose to offer,
-      and charge a fee for, acceptance of support, warranty, indemnity,
-      or other liability obligations and/or rights consistent with this
-      License. However, in accepting such obligations, You may act only
-      on Your own behalf and on Your sole responsibility, not on behalf
-      of any other Contributor, and only if You agree to indemnify,
-      defend, and hold each Contributor harmless for any liability
-      incurred by, or claims asserted against, such Contributor by reason
-      of your accepting any such warranty or additional liability.
-
-   END OF TERMS AND CONDITIONS
-
-   APPENDIX: How to apply the Apache License to your work.
-
-      To apply the Apache License to your work, attach the following
-      boilerplate notice, with the fields enclosed by brackets "{}"
-      replaced with your own identifying information. (Don't include
-      the brackets!)  The text should be enclosed in the appropriate
-      comment syntax for the file format. We also recommend that a
-      file or class name and description of purpose be included on the
-      same "printed page" as the copyright notice for easier
-      identification within third-party archives.
-
-   Copyright {yyyy} {name of copyright owner}
-
-   Licensed under the Apache License, Version 2.0 (the "License");
-   you may not use this file except in compliance with the License.
-   You may obtain a copy of the License at
-
-       https://www.apache.org/licenses/LICENSE-2.0
-
-   Unless required by applicable law or agreed to in writing, software
-   distributed under the License is distributed on an "AS IS" BASIS,
-   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-   See the License for the specific language governing permissions and
-   limitations under the License.
-
-
-[Source code](https://repo.spring.io/libs-release/org/springframework/data/spring-data-commons/3.0.2/spring-data-commons-3.0.2-sources.jar)
-
-----
-
-### org.springframework.data:spring-data-mongodb @4.0.2 - https://spring.io/projects/spring-data-mongodb/spring-data-mongodb
+### org.springframework.data:spring-data-commons @3.0.4 - https://spring.io/projects/spring-data
 
 
                                  Apache License
@@ -21073,7 +20863,217 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
    limitations under the License.
 
 
-[Source code](https://repo.spring.io/libs-release/org/springframework/data/spring-data-mongodb/4.0.2/spring-data-mongodb-4.0.2-sources.jar)
+[Source code](https://repo.spring.io/libs-release/org/springframework/data/spring-data-commons/3.0.4/spring-data-commons-3.0.4-sources.jar)
+
+----
+
+### org.springframework.data:spring-data-mongodb @4.0.4 - https://spring.io/projects/spring-data-mongodb/spring-data-mongodb
+
+
+                                 Apache License
+                           Version 2.0, January 2004
+                        https://www.apache.org/licenses/
+
+   TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
+
+   1. Definitions.
+
+      "License" shall mean the terms and conditions for use, reproduction,
+      and distribution as defined by Sections 1 through 9 of this document.
+
+      "Licensor" shall mean the copyright owner or entity authorized by
+      the copyright owner that is granting the License.
+
+      "Legal Entity" shall mean the union of the acting entity and all
+      other entities that control, are controlled by, or are under common
+      control with that entity. For the purposes of this definition,
+      "control" means (i) the power, direct or indirect, to cause the
+      direction or management of such entity, whether by contract or
+      otherwise, or (ii) ownership of fifty percent (50%) or more of the
+      outstanding shares, or (iii) beneficial ownership of such entity.
+
+      "You" (or "Your") shall mean an individual or Legal Entity
+      exercising permissions granted by this License.
+
+      "Source" form shall mean the preferred form for making modifications,
+      including but not limited to software source code, documentation
+      source, and configuration files.
+
+      "Object" form shall mean any form resulting from mechanical
+      transformation or translation of a Source form, including but
+      not limited to compiled object code, generated documentation,
+      and conversions to other media types.
+
+      "Work" shall mean the work of authorship, whether in Source or
+      Object form, made available under the License, as indicated by a
+      copyright notice that is included in or attached to the work
+      (an example is provided in the Appendix below).
+
+      "Derivative Works" shall mean any work, whether in Source or Object
+      form, that is based on (or derived from) the Work and for which the
+      editorial revisions, annotations, elaborations, or other modifications
+      represent, as a whole, an original work of authorship. For the purposes
+      of this License, Derivative Works shall not include works that remain
+      separable from, or merely link (or bind by name) to the interfaces of,
+      the Work and Derivative Works thereof.
+
+      "Contribution" shall mean any work of authorship, including
+      the original version of the Work and any modifications or additions
+      to that Work or Derivative Works thereof, that is intentionally
+      submitted to Licensor for inclusion in the Work by the copyright owner
+      or by an individual or Legal Entity authorized to submit on behalf of
+      the copyright owner. For the purposes of this definition, "submitted"
+      means any form of electronic, verbal, or written communication sent
+      to the Licensor or its representatives, including but not limited to
+      communication on electronic mailing lists, source code control systems,
+      and issue tracking systems that are managed by, or on behalf of, the
+      Licensor for the purpose of discussing and improving the Work, but
+      excluding communication that is conspicuously marked or otherwise
+      designated in writing by the copyright owner as "Not a Contribution."
+
+      "Contributor" shall mean Licensor and any individual or Legal Entity
+      on behalf of whom a Contribution has been received by Licensor and
+      subsequently incorporated within the Work.
+
+   2. Grant of Copyright License. Subject to the terms and conditions of
+      this License, each Contributor hereby grants to You a perpetual,
+      worldwide, non-exclusive, no-charge, royalty-free, irrevocable
+      copyright license to reproduce, prepare Derivative Works of,
+      publicly display, publicly perform, sublicense, and distribute the
+      Work and such Derivative Works in Source or Object form.
+
+   3. Grant of Patent License. Subject to the terms and conditions of
+      this License, each Contributor hereby grants to You a perpetual,
+      worldwide, non-exclusive, no-charge, royalty-free, irrevocable
+      (except as stated in this section) patent license to make, have made,
+      use, offer to sell, sell, import, and otherwise transfer the Work,
+      where such license applies only to those patent claims licensable
+      by such Contributor that are necessarily infringed by their
+      Contribution(s) alone or by combination of their Contribution(s)
+      with the Work to which such Contribution(s) was submitted. If You
+      institute patent litigation against any entity (including a
+      cross-claim or counterclaim in a lawsuit) alleging that the Work
+      or a Contribution incorporated within the Work constitutes direct
+      or contributory patent infringement, then any patent licenses
+      granted to You under this License for that Work shall terminate
+      as of the date such litigation is filed.
+
+   4. Redistribution. You may reproduce and distribute copies of the
+      Work or Derivative Works thereof in any medium, with or without
+      modifications, and in Source or Object form, provided that You
+      meet the following conditions:
+
+      (a) You must give any other recipients of the Work or
+          Derivative Works a copy of this License; and
+
+      (b) You must cause any modified files to carry prominent notices
+          stating that You changed the files; and
+
+      (c) You must retain, in the Source form of any Derivative Works
+          that You distribute, all copyright, patent, trademark, and
+          attribution notices from the Source form of the Work,
+          excluding those notices that do not pertain to any part of
+          the Derivative Works; and
+
+      (d) If the Work includes a "NOTICE" text file as part of its
+          distribution, then any Derivative Works that You distribute must
+          include a readable copy of the attribution notices contained
+          within such NOTICE file, excluding those notices that do not
+          pertain to any part of the Derivative Works, in at least one
+          of the following places: within a NOTICE text file distributed
+          as part of the Derivative Works; within the Source form or
+          documentation, if provided along with the Derivative Works; or,
+          within a display generated by the Derivative Works, if and
+          wherever such third-party notices normally appear. The contents
+          of the NOTICE file are for informational purposes only and
+          do not modify the License. You may add Your own attribution
+          notices within Derivative Works that You distribute, alongside
+          or as an addendum to the NOTICE text from the Work, provided
+          that such additional attribution notices cannot be construed
+          as modifying the License.
+
+      You may add Your own copyright statement to Your modifications and
+      may provide additional or different license terms and conditions
+      for use, reproduction, or distribution of Your modifications, or
+      for any such Derivative Works as a whole, provided Your use,
+      reproduction, and distribution of the Work otherwise complies with
+      the conditions stated in this License.
+
+   5. Submission of Contributions. Unless You explicitly state otherwise,
+      any Contribution intentionally submitted for inclusion in the Work
+      by You to the Licensor shall be under the terms and conditions of
+      this License, without any additional terms or conditions.
+      Notwithstanding the above, nothing herein shall supersede or modify
+      the terms of any separate license agreement you may have executed
+      with Licensor regarding such Contributions.
+
+   6. Trademarks. This License does not grant permission to use the trade
+      names, trademarks, service marks, or product names of the Licensor,
+      except as required for reasonable and customary use in describing the
+      origin of the Work and reproducing the content of the NOTICE file.
+
+   7. Disclaimer of Warranty. Unless required by applicable law or
+      agreed to in writing, Licensor provides the Work (and each
+      Contributor provides its Contributions) on an "AS IS" BASIS,
+      WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or
+      implied, including, without limitation, any warranties or conditions
+      of TITLE, NON-INFRINGEMENT, MERCHANTABILITY, or FITNESS FOR A
+      PARTICULAR PURPOSE. You are solely responsible for determining the
+      appropriateness of using or redistributing the Work and assume any
+      risks associated with Your exercise of permissions under this License.
+
+   8. Limitation of Liability. In no event and under no legal theory,
+      whether in tort (including negligence), contract, or otherwise,
+      unless required by applicable law (such as deliberate and grossly
+      negligent acts) or agreed to in writing, shall any Contributor be
+      liable to You for damages, including any direct, indirect, special,
+      incidental, or consequential damages of any character arising as a
+      result of this License or out of the use or inability to use the
+      Work (including but not limited to damages for loss of goodwill,
+      work stoppage, computer failure or malfunction, or any and all
+      other commercial damages or losses), even if such Contributor
+      has been advised of the possibility of such damages.
+
+   9. Accepting Warranty or Additional Liability. While redistributing
+      the Work or Derivative Works thereof, You may choose to offer,
+      and charge a fee for, acceptance of support, warranty, indemnity,
+      or other liability obligations and/or rights consistent with this
+      License. However, in accepting such obligations, You may act only
+      on Your own behalf and on Your sole responsibility, not on behalf
+      of any other Contributor, and only if You agree to indemnify,
+      defend, and hold each Contributor harmless for any liability
+      incurred by, or claims asserted against, such Contributor by reason
+      of your accepting any such warranty or additional liability.
+
+   END OF TERMS AND CONDITIONS
+
+   APPENDIX: How to apply the Apache License to your work.
+
+      To apply the Apache License to your work, attach the following
+      boilerplate notice, with the fields enclosed by brackets "{}"
+      replaced with your own identifying information. (Don't include
+      the brackets!)  The text should be enclosed in the appropriate
+      comment syntax for the file format. We also recommend that a
+      file or class name and description of purpose be included on the
+      same "printed page" as the copyright notice for easier
+      identification within third-party archives.
+
+   Copyright {yyyy} {name of copyright owner}
+
+   Licensed under the Apache License, Version 2.0 (the "License");
+   you may not use this file except in compliance with the License.
+   You may obtain a copy of the License at
+
+       https://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+
+
+[Source code](https://repo.spring.io/libs-release/org/springframework/data/spring-data-mongodb/4.0.4/spring-data-mongodb-4.0.4-sources.jar)
 
 ----
 
@@ -21135,7 +21135,7 @@ SOFTWARE.
 
 ----
 
-### org.webjars:swagger-ui @4.15.5 - http://webjars.org
+### org.webjars:swagger-ui @4.17.1 - http://webjars.org
 
 
                                  Apache License

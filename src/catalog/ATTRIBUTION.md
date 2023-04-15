@@ -67,7 +67,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 ----
 
-### github.com/aws/aws-sdk-go @v1.44.184
+### github.com/aws/aws-sdk-go @v1.44.210
 
 
                                  Apache License
@@ -276,7 +276,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 ----
 
-### github.com/aws/aws-sdk-go/internal/sync/singleflight @v1.44.184
+### github.com/aws/aws-sdk-go/internal/sync/singleflight @v1.44.210
 
 Copyright (c) 2009 The Go Authors. All rights reserved.
 
@@ -4505,7 +4505,7 @@ SUBDIRECTORIES
 
 ----
 
-### github.com/signalfx/splunk-otel-go @v1.2.0
+### github.com/signalfx/splunk-otel-go @v1.4.0
 
                                  Apache License
                            Version 2.0, January 2004
@@ -4713,7 +4713,7 @@ SUBDIRECTORIES
 
 ----
 
-### github.com/signalfx/splunk-otel-go/instrumentation/database/sql/splunksql @v1.2.0
+### github.com/signalfx/splunk-otel-go/instrumentation/database/sql/splunksql @v1.4.0
 
                                  Apache License
                            Version 2.0, January 2004
@@ -4921,7 +4921,7 @@ SUBDIRECTORIES
 
 ----
 
-### github.com/signalfx/splunk-otel-go/instrumentation/github.com/jmoiron/sqlx/splunksqlx @v1.2.0
+### github.com/signalfx/splunk-otel-go/instrumentation/github.com/jmoiron/sqlx/splunksqlx @v1.5.0
 
                                  Apache License
                            Version 2.0, January 2004
@@ -5129,7 +5129,7 @@ SUBDIRECTORIES
 
 ----
 
-### github.com/signalfx/splunk-otel-go/instrumentation/internal @v1.2.0
+### github.com/signalfx/splunk-otel-go/instrumentation/internal @v1.4.0
 
                                  Apache License
                            Version 2.0, January 2004
@@ -5365,7 +5365,7 @@ THE SOFTWARE.
 
 ----
 
-### github.com/swaggo/files @v0.0.0-20220728132757-551d4a08d97a
+### github.com/swaggo/files @v1.0.1
 
 MIT License
 
@@ -5393,7 +5393,7 @@ SOFTWARE.
 
 ----
 
-### github.com/swaggo/gin-swagger @v1.5.3
+### github.com/swaggo/gin-swagger @v1.6.0
 
 MIT License
 
@@ -5421,7 +5421,7 @@ SOFTWARE.
 
 ----
 
-### github.com/swaggo/swag @v1.8.10
+### github.com/swaggo/swag @v1.8.12
 
 MIT License
 
@@ -5506,7 +5506,7 @@ SOFTWARE.
 
 ----
 
-### go.opentelemetry.io/contrib/detectors/aws/ec2 @v1.13.0
+### go.opentelemetry.io/contrib/detectors/aws/ec2 @v1.15.0
 
                                  Apache License
                            Version 2.0, January 2004
@@ -7647,7 +7647,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 ----
 
-### golang.org/x/net @v0.7.0
+### golang.org/x/net @v0.8.0
 
 Copyright (c) 2009 The Go Authors. All rights reserved.
 
@@ -7681,7 +7681,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 ----
 
-### golang.org/x/sys @v0.5.0
+### golang.org/x/sys @v0.6.0
 
 Copyright (c) 2009 The Go Authors. All rights reserved.
 
@@ -7715,7 +7715,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 ----
 
-### golang.org/x/text @v0.7.0
+### golang.org/x/text @v0.8.0
 
 Copyright (c) 2009 The Go Authors. All rights reserved.
 
@@ -7749,7 +7749,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 ----
 
-### golang.org/x/tools @v0.1.12
+### golang.org/x/tools @v0.7.0
 
 Copyright (c) 2009 The Go Authors. All rights reserved.
 
