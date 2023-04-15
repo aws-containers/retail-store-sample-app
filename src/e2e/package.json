@@ -5,7 +5,7 @@
   "main": "conf.js",
   "scripts": {
     "test": "protractor conf.js",
-    "postinstall": "./node_modules/protractor/bin/webdriver-manager update --versions.chrome=90.0.4430.212"
+    "postinstall": "./node_modules/protractor/bin/webdriver-manager update --gecko false --versions.chrome=90.0.4430.212"
   },
   "keywords": [],
   "author": "",
