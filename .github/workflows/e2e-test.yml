@@ -33,7 +33,7 @@ jobs:
 
     - name: Build Images
       run: |
-        scripts/build-image.sh -r 'public.ecr.aws/aws-containers' -t e2e
+        scripts/build-image.sh -t e2e
         
     - name: Run Tests
       run: |
