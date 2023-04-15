@@ -113,7 +113,7 @@ jobs:
       id: github_release
       uses: mikepenz/release-changelog-builder-action@v3
       with:
-        configuration: "configuration.json"
+        configuration: "release-notes-configuration.json"
         toTag: ${{ github.event.inputs.tag }}
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
