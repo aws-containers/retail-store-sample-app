@@ -24,20 +24,16 @@ jobs:
     - uses: azure/setup-kubectl@v3
       id: install
 
+    - name: Setup helmfile
+      uses: mamezou-tech/setup-helmfile@v1.2.0
+
     - name: Update manifests
       env:
         TAG: "${{ github.event.inputs.tag }}"
       run: |
         sudo apt-get install -y gettext
-        wget https://github.com/mikefarah/yq/releases/download/v4.30.4/yq_linux_amd64 -O yq
-        chmod +x yq
         
-        ./yq -i '.images.[].newTag |= env(TAG)' deploy/kubernetes/kustomize/components/published-images/kustomization.yaml
-        mkdir -p dist/kubernetes dist/docker-compose
-        kubectl kustomize deploy/kubernetes/kustomize/recipes/standalone/ > dist/kubernetes/deploy.yaml
-        envsubst '$TAG' < deploy/docker-compose/docker-compose.yml > dist/docker-compose/docker-compose.yml
-        
-        rm -f ./yq
+        bash scripts/scripts/patch-image-tag.sh
         
     - uses: stefanzweifel/git-auto-commit-action@v4
       with:
@@ -67,7 +63,6 @@ jobs:
     - name: Set up Docker Buildx
       id: buildx
       uses: docker/setup-buildx-action@v2
-
     - name: Build Images
       env:
         TAG: "${{ github.event.inputs.tag }}"
@@ -81,7 +76,7 @@ jobs:
         role-to-assume: ${{ secrets.AWS_ROLE_ARN }}
         aws-region: ${{ secrets.AWS_REGION }}
         role-session-name: GithubActionsSession
-
+        
     - name: Login to Amazon ECR Public
       id: login-ecr-public
       uses: aws-actions/amazon-ecr-login@v1
@@ -112,10 +107,20 @@ jobs:
         from_branch: ${{ github.event.inputs.tag }}
         target_branch: main
         github_token: ${{ github.token }}
+        message: Release ${{ github.event.inputs.tag }}
+
+    - name: Build Changelog
+      id: github_release
+      uses: mikepenz/release-changelog-builder-action@v3
+      with:
+        configuration: "configuration.json"
+        toTag: ${{ github.event.inputs.tag }}
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     
     - name: Create GitHub release
       uses: ncipollo/release-action@v1
       with:
         tag: ${{ github.event.inputs.tag }}
         name: Release ${{ github.event.inputs.tag }}
-        body: Published release ${{ github.event.inputs.tag }}
+        body: ${{steps.github_release.outputs.changelog}}
