@@ -56,6 +56,9 @@ func newMySQLRepository(config config.DatabaseConfiguration) (Repository, error)
 			log.Println("Error: Failed to run migration", err)
 			return nil, err
 		}
+		log.Printf("Schema migration applied")
+	} else {
+		log.Printf("Skipping schema migration")
 	}
 
 	var readerDb *sqlx.DB
@@ -97,6 +100,8 @@ func createConnection(endpoint string, username string, password string, name st
 		return nil, err
 	}
 
+	log.Printf("Connected")
+
 	return db, nil
 }
 
@@ -112,9 +117,12 @@ func migrateMySQL(connectionString string) error {
 		return err
 	}
 
-	if err := m.Up(); err != migrate.ErrNoChange {
-		log.Println("Error: Failed to apply migration", err)
-		return err
+	err = m.Up()
+	if err != nil {
+		if err != migrate.ErrNoChange {
+			log.Println("Error: Failed to apply migration", err)
+			return err
+		}
 	}
 
 	return nil
