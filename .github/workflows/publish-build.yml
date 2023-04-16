@@ -33,7 +33,7 @@ jobs:
       run: |
         sudo apt-get install -y gettext
         
-        bash scripts/scripts/patch-image-tag.sh
+        bash scripts/patch-image-tag.sh
         
     - uses: stefanzweifel/git-auto-commit-action@v4
       with:
