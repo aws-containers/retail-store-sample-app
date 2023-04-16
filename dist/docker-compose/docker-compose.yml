@@ -15,11 +15,10 @@
 # SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 version: '2'
-
 services:
   ui:
     ports:
-    - 8888:8080
+      - 8888:8080
     environment:
       - JAVA_OPTS=-XX:MaxRAMPercentage=75.0 -Djava.security.egd=file:/dev/urandom
       - SERVER_TOMCAT_ACCESSLOG_ENABLED=true
@@ -29,15 +28,14 @@ services:
       - ENDPOINTS_CHECKOUT=http://checkout:8080
       - ENDPOINTS_ASSETS=http://assets:8080
     hostname: ui
-    image: public.ecr.aws/aws-containers/retail-store-sample-ui:0.2.0
+    image: public.ecr.aws/aws-containers/retail-store-sample-ui:0.3.0
     restart: always
     mem_limit: 256m
     cap_drop:
       - ALL
-
   catalog:
     hostname: catalog
-    image: public.ecr.aws/aws-containers/retail-store-sample-catalog:0.2.0
+    image: public.ecr.aws/aws-containers/retail-store-sample-catalog:0.3.0
     restart: always
     environment:
       - GIN_MODE=release
@@ -45,7 +43,6 @@ services:
     mem_limit: 128m
     cap_drop:
       - ALL
-
   catalog-db:
     image: mariadb:10.9
     hostname: catalog-db
@@ -57,10 +54,9 @@ services:
       - MYSQL_USER=catalog_user
       - MYSQL_PASSWORD=${MYSQL_PASSWORD}
     mem_limit: 128m
-
   carts:
     hostname: carts
-    image: public.ecr.aws/aws-containers/retail-store-sample-cart:0.2.0
+    image: public.ecr.aws/aws-containers/retail-store-sample-cart:0.3.0
     restart: always
     environment:
       - JAVA_OPTS=-XX:MaxRAMPercentage=75.0 -Djava.security.egd=file:/dev/urandom
@@ -73,19 +69,15 @@ services:
     mem_limit: 256m
     cap_drop:
       - ALL
-
   carts-db:
     image: amazon/dynamodb-local:1.20.0
     hostname: carts-db
     restart: always
-    mem_limit: 128m
-    
+    mem_limit: 256m
   orders:
     hostname: orders
-    image: public.ecr.aws/aws-containers/retail-store-sample-orders:0.2.0
+    image: public.ecr.aws/aws-containers/retail-store-sample-orders:0.3.0
     restart: always
-    ports:
-    - 8083:8080
     environment:
       - JAVA_OPTS=-XX:MaxRAMPercentage=75.0 -Djava.security.egd=file:/dev/urandom
       - SERVER_TOMCAT_ACCESSLOG_ENABLED=true
@@ -100,7 +92,6 @@ services:
     mem_limit: 256m
     cap_drop:
       - ALL
-
   orders-db:
     image: mariadb:10.9
     hostname: orders-db
@@ -112,39 +103,33 @@ services:
       - MYSQL_USER=orders_user
       - MYSQL_PASSWORD=${MYSQL_PASSWORD}
     mem_limit: 128m
-
   checkout:
-    image: public.ecr.aws/aws-containers/retail-store-sample-checkout:0.2.0
+    image: public.ecr.aws/aws-containers/retail-store-sample-checkout:0.3.0
     hostname: checkout
     restart: always
     read_only: true
     tmpfs:
       - /tmp:rw,noexec,nosuid
-    ports:
-    - 8084:8080
     environment:
       - REDIS_URL=redis://checkout-redis:6379
       - ENDPOINTS_ORDERS=http://orders:8080
     mem_limit: 256m
     cap_drop:
       - ALL
-
   checkout-redis:
     image: redis:6-alpine
     hostname: checkout-redis
     restart: always
     mem_limit: 128m
-
   assets:
     hostname: assets
     environment:
       - PORT=8080
-    image: public.ecr.aws/aws-containers/retail-store-sample-assets:0.2.0
+    image: public.ecr.aws/aws-containers/retail-store-sample-assets:0.3.0
     restart: always
     mem_limit: 64m
     cap_drop:
       - ALL
-
   rabbitmq:
     image: rabbitmq:3-management
     ports:
