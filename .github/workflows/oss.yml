@@ -41,6 +41,6 @@ jobs:
         with:
           add-path: src/**/ATTRIBUTION.md
           branch: attribution-updates
-          title: "chore: Update OSS attribution"
+          title: "chore(deps): Update OSS attribution"
           commit-message: "[Automated] Updating OSS attribution documents"
           delete-branch: true
