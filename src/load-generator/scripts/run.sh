@@ -54,7 +54,7 @@ parse_params() {
   # default values of variables set from params
   quiet=false
   container=false
-  target='localhost:8888'
+  target='http://localhost:8888'
   duration='0'
   vus='1'
 
@@ -116,7 +116,7 @@ if [ "$container" = true ]; then
   msg "Running in ${BLUE}container mode${NOFORMAT}..."
 
   docker run --rm -v $script_dir/../:/scripts \
-    artilleryio/artillery:2.0.0-23 \
+    artilleryio/artillery:2.0.0-31 \
     run -t $target $quiet_args --overrides "$overrides_args" /scripts/scenario.yml 
 else
   msg "Running in ${BLUE}default mode${NOFORMAT}..."

@@ -9,6 +9,6 @@
   "author": "",
   "license": "MIT-0",
   "devDependencies": {
-    "artillery": "^2.0.0-23"
+    "artillery": "^2.0.0-31"
   }
 }
