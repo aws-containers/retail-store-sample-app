@@ -104,7 +104,7 @@ mysql:
   affinity: {}
 
   persistentVolume:
-    enabled: true
+    enabled: false
     annotations: {}
     labels: {}
     accessModes:
