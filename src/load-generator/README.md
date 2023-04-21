@@ -18,6 +18,8 @@ bash scripts/run.sh --help
 
 You can easily run the load generator as one or more Pods in a Kubernetes cluster. For example:
 
+(Note: Update `http://ui.ui.svc` to reflect your namespace structure)
+
 ```bash
 $ cat <<'EOF' | kubectl apply -f -
 apiVersion: v1
@@ -27,7 +29,7 @@ metadata:
 spec:
   containers:
   - name: artillery
-    image: artilleryio/artillery:2.0.0-23
+    image: artilleryio/artillery:2.0.0-31
     args:
     - "run"
     - "-t"
@@ -38,11 +40,11 @@ spec:
       mountPath: /scripts
   initContainers:
   - name: setup
-    image: public.ecr.aws/aws-containers/retail-store-sample-utils:load-gen.0.2.0
+    image: public.ecr.aws/aws-containers/retail-store-sample-utils:load-gen.0.3.1
     command:
     - cp
-    - "/artillery/scenario.yml"
-    - "/scripts/scenario.yml"
+    - "/artillery/*"
+    - "/scripts"
     volumeMounts:
     - name: scripts
       mountPath: "/scripts"

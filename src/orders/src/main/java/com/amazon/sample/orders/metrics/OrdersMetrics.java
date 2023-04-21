@@ -55,7 +55,6 @@ public class OrdersMetrics {
     }
 
     private Counter getCounter(OrderItemEntity orderentity) {
-        System.out.println("Getting counter for "+orderentity.getProductId());
         if(null == watchCounters.get(orderentity.getProductId())){
             Counter counter = Counter.builder("watch.orders")
                     .tag("productId", orderentity.getProductId())
