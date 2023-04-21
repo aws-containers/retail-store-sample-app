@@ -95,7 +95,7 @@ services:
       - SPRING_DATASOURCE_READER_USERNAME=orders_user
       - SPRING_DATASOURCE_READER_PASSWORD=${MYSQL_PASSWORD}
       - SPRING_RABBITMQ_HOST=rabbitmq
-    mem_limit: 256m
+    mem_limit: 512m
     cap_drop:
       - ALL
 
