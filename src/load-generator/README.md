@@ -40,11 +40,12 @@ spec:
       mountPath: /scripts
   initContainers:
   - name: setup
-    image: public.ecr.aws/aws-containers/retail-store-sample-utils:load-gen.0.3.1
+    image: public.ecr.aws/aws-containers/retail-store-sample-utils:load-gen.0.3.0
     command:
-    - cp
-    - "/artillery/*"
-    - "/scripts"
+    - bash
+    args:
+    - -c
+    - "cp /artillery/* /scripts"
     volumeMounts:
     - name: scripts
       mountPath: "/scripts"
