@@ -29,6 +29,7 @@ rules:
       - services
       - endpoints
       - pods
+      - configmaps
     verbs:
       - get
       - list

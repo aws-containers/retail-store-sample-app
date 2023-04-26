@@ -32,9 +32,9 @@ module "dependencies" {
   subnet_ids         = module.vpc.inner.private_subnets
   availability_zones = module.vpc.inner.azs
 
-  catalog_security_group_id  = aws_security_group.catalog.id
-  orders_security_group_id   = aws_security_group.orders.id
-  checkout_security_group_id = aws_security_group.checkout.id
+  catalog_security_group_id  = var.tracing_enabled ? module.retail_app_eks.node_security_group_id : aws_security_group.catalog.id
+  orders_security_group_id   = var.tracing_enabled ? module.retail_app_eks.node_security_group_id : aws_security_group.orders.id
+  checkout_security_group_id = var.tracing_enabled ? module.retail_app_eks.node_security_group_id : aws_security_group.checkout.id
 }
 
 module "retail_app_eks" {

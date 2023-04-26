@@ -8,3 +8,9 @@ variable "istio_enabled" {
   type        = bool 
   default     = false
 }
+
+variable "tracing_enabled" {
+  description = "Boolean value that enables AWS X-Ray tracing."
+  type        = bool 
+  default     = true
+}

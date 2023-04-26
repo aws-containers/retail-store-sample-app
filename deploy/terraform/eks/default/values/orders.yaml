@@ -16,8 +16,21 @@ rabbitmq:
     username: ${rabbitmq_username}
     password: ${rabbitmq_password}
 
+%{ if tracing_enabled }
+securityGroups:
+  create: false
+
+traces:
+  enabled: true
+  podAnnotations:
+    instrumentation.opentelemetry.io/inject-sdk: "opentelemetry/default-instrumentation"
+%{ else }
 securityGroups:
   create: true
 
   securityGroupIds:
   - ${security_group_id}
+
+traces:
+  enabled: false
+%{ endif }

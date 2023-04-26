@@ -5,6 +5,16 @@ endpoints:
   assets: http://assets.assets.svc:80
   checkout: http://checkout.checkout.svc:80
 
+%{ if tracing_enabled }
+traces:
+  enabled: true
+  podAnnotations:
+    instrumentation.opentelemetry.io/inject-sdk: "opentelemetry/default-instrumentation"
+%{ else }
+traces:
+  enabled: false
+%{ endif }
+
 %{ if istio_enabled }
 istio:
   enabled: true

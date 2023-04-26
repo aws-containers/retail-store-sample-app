@@ -18,6 +18,11 @@ output "eks_oidc_issuer_url" {
   value       = module.eks_cluster.cluster_oidc_issuer_url
 }
 
+output "node_security_group_id" {
+  description = "ID of the node shared security group"
+  value       = module.eks_cluster.node_security_group_id
+}
+
 output "cluster_blocker_id" {
   description = "Output that can be used to block other resources until cluster is created"
   value       = null_resource.cluster_blocker.id
