@@ -31,7 +31,7 @@
     "@opentelemetry/exporter-trace-otlp-grpc": "^0.34.0",
     "@opentelemetry/resource-detector-aws": "^1.2.1",
     "@opentelemetry/sdk-node": "^0.34.0",
-    "@willsoto/nestjs-prometheus": "^4.7.0",
+    "@willsoto/nestjs-prometheus": "^5.1.1",
     "class-transformer": "^0.5.1",
     "class-validator": "^0.14.0",
     "nestjs-otel": "^5.0.0",
@@ -40,7 +40,7 @@
     "reflect-metadata": "^0.1.13",
     "request": "^2.88.2",
     "rimraf": "^4.4.1",
-    "rxjs": "^7.2.0"
+    "rxjs": "^7.8.1"
   },
   "devDependencies": {
     "@nestjs/cli": "^9.3.0",
@@ -50,7 +50,7 @@
     "@types/jest": "28.1.4",
     "@types/node": "^18.15.11",
     "@types/supertest": "^2.0.11",
-    "@typescript-eslint/eslint-plugin": "^5.45.1",
+    "@typescript-eslint/eslint-plugin": "^5.59.1",
     "@typescript-eslint/parser": "^5.50.0",
     "eslint": "^8.29.0",
     "eslint-config-prettier": "^8.3.0",
