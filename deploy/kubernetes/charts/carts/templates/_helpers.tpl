@@ -76,11 +76,12 @@ Create the name of the config map to use
 
 {{/* podAnnotations */}}
 {{- define "carts.podAnnotations" -}}
-{{- if .Values.podAnnotations }}
-{{- toYaml .Values.podAnnotations }}
-{{- end }}
-{{- if .Values.metrics.podAnnotations }}
-{{- toYaml .Values.metrics.podAnnotations }}
+{{- if or .Values.metrics.enabled .Values.traces.enabled .Values.podAnnotations }}
+{{- $podAnnotations := .Values.podAnnotations}}
+{{- $metricsAnnotations := .Values.metrics.podAnnotations}}
+{{- $tracessAnnotations := .Values.traces.podAnnotations}}
+{{- $allAnnotations := merge $podAnnotations $metricsAnnotations $tracessAnnotations }}
+{{- toYaml $allAnnotations }}
 {{- end }}
 {{- end -}}
 

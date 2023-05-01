@@ -151,6 +151,11 @@ module "eks_cluster_kubernetes_addons" {
     create_namespace = true
   }
 
+  enable_amazon_eks_adot                   =true
+  amazon_eks_adot_config = {
+    kubernetes_version = var.cluster_version
+  }
+  
   tags = var.tags
 }
 

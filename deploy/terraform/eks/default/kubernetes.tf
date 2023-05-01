@@ -33,6 +33,11 @@ resource "helm_release" "assets" {
   chart      = "../../../kubernetes/charts/assets"
 
   namespace  = kubernetes_namespace_v1.assets.metadata[0].name
+  values = [
+    templatefile("${path.module}/values/assets.yaml", { 
+      tracing_enabled = var.tracing_enabled
+    })
+  ]
 }
 
 resource "kubernetes_namespace_v1" "catalog" {
@@ -55,6 +60,7 @@ resource "helm_release" "catalog" {
 
   values = [
     templatefile("${path.module}/values/catalog.yaml", { 
+      tracing_enabled = var.tracing_enabled
       database_endpoint = "${module.dependencies.catalog_db_endpoint}:${module.dependencies.catalog_db_port}"
       database_username = module.dependencies.catalog_db_master_username
       database_password = module.dependencies.catalog_db_master_password
@@ -83,6 +89,7 @@ resource "helm_release" "carts" {
 
   values = [
     templatefile("${path.module}/values/carts.yaml", { 
+      tracing_enabled = var.tracing_enabled
       role_arn = module.iam_assumable_role_carts.iam_role_arn
       table_name = module.dependencies.carts_dynamodb_table_name 
     })
@@ -109,6 +116,7 @@ resource "helm_release" "checkout" {
 
   values = [
     templatefile("${path.module}/values/checkout.yaml", { 
+      tracing_enabled = var.tracing_enabled
       redis_address     = module.dependencies.checkout_elasticache_primary_endpoint
       redis_port        = module.dependencies.checkout_elasticache_port
       security_group_id = aws_security_group.checkout.id
@@ -136,6 +144,7 @@ resource "helm_release" "orders" {
 
   values = [
     templatefile("${path.module}/values/orders.yaml", { 
+      tracing_enabled = var.tracing_enabled
       database_endpoint = "jdbc:mariadb://${module.dependencies.orders_db_endpoint}:${module.dependencies.orders_db_port}/${module.dependencies.orders_db_database_name}"
       database_username = module.dependencies.orders_db_master_username
       database_password = module.dependencies.orders_db_master_password
@@ -167,7 +176,33 @@ resource "helm_release" "ui" {
 
   values = [
     templatefile("${path.module}/values/ui.yaml", {
+      tracing_enabled = var.tracing_enabled
       istio_enabled = var.istio_enabled
+    })
+  ]
+}
+
+resource "kubernetes_namespace_v1" "opentelemetry" {
+  count = var.tracing_enabled ? 1 : 0
+  depends_on = [
+    null_resource.addons_blocker
+  ]
+  metadata {
+    name = "opentelemetry"
+  }
+}
+
+resource "helm_release" "adot-xray" {
+
+  count = var.tracing_enabled ? 1 : 0
+  name       = "adot-xray"
+  chart      = "../../../kubernetes/charts/opentelemetry"
+
+  namespace  = kubernetes_namespace_v1.opentelemetry[0].metadata[0].name
+
+  values = [
+    templatefile("${path.module}/values/adot-xray.yaml", { 
+      adot_xray_role_arn = module.iam_assumable_role_adot_xray.iam_role_arn
     })
   ]
 }

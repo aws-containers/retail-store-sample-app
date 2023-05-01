@@ -17,7 +17,7 @@ spec:
       {{- include "catalog.selectorLabels" . | nindent 6 }}
   template:
     metadata:
-      {{- if or .Values.podAnnotations .Values.metrics.podAnnotations }}
+      {{- if or .Values.podAnnotations .Values.metrics.enabled .Values.traces.enabled }}
       annotations:
         {{- include "catalog.podAnnotations" . | nindent 8 }}
       {{- end }}
