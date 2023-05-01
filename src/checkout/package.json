@@ -31,7 +31,7 @@
     "@opentelemetry/exporter-trace-otlp-grpc": "^0.34.0",
     "@opentelemetry/resource-detector-aws": "^1.2.1",
     "@opentelemetry/sdk-node": "^0.34.0",
-    "@willsoto/nestjs-prometheus": "^4.7.0",
+    "@willsoto/nestjs-prometheus": "^5.1.1",
     "class-transformer": "^0.5.1",
     "class-validator": "^0.14.0",
     "nestjs-otel": "^5.0.0",
