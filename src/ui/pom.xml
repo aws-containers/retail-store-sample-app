@@ -18,7 +18,7 @@
 		<java.version>17</java.version>
 		<spring-cloud>2021.0.3</spring-cloud>
 		<spring-cloud-aws.version>2.4.2</spring-cloud-aws.version>
-		<org.mapstruct.version>1.5.3.Final</org.mapstruct.version>
+		<org.mapstruct.version>1.5.5.Final</org.mapstruct.version>
     <snakeyaml.version>1.32</snakeyaml.version>
 	</properties>
 
