@@ -46,13 +46,13 @@ Use `kubectl` to run the application:
 
 ```
 kubectl apply -f https://raw.githubusercontent.com/aws-containers/retail-store-sample-app/main/dist/kubernetes/deploy.yaml
-kubectl wait --for=condition=available deployments -l app.kubernetes.io/created-by=retail-store-sample -A
+kubectl wait --for=condition=available deployments --all
 ```
 
 Get the URL for the frontend load balancer like so:
 
 ```
-kubectl get svc -n ui-lb
+kubectl get svc ui
 ```
 
 To remove the application use `kubectl` again:

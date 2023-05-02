@@ -18,7 +18,7 @@ metadata:
   name: catalog-db
 data:
   username: "Y2F0YWxvZw=="
-  password: "WHJoaGduRXNQT2oxa0NiMA=="
+  password: "QVVhenpJaThrOGl2UE52Sw=="
 ---
 # Source: catalog/templates/configmap.yml
 apiVersion: v1
@@ -215,36 +215,9 @@ spec:
             - name: mysql
               containerPort: 3306
               protocol: TCP
-  volumeClaimTemplates:
-    - metadata:
-        name: data
-      spec:
-        accessModes:
-        - ReadWriteOnce
-        resources:
-          requests:
-            storage: "10Gi"
----
-# Source: catalog/templates/tests/test-connection.yaml
-apiVersion: v1
-kind: Pod
-metadata:
-  name: "catalog-test-connection"
-  labels:
-    helm.sh/chart: catalog-0.0.1
-    app.kubernetes.io/name: catalog
-    app.kubernetes.io/instance: catalog
-    app.kubernetes.io/component: service
-    app.kubernetes.io/managed-by: Helm
-  annotations:
-    "helm.sh/hook": test-success
-spec:
-  containers:
-    - name: wget
-      image: busybox
-      command: ['wget']
-      args: ['catalog:80']
-  restartPolicy: Never
+      volumes:
+      - name: data
+        emptyDir: {}
 
 ---
 # Source: ui/templates/serviceaccount.yaml
@@ -280,7 +253,7 @@ metadata:
     app.kubernetes.io/component: service
     app.kubernetes.io/managed-by: Helm
 spec:
-  type: ClusterIP
+  type: LoadBalancer
   ports:
     - port: 80
       targetPort: http
@@ -369,27 +342,6 @@ spec:
         - name: tmp-volume
           emptyDir:
             medium: Memory
----
-# Source: ui/templates/tests/test-connection.yaml
-apiVersion: v1
-kind: Pod
-metadata:
-  name: "ui-test-connection"
-  labels:
-    helm.sh/chart: ui-0.0.1
-    app.kubernetes.io/name: ui
-    app.kubernetes.io/instance: ui
-    app.kubernetes.io/component: service
-    app.kubernetes.io/managed-by: Helm
-  annotations:
-    "helm.sh/hook": test-success
-spec:
-  containers:
-    - name: wget
-      image: busybox
-      command: ['wget']
-      args: ['ui:80']
-  restartPolicy: Never
 
 ---
 # Source: catalog/templates/serviceaccount.yaml
@@ -411,7 +363,7 @@ metadata:
   name: catalog-db
 data:
   username: "Y2F0YWxvZw=="
-  password: "R0sxak95UVkzcHBIbUl4dQ=="
+  password: "VnpUdEw1anVyTVo1amtSRA=="
 ---
 # Source: catalog/templates/configmap.yml
 apiVersion: v1
@@ -608,36 +560,9 @@ spec:
             - name: mysql
               containerPort: 3306
               protocol: TCP
-  volumeClaimTemplates:
-    - metadata:
-        name: data
-      spec:
-        accessModes:
-        - ReadWriteOnce
-        resources:
-          requests:
-            storage: "10Gi"
----
-# Source: catalog/templates/tests/test-connection.yaml
-apiVersion: v1
-kind: Pod
-metadata:
-  name: "catalog-test-connection"
-  labels:
-    helm.sh/chart: catalog-0.0.1
-    app.kubernetes.io/name: catalog
-    app.kubernetes.io/instance: catalog
-    app.kubernetes.io/component: service
-    app.kubernetes.io/managed-by: Helm
-  annotations:
-    "helm.sh/hook": test-success
-spec:
-  containers:
-    - name: wget
-      image: busybox
-      command: ['wget']
-      args: ['catalog:80']
-  restartPolicy: Never
+      volumes:
+      - name: data
+        emptyDir: {}
 
 ---
 # Source: carts/templates/serviceaccount.yaml
@@ -822,27 +747,6 @@ spec:
             - name: dynamodb
               containerPort: 8000
               protocol: TCP
----
-# Source: carts/templates/tests/test-connection.yaml
-apiVersion: v1
-kind: Pod
-metadata:
-  name: "carts-test-connection"
-  labels:
-    helm.sh/chart: carts-0.0.1
-    app.kubernetes.io/name: carts
-    app.kubernetes.io/instance: carts
-    app.kubernetes.io/component: service
-    app.kubernetes.io/managed-by: Helm
-  annotations:
-    "helm.sh/hook": test-success
-spec:
-  containers:
-    - name: wget
-      image: busybox
-      command: ['wget']
-      args: ['carts:80']
-  restartPolicy: Never
 
 ---
 # Source: orders/templates/serviceaccount.yaml
@@ -864,7 +768,7 @@ metadata:
   name: orders-db
 data:
   username: "b3JkZXJz"
-  password: "QjdwQkxUWXNFZHgxbFpCWg=="
+  password: "YmZrRnJUVFBSZmhuS0lYbw=="
 ---
 # Source: orders/templates/rabbitmq-secret.yaml
 apiVersion: v1
@@ -1110,15 +1014,9 @@ spec:
             - name: mysql
               containerPort: 3306
               protocol: TCP
-  volumeClaimTemplates:
-    - metadata:
-        name: data
-      spec:
-        accessModes:
-        - ReadWriteOnce
-        resources:
-          requests:
-            storage: "10Gi"
+      volumes:
+      - name: data
+        emptyDir: {}
 ---
 # Source: orders/templates/rabbitmq-statefulset.yaml
 apiVersion: apps/v1
@@ -1160,36 +1058,9 @@ spec:
           volumeMounts:
           - name: data
             mountPath: "/var/lib/rabbitmq/mnesia"
-  volumeClaimTemplates:
-    - metadata:
-        name: data
-      spec:
-        accessModes:
-        - ReadWriteOnce
-        resources:
-          requests:
-            storage: "10Gi"
----
-# Source: orders/templates/tests/test-connection.yaml
-apiVersion: v1
-kind: Pod
-metadata:
-  name: "orders-test-connection"
-  labels:
-    helm.sh/chart: orders-0.0.1
-    app.kubernetes.io/name: orders
-    app.kubernetes.io/instance: orders
-    app.kubernetes.io/component: service
-    app.kubernetes.io/managed-by: Helm
-  annotations:
-    "helm.sh/hook": test-success
-spec:
-  containers:
-    - name: wget
-      image: busybox
-      command: ['wget']
-      args: ['orders:80']
-  restartPolicy: Never
+      volumes:
+      - name: data
+        emptyDir: {}
 
 ---
 # Source: checkout/templates/serviceaccount.yaml
@@ -1366,27 +1237,6 @@ spec:
             - name: redis
               containerPort: 6379
               protocol: TCP
----
-# Source: checkout/templates/tests/test-connection.yaml
-apiVersion: v1
-kind: Pod
-metadata:
-  name: "checkout-test-connection"
-  labels:
-    helm.sh/chart: checkout-0.0.1
-    app.kubernetes.io/name: checkout
-    app.kubernetes.io/instance: checkout
-    app.kubernetes.io/component: service
-    app.kubernetes.io/managed-by: Helm
-  annotations:
-    "helm.sh/hook": test-success
-spec:
-  containers:
-    - name: wget
-      image: busybox
-      command: ['wget']
-      args: ['checkout:80']
-  restartPolicy: Never
 
 ---
 # Source: assets/templates/serviceaccount.yaml
@@ -1503,27 +1353,6 @@ spec:
         - name: tmp-volume
           emptyDir:
             medium: Memory
----
-# Source: assets/templates/tests/test-connection.yaml
-apiVersion: v1
-kind: Pod
-metadata:
-  name: "assets-test-connection"
-  labels:
-    helm.sh/chart: assets-0.0.1
-    app.kubernetes.io/name: assets
-    app.kubernetes.io/instance: assets
-    app.kubernetes.io/component: service
-    app.kubernetes.io/managed-by: Helm
-  annotations:
-    "helm.sh/hook": test-success
-spec:
-  containers:
-    - name: wget
-      image: busybox
-      command: ['wget']
-      args: ['assets:80']
-  restartPolicy: Never
 
 ---
 # Source: ui/templates/serviceaccount.yaml
@@ -1563,7 +1392,7 @@ metadata:
     app.kubernetes.io/component: service
     app.kubernetes.io/managed-by: Helm
 spec:
-  type: ClusterIP
+  type: LoadBalancer
   ports:
     - port: 80
       targetPort: http
@@ -1652,25 +1481,4 @@ spec:
         - name: tmp-volume
           emptyDir:
             medium: Memory
----
-# Source: ui/templates/tests/test-connection.yaml
-apiVersion: v1
-kind: Pod
-metadata:
-  name: "ui-test-connection"
-  labels:
-    helm.sh/chart: ui-0.0.1
-    app.kubernetes.io/name: ui
-    app.kubernetes.io/instance: ui
-    app.kubernetes.io/component: service
-    app.kubernetes.io/managed-by: Helm
-  annotations:
-    "helm.sh/hook": test-success
-spec:
-  containers:
-    - name: wget
-      image: busybox
-      command: ['wget']
-      args: ['ui:80']
-  restartPolicy: Never
 
