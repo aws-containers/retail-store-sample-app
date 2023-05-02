@@ -20,7 +20,7 @@ find deploy/kubernetes/charts '('     -name \*-baseline -o     -name \*-merge -o
 mkdir -p dist/kubernetes dist/docker-compose
 
 # Template Kubernetes YAML
-helmfile -f deploy/kubernetes/charts template > dist/kubernetes/deploy.yaml
+LOAD_BALANCER=yes helmfile -f deploy/kubernetes/charts template --skip-tests > dist/kubernetes/deploy.yaml
 
 # Template docker-compose
 cp deploy/docker-compose/docker-compose.yml dist/docker-compose/docker-compose.yml
