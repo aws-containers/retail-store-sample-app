@@ -10,6 +10,7 @@ import * as process from 'process';
 import { OTLPTraceExporter } from '@opentelemetry/exporter-trace-otlp-grpc';
 import { awsEc2Detector } from '@opentelemetry/resource-detector-aws';
 import { envDetector } from '@opentelemetry/resources';
+import { AWSXRayIdGenerator } from '@opentelemetry/id-generator-aws-xray';
 
 const otelSDK = new NodeSDK({
   traceExporter: new OTLPTraceExporter(),
@@ -21,15 +22,8 @@ const otelSDK = new NodeSDK({
     envDetector,
     awsEc2Detector,
   ],
-  textMapPropagator: new CompositePropagator({
-    propagators: [
-      new B3Propagator(),
-      new B3Propagator({
-        injectEncoding: B3InjectEncoding.MULTI_HEADER,
-      }),
-    ],
-  }),
   instrumentations: [getNodeAutoInstrumentations()],
+  idGenerator: new AWSXRayIdGenerator(),
 });
 
 export default otelSDK;
