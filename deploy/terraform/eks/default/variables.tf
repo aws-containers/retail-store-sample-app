@@ -9,8 +9,8 @@ variable "istio_enabled" {
   default     = false
 }
 
-variable "tracing_enabled" {
-  description = "Boolean value that enables AWS X-Ray tracing."
+variable "opentelemetry_enabled" {
+  description = "Boolean value that enables OpenTelemetry."
   type        = bool 
-  default     = true
+  default     = false
 }

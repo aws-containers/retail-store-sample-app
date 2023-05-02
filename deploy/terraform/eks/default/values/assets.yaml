@@ -1,9 +1,5 @@
-%{ if tracing_enabled }
-traces:
+%{ if opentelemetry_enabled }
+opentelemetry:
   enabled: true
-  podAnnotations:
-    instrumentation.opentelemetry.io/inject-sdk: "opentelemetry/default-instrumentation"
-%{ else }
-traces:
-  enabled: false
+  instrumentation: "opentelemetry/default-instrumentation"
 %{ endif }

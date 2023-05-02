@@ -2,14 +2,10 @@ serviceAccount:
   annotations:
     eks.amazonaws.com/role-arn: ${role_arn}
 
-%{ if tracing_enabled }
-traces:
+%{ if opentelemetry_enabled }
+opentelemetry:
   enabled: true
-  podAnnotations:
-    instrumentation.opentelemetry.io/inject-sdk: "opentelemetry/default-instrumentation"
-%{ else }
-traces:
-  enabled: false
+  instrumentation: "opentelemetry/default-instrumentation"
 %{ endif }
 
 dynamodb:

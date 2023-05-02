@@ -5,7 +5,7 @@ mysql:
 
   secret:
     username: ${database_username}
-    password: ${database_password}
+    password: "${database_password}"
 
 rabbitmq:
   create: false
@@ -14,23 +14,16 @@ rabbitmq:
 
   secret:
     username: ${rabbitmq_username}
-    password: ${rabbitmq_password}
+    password: "${rabbitmq_password}"
 
-%{ if tracing_enabled }
-securityGroups:
-  create: false
-
-traces:
+%{ if opentelemetry_enabled }
+opentelemetry:
   enabled: true
-  podAnnotations:
-    instrumentation.opentelemetry.io/inject-sdk: "opentelemetry/default-instrumentation"
+  instrumentation: "opentelemetry/default-instrumentation"
 %{ else }
 securityGroups:
   create: true
 
   securityGroupIds:
   - ${security_group_id}
-
-traces:
-  enabled: false
 %{ endif }

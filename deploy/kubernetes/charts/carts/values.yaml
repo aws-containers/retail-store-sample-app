@@ -93,3 +93,7 @@ dynamodb:
   tolerations: []
 
   affinity: {}
+
+opentelemetry:
+  enabled: false
+  instrumentation: ""

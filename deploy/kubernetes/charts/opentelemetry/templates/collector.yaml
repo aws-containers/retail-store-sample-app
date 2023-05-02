@@ -21,7 +21,7 @@ metadata:
   namespace: {{ .Release.Namespace }}
 spec:
   image: "{{ .Values.collector.image.repository }}:{{ .Values.collector.image.tag | default .Chart.AppVersion }}"
-  mode: daemonset
+  mode: deployment
   serviceAccount: {{ include "opentelemetry.collector.serviceAccountName" . }}
   config: |
     receivers:
@@ -36,6 +36,9 @@ spec:
       awsxray:
 
     service:
+      telemetry:
+        logs:
+          level: "DEBUG"
       pipelines:
         traces:
           receivers: [otlp]
