@@ -1,0 +1,4 @@
+collector:
+  serviceAccount:
+    annotations:
+      eks.amazonaws.com/role-arn: ${adot_xray_role_arn}

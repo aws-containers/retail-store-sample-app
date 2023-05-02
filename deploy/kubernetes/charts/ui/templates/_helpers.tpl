@@ -50,6 +50,7 @@ Selector labels
 app.kubernetes.io/name: {{ include "ui.name" . }}
 app.kubernetes.io/instance: {{ .Release.Name }}
 app.kubernetes.io/component: service
+app.kuberneres.io/owner: retail-store-sample
 {{- end }}
 
 {{/*
@@ -74,37 +75,13 @@ Create the name of the config map to use
 {{- end }}
 {{- end }}
 
+
 {{/* podAnnotations */}}
 {{- define "ui.podAnnotations" -}}
-{{- if .Values.podAnnotations }}
-{{- toYaml .Values.podAnnotations }}
-{{- end }}
-{{- if .Values.metrics.podAnnotations }}
-{{- toYaml .Values.metrics.podAnnotations }}
+{{- if or .Values.metrics.enabled .Values.podAnnotations }}
+{{- $podAnnotations := .Values.podAnnotations}}
+{{- $metricsAnnotations := .Values.metrics.podAnnotations}}
+{{- $allAnnotations := merge $podAnnotations $metricsAnnotations }}
+{{- toYaml $allAnnotations }}
 {{- end }}
 {{- end -}}
-
-{{- define "ui.dynamodb.fullname" -}}
-{{- include "ui.fullname" . }}-dynamodb
-{{- end -}}
-
-{{/*
-Common labels for dynamodb
-*/}}
-{{- define "ui.dynamodb.labels" -}}
-helm.sh/chart: {{ include "ui.chart" . }}
-{{ include "ui.dynamodb.selectorLabels" . }}
-{{- if .Chart.AppVersion }}
-app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
-{{- end }}
-app.kubernetes.io/managed-by: {{ .Release.Service }}
-{{- end }}
-
-{{/*
-Selector labels for dynamodb
-*/}}
-{{- define "ui.dynamodb.selectorLabels" -}}
-app.kubernetes.io/name: {{ include "ui.fullname" . }}
-app.kubernetes.io/instance: {{ .Release.Name }}
-app.kubernetes.io/component: dynamodb
-{{- end }}

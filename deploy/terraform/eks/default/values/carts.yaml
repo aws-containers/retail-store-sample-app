@@ -2,6 +2,12 @@ serviceAccount:
   annotations:
     eks.amazonaws.com/role-arn: ${role_arn}
 
+%{ if opentelemetry_enabled }
+opentelemetry:
+  enabled: true
+  instrumentation: "opentelemetry/default-instrumentation"
+%{ endif }
+
 dynamodb:
   tableName: ${table_name}
   create: false

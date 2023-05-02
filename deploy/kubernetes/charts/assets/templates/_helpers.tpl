@@ -50,6 +50,7 @@ Selector labels
 app.kubernetes.io/name: {{ include "assets.name" . }}
 app.kubernetes.io/instance: {{ .Release.Name }}
 app.kubernetes.io/component: service
+app.kuberneres.io/owner: retail-store-sample
 {{- end }}
 
 {{/*
@@ -74,12 +75,13 @@ Create the name of the config map to use
 {{- end }}
 {{- end }}
 
+
 {{/* podAnnotations */}}
 {{- define "assets.podAnnotations" -}}
-{{- if .Values.podAnnotations }}
-{{- toYaml .Values.podAnnotations }}
-{{- end }}
-{{- if .Values.metrics.podAnnotations }}
-{{- toYaml .Values.metrics.podAnnotations }}
+{{- if or .Values.metrics.enabled .Values.podAnnotations }}
+{{- $podAnnotations := .Values.podAnnotations}}
+{{- $metricsAnnotations := .Values.metrics.podAnnotations}}
+{{- $allAnnotations := merge $podAnnotations $metricsAnnotations }}
+{{- toYaml $allAnnotations }}
 {{- end }}
 {{- end -}}

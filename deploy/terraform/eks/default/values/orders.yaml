@@ -5,7 +5,7 @@ mysql:
 
   secret:
     username: ${database_username}
-    password: ${database_password}
+    password: "${database_password}"
 
 rabbitmq:
   create: false
@@ -14,10 +14,16 @@ rabbitmq:
 
   secret:
     username: ${rabbitmq_username}
-    password: ${rabbitmq_password}
+    password: "${rabbitmq_password}"
 
+%{ if opentelemetry_enabled }
+opentelemetry:
+  enabled: true
+  instrumentation: "opentelemetry/default-instrumentation"
+%{ else }
 securityGroups:
   create: true
 
   securityGroupIds:
   - ${security_group_id}
+%{ endif }

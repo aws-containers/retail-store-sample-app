@@ -5,6 +5,12 @@ endpoints:
   assets: http://assets.assets.svc:80
   checkout: http://checkout.checkout.svc:80
 
+%{ if opentelemetry_enabled }
+opentelemetry:
+  enabled: true
+  instrumentation: "opentelemetry/default-instrumentation"
+%{ endif }
+
 %{ if istio_enabled }
 istio:
   enabled: true

@@ -63,7 +63,8 @@ This section documents the variables and outputs of the Terraform configuration.
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | `environment_name` | Name of the environment which will be used for all resources created | `string` | `retail-store` | yes |
-| `istio_enabled` | Flag to enable Istio, which will install Istio in the EKS cluster and configure the application component appropriately | `bool` | `false` | no |
+| `opentelemetry_enabled` | Flag to enable OpenTelemetry, which will install the AWS Distro for OpenTelemetry addon in the EKS cluster, create an OpenTelemetry collector and configure the application components appropriately | `bool` | `false` | no |
+| `istio_enabled` | Flag to enable Istio, which will install Istio in the EKS cluster and configure the application components appropriately | `bool` | `false` | no |
 
 ### Outputs
 

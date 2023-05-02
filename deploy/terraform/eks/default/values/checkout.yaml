@@ -7,8 +7,14 @@ redis:
 endpoints:
   orders: http://orders.orders.svc:80
 
+%{ if opentelemetry_enabled }
+opentelemetry:
+  enabled: true
+  instrumentation: "opentelemetry/default-instrumentation"
+%{ else }
 securityGroups:
   create: true
 
   securityGroupIds:
   - ${security_group_id}
+%{ endif }

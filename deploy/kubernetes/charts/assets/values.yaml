@@ -66,3 +66,7 @@ metrics:
 configMap:
   create: true
   name:
+
+opentelemetry:
+  enabled: false
+  instrumentation: ""

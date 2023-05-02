@@ -7,8 +7,14 @@ mysql:
     username: ${database_username}
     password: ${database_password}
 
+%{ if opentelemetry_enabled }
+opentelemetry:
+  enabled: true
+  instrumentation: "opentelemetry/default-instrumentation"
+%{ else }
 securityGroups:
   create: true
 
   securityGroupIds:
   - ${security_group_id}
+%{ endif }

@@ -1,0 +1,18 @@
+{{- if .Values.instrumentation.injectsdk -}}
+apiVersion: opentelemetry.io/v1alpha1
+kind: Instrumentation
+metadata:
+  name: default-instrumentation
+  namespace: {{ .Release.Namespace }}
+spec:
+  exporter:
+    endpoint: http://{{ .Release.Name }}-collector.{{ .Release.Namespace }}.svc:{{ toYaml .Values.instrumentation.port }}
+  sampler:
+    type: always_on
+  propagators:
+    - tracecontext
+    - baggage
+  env:
+    - name: OTEL_JAVAAGENT_ENABLED
+      value: 'true'
+{{- end }}

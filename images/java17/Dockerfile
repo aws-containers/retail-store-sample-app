@@ -20,7 +20,7 @@ RUN ./mvnw -DskipTests package -q && \
 # Package Stage
 FROM amazoncorretto:17-al2-full
 
-ARG aws_opentelemetry_agent_version=1.20.0
+ARG aws_opentelemetry_agent_version=1.24.0
 
 RUN yum install -q -y \
     shadow-utils wget && \

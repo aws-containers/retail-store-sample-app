@@ -17,12 +17,12 @@
 apiVersion: opentelemetry.io/v1alpha1
 kind: OpenTelemetryCollector
 metadata:
-  name: default
-  namespace: opentelemetry
+  name: {{ .Release.Name }}
+  namespace: {{ .Release.Namespace }}
 spec:
   image: "{{ .Values.collector.image.repository }}:{{ .Values.collector.image.tag | default .Chart.AppVersion }}"
   mode: deployment
-  serviceAccount: opentelemetry-collector
+  serviceAccount: {{ include "opentelemetry.collector.serviceAccountName" . }}
   config: |
     receivers:
       otlp:
@@ -35,11 +35,10 @@ spec:
     exporters:
       awsxray:
 
-    extensions:
-      awsproxy:
-
     service:
-      extensions: [awsproxy]
+      telemetry:
+        logs:
+          level: "DEBUG"
       pipelines:
         traces:
           receivers: [otlp]

@@ -100,3 +100,7 @@ securityGroups:
   create: false
 
   securityGroupIds: []
+
+opentelemetry:
+  enabled: false
+  instrumentation: ""

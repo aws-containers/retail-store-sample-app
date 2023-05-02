@@ -84,3 +84,7 @@ ingress:
 istio:
   enabled: false
   hosts: []
+
+opentelemetry:
+  enabled: false
+  instrumentation: ""
