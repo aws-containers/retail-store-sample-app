@@ -10,6 +10,7 @@ on:
 permissions:
   id-token: write
   contents: write
+  pull-requests: write
 
 jobs:
 
@@ -99,15 +100,12 @@ jobs:
     - uses: actions/checkout@v3
       with:
         ref: ${{ github.event.inputs.tag }}
-        
+
     - name: Merge to main
-      uses: devmasx/merge-branch@master
-      with:
-        type: now
-        from_branch: ${{ github.event.inputs.tag }}
-        target_branch: main
-        github_token: ${{ github.token }}
-        message: Release ${{ github.event.inputs.tag }}
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: |
+        gh pr create -B main -H release/${{ github.event.inputs.tag }} --title 'chore(release): ${{ github.event.inputs.tag }}' --body 'Generate pull request for release'
 
     - name: Build Changelog
       id: github_release

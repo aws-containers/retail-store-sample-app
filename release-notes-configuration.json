@@ -26,6 +26,7 @@
     }
   ],
   "ignore_labels": [
+    "release",
     "deps",
     "dependabot"
   ],
@@ -45,6 +46,11 @@
       "pattern": "^chore(deps)",
       "on_property": "title",
       "target": "deps"
+    },
+    {
+      "pattern": "^chore(release)",
+      "on_property": "title",
+      "target": "release"
     }
   ]
 }
