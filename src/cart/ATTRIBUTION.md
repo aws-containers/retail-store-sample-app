@@ -5,7 +5,7 @@ The applicable license information is listed below:
 
 ----
 
-### com.amazonaws:aws-java-sdk-core @1.12.440 - https://aws.amazon.com/sdkforjava
+### com.amazonaws:aws-java-sdk-core @1.12.459 - https://aws.amazon.com/sdkforjava
 
 Apache License
 Version 2.0, January 2004
@@ -66,7 +66,7 @@ Note: Other license terms may apply to certain, identified software files contai
 
 ----
 
-### com.amazonaws:aws-java-sdk-dynamodb @1.12.440 - https://aws.amazon.com/sdkforjava
+### com.amazonaws:aws-java-sdk-dynamodb @1.12.459 - https://aws.amazon.com/sdkforjava
 
 Apache License
 Version 2.0, January 2004
@@ -127,7 +127,7 @@ Note: Other license terms may apply to certain, identified software files contai
 
 ----
 
-### com.amazonaws:aws-java-sdk-kms @1.12.440 - https://aws.amazon.com/sdkforjava
+### com.amazonaws:aws-java-sdk-kms @1.12.459 - https://aws.amazon.com/sdkforjava
 
 Apache License
 Version 2.0, January 2004
@@ -188,7 +188,7 @@ Note: Other license terms may apply to certain, identified software files contai
 
 ----
 
-### com.amazonaws:aws-java-sdk-s3 @1.12.440 - https://aws.amazon.com/sdkforjava
+### com.amazonaws:aws-java-sdk-s3 @1.12.459 - https://aws.amazon.com/sdkforjava
 
 Apache License
 Version 2.0, January 2004
@@ -310,7 +310,7 @@ Note: Other license terms may apply to certain, identified software files contai
 
 ----
 
-### com.amazonaws:jmespath-java @1.12.440 - https://aws.amazon.com/sdkforjava
+### com.amazonaws:jmespath-java @1.12.459 - https://aws.amazon.com/sdkforjava
 
 Apache License
 Version 2.0, January 2004
@@ -1678,7 +1678,7 @@ http://www.apache.org/licenses/LICENSE-2.0
 
 ----
 
-### com.github.docker-java:docker-java-api @3.2.13 - https://github.com/docker-java/docker-java
+### com.github.docker-java:docker-java-api @3.3.0 - https://github.com/docker-java/docker-java
 
 
                                  Apache License
@@ -1884,11 +1884,11 @@ http://www.apache.org/licenses/LICENSE-2.0
    limitations under the License.
 
 
-[Source code](https://repo.maven.apache.org/maven2/com/github/docker-java/docker-java-api/3.2.13/docker-java-api-3.2.13-sources.jar)
+[Source code](https://repo.maven.apache.org/maven2/com/github/docker-java/docker-java-api/3.3.0/docker-java-api-3.3.0-sources.jar)
 
 ----
 
-### com.github.docker-java:docker-java-transport @3.2.13 - https://github.com/docker-java/docker-java
+### com.github.docker-java:docker-java-transport @3.3.0 - https://github.com/docker-java/docker-java
 
 
                                  Apache License
@@ -2094,11 +2094,11 @@ http://www.apache.org/licenses/LICENSE-2.0
    limitations under the License.
 
 
-[Source code](https://repo.maven.apache.org/maven2/com/github/docker-java/docker-java-transport/3.2.13/docker-java-transport-3.2.13-sources.jar)
+[Source code](https://repo.maven.apache.org/maven2/com/github/docker-java/docker-java-transport/3.3.0/docker-java-transport-3.3.0-sources.jar)
 
 ----
 
-### com.github.docker-java:docker-java-transport-zerodep @3.2.13 - https://github.com/docker-java/docker-java
+### com.github.docker-java:docker-java-transport-zerodep @3.3.0 - https://github.com/docker-java/docker-java
 
 
                                  Apache License
@@ -2304,7 +2304,7 @@ http://www.apache.org/licenses/LICENSE-2.0
    limitations under the License.
 
 
-[Source code](https://repo.maven.apache.org/maven2/com/github/docker-java/docker-java-transport-zerodep/3.2.13/docker-java-transport-zerodep-3.2.13-sources.jar)
+[Source code](https://repo.maven.apache.org/maven2/com/github/docker-java/docker-java-transport-zerodep/3.3.0/docker-java-transport-zerodep-3.3.0-sources.jar)
 
 ----
 
@@ -3355,22 +3355,6 @@ http://www.apache.org/licenses/LICENSE-2.0
 
 
 [Source code](https://repo.maven.apache.org/maven2/de/codecentric/chaos-monkey-spring-boot/3.0.0/chaos-monkey-spring-boot-3.0.0-sources.jar)
-
-----
-
-### io.github.classgraph:classgraph @4.8.149 - https://github.com/classgraph/classgraph
-
-MIT License
-
-Copyright (c) <year> <copyright holders>
-
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-
-[Source code](https://repo.maven.apache.org/maven2/io/github/classgraph/classgraph/4.8.149/classgraph-4.8.149-sources.jar)
 
 ----
 
@@ -5264,7 +5248,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 ----
 
-### io.swagger.core.v3:swagger-annotations @2.2.8 - https://github.com/swagger-api/swagger-core/modules/swagger-annotations
+### io.swagger.core.v3:swagger-annotations @2.2.9 - https://github.com/swagger-api/swagger-core/modules/swagger-annotations
 
 
                                  Apache License
@@ -5470,11 +5454,11 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
    limitations under the License.
 
 
-[Source code](https://repo.maven.apache.org/maven2/io/swagger/core/v3/swagger-annotations/2.2.8/swagger-annotations-2.2.8-sources.jar)
+[Source code](https://repo.maven.apache.org/maven2/io/swagger/core/v3/swagger-annotations/2.2.9/swagger-annotations-2.2.9-sources.jar)
 
 ----
 
-### io.swagger.core.v3:swagger-core @2.2.8 - https://github.com/swagger-api/swagger-core/modules/swagger-core
+### io.swagger.core.v3:swagger-core @2.2.9 - https://github.com/swagger-api/swagger-core/modules/swagger-core
 
 
                                  Apache License
@@ -5680,11 +5664,11 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
    limitations under the License.
 
 
-[Source code](https://repo.maven.apache.org/maven2/io/swagger/core/v3/swagger-core/2.2.8/swagger-core-2.2.8-sources.jar)
+[Source code](https://repo.maven.apache.org/maven2/io/swagger/core/v3/swagger-core/2.2.9/swagger-core-2.2.9-sources.jar)
 
 ----
 
-### io.swagger.core.v3:swagger-models @2.2.8 - https://github.com/swagger-api/swagger-core/modules/swagger-models
+### io.swagger.core.v3:swagger-models @2.2.9 - https://github.com/swagger-api/swagger-core/modules/swagger-models
 
 
                                  Apache License
@@ -5890,7 +5874,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
    limitations under the License.
 
 
-[Source code](https://repo.maven.apache.org/maven2/io/swagger/core/v3/swagger-models/2.2.8/swagger-models-2.2.8-sources.jar)
+[Source code](https://repo.maven.apache.org/maven2/io/swagger/core/v3/swagger-models/2.2.9/swagger-models-2.2.9-sources.jar)
 
 ----
 
@@ -7402,7 +7386,7 @@ Apache License
 
 ----
 
-### net.java.dev.jna:jna @5.8.0 - https://github.com/java-native-access/jna
+### net.java.dev.jna:jna @5.12.1 - https://github.com/java-native-access/jna
 
 SPDX-License-Identifier: Apache-2.0 OR LGPL-2.1
 
@@ -7432,7 +7416,7 @@ Commercial support may be available, please e-mail
 twall[at]users[dot]sf[dot]net.
 
 
-[Source code](https://repo.maven.apache.org/maven2/net/java/dev/jna/jna/5.8.0/jna-5.8.0-sources.jar)
+[Source code](https://repo.maven.apache.org/maven2/net/java/dev/jna/jna/5.12.1/jna-5.12.1-sources.jar)
 
 ----
 
@@ -14365,7 +14349,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 ----
 
-### org.springdoc:springdoc-openapi-common @1.6.15 - https://springdoc.org/springdoc-openapi-common/
+### org.springdoc:springdoc-openapi-common @1.7.0 - https://springdoc.org/springdoc-openapi-common/
 
 
                                  Apache License
@@ -14571,11 +14555,11 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
    limitations under the License.
 
 
-[Source code](https://repo.maven.apache.org/maven2/org/springdoc/springdoc-openapi-common/1.6.15/springdoc-openapi-common-1.6.15-sources.jar)
+[Source code](https://repo.maven.apache.org/maven2/org/springdoc/springdoc-openapi-common/1.7.0/springdoc-openapi-common-1.7.0-sources.jar)
 
 ----
 
-### org.springdoc:springdoc-openapi-ui @1.6.15 - https://springdoc.org/springdoc-openapi-ui/
+### org.springdoc:springdoc-openapi-ui @1.7.0 - https://springdoc.org/springdoc-openapi-ui/
 
 
                                  Apache License
@@ -14781,11 +14765,11 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
    limitations under the License.
 
 
-[Source code](https://repo.maven.apache.org/maven2/org/springdoc/springdoc-openapi-ui/1.6.15/springdoc-openapi-ui-1.6.15-sources.jar)
+[Source code](https://repo.maven.apache.org/maven2/org/springdoc/springdoc-openapi-ui/1.7.0/springdoc-openapi-ui-1.7.0-sources.jar)
 
 ----
 
-### org.springdoc:springdoc-openapi-webmvc-core @1.6.15 - https://springdoc.org/springdoc-openapi-webmvc-core/
+### org.springdoc:springdoc-openapi-webmvc-core @1.7.0 - https://springdoc.org/springdoc-openapi-webmvc-core/
 
 
                                  Apache License
@@ -14991,7 +14975,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
    limitations under the License.
 
 
-[Source code](https://repo.maven.apache.org/maven2/org/springdoc/springdoc-openapi-webmvc-core/1.6.15/springdoc-openapi-webmvc-core-1.6.15-sources.jar)
+[Source code](https://repo.maven.apache.org/maven2/org/springdoc/springdoc-openapi-webmvc-core/1.7.0/springdoc-openapi-webmvc-core-1.7.0-sources.jar)
 
 ----
 
@@ -21106,7 +21090,7 @@ SOFTWARE.
 
 ----
 
-### org.testcontainers:testcontainers @1.17.6 - https://testcontainers.org
+### org.testcontainers:testcontainers @1.18.0 - https://testcontainers.org
 
 The MIT License (MIT)
 
@@ -21131,11 +21115,11 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 
-[Source code](https://repo.maven.apache.org/maven2/org/testcontainers/testcontainers/1.17.6/testcontainers-1.17.6-sources.jar)
+[Source code](https://repo.maven.apache.org/maven2/org/testcontainers/testcontainers/1.18.0/testcontainers-1.18.0-sources.jar)
 
 ----
 
-### org.webjars:swagger-ui @4.17.1 - http://webjars.org
+### org.webjars:swagger-ui @4.18.2 - http://webjars.org
 
 
                                  Apache License
@@ -21342,32 +21326,6 @@ SOFTWARE.
 
 
 [Source code]()
-
-----
-
-### org.webjars:webjars-locator-core @0.52 - http://webjars.org
-
-Copyright (c) 2013 James Ward
-
-Permission is hereby granted, free of charge, to any person obtaining a copy of
-this software and associated documentation files (the "Software"), to deal in
-the Software without restriction, including without limitation the rights to
-use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of
-the Software, and to permit persons to whom the Software is furnished to do so,
-subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
-FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
-COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
-IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
-CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-
-
-[Source code](https://repo.maven.apache.org/maven2/org/webjars/webjars-locator-core/0.52/webjars-locator-core-0.52-sources.jar)
 
 ----
 

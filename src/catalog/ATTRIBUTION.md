@@ -1813,7 +1813,7 @@ SOFTWARE.
 
 ----
 
-### github.com/go-sql-driver/mysql @v1.7.0
+### github.com/go-sql-driver/mysql @v1.7.1
 
 Mozilla Public License Version 2.0
 ==================================
@@ -2228,7 +2228,7 @@ THE SOFTWARE.
 
 ----
 
-### github.com/golang/protobuf @v1.5.2
+### github.com/golang/protobuf @v1.5.3
 
 Copyright 2010 The Go Authors.  All rights reserved.
 
@@ -3154,7 +3154,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 ----
 
-### github.com/matttproud/golang_protobuf_extensions/pbutil @v1.0.2
+### github.com/matttproud/golang_protobuf_extensions/pbutil @v1.0.4
 
                                  Apache License
                            Version 2.0, January 2004
@@ -3390,7 +3390,7 @@ SOFTWARE.
 
 ----
 
-### github.com/prometheus/client_golang/prometheus @v1.13.0
+### github.com/prometheus/client_golang/prometheus @v1.15.0
 
                                  Apache License
                            Version 2.0, January 2004
@@ -3598,7 +3598,7 @@ SOFTWARE.
 
 ----
 
-### github.com/prometheus/client_model/go @v0.2.0
+### github.com/prometheus/client_model/go @v0.3.0
 
                                  Apache License
                            Version 2.0, January 2004
@@ -3806,7 +3806,7 @@ SOFTWARE.
 
 ----
 
-### github.com/prometheus/common @v0.37.0
+### github.com/prometheus/common @v0.42.0
 
                                  Apache License
                            Version 2.0, January 2004
@@ -4014,7 +4014,7 @@ SOFTWARE.
 
 ----
 
-### github.com/prometheus/common/internal/bitbucket.org/ww/goautoneg @v0.37.0
+### github.com/prometheus/common/internal/bitbucket.org/ww/goautoneg @v0.42.0
 
 PACKAGE
 
@@ -4088,7 +4088,7 @@ SUBDIRECTORIES
 
 ----
 
-### github.com/prometheus/procfs @v0.8.0
+### github.com/prometheus/procfs @v0.9.0
 
                                  Apache License
                            Version 2.0, January 2004
@@ -5421,7 +5421,7 @@ SOFTWARE.
 
 ----
 
-### github.com/swaggo/swag @v1.8.12
+### github.com/swaggo/swag @v1.16.1
 
 MIT License
 
@@ -8201,7 +8201,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 ----
 
-### google.golang.org/protobuf @v1.28.1
+### google.golang.org/protobuf @v1.30.0
 
 Copyright (c) 2018 The Go Authors. All rights reserved.
 
