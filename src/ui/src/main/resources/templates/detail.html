@@ -24,7 +24,7 @@
                         <div class="box">
                             <h1 th:text="${item.name}">White Blouse Armani</h1>
                             <div class="price">$<th:block th:text="${item.price}">124.00</th:block></div>
-                            <div class="mb-3" th:insert="fragments/stars.html :: stars">
+                            <div class="mb-3" th:insert="~{fragments/stars.html :: stars}">
                             </div>
                             <p th:text="${item.description}">White lace top, woven, has a round neck, short sleeves, has knitted lining attached</p>
                             <hr>

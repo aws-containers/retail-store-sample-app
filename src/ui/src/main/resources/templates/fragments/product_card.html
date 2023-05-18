@@ -5,7 +5,7 @@
             <div class="py-2">
                 <div>
                     <a th:href="@{/catalog/{itemId}(itemId=${product.id})}" class="product-link" href="#"><h5 class="fw-bolder" th:text="${product.name}">Fancy Product</h5></a>
-                    <div class="mb-2" th:insert="fragments/stars.html :: stars"/>
+                    <div class="mb-2" th:insert="~{fragments/stars.html :: stars}"/>
                     <div>$<span th:text="${product.price}">143.00</span></div>
                 </div>
             </div>
