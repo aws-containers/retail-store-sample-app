@@ -31,7 +31,7 @@ services:
     hostname: ui
     image: retail-store-sample-ui:${TAG:-latest}
     restart: always
-    mem_limit: 256m
+    mem_limit: 512m
     cap_drop:
       - ALL
 
