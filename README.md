@@ -77,7 +77,7 @@ cd dist/docker-compose
 Use `docker compose` to run the application containers:
 
 ```
-MYSQL_PASSWORD='<some password>' docker compose up -f dist/docker-compose/docker-compose.yml
+MYSQL_PASSWORD='<some password>' && docker compose -f docker-compose.yml up -d
 ```
 
 Open the frontend in a browser window:
