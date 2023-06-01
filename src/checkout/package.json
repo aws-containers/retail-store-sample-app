@@ -35,7 +35,7 @@
     "@willsoto/nestjs-prometheus": "^5.1.1",
     "class-transformer": "^0.5.1",
     "class-validator": "^0.14.0",
-    "nestjs-otel": "^5.0.0",
+    "nestjs-otel": "^5.1.2",
     "prom-client": "^14.1.0",
     "redis": "^4.5.1",
     "reflect-metadata": "^0.1.13",
@@ -45,7 +45,7 @@
   },
   "devDependencies": {
     "@nestjs/cli": "^9.3.0",
-    "@nestjs/schematics": "^9.0.4",
+    "@nestjs/schematics": "^9.2.0",
     "@nestjs/testing": "^9.3.10",
     "@types/express": "^4.17.17",
     "@types/jest": "28.1.4",
