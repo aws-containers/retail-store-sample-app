@@ -1,8 +1,11 @@
-FROM amazonlinux:2
+FROM public.ecr.aws/amazonlinux/amazonlinux:2023
+
+# We tell DNF not to install Recommends and Suggests packages, which are
+# weak dependencies in DNF terminology, thus keeping our installed set of
+# packages as minimal as possible.
+RUN dnf --setopt=install_weak_deps=False -y install nginx
 
 EXPOSE 8080
-
-RUN amazon-linux-extras install -y nginx1
 
 COPY default.conf /etc/nginx/nginx.conf
 COPY mime.types /etc/nginx/mime.types
