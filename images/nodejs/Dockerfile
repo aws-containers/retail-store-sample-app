@@ -1,7 +1,14 @@
-FROM amazonlinux:2
+FROM public.ecr.aws/amazonlinux/amazonlinux:2023
 
-RUN yum install -q -y libstdc++.i686 glibc.i686 tar gzip xz shadow-utils && \
-    yum clean all
+# We tell DNF not to install Recommends and Suggests packages, which are
+# weak dependencies in DNF terminology, thus keeping our installed set of
+# packages as minimal as possible.
+RUN dnf --setopt=install_weak_deps=False install -q -y \
+    nodejs \
+    npm \
+    shadow-utils \
+    && \
+    dnf clean all
 
 ENV APPUSER=appuser
 ENV APPUID=1000
@@ -13,17 +20,6 @@ RUN useradd \
     --user-group \
     --uid "$APPUID" \
     "$APPUSER"
-
-ARG TARGETARCH
-ENV NODE_VERSION 16.18.1
-
-RUN DEBARCH="$TARGETARCH"; \
-    if [ "$DEBARCH" = "amd64" ]; then DEBARCH=x64; fi; \
-    echo "Pulling https://nodejs.org/dist/v${NODE_VERSION}/node-v${NODE_VERSION}-linux-${DEBARCH}.tar.xz" && \
-    curl -LSs https://nodejs.org/dist/v${NODE_VERSION}/node-v${NODE_VERSION}-linux-${DEBARCH}.tar.xz -o node.tar.xz && \
-    tar xf node.tar.xz --directory /tmp && \
-    cp -R /tmp/node-v${NODE_VERSION}-linux-${DEBARCH}/* /usr && \
-    rm -rf node-v${NODE_VERSION}-linux-${DEBARCH} node.tar.xz
 
 WORKDIR /app
 USER appuser

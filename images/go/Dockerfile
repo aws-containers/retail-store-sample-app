@@ -1,8 +1,14 @@
 # Build Stage
-FROM amazonlinux:2 as build-env
+FROM public.ecr.aws/amazonlinux/amazonlinux:2023 as build-env
 
-RUN yum install -q -y git golang && \
-    yum clean all
+# We tell DNF not to install Recommends and Suggests packages, which are
+# weak dependencies in DNF terminology, thus keeping our installed set of
+# packages as minimal as possible.
+RUN dnf --setopt=install_weak_deps=False install -q -y \
+    git \
+    golang \
+    && \
+    dnf clean all
 
 ARG MAIN_PATH
 
@@ -12,18 +18,23 @@ WORKDIR /appsrc
 
 COPY . .
 
+ENV GOPROXY=direct
 RUN go build -o main $MAIN_PATH
 
 # Final stage
-FROM amazonlinux:2
+FROM public.ecr.aws/amazonlinux/amazonlinux:2023
 
 ENV APPUSER=appuser
 ENV APPUID=1000
 ENV APPGID=1000
 
-RUN yum install -q -y \
-    shadow-utils && \
-    yum clean all
+# We tell DNF not to install Recommends and Suggests packages, which are
+# weak dependencies in DNF terminology, thus keeping our installed set of
+# packages as minimal as possible.
+RUN dnf --setopt=install_weak_deps=False install -q -y \
+    shadow-utils \
+    && \
+    dnf clean all
 
 RUN useradd \
     --home "/app" \

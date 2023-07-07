@@ -1,4 +1,4 @@
-FROM amazonlinux:2
+FROM public.ecr.aws/amazonlinux/amazonlinux:2023
 
 COPY helpers.js /artillery/helpers.js
 COPY scenario.yml /artillery/scenario.yml
