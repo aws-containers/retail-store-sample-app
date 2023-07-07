@@ -100,7 +100,9 @@ public class OrdersMetricsTest {
         var watchGauge = meterRegistry.find("watch.orderTotal").gauge();
         then(watchGauge).isNotNull();
         then(watchGauge.value()).isEqualTo(600.0);
+
+        ordersMetrics.onOrderCreated(event);
+
+        then(watchGauge.value()).isEqualTo(1200.0);
     }
-
-
 }
