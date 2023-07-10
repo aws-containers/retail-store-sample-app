@@ -206,8 +206,6 @@ func (s *mySQLRepository) Count(tags []string, ctx context.Context) (int, error)
 func (s *mySQLRepository) Get(id string, ctx context.Context) (*model.Product, error) {
 	query := baseQuery + " WHERE product.product_id =? GROUP BY product.product_id;"
 
-	log.Printf("query: %s", query)
-
 	var product model.Product
 	err := s.readerDb.GetContext(ctx, &product, query, id)
 	if err != nil {
