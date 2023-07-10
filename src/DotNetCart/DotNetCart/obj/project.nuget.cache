@@ -1,0 +1,17 @@
+{
+  "version": 2,
+  "dgSpecHash": "9A3gATOKW/RxeUvBsalvXSfswCODf1roNsYs/FNy4nsRVfwmhCkFkgqginFCaZN1HbzvH1vR7r6qmGV78VpToA==",
+  "success": true,
+  "projectFilePath": "/Users/sdsteve/Documents/code/RiderProjects/DotNetCart/DotNetCart/DotNetCart.csproj",
+  "expectedPackageFiles": [
+    "/Users/sdsteve/.nuget/packages/awssdk.core/3.7.108.1/awssdk.core.3.7.108.1.nupkg.sha512",
+    "/Users/sdsteve/.nuget/packages/awssdk.dynamodbv2/3.7.105.5/awssdk.dynamodbv2.3.7.105.5.nupkg.sha512",
+    "/Users/sdsteve/.nuget/packages/microsoft.extensions.apidescription.server/3.0.0/microsoft.extensions.apidescription.server.3.0.0.nupkg.sha512",
+    "/Users/sdsteve/.nuget/packages/microsoft.openapi/1.2.3/microsoft.openapi.1.2.3.nupkg.sha512",
+    "/Users/sdsteve/.nuget/packages/swashbuckle.aspnetcore/5.6.3/swashbuckle.aspnetcore.5.6.3.nupkg.sha512",
+    "/Users/sdsteve/.nuget/packages/swashbuckle.aspnetcore.swagger/5.6.3/swashbuckle.aspnetcore.swagger.5.6.3.nupkg.sha512",
+    "/Users/sdsteve/.nuget/packages/swashbuckle.aspnetcore.swaggergen/5.6.3/swashbuckle.aspnetcore.swaggergen.5.6.3.nupkg.sha512",
+    "/Users/sdsteve/.nuget/packages/swashbuckle.aspnetcore.swaggerui/5.6.3/swashbuckle.aspnetcore.swaggerui.5.6.3.nupkg.sha512"
+  ],
+  "logs": []
+}
