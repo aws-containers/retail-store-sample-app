@@ -51,7 +51,7 @@ func newMySQLRepository(config config.DatabaseConfiguration) (Repository, error)
 	connectionString := fmt.Sprintf("%s:%s@tcp(%s)/%s?timeout=%ds", config.User, config.Password, config.Endpoint, config.Name, config.ConnectTimeout)
 
 	if config.Migrate {
-		err := migrateMySQL(connectionString)
+		err := migrateMySQL(connectionString, config.MigrationsPath)
 		if err != nil {
 			log.Println("Error: Failed to run migration", err)
 			return nil, err
@@ -105,11 +105,11 @@ func createConnection(endpoint string, username string, password string, name st
 	return db, nil
 }
 
-func migrateMySQL(connectionString string) error {
+func migrateMySQL(connectionString string, path string) error {
 	log.Println("Running database migration...")
 
 	m, err := migrate.New(
-		"file://db/migrations",
+		"file://"+path,
 		"mysql://"+connectionString,
 	)
 	if err != nil {
@@ -206,8 +206,6 @@ func (s *mySQLRepository) Count(tags []string, ctx context.Context) (int, error)
 func (s *mySQLRepository) Get(id string, ctx context.Context) (*model.Product, error) {
 	query := baseQuery + " WHERE product.product_id =? GROUP BY product.product_id;"
 
-	log.Printf("query: %s", query)
-
 	var product model.Product
 	err := s.readerDb.GetContext(ctx, &product, query, id)
 	if err != nil {
@@ -264,13 +262,4 @@ func cut(products []model.Product, pageNum, pageSize int) []model.Product {
 		end = len(products)
 	}
 	return products[start:end]
-}
-
-func contains(s []string, e string) bool {
-	for _, a := range s {
-		if a == e {
-			return true
-		}
-	}
-	return false
 }
