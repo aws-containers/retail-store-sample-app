@@ -31,5 +31,6 @@ type DatabaseConfiguration struct {
 	User           string `env:"DB_USER,default=catalog_user"`
 	Password       string `env:"DB_PASSWORD"`
 	Migrate        bool   `env:"DB_MIGRATE,default=true"`
+	MigrationsPath string `env:"DB_MIGRATIONS_PATH,default=db/migrations"`
 	ConnectTimeout int    `env:"DB_CONNECT_TIMEOUT,default=5"`
 }
