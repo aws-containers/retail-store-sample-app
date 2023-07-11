@@ -8,7 +8,7 @@
       "version": "1.0.0",
       "restore": {
         "projectUniqueName": "/Users/sdsteve/Documents/code/RiderProjects/DotNetCart/DotNetCart/DotNetCart.csproj",
-        "projectName": "DotNetCart",
+        "projectName": "DotNetCart1",
         "projectPath": "/Users/sdsteve/Documents/code/RiderProjects/DotNetCart/DotNetCart/DotNetCart.csproj",
         "packagesPath": "/Users/sdsteve/.nuget/packages/",
         "outputPath": "/Users/sdsteve/Documents/code/RiderProjects/DotNetCart/DotNetCart/obj/",
@@ -41,6 +41,34 @@
             "AWSSDK.DynamoDBv2": {
               "target": "Package",
               "version": "[3.7.105.5, )"
+            },
+            "OpenTelemetry": {
+              "target": "Package",
+              "version": "[1.5.1, )"
+            },
+            "OpenTelemetry.Exporter.Console": {
+              "target": "Package",
+              "version": "[1.5.1, )"
+            },
+            "OpenTelemetry.Exporter.OpenTelemetryProtocol": {
+              "target": "Package",
+              "version": "[1.5.1, )"
+            },
+            "OpenTelemetry.Extensions.Hosting": {
+              "target": "Package",
+              "version": "[1.5.1, )"
+            },
+            "OpenTelemetry.Instrumentation.AspNetCore": {
+              "target": "Package",
+              "version": "[1.5.0-beta.1, )"
+            },
+            "OpenTelemetry.Instrumentation.Http": {
+              "target": "Package",
+              "version": "[1.5.0-beta.1, )"
+            },
+            "OpenTelemetry.Instrumentation.Runtime": {
+              "target": "Package",
+              "version": "[1.5.0, )"
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
