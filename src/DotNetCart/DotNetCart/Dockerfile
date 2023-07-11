@@ -1,14 +1,15 @@
-﻿FROM mcr.microsoft.com/dotnet/aspnet:6.0 AS base
+﻿FROM public.ecr.aws/amazonlinux/amazonlinux:2023 AS base
 WORKDIR /app
 EXPOSE 80
 EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
-WORKDIR /src
-COPY ["DotNetCart/DotNetCart.csproj", "DotNetCart/"]
+RUN ls
+WORKDIR /DotNetCart
+COPY ["DotNetCart.csproj", "DotNetCart/"]
 RUN dotnet restore "DotNetCart/DotNetCart.csproj"
 COPY . .
-WORKDIR "/src/DotNetCart"
+WORKDIR "/DotNetCart"
 RUN dotnet build "DotNetCart.csproj" -c Release -o /app/build
 
 FROM build AS publish
