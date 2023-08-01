@@ -37,7 +37,7 @@
     "class-validator": "^0.14.0",
     "nestjs-otel": "^5.1.2",
     "prom-client": "^14.2.0",
-    "redis": "^4.5.1",
+    "redis": "^4.6.7",
     "reflect-metadata": "^0.1.13",
     "request": "^2.88.2",
     "rimraf": "^4.4.1",
