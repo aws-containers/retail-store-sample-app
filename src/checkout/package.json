@@ -32,7 +32,7 @@
     "@opentelemetry/id-generator-aws-xray": "^1.1.1",
     "@opentelemetry/resource-detector-aws": "^1.2.1",
     "@opentelemetry/sdk-node": "^0.38.0",
-    "@willsoto/nestjs-prometheus": "^5.1.1",
+    "@willsoto/nestjs-prometheus": "^5.2.1",
     "class-transformer": "^0.5.1",
     "class-validator": "^0.14.0",
     "nestjs-otel": "^5.1.2",
