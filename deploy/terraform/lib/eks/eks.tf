@@ -126,7 +126,7 @@ resource "aws_security_group_rule" "istio_citadel" {
 }
 
 module "eks_cluster_kubernetes_addons" {
-  source = "github.com/aws-ia/terraform-aws-eks-blueprints//modules/kubernetes-addons?ref=v4.26.0"
+  source = "github.com/aws-ia/terraform-aws-eks-blueprints//modules/kubernetes-addons?ref=v4.32.1"
 
   providers = {
     kubernetes = kubernetes.addons
