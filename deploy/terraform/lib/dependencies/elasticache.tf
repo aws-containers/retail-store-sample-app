@@ -1,6 +1,6 @@
 module "checkout-elasticache-redis" {
   source  = "cloudposse/elasticache-redis/aws"
-  version = "0.49.0"
+  version = "0.52.0"
 
   name                       = "${var.environment_name}-checkout"
   vpc_id                     = var.vpc_id
