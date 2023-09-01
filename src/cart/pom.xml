@@ -77,7 +77,7 @@
     <dependency>
       <groupId>com.amazonaws</groupId>
       <artifactId>aws-java-sdk-sts</artifactId>
-      <version>1.12.519</version>
+      <version>1.12.542</version>
     </dependency>
     <dependency>
       <groupId>org.projectlombok</groupId>
