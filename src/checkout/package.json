@@ -35,7 +35,7 @@
     "@willsoto/nestjs-prometheus": "^5.2.1",
     "class-transformer": "^0.5.1",
     "class-validator": "^0.14.0",
-    "nestjs-otel": "^5.1.2",
+    "nestjs-otel": "^5.1.5",
     "prom-client": "^14.2.0",
     "redis": "^4.6.10",
     "reflect-metadata": "^0.1.13",
