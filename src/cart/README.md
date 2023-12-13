@@ -12,40 +12,22 @@ The following environment variables are available for configuring the service:
 
 | Name | Description | Default |
 |---|---|---|
-| `PORT` | The port which the server will listen on | `8080` |
-| `CARTS_DYNAMODB_TABLENAME` | The name of the Amazon DynamoDB table used for persistence | `Items` |
 | `CARTS_DYNAMODB_ENDPOINT` | The Amazon DynamoDB endpoint to use | ` ` |
 | `CARTS_DYNAMODB_CREATETABLE` | Enable to automatically create the Amazon DynamoDB table required | `false` |
 
 ## Running
 
-There are two main options for running the service:
+You can run the application locally from the directory that has the project file (cart.csproj)
 
 ### Local
 
 Pre-requisites:
-- Java 17 installed
+- DotNet 7.0 cli
 
-Run the Spring Boot application like so:
-
-```
-./mvnw spring-boot:run
-```
-
-Test the application by visiting `http://localhost:8080` in a web browser.
-
-### Docker
-
-A `docker-compose.yml` file is included to run the service in Docker:
+Use the DotNet cli:
 
 ```
-docker compose up
+dotnet run
 ```
 
-Test the application by visiting `http://localhost:8080` in a web browser.
-
-To clean up:
-
-```
-docker compose down
-```
+Test the application by visiting `http://localhost:5155/swagger/index.html` in a web browser.
