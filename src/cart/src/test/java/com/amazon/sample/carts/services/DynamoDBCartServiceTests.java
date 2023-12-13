@@ -18,8 +18,9 @@
 
 package com.amazon.sample.carts.services;
 
-import com.amazonaws.services.dynamodbv2.AmazonDynamoDB;
-import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper;
+import software.amazon.awssdk.enhanced.dynamodb.DynamoDbEnhancedClient;
+import software.amazon.awssdk.services.dynamodb.DynamoDbClient;
+
 import com.amazon.sample.carts.configuration.DynamoDBConfiguration;
 import com.amazon.sample.carts.configuration.DynamoDBProperties;
 import org.junit.jupiter.api.Tag;
@@ -54,7 +55,7 @@ public class DynamoDBCartServiceTests extends AbstractServiceTests {
     private DynamoDBCartService service;
 
     @Autowired
-    private AmazonDynamoDB dynamodb;
+    private DynamoDbClient dynamoDbClient;
 
     @Container
     public static GenericContainer dynamodbContainer =
@@ -72,10 +73,10 @@ public class DynamoDBCartServiceTests extends AbstractServiceTests {
     static class TestConfiguration {
 
         @Autowired
-        private AmazonDynamoDB amazonDynamoDB;
+        private DynamoDbClient dynamoDbClient;
 
         @Autowired
-        private DynamoDBMapper mapper;
+        private DynamoDbEnhancedClient dynamoDbEnhancedClient;
     }
 
     public static class Initializer implements

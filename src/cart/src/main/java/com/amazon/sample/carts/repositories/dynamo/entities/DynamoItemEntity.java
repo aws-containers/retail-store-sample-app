@@ -18,13 +18,13 @@
 
 package com.amazon.sample.carts.repositories.dynamo.entities;
 
-import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBAttribute;
-import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBHashKey;
-import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBIndexHashKey;
-import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTable;
+import software.amazon.awssdk.enhanced.dynamodb.mapper.annotations.DynamoDbBean;
+import software.amazon.awssdk.enhanced.dynamodb.mapper.annotations.DynamoDbPartitionKey;
+import software.amazon.awssdk.enhanced.dynamodb.mapper.annotations.DynamoDbSecondaryPartitionKey;
+
 import com.amazon.sample.carts.repositories.ItemEntity;
 
-@DynamoDBTable(tableName="Items")
+@DynamoDbBean()
 public class DynamoItemEntity implements ItemEntity {
     private String id;
 
@@ -48,28 +48,24 @@ public class DynamoItemEntity implements ItemEntity {
 
     }
 
-    @DynamoDBHashKey
+    @DynamoDbPartitionKey
     public String getId() {
         return id;
     }
 
-    @DynamoDBAttribute
-    @DynamoDBIndexHashKey(globalSecondaryIndexName = "idx_global_customerId")
+    @DynamoDbSecondaryPartitionKey(indexNames = {"idx_global_customerId"})
     public String getCustomerId() {
         return customerId;
     }
 
-    @DynamoDBAttribute
     public String getItemId() {
         return itemId;
     }
 
-    @DynamoDBAttribute
     public int getQuantity() {
         return quantity;
     }
 
-    @DynamoDBAttribute
     public int getUnitPrice() {
         return unitPrice;
     }

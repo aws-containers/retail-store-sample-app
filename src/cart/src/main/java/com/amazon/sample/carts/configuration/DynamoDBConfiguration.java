@@ -18,54 +18,46 @@
 
 package com.amazon.sample.carts.configuration;
 
-import com.amazonaws.client.builder.AwsClientBuilder;
-import com.amazonaws.services.dynamodbv2.AmazonDynamoDB;
-import com.amazonaws.services.dynamodbv2.AmazonDynamoDBClientBuilder;
-import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper;
-import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapperConfig;
-import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTypeConverterFactory;
+import software.amazon.awssdk.enhanced.dynamodb.DynamoDbEnhancedClient;
+import software.amazon.awssdk.regions.Region;
+import software.amazon.awssdk.services.dynamodb.DynamoDbClient;
+import software.amazon.awssdk.services.dynamodb.DynamoDbClientBuilder;
+
 import com.amazon.sample.carts.services.DynamoDBCartService;
+
+import java.net.URI;
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 import org.springframework.util.StringUtils;
+
 import com.amazon.sample.carts.services.CartService;
 
 @Configuration
 @Profile("dynamodb")
 public class DynamoDBConfiguration {
 
-    @Bean
-    public AmazonDynamoDB amazonDynamoDB(DynamoDBProperties properties) {
+    @Bean DynamoDbClient dynamoDbClient(DynamoDBProperties properties) {
+        DynamoDbClientBuilder builder = DynamoDbClient.builder();
+
         if (!StringUtils.isEmpty(properties.getEndpoint())) {
-            return AmazonDynamoDBClientBuilder.standard().withEndpointConfiguration(
-                    new AwsClientBuilder.EndpointConfiguration(properties.getEndpoint(), "us-west-2")
-            ).build();
+            builder.region(Region.US_WEST_2);
+            builder.endpointOverride(URI.create(properties.getEndpoint()));
         }
-
-        return AmazonDynamoDBClientBuilder.standard().build();
-    }
-
-    @Bean
-    public DynamoDBMapperConfig dynamoDBMapperConfig(DynamoDBProperties properties) {
-        // Create empty DynamoDBMapperConfig builder
-        DynamoDBMapperConfig.Builder builder = new DynamoDBMapperConfig.Builder();
-        // Inject missing defaults from the deprecated method
-        builder.withTypeConverterFactory(DynamoDBTypeConverterFactory.standard());
-        builder.withTableNameResolver((aClass, dynamoDBMapperConfig) -> {
-            return properties.getTableName();
-        });
 
         return builder.build();
     }
 
     @Bean
-    public DynamoDBMapper dynamoDBMapper(AmazonDynamoDB amazonDynamoDB, DynamoDBMapperConfig config) {
-        return new DynamoDBMapper(amazonDynamoDB, config);
+    public DynamoDbEnhancedClient dynamoDbEnhancedClient(DynamoDbClient dynamoDbClient) {
+        return DynamoDbEnhancedClient.builder()
+            .dynamoDbClient(dynamoDbClient)
+            .build();
     }
 
     @Bean
-    public CartService dynamoCartService(DynamoDBMapper mapper, AmazonDynamoDB amazonDynamoDB, DynamoDBProperties properties) {
-        return new DynamoDBCartService(mapper, amazonDynamoDB, properties.isCreateTable());
+    public CartService dynamoCartService(DynamoDbClient dynamoDbClient, DynamoDbEnhancedClient dynamoDbEnhancedClient, DynamoDBProperties properties) {
+        return new DynamoDBCartService(dynamoDbClient, dynamoDbEnhancedClient, properties.isCreateTable());
     }
 }
