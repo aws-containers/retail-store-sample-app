@@ -30,4 +30,10 @@ Use the DotNet cli:
 dotnet run
 ```
 
+Or if you want to dynamically change the port on your local machine, you can pass in a custom url:
+
+```
+dotnet run --urls "http://localhost:5155"
+```
+
 Test the application by visiting `http://localhost:5155/swagger/index.html` in a web browser.
