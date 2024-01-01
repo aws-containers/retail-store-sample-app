@@ -285,8 +285,8 @@ go.opentelemetry.io/contrib/detectors/aws/ec2 v1.17.0 h1:hriszvD9MN2a8Nd8RGKSApa
 go.opentelemetry.io/contrib/detectors/aws/ec2 v1.17.0/go.mod h1:jZchNePvzyRc2rdnReQZbJVnMF/jZlT4+LkxH+eD4/g=
 go.opentelemetry.io/contrib/instrumentation/github.com/gin-gonic/gin/otelgin v0.46.1 h1:mMv2jG58h6ZI5t5S9QCVGdzCmAsTakMa3oxVgpSD44g=
 go.opentelemetry.io/contrib/instrumentation/github.com/gin-gonic/gin/otelgin v0.46.1/go.mod h1:oqRuNKG0upTaDPbLVCG8AD0G2ETrfDtmh7jViy7ox6M=
-go.opentelemetry.io/contrib/propagators/aws v1.12.0 h1:n3lNyZs2ytVEfFhcn2QO5Z80lgrMXyP1Ncx0C7rUU8A=
-go.opentelemetry.io/contrib/propagators/aws v1.12.0/go.mod h1:xZSOQIixr40Cq3NHn/YsvkDOzpVaR0j19WJRZnOKwbk=
+go.opentelemetry.io/contrib/propagators/aws v1.21.1 h1:uQIQIDWb0gzyvon2ICnghpLAf9w7ADOCUiIiwCQgR2o=
+go.opentelemetry.io/contrib/propagators/aws v1.21.1/go.mod h1:kCcto3ACQxm+VrkQX/NK/TkDmAd99MQhvffzyTKhzL4=
 go.opentelemetry.io/contrib/propagators/b3 v1.21.1 h1:WPYiUgmw3+b7b3sQ1bFBFAf0q+Di9dvNc3AtYfnT4RQ=
 go.opentelemetry.io/otel v1.21.0 h1:hzLeKBZEL7Okw2mGzZ0cc4k/A7Fta0uoPgaJCr8fsFc=
 go.opentelemetry.io/otel v1.21.0/go.mod h1:QZzNPQPm1zLX4gZK4cMi+71eaorMSGT3A4znnUvNNEo=
