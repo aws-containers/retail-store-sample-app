@@ -18,6 +18,7 @@
 
 package com.amazon.sample.orders.web;
 
+import com.amazon.sample.orders.entities.OrderEntity;
 import com.amazon.sample.orders.services.OrderService;
 import com.amazon.sample.orders.web.payload.*;
 

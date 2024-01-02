@@ -47,7 +47,7 @@ public class OrdersEventHandler {
         order.setFirstName(entity.getFirstName());
         order.setLastName(entity.getLastName());
         order.setEmail(entity.getEmail());
-        order.setOrderItems(entity.getItems());
+        order.setOrderItems(entity.getItems().stream().toList());
 
         OrderCreatedEvent event = new OrderCreatedEvent();
         event.setOrder(order);

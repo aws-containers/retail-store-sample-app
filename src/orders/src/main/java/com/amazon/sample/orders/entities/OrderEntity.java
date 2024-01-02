@@ -18,30 +18,76 @@
 
 package com.amazon.sample.orders.entities;
 
-import lombok.Data;
-import org.hibernate.annotations.GenericGenerator;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.relational.core.mapping.MappedCollection;
+import org.springframework.data.relational.core.mapping.Table;
 
-import jakarta.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
-@Entity
-@Table(name="CUSTOMER_ORDER")
-@Data
+@Table
 public class OrderEntity {
-
     @Id
-    @GeneratedValue(generator = "uuid")
-    @GenericGenerator(name = "uuid", strategy = "uuid2")
     private String id;
     private String firstName;
     private String lastName;
     private String email;
 
-    @OneToMany(
-        mappedBy = "order",
-        orphanRemoval = true,
-        fetch = FetchType.EAGER
-    )
+    @MappedCollection(keyColumn = "PRODUCT_ID")
     private List<OrderItemEntity> items = new ArrayList<>();
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public List<OrderItemEntity> getItems() {
+        return items;
+    }
+
+    public void setItems(List<OrderItemEntity> items) {
+        this.items = items;
+    }
+
+    public void addItem(OrderItemEntity item) {
+        this.items.add(item);
+    }
+
+    @Override
+    public String toString() {
+        return "OrderEntity{" +
+                "id='" + id + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", email='" + email + '\'' +
+                ", items=" + items +
+                '}';
+    }
 }
