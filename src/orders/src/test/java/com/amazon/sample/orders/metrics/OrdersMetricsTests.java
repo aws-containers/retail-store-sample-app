@@ -32,7 +32,7 @@ import java.util.List;
 
 import static org.assertj.core.api.BDDAssertions.then;
 
-public class OrdersMetricsTest {
+public class OrdersMetricsTests {
 
     private MeterRegistry meterRegistry;
     private final String PRODUCT_1 = "Product1";

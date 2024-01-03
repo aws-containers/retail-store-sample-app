@@ -87,8 +87,8 @@ services:
     environment:
       - JAVA_OPTS=-XX:MaxRAMPercentage=75.0 -Djava.security.egd=file:/dev/urandom
       - SERVER_TOMCAT_ACCESSLOG_ENABLED=true
-      - SPRING_PROFILES_ACTIVE=mysql,rabbitmq
-      - SPRING_DATASOURCE_URL=jdbc:mariadb://orders-db:3306/orders
+      - SPRING_PROFILES_ACTIVE=rabbitmq
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://orders-db:5432/orders
       - SPRING_DATASOURCE_USERNAME=orders_user
       - SPRING_DATASOURCE_PASSWORD=${MYSQL_PASSWORD}
       - SPRING_RABBITMQ_HOST=rabbitmq
@@ -97,15 +97,21 @@ services:
       - ALL
 
   orders-db:
-    image: mariadb:10.9
+    image: postgres:16.1
     hostname: orders-db
     restart: always
+    security_opt:
+      - no-new-privileges:true
     environment:
-      - MYSQL_ROOT_PASSWORD=${MYSQL_PASSWORD}
-      - MYSQL_ALLOW_EMPTY_PASSWORD=true
-      - MYSQL_DATABASE=orders
-      - MYSQL_USER=orders_user
-      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+      - reschedule=on-node-failure
+      - POSTGRES_PASSWORD=${MYSQL_PASSWORD}
+      - POSTGRES_DB=orders
+      - POSTGRES_USER=orders_user
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -d orders -U orders_user" ]
+      interval: 10s
+      timeout: 5s
+      retries: 30
     mem_limit: 128m
 
   checkout:

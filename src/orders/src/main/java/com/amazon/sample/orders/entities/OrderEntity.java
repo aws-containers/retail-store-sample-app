@@ -33,8 +33,18 @@ public class OrderEntity {
     private String lastName;
     private String email;
 
-    @MappedCollection(keyColumn = "PRODUCT_ID")
+    @MappedCollection(keyColumn = "product_id")
     private List<OrderItemEntity> items = new ArrayList<>();
+
+    public OrderEntity() {
+
+    }
+
+    public OrderEntity(String firstName, String lastName, String email) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+    }
 
     public String getId() {
         return id;
@@ -76,8 +86,10 @@ public class OrderEntity {
         this.items = items;
     }
 
-    public void addItem(OrderItemEntity item) {
+    public OrderEntity addItem(OrderItemEntity item) {
         this.items.add(item);
+
+        return this;
     }
 
     @Override

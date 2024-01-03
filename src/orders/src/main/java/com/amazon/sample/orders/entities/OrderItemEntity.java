@@ -18,7 +18,6 @@
 
 package com.amazon.sample.orders.entities;
 
-import org.springframework.data.annotation.Id;
 import org.springframework.data.relational.core.mapping.Table;
 
 @Table
