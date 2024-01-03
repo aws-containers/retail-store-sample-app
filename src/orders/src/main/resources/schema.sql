@@ -2,7 +2,7 @@ create table IF NOT EXISTS order_entity (
     id varchar(255) not null,
     first_name varchar(255) not null,
     last_name varchar(255),
-    email varchar(15),
+    email varchar(255),
     primary key (id)
 );
 

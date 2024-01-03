@@ -19,9 +19,7 @@
 package com.amazon.sample.orders.services;
 
 import com.amazon.sample.orders.entities.OrderEntity;
-import com.amazon.sample.orders.entities.OrderItemEntity;
 import com.amazon.sample.orders.messaging.OrdersEventHandler;
-import com.amazon.sample.orders.repositories.OrderReadRepository;
 import com.amazon.sample.orders.repositories.OrderRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,9 +40,6 @@ public class OrderService extends AbstractRelationalEventListener<OrderEntity> {
     private OrderRepository repository;
 
     @Autowired
-    private OrderReadRepository readRepository;
-
-    @Autowired
     private OrdersEventHandler eventHandler;
 
     @Transactional
@@ -55,8 +50,8 @@ public class OrderService extends AbstractRelationalEventListener<OrderEntity> {
     }
 
     public List<OrderEntity> list() {
-      return StreamSupport.stream(this.readRepository.findAll().spliterator(), false)
-        .collect(Collectors.toList());
+        return StreamSupport.stream(this.repository.findAll().spliterator(), false)
+                .collect(Collectors.toList());
     }
 
     protected void onAfterSave(AfterSaveEvent<OrderEntity> orderCreated) {

@@ -22,19 +22,19 @@ services:
     environment:
       - reschedule=on-node-failure
       - SERVER_TOMCAT_ACCESSLOG_ENABLED=true
-      - SPRING_PROFILES_ACTIVE=mysql,activemq
-      - SPRING_DATASOURCE_WRITER_URL=jdbc:mysql://orders-db:3306/orders
-      - SPRING_DATASOURCE_WRITER_USERNAME=orders_user
-      - SPRING_DATASOURCE_WRITER_PASSWORD=${MYSQL_PASSWORD}
-      - SPRING_DATASOURCE_READER_URL=jdbc:mysql://orders-db:3306/orders
-      - SPRING_DATASOURCE_READER_USERNAME=orders_user
-      - SPRING_DATASOURCE_READER_PASSWORD=${MYSQL_PASSWORD}
-      - SPRING_DATASOURCE_WRITER_MAXIMUMPOOLSIZE=20
+      - SPRING_PROFILES_ACTIVE=mysql,rabbitmq
+      - SPRING_DATASOURCE_URL=jdbc:mariadb://orders-db:3306/orders
+      - SPRING_DATASOURCE_USERNAME=orders_user
+      - SPRING_DATASOURCE_PASSWORD=${MYSQL_PASSWORD}
       - SPRING_RABBITMQ_HOST=rabbitmq
     ports:
       - "8083:8080"
     healthcheck:
-      test: ["CMD-SHELL", "curl -f http://localhost:8080/actuator/health || exit 1"]
+      test:
+        [
+          "CMD-SHELL",
+          "curl -f http://localhost:8080/actuator/health || exit 1"
+        ]
       interval: 10s
       timeout: 10s
       retries: 3
@@ -57,7 +57,11 @@ services:
     ports:
       - "3306:3306"
     healthcheck:
-      test: ["CMD-SHELL", "mysql -u root -p${MYSQL_PASSWORD} -e 'SELECT 1 cache'"]
+      test:
+        [
+          "CMD-SHELL",
+          "mysql -u root -p${MYSQL_PASSWORD} -e 'SELECT 1 cache'"
+        ]
       interval: 1s
       timeout: 3s
       retries: 30
@@ -72,4 +76,3 @@ services:
     ports:
       - "61616:61616"
       - "8161:8161"
-  
