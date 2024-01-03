@@ -5,7 +5,7 @@ module "orders_rds" {
   name           = "${var.environment_name}-orders"
   engine         = "aurora-postgresql"
   engine_version = "15.5"
-  instance_class = "db.t3.small"
+  instance_class = "db.t3.medium"
 
   instances = {
     one = {}
