@@ -25,32 +25,30 @@ spec:
         {{- toYaml . | nindent 8 }}
       {{- end }}
       containers:
-        - name: mysql
+        - name: postgresql
           image: "{{ .Values.postgresql.image.repository }}:{{ .Values.postgresql.image.tag }}"
           imagePullPolicy: {{ .Values.postgresql.image.pullPolicy }}
           env:
-            - name: MYSQL_ROOT_PASSWORD
-              value: my-secret-pw
-            - name: MYSQL_DATABASE
+            - name: POSTGRES_DB
               value: {{ .Values.postgresql.database }}
-            - name: MYSQL_USER
+            - name: POSTGRES_USER
               valueFrom:
                 secretKeyRef:
                   name: {{ .Values.postgresql.secret.name }}
                   key: username
-            - name: MYSQL_PASSWORD
+            - name: POSTGRES_PASSWORD
               valueFrom:
                 secretKeyRef:
                   name: {{ .Values.postgresql.secret.name }}
                   key: password
-          args:
-            - "--ignore-db-dir=lost+found"
+            - name: PGDATA
+              value: /data/pgdata
           volumeMounts:
             - name: data
-              mountPath: /var/lib/mysql
+              mountPath: /data
           ports:
-            - name: mysql
-              containerPort: 3306
+            - name: postgresql
+              containerPort: 5432
               protocol: TCP
       {{- with .Values.postgresql.nodeSelector }}
       nodeSelector:

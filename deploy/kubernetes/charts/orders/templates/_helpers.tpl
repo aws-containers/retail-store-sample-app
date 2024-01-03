@@ -87,11 +87,11 @@ Create the name of the config map to use
 {{- end -}}
 
 {{- define "orders.postgresql.fullname" -}}
-{{- include "orders.fullname" . }}-mysql
+{{- include "orders.fullname" . }}-postgresql
 {{- end -}}
 
 {{/*
-Common labels for mysql
+Common labels for postgresql
 */}}
 {{- define "orders.postgresql.labels" -}}
 helm.sh/chart: {{ include "orders.chart" . }}
@@ -103,12 +103,12 @@ app.kubernetes.io/managed-by: {{ .Release.Service }}
 {{- end }}
 
 {{/*
-Selector labels for mysql
+Selector labels for postgresql
 */}}
 {{- define "orders.postgresql.selectorLabels" -}}
 app.kubernetes.io/name: {{ include "orders.fullname" . }}
 app.kubernetes.io/instance: {{ .Release.Name }}
-app.kubernetes.io/component: mysql
+app.kubernetes.io/component: postgresql
 {{- end }}
 
 {{- define "getOrGeneratePass" }}
@@ -132,10 +132,10 @@ app.kubernetes.io/component: mysql
 {{- end -}}
 
 {{- define "orders.postgresql.endpoint" -}}
-{{- if not (empty .Values.postgresql.endpoint) -}}
-    {{- .Values.postgresql.endpoint -}}
+{{- if not (empty .Values.postgresql.endpoint.host) -}}
+jdbc:postgresql://{{- .Values.postgresql.endpoint.host -}}:{{- .Values.postgresql.port -}}/{{ .Values.postgresql.database }}
 {{- else -}}
-jdbc:mariadb://{{ include "orders.postgresql.fullname" . }}:{{ .Values.postgresql.service.port }}/{{ .Values.postgresql.database }}
+jdbc:postgresql://{{ include "orders.postgresql.fullname" . }}:{{ .Values.postgresql.service.port }}/{{ .Values.postgresql.database }}
 {{- end -}}
 {{- end -}}
 

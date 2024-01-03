@@ -9,9 +9,9 @@ spec:
   type: {{ .Values.postgresql.service.type }}
   ports:
     - port: {{ .Values.postgresql.service.port }}
-      targetPort: mysql
+      targetPort: postgresql
       protocol: TCP
-      name: mysql
+      name: postgresql
   selector:
     {{- include "orders.postgresql.selectorLabels" . | nindent 4 }}
 {{- end }}
