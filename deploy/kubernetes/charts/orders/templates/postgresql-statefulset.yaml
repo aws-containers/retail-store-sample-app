@@ -1,24 +1,24 @@
-{{- if .Values.mysql.create }}
+{{- if .Values.postgresql.create }}
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
-  name: {{ include "orders.mysql.fullname" . }}
+  name: {{ include "orders.postgresql.fullname" . }}
   labels:
-    {{- include "orders.mysql.labels" . | nindent 4 }}
+    {{- include "orders.postgresql.labels" . | nindent 4 }}
 spec:
   replicas: 1
-  serviceName: {{ include "orders.mysql.fullname" . }}
+  serviceName: {{ include "orders.postgresql.fullname" . }}
   selector:
     matchLabels:
-      {{- include "orders.mysql.selectorLabels" . | nindent 6 }}
+      {{- include "orders.postgresql.selectorLabels" . | nindent 6 }}
   template:
     metadata:
-      {{- with .Values.mysql.podAnnotations }}
+      {{- with .Values.postgresql.podAnnotations }}
       annotations:
         {{- toYaml . | nindent 8 }}
       {{- end }}
       labels:
-        {{- include "orders.mysql.selectorLabels" . | nindent 8 }}
+        {{- include "orders.postgresql.selectorLabels" . | nindent 8 }}
     spec:
       {{- with .Values.imagePullSecrets }}
       imagePullSecrets:
@@ -26,22 +26,22 @@ spec:
       {{- end }}
       containers:
         - name: mysql
-          image: "{{ .Values.mysql.image.repository }}:{{ .Values.mysql.image.tag }}"
-          imagePullPolicy: {{ .Values.mysql.image.pullPolicy }}
+          image: "{{ .Values.postgresql.image.repository }}:{{ .Values.postgresql.image.tag }}"
+          imagePullPolicy: {{ .Values.postgresql.image.pullPolicy }}
           env:
             - name: MYSQL_ROOT_PASSWORD
               value: my-secret-pw
             - name: MYSQL_DATABASE
-              value: {{ .Values.mysql.database }}
+              value: {{ .Values.postgresql.database }}
             - name: MYSQL_USER
               valueFrom:
                 secretKeyRef:
-                  name: {{ .Values.mysql.secret.name }}
+                  name: {{ .Values.postgresql.secret.name }}
                   key: username
             - name: MYSQL_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: {{ .Values.mysql.secret.name }}
+                  name: {{ .Values.postgresql.secret.name }}
                   key: password
           args:
             - "--ignore-db-dir=lost+found"
@@ -52,41 +52,41 @@ spec:
             - name: mysql
               containerPort: 3306
               protocol: TCP
-      {{- with .Values.mysql.nodeSelector }}
+      {{- with .Values.postgresql.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
       {{- end }}
-      {{- with .Values.mysql.affinity }}
+      {{- with .Values.postgresql.affinity }}
       affinity:
         {{- toYaml . | nindent 8 }}
       {{- end }}
-      {{- with .Values.mysql.tolerations }}
+      {{- with .Values.postgresql.tolerations }}
       tolerations:
         {{- toYaml . | nindent 8 }}
       {{- end }}
-{{- if .Values.mysql.persistentVolume.enabled }}
+{{- if .Values.postgresql.persistentVolume.enabled }}
   volumeClaimTemplates:
     - metadata:
         name: data
-        {{- if .Values.mysql.persistentVolume.annotations }}
+        {{- if .Values.postgresql.persistentVolume.annotations }}
         annotations:
-{{ toYaml .Values.mysql.persistentVolume.annotations | indent 10 }}
+{{ toYaml .Values.postgresql.persistentVolume.annotations | indent 10 }}
         {{- end }}
-        {{- if .Values.mysql.persistentVolume.labels }}
+        {{- if .Values.postgresql.persistentVolume.labels }}
         labels:
-{{ toYaml .Values.mysql.persistentVolume.labels | indent 10 }}
+{{ toYaml .Values.postgresql.persistentVolume.labels | indent 10 }}
         {{- end }}
       spec:
         accessModes:
-{{ toYaml .Values.mysql.persistentVolume.accessModes | indent 8 }}
+{{ toYaml .Values.postgresql.persistentVolume.accessModes | indent 8 }}
         resources:
           requests:
-            storage: "{{ .Values.mysql.persistentVolume.size }}"
-      {{- if .Values.mysql.persistentVolume.storageClass }}
-      {{- if (eq "-" .Values.mysql.persistentVolume.storageClass) }}
+            storage: "{{ .Values.postgresql.persistentVolume.size }}"
+      {{- if .Values.postgresql.persistentVolume.storageClass }}
+      {{- if (eq "-" .Values.postgresql.persistentVolume.storageClass) }}
         storageClassName: ""
       {{- else }}
-        storageClassName: "{{ .Values.mysql.persistentVolume.storageClass }}"
+        storageClassName: "{{ .Values.postgresql.persistentVolume.storageClass }}"
       {{- end }}
       {{- end }}
 {{- else }}

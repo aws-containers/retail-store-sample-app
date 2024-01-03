@@ -5,7 +5,7 @@ image:
 {{end}}
 
 {{if env "RANDOM_PASSWORD" }}
-mysql:
+postgresql:
   secret:
     password: {{ env "RANDOM_PASSWORD" | default "" }}
 {{end}}
