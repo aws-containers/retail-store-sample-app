@@ -133,7 +133,7 @@ app.kubernetes.io/component: postgresql
 
 {{- define "orders.postgresql.endpoint" -}}
 {{- if not (empty .Values.postgresql.endpoint.host) -}}
-jdbc:postgresql://{{- .Values.postgresql.endpoint.host -}}:{{- .Values.postgresql.port -}}/{{ .Values.postgresql.database }}
+jdbc:postgresql://{{- .Values.postgresql.endpoint.host -}}:{{- .Values.postgresql.endpoint.port -}}/{{ .Values.postgresql.database }}
 {{- else -}}
 jdbc:postgresql://{{ include "orders.postgresql.fullname" . }}:{{ .Values.postgresql.service.port }}/{{ .Values.postgresql.database }}
 {{- end -}}
