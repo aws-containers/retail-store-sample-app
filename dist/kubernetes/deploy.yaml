@@ -19,7 +19,7 @@ metadata:
   name: catalog-db
 data:
   username: "Y2F0YWxvZw=="
-  password: "YzE5ZGVwTTRaTmg4OHBkUA=="
+  password: "eFZCbUNLOW1xbFFGTGhFdw=="
 ---
 # Source: catalog/templates/configmap.yml
 apiVersion: v1
@@ -141,7 +141,7 @@ spec:
             readOnlyRootFilesystem: true
             runAsNonRoot: true
             runAsUser: 1000
-          image: "public.ecr.aws/aws-containers/retail-store-sample-catalog:0.5.0"
+          image: "public.ecr.aws/aws-containers/retail-store-sample-catalog:0.6.0"
           imagePullPolicy: IfNotPresent
           ports:
             - name: http
@@ -329,7 +329,7 @@ spec:
             readOnlyRootFilesystem: true
             runAsNonRoot: true
             runAsUser: 1000
-          image: "public.ecr.aws/aws-containers/retail-store-sample-ui:0.5.0"
+          image: "public.ecr.aws/aws-containers/retail-store-sample-ui:0.6.0"
           imagePullPolicy: IfNotPresent
           ports:
             - name: http
@@ -376,7 +376,7 @@ metadata:
   name: catalog-db
 data:
   username: "Y2F0YWxvZw=="
-  password: "amJrcHh0Y3pkZHhqU21EaA=="
+  password: "amp1TEFHT3BWY3ZLNjAydQ=="
 ---
 # Source: catalog/templates/configmap.yml
 apiVersion: v1
@@ -498,7 +498,7 @@ spec:
             readOnlyRootFilesystem: true
             runAsNonRoot: true
             runAsUser: 1000
-          image: "public.ecr.aws/aws-containers/retail-store-sample-catalog:0.5.0"
+          image: "public.ecr.aws/aws-containers/retail-store-sample-catalog:0.6.0"
           imagePullPolicy: IfNotPresent
           ports:
             - name: http
@@ -712,7 +712,7 @@ spec:
             readOnlyRootFilesystem: true
             runAsNonRoot: true
             runAsUser: 1000
-          image: "public.ecr.aws/aws-containers/retail-store-sample-cart:0.5.0"
+          image: "public.ecr.aws/aws-containers/retail-store-sample-cart:0.6.0"
           imagePullPolicy: IfNotPresent
           ports:
             - name: http
@@ -793,7 +793,7 @@ metadata:
   name: orders-db
 data:
   username: "b3JkZXJz"
-  password: "Wk5QSHgwQ1lSWTBnUWg2WQ=="
+  password: "alN6anBCUDBscWtYUGxEWA=="
 ---
 # Source: orders/templates/rabbitmq-secret.yaml
 apiVersion: v1
@@ -964,7 +964,7 @@ spec:
             readOnlyRootFilesystem: true
             runAsNonRoot: true
             runAsUser: 1000
-          image: "public.ecr.aws/aws-containers/retail-store-sample-orders:0.5.0"
+          image: "public.ecr.aws/aws-containers/retail-store-sample-orders:0.6.0"
           imagePullPolicy: IfNotPresent
           ports:
             - name: http
@@ -1214,7 +1214,7 @@ spec:
             readOnlyRootFilesystem: true
             runAsNonRoot: true
             runAsUser: 1000
-          image: "public.ecr.aws/aws-containers/retail-store-sample-checkout:0.5.0"
+          image: "public.ecr.aws/aws-containers/retail-store-sample-checkout:0.6.0"
           imagePullPolicy: IfNotPresent
           ports:
             - name: http
@@ -1366,7 +1366,7 @@ spec:
               drop:
               - ALL
             readOnlyRootFilesystem: false
-          image: "public.ecr.aws/aws-containers/retail-store-sample-assets:0.5.0"
+          image: "public.ecr.aws/aws-containers/retail-store-sample-assets:0.6.0"
           imagePullPolicy: IfNotPresent
           ports:
             - name: http
@@ -1500,7 +1500,7 @@ spec:
             readOnlyRootFilesystem: true
             runAsNonRoot: true
             runAsUser: 1000
-          image: "public.ecr.aws/aws-containers/retail-store-sample-ui:0.5.0"
+          image: "public.ecr.aws/aws-containers/retail-store-sample-ui:0.6.0"
           imagePullPolicy: IfNotPresent
           ports:
             - name: http
