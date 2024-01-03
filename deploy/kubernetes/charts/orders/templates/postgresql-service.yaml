@@ -1,0 +1,17 @@
+{{- if .Values.postgresql.create }}
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "orders.postgresql.fullname" . }}
+  labels:
+    {{- include "orders.postgresql.labels" . | nindent 4 }}
+spec:
+  type: {{ .Values.postgresql.service.type }}
+  ports:
+    - port: {{ .Values.postgresql.service.port }}
+      targetPort: postgresql
+      protocol: TCP
+      name: postgresql
+  selector:
+    {{- include "orders.postgresql.selectorLabels" . | nindent 4 }}
+{{- end }}

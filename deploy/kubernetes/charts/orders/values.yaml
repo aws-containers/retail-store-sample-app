@@ -70,12 +70,14 @@ configMap:
   create: true
   name:
 
-mysql:
+postgresql:
   create: true
 
   database: orders
 
-  endpoint: ""
+  endpoint:
+    host: ""
+    port: ""
 
   secret:
     create: true
@@ -92,13 +94,13 @@ mysql:
       password: ""
 
   image:
-    repository: mysql
+    repository: postgres
     pullPolicy: IfNotPresent
-    tag: "5.7"
+    tag: "16.1"
 
   service:
     type: ClusterIP
-    port: 3306
+    port: 5432
 
   podAnnotations: {}
 

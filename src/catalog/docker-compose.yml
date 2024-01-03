@@ -10,7 +10,7 @@ services:
     image: microservices-demo/catalog
     hostname: catalog
     depends_on:
-    - catalog-db
+      - catalog-db
     restart: always
     cap_drop:
       - all

@@ -21,7 +21,6 @@ package com.amazon.sample.orders.metrics;
 import com.amazon.sample.events.orders.OrderCreatedEvent;
 import com.amazon.sample.orders.entities.OrderItemEntity;
 import io.micrometer.core.instrument.Counter;
-import io.micrometer.core.instrument.Gauge;
 import io.micrometer.core.instrument.MeterRegistry;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.event.TransactionalEventListener;

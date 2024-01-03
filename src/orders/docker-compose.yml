@@ -22,19 +22,19 @@ services:
     environment:
       - reschedule=on-node-failure
       - SERVER_TOMCAT_ACCESSLOG_ENABLED=true
-      - SPRING_PROFILES_ACTIVE=mysql,activemq
-      - SPRING_DATASOURCE_WRITER_URL=jdbc:mysql://orders-db:3306/orders
-      - SPRING_DATASOURCE_WRITER_USERNAME=orders_user
-      - SPRING_DATASOURCE_WRITER_PASSWORD=${MYSQL_PASSWORD}
-      - SPRING_DATASOURCE_READER_URL=jdbc:mysql://orders-db:3306/orders
-      - SPRING_DATASOURCE_READER_USERNAME=orders_user
-      - SPRING_DATASOURCE_READER_PASSWORD=${MYSQL_PASSWORD}
-      - SPRING_DATASOURCE_WRITER_MAXIMUMPOOLSIZE=20
+      - SPRING_PROFILES_ACTIVE=rabbitmq
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://orders-db:5432/orders
+      - SPRING_DATASOURCE_USERNAME=orders_user
+      - SPRING_DATASOURCE_PASSWORD=${MYSQL_PASSWORD}
       - SPRING_RABBITMQ_HOST=rabbitmq
     ports:
       - "8083:8080"
     healthcheck:
-      test: ["CMD-SHELL", "curl -f http://localhost:8080/actuator/health || exit 1"]
+      test:
+        [
+          "CMD-SHELL",
+          "curl -f http://localhost:8080/actuator/health || exit 1"
+        ]
       interval: 10s
       timeout: 10s
       retries: 3
@@ -42,24 +42,22 @@ services:
 
   # nosemgrep: yaml.docker-compose.security.writable-filesystem-service.writable-filesystem-service
   orders-db:
-    image: mysql:5.7
+    image: postgres:16.1
     hostname: orders-db
     restart: always
     security_opt:
       - no-new-privileges:true
     environment:
       - reschedule=on-node-failure
-      - MYSQL_ROOT_PASSWORD=${MYSQL_PASSWORD}
-      - MYSQL_ALLOW_EMPTY_PASSWORD=true
-      - MYSQL_DATABASE=orders
-      - MYSQL_USER=orders_user
-      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+      - POSTGRES_PASSWORD=${MYSQL_PASSWORD}
+      - POSTGRES_DB=orders
+      - POSTGRES_USER=orders_user
     ports:
-      - "3306:3306"
+      - "5432:5432"
     healthcheck:
-      test: ["CMD-SHELL", "mysql -u root -p${MYSQL_PASSWORD} -e 'SELECT 1 cache'"]
-      interval: 1s
-      timeout: 3s
+      test: [ "CMD-SHELL", "pg_isready -d orders -U orders_user" ]
+      interval: 10s
+      timeout: 5s
       retries: 30
 
   # nosemgrep: yaml.docker-compose.security.writable-filesystem-service.writable-filesystem-service
@@ -72,4 +70,3 @@ services:
     ports:
       - "61616:61616"
       - "8161:8161"
-  

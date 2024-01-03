@@ -39,25 +39,15 @@ spec:
           env:
             - name: JAVA_OPTS
               value: -XX:MaxRAMPercentage=75.0 -Djava.security.egd=file:/dev/urandom
-            - name: SPRING_DATASOURCE_WRITER_USERNAME
+            - name: SPRING_DATASOURCE_USERNAME
               valueFrom:
                 secretKeyRef:
-                  name: {{ .Values.mysql.secret.name }}
+                  name: {{ .Values.postgresql.secret.name }}
                   key: username
-            - name: SPRING_DATASOURCE_WRITER_PASSWORD
+            - name: SPRING_DATASOURCE_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: {{ .Values.mysql.secret.name }}
-                  key: password
-            - name: SPRING_DATASOURCE_READER_USERNAME
-              valueFrom:
-                secretKeyRef:
-                  name: {{ .Values.mysql.reader.secret.name }}
-                  key: username
-            - name: SPRING_DATASOURCE_READER_PASSWORD
-              valueFrom:
-                secretKeyRef:
-                  name: {{ .Values.mysql.reader.secret.name }}
+                  name: {{ .Values.postgresql.secret.name }}
                   key: password
           envFrom:
             - secretRef:

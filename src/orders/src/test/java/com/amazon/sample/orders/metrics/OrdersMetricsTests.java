@@ -26,22 +26,18 @@ import io.micrometer.core.instrument.simple.SimpleMeterRegistry;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.springframework.stereotype.Component;
-import org.springframework.transaction.event.TransactionalEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
-import java.util.concurrent.atomic.AtomicInteger;
 
 import static org.assertj.core.api.BDDAssertions.then;
 
-
-public class OrdersMetricsTest {
+public class OrdersMetricsTests {
 
     private MeterRegistry meterRegistry;
     private final String PRODUCT_1 = "Product1";
     private final String PRODUCT_2 = "Product2";
+
     @BeforeEach
     void setUp() {
         meterRegistry = new SimpleMeterRegistry();
@@ -69,14 +65,14 @@ public class OrdersMetricsTest {
         OrderItemEntity item = new OrderItemEntity();
         item.setName("Pocket Watch");
         item.setQuantity(5);
-        item.setPrice(100);
+        item.setUnitCost(100);
         item.setTotalCost(500);
         item.setProductId(PRODUCT_1);
         orderItems.add(item);
         item = new OrderItemEntity();
         item.setName("Wood Watch");
         item.setQuantity(2);
-        item.setPrice(50);
+        item.setUnitCost(50);
         item.setTotalCost(100);
         item.setProductId(PRODUCT_2);
         orderItems.add(item);
@@ -85,15 +81,15 @@ public class OrdersMetricsTest {
         event.setOrder(order);
         ordersMetrics.onOrderCreated(event);
 
-        var counter = meterRegistry.get("watch.orders").tags("productId","*").counter();
+        var counter = meterRegistry.get("watch.orders").tags("productId", "*").counter();
         then(counter).isNotNull();
         then(counter.count()).isEqualTo(1);
 
-        var woodWatchCounter = meterRegistry.get("watch.orders").tags("productId",PRODUCT_2).counter();
+        var woodWatchCounter = meterRegistry.get("watch.orders").tags("productId", PRODUCT_2).counter();
         then(woodWatchCounter).isNotNull();
         then(woodWatchCounter.count()).isEqualTo(2);
 
-        var pocketWatchCounter = meterRegistry.get("watch.orders").tags("productId",PRODUCT_1).counter();
+        var pocketWatchCounter = meterRegistry.get("watch.orders").tags("productId", PRODUCT_1).counter();
         then(pocketWatchCounter).isNotNull();
         then(pocketWatchCounter.count()).isEqualTo(5);
 

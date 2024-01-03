@@ -1,7 +1,11 @@
-mysql:
+postgresql:
   create: false
 
-  endpoint: ${database_endpoint}
+  database: ${database_name}
+
+  endpoint:
+    host: ${database_endpoint_host}
+    port: "${database_endpoint_port}"
 
   secret:
     username: ${database_username}

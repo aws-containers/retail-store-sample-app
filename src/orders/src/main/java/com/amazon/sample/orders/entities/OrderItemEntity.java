@@ -18,42 +18,69 @@
 
 package com.amazon.sample.orders.entities;
 
-import lombok.Data;
+import org.springframework.data.relational.core.mapping.Table;
 
-import jakarta.persistence.*;
-import java.io.Serializable;
-
-@Entity
-@Table(name="CUSTOMER_ORDER_ITEM")
-@Data
+@Table
 public class OrderItemEntity {
-    @Embeddable
-    @Data
-    public static class Key implements Serializable {
-        private String orderId;
-        private String productId;
-    }
 
-    @EmbeddedId
-    @AttributeOverrides({
-        @AttributeOverride(name="productId",
-          column=@Column(length=64))
-    })
-    private Key id;
-
-    @Transient
     private String productId;
 
     private int quantity;
 
-    private int price;
+    private int unitCost;
 
     private String name;
 
     private int totalCost;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @MapsId("orderId")
+    public String getProductId() {
+        return productId;
+    }
 
-    private OrderEntity order;
+    public void setProductId(String productId) {
+        this.productId = productId;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+
+    public int getUnitCost() {
+        return unitCost;
+    }
+
+    public void setUnitCost(int unitCost) {
+        this.unitCost = unitCost;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getTotalCost() {
+        return totalCost;
+    }
+
+    public void setTotalCost(int totalCost) {
+        this.totalCost = totalCost;
+    }
+
+    @Override
+    public String toString() {
+        return "OrderItemEntity{" +
+                ", productId='" + productId + '\'' +
+                ", quantity=" + quantity +
+                ", unitCost=" + unitCost +
+                ", name='" + name + '\'' +
+                ", totalCost=" + totalCost +
+                '}';
+    }
 }

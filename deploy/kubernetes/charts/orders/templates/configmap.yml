@@ -4,8 +4,7 @@ kind: ConfigMap
 metadata:
   name: {{ include "orders.configMapName" . }}
 data:
-  SPRING_PROFILES_ACTIVE: mysql,rabbitmq
-  SPRING_DATASOURCE_READER_URL: {{ include "orders.mysql.endpoint" . }}
-  SPRING_DATASOURCE_WRITER_URL: {{ include "orders.mysql.reader.endpoint" . }}
+  SPRING_PROFILES_ACTIVE: rabbitmq
+  SPRING_DATASOURCE_URL: {{ include "orders.postgresql.endpoint" . }}
   SPRING_RABBITMQ_ADDRESSES: {{ include "orders.rabbitmq.addresses" . }}
 {{- end }}
