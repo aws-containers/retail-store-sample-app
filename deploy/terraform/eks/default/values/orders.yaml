@@ -1,4 +1,4 @@
-mysql:
+postgresql:
   create: false
 
   database: ${database_name}
