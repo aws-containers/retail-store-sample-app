@@ -13,8 +13,11 @@ module "app_runner_checkout" {
           ENDPOINTS_ORDERS = "https://${aws_apprunner_vpc_ingress_connection.orders.domain_name}"
         }
       }
-      image_identifier      = module.container_images.result.checkout
-      image_repository_type = "ECR_PUBLIC"
+      image_identifier      = module.container_images.result.checkout.url
+      image_repository_type = var.image_repository_type
+    }
+    authentication_configuration = {
+      access_role_arn = aws_iam_role.ecr_access.arn
     }
   }
 

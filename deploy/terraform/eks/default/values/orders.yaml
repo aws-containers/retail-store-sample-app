@@ -1,3 +1,7 @@
+image:
+  repository: ${image_repository}
+  tag: ${image_tag}
+
 postgresql:
   create: false
 

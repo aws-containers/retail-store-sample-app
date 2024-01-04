@@ -1,3 +1,7 @@
+image:
+  repository: ${image_repository}
+  tag: ${image_tag}
+
 endpoints:
   catalog: http://catalog.catalog.svc:80
   carts: http://carts.carts.svc:80

@@ -5,6 +5,6 @@ variable "environment_name" {
 
 variable "istio_enabled" {
   description = "Boolean value that enables istio."
-  type        = bool 
+  type        = bool
   default     = false
 }

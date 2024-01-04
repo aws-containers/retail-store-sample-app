@@ -22,6 +22,11 @@ variable "subnet_ids" {
   type        = list(string)
 }
 
+variable "image_repository_type" {
+  description = "The type of image repository where the images will be pulled from"
+  default     = "ECR_PUBLIC"
+}
+
 variable "container_image_overrides" {
   type        = any
   default     = {}

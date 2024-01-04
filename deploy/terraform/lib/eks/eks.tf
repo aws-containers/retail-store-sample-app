@@ -137,10 +137,10 @@ module "eks_cluster_kubernetes_addons" {
     module.eks_cluster
   ]
 
-  eks_cluster_id               = module.eks_cluster.cluster_name
-  eks_cluster_endpoint         = module.eks_cluster.cluster_endpoint
-  eks_oidc_provider            = module.eks_cluster.oidc_provider
-  eks_cluster_version          = module.eks_cluster.cluster_version
+  eks_cluster_id       = module.eks_cluster.cluster_name
+  eks_cluster_endpoint = module.eks_cluster.cluster_endpoint
+  eks_oidc_provider    = module.eks_cluster.oidc_provider
+  eks_cluster_version  = module.eks_cluster.cluster_version
 
   enable_tetrate_istio = var.istio_enabled
 
@@ -151,11 +151,11 @@ module "eks_cluster_kubernetes_addons" {
     create_namespace = true
   }
 
-  enable_amazon_eks_adot                   =true
+  enable_amazon_eks_adot = true
   amazon_eks_adot_config = {
     kubernetes_version = var.cluster_version
   }
-  
+
   tags = var.tags
 }
 

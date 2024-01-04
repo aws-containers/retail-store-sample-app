@@ -9,8 +9,11 @@ module "app_runner_assets" {
       image_configuration = {
         port = 8080
       }
-      image_identifier      = module.container_images.result.assets
-      image_repository_type = "ECR_PUBLIC"
+      image_identifier      = module.container_images.result.assets.url
+      image_repository_type = var.image_repository_type
+    }
+    authentication_configuration = {
+      access_role_arn = aws_iam_role.ecr_access.arn
     }
   }
 

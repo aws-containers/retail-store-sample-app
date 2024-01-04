@@ -5,12 +5,18 @@ variable "environment_name" {
 
 variable "istio_enabled" {
   description = "Boolean value that enables istio."
-  type        = bool 
+  type        = bool
   default     = false
 }
 
 variable "opentelemetry_enabled" {
   description = "Boolean value that enables OpenTelemetry."
-  type        = bool 
+  type        = bool
   default     = false
+}
+
+variable "container_image_overrides" {
+  type        = any
+  default     = {}
+  description = "Container image override object"
 }
