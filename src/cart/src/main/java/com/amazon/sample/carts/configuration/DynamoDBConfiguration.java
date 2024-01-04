@@ -38,7 +38,8 @@ import com.amazon.sample.carts.services.CartService;
 @Profile("dynamodb")
 public class DynamoDBConfiguration {
 
-    @Bean DynamoDbClient dynamoDbClient(DynamoDBProperties properties) {
+    @Bean
+    DynamoDbClient dynamoDbClient(DynamoDBProperties properties) {
         DynamoDbClientBuilder builder = DynamoDbClient.builder();
 
         if (!StringUtils.isEmpty(properties.getEndpoint())) {
@@ -52,12 +53,14 @@ public class DynamoDBConfiguration {
     @Bean
     public DynamoDbEnhancedClient dynamoDbEnhancedClient(DynamoDbClient dynamoDbClient) {
         return DynamoDbEnhancedClient.builder()
-            .dynamoDbClient(dynamoDbClient)
-            .build();
+                .dynamoDbClient(dynamoDbClient)
+                .build();
     }
 
     @Bean
-    public CartService dynamoCartService(DynamoDbClient dynamoDbClient, DynamoDbEnhancedClient dynamoDbEnhancedClient, DynamoDBProperties properties) {
-        return new DynamoDBCartService(dynamoDbClient, dynamoDbEnhancedClient, properties.isCreateTable());
+    public CartService dynamoCartService(DynamoDbClient dynamoDbClient, DynamoDbEnhancedClient dynamoDbEnhancedClient,
+            DynamoDBProperties properties) {
+        return new DynamoDBCartService(dynamoDbClient, dynamoDbEnhancedClient, properties.isCreateTable(),
+                properties.getTableName());
     }
 }
