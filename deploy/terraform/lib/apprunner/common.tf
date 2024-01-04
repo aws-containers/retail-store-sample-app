@@ -4,8 +4,8 @@ resource "aws_kms_key" "cmk" {
 }
 
 resource "random_string" "random_mq_secret" {
-  length           = 4
-  special          = false
+  length  = 4
+  special = false
 }
 
 resource "aws_secretsmanager_secret" "mq" {
@@ -22,4 +22,33 @@ resource "aws_secretsmanager_secret_version" "mq" {
       host     = var.mq_endpoint
     }
   )
+}
+
+resource "aws_iam_role" "ecr_access" {
+  name = "${var.environment_name}-ecr-access"
+
+  assume_role_policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [
+      {
+        Action = "sts:AssumeRole"
+        Effect = "Allow"
+        Sid    = ""
+        Principal = {
+          Service = "build.apprunner.amazonaws.com"
+        }
+      },
+    ]
+  })
+
+  tags = var.tags
+}
+
+data "aws_iam_policy" "ecr_access" {
+  arn = "arn:aws:iam::aws:policy/service-role/AWSAppRunnerServicePolicyForECRAccess"
+}
+
+resource "aws_iam_role_policy_attachment" "ecr_access" {
+  role       = aws_iam_role.ecr_access.name
+  policy_arn = data.aws_iam_policy.ecr_access.arn
 }

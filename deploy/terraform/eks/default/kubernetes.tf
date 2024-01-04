@@ -30,6 +30,12 @@ locals {
   })
 }
 
+module "container_images" {
+  source = "../../lib/images"
+
+  container_image_overrides = var.container_image_overrides
+}
+
 resource "null_resource" "cluster_blocker" {
   triggers = {
     "blocker" = module.retail_app_eks.cluster_blocker_id
@@ -70,6 +76,8 @@ resource "helm_release" "assets" {
   namespace = kubernetes_namespace_v1.assets.metadata[0].name
   values = [
     templatefile("${path.module}/values/assets.yaml", {
+      image_repository      = module.container_images.result.assets.repository
+      image_tag             = module.container_images.result.assets.tag
       opentelemetry_enabled = var.opentelemetry_enabled
     })
   ]
@@ -95,6 +103,8 @@ resource "helm_release" "catalog" {
 
   values = [
     templatefile("${path.module}/values/catalog.yaml", {
+      image_repository      = module.container_images.result.catalog.repository
+      image_tag             = module.container_images.result.catalog.tag
       opentelemetry_enabled = var.opentelemetry_enabled
       database_endpoint     = "${module.dependencies.catalog_db_endpoint}:${module.dependencies.catalog_db_port}"
       database_username     = module.dependencies.catalog_db_master_username
@@ -124,6 +134,8 @@ resource "helm_release" "carts" {
 
   values = [
     templatefile("${path.module}/values/carts.yaml", {
+      image_repository      = module.container_images.result.cart.repository
+      image_tag             = module.container_images.result.cart.tag
       opentelemetry_enabled = var.opentelemetry_enabled
       role_arn              = module.iam_assumable_role_carts.iam_role_arn
       table_name            = module.dependencies.carts_dynamodb_table_name
@@ -151,6 +163,8 @@ resource "helm_release" "checkout" {
 
   values = [
     templatefile("${path.module}/values/checkout.yaml", {
+      image_repository      = module.container_images.result.checkout.repository
+      image_tag             = module.container_images.result.checkout.tag
       opentelemetry_enabled = var.opentelemetry_enabled
       redis_address         = module.dependencies.checkout_elasticache_primary_endpoint
       redis_port            = module.dependencies.checkout_elasticache_port
@@ -179,6 +193,8 @@ resource "helm_release" "orders" {
 
   values = [
     templatefile("${path.module}/values/orders.yaml", {
+      image_repository       = module.container_images.result.orders.repository
+      image_tag              = module.container_images.result.orders.tag
       opentelemetry_enabled  = var.opentelemetry_enabled
       database_endpoint_host = module.dependencies.orders_db_endpoint
       database_endpoint_port = module.dependencies.orders_db_port
@@ -213,6 +229,8 @@ resource "helm_release" "ui" {
 
   values = [
     templatefile("${path.module}/values/ui.yaml", {
+      image_repository      = module.container_images.result.ui.repository
+      image_tag             = module.container_images.result.ui.tag
       opentelemetry_enabled = var.opentelemetry_enabled
       istio_enabled         = var.istio_enabled
     })

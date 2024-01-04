@@ -40,11 +40,13 @@ module "dependencies" {
 module "retail_app_apprunner" {
   source = "../lib/apprunner"
 
-  environment_name = var.environment_name
-  vpc_id           = module.vpc.inner.vpc_id
-  vpc_cidr         = module.vpc.inner.vpc_cidr_block
-  subnet_ids       = module.vpc.inner.private_subnets
-  tags             = module.tags.result
+  environment_name          = var.environment_name
+  vpc_id                    = module.vpc.inner.vpc_id
+  vpc_cidr                  = module.vpc.inner.vpc_cidr_block
+  subnet_ids                = module.vpc.inner.private_subnets
+  tags                      = module.tags.result
+  container_image_overrides = var.container_image_overrides
+  image_repository_type     = var.image_repository_type
 
   catalog_db_endpoint = module.dependencies.catalog_db_endpoint
   catalog_db_port     = module.dependencies.catalog_db_port

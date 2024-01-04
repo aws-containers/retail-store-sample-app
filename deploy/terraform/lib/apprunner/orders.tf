@@ -1,6 +1,11 @@
 resource "aws_apprunner_service" "orders" {
   service_name = "${var.environment_name}-orders"
 
+  depends_on = [
+    aws_secretsmanager_secret_version.orders_db,
+    aws_secretsmanager_secret_version.mq
+  ]
+
   source_configuration {
     auto_deployments_enabled = false
     image_repository {
@@ -14,9 +19,16 @@ resource "aws_apprunner_service" "orders" {
           SPRING_RABBITMQ_USER       = "${aws_secretsmanager_secret.mq.arn}:username::"
           SPRING_RABBITMQ_PASSWORD   = "${aws_secretsmanager_secret.mq.arn}:password::"
         }
+        runtime_environment_variables = {
+          SPRING_PROFILES_ACTIVE = "rabbitmq"
+        }
       }
-      image_identifier      = module.container_images.result.orders
-      image_repository_type = "ECR_PUBLIC"
+      image_identifier      = module.container_images.result.orders.url
+      image_repository_type = var.image_repository_type
+    }
+
+    authentication_configuration {
+      access_role_arn = aws_iam_role.ecr_access.arn
     }
   }
 
@@ -71,7 +83,7 @@ resource "aws_secretsmanager_secret_version" "orders_db" {
     {
       username = var.orders_db_username
       password = var.orders_db_password
-      host     = "jdbc:mariadb://${var.orders_db_endpoint}:${var.orders_db_port}/${var.orders_db_name}"
+      host     = "jdbc:postgresql://${var.orders_db_endpoint}:${var.orders_db_port}/${var.orders_db_name}"
     }
   )
 }

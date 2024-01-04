@@ -1,13 +1,17 @@
 resource "aws_apprunner_service" "catalog" {
   service_name = "${var.environment_name}-catalog"
-  
+
+  depends_on = [
+    aws_secretsmanager_secret_version.catalog_db
+  ]
+
   source_configuration {
     auto_deployments_enabled = false
     image_repository {
       image_configuration {
         port = 8080
         runtime_environment_variables = {
-          DB_NAME     = var.catalog_db_name
+          DB_NAME = var.catalog_db_name
         }
         runtime_environment_secrets = {
           DB_ENDPOINT = "${aws_secretsmanager_secret.catalog_db.arn}:host::"
@@ -15,8 +19,11 @@ resource "aws_apprunner_service" "catalog" {
           DB_PASSWORD = "${aws_secretsmanager_secret.catalog_db.arn}:password::"
         }
       }
-      image_identifier      = module.container_images.result.catalog
-      image_repository_type = "ECR_PUBLIC"
+      image_identifier      = module.container_images.result.catalog.url
+      image_repository_type = var.image_repository_type
+    }
+    authentication_configuration {
+      access_role_arn = aws_iam_role.ecr_access.arn
     }
   }
 
@@ -56,8 +63,8 @@ resource "aws_apprunner_vpc_ingress_connection" "catalog" {
 }
 
 resource "random_string" "random_catalog_secret" {
-  length           = 4
-  special          = false
+  length  = 4
+  special = false
 }
 
 resource "aws_secretsmanager_secret" "catalog_db" {
@@ -104,7 +111,7 @@ data "aws_iam_policy_document" "catalog_db_secret" {
       "secretsmanager:GetSecretValue",
       "kms:Decrypt*"
     ]
-    effect    = "Allow"
+    effect = "Allow"
     resources = [
       aws_secretsmanager_secret.catalog_db.arn,
       aws_kms_key.cmk.arn

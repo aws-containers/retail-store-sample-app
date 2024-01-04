@@ -1,10 +1,22 @@
 output "result" {
   value = {
-    assets   = local.assets_image
-    catalog  = local.catalog_image
-    cart     = local.cart_image
-    checkout = local.checkout_image
-    orders   = local.orders_image
-    ui       = local.ui_image
+    assets = merge({
+      url = local.assets_image
+    }, zipmap(["repository", "tag"], split(":", local.assets_image)))
+    catalog = merge({
+      url = local.catalog_image
+    }, zipmap(["repository", "tag"], split(":", local.catalog_image)))
+    cart = merge({
+      url = local.cart_image
+    }, zipmap(["repository", "tag"], split(":", local.cart_image)))
+    checkout = merge({
+      url = local.checkout_image
+    }, zipmap(["repository", "tag"], split(":", local.checkout_image)))
+    orders = merge({
+      url = local.orders_image
+    }, zipmap(["repository", "tag"], split(":", local.orders_image)))
+    ui = merge({
+      url = local.ui_image
+    }, zipmap(["repository", "tag"], split(":", local.ui_image)))
   }
 }
