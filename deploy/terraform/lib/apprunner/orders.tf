@@ -16,7 +16,7 @@ resource "aws_apprunner_service" "orders" {
           SPRING_DATASOURCE_USERNAME = "${aws_secretsmanager_secret.orders_db.arn}:username::"
           SPRING_DATASOURCE_PASSWORD = "${aws_secretsmanager_secret.orders_db.arn}:password::"
           SPRING_RABBITMQ_ADDRESSES  = "${aws_secretsmanager_secret.mq.arn}:host::"
-          SPRING_RABBITMQ_USER       = "${aws_secretsmanager_secret.mq.arn}:username::"
+          SPRING_RABBITMQ_USERNAME   = "${aws_secretsmanager_secret.mq.arn}:username::"
           SPRING_RABBITMQ_PASSWORD   = "${aws_secretsmanager_secret.mq.arn}:password::"
         }
         runtime_environment_variables = {
