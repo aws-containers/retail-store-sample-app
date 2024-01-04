@@ -88,23 +88,23 @@ output "carts_dynamodb_policy_arn" {
 }
 
 output "mq_broker_id" {
-  value       = module.orders_mq_broker.broker_id
+  value       = aws_mq_broker.mq.id
   description = "AmazonMQ broker ID"
 }
 
 output "mq_broker_arn" {
-  value       = module.orders_mq_broker.broker_arn
+  value       = aws_mq_broker.mq.arn
   description = "AmazonMQ broker ARN"
 }
 
 output "mq_broker_endpoint" {
-  value       = module.orders_mq_broker.primary_ssl_endpoint
+  value       = aws_mq_broker.mq.instances[0].endpoints[0]
   description = "AmazonMQ broker endpoint"
 }
 
 output "mq_password" {
-  value     = random_password.mq_password.result
-  sensitive = true
+  value       = random_password.mq_password.result
+  sensitive   = true
   description = "AmazonMQ Admin password."
 }
 
@@ -114,21 +114,21 @@ output "mq_user" {
 }
 
 output "checkout_elasticache_arn" {
-    value = module.checkout-elasticache-redis.arn
-    description = "Checkout Redis ElastiCache ARN."
+  value       = module.checkout-elasticache-redis.arn
+  description = "Checkout Redis ElastiCache ARN."
 }
 
 output "checkout_elasticache_primary_endpoint" {
-    value = module.checkout-elasticache-redis.endpoint
-    description = "Checkout Redis hostname"
+  value       = module.checkout-elasticache-redis.endpoint
+  description = "Checkout Redis hostname"
 }
 
 output "checkout_elasticache_reader_endpoint" {
-    value = module.checkout-elasticache-redis.reader_endpoint_address
-    description = "Checkout Redis reader hostname"
+  value       = module.checkout-elasticache-redis.reader_endpoint_address
+  description = "Checkout Redis reader hostname"
 }
 
 output "checkout_elasticache_port" {
-    value = module.checkout-elasticache-redis.port
-    description = "Checkout Redis port"
+  value       = module.checkout-elasticache-redis.port
+  description = "Checkout Redis port"
 }
