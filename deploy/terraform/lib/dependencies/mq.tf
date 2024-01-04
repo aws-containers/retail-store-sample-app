@@ -42,7 +42,7 @@ resource "aws_security_group" "mq" {
 }
 
 resource "aws_security_group_rule" "mq" {
-  for_each = toset(local.allowed_security_group_ids)
+  count = length(local.allowed_security_group_ids)
 
   type              = "ingress"
   from_port         = 5671
@@ -50,5 +50,5 @@ resource "aws_security_group_rule" "mq" {
   protocol          = "tcp"
   security_group_id = aws_security_group.mq.id
 
-  source_security_group_id = each.key
+  source_security_group_id = local.allowed_security_group_ids[count.index]
 }
