@@ -44,44 +44,45 @@ public class DynamoDBCartService implements CartService {
 
     private final DynamoDbClient dynamoDBClient;
     private final boolean createTable;
+    private final String tableName;
     private final DynamoDbTable<DynamoItemEntity> table;
 
     static final TableSchema<DynamoItemEntity> CART_TABLE_SCHEMA = TableSchema.fromClass(DynamoItemEntity.class);
 
-    public DynamoDBCartService(DynamoDbClient dynamoDBClient,DynamoDbEnhancedClient dynamoDbEnhancedClient, boolean createTable) {
+    public DynamoDBCartService(DynamoDbClient dynamoDBClient, DynamoDbEnhancedClient dynamoDbEnhancedClient,
+            boolean createTable, String tableName) {
         this.dynamoDBClient = dynamoDBClient;
         this.createTable = createTable;
+        this.tableName = tableName;
 
-        this.table = dynamoDbEnhancedClient.table("Items", CART_TABLE_SCHEMA);
+        this.table = dynamoDbEnhancedClient.table(tableName, CART_TABLE_SCHEMA);
     }
 
     @PostConstruct
     public void init() {
-        if(createTable) {
+        if (createTable) {
             try {
                 dynamoDBClient.deleteTable(
-                DeleteTableRequest.builder().tableName("Items").build()
-            );
-            }
-            catch (ResourceNotFoundException rnfe) {
+                        DeleteTableRequest.builder().tableName(this.tableName).build());
+            } catch (ResourceNotFoundException rnfe) {
                 log.warn("Dynamo table not found");
             }
 
             this.table.createTable(builder -> builder
-                .globalSecondaryIndices(builder3 -> builder3
-                        .indexName("idx_global_customerId")
-                        
-                        .projection(builder2 -> builder2
-                                .projectionType(ProjectionType.ALL))
-                        .provisionedThroughput(builder4 -> builder4
-                                .writeCapacityUnits(1L)
-                                .readCapacityUnits(1L)))
-                .provisionedThroughput(b -> b
-                    .readCapacityUnits(1L)
-                    .writeCapacityUnits(1L)
-                    .build()));
+                    .globalSecondaryIndices(builder3 -> builder3
+                            .indexName("idx_global_customerId")
 
-            this.dynamoDBClient.waiter().waitUntilTableExists(b -> b.tableName("Items"));
+                            .projection(builder2 -> builder2
+                                    .projectionType(ProjectionType.ALL))
+                            .provisionedThroughput(builder4 -> builder4
+                                    .writeCapacityUnits(1L)
+                                    .readCapacityUnits(1L)))
+                    .provisionedThroughput(b -> b
+                            .readCapacityUnits(1L)
+                            .writeCapacityUnits(1L)
+                            .build()));
+
+            this.dynamoDBClient.waiter().waitUntilTableExists(b -> b.tableName(this.tableName));
         }
     }
 
@@ -122,10 +123,9 @@ public class DynamoDBCartService implements CartService {
 
         DynamoItemEntity item = this.table.getItem(Key.builder().partitionValue(hashKey(customerId, itemId)).build());
 
-        if(item != null) {
+        if (item != null) {
             item.setQuantity(item.getQuantity() + quantity);
-        }
-        else {
+        } else {
             item = new DynamoItemEntity(hashKey, customerId, itemId, 1, unitPrice);
         }
 
@@ -157,22 +157,20 @@ public class DynamoDBCartService implements CartService {
     @Override
     public void deleteItem(String customerId, String itemId) {
         item(customerId, itemId).ifPresentOrElse(this.table::deleteItem,
-        ()
-            -> log.warn("Item missing for delete {} -- {}", customerId, itemId));
+                () -> log.warn("Item missing for delete {} -- {}", customerId, itemId));
     }
 
     @Override
     public Optional<DynamoItemEntity> update(String customerId, String itemId, int quantity, int unitPrice) {
         return item(customerId, itemId).map(
-            item -> {
-                item.setQuantity(quantity);
-                item.setUnitPrice(unitPrice);
+                item -> {
+                    item.setQuantity(quantity);
+                    item.setUnitPrice(unitPrice);
 
-                this.table.updateItem(item);
+                    this.table.updateItem(item);
 
-                return item;
-            }
-        );
+                    return item;
+                });
     }
 
     @Override
@@ -181,6 +179,6 @@ public class DynamoDBCartService implements CartService {
     }
 
     private String hashKey(String customerId, String itemId) {
-        return customerId+":"+itemId;
+        return customerId + ":" + itemId;
     }
 }
