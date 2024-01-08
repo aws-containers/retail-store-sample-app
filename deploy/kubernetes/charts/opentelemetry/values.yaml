@@ -6,6 +6,8 @@ instrumentation:
   port: 4317
 
 collector:
+  create: true
+  
   replicaCount: 1
 
   image:

@@ -37,3 +37,7 @@ output "configure_kubectl" {
   description = "Command to update kubeconfig for this cluster"
   value       = "aws eks --region ${data.aws_region.current.name} update-kubeconfig --name ${module.eks_cluster.cluster_name}"
 }
+
+output "adot_namespace" {
+  value = kubernetes_namespace_v1.adot.metadata[0].name
+}

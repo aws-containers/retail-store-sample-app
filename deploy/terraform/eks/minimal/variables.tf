@@ -8,3 +8,9 @@ variable "istio_enabled" {
   type        = bool
   default     = false
 }
+
+variable "opentelemetry_enabled" {
+  description = "Boolean value that enables OpenTelemetry."
+  type        = bool
+  default     = false
+}

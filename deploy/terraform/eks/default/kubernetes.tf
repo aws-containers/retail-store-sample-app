@@ -76,9 +76,10 @@ resource "helm_release" "assets" {
   namespace = kubernetes_namespace_v1.assets.metadata[0].name
   values = [
     templatefile("${path.module}/values/assets.yaml", {
-      image_repository      = module.container_images.result.assets.repository
-      image_tag             = module.container_images.result.assets.tag
-      opentelemetry_enabled = var.opentelemetry_enabled
+      image_repository              = module.container_images.result.assets.repository
+      image_tag                     = module.container_images.result.assets.tag
+      opentelemetry_enabled         = var.opentelemetry_enabled
+      opentelemetry_instrumentation = local.opentelemetry_instrumentation
     })
   ]
 }
@@ -103,13 +104,14 @@ resource "helm_release" "catalog" {
 
   values = [
     templatefile("${path.module}/values/catalog.yaml", {
-      image_repository      = module.container_images.result.catalog.repository
-      image_tag             = module.container_images.result.catalog.tag
-      opentelemetry_enabled = var.opentelemetry_enabled
-      database_endpoint     = "${module.dependencies.catalog_db_endpoint}:${module.dependencies.catalog_db_port}"
-      database_username     = module.dependencies.catalog_db_master_username
-      database_password     = module.dependencies.catalog_db_master_password
-      security_group_id     = aws_security_group.catalog.id
+      image_repository              = module.container_images.result.catalog.repository
+      image_tag                     = module.container_images.result.catalog.tag
+      opentelemetry_enabled         = var.opentelemetry_enabled
+      opentelemetry_instrumentation = local.opentelemetry_instrumentation
+      database_endpoint             = "${module.dependencies.catalog_db_endpoint}:${module.dependencies.catalog_db_port}"
+      database_username             = module.dependencies.catalog_db_master_username
+      database_password             = module.dependencies.catalog_db_master_password
+      security_group_id             = aws_security_group.catalog.id
     })
   ]
 }
@@ -134,11 +136,12 @@ resource "helm_release" "carts" {
 
   values = [
     templatefile("${path.module}/values/carts.yaml", {
-      image_repository      = module.container_images.result.cart.repository
-      image_tag             = module.container_images.result.cart.tag
-      opentelemetry_enabled = var.opentelemetry_enabled
-      role_arn              = module.iam_assumable_role_carts.iam_role_arn
-      table_name            = module.dependencies.carts_dynamodb_table_name
+      image_repository              = module.container_images.result.cart.repository
+      image_tag                     = module.container_images.result.cart.tag
+      opentelemetry_enabled         = var.opentelemetry_enabled
+      opentelemetry_instrumentation = local.opentelemetry_instrumentation
+      role_arn                      = module.iam_assumable_role_carts.iam_role_arn
+      table_name                    = module.dependencies.carts_dynamodb_table_name
     })
   ]
 }
@@ -163,12 +166,13 @@ resource "helm_release" "checkout" {
 
   values = [
     templatefile("${path.module}/values/checkout.yaml", {
-      image_repository      = module.container_images.result.checkout.repository
-      image_tag             = module.container_images.result.checkout.tag
-      opentelemetry_enabled = var.opentelemetry_enabled
-      redis_address         = module.dependencies.checkout_elasticache_primary_endpoint
-      redis_port            = module.dependencies.checkout_elasticache_port
-      security_group_id     = aws_security_group.checkout.id
+      image_repository              = module.container_images.result.checkout.repository
+      image_tag                     = module.container_images.result.checkout.tag
+      opentelemetry_enabled         = var.opentelemetry_enabled
+      opentelemetry_instrumentation = local.opentelemetry_instrumentation
+      redis_address                 = module.dependencies.checkout_elasticache_primary_endpoint
+      redis_port                    = module.dependencies.checkout_elasticache_port
+      security_group_id             = aws_security_group.checkout.id
     })
   ]
 }
@@ -193,18 +197,19 @@ resource "helm_release" "orders" {
 
   values = [
     templatefile("${path.module}/values/orders.yaml", {
-      image_repository       = module.container_images.result.orders.repository
-      image_tag              = module.container_images.result.orders.tag
-      opentelemetry_enabled  = var.opentelemetry_enabled
-      database_endpoint_host = module.dependencies.orders_db_endpoint
-      database_endpoint_port = module.dependencies.orders_db_port
-      database_name          = module.dependencies.orders_db_database_name
-      database_username      = module.dependencies.orders_db_master_username
-      database_password      = module.dependencies.orders_db_master_password
-      rabbitmq_endpoint      = module.dependencies.mq_broker_endpoint
-      rabbitmq_username      = module.dependencies.mq_user
-      rabbitmq_password      = module.dependencies.mq_password
-      security_group_id      = aws_security_group.orders.id
+      image_repository              = module.container_images.result.orders.repository
+      image_tag                     = module.container_images.result.orders.tag
+      opentelemetry_enabled         = var.opentelemetry_enabled
+      opentelemetry_instrumentation = local.opentelemetry_instrumentation
+      database_endpoint_host        = module.dependencies.orders_db_endpoint
+      database_endpoint_port        = module.dependencies.orders_db_port
+      database_name                 = module.dependencies.orders_db_database_name
+      database_username             = module.dependencies.orders_db_master_username
+      database_password             = module.dependencies.orders_db_master_password
+      rabbitmq_endpoint             = module.dependencies.mq_broker_endpoint
+      rabbitmq_username             = module.dependencies.mq_user
+      rabbitmq_password             = module.dependencies.mq_password
+      security_group_id             = aws_security_group.orders.id
     })
   ]
 }
@@ -222,6 +227,14 @@ resource "kubernetes_namespace_v1" "ui" {
 }
 
 resource "helm_release" "ui" {
+  depends_on = [
+    helm_release.catalog,
+    helm_release.carts,
+    helm_release.checkout,
+    helm_release.orders,
+    helm_release.assets
+  ]
+
   name  = "ui"
   chart = "../../../kubernetes/charts/ui"
 
@@ -229,25 +242,33 @@ resource "helm_release" "ui" {
 
   values = [
     templatefile("${path.module}/values/ui.yaml", {
-      image_repository      = module.container_images.result.ui.repository
-      image_tag             = module.container_images.result.ui.tag
-      opentelemetry_enabled = var.opentelemetry_enabled
-      istio_enabled         = var.istio_enabled
+      image_repository              = module.container_images.result.ui.repository
+      image_tag                     = module.container_images.result.ui.tag
+      opentelemetry_enabled         = var.opentelemetry_enabled
+      opentelemetry_instrumentation = local.opentelemetry_instrumentation
+      istio_enabled                 = var.istio_enabled
     })
   ]
 }
 
 resource "time_sleep" "restart_pods" {
+  triggers = {
+    opentelemetry_enabled = var.opentelemetry_enabled
+  }
+
   create_duration = "30s"
 
   depends_on = [
-    helm_release.ui,
-    helm_release.opentelemetry
+    helm_release.ui
   ]
 }
 
 resource "null_resource" "restart_pods" {
   depends_on = [time_sleep.restart_pods]
+
+  triggers = {
+    opentelemetry_enabled = var.opentelemetry_enabled
+  }
 
   provisioner "local-exec" {
     interpreter = ["/bin/bash", "-c"]

@@ -27,17 +27,18 @@ module "retail_app_eks" {
 
   providers = {
     kubernetes.cluster = kubernetes.cluster
-    kubernetes.addons = kubernetes
+    kubernetes.addons  = kubernetes
 
     helm = helm
   }
 
-  environment_name = var.environment_name
-  cluster_version  = "1.24"
-  vpc_id           = module.vpc.inner.vpc_id
-  vpc_cidr         = module.vpc.inner.vpc_cidr_block
-  subnet_ids       = module.vpc.inner.private_subnets
-  tags             = module.tags.result
+  environment_name      = var.environment_name
+  cluster_version       = "1.24"
+  vpc_id                = module.vpc.inner.vpc_id
+  vpc_cidr              = module.vpc.inner.vpc_cidr_block
+  subnet_ids            = module.vpc.inner.private_subnets
+  opentelemetry_enabled = var.opentelemetry_enabled
+  tags                  = module.tags.result
 
   istio_enabled = var.istio_enabled
 }

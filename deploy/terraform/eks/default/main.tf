@@ -36,9 +36,9 @@ module "dependencies" {
   subnet_ids         = module.vpc.inner.private_subnets
   availability_zones = module.vpc.inner.azs
 
-  catalog_security_group_id  = local.security_groups_active ? aws_security_group.catalog.id: module.retail_app_eks.node_security_group_id
-  orders_security_group_id   = local.security_groups_active ? aws_security_group.orders.id: module.retail_app_eks.node_security_group_id
-  checkout_security_group_id = local.security_groups_active ? aws_security_group.checkout.id: module.retail_app_eks.node_security_group_id
+  catalog_security_group_id  = local.security_groups_active ? aws_security_group.catalog.id : module.retail_app_eks.node_security_group_id
+  orders_security_group_id   = local.security_groups_active ? aws_security_group.orders.id : module.retail_app_eks.node_security_group_id
+  checkout_security_group_id = local.security_groups_active ? aws_security_group.checkout.id : module.retail_app_eks.node_security_group_id
 }
 
 module "retail_app_eks" {
@@ -46,17 +46,18 @@ module "retail_app_eks" {
 
   providers = {
     kubernetes.cluster = kubernetes.cluster
-    kubernetes.addons = kubernetes
+    kubernetes.addons  = kubernetes
 
     helm = helm
   }
 
-  environment_name = var.environment_name
-  cluster_version  = "1.24"
-  vpc_id           = module.vpc.inner.vpc_id
-  vpc_cidr         = module.vpc.inner.vpc_cidr_block
-  subnet_ids       = module.vpc.inner.private_subnets
-  tags             = module.tags.result
+  environment_name      = var.environment_name
+  cluster_version       = "1.24"
+  vpc_id                = module.vpc.inner.vpc_id
+  vpc_cidr              = module.vpc.inner.vpc_cidr_block
+  subnet_ids            = module.vpc.inner.private_subnets
+  opentelemetry_enabled = var.opentelemetry_enabled
+  tags                  = module.tags.result
 
   istio_enabled = var.istio_enabled
 }

@@ -114,7 +114,7 @@ resource "aws_security_group_rule" "dns_tcp" {
   security_group_id = module.eks_cluster.node_security_group_id
 }
 
-resource "aws_security_group_rule" "istio_citadel" {
+resource "aws_security_group_rule" "istio" {
   count = var.istio_enabled ? 1 : 0
 
   type              = "ingress"
@@ -125,38 +125,37 @@ resource "aws_security_group_rule" "istio_citadel" {
   security_group_id = module.eks_cluster.node_security_group_id
 }
 
-module "eks_cluster_kubernetes_addons" {
-  source = "github.com/aws-ia/terraform-aws-eks-blueprints//modules/kubernetes-addons?ref=v4.32.1"
+resource "aws_security_group_rule" "istio_webhook" {
+  count = var.istio_enabled ? 1 : 0
 
-  providers = {
-    kubernetes = kubernetes.addons
-    helm       = helm
-  }
+  type              = "ingress"
+  from_port         = 15017
+  to_port           = 15017
+  protocol          = "tcp"
+  cidr_blocks       = [var.vpc_cidr]
+  security_group_id = module.eks_cluster.node_security_group_id
+}
+
+module "eks_blueprints_addons" {
+  source  = "aws-ia/eks-blueprints-addons/aws"
+  version = "~> 1.0"
+
+  cluster_name      = module.eks_cluster.cluster_name
+  cluster_endpoint  = module.eks_cluster.cluster_endpoint
+  cluster_version   = module.eks_cluster.cluster_version
+  oidc_provider_arn = module.eks_cluster.oidc_provider_arn
+
+  enable_aws_load_balancer_controller = true
+  enable_cert_manager                 = true
+}
+
+resource "time_sleep" "addons" {
+  create_duration  = "30s"
+  destroy_duration = "30s"
 
   depends_on = [
-    module.eks_cluster
+    module.eks_blueprints_addons
   ]
-
-  eks_cluster_id       = module.eks_cluster.cluster_name
-  eks_cluster_endpoint = module.eks_cluster.cluster_endpoint
-  eks_oidc_provider    = module.eks_cluster.oidc_provider
-  eks_cluster_version  = module.eks_cluster.cluster_version
-
-  enable_tetrate_istio = var.istio_enabled
-
-  enable_aws_for_fluentbit                 = true
-  aws_for_fluentbit_create_cw_log_group    = false
-  aws_for_fluentbit_cw_log_group_retention = 30
-  aws_for_fluentbit_helm_config = {
-    create_namespace = true
-  }
-
-  enable_amazon_eks_adot = true
-  amazon_eks_adot_config = {
-    kubernetes_version = var.cluster_version
-  }
-
-  tags = var.tags
 }
 
 resource "null_resource" "cluster_blocker" {
@@ -167,6 +166,7 @@ resource "null_resource" "cluster_blocker" {
 
 resource "null_resource" "addons_blocker" {
   depends_on = [
-    module.eks_cluster_kubernetes_addons
+    time_sleep.addons,
+    aws_eks_addon.adot
   ]
 }

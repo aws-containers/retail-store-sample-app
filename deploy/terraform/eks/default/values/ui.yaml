@@ -12,7 +12,7 @@ endpoints:
 %{ if opentelemetry_enabled }
 opentelemetry:
   enabled: true
-  instrumentation: "opentelemetry/default-instrumentation"
+  instrumentation: ${opentelemetry_instrumentation}
 %{ endif }
 
 %{ if istio_enabled }
@@ -23,4 +23,11 @@ istio:
 %{ else }
 service:
   type: LoadBalancer
+  annotations:
+    service.beta.kubernetes.io/aws-load-balancer-type: external 
+    service.beta.kubernetes.io/aws-load-balancer-scheme: internet-facing
+    service.beta.kubernetes.io/aws-load-balancer-nlb-target-type: ip
+    service.beta.kubernetes.io/aws-load-balancer-attributes: "load_balancing.cross_zone.enabled=true"
 %{ endif }
+
+asdf: asd
