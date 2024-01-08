@@ -7,6 +7,7 @@ It provides:
 - EKS cluster and managed node groups in multiple availability zones
 - All application dependencies such as RDS, DynamoDB table, Elasticache etc.
 - Deployment of application component Helm charts
+- (Optional) OpenTelemetry support for logs and traces through AWS Distro for OpenTelemetry
 - (Optional) Istio support
 
 NOTE: This will create resources in your AWS account which will incur costs. You are responsible for these costs, and should understand the resources being created before proceeding.
@@ -63,7 +64,7 @@ This section documents the variables and outputs of the Terraform configuration.
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | `environment_name` | Name of the environment which will be used for all resources created | `string` | `retail-store` | yes |
-| `opentelemetry_enabled` | Flag to enable OpenTelemetry, which will install the AWS Distro for OpenTelemetry addon in the EKS cluster, create an OpenTelemetry collector and configure the application components appropriately | `bool` | `false` | no |
+| `opentelemetry_enabled` | Flag to enable OpenTelemetry, which will install the AWS Distro for OpenTelemetry addon in the EKS cluster, create OpenTelemetry collectors and configure the application components appropriately | `bool` | `false` | no |
 | `istio_enabled` | Flag to enable Istio, which will install Istio in the EKS cluster and configure the application components appropriately | `bool` | `false` | no |
 
 ### Outputs

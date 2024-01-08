@@ -5,5 +5,5 @@ image:
 %{ if opentelemetry_enabled }
 opentelemetry:
   enabled: true
-  instrumentation: "opentelemetry/default-instrumentation"
+  instrumentation: ${opentelemetry_instrumentation}
 %{ endif }
