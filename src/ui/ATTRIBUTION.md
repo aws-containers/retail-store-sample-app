@@ -440,7 +440,7 @@ http://www.apache.org/licenses/LICENSE-2.0
 
 ----
 
-### com.fasterxml.jackson.core:jackson-databind @2.16.0 - https://github.com/FasterXML/jackson
+### com.fasterxml.jackson.core:jackson-databind @2.16.1 - https://github.com/FasterXML/jackson
 
 
                                  Apache License
@@ -646,7 +646,7 @@ http://www.apache.org/licenses/LICENSE-2.0
    limitations under the License.
 
 
-[Source code](https://repo.maven.apache.org/maven2/com/fasterxml/jackson/core/jackson-databind/2.16.0/jackson-databind-2.16.0-sources.jar)
+[Source code](https://repo.maven.apache.org/maven2/com/fasterxml/jackson/core/jackson-databind/2.16.1/jackson-databind-2.16.1-sources.jar)
 
 ----
 
@@ -1344,7 +1344,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 ----
 
-### io.micrometer:micrometer-commons @1.12.0 - https://github.com/micrometer-metrics/micrometer
+### io.micrometer:micrometer-commons @1.12.1 - https://github.com/micrometer-metrics/micrometer
 
 
                                  Apache License
@@ -1550,11 +1550,11 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
    limitations under the License.
 
 
-[Source code](https://repo.maven.apache.org/maven2/io/micrometer/micrometer-commons/1.12.0/micrometer-commons-1.12.0-sources.jar)
+[Source code](https://repo.maven.apache.org/maven2/io/micrometer/micrometer-commons/1.12.1/micrometer-commons-1.12.1-sources.jar)
 
 ----
 
-### io.micrometer:micrometer-core @1.12.0 - https://github.com/micrometer-metrics/micrometer
+### io.micrometer:micrometer-core @1.12.1 - https://github.com/micrometer-metrics/micrometer
 
 
                                  Apache License
@@ -1760,11 +1760,11 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
    limitations under the License.
 
 
-[Source code](https://repo.maven.apache.org/maven2/io/micrometer/micrometer-core/1.12.0/micrometer-core-1.12.0-sources.jar)
+[Source code](https://repo.maven.apache.org/maven2/io/micrometer/micrometer-core/1.12.1/micrometer-core-1.12.1-sources.jar)
 
 ----
 
-### io.micrometer:micrometer-jakarta9 @1.12.0 - https://github.com/micrometer-metrics/micrometer
+### io.micrometer:micrometer-jakarta9 @1.12.1 - https://github.com/micrometer-metrics/micrometer
 
 
                                  Apache License
@@ -1970,11 +1970,11 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
    limitations under the License.
 
 
-[Source code](https://repo.maven.apache.org/maven2/io/micrometer/micrometer-jakarta9/1.12.0/micrometer-jakarta9-1.12.0-sources.jar)
+[Source code](https://repo.maven.apache.org/maven2/io/micrometer/micrometer-jakarta9/1.12.1/micrometer-jakarta9-1.12.1-sources.jar)
 
 ----
 
-### io.micrometer:micrometer-observation @1.12.0 - https://github.com/micrometer-metrics/micrometer
+### io.micrometer:micrometer-observation @1.12.1 - https://github.com/micrometer-metrics/micrometer
 
 
                                  Apache License
@@ -2180,11 +2180,11 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
    limitations under the License.
 
 
-[Source code](https://repo.maven.apache.org/maven2/io/micrometer/micrometer-observation/1.12.0/micrometer-observation-1.12.0-sources.jar)
+[Source code](https://repo.maven.apache.org/maven2/io/micrometer/micrometer-observation/1.12.1/micrometer-observation-1.12.1-sources.jar)
 
 ----
 
-### io.micrometer:micrometer-registry-prometheus @1.12.0 - https://github.com/micrometer-metrics/micrometer
+### io.micrometer:micrometer-registry-prometheus @1.12.1 - https://github.com/micrometer-metrics/micrometer
 
 
                                  Apache License
@@ -2390,11 +2390,11 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
    limitations under the License.
 
 
-[Source code](https://repo.maven.apache.org/maven2/io/micrometer/micrometer-registry-prometheus/1.12.0/micrometer-registry-prometheus-1.12.0-sources.jar)
+[Source code](https://repo.maven.apache.org/maven2/io/micrometer/micrometer-registry-prometheus/1.12.1/micrometer-registry-prometheus-1.12.1-sources.jar)
 
 ----
 
-### io.netty:netty-buffer @4.1.101.Final - https://netty.io/netty-buffer/
+### io.netty:netty-buffer @4.1.104.Final - https://netty.io/netty-buffer/
 
 
                                  Apache License
@@ -2600,11 +2600,11 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
    limitations under the License.
 
 
-[Source code](https://repo.maven.apache.org/maven2/io/netty/netty-buffer/4.1.101.Final/netty-buffer-4.1.101.Final-sources.jar)
+[Source code](https://repo.maven.apache.org/maven2/io/netty/netty-buffer/4.1.104.Final/netty-buffer-4.1.104.Final-sources.jar)
 
 ----
 
-### io.netty:netty-codec @4.1.101.Final - https://netty.io/netty-codec/
+### io.netty:netty-codec @4.1.104.Final - https://netty.io/netty-codec/
 
 
                                  Apache License
@@ -2810,11 +2810,11 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
    limitations under the License.
 
 
-[Source code](https://repo.maven.apache.org/maven2/io/netty/netty-codec/4.1.101.Final/netty-codec-4.1.101.Final-sources.jar)
+[Source code](https://repo.maven.apache.org/maven2/io/netty/netty-codec/4.1.104.Final/netty-codec-4.1.104.Final-sources.jar)
 
 ----
 
-### io.netty:netty-codec-dns @4.1.101.Final - https://netty.io/netty-codec-dns/
+### io.netty:netty-codec-dns @4.1.104.Final - https://netty.io/netty-codec-dns/
 
 
                                  Apache License
@@ -3020,11 +3020,11 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
    limitations under the License.
 
 
-[Source code](https://repo.maven.apache.org/maven2/io/netty/netty-codec-dns/4.1.101.Final/netty-codec-dns-4.1.101.Final-sources.jar)
+[Source code](https://repo.maven.apache.org/maven2/io/netty/netty-codec-dns/4.1.104.Final/netty-codec-dns-4.1.104.Final-sources.jar)
 
 ----
 
-### io.netty:netty-codec-http @4.1.101.Final - https://netty.io/netty-codec-http/
+### io.netty:netty-codec-http @4.1.104.Final - https://netty.io/netty-codec-http/
 
 
                                  Apache License
@@ -3230,11 +3230,11 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
    limitations under the License.
 
 
-[Source code](https://repo.maven.apache.org/maven2/io/netty/netty-codec-http/4.1.101.Final/netty-codec-http-4.1.101.Final-sources.jar)
+[Source code](https://repo.maven.apache.org/maven2/io/netty/netty-codec-http/4.1.104.Final/netty-codec-http-4.1.104.Final-sources.jar)
 
 ----
 
-### io.netty:netty-codec-http2 @4.1.101.Final - https://netty.io/netty-codec-http2/
+### io.netty:netty-codec-http2 @4.1.104.Final - https://netty.io/netty-codec-http2/
 
 
                                  Apache License
@@ -3440,11 +3440,11 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
    limitations under the License.
 
 
-[Source code](https://repo.maven.apache.org/maven2/io/netty/netty-codec-http2/4.1.101.Final/netty-codec-http2-4.1.101.Final-sources.jar)
+[Source code](https://repo.maven.apache.org/maven2/io/netty/netty-codec-http2/4.1.104.Final/netty-codec-http2-4.1.104.Final-sources.jar)
 
 ----
 
-### io.netty:netty-codec-socks @4.1.101.Final - https://netty.io/netty-codec-socks/
+### io.netty:netty-codec-socks @4.1.104.Final - https://netty.io/netty-codec-socks/
 
 
                                  Apache License
@@ -3650,11 +3650,11 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
    limitations under the License.
 
 
-[Source code](https://repo.maven.apache.org/maven2/io/netty/netty-codec-socks/4.1.101.Final/netty-codec-socks-4.1.101.Final-sources.jar)
+[Source code](https://repo.maven.apache.org/maven2/io/netty/netty-codec-socks/4.1.104.Final/netty-codec-socks-4.1.104.Final-sources.jar)
 
 ----
 
-### io.netty:netty-common @4.1.101.Final - https://netty.io/netty-common/
+### io.netty:netty-common @4.1.104.Final - https://netty.io/netty-common/
 
 
                                  Apache License
@@ -3860,11 +3860,11 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
    limitations under the License.
 
 
-[Source code](https://repo.maven.apache.org/maven2/io/netty/netty-common/4.1.101.Final/netty-common-4.1.101.Final-sources.jar)
+[Source code](https://repo.maven.apache.org/maven2/io/netty/netty-common/4.1.104.Final/netty-common-4.1.104.Final-sources.jar)
 
 ----
 
-### io.netty:netty-handler @4.1.101.Final - https://netty.io/netty-handler/
+### io.netty:netty-handler @4.1.104.Final - https://netty.io/netty-handler/
 
 
                                  Apache License
@@ -4070,11 +4070,11 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
    limitations under the License.
 
 
-[Source code](https://repo.maven.apache.org/maven2/io/netty/netty-handler/4.1.101.Final/netty-handler-4.1.101.Final-sources.jar)
+[Source code](https://repo.maven.apache.org/maven2/io/netty/netty-handler/4.1.104.Final/netty-handler-4.1.104.Final-sources.jar)
 
 ----
 
-### io.netty:netty-handler-proxy @4.1.101.Final - https://netty.io/netty-handler-proxy/
+### io.netty:netty-handler-proxy @4.1.104.Final - https://netty.io/netty-handler-proxy/
 
 
                                  Apache License
@@ -4280,11 +4280,11 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
    limitations under the License.
 
 
-[Source code](https://repo.maven.apache.org/maven2/io/netty/netty-handler-proxy/4.1.101.Final/netty-handler-proxy-4.1.101.Final-sources.jar)
+[Source code](https://repo.maven.apache.org/maven2/io/netty/netty-handler-proxy/4.1.104.Final/netty-handler-proxy-4.1.104.Final-sources.jar)
 
 ----
 
-### io.netty:netty-resolver @4.1.101.Final - https://netty.io/netty-resolver/
+### io.netty:netty-resolver @4.1.104.Final - https://netty.io/netty-resolver/
 
 
                                  Apache License
@@ -4490,11 +4490,11 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
    limitations under the License.
 
 
-[Source code](https://repo.maven.apache.org/maven2/io/netty/netty-resolver/4.1.101.Final/netty-resolver-4.1.101.Final-sources.jar)
+[Source code](https://repo.maven.apache.org/maven2/io/netty/netty-resolver/4.1.104.Final/netty-resolver-4.1.104.Final-sources.jar)
 
 ----
 
-### io.netty:netty-resolver-dns @4.1.101.Final - https://netty.io/netty-resolver-dns/
+### io.netty:netty-resolver-dns @4.1.104.Final - https://netty.io/netty-resolver-dns/
 
 
                                  Apache License
@@ -4700,11 +4700,11 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
    limitations under the License.
 
 
-[Source code](https://repo.maven.apache.org/maven2/io/netty/netty-resolver-dns/4.1.101.Final/netty-resolver-dns-4.1.101.Final-sources.jar)
+[Source code](https://repo.maven.apache.org/maven2/io/netty/netty-resolver-dns/4.1.104.Final/netty-resolver-dns-4.1.104.Final-sources.jar)
 
 ----
 
-### io.netty:netty-resolver-dns-classes-macos @4.1.101.Final - https://netty.io/netty-resolver-dns-classes-macos/
+### io.netty:netty-resolver-dns-classes-macos @4.1.104.Final - https://netty.io/netty-resolver-dns-classes-macos/
 
 
                                  Apache License
@@ -4910,11 +4910,11 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
    limitations under the License.
 
 
-[Source code](https://repo.maven.apache.org/maven2/io/netty/netty-resolver-dns-classes-macos/4.1.101.Final/netty-resolver-dns-classes-macos-4.1.101.Final-sources.jar)
+[Source code](https://repo.maven.apache.org/maven2/io/netty/netty-resolver-dns-classes-macos/4.1.104.Final/netty-resolver-dns-classes-macos-4.1.104.Final-sources.jar)
 
 ----
 
-### io.netty:netty-resolver-dns-native-macos @4.1.101.Final - https://netty.io/netty-resolver-dns-native-macos/
+### io.netty:netty-resolver-dns-native-macos @4.1.104.Final - https://netty.io/netty-resolver-dns-native-macos/
 
 
                                  Apache License
@@ -5124,7 +5124,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 ----
 
-### io.netty:netty-transport @4.1.101.Final - https://netty.io/netty-transport/
+### io.netty:netty-transport @4.1.104.Final - https://netty.io/netty-transport/
 
 
                                  Apache License
@@ -5330,11 +5330,11 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
    limitations under the License.
 
 
-[Source code](https://repo.maven.apache.org/maven2/io/netty/netty-transport/4.1.101.Final/netty-transport-4.1.101.Final-sources.jar)
+[Source code](https://repo.maven.apache.org/maven2/io/netty/netty-transport/4.1.104.Final/netty-transport-4.1.104.Final-sources.jar)
 
 ----
 
-### io.netty:netty-transport-classes-epoll @4.1.101.Final - https://netty.io/netty-transport-classes-epoll/
+### io.netty:netty-transport-classes-epoll @4.1.104.Final - https://netty.io/netty-transport-classes-epoll/
 
 
                                  Apache License
@@ -5540,11 +5540,11 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
    limitations under the License.
 
 
-[Source code](https://repo.maven.apache.org/maven2/io/netty/netty-transport-classes-epoll/4.1.101.Final/netty-transport-classes-epoll-4.1.101.Final-sources.jar)
+[Source code](https://repo.maven.apache.org/maven2/io/netty/netty-transport-classes-epoll/4.1.104.Final/netty-transport-classes-epoll-4.1.104.Final-sources.jar)
 
 ----
 
-### io.netty:netty-transport-native-epoll @4.1.101.Final - https://netty.io/netty-transport-native-epoll/
+### io.netty:netty-transport-native-epoll @4.1.104.Final - https://netty.io/netty-transport-native-epoll/
 
 
                                  Apache License
@@ -5750,11 +5750,11 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
    limitations under the License.
 
 
-[Source code](https://repo.maven.apache.org/maven2/io/netty/netty-transport-native-epoll/4.1.101.Final/netty-transport-native-epoll-4.1.101.Final-sources.jar)
+[Source code](https://repo.maven.apache.org/maven2/io/netty/netty-transport-native-epoll/4.1.104.Final/netty-transport-native-epoll-4.1.104.Final-sources.jar)
 
 ----
 
-### io.netty:netty-transport-native-unix-common @4.1.101.Final - https://netty.io/netty-transport-native-unix-common/
+### io.netty:netty-transport-native-unix-common @4.1.104.Final - https://netty.io/netty-transport-native-unix-common/
 
 
                                  Apache License
@@ -5960,11 +5960,11 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
    limitations under the License.
 
 
-[Source code](https://repo.maven.apache.org/maven2/io/netty/netty-transport-native-unix-common/4.1.101.Final/netty-transport-native-unix-common-4.1.101.Final-sources.jar)
+[Source code](https://repo.maven.apache.org/maven2/io/netty/netty-transport-native-unix-common/4.1.104.Final/netty-transport-native-unix-common-4.1.104.Final-sources.jar)
 
 ----
 
-### io.projectreactor:reactor-core @3.6.0 - https://github.com/reactor/reactor-core
+### io.projectreactor:reactor-core @3.6.1 - https://github.com/reactor/reactor-core
 
                                  Apache License
                            Version 2.0, January 2004
@@ -6170,11 +6170,11 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 
 
-[Source code](https://repo.maven.apache.org/maven2/io/projectreactor/reactor-core/3.6.0/reactor-core-3.6.0-sources.jar)
+[Source code](https://repo.maven.apache.org/maven2/io/projectreactor/reactor-core/3.6.1/reactor-core-3.6.1-sources.jar)
 
 ----
 
-### io.projectreactor:reactor-test @3.6.0 - https://github.com/reactor/reactor-core
+### io.projectreactor:reactor-test @3.6.1 - https://github.com/reactor/reactor-core
 
                                  Apache License
                            Version 2.0, January 2004
@@ -6380,11 +6380,11 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 
 
-[Source code](https://repo.maven.apache.org/maven2/io/projectreactor/reactor-test/3.6.0/reactor-test-3.6.0-sources.jar)
+[Source code](https://repo.maven.apache.org/maven2/io/projectreactor/reactor-test/3.6.1/reactor-test-3.6.1-sources.jar)
 
 ----
 
-### io.projectreactor.netty:reactor-netty-core @1.1.13 - https://github.com/reactor/reactor-netty
+### io.projectreactor.netty:reactor-netty-core @1.1.14 - https://github.com/reactor/reactor-netty
 
                                  Apache License
                            Version 2.0, January 2004
@@ -6590,11 +6590,11 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 
 
-[Source code](https://repo.maven.apache.org/maven2/io/projectreactor/netty/reactor-netty-core/1.1.13/reactor-netty-core-1.1.13-sources.jar)
+[Source code](https://repo.maven.apache.org/maven2/io/projectreactor/netty/reactor-netty-core/1.1.14/reactor-netty-core-1.1.14-sources.jar)
 
 ----
 
-### io.projectreactor.netty:reactor-netty-http @1.1.13 - https://github.com/reactor/reactor-netty
+### io.projectreactor.netty:reactor-netty-http @1.1.14 - https://github.com/reactor/reactor-netty
 
                                  Apache License
                            Version 2.0, January 2004
@@ -6800,7 +6800,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 
 
-[Source code](https://repo.maven.apache.org/maven2/io/projectreactor/netty/reactor-netty-http/1.1.13/reactor-netty-http-1.1.13-sources.jar)
+[Source code](https://repo.maven.apache.org/maven2/io/projectreactor/netty/reactor-netty-http/1.1.14/reactor-netty-http-1.1.14-sources.jar)
 
 ----
 
@@ -10622,7 +10622,7 @@ Apache License
 
 ----
 
-### org.apache.tomcat.embed:tomcat-embed-el @10.1.16 - https://tomcat.apache.org/
+### org.apache.tomcat.embed:tomcat-embed-el @10.1.17 - https://tomcat.apache.org/
 
 
                                  Apache License
@@ -10828,7 +10828,7 @@ Apache License
    limitations under the License.
 
 
-[Source code](https://repo.maven.apache.org/maven2/org/apache/tomcat/embed/tomcat-embed-el/10.1.16/tomcat-embed-el-10.1.16-sources.jar)
+[Source code](https://repo.maven.apache.org/maven2/org/apache/tomcat/embed/tomcat-embed-el/10.1.17/tomcat-embed-el-10.1.17-sources.jar)
 
 ----
 
@@ -13974,7 +13974,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 ----
 
-### org.springframework:spring-aop @6.1.1 - https://github.com/spring-projects/spring-framework
+### org.springframework:spring-aop @6.1.2 - https://github.com/spring-projects/spring-framework
 
 
                                  Apache License
@@ -14180,11 +14180,11 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
    limitations under the License.
 
 
-[Source code](https://repo.maven.apache.org/maven2/org/springframework/spring-aop/6.1.1/spring-aop-6.1.1-sources.jar)
+[Source code](https://repo.maven.apache.org/maven2/org/springframework/spring-aop/6.1.2/spring-aop-6.1.2-sources.jar)
 
 ----
 
-### org.springframework:spring-beans @6.1.1 - https://github.com/spring-projects/spring-framework
+### org.springframework:spring-beans @6.1.2 - https://github.com/spring-projects/spring-framework
 
 
                                  Apache License
@@ -14390,11 +14390,11 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
    limitations under the License.
 
 
-[Source code](https://repo.maven.apache.org/maven2/org/springframework/spring-beans/6.1.1/spring-beans-6.1.1-sources.jar)
+[Source code](https://repo.maven.apache.org/maven2/org/springframework/spring-beans/6.1.2/spring-beans-6.1.2-sources.jar)
 
 ----
 
-### org.springframework:spring-context @6.1.1 - https://github.com/spring-projects/spring-framework
+### org.springframework:spring-context @6.1.2 - https://github.com/spring-projects/spring-framework
 
 
                                  Apache License
@@ -14600,11 +14600,11 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
    limitations under the License.
 
 
-[Source code](https://repo.maven.apache.org/maven2/org/springframework/spring-context/6.1.1/spring-context-6.1.1-sources.jar)
+[Source code](https://repo.maven.apache.org/maven2/org/springframework/spring-context/6.1.2/spring-context-6.1.2-sources.jar)
 
 ----
 
-### org.springframework:spring-core @6.1.1 - https://github.com/spring-projects/spring-framework
+### org.springframework:spring-core @6.1.2 - https://github.com/spring-projects/spring-framework
 
 
                                  Apache License
@@ -14810,11 +14810,11 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
    limitations under the License.
 
 
-[Source code](https://repo.maven.apache.org/maven2/org/springframework/spring-core/6.1.1/spring-core-6.1.1-sources.jar)
+[Source code](https://repo.maven.apache.org/maven2/org/springframework/spring-core/6.1.2/spring-core-6.1.2-sources.jar)
 
 ----
 
-### org.springframework:spring-expression @6.1.1 - https://github.com/spring-projects/spring-framework
+### org.springframework:spring-expression @6.1.2 - https://github.com/spring-projects/spring-framework
 
 
                                  Apache License
@@ -15020,11 +15020,11 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
    limitations under the License.
 
 
-[Source code](https://repo.maven.apache.org/maven2/org/springframework/spring-expression/6.1.1/spring-expression-6.1.1-sources.jar)
+[Source code](https://repo.maven.apache.org/maven2/org/springframework/spring-expression/6.1.2/spring-expression-6.1.2-sources.jar)
 
 ----
 
-### org.springframework:spring-jcl @6.1.1 - https://github.com/spring-projects/spring-framework
+### org.springframework:spring-jcl @6.1.2 - https://github.com/spring-projects/spring-framework
 
 
                                  Apache License
@@ -15230,11 +15230,11 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
    limitations under the License.
 
 
-[Source code](https://repo.maven.apache.org/maven2/org/springframework/spring-jcl/6.1.1/spring-jcl-6.1.1-sources.jar)
+[Source code](https://repo.maven.apache.org/maven2/org/springframework/spring-jcl/6.1.2/spring-jcl-6.1.2-sources.jar)
 
 ----
 
-### org.springframework:spring-test @6.1.1 - https://github.com/spring-projects/spring-framework
+### org.springframework:spring-test @6.1.2 - https://github.com/spring-projects/spring-framework
 
 
                                  Apache License
@@ -15440,11 +15440,11 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
    limitations under the License.
 
 
-[Source code](https://repo.maven.apache.org/maven2/org/springframework/spring-test/6.1.1/spring-test-6.1.1-sources.jar)
+[Source code](https://repo.maven.apache.org/maven2/org/springframework/spring-test/6.1.2/spring-test-6.1.2-sources.jar)
 
 ----
 
-### org.springframework:spring-web @6.1.1 - https://github.com/spring-projects/spring-framework
+### org.springframework:spring-web @6.1.2 - https://github.com/spring-projects/spring-framework
 
 
                                  Apache License
@@ -15650,11 +15650,11 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
    limitations under the License.
 
 
-[Source code](https://repo.maven.apache.org/maven2/org/springframework/spring-web/6.1.1/spring-web-6.1.1-sources.jar)
+[Source code](https://repo.maven.apache.org/maven2/org/springframework/spring-web/6.1.2/spring-web-6.1.2-sources.jar)
 
 ----
 
-### org.springframework:spring-webflux @6.1.1 - https://github.com/spring-projects/spring-framework
+### org.springframework:spring-webflux @6.1.2 - https://github.com/spring-projects/spring-framework
 
 
                                  Apache License
@@ -15860,11 +15860,11 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
    limitations under the License.
 
 
-[Source code](https://repo.maven.apache.org/maven2/org/springframework/spring-webflux/6.1.1/spring-webflux-6.1.1-sources.jar)
+[Source code](https://repo.maven.apache.org/maven2/org/springframework/spring-webflux/6.1.2/spring-webflux-6.1.2-sources.jar)
 
 ----
 
-### org.springframework.boot:spring-boot @3.2.0 - https://spring.io/projects/spring-boot
+### org.springframework.boot:spring-boot @3.2.1 - https://spring.io/projects/spring-boot
 
 
                                  Apache License
@@ -16069,11 +16069,11 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
    See the License for the specific language governing permissions and
    limitations under the License.
 
-[Source code](https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot/3.2.0/spring-boot-3.2.0-sources.jar)
+[Source code](https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot/3.2.1/spring-boot-3.2.1-sources.jar)
 
 ----
 
-### org.springframework.boot:spring-boot-actuator @3.2.0 - https://spring.io/projects/spring-boot
+### org.springframework.boot:spring-boot-actuator @3.2.1 - https://spring.io/projects/spring-boot
 
 
                                  Apache License
@@ -16278,11 +16278,11 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
    See the License for the specific language governing permissions and
    limitations under the License.
 
-[Source code](https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-actuator/3.2.0/spring-boot-actuator-3.2.0-sources.jar)
+[Source code](https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-actuator/3.2.1/spring-boot-actuator-3.2.1-sources.jar)
 
 ----
 
-### org.springframework.boot:spring-boot-actuator-autoconfigure @3.2.0 - https://spring.io/projects/spring-boot
+### org.springframework.boot:spring-boot-actuator-autoconfigure @3.2.1 - https://spring.io/projects/spring-boot
 
 
                                  Apache License
@@ -16487,11 +16487,11 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
    See the License for the specific language governing permissions and
    limitations under the License.
 
-[Source code](https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-actuator-autoconfigure/3.2.0/spring-boot-actuator-autoconfigure-3.2.0-sources.jar)
+[Source code](https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-actuator-autoconfigure/3.2.1/spring-boot-actuator-autoconfigure-3.2.1-sources.jar)
 
 ----
 
-### org.springframework.boot:spring-boot-autoconfigure @3.2.0 - https://spring.io/projects/spring-boot
+### org.springframework.boot:spring-boot-autoconfigure @3.2.1 - https://spring.io/projects/spring-boot
 
 
                                  Apache License
@@ -16696,11 +16696,11 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
    See the License for the specific language governing permissions and
    limitations under the License.
 
-[Source code](https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-autoconfigure/3.2.0/spring-boot-autoconfigure-3.2.0-sources.jar)
+[Source code](https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-autoconfigure/3.2.1/spring-boot-autoconfigure-3.2.1-sources.jar)
 
 ----
 
-### org.springframework.boot:spring-boot-configuration-metadata @3.2.0 - https://spring.io/projects/spring-boot
+### org.springframework.boot:spring-boot-configuration-metadata @3.2.1 - https://spring.io/projects/spring-boot
 
 
                                  Apache License
@@ -16905,11 +16905,11 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
    See the License for the specific language governing permissions and
    limitations under the License.
 
-[Source code](https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-configuration-metadata/3.2.0/spring-boot-configuration-metadata-3.2.0-sources.jar)
+[Source code](https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-configuration-metadata/3.2.1/spring-boot-configuration-metadata-3.2.1-sources.jar)
 
 ----
 
-### org.springframework.boot:spring-boot-devtools @3.2.0 - https://spring.io/projects/spring-boot
+### org.springframework.boot:spring-boot-devtools @3.2.1 - https://spring.io/projects/spring-boot
 
 
                                  Apache License
@@ -17114,11 +17114,11 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
    See the License for the specific language governing permissions and
    limitations under the License.
 
-[Source code](https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-devtools/3.2.0/spring-boot-devtools-3.2.0-sources.jar)
+[Source code](https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-devtools/3.2.1/spring-boot-devtools-3.2.1-sources.jar)
 
 ----
 
-### org.springframework.boot:spring-boot-properties-migrator @3.2.0 - https://spring.io/projects/spring-boot
+### org.springframework.boot:spring-boot-properties-migrator @3.2.1 - https://spring.io/projects/spring-boot
 
 
                                  Apache License
@@ -17323,11 +17323,11 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
    See the License for the specific language governing permissions and
    limitations under the License.
 
-[Source code](https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-properties-migrator/3.2.0/spring-boot-properties-migrator-3.2.0-sources.jar)
+[Source code](https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-properties-migrator/3.2.1/spring-boot-properties-migrator-3.2.1-sources.jar)
 
 ----
 
-### org.springframework.boot:spring-boot-starter @3.2.0 - https://spring.io/projects/spring-boot
+### org.springframework.boot:spring-boot-starter @3.2.1 - https://spring.io/projects/spring-boot
 
 
                                  Apache License
@@ -17533,11 +17533,11 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
    limitations under the License.
 
 
-[Source code](https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-starter/3.2.0/spring-boot-starter-3.2.0-sources.jar)
+[Source code](https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-starter/3.2.1/spring-boot-starter-3.2.1-sources.jar)
 
 ----
 
-### org.springframework.boot:spring-boot-starter-actuator @3.2.0 - https://spring.io/projects/spring-boot
+### org.springframework.boot:spring-boot-starter-actuator @3.2.1 - https://spring.io/projects/spring-boot
 
 
                                  Apache License
@@ -17743,11 +17743,11 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
    limitations under the License.
 
 
-[Source code](https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-starter-actuator/3.2.0/spring-boot-starter-actuator-3.2.0-sources.jar)
+[Source code](https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-starter-actuator/3.2.1/spring-boot-starter-actuator-3.2.1-sources.jar)
 
 ----
 
-### org.springframework.boot:spring-boot-starter-json @3.2.0 - https://spring.io/projects/spring-boot
+### org.springframework.boot:spring-boot-starter-json @3.2.1 - https://spring.io/projects/spring-boot
 
 
                                  Apache License
@@ -17953,11 +17953,11 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
    limitations under the License.
 
 
-[Source code](https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-starter-json/3.2.0/spring-boot-starter-json-3.2.0-sources.jar)
+[Source code](https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-starter-json/3.2.1/spring-boot-starter-json-3.2.1-sources.jar)
 
 ----
 
-### org.springframework.boot:spring-boot-starter-log4j2 @3.2.0 - https://spring.io/projects/spring-boot
+### org.springframework.boot:spring-boot-starter-log4j2 @3.2.1 - https://spring.io/projects/spring-boot
 
 
                                  Apache License
@@ -18163,11 +18163,11 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
    limitations under the License.
 
 
-[Source code](https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-starter-log4j2/3.2.0/spring-boot-starter-log4j2-3.2.0-sources.jar)
+[Source code](https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-starter-log4j2/3.2.1/spring-boot-starter-log4j2-3.2.1-sources.jar)
 
 ----
 
-### org.springframework.boot:spring-boot-starter-reactor-netty @3.2.0 - https://spring.io/projects/spring-boot
+### org.springframework.boot:spring-boot-starter-reactor-netty @3.2.1 - https://spring.io/projects/spring-boot
 
 
                                  Apache License
@@ -18373,11 +18373,11 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
    limitations under the License.
 
 
-[Source code](https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-starter-reactor-netty/3.2.0/spring-boot-starter-reactor-netty-3.2.0-sources.jar)
+[Source code](https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-starter-reactor-netty/3.2.1/spring-boot-starter-reactor-netty-3.2.1-sources.jar)
 
 ----
 
-### org.springframework.boot:spring-boot-starter-test @3.2.0 - https://spring.io/projects/spring-boot
+### org.springframework.boot:spring-boot-starter-test @3.2.1 - https://spring.io/projects/spring-boot
 
 
                                  Apache License
@@ -18583,11 +18583,11 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
    limitations under the License.
 
 
-[Source code](https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-starter-test/3.2.0/spring-boot-starter-test-3.2.0-sources.jar)
+[Source code](https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-starter-test/3.2.1/spring-boot-starter-test-3.2.1-sources.jar)
 
 ----
 
-### org.springframework.boot:spring-boot-starter-thymeleaf @3.2.0 - https://spring.io/projects/spring-boot
+### org.springframework.boot:spring-boot-starter-thymeleaf @3.2.1 - https://spring.io/projects/spring-boot
 
 
                                  Apache License
@@ -18793,11 +18793,11 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
    limitations under the License.
 
 
-[Source code](https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-starter-thymeleaf/3.2.0/spring-boot-starter-thymeleaf-3.2.0-sources.jar)
+[Source code](https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-starter-thymeleaf/3.2.1/spring-boot-starter-thymeleaf-3.2.1-sources.jar)
 
 ----
 
-### org.springframework.boot:spring-boot-starter-validation @3.2.0 - https://spring.io/projects/spring-boot
+### org.springframework.boot:spring-boot-starter-validation @3.2.1 - https://spring.io/projects/spring-boot
 
 
                                  Apache License
@@ -19003,11 +19003,11 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
    limitations under the License.
 
 
-[Source code](https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-starter-validation/3.2.0/spring-boot-starter-validation-3.2.0-sources.jar)
+[Source code](https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-starter-validation/3.2.1/spring-boot-starter-validation-3.2.1-sources.jar)
 
 ----
 
-### org.springframework.boot:spring-boot-starter-webflux @3.2.0 - https://spring.io/projects/spring-boot
+### org.springframework.boot:spring-boot-starter-webflux @3.2.1 - https://spring.io/projects/spring-boot
 
 
                                  Apache License
@@ -19213,11 +19213,11 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
    limitations under the License.
 
 
-[Source code](https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-starter-webflux/3.2.0/spring-boot-starter-webflux-3.2.0-sources.jar)
+[Source code](https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-starter-webflux/3.2.1/spring-boot-starter-webflux-3.2.1-sources.jar)
 
 ----
 
-### org.springframework.boot:spring-boot-test @3.2.0 - https://spring.io/projects/spring-boot
+### org.springframework.boot:spring-boot-test @3.2.1 - https://spring.io/projects/spring-boot
 
 
                                  Apache License
@@ -19422,11 +19422,11 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
    See the License for the specific language governing permissions and
    limitations under the License.
 
-[Source code](https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-test/3.2.0/spring-boot-test-3.2.0-sources.jar)
+[Source code](https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-test/3.2.1/spring-boot-test-3.2.1-sources.jar)
 
 ----
 
-### org.springframework.boot:spring-boot-test-autoconfigure @3.2.0 - https://spring.io/projects/spring-boot
+### org.springframework.boot:spring-boot-test-autoconfigure @3.2.1 - https://spring.io/projects/spring-boot
 
 
                                  Apache License
@@ -19631,7 +19631,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
    See the License for the specific language governing permissions and
    limitations under the License.
 
-[Source code](https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-test-autoconfigure/3.2.0/spring-boot-test-autoconfigure-3.2.0-sources.jar)
+[Source code](https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-test-autoconfigure/3.2.1/spring-boot-test-autoconfigure-3.2.1-sources.jar)
 
 ----
 
@@ -20320,7 +20320,7 @@ THE SOFTWARE.
 
 ----
 
-### org.webjars.npm:bootstrap-icons @1.11.1 - https://www.webjars.org
+### org.webjars.npm:bootstrap-icons @1.11.2 - https://www.webjars.org
 
 The MIT License (MIT)
 
@@ -20345,7 +20345,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 
 
-[Source code](https://repo.maven.apache.org/maven2/org/webjars/npm/bootstrap-icons/1.11.1/bootstrap-icons-1.11.1-sources.jar)
+[Source code](https://repo.maven.apache.org/maven2/org/webjars/npm/bootstrap-icons/1.11.2/bootstrap-icons-1.11.2-sources.jar)
 
 ----
 

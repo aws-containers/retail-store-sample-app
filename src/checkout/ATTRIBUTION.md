@@ -4855,7 +4855,7 @@ THE SOFTWARE.
 
 ----
 
-### eslint-config-prettier @8.9.0 - https://github.com/prettier/eslint-config-prettier#readme
+### eslint-config-prettier @9.1.0 - https://github.com/prettier/eslint-config-prettier#readme
 
 The MIT License (MIT)
 
@@ -4880,11 +4880,11 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 
 
-[Source code](https://registry.npmjs.org/eslint-config-prettier/-/eslint-config-prettier-8.9.0.tgz)
+[Source code](https://registry.npmjs.org/eslint-config-prettier/-/eslint-config-prettier-9.1.0.tgz)
 
 ----
 
-### eslint-plugin-prettier @4.2.1 - https://github.com/prettier/eslint-plugin-prettier#readme
+### eslint-plugin-prettier @5.1.2 - https://github.com/prettier/eslint-plugin-prettier#readme
 
 # The MIT License (MIT)
 
@@ -4912,7 +4912,7 @@ FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 OTHER DEALINGS IN THE SOFTWARE.
 
 
-[Source code](https://registry.npmjs.org/eslint-plugin-prettier/-/eslint-plugin-prettier-4.2.1.tgz)
+[Source code](https://registry.npmjs.org/eslint-plugin-prettier/-/eslint-plugin-prettier-5.1.2.tgz)
 
 ----
 
@@ -14019,7 +14019,7 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 ----
 
-### prettier @3.0.3 - https://prettier.io
+### prettier @3.1.1 - https://prettier.io
 
 Copyright © James Long and contributors
 
@@ -14030,7 +14030,7 @@ The above copyright notice and this permission notice shall be included in all c
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 
-[Source code](https://registry.npmjs.org/prettier/-/prettier-3.0.3.tgz)
+[Source code](https://registry.npmjs.org/prettier/-/prettier-3.1.1.tgz)
 
 ----
 
@@ -17158,6 +17158,35 @@ THE SOFTWARE.
 
 ----
 
+### synckit @0.8.8 - https://github.com/un-ts/synckit#readme
+
+MIT License
+
+Copyright (c) 2021 UnTS
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+
+[Source code](https://registry.npmjs.org/synckit/-/synckit-0.8.8.tgz)
+
+----
+
 ### systeminformation @5.21.8 - https://systeminformation.io
 
 The MIT License (MIT)
@@ -17859,6 +17888,25 @@ OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
 PERFORMANCE OF THIS SOFTWARE.
 
 [Source code](https://registry.npmjs.org/tslib/-/tslib-2.5.3.tgz)
+
+----
+
+### tslib @2.6.2 - https://www.typescriptlang.org/
+
+Copyright (c) Microsoft Corporation.
+
+Permission to use, copy, modify, and/or distribute this software for any
+purpose with or without fee is hereby granted.
+
+THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH
+REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY
+AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT,
+INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM
+LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR
+OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
+PERFORMANCE OF THIS SOFTWARE.
+
+[Source code](https://registry.npmjs.org/tslib/-/tslib-2.6.2.tgz)
 
 ----
 
@@ -36689,6 +36737,35 @@ SOFTWARE.
 
 ----
 
+### @pkgr:core @0.1.0 - https://github.com/un-ts/pkgr/blob/master/packages/core
+
+MIT License
+
+Copyright (c) 2019 JounQin/UnTS
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+
+[Source code](https://registry.npmjs.org/@pkgr/core/-/core-0.1.0.tgz)
+
+----
+
 ### @protobufjs:aspromise @1.1.2 - https://github.com/dcodeIO/protobuf.js#readme
 
 This license applies to all parts of protobuf.js except those files
@@ -37362,7 +37439,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 
 ----
 
-### @sinclair:typebox @0.24.44 - 
+### @sinclair:typebox @0.24.44 - https://github.com/sinclairzx81/typebox#readme
 
 TypeBox: JSON Schema Type Builder with Static Type Resolution for TypeScript 
 
