@@ -52,7 +52,7 @@ module "retail_app_eks" {
   }
 
   environment_name      = var.environment_name
-  cluster_version       = "1.24"
+  cluster_version       = "1.28"
   vpc_id                = module.vpc.inner.vpc_id
   vpc_cidr              = module.vpc.inner.vpc_cidr_block
   subnet_ids            = module.vpc.inner.private_subnets
