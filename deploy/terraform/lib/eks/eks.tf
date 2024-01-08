@@ -114,12 +114,23 @@ resource "aws_security_group_rule" "dns_tcp" {
   security_group_id = module.eks_cluster.node_security_group_id
 }
 
-resource "aws_security_group_rule" "istio_citadel" {
+resource "aws_security_group_rule" "istio" {
   count = var.istio_enabled ? 1 : 0
 
   type              = "ingress"
   from_port         = 15012
   to_port           = 15012
+  protocol          = "tcp"
+  cidr_blocks       = [var.vpc_cidr]
+  security_group_id = module.eks_cluster.node_security_group_id
+}
+
+resource "aws_security_group_rule" "istio_webhook" {
+  count = var.istio_enabled ? 1 : 0
+
+  type              = "ingress"
+  from_port         = 15017
+  to_port           = 15017
   protocol          = "tcp"
   cidr_blocks       = [var.vpc_cidr]
   security_group_id = module.eks_cluster.node_security_group_id
@@ -134,7 +145,17 @@ module "eks_blueprints_addons" {
   cluster_version   = module.eks_cluster.cluster_version
   oidc_provider_arn = module.eks_cluster.oidc_provider_arn
 
-  enable_cert_manager = true
+  enable_aws_load_balancer_controller = true
+  enable_cert_manager                 = true
+}
+
+resource "time_sleep" "addons" {
+  create_duration  = "30s"
+  destroy_duration = "30s"
+
+  depends_on = [
+    module.eks_blueprints_addons
+  ]
 }
 
 resource "null_resource" "cluster_blocker" {
@@ -145,7 +166,7 @@ resource "null_resource" "cluster_blocker" {
 
 resource "null_resource" "addons_blocker" {
   depends_on = [
-    module.eks_blueprints_addons,
+    time_sleep.addons,
     aws_eks_addon.adot
   ]
 }

@@ -55,6 +55,8 @@ ui-lb   LoadBalancer   172.20.196.69   aec46b0c98b974cc28201c38dbba79b6-12345676
 
 Enter the domain name from the `EXTERNAL-IP` column in a web browser to access the application.
 
+Note: It may take several minutes for the load balancer to provision, and you may initially receive an error in the browser.
+
 ## Reference
 
 This section documents the variables and outputs of the Terraform configuration.
