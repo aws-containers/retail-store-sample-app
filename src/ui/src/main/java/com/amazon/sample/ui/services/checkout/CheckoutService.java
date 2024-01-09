@@ -19,7 +19,6 @@
 package com.amazon.sample.ui.services.checkout;
 
 import com.amazon.sample.ui.services.checkout.model.Checkout;
-import com.amazon.sample.ui.services.checkout.model.CheckoutSubmitted;
 import com.amazon.sample.ui.services.checkout.model.CheckoutSubmittedResponse;
 import com.amazon.sample.ui.services.checkout.model.ShippingAddress;
 import reactor.core.publisher.Mono;

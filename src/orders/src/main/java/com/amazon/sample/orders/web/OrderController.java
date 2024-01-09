@@ -18,7 +18,6 @@
 
 package com.amazon.sample.orders.web;
 
-import com.amazon.sample.orders.entities.OrderEntity;
 import com.amazon.sample.orders.services.OrderService;
 import com.amazon.sample.orders.web.payload.*;
 
@@ -33,7 +32,7 @@ import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/orders")
-@Tag(name="orders")
+@Tag(name = "orders")
 @Slf4j
 public class OrderController {
 
