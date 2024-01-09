@@ -1,14 +1,13 @@
-namespace cart;
+namespace cart.Model;
 
 public class ShoppingCart
 {
-    public ShoppingCart(string customerId)
+    public ShoppingCart(string customerId, List<Item> items)
     {
         CustomerId = customerId;
-        Items = this._items;
+        Items = items;
     }
-
-    private List<Item> _items = new List<Item>();
+    
     public string CustomerId { get; set; }
 
     public List<Item> Items { get; set; }

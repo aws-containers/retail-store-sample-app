@@ -1,4 +1,4 @@
-namespace cart;
+namespace cart.Model;
 
 public class Item
 {

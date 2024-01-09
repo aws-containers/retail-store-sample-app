@@ -1,16 +1,21 @@
-using cart;
+using Prometheus;
+using cart.Repository;
 
 var builder = WebApplication.CreateBuilder(args);
-// Add services to the container.
-var CARTS_DYNAMODB_CREATETABLE = Environment.GetEnvironmentVariable("CARTS_DYNAMODB_CREATETABLE");
-var CARTS_DYNAMODB_ENDPOINT = Environment.GetEnvironmentVariable("CARTS_DYNAMODB_ENDPOINT");
-var CARTS_PORT = Environment.GetEnvironmentVariable("PORT");
+
+var tableName = Environment.GetEnvironmentVariable("CARTS_DYNAMODB_TABLENAME") ?? "Items";
+var createTable = Environment.GetEnvironmentVariable("CARTS_DYNAMODB_CREATETABLE") ?? "false";
+var dynamodbEndpoint = Environment.GetEnvironmentVariable("CARTS_DYNAMODB_ENDPOINT") ?? "";
+var cartsPort = Environment.GetEnvironmentVariable("PORT") ?? "8080";
+
+var repository = new DynamoDbRepository(tableName, bool.Parse(createTable), dynamodbEndpoint);
+
+builder.Services.AddSingleton<ICartRepository>(repository);
 
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-
+builder.Services.AddHealthChecks().AddCheck("dynamodb", repository);
 
 var app = builder.Build();
 
@@ -21,16 +26,15 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseHttpsRedirection();
+app.UseRouting();
+
+app.UseHttpMetrics();
 
 app.UseAuthorization();
 app.MapControllers();
 
-if (string.IsNullOrEmpty(CARTS_PORT)) {
-    app.Run();
-}
-else
-{
-    var devUrl = "http://localhost:" + CARTS_PORT;
-    app.Run(devUrl);
-}
+app.MapMetrics("/metrics");
+app.MapHealthChecks("/health");
+
+var devUrl = "http://localhost:" + cartsPort;
+app.Run(devUrl);
