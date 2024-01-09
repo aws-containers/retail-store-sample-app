@@ -19,7 +19,7 @@ metadata:
   name: catalog-db
 data:
   username: "Y2F0YWxvZw=="
-  password: "eFZCbUNLOW1xbFFGTGhFdw=="
+  password: "bGVFOE9zYThORDIyTEtqNw=="
 ---
 # Source: catalog/templates/configmap.yml
 apiVersion: v1
@@ -141,7 +141,7 @@ spec:
             readOnlyRootFilesystem: true
             runAsNonRoot: true
             runAsUser: 1000
-          image: "public.ecr.aws/aws-containers/retail-store-sample-catalog:0.6.0"
+          image: "public.ecr.aws/aws-containers/retail-store-sample-catalog:0.7.0"
           imagePullPolicy: IfNotPresent
           ports:
             - name: http
@@ -329,7 +329,7 @@ spec:
             readOnlyRootFilesystem: true
             runAsNonRoot: true
             runAsUser: 1000
-          image: "public.ecr.aws/aws-containers/retail-store-sample-ui:0.6.0"
+          image: "public.ecr.aws/aws-containers/retail-store-sample-ui:0.7.0"
           imagePullPolicy: IfNotPresent
           ports:
             - name: http
@@ -376,7 +376,7 @@ metadata:
   name: catalog-db
 data:
   username: "Y2F0YWxvZw=="
-  password: "amp1TEFHT3BWY3ZLNjAydQ=="
+  password: "ZVBoSmJ5V2J3U2YxQWh0cA=="
 ---
 # Source: catalog/templates/configmap.yml
 apiVersion: v1
@@ -498,7 +498,7 @@ spec:
             readOnlyRootFilesystem: true
             runAsNonRoot: true
             runAsUser: 1000
-          image: "public.ecr.aws/aws-containers/retail-store-sample-catalog:0.6.0"
+          image: "public.ecr.aws/aws-containers/retail-store-sample-catalog:0.7.0"
           imagePullPolicy: IfNotPresent
           ports:
             - name: http
@@ -712,7 +712,7 @@ spec:
             readOnlyRootFilesystem: true
             runAsNonRoot: true
             runAsUser: 1000
-          image: "public.ecr.aws/aws-containers/retail-store-sample-cart:0.6.0"
+          image: "public.ecr.aws/aws-containers/retail-store-sample-cart:0.7.0"
           imagePullPolicy: IfNotPresent
           ports:
             - name: http
@@ -786,14 +786,14 @@ metadata:
     app.kuberneres.io/owner: retail-store-sample
     app.kubernetes.io/managed-by: Helm
 ---
-# Source: orders/templates/mysql-secret.yaml
+# Source: orders/templates/postgresql-secret.yaml
 apiVersion: v1
 kind: Secret
 metadata:
   name: orders-db
 data:
   username: "b3JkZXJz"
-  password: "alN6anBCUDBscWtYUGxEWA=="
+  password: "aEJ4b21PT21Cc3lMZWV4Zw=="
 ---
 # Source: orders/templates/rabbitmq-secret.yaml
 apiVersion: v1
@@ -808,33 +808,32 @@ kind: ConfigMap
 metadata:
   name: orders
 data:
-  SPRING_PROFILES_ACTIVE: mysql,rabbitmq
-  SPRING_DATASOURCE_READER_URL: jdbc:mariadb://orders-mysql:3306/orders
-  SPRING_DATASOURCE_WRITER_URL: jdbc:mariadb://orders-mysql:3306/orders
+  SPRING_PROFILES_ACTIVE: rabbitmq
+  SPRING_DATASOURCE_URL: jdbc:postgresql://orders-postgresql:5432/orders
   SPRING_RABBITMQ_ADDRESSES: amqp://orders-rabbitmq:5672
 ---
-# Source: orders/templates/mysql-service.yaml
+# Source: orders/templates/postgresql-service.yaml
 apiVersion: v1
 kind: Service
 metadata:
-  name: orders-mysql
+  name: orders-postgresql
   labels:
     helm.sh/chart: orders-0.0.1
     app.kubernetes.io/name: orders
     app.kubernetes.io/instance: orders
-    app.kubernetes.io/component: mysql
+    app.kubernetes.io/component: postgresql
     app.kubernetes.io/managed-by: Helm
 spec:
   type: ClusterIP
   ports:
-    - port: 3306
-      targetPort: mysql
+    - port: 5432
+      targetPort: postgresql
       protocol: TCP
-      name: mysql
+      name: postgresql
   selector:
     app.kubernetes.io/name: orders
     app.kubernetes.io/instance: orders
-    app.kubernetes.io/component: mysql
+    app.kubernetes.io/component: postgresql
 ---
 # Source: orders/templates/rabbitmq-service.yaml
 apiVersion: v1
@@ -932,22 +931,12 @@ spec:
           env:
             - name: JAVA_OPTS
               value: -XX:MaxRAMPercentage=75.0 -Djava.security.egd=file:/dev/urandom
-            - name: SPRING_DATASOURCE_WRITER_USERNAME
+            - name: SPRING_DATASOURCE_USERNAME
               valueFrom:
                 secretKeyRef:
                   name: orders-db
                   key: username
-            - name: SPRING_DATASOURCE_WRITER_PASSWORD
-              valueFrom:
-                secretKeyRef:
-                  name: orders-db
-                  key: password
-            - name: SPRING_DATASOURCE_READER_USERNAME
-              valueFrom:
-                secretKeyRef:
-                  name: orders-db
-                  key: username
-            - name: SPRING_DATASOURCE_READER_PASSWORD
+            - name: SPRING_DATASOURCE_PASSWORD
               valueFrom:
                 secretKeyRef:
                   name: orders-db
@@ -964,7 +953,7 @@ spec:
             readOnlyRootFilesystem: true
             runAsNonRoot: true
             runAsUser: 1000
-          image: "public.ecr.aws/aws-containers/retail-store-sample-orders:0.6.0"
+          image: "public.ecr.aws/aws-containers/retail-store-sample-orders:0.7.0"
           imagePullPolicy: IfNotPresent
           ports:
             - name: http
@@ -990,59 +979,57 @@ spec:
           emptyDir:
             medium: Memory
 ---
-# Source: orders/templates/mysql-statefulset.yaml
+# Source: orders/templates/postgresql-statefulset.yaml
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
-  name: orders-mysql
+  name: orders-postgresql
   labels:
     helm.sh/chart: orders-0.0.1
     app.kubernetes.io/name: orders
     app.kubernetes.io/instance: orders
-    app.kubernetes.io/component: mysql
+    app.kubernetes.io/component: postgresql
     app.kubernetes.io/managed-by: Helm
 spec:
   replicas: 1
-  serviceName: orders-mysql
+  serviceName: orders-postgresql
   selector:
     matchLabels:
       app.kubernetes.io/name: orders
       app.kubernetes.io/instance: orders
-      app.kubernetes.io/component: mysql
+      app.kubernetes.io/component: postgresql
   template:
     metadata:
       labels:
         app.kubernetes.io/name: orders
         app.kubernetes.io/instance: orders
-        app.kubernetes.io/component: mysql
+        app.kubernetes.io/component: postgresql
     spec:
       containers:
-        - name: mysql
-          image: "mysql:5.7"
+        - name: postgresql
+          image: "postgres:16.1"
           imagePullPolicy: IfNotPresent
           env:
-            - name: MYSQL_ROOT_PASSWORD
-              value: my-secret-pw
-            - name: MYSQL_DATABASE
+            - name: POSTGRES_DB
               value: orders
-            - name: MYSQL_USER
+            - name: POSTGRES_USER
               valueFrom:
                 secretKeyRef:
                   name: orders-db
                   key: username
-            - name: MYSQL_PASSWORD
+            - name: POSTGRES_PASSWORD
               valueFrom:
                 secretKeyRef:
                   name: orders-db
                   key: password
-          args:
-            - "--ignore-db-dir=lost+found"
+            - name: PGDATA
+              value: /data/pgdata
           volumeMounts:
             - name: data
-              mountPath: /var/lib/mysql
+              mountPath: /data
           ports:
-            - name: mysql
-              containerPort: 3306
+            - name: postgresql
+              containerPort: 5432
               protocol: TCP
       volumes:
       - name: data
@@ -1214,7 +1201,7 @@ spec:
             readOnlyRootFilesystem: true
             runAsNonRoot: true
             runAsUser: 1000
-          image: "public.ecr.aws/aws-containers/retail-store-sample-checkout:0.6.0"
+          image: "public.ecr.aws/aws-containers/retail-store-sample-checkout:0.7.0"
           imagePullPolicy: IfNotPresent
           ports:
             - name: http
@@ -1366,7 +1353,7 @@ spec:
               drop:
               - ALL
             readOnlyRootFilesystem: false
-          image: "public.ecr.aws/aws-containers/retail-store-sample-assets:0.6.0"
+          image: "public.ecr.aws/aws-containers/retail-store-sample-assets:0.7.0"
           imagePullPolicy: IfNotPresent
           ports:
             - name: http
@@ -1500,7 +1487,7 @@ spec:
             readOnlyRootFilesystem: true
             runAsNonRoot: true
             runAsUser: 1000
-          image: "public.ecr.aws/aws-containers/retail-store-sample-ui:0.6.0"
+          image: "public.ecr.aws/aws-containers/retail-store-sample-ui:0.7.0"
           imagePullPolicy: IfNotPresent
           ports:
             - name: http
