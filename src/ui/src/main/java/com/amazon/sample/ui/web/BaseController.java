@@ -18,7 +18,6 @@
 
 package com.amazon.sample.ui.web;
 
-import com.amazon.sample.ui.clients.carts.api.CartsApi;
 import com.amazon.sample.ui.services.Metadata;
 import com.amazon.sample.ui.services.carts.CartsService;
 import com.amazon.sample.ui.web.util.SessionIDUtil;
@@ -26,7 +25,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.server.reactive.ServerHttpRequest;
 import org.springframework.ui.Model;
-import org.springframework.web.server.ServerWebExchange;
 import reactor.util.retry.Retry;
 import reactor.util.retry.RetryBackoffSpec;
 
@@ -49,8 +47,8 @@ public class BaseController {
 
     protected static RetryBackoffSpec retrySpec(String path) {
         return Retry
-            .backoff(3, Duration.ofSeconds(1))
-            .doBeforeRetry(context -> log.warn("Retrying {}", path));
+                .backoff(3, Duration.ofSeconds(1))
+                .doBeforeRetry(context -> log.warn("Retrying {}", path));
     }
 
     protected void populateCommon(ServerHttpRequest request, Model model) {
