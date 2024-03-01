@@ -17,10 +17,10 @@ require (
 	github.com/swaggo/swag v1.16.3
 	github.com/testcontainers/testcontainers-go v0.27.0
 	github.com/zsais/go-gin-prometheus v0.1.0
-	go.opentelemetry.io/contrib/detectors/aws/ec2 v1.17.0
+	go.opentelemetry.io/contrib/detectors/aws/ec2 v1.24.0
 	go.opentelemetry.io/otel v1.24.0
 	go.opentelemetry.io/otel/exporters/otlp/otlptrace v1.22.0
-	go.opentelemetry.io/otel/sdk v1.22.0
+	go.opentelemetry.io/otel/sdk v1.24.0
 )
 
 require (
@@ -28,7 +28,7 @@ require (
 	github.com/Azure/go-ansiterm v0.0.0-20230124172434-306776ec8161 // indirect
 	github.com/Microsoft/go-winio v0.6.1 // indirect
 	github.com/Microsoft/hcsshim v0.11.4 // indirect
-	github.com/aws/aws-sdk-go v1.44.266 // indirect
+	github.com/aws/aws-sdk-go v1.50.15 // indirect
 	github.com/bytedance/sonic v1.9.1 // indirect
 	github.com/cenkalti/backoff/v4 v4.2.1 // indirect
 	github.com/chenzhuoyu/base64x v0.0.0-20221115062448-fe3a3abad311 // indirect
@@ -119,7 +119,7 @@ require (
 	go.uber.org/atomic v1.10.0 // indirect
 	golang.org/x/crypto v0.17.0 // indirect
 	golang.org/x/net v0.18.0 // indirect
-	golang.org/x/sys v0.16.0 // indirect
+	golang.org/x/sys v0.17.0 // indirect
 	golang.org/x/text v0.14.0 // indirect
 	golang.org/x/tools v0.11.0 // indirect
 	google.golang.org/protobuf v1.32.0 // indirect
