@@ -256,8 +256,9 @@ github.com/stretchr/testify v1.8.0/go.mod h1:yNjHg4UonilssWZ8iaSj1OCr/vHnekPRkoO
 github.com/stretchr/testify v1.8.1/go.mod h1:w2LPCIKwWwSfY2zedu0+kehJoqGctiVI29o6fzry7u4=
 github.com/stretchr/testify v1.8.2/go.mod h1:w2LPCIKwWwSfY2zedu0+kehJoqGctiVI29o6fzry7u4=
 github.com/stretchr/testify v1.8.3/go.mod h1:sz/lmYIOXD/1dqDmKjjqLyZ2RngseejIcXlSw2iwfAo=
-github.com/stretchr/testify v1.8.4 h1:CcVxjf3Q8PM0mHUKJCdn+eZZtm5yQwehR5yeSVQQcUk=
 github.com/stretchr/testify v1.8.4/go.mod h1:sz/lmYIOXD/1dqDmKjjqLyZ2RngseejIcXlSw2iwfAo=
+github.com/stretchr/testify v1.9.0 h1:HtqpIVDClZ4nwg75+f6Lvsy/wHu+3BoSGCbBAcpTsTg=
+github.com/stretchr/testify v1.9.0/go.mod h1:r2ic/lqez/lEtzL7wO/rwa5dbSLXVDPFyf8C91i36aY=
 github.com/swaggo/files v1.0.1 h1:J1bVJ4XHZNq0I46UU90611i9/YzdrF7x92oX1ig5IdE=
 github.com/swaggo/files v1.0.1/go.mod h1:0qXmMNH6sXNf+73t65aKeB+ApmgxdnkQzVTAj2uaMUg=
 github.com/swaggo/gin-swagger v1.6.0 h1:y8sxvQ3E20/RCyrXeFfg60r6H0Z+SwpTjMYsMm+zy8M=
@@ -285,8 +286,8 @@ go.opentelemetry.io/contrib/detectors/aws/ec2 v1.24.0 h1:mdgKu9aAl3uNPmFFYhJoEht
 go.opentelemetry.io/contrib/detectors/aws/ec2 v1.24.0/go.mod h1:pLGyW++QzweLK2DV29J9LeZf01n7nEL+y7Yaxg5JA/k=
 go.opentelemetry.io/contrib/instrumentation/github.com/gin-gonic/gin/otelgin v0.46.1 h1:mMv2jG58h6ZI5t5S9QCVGdzCmAsTakMa3oxVgpSD44g=
 go.opentelemetry.io/contrib/instrumentation/github.com/gin-gonic/gin/otelgin v0.46.1/go.mod h1:oqRuNKG0upTaDPbLVCG8AD0G2ETrfDtmh7jViy7ox6M=
-go.opentelemetry.io/contrib/propagators/aws v1.22.0 h1:SKtPYiel5TWrE9gib3F4/BUcrvVjKsA5CH9xnWvj6cQ=
-go.opentelemetry.io/contrib/propagators/aws v1.22.0/go.mod h1:zau7d6VqIVtBLLoD+WIufyXK6ZWhSdpiG6tY/hBXu+Y=
+go.opentelemetry.io/contrib/propagators/aws v1.24.0 h1:cuwQmy9nGJi99fbwUfZSygCL3d347ddnSCWRuiVjhJ8=
+go.opentelemetry.io/contrib/propagators/aws v1.24.0/go.mod h1:7HbFx8Hiiuce72QONjbOtU+3QU+Scs9VOHZIrdmi1rw=
 go.opentelemetry.io/contrib/propagators/b3 v1.21.1 h1:WPYiUgmw3+b7b3sQ1bFBFAf0q+Di9dvNc3AtYfnT4RQ=
 go.opentelemetry.io/otel v1.24.0 h1:0LAOdjNmQeSTzGBzduGe/rU4tZhMwL5rWgtp9Ku5Jfo=
 go.opentelemetry.io/otel v1.24.0/go.mod h1:W7b9Ozg4nkF5tWI5zsXkaKKDjdVjpD4oAt9Qi/MArHo=

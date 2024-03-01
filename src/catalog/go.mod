@@ -11,7 +11,7 @@ require (
 	github.com/jmoiron/sqlx v1.3.5
 	github.com/prometheus/client_golang v1.17.0
 	github.com/sethvargo/go-envconfig v0.1.1
-	github.com/stretchr/testify v1.8.4
+	github.com/stretchr/testify v1.9.0
 	github.com/swaggo/files v1.0.1
 	github.com/swaggo/gin-swagger v1.6.0
 	github.com/swaggo/swag v1.16.3
@@ -114,7 +114,7 @@ require (
 	github.com/sirupsen/logrus v1.9.3 // indirect
 	github.com/ugorji/go/codec v1.2.11 // indirect
 	go.opentelemetry.io/contrib/instrumentation/github.com/gin-gonic/gin/otelgin v0.46.1
-	go.opentelemetry.io/contrib/propagators/aws v1.22.0
+	go.opentelemetry.io/contrib/propagators/aws v1.24.0
 	go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc v1.22.0
 	go.uber.org/atomic v1.10.0 // indirect
 	golang.org/x/crypto v0.17.0 // indirect
