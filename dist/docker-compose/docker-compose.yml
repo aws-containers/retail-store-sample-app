@@ -28,14 +28,14 @@ services:
       - ENDPOINTS_CHECKOUT=http://checkout:8080
       - ENDPOINTS_ASSETS=http://assets:8080
     hostname: ui
-    image: public.ecr.aws/aws-containers/retail-store-sample-ui:0.7.0
+    image: public.ecr.aws/aws-containers/retail-store-sample-ui:0.7.1
     restart: always
     mem_limit: 512m
     cap_drop:
       - ALL
   catalog:
     hostname: catalog
-    image: public.ecr.aws/aws-containers/retail-store-sample-catalog:0.7.0
+    image: public.ecr.aws/aws-containers/retail-store-sample-catalog:0.7.1
     restart: always
     environment:
       - GIN_MODE=release
@@ -56,7 +56,7 @@ services:
     mem_limit: 128m
   carts:
     hostname: carts
-    image: public.ecr.aws/aws-containers/retail-store-sample-cart:0.7.0
+    image: public.ecr.aws/aws-containers/retail-store-sample-cart:0.7.1
     restart: always
     environment:
       - JAVA_OPTS=-XX:MaxRAMPercentage=75.0 -Djava.security.egd=file:/dev/urandom
@@ -76,7 +76,7 @@ services:
     mem_limit: 256m
   orders:
     hostname: orders
-    image: public.ecr.aws/aws-containers/retail-store-sample-orders:0.7.0
+    image: public.ecr.aws/aws-containers/retail-store-sample-orders:0.7.1
     restart: always
     environment:
       - JAVA_OPTS=-XX:MaxRAMPercentage=75.0 -Djava.security.egd=file:/dev/urandom
@@ -107,7 +107,7 @@ services:
       retries: 30
     mem_limit: 128m
   checkout:
-    image: public.ecr.aws/aws-containers/retail-store-sample-checkout:0.7.0
+    image: public.ecr.aws/aws-containers/retail-store-sample-checkout:0.7.1
     hostname: checkout
     restart: always
     read_only: true
@@ -128,7 +128,7 @@ services:
     hostname: assets
     environment:
       - PORT=8080
-    image: public.ecr.aws/aws-containers/retail-store-sample-assets:0.7.0
+    image: public.ecr.aws/aws-containers/retail-store-sample-assets:0.7.1
     restart: always
     mem_limit: 64m
     cap_drop:
