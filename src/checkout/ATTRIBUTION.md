@@ -2626,7 +2626,7 @@ THE SOFTWARE.
 
 ----
 
-### check-disk-space @3.3.1 - https://github.com/Alex-D/check-disk-space#readme
+### check-disk-space @3.4.0 - https://github.com/Alex-D/check-disk-space#readme
 
 MIT License
 
@@ -2651,7 +2651,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 
-[Source code](https://registry.npmjs.org/check-disk-space/-/check-disk-space-3.3.1.tgz)
+[Source code](https://registry.npmjs.org/check-disk-space/-/check-disk-space-3.4.0.tgz)
 
 ----
 
@@ -2790,7 +2790,7 @@ THE SOFTWARE.
 
 ----
 
-### class-validator @0.14.0 - https://github.com/typestack/class-validator#readme
+### class-validator @0.14.1 - https://github.com/typestack/class-validator#readme
 
 
 The MIT License
@@ -2815,7 +2815,7 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 
-[Source code](https://registry.npmjs.org/class-validator/-/class-validator-0.14.0.tgz)
+[Source code](https://registry.npmjs.org/class-validator/-/class-validator-0.14.1.tgz)
 
 ----
 
@@ -6971,7 +6971,7 @@ https://creativecommons.org/licenses/by-sa/4.0/
 
 ----
 
-### glob @9.3.2 - https://github.com/isaacs/node-glob#readme
+### glob @9.3.5 - https://github.com/isaacs/node-glob#readme
 
 The ISC License
 
@@ -6990,7 +6990,7 @@ ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF OR
 IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
 
-[Source code](https://registry.npmjs.org/glob/-/glob-9.3.2.tgz)
+[Source code](https://registry.npmjs.org/glob/-/glob-9.3.5.tgz)
 
 ----
 
@@ -10489,7 +10489,7 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 ----
 
-### libphonenumber-js @1.10.18 - https://gitlab.com/catamphetamine/libphonenumber-js#readme
+### libphonenumber-js @1.10.57 - https://gitlab.com/catamphetamine/libphonenumber-js#readme
 
 (The MIT License)
 
@@ -10514,7 +10514,7 @@ CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
 TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-[Source code](https://registry.npmjs.org/libphonenumber-js/-/libphonenumber-js-1.10.18.tgz)
+[Source code](https://registry.npmjs.org/libphonenumber-js/-/libphonenumber-js-1.10.57.tgz)
 
 ----
 
@@ -10698,53 +10698,29 @@ SOFTWARE.
 
 ### lodash.memoize @4.1.2 - https://lodash.com/
 
-Copyright jQuery Foundation and other contributors <https://jquery.org/>
+The MIT License (MIT)
 
-Based on Underscore.js, copyright Jeremy Ashkenas,
+Copyright 2012-2016 The Dojo Foundation <http://dojofoundation.org/>
+Based on Underscore.js, copyright 2009-2016 Jeremy Ashkenas,
 DocumentCloud and Investigative Reporters & Editors <http://underscorejs.org/>
 
-This software consists of voluntary contributions made by many
-individuals. For exact contribution history, see the revision history
-available at https://github.com/lodash/lodash
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
 
-The following license applies to all parts of this software except as
-documented below:
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
 
-====
-
-Permission is hereby granted, free of charge, to any person obtaining
-a copy of this software and associated documentation files (the
-"Software"), to deal in the Software without restriction, including
-without limitation the rights to use, copy, modify, merge, publish,
-distribute, sublicense, and/or sell copies of the Software, and to
-permit persons to whom the Software is furnished to do so, subject to
-the following conditions:
-
-The above copyright notice and this permission notice shall be
-included in all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
-EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
-NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
-LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
-OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
-WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-
-====
-
-Copyright and related rights for sample code are waived via CC0. Sample
-code is defined as all source code displayed within the prose of the
-documentation.
-
-CC0: http://creativecommons.org/publicdomain/zero/1.0/
-
-====
-
-Files located in the node_modules and vendor directories are externally
-maintained libraries used by this software which have their own
-licenses; we recommend you read them, as their terms may differ from the
-terms above.
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
 
 
 [Source code](https://registry.npmjs.org/lodash.memoize/-/lodash.memoize-4.1.2.tgz)
@@ -11984,7 +11960,7 @@ IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
 ----
 
-### minimatch @7.4.3 - https://github.com/isaacs/minimatch#readme
+### minimatch @8.0.4 - https://github.com/isaacs/minimatch#readme
 
 The ISC License
 
@@ -12003,7 +11979,7 @@ ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF OR
 IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
 
-[Source code](https://registry.npmjs.org/minimatch/-/minimatch-7.4.3.tgz)
+[Source code](https://registry.npmjs.org/minimatch/-/minimatch-8.0.4.tgz)
 
 ----
 
@@ -12056,7 +12032,7 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 ----
 
-### minipass @4.2.5 - https://github.com/isaacs/minipass#readme
+### minipass @4.2.8 - https://github.com/isaacs/minipass#readme
 
 The ISC License
 
@@ -12075,7 +12051,7 @@ ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF OR
 IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
 
-[Source code](https://registry.npmjs.org/minipass/-/minipass-4.2.5.tgz)
+[Source code](https://registry.npmjs.org/minipass/-/minipass-4.2.8.tgz)
 
 ----
 
@@ -15467,6 +15443,29 @@ IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
 ----
 
+### rimraf @5.0.5 - https://github.com/isaacs/rimraf#readme
+
+The ISC License
+
+Copyright (c) 2011-2023 Isaac Z. Schlueter and Contributors
+
+Permission to use, copy, modify, and/or distribute this software for any
+purpose with or without fee is hereby granted, provided that the above
+copyright notice and this permission notice appear in all copies.
+
+THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
+WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
+MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
+ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
+WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
+ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF OR
+IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+
+
+[Source code](https://registry.npmjs.org/rimraf/-/rimraf-5.0.5.tgz)
+
+----
+
 ### run-async @2.4.1 - https://github.com/SBoudrias/run-async#readme
 
 The MIT License (MIT)
@@ -17728,7 +17727,7 @@ SOFTWARE.
 
 ----
 
-### ts-node @10.9.1 - https://typestrong.org/ts-node
+### ts-node @10.9.2 - https://typestrong.org/ts-node
 
 The MIT License (MIT)
 
@@ -17753,7 +17752,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 
 
-[Source code](https://registry.npmjs.org/ts-node/-/ts-node-10.9.1.tgz)
+[Source code](https://registry.npmjs.org/ts-node/-/ts-node-10.9.2.tgz)
 
 ----
 
@@ -18278,6 +18277,35 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 ----
 
+### undici-types @5.26.5 - https://undici.nodejs.org
+
+MIT License
+
+Copyright (c) Matteo Collina and Undici contributors
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+
+[Source code](https://registry.npmjs.org/undici-types/-/undici-types-5.26.5.tgz)
+
+----
+
 ### universalify @2.0.1 - https://github.com/RyanZim/universalify#readme
 
 (The MIT License)
@@ -18540,7 +18568,7 @@ ARISING OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
 ----
 
-### validator @13.7.0 - https://github.com/validatorjs/validator.js
+### validator @13.11.0 - https://github.com/validatorjs/validator.js
 
 Copyright (c) 2018 Chris O'Hara <cohara87@gmail.com>
 
@@ -18564,7 +18592,7 @@ OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 
-[Source code](https://registry.npmjs.org/validator/-/validator-13.7.0.tgz)
+[Source code](https://registry.npmjs.org/validator/-/validator-13.11.0.tgz)
 
 ----
 
@@ -20721,20 +20749,27 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 ### @bcoe:v8-coverage @0.2.3 - https://demurgos.github.io/v8-coverage
 
-Copyright (c) 2017, Contributors
+The MIT License (MIT)
 
-Permission to use, copy, modify, and/or distribute this software
-for any purpose with or without fee is hereby granted, provided
-that the above copyright notice and this permission notice
-appear in all copies.
+Copyright © 2015-2017 Charles Samborski
 
-THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
-WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES
-OF MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE
-LIABLE FOR ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES
-OR ANY DAMAGES WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS,
-WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION,
-ARISING OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
 
 
 [Source code](https://registry.npmjs.org/@bcoe/v8-coverage/-/v8-coverage-0.2.3.tgz)
@@ -22975,7 +23010,7 @@ SOFTWARE.
 
 ----
 
-### @nestjs:terminus @9.2.2 - https://github.com/nestjs/terminus#readme
+### @nestjs:terminus @10.2.3 - https://github.com/nestjs/terminus#readme
 
 (The MIT License)
 
@@ -23002,7 +23037,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 
 
-[Source code](https://registry.npmjs.org/@nestjs/terminus/-/terminus-9.2.2.tgz)
+[Source code](https://registry.npmjs.org/@nestjs/terminus/-/terminus-10.2.3.tgz)
 
 ----
 
@@ -38829,7 +38864,7 @@ SOFTWARE
 
 ----
 
-### @types:node @20.5.7 - https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/node
+### @types:node @20.11.15 - https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/node
 
     MIT License
 
@@ -38854,7 +38889,7 @@ SOFTWARE
     SOFTWARE
 
 
-[Source code](https://registry.npmjs.org/@types/node/-/node-20.5.7.tgz)
+[Source code](https://registry.npmjs.org/@types/node/-/node-20.11.15.tgz)
 
 ----
 
@@ -39177,7 +39212,7 @@ SOFTWARE
 
 ----
 
-### @types:validator @13.7.10 - https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/validator
+### @types:validator @13.11.9 - https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/validator
 
     MIT License
 
@@ -39202,7 +39237,7 @@ SOFTWARE
     SOFTWARE
 
 
-[Source code](https://registry.npmjs.org/@types/validator/-/validator-13.7.10.tgz)
+[Source code](https://registry.npmjs.org/@types/validator/-/validator-13.11.9.tgz)
 
 ----
 

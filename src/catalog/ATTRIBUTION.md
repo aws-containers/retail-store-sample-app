@@ -67,7 +67,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 ----
 
-### github.com/aws/aws-sdk-go @v1.44.266
+### github.com/aws/aws-sdk-go @v1.50.15
 
 
                                  Apache License
@@ -276,7 +276,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 ----
 
-### github.com/aws/aws-sdk-go/internal/sync/singleflight @v1.44.266
+### github.com/aws/aws-sdk-go/internal/sync/singleflight @v1.50.15
 
 Copyright (c) 2009 The Go Authors. All rights reserved.
 
@@ -505,7 +505,7 @@ THE SOFTWARE.
 
 ----
 
-### github.com/go-logr/logr @v1.3.0
+### github.com/go-logr/logr @v1.4.1
 
                                  Apache License
                            Version 2.0, January 2004
@@ -4533,7 +4533,7 @@ SUBDIRECTORIES
 
 ----
 
-### github.com/signalfx/splunk-otel-go/instrumentation/database/sql/splunksql @v1.11.0
+### github.com/signalfx/splunk-otel-go/instrumentation/database/sql/splunksql @v1.14.0
 
                                  Apache License
                            Version 2.0, January 2004
@@ -4741,7 +4741,7 @@ SUBDIRECTORIES
 
 ----
 
-### github.com/signalfx/splunk-otel-go/instrumentation/github.com/jmoiron/sqlx/splunksqlx @v1.11.0
+### github.com/signalfx/splunk-otel-go/instrumentation/github.com/jmoiron/sqlx/splunksqlx @v1.14.0
 
                                  Apache License
                            Version 2.0, January 2004
@@ -4949,7 +4949,7 @@ SUBDIRECTORIES
 
 ----
 
-### github.com/signalfx/splunk-otel-go/instrumentation/internal @v1.11.0
+### github.com/signalfx/splunk-otel-go/instrumentation/internal @v1.14.0
 
                                  Apache License
                            Version 2.0, January 2004
@@ -5241,7 +5241,7 @@ SOFTWARE.
 
 ----
 
-### github.com/swaggo/swag @v1.16.1
+### github.com/swaggo/swag @v1.16.3
 
 MIT License
 
@@ -5326,7 +5326,7 @@ SOFTWARE.
 
 ----
 
-### go.opentelemetry.io/contrib/detectors/aws/ec2 @v1.17.0
+### go.opentelemetry.io/contrib/detectors/aws/ec2 @v1.24.0
 
                                  Apache License
                            Version 2.0, January 2004
@@ -5743,7 +5743,7 @@ SOFTWARE.
 
 ----
 
-### go.opentelemetry.io/contrib/propagators/aws/xray @v1.21.1
+### go.opentelemetry.io/contrib/propagators/aws/xray @v1.24.0
 
                                  Apache License
                            Version 2.0, January 2004
@@ -5951,7 +5951,7 @@ SOFTWARE.
 
 ----
 
-### go.opentelemetry.io/otel @v1.21.0
+### go.opentelemetry.io/otel @v1.24.0
 
                                  Apache License
                            Version 2.0, January 2004
@@ -6159,7 +6159,7 @@ SOFTWARE.
 
 ----
 
-### go.opentelemetry.io/otel/exporters/otlp/otlptrace @v1.21.0
+### go.opentelemetry.io/otel/exporters/otlp/otlptrace @v1.22.0
 
                                  Apache License
                            Version 2.0, January 2004
@@ -6367,7 +6367,7 @@ SOFTWARE.
 
 ----
 
-### go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc @v1.21.0
+### go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc @v1.22.0
 
                                  Apache License
                            Version 2.0, January 2004
@@ -6575,7 +6575,7 @@ SOFTWARE.
 
 ----
 
-### go.opentelemetry.io/otel/metric @v1.21.0
+### go.opentelemetry.io/otel/metric @v1.24.0
 
                                  Apache License
                            Version 2.0, January 2004
@@ -6783,7 +6783,7 @@ SOFTWARE.
 
 ----
 
-### go.opentelemetry.io/otel/sdk @v1.21.0
+### go.opentelemetry.io/otel/sdk @v1.24.0
 
                                  Apache License
                            Version 2.0, January 2004
@@ -6991,7 +6991,7 @@ SOFTWARE.
 
 ----
 
-### go.opentelemetry.io/otel/trace @v1.21.0
+### go.opentelemetry.io/otel/trace @v1.24.0
 
                                  Apache License
                            Version 2.0, January 2004
@@ -7501,7 +7501,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 ----
 
-### golang.org/x/sys @v0.15.0
+### golang.org/x/sys @v0.17.0
 
 Copyright (c) 2009 The Go Authors. All rights reserved.
 
@@ -7603,7 +7603,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 ----
 
-### google.golang.org/genproto/googleapis/api/httpbody @v0.0.0-20230822172742-b8732ec3820d
+### google.golang.org/genproto/googleapis/api/httpbody @v0.0.0-20231002182017-d307bd883b97
 
 
                                  Apache License
@@ -7812,7 +7812,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 ----
 
-### google.golang.org/genproto/googleapis/rpc @v0.0.0-20230822172742-b8732ec3820d
+### google.golang.org/genproto/googleapis/rpc @v0.0.0-20231002182017-d307bd883b97
 
 
                                  Apache License
@@ -8021,7 +8021,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 ----
 
-### google.golang.org/grpc @v1.59.0
+### google.golang.org/grpc @v1.60.1
 
 
                                  Apache License
@@ -8230,7 +8230,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 ----
 
-### google.golang.org/protobuf @v1.31.0
+### google.golang.org/protobuf @v1.32.0
 
 Copyright (c) 2018 The Go Authors. All rights reserved.
 
