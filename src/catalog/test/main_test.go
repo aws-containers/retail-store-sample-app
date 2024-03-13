@@ -44,7 +44,7 @@ func TestMain(m *testing.M) {
 	ctx := context.Background()
 	container, port, _ := prepareContainer(ctx)
 
-	endpoint := fmt.Sprintf("localhost:%s", port)
+	endpoint := fmt.Sprintf("127.0.0.1:%s", port)
 
 	dbConfig = config.DatabaseConfiguration{
 		Type:           "mysql",
