@@ -42,7 +42,6 @@ import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-@ActiveProfiles("default")
 public class OrderServicePostgresTests {
 
   @LocalServerPort
