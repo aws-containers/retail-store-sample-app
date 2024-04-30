@@ -21,6 +21,8 @@ package com.amazon.sample.orders.config.messaging;
 import com.amazon.sample.orders.messaging.sqs.SqsMessagingProvider;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import io.awspring.cloud.autoconfigure.sqs.SqsAutoConfiguration;
+import io.awspring.cloud.autoconfigure.sqs.SqsProperties;
 import io.awspring.cloud.sqs.operations.SqsTemplate;
 import software.amazon.awssdk.services.sqs.SqsAsyncClient;
 
@@ -31,7 +33,11 @@ import org.springframework.context.annotation.Profile;
 
 @Configuration
 @Profile("sqs")
-public class SqsMessagingConfig {
+public class SqsMessagingConfig extends SqsAutoConfiguration {
+
+    public SqsMessagingConfig(SqsProperties sqsProperties) {
+      super(sqsProperties);
+    }
 
     @Value("${messaging.sqs.topic}")
     private String messageQueueTopic;
