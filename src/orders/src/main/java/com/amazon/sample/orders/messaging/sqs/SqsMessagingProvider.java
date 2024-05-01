@@ -16,19 +16,36 @@
  * SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package com.amazon.sample.orders.config.messaging;
+package com.amazon.sample.orders.messaging.sqs;
 
 import com.amazon.sample.orders.messaging.MessagingProvider;
-import com.amazon.sample.orders.messaging.inmemory.InMemoryMessagingProvider;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Profile;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
-@Configuration
-@Profile({"!rabbitmq", "!sqs"})
-public class InMemoryMessagingConfig {
-    @Bean
-    public MessagingProvider messagingProvider() {
-        return new InMemoryMessagingProvider();
+import io.awspring.cloud.sqs.operations.SqsOperations;
+
+public class SqsMessagingProvider implements MessagingProvider {
+
+    private final String messageQueueTopic;
+    private final SqsOperations blockingTemplate;
+    private final ObjectMapper mapper;
+
+    public SqsMessagingProvider(String messageQueueTopic, SqsOperations blockingTemplate, ObjectMapper mapper) {
+        this.blockingTemplate = blockingTemplate;
+        this.messageQueueTopic = messageQueueTopic;
+        this.mapper = mapper;
+    }
+
+    @Override
+    public void publishEvent(Object event) {
+        blockingTemplate.send(to -> {
+            try {
+                to.queue(messageQueueTopic)
+                    .payload(mapper.writeValueAsString(event))
+                    .delaySeconds(10);
+            } catch (JsonProcessingException e) {
+                e.printStackTrace();
+            }
+        });
     }
 }

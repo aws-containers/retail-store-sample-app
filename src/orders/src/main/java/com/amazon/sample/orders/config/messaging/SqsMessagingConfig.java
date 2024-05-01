@@ -18,17 +18,37 @@
 
 package com.amazon.sample.orders.config.messaging;
 
-import com.amazon.sample.orders.messaging.MessagingProvider;
-import com.amazon.sample.orders.messaging.inmemory.InMemoryMessagingProvider;
+import com.amazon.sample.orders.messaging.sqs.SqsMessagingProvider;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import io.awspring.cloud.autoconfigure.sqs.SqsAutoConfiguration;
+import io.awspring.cloud.autoconfigure.sqs.SqsProperties;
+import io.awspring.cloud.sqs.operations.SqsTemplate;
+import software.amazon.awssdk.services.sqs.SqsAsyncClient;
+
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 
 @Configuration
-@Profile({"!rabbitmq", "!sqs"})
-public class InMemoryMessagingConfig {
+@Profile("sqs")
+public class SqsMessagingConfig extends SqsAutoConfiguration {
+
+    public SqsMessagingConfig(SqsProperties sqsProperties) {
+      super(sqsProperties);
+    }
+
+    @Value("${messaging.sqs.topic}")
+    private String messageQueueTopic;
+
     @Bean
-    public MessagingProvider messagingProvider() {
-        return new InMemoryMessagingProvider();
+    public SqsAsyncClient sqsQueue() {
+        return SqsAsyncClient.builder().build();
+    }
+
+    @Bean
+    public SqsMessagingProvider messagingProvider(SqsAsyncClient amazonSqs, ObjectMapper mapper) {
+        return new SqsMessagingProvider(messageQueueTopic, SqsTemplate.newSyncTemplate(amazonSqs), mapper);
     }
 }
