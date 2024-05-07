@@ -24,22 +24,24 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import io.awspring.cloud.autoconfigure.sqs.SqsAutoConfiguration;
 import io.awspring.cloud.autoconfigure.sqs.SqsProperties;
 import io.awspring.cloud.sqs.operations.SqsTemplate;
+import lombok.extern.slf4j.Slf4j;
 import software.amazon.awssdk.services.sqs.SqsAsyncClient;
 
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Profile;
 
 @Configuration
-@Profile("sqs")
+@ConditionalOnProperty(prefix = "retail.carts.messaging", name = "provider", havingValue = "sqs")
+@Slf4j
 public class SqsMessagingConfig extends SqsAutoConfiguration {
 
     public SqsMessagingConfig(SqsProperties sqsProperties) {
       super(sqsProperties);
     }
 
-    @Value("${messaging.sqs.topic}")
+    @Value("${retail.carts.messaging.sqs.topic}")
     private String messageQueueTopic;
 
     @Bean
@@ -49,6 +51,8 @@ public class SqsMessagingConfig extends SqsAutoConfiguration {
 
     @Bean
     public SqsMessagingProvider messagingProvider(SqsAsyncClient amazonSqs, ObjectMapper mapper) {
+        log.info("Creating SQS messaging provider");
+
         return new SqsMessagingProvider(messageQueueTopic, SqsTemplate.newSyncTemplate(amazonSqs), mapper);
     }
 }

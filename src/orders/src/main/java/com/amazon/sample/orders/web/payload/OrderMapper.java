@@ -19,7 +19,6 @@
 package com.amazon.sample.orders.web.payload;
 
 import com.amazon.sample.orders.entities.OrderEntity;
-import com.amazon.sample.orders.entities.OrderItemEntity;
 import org.mapstruct.Mapper;
 
 @Mapper(componentModel = "spring", uses = OrderItemMapper.class)
