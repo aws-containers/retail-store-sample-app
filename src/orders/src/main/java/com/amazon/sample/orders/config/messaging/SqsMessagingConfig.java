@@ -33,7 +33,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-@ConditionalOnProperty(prefix = "retail.carts.messaging", name = "provider", havingValue = "sqs")
+@ConditionalOnProperty(prefix = "retail.orders.messaging", name = "provider", havingValue = "sqs")
 @Slf4j
 public class SqsMessagingConfig extends SqsAutoConfiguration {
 
@@ -41,7 +41,7 @@ public class SqsMessagingConfig extends SqsAutoConfiguration {
       super(sqsProperties);
     }
 
-    @Value("${retail.carts.messaging.sqs.topic}")
+    @Value("${retail.orders.messaging.sqs.topic}")
     private String messageQueueTopic;
 
     @Bean

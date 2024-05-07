@@ -14,7 +14,7 @@
 # OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 # SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-version: '2'
+version: "2"
 
 services:
   ui:
@@ -87,7 +87,7 @@ services:
     environment:
       - JAVA_OPTS=-XX:MaxRAMPercentage=75.0 -Djava.security.egd=file:/dev/urandom
       - SERVER_TOMCAT_ACCESSLOG_ENABLED=true
-      - SPRING_PROFILES_ACTIVE=rabbitmq
+      - RETAIL_ORDERS_MESSAGING_PROVIDER=rabbitmq
       - SPRING_DATASOURCE_URL=jdbc:postgresql://orders-db:5432/orders
       - SPRING_DATASOURCE_USERNAME=orders_user
       - SPRING_DATASOURCE_PASSWORD=${MYSQL_PASSWORD}
@@ -108,7 +108,7 @@ services:
       - POSTGRES_DB=orders
       - POSTGRES_USER=orders_user
     healthcheck:
-      test: [ "CMD-SHELL", "pg_isready -d orders -U orders_user" ]
+      test: ["CMD-SHELL", "pg_isready -d orders -U orders_user"]
       interval: 10s
       timeout: 5s
       retries: 30

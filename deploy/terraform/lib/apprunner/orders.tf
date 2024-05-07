@@ -20,7 +20,7 @@ resource "aws_apprunner_service" "orders" {
           SPRING_RABBITMQ_PASSWORD   = "${aws_secretsmanager_secret.mq.arn}:password::"
         }
         runtime_environment_variables = {
-          SPRING_PROFILES_ACTIVE = "rabbitmq"
+          RETAIL_ORDERS_MESSAGING_PROVIDER = "rabbitmq"
         }
       }
       image_identifier      = module.container_images.result.orders.url

@@ -40,7 +40,7 @@ import org.springframework.messaging.handler.annotation.support.MessageHandlerMe
 
 @Configuration
 @Slf4j
-@ConditionalOnProperty(prefix = "retail.carts.messaging", name = "provider", havingValue = "rabbitmq")
+@ConditionalOnProperty(prefix = "retail.orders.messaging", name = "provider", havingValue = "rabbitmq")
 public class RabbitMQMessagingConfig extends RabbitAutoConfiguration implements RabbitListenerConfigurer  {
     public static final String EXCHANGE_NAME = "orders-exchange";
 

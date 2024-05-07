@@ -29,7 +29,7 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 @Slf4j
-@ConditionalOnProperty(prefix = "retail.carts.messaging", name = "provider", havingValue = "in-memory")
+@ConditionalOnProperty(prefix = "retail.orders.messaging", name = "provider", havingValue = "in-memory")
 public class InMemoryMessagingConfig {
     @Bean
     public MessagingProvider messagingProvider() {
