@@ -33,7 +33,7 @@ import org.springframework.context.annotation.Configuration;
 public class InMemoryMessagingConfig {
     @Bean
     public MessagingProvider messagingProvider() {
-        log.info("Creating in-memory messaging provider");
+        log.warn("Creating in-memory messaging provider");
 
         return new InMemoryMessagingProvider();
     }
