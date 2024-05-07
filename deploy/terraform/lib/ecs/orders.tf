@@ -15,7 +15,7 @@ module "orders_service" {
   healthcheck_path                = "/actuator/health"
 
   environment_variables = {
-    SPRING_PROFILES_ACTIVE = "rabbitmq"
+    RETAIL_ORDERS_MESSAGING_PROVIDER = "rabbitmq"
   }
 
   secrets = {
