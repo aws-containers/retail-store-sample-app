@@ -19,7 +19,7 @@ metadata:
   name: catalog-db
 data:
   username: "Y2F0YWxvZw=="
-  password: "aGNzNXhpcXY3M09PcEx3UQ=="
+  password: "dnk1dzdEVEFGUjhVOEhhTA=="
 ---
 # Source: catalog/templates/configmap.yml
 apiVersion: v1
@@ -141,7 +141,7 @@ spec:
             readOnlyRootFilesystem: true
             runAsNonRoot: true
             runAsUser: 1000
-          image: "public.ecr.aws/aws-containers/retail-store-sample-catalog:0.7.1"
+          image: "public.ecr.aws/aws-containers/retail-store-sample-catalog:0.8.0"
           imagePullPolicy: IfNotPresent
           ports:
             - name: http
@@ -355,7 +355,7 @@ spec:
             readOnlyRootFilesystem: true
             runAsNonRoot: true
             runAsUser: 1000
-          image: "public.ecr.aws/aws-containers/retail-store-sample-cart:0.7.1"
+          image: "public.ecr.aws/aws-containers/retail-store-sample-cart:0.8.0"
           imagePullPolicy: IfNotPresent
           ports:
             - name: http
@@ -436,7 +436,7 @@ metadata:
   name: orders-db
 data:
   username: "b3JkZXJz"
-  password: "T2NBdXcyb2dTbzYzeWUwTA=="
+  password: "NExHQUp2VHk1enY5RURhVQ=="
 ---
 # Source: orders/templates/rabbitmq-secret.yaml
 apiVersion: v1
@@ -596,7 +596,7 @@ spec:
             readOnlyRootFilesystem: true
             runAsNonRoot: true
             runAsUser: 1000
-          image: "public.ecr.aws/aws-containers/retail-store-sample-orders:0.7.1"
+          image: "public.ecr.aws/aws-containers/retail-store-sample-orders:0.8.0"
           imagePullPolicy: IfNotPresent
           ports:
             - name: http
@@ -844,7 +844,7 @@ spec:
             readOnlyRootFilesystem: true
             runAsNonRoot: true
             runAsUser: 1000
-          image: "public.ecr.aws/aws-containers/retail-store-sample-checkout:0.7.1"
+          image: "public.ecr.aws/aws-containers/retail-store-sample-checkout:0.8.0"
           imagePullPolicy: IfNotPresent
           ports:
             - name: http
@@ -996,7 +996,7 @@ spec:
               drop:
               - ALL
             readOnlyRootFilesystem: false
-          image: "public.ecr.aws/aws-containers/retail-store-sample-assets:0.7.1"
+          image: "public.ecr.aws/aws-containers/retail-store-sample-assets:0.8.0"
           imagePullPolicy: IfNotPresent
           ports:
             - name: http
@@ -1130,7 +1130,7 @@ spec:
             readOnlyRootFilesystem: true
             runAsNonRoot: true
             runAsUser: 1000
-          image: "public.ecr.aws/aws-containers/retail-store-sample-ui:0.7.1"
+          image: "public.ecr.aws/aws-containers/retail-store-sample-ui:0.8.0"
           imagePullPolicy: IfNotPresent
           ports:
             - name: http
