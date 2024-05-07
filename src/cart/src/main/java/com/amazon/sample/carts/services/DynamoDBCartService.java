@@ -39,8 +39,11 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.boot.context.event.ApplicationReadyEvent;
+import org.springframework.context.ApplicationListener;
+
 @Slf4j
-public class DynamoDBCartService implements CartService {
+public class DynamoDBCartService implements CartService, ApplicationListener<ApplicationReadyEvent> {
 
     private final DynamoDbClient dynamoDBClient;
     private final boolean createTable;
@@ -56,6 +59,11 @@ public class DynamoDBCartService implements CartService {
         this.tableName = tableName;
 
         this.table = dynamoDbEnhancedClient.table(tableName, CART_TABLE_SCHEMA);
+    }
+
+    @Override
+    public void onApplicationEvent(final ApplicationReadyEvent event) {
+        this.items("test");
     }
 
     @PostConstruct
