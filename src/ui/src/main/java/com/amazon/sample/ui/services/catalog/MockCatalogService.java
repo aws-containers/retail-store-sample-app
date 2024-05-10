@@ -34,7 +34,7 @@ public class MockCatalogService implements CatalogService {
         products = new HashMap<>();
 
         for(int i = 1; i < 21; i++) {
-            products.put(""+i, new Product(""+i, "product"+i, "product description "+i, 1, "/assets/img/sample_product.jpg", 123, new ArrayList<>()));
+            products.put(""+i, new Product(""+i, "Sample Product "+i, "This is a sample product description", 1, "/assets/img/sample_product.jpg", 123, new ArrayList<>()));
         }
     }
 
