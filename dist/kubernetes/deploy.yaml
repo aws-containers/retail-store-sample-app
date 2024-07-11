@@ -1054,6 +1054,8 @@ apiVersion: v1
 kind: Service
 metadata:
   name: ui
+  annotations:
+    service.beta.kubernetes.io/aws-load-balancer-scheme: internet-facing
   labels:
     helm.sh/chart: ui-0.0.1
     app.kubernetes.io/name: ui
@@ -1068,8 +1070,6 @@ spec:
       targetPort: http
       protocol: TCP
       name: http
-  annotations:
-      service.beta.kubernetes.io/aws-load-balancer-scheme: internet-facing
   selector:
     app.kubernetes.io/name: ui
     app.kubernetes.io/instance: ui
