@@ -94,7 +94,7 @@ postgresql:
       password: ""
 
   image:
-    repository: postgres
+    repository: public.ecr.aws/docker/library/postgres
     pullPolicy: IfNotPresent
     tag: "16.1"
 
@@ -115,7 +115,7 @@ postgresql:
     annotations: {}
     labels: {}
     accessModes:
-    - ReadWriteOnce
+      - ReadWriteOnce
     size: 10Gi
     # storageClass: gp2
 
@@ -131,7 +131,7 @@ rabbitmq:
     password: ""
 
   image:
-    repository: "rabbitmq"
+    repository: "public.ecr.aws/docker/library/rabbitmq"
     pullPolicy: IfNotPresent
     tag: "3-management"
 
@@ -155,7 +155,7 @@ rabbitmq:
     annotations: {}
     labels: {}
     accessModes:
-    - ReadWriteOnce
+      - ReadWriteOnce
     size: 10Gi
     # storageClass: gp2
 

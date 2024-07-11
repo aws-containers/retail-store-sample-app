@@ -43,8 +43,6 @@ spec:
                 secretKeyRef:
                   name: {{ .Values.mysql.secret.name }}
                   key: password
-          args:
-            - "--ignore-db-dir=lost+found"
           volumeMounts:
             - name: data
               mountPath: /var/lib/mysql

@@ -4,8 +4,9 @@ module "catalog_rds" {
 
   name = "${var.environment_name}-catalog"
   engine = "aurora-mysql"
-  engine_version = "5.7"
-  instance_class = "db.t3.small"
+  engine_version = "8.0"
+  instance_class = "db.t3.medium"
+  allow_major_version_upgrade = true
 
   instances = {
     one = {}
@@ -25,11 +26,11 @@ module "catalog_rds" {
 
   create_db_parameter_group = true
   db_parameter_group_name   = "${var.environment_name}-catalog"
-  db_parameter_group_family = "aurora-mysql5.7"
+  db_parameter_group_family = "aurora-mysql8.0"
 
   create_db_cluster_parameter_group = true
   db_cluster_parameter_group_name   = "${var.environment_name}-catalog"
-  db_cluster_parameter_group_family = "aurora-mysql5.7"
+  db_cluster_parameter_group_family = "aurora-mysql8.0"
 
   tags             = var.tags
 }
