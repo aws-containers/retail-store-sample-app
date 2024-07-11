@@ -4,7 +4,7 @@ kind: ConfigMap
 metadata:
   name: {{ include "orders.configMapName" . }}
 data:
-  SPRING_PROFILES_ACTIVE: rabbitmq
+  RETAIL_ORDERS_MESSAGING_PROVIDER: rabbitmq
   SPRING_DATASOURCE_URL: {{ include "orders.postgresql.endpoint" . }}
   SPRING_RABBITMQ_ADDRESSES: {{ include "orders.rabbitmq.addresses" . }}
 {{- end }}
