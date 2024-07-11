@@ -3,6 +3,7 @@
 This Terraform module creates all the necessary infrastructure and deploys the retail sample application on [AWS App Runner](https://aws.amazon.com/apprunner/).
 
 It provides:
+
 - VPC with public and private subnets
 - An App Runner service per application component
   - The UI service serves a public endpoint
@@ -14,6 +15,7 @@ NOTE: This will create resources in your AWS account which will incur costs. You
 ## Usage
 
 Pre-requisites for this are:
+
 - AWS, Terraform and kubectl installed locally
 - AWS CLI configured and authenticated with account to deploy to
 
@@ -27,7 +29,11 @@ terraform plan
 terraform apply
 ```
 
-The final command will prompt for confirmation that you wish to create the specified resources. After confirming the process will take at least 15 minutes to complete. You can then retrieve the HTTP endpoint for the UI from Terraform outputs:
+The final command will prompt for confirmation that you wish to create the specified resources. After confirming the process will take at least 15 minutes to complete.
+
+NOTE: Due to the complexity of the Terraform configuration there are intermitent failures. Please retry running `terraform apply` before raising an issue.
+
+You can then retrieve the HTTP endpoint for the UI from Terraform outputs:
 
 ```shell
 terraform output -raw application_url
@@ -41,12 +47,12 @@ This section documents the variables and outputs of the Terraform configuration.
 
 ### Inputs
 
-| Name | Description | Type | Default | Required |
-|------|-------------|------|---------|:--------:|
-| `environment_name` | Name of the environment which will be used for all resources created | `string` | `retail-store-ar` | yes |
+| Name               | Description                                                          | Type     | Default           | Required |
+| ------------------ | -------------------------------------------------------------------- | -------- | ----------------- | :------: |
+| `environment_name` | Name of the environment which will be used for all resources created | `string` | `retail-store-ar` |   yes    |
 
 ### Outputs
 
-| Name | Description |
-|------|-------------|
+| Name              | Description                               |
+| ----------------- | ----------------------------------------- |
 | `application_url` | URL where the application can be accessed |
