@@ -96,7 +96,7 @@ func router() *gin.Engine {
 
 func prepareContainer(ctx context.Context) (testcontainers.Container, string, error) {
 	req := testcontainers.ContainerRequest{
-		Image:        "mysql:5.7",
+		Image:        "mysql:8.0",
 		ExposedPorts: []string{"3306/tcp"},
 		WaitingFor:   wait.ForLog("3306"),
 		Env: map[string]string{

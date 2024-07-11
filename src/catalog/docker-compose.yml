@@ -1,4 +1,4 @@
-version: '2'
+version: "2"
 
 services:
   catalog:
@@ -24,7 +24,7 @@ services:
       - "8081:8080"
   # nosemgrep: yaml.docker-compose.security.writable-filesystem-service.writable-filesystem-service
   catalog-db:
-    image: mysql:5.7
+    image: mysql:8.0
     hostname: catalog-db
     restart: always
     security_opt:
