@@ -12,7 +12,7 @@ resource "kubernetes_namespace_v1" "adot" {
 resource "aws_eks_addon" "adot" {
   cluster_name                = module.eks_cluster.cluster_name
   addon_name                  = "adot"
-  addon_version               = "v0.88.0-eksbuild.2"
+  addon_version               = "v0.94.1-eksbuild.1"
   resolve_conflicts_on_create = "OVERWRITE"
   resolve_conflicts_on_update = "OVERWRITE"
   preserve                    = false
@@ -28,7 +28,6 @@ resource "aws_eks_addon" "adot" {
 }
 
 resource "kubernetes_role_v1" "adot" {
-
   metadata {
     name      = "eks:addon-manager"
     namespace = kubernetes_namespace_v1.adot.metadata[0].name
@@ -93,7 +92,6 @@ resource "kubernetes_role_v1" "adot" {
 }
 
 resource "kubernetes_role_binding_v1" "adot" {
-
   metadata {
     name      = "eks:addon-manager"
     namespace = kubernetes_namespace_v1.adot.metadata[0].name
@@ -112,7 +110,6 @@ resource "kubernetes_role_binding_v1" "adot" {
 }
 
 resource "kubernetes_cluster_role_v1" "adot" {
-
   metadata {
     name = "eks:addon-manager-otel"
   }
@@ -244,7 +241,6 @@ resource "kubernetes_cluster_role_v1" "adot" {
 }
 
 resource "kubernetes_cluster_role_binding_v1" "adot" {
-
   metadata {
     name = "eks:addon-manager-otel"
   }
@@ -258,7 +254,6 @@ resource "kubernetes_cluster_role_binding_v1" "adot" {
     kind      = "ClusterRole"
     name      = "eks:addon-manager-otel"
   }
-
 }
 
 module "iam_assumable_role_adot_amp" {

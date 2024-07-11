@@ -5,7 +5,7 @@ variable "environment_name" {
 variable "cluster_version" {
   description = "EKS cluster version."
   type        = string
-  default     = "1.24"
+  default     = "1.29"
 }
 
 variable "tags" {
