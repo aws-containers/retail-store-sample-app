@@ -52,3 +52,7 @@ resource "aws_iam_role_policy_attachment" "ecr_access" {
   role       = aws_iam_role.ecr_access.name
   policy_arn = data.aws_iam_policy.ecr_access.arn
 }
+
+locals {
+  access_role_arn = var.image_repository_type == "ECR_PUBLIC" ? null : aws_iam_role.ecr_access.arn
+}

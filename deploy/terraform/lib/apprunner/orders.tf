@@ -28,7 +28,7 @@ resource "aws_apprunner_service" "orders" {
     }
 
     authentication_configuration {
-      access_role_arn = aws_iam_role.ecr_access.arn
+      access_role_arn = local.access_role_arn
     }
   }
 

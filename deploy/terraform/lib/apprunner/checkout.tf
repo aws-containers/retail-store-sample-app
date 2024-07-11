@@ -17,7 +17,7 @@ module "app_runner_checkout" {
       image_repository_type = var.image_repository_type
     }
     authentication_configuration = {
-      access_role_arn = aws_iam_role.ecr_access.arn
+      access_role_arn = local.access_role_arn
     }
   }
 

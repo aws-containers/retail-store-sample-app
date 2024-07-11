@@ -10,8 +10,6 @@ module "app_runner_carts" {
         port = 8080
         runtime_environment_variables = {
           CARTS_DYNAMODB_TABLENAME = var.carts_dynamodb_table_name
-        }
-        runtime_environment_variables = {
           SPRING_PROFILES_ACTIVE = "dynamodb"
         }
       }
@@ -19,7 +17,7 @@ module "app_runner_carts" {
       image_repository_type = var.image_repository_type
     }
     authentication_configuration = {
-      access_role_arn = aws_iam_role.ecr_access.arn
+      access_role_arn = local.access_role_arn
     }
   }
 
