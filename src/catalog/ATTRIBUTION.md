@@ -3244,7 +3244,7 @@ SOFTWARE.
 
 ----
 
-### github.com/prometheus/client_golang/prometheus @v1.19.0
+### github.com/prometheus/client_golang/prometheus @v1.19.1
 
                                  Apache License
                            Version 2.0, January 2004
