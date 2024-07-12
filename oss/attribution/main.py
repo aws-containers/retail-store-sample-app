@@ -40,7 +40,7 @@ def find_license(path, license_name):
   candidates = []
 
   for root, directories, files in os.walk(path):
-    for name in files:
+    for name in sorted(files):
       if re.search(license_specific.format(license_name), name, re.IGNORECASE):
         return extract_license(os.path.join(root, name))
       if re.search(license, name, re.IGNORECASE):
