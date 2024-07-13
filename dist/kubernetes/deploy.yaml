@@ -19,7 +19,7 @@ metadata:
   name: catalog-db
 data:
   username: "Y2F0YWxvZw=="
-  password: "dnk1dzdEVEFGUjhVOEhhTA=="
+  password: "WkI4V1l2dFM5dndVNmlBNQ=="
 ---
 # Source: catalog/templates/configmap.yml
 apiVersion: v1
@@ -141,7 +141,7 @@ spec:
             readOnlyRootFilesystem: true
             runAsNonRoot: true
             runAsUser: 1000
-          image: "public.ecr.aws/aws-containers/retail-store-sample-catalog:0.8.0"
+          image: "public.ecr.aws/aws-containers/retail-store-sample-catalog:0.8.1"
           imagePullPolicy: IfNotPresent
           ports:
             - name: http
@@ -195,7 +195,7 @@ spec:
     spec:
       containers:
         - name: mysql
-          image: "public.ecr.aws/docker/library/mysql:5.7"
+          image: "public.ecr.aws/docker/library/mysql:8.0"
           imagePullPolicy: IfNotPresent
           env:
             - name: MYSQL_ROOT_PASSWORD
@@ -212,8 +212,6 @@ spec:
                 secretKeyRef:
                   name: catalog-db
                   key: password
-          args:
-            - "--ignore-db-dir=lost+found"
           volumeMounts:
             - name: data
               mountPath: /var/lib/mysql
@@ -355,7 +353,7 @@ spec:
             readOnlyRootFilesystem: true
             runAsNonRoot: true
             runAsUser: 1000
-          image: "public.ecr.aws/aws-containers/retail-store-sample-cart:0.8.0"
+          image: "public.ecr.aws/aws-containers/retail-store-sample-cart:0.8.1"
           imagePullPolicy: IfNotPresent
           ports:
             - name: http
@@ -436,7 +434,7 @@ metadata:
   name: orders-db
 data:
   username: "b3JkZXJz"
-  password: "NExHQUp2VHk1enY5RURhVQ=="
+  password: "YVYzZmhyTmJ2dmtwUzBBVQ=="
 ---
 # Source: orders/templates/rabbitmq-secret.yaml
 apiVersion: v1
@@ -451,7 +449,7 @@ kind: ConfigMap
 metadata:
   name: orders
 data:
-  SPRING_PROFILES_ACTIVE: rabbitmq
+  RETAIL_ORDERS_MESSAGING_PROVIDER: rabbitmq
   SPRING_DATASOURCE_URL: jdbc:postgresql://orders-postgresql:5432/orders
   SPRING_RABBITMQ_ADDRESSES: amqp://orders-rabbitmq:5672
 ---
@@ -596,7 +594,7 @@ spec:
             readOnlyRootFilesystem: true
             runAsNonRoot: true
             runAsUser: 1000
-          image: "public.ecr.aws/aws-containers/retail-store-sample-orders:0.8.0"
+          image: "public.ecr.aws/aws-containers/retail-store-sample-orders:0.8.1"
           imagePullPolicy: IfNotPresent
           ports:
             - name: http
@@ -650,7 +648,7 @@ spec:
     spec:
       containers:
         - name: postgresql
-          image: "postgres:16.1"
+          image: "public.ecr.aws/docker/library/postgres:16.1"
           imagePullPolicy: IfNotPresent
           env:
             - name: POSTGRES_DB
@@ -706,7 +704,7 @@ spec:
     spec:
       containers:
         - name: rabbitmq
-          image: "rabbitmq:3-management"
+          image: "public.ecr.aws/docker/library/rabbitmq:3-management"
           imagePullPolicy: IfNotPresent
           ports:
           - name: amqp
@@ -844,7 +842,7 @@ spec:
             readOnlyRootFilesystem: true
             runAsNonRoot: true
             runAsUser: 1000
-          image: "public.ecr.aws/aws-containers/retail-store-sample-checkout:0.8.0"
+          image: "public.ecr.aws/aws-containers/retail-store-sample-checkout:0.8.1"
           imagePullPolicy: IfNotPresent
           ports:
             - name: http
@@ -996,7 +994,7 @@ spec:
               drop:
               - ALL
             readOnlyRootFilesystem: false
-          image: "public.ecr.aws/aws-containers/retail-store-sample-assets:0.8.0"
+          image: "public.ecr.aws/aws-containers/retail-store-sample-assets:0.8.1"
           imagePullPolicy: IfNotPresent
           ports:
             - name: http
@@ -1130,7 +1128,7 @@ spec:
             readOnlyRootFilesystem: true
             runAsNonRoot: true
             runAsUser: 1000
-          image: "public.ecr.aws/aws-containers/retail-store-sample-ui:0.8.0"
+          image: "public.ecr.aws/aws-containers/retail-store-sample-ui:0.8.1"
           imagePullPolicy: IfNotPresent
           ports:
             - name: http
