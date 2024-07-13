@@ -10,8 +10,6 @@ RUN dnf --setopt=install_weak_deps=False install -q -y \
     && \
     dnf clean all
 
-ARG MAIN_PATH
-
 RUN mkdir -p "${GOPATH}/src" "${GOPATH}/bin" /appsrc
 
 WORKDIR /appsrc
@@ -19,7 +17,7 @@ WORKDIR /appsrc
 COPY . .
 
 ENV GOPROXY=direct
-RUN go build -o main $MAIN_PATH
+RUN go build -o main main.go
 
 # Final stage
 FROM public.ecr.aws/amazonlinux/amazonlinux:2023
