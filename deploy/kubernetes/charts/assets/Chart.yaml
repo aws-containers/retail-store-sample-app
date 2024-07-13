@@ -1,7 +1,5 @@
 apiVersion: v2
 name: assets
 description: A Helm chart for the AWS retail store containers sample application assets service
-
 type: application
-
 version: 0.0.1
