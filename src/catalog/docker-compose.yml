@@ -4,9 +4,6 @@ services:
   catalog:
     build:
       context: .
-      dockerfile: ../../images/go/Dockerfile
-      args:
-        MAIN_PATH: main.go
     image: microservices-demo/catalog
     hostname: catalog
     depends_on:
