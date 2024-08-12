@@ -19,31 +19,3 @@ pull_request_rules:
       queue:
         method: squash
         name: default
-  - name: Automatically approve and merge attribution changes
-    conditions:
-      - base=main
-      - head-repo-full-name=aws-containers/retail-store-sample-app
-      - title~=(Update OSS attribution)
-      - -label~=(blocked|do-not-merge)
-      - -merged
-      - -closed
-    actions:
-      review:
-        type: APPROVE
-      queue:
-        method: squash
-        name: default
-  - name: Automatically approve and merge release changes
-    conditions:
-      - base=main
-      - head-repo-full-name=aws-containers/retail-store-sample-app
-      - title~=(chore\(release\))
-      - -label~=(blocked|do-not-merge)
-      - -merged
-      - -closed
-    actions:
-      review:
-        type: APPROVE
-      queue:
-        method: squash
-        name: default
