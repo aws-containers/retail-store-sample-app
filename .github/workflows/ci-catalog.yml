@@ -49,4 +49,4 @@ jobs:
 
       - name: Build container image
         run: |
-          scripts/build-image.sh -s catalog -t ci --actions-cache
+          scripts/build-image.sh -s catalog -t ci
