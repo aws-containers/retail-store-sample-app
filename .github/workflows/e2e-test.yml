@@ -39,9 +39,9 @@ jobs:
 
       - name: Run Tests
         run: |
-          (cd deploy/docker-compose && TAG=e2e MYSQL_PASSWORD='test123' docker-compose up -d)
+          (cd deploy/docker-compose && TAG=e2e MYSQL_PASSWORD='test123' docker compose up -d)
           (bash scripts/e2e-compose.sh)
-          (cd deploy/docker-compose && docker-compose down)
+          (cd deploy/docker-compose && docker compose down)
 
   kubernetes:
     name: Kubernetes E2E Tests
