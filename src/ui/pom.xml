@@ -5,7 +5,7 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>3.3.1</version>
+		<version>3.3.3</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.amazon.sample</groupId>
@@ -18,7 +18,7 @@
 		<java.version>17</java.version>
 		<spring-cloud>2021.0.3</spring-cloud>
 		<spring-cloud-aws.version>2.4.2</spring-cloud-aws.version>
-		<org.mapstruct.version>1.5.5.Final</org.mapstruct.version>
+		<org.mapstruct.version>1.6.0</org.mapstruct.version>
 	</properties>
 
 	<dependencies>
