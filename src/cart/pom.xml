@@ -22,7 +22,7 @@
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <java.version>17</java.version>
-    <mapstruct.version>1.6.0</mapstruct.version>
+    <mapstruct.version>1.6.2</mapstruct.version>
   </properties>
 
   <dependencyManagement>
