@@ -77,10 +77,15 @@ Change directory to the Docker Compose deploy directory:
 cd dist/docker-compose
 ```
 
+Log in to the public ECR registry by following the instructions on the [AWS ECR documentation](https://docs.aws.amazon.com/AmazonECR/latest/public/public-registry-auth.html#public-registry-auth-token):
+```
+aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin public.ecr.aws
+```
+
 Use `docker compose` to run the application containers:
 
 ```
-MYSQL_PASSWORD='<some password>' docker compose --file dist/docker-compose/docker-compose.yml up
+MYSQL_PASSWORD='<some password>' docker compose --file docker-compose.yml up
 ```
 
 Open the frontend in a browser window:
@@ -92,7 +97,7 @@ http://localhost:8888
 To stop the containers in `docker compose` use Ctrl+C. To delete all the containers and related resources run:
 
 ```
-docker compose -f dist/docker-compose/docker-compose.yml down
+docker compose -f docker-compose.yml down
 ```
 
 ## Security
