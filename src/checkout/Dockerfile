@@ -1,3 +1,12 @@
+FROM node:20-alpine AS build
+WORKDIR /usr/src/app
+COPY --chown=node:node package*.json ./
+COPY --chown=node:node . .
+RUN npm run build
+RUN npm ci -f && npm cache clean --force
+USER node
+
+
 FROM public.ecr.aws/amazonlinux/amazonlinux:2023
 
 # We tell DNF not to install Recommends and Suggests packages, which are
@@ -26,12 +35,7 @@ RUN useradd \
 WORKDIR /app
 USER appuser
 
-COPY --chown=appuser:appuser package.json .
-COPY --chown=appuser:appuser package-lock.json .
-
-RUN npm ci
-
-ADD . /app
-RUN npm run build
+COPY --chown=node:node --from=build /usr/src/app/node_modules ./node_modules
+COPY --chown=node:node --from=build /usr/src/app/dist ./dist
 
 ENTRYPOINT [ "node", "dist/main.js" ]
