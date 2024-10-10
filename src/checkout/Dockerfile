@@ -2,8 +2,8 @@ FROM node:20-alpine AS build
 WORKDIR /usr/src/app
 COPY --chown=node:node package*.json ./
 COPY --chown=node:node . .
+RUN npm ci -f
 RUN npm run build
-RUN npm ci -f && npm cache clean --force
 USER node
 
 
@@ -14,7 +14,6 @@ FROM public.ecr.aws/amazonlinux/amazonlinux:2023
 # packages as minimal as possible.
 RUN dnf --setopt=install_weak_deps=False install -q -y \
     nodejs20 \
-    npm \
     shadow-utils \
     && \
     dnf clean all
