@@ -4,7 +4,7 @@ FROM public.ecr.aws/amazonlinux/amazonlinux:2023
 # weak dependencies in DNF terminology, thus keeping our installed set of
 # packages as minimal as possible.
 RUN dnf --setopt=install_weak_deps=False install -q -y \
-    nodejs \
+    nodejs20 \
     npm \
     shadow-utils \
     && \
