@@ -50,4 +50,4 @@ jobs:
 
       - name: Build container image
         run: |
-          scripts/build-image.sh -s checkout -t ci
+          scripts/build-image.sh -s checkout -t ci --multi-arch
