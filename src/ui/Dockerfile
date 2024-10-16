@@ -47,6 +47,8 @@ RUN useradd \
     --uid "$APPUID" \
     "$APPUSER"
 
+RUN curl -L https://github.com/aws-observability/aws-otel-java-instrumentation/releases/latest/download/aws-opentelemetry-agent.jar -o /opt/aws-opentelemetry-agent.jar
+
 WORKDIR /app
 USER appuser
 
