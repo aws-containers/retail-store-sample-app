@@ -1,0 +1,39 @@
+ecs/default
+    main.tf
+    output.tf
+    variables.tf
+
+lib
+    ecs
+        service
+            ecs
+            iam
+            outputs
+            sg
+            variables
+    alb
+    assets
+    carts
+    catalog
+    checkout
+    cluster
+    common
+    iam
+    main
+    orders
+    outputs
+    test
+    ui
+    variables
+    versions
+    vpc
+    vpc
+        vpc
+        outputs
+        variables
+    images
+        main
+        variables
+        outputs
+    tags    
+        main
