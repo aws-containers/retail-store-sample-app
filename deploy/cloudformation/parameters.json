@@ -1,0 +1,7 @@
+{
+    "Parameters": {
+      "EnvironmentName": "retail-store-ecs",
+      "ResourceBucket": "harrzjas-retail-demo-store",
+      "ResourceBucketRelativePath": "cloudformation"
+    }
+}

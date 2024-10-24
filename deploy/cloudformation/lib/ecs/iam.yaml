@@ -1,0 +1,65 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: IAM Roles and Policy for the Retail Store Sample App
+
+Resources:
+  # Creates a role that allows ECS task execution
+  TaskExecutionRole:
+    Type: AWS::IAM::Role
+    Properties:
+      RoleName: !Sub "${EnvironmentName}-task-role"
+      AssumeRolePolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+        - Effect: Allow
+          Principal:
+            Service: ecs-tasks.amazonaws.com
+          Action: 'sts:AssumeRole'
+      ManagedPolicyArns:
+      - arn:aws:iam::aws:policy/service-role/AmazonEC2ContainerServiceforEC2Role
+
+
+  # TaskExecutionRolePolicy:
+  #   Type: AWS::IAM::Policy
+  #   Properties:
+  #     PolicyArn: arn:aws:iam::aws:policy/service-role/AmazonEC2ContainerServiceforEC2Role
+  #     Roles:
+  #     - !Ref TaskExecutionRole
+
+  # TaskRole:
+  #   Type: AWS::IAM::Role
+  #   Properties:
+  #     RoleName: !Sub "${EnvironmentName}-task"
+  #     AssumeRolePolicyDocument:
+  #       Version: '2012-10-17'
+  #       Statement:
+  #       - Effect: Allow
+  #         Principal:
+  #           Service: ecs-tasks.amazonaws.com
+  #         Action: 'sts:AssumeRole'
+
+  # TaskRolePolicy:
+  #   Type: AWS::IAM::Policy
+  #   Properties:
+  #     PolicyArn: !Ref EcsExecPolicy
+  #     Roles:
+  #     - !Ref TaskRole
+
+  # EcsExecPolicy:
+  #   Type: AWS::IAM::Policy
+  #   Properties:
+  #     PolicyName: !Sub "${EnvironmentName}-ecs-exec"
+  #     PolicyDocument:
+  #       Version: '2012-10-17'
+  #       Statement:
+  #       - Effect: Allow
+  #         Action:
+  #         - ssmmessages:CreateControlChannel
+  #         - ssmmessages:CreateDataChannel
+  #         - ssmmessages:OpenControlChannel
+  #         - ssmmessages:OpenDataChannel
+  #         Resource: '*'
+
+Parameters:
+  EnvironmentName:
+    Type: String
+    Description: The name of the environment

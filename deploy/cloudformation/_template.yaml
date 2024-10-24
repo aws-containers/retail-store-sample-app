@@ -1,0 +1,46 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: Deploys the Retail Store Sample App
+
+Parameters:
+  ResourceBucket:
+    Type: String
+    Description: S3Bucket Bucket where the Resources are stored (cloudformation, images, lambda code)
+  
+  ResourceBucketRelativePath:
+    Type: String
+    Description: S3Bucket Path where the Resources are stored (cloudformation, images, lambda code) (i.e. path/path2), can be empty if resources are at the root of the bucket. MUST contain trailing /
+
+  EnvironmentName:
+    Type: String
+    Description: Name of environment chosen for deployment
+
+Resources:
+ #IAM
+  IAM:
+    Type: AWS::CloudFormation::Stack
+    Properties:
+      TemplateURL: !Sub https://s3.amazonaws.com/${ResourceBucket}/${ResourceBucketRelativePath}/lib/ecs/iam.yaml
+      Parameters:
+        EnvironmentName: !Ref EnvironmentName
+
+  # Buckets
+  # Buckets:
+  #   Type: AWS::CloudFormation::Stack
+  #   Properties:
+  #     TemplateURL: !Sub https://s3.amazonaws.com/${ResourceBucket}/${ResourceBucketRelativePath}cloudformation-templates/base/buckets.yaml
+  #     Parameters:
+  #       CleanupBucketLambdaArn: !Ref CleanupBucketLambdaArn
+
+  # VPC
+  # VPC:
+  #   Type: AWS::CloudFormation::Stack
+  #   DependsOn: OpenSearchRoleWaitCondition # Ensure role is fully consistent before network and ultimately ES domain is created
+  #   Properties:
+  #     TemplateURL: !Sub https://s3.amazonaws.com/${ResourceBucket}/${ResourceBucketRelativePath}cloudformation-templates/base/vpc.yaml
+  #     Parameters:
+  #       Name: !Ref AWS::StackName
+  #       VpcCIDR: 10.0.0.0/16
+  #       Subnet1CIDR: 10.215.10.0/24
+  #       Subnet2CIDR: 10.215.20.0/24
+  #       PublicSubnet1CIDR: 10.215.30.0/24
+  #       PublicSubnet2CIDR: 10.215.40.0/24
