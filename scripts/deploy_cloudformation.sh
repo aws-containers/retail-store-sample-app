@@ -12,23 +12,21 @@ STACK_NAME="promo-pandemonium-store"
 BUCKET=${1}
 STACK_CONTROL=${2}
 
-BUCKET_LOCATION="$(aws s3api get-bucket-location --bucket ${BUCKET}|grep ":"|cut -d\" -f4)"
-if [ -z "$BUCKET_LOCATION" ]; then
-    BUCKET_DOMAIN="s3.amazonaws.com"
-    BUCKET_LOCATION="eu-west-2"
-else
-    BUCKET_DOMAIN="s3-${BUCKET_LOCATION}.amazonaws.com"
-fi
+DEPLOYCF () {
+    cd ../
+    cfn-lint deploy/cloudformation/**/*.yaml 
+    aws s3 cp deploy/cloudformation/ s3://${BUCKET}/${S3PATH}/ --recursive 
+    aws cloudformation deploy --template-file deploy/cloudformation/_template.yaml  --stack-name ${STACK_NAME} --parameter-overrides file://deploy/cloudformation/parameters.json --capabilities CAPABILITY_NAMED_IAM --tags Purpose=Promo-Pandemonium-GameDay
+
+}
+
 
 
 case ${STACK_CONTROL} in
 
   # Deploy the main stack
   DEPLOY)
-    cd ../
-    cfn-lint deploy/cloudformation/**/*.yaml 
-    aws s3 cp deploy/cloudformation/ s3://${BUCKET}/${S3PATH}/ --recursive 
-    aws cloudformation deploy --template-file deploy/cloudformation/_template.yaml --stack-name ${STACK_NAME} --parameter-overrides file://deploy/cloudformation/parameters.json --capabilities CAPABILITY_NAMED_IAM --tags Purpose=Promo-Pandemonium-GameDay --disable-rollback
+    DEPLOYCF
     ;;
   # Check your Cloudformation templates for errors
   LINT)
@@ -37,11 +35,8 @@ case ${STACK_CONTROL} in
     ;;
   # First delete the Clouformation stack, then redeploy
   CLEAN)
-    cd ../
     aws cloudformation delete-stack --stack-name ${STACK_NAME}
-    cfn-lint deploy/cloudformation/**/*.yaml
-    aws s3 cp deploy/cloudformation/ s3://${BUCKET}/${S3PATH}/ --recursive 
-    aws cloudformation deploy --template-file deploy/cloudformation/_template.yaml --stack-name ${STACK_NAME} --parameter-overrides file://deploy/cloudformation/parameters.json --capabilities CAPABILITY_NAMED_IAM --tags Purpose=Promo-Pandemonium-GameDay --disable-rollback
+    DEPLOYCF
     ;;
   # Delete the Clouformation stack
   DELETE)
@@ -51,3 +46,4 @@ case ${STACK_CONTROL} in
     echo "Unknown command"
     ;;
 esac
+
