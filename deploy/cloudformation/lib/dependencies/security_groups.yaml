@@ -1,0 +1,72 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: Retail Store Sample App - Catalog RDS
+
+Parameters:
+  EnvironmentName:
+    Type: String
+  VpcId:
+    Type: AWS::EC2::VPC::Id
+
+# TODO - Check ECS user name needed
+Resources:
+  RDSSecurityGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: Allows access to the RDS DB on port 3306
+      VpcId: !Ref VpcId
+      SecurityGroupIngress:
+        - IpProtocol: tcp
+          FromPort: 3306
+          ToPort: 3306
+          SourceSecurityGroupId: !Ref ECSSecurityGroup
+      Tags:
+      - Key: Name
+        Value: !Sub "${EnvironmentName}"
+
+  ECSSecurityGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      VpcId: !Ref VpcId
+      GroupDescription: Control access to RDS
+      SecurityGroupIngress:
+        # Only allow inbound access to ECS from the ELB
+        - IpProtocol: tcp
+          FromPort: 80
+          ToPort: 80
+          SourceSecurityGroupId: !Ref ALBSecurityGroup
+      Tags:
+      - Key: Name
+        Value: !Sub "${EnvironmentName}"
+
+  ALBSecurityGroup:
+    Type: 'AWS::EC2::SecurityGroup'
+    Properties:
+      VpcId: !Ref VpcId
+      GroupName:  InternetAlbSG
+      GroupDescription: Enable HTTP/HTTPS access
+      SecurityGroupIngress:
+        - IpProtocol: 'tcp'
+          FromPort: '80'
+          ToPort: '80'
+          CidrIp: 0.0.0.0/0
+        - IpProtocol: 'tcp'
+          FromPort: '443'
+          ToPort: '443'
+          CidrIp: 0.0.0.0/0
+      Tags:
+      - Key: Name
+        Value: !Sub "${EnvironmentName}"
+
+Outputs:
+#Security Groups
+  RDSSecurityGroup:
+    Description: RDS Security Group Name
+    Value: !Ref RDSSecurityGroup
+
+  ECSSecurityGroup:
+    Description: ECS Security Group Name
+    Value: !Ref ECSSecurityGroup
+
+  ALBSecurityGroup:
+    Description: ALB Security Group Name
+    Value: !Ref ALBSecurityGroup

@@ -1,0 +1,62 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: Retail Store Sample App - Catalog RDS
+
+Parameters:
+  EnvironmentName:
+    Type: String
+  PrivateSubnets:
+    Type: CommaDelimitedList 
+    Description: Comma-delimited list of private subnet
+  AllowedSecurityGroupIds:
+    Type: CommaDelimitedList 
+    Description: Comma-delimited list of private subnet
+
+
+# TODO - Check ECS user name needed
+Resources:
+  CatalogDB:
+    Type: AWS::RDS::DBCluster
+    Properties:
+      Engine: aurora-mysql
+      EngineVersion: '8.0.mysql_aurora.3.07.1'
+      DBClusterIdentifier: !Sub "${EnvironmentName}-catalog"
+      MasterUsername: 'ecsuser'
+      MasterUserPassword: !Ref CatalogDBMasterPassword
+      DBSubnetGroupName: !Ref CatalogDBSubnetGroup
+      VpcSecurityGroupIds: !Ref AllowedSecurityGroupIds
+      DatabaseName: catalog
+      StorageEncrypted: true
+      DeletionProtection: false
+
+  CatalogDBInstance:
+    Type: AWS::RDS::DBInstance
+    Properties:
+      Engine: aurora-mysql
+      DBInstanceClass: db.t3.medium
+      DBClusterIdentifier: !Ref CatalogDB
+      PubliclyAccessible: false
+
+  CatalogDBSubnetGroup:
+    Type: AWS::RDS::DBSubnetGroup
+    Properties:
+      DBSubnetGroupDescription: Subnets available for the RDS DB
+      SubnetIds: !Ref PrivateSubnets
+
+  CatalogDBMasterPassword:
+    Type: AWS::SecretsManager::Secret
+    Properties:
+      Description: Catalog DB Master User
+      GenerateSecretString:
+        SecretStringTemplate: '{"username": "catalogmaster"}'
+        GenerateStringKey: password
+        PasswordLength: 10
+        ExcludeCharacters: '"@/\'
+
+
+Outputs:
+  CatalogDBEndpoint:
+    Description: Catalog DB Endpoint
+    Value: !GetAtt CatalogDB.DBClusterArn
+  CatalogDBMasterPasswordARN:
+    Description: Catalog DB Master Passowrd Secret ARN
+    Value: !GetAtt CatalogDBMasterPassword.Arn

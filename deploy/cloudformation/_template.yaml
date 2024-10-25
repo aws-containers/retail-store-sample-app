@@ -22,6 +22,17 @@ Resources:
       TemplateURL: !Sub https://s3.amazonaws.com/${ResourceBucket}/${ResourceBucketRelativePath}/lib/ecs/iam.yaml
       Parameters:
         EnvironmentName: !Ref EnvironmentName
+  
+  #RDS
+  RDS:
+    Type: AWS::CloudFormation::Stack
+    Properties:
+      TemplateURL: !Sub https://s3.amazonaws.com/${ResourceBucket}/${ResourceBucketRelativePath}/lib/dependencies/catalog_rds.yaml
+      Parameters:
+        EnvironmentName: !Ref EnvironmentName
+        # VpcId: !GetAtt VPC.Outputs.VpcId
+        PrivateSubnets: !GetAtt VPC.Outputs.PrivateSubnets
+        AllowedSecurityGroupIds: !GetAtt SecurityGroups.Outputs.RDSSecurityGroup
 
   # Buckets
   # Buckets:
@@ -31,7 +42,6 @@ Resources:
   #     Parameters:
   #       CleanupBucketLambdaArn: !Ref CleanupBucketLambdaArn
 
-  # VPC
   VPC:
     Type: AWS::CloudFormation::Stack
     Properties:
@@ -45,3 +55,11 @@ Resources:
         PublicSubnet1CIDR: 10.0.10.0/24
         PublicSubnet2CIDR: 10.0.11.0/24
         PublicSubnet3CIDR: 10.0.12.0/24
+  
+  SecurityGroups:
+    Type: AWS::CloudFormation::Stack
+    Properties:
+      TemplateURL: !Sub https://s3.amazonaws.com/${ResourceBucket}/${ResourceBucketRelativePath}/lib/dependencies/security_groups.yaml
+      Parameters:
+        EnvironmentName: !Ref EnvironmentName
+        VpcId: !GetAtt VPC.Outputs.VpcId
