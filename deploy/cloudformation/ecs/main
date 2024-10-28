@@ -1,0 +1,82 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: ECS Service with Service Connect
+
+Parameters:
+  ServiceName:
+    Type: String
+    Description: The name of the ECS service
+
+  TaskDefinitionArn:
+    Type: String
+    Description: The ARN of the task definition
+
+  ClusterName:
+    Type: String
+    Description: The name of the ECS cluster
+
+  ContainerName:
+    Type: String
+    Description: The name of the container in the task definition
+
+  ServiceConnectNamespaceName:
+    Type: String
+    Description: The name of the Service Connect namespace
+
+  ServiceConnectNamespaceArn:
+    Type: String
+    Description: The ARN of the Service Connect namespace
+
+Resources:
+  ECSService:
+    Type: AWS::ECS::Service
+    Properties:
+      ServiceName: !Ref ServiceName
+      TaskDefinition: !Ref TaskDefinitionArn
+      ClusterName: !Ref ClusterName
+      LaunchType: FARGATE
+      NetworkConfiguration:
+        AwsvpcConfiguration:
+          AssignPublicIp: DISABLED
+          SecurityGroups:
+            - !Ref ServiceSecurityGroup
+          Subnets:
+            - Subnet1
+            - Subnet2
+      ServiceRegistries:
+        - RegistryArn: !GetAtt ServiceDiscoveryService.Arn
+      ServiceConnectConfiguration:
+        Namespace: !Ref ServiceConnectNamespaceName
+        DiscoveryName: !Ref ContainerName
+
+  ServiceDiscoveryService:
+    Type: AWS::ServiceDiscovery::Service
+    Properties:
+      Name: !Ref ContainerName
+      DnsConfig:
+        DnsRecords:
+          - Type: A
+            TTL: 60
+        NamespaceId: !Ref ServiceConnectNamespaceArn
+      HealthCheckCustomConfig:
+        FailureThreshold: 1
+
+  ServiceSecurityGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: Security group for ECS service
+      SecurityGroupIngress:
+        - SourceSecurityGroupId: !Ref ServiceConnectSecurityGroup
+          IpProtocol: -1
+
+  ServiceConnectSecurityGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: Security group for Service Connect
+      SecurityGroupEgress:
+        - DestinationSecurityGroupId: !Ref ServiceSecurityGroup
+          IpProtocol: -1
+
+Outputs:
+  ServiceArn:
+    Description: The ARN of the ECS service
+    Value: !GetAtt ECSService.Arn

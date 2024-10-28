@@ -1,0 +1,153 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: ECS Service with Service Connect
+
+Parameters:
+  EnvironmentName:
+    Type: String
+  ServiceName:
+    Type: String
+  ContainerImage:
+    Type: String
+  HealthcheckPath:
+    Type: String
+  CloudWatchLogsGroupId:
+    Type: String
+  ClusterArn:
+    Type: String
+  SubnetIds:
+    Type: List<AWS::EC2::Subnet::Id>
+  ServiceDiscoveryNamespaceArn:
+    Type: String
+  ALBTargetGroupArn:
+    Type: String
+    Default: ''
+
+Resources:
+
+  TaskDefinition:
+    Type: AWS::ECS::TaskDefinition
+    Properties:
+      Family: !Sub "${EnvironmentName}-${ServiceName}"
+      TaskRoleArn: !GetAtt TaskRole.Arn
+      ExecutionRoleArn: !GetAtt TaskExecutionRole.Arn
+      NetworkMode: awsvpc
+      RequiresCompatibilities:
+        - FARGATE
+      Cpu: 1024
+      Memory: 2048
+      ContainerDefinitions:
+        - Name: application
+          Image: !Ref ContainerImage
+          PortMappings:
+            - ContainerPort: 8080
+              HostPort: 8080
+              Protocol: tcp
+          Essential: true
+          Environment: !Ref EnvironmentVariables
+          Secrets: !Ref Secrets
+          HealthCheck:
+            Command:
+              - "CMD-SHELL"
+              - "curl -f http://localhost:8080${HealthcheckPath} || exit 1"
+            Interval: 10
+            StartPeriod: 60
+            Retries: 3
+            Timeout: 5
+          LogConfiguration:
+            LogDriver: awslogs
+            Options:
+              awslogs-group: !Ref CloudWatchLogsGroupId
+              awslogs-region: !Ref 'AWS::Region'
+              awslogs-stream-prefix: !Ref ServiceName
+
+  EnvironmentVariables:
+    Type: AWS::ECS::TaskDefinition.EnvironmentVariable
+    Properties:
+      Name: Key
+      Value: Value
+
+  Secrets:
+    Type: AWS::ECS::TaskDefinition.Secret
+    Properties:
+      Name: SecretName
+      ValueFrom: arn:aws:secretsmanager:us-east-1:123456789012:secret:secret-name
+
+  TaskRole:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service: ecs-tasks.amazonaws.com
+            Action: "sts:AssumeRole"
+
+  TaskExecutionRole:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service: ecs-tasks.amazonaws.com
+            Action: "sts:AssumeRole"
+      ManagedPolicyArns:
+        - arn:aws:iam::aws:policy/service-role/AmazonECSTaskExecutionRolePolicy
+
+  SecurityGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: ECS Service Security Group
+      VpcId: !GetAtt Subnet.VpcId
+
+  Service:
+    Type: AWS::ECS::Service
+    DependsOn: SecurityGroup
+    Properties:
+      ServiceName: !Ref ServiceName
+      TaskDefinition: !Ref TaskDefinition
+      Cluster: !Ref ClusterArn
+      LaunchType: FARGATE
+      EnableExecuteCommand: true
+      DesiredCount: 1
+      NetworkConfiguration:
+        AwsvpcConfiguration:
+          AssignPublicIp: 'false'
+          SecurityGroups:
+            - !Ref SecurityGroup
+          Subnets: !Ref SubnetIds
+      ServiceConnectConfiguration:
+        Enabled: true
+        Namespace: !Ref ServiceDiscoveryNamespaceArn
+        Services:
+          - Name: !Ref ServiceName
+            ClientAliases:
+              - Hostname: !Ref ServiceName
+                Port: 80
+            DiscoveryName: !Ref ServiceName
+            PortName: application
+      LoadBalancers:
+        - ContainerName: application
+          ContainerPort: 8080
+          TargetGroupArn: !If [HasALB, !Ref ALBTargetGroupArn, !Ref 'AWS::NoValue']
+
+  Subnet:
+    Type: AWS::EC2::Subnet
+    Properties:
+      AvailabilityZone: !Select [0, !GetAZs '']
+      CidrBlock: 10.0.0.0/24
+      VpcId: !Ref VPC
+
+  VPC:
+    Type: AWS::EC2::VPC
+    Properties:
+      CidrBlock: 10.0.0.0/16
+      EnableDnsHostnames: true
+      EnableDnsSupport: true
+
+Outputs:
+  ServiceName:
+    Description: Name of the ECS Service
+    Value: !Ref Service

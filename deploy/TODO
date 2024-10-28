@@ -11,6 +11,13 @@ lib
             outputs
             sg
             variables
+    dependencies
+        catalog_rds - fix inbound security group once resolved dependency
+        dynamodb
+        elasticache
+        mq
+        orders_rds
+
     alb
     assets
     carts
@@ -37,3 +44,15 @@ lib
         outputs
     tags    
         main
+
+
+Cloudformation Structure
+
+_template.yaml
+    parameters
+    resources  
+        Type: Stack 
+        Properties: 
+            TemplateURL !Sub <s3 url>
+            Parameters:
+    outputs:

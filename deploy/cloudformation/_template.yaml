@@ -49,9 +49,9 @@ Resources:
       Parameters:
         EnvironmentName: !Ref EnvironmentName
         VpcCIDR: 10.0.0.0/16
-        Subnet1CIDR: 10.0.0.0/24
-        Subnet2CIDR: 10.0.1.0/24
-        Subnet3CIDR: 10.0.2.0/24
+        Subnet1CIDR: 10.0.1.0/24
+        Subnet2CIDR: 10.0.2.0/24
+        Subnet3CIDR: 10.0.3.0/24
         PublicSubnet1CIDR: 10.0.10.0/24
         PublicSubnet2CIDR: 10.0.11.0/24
         PublicSubnet3CIDR: 10.0.12.0/24
