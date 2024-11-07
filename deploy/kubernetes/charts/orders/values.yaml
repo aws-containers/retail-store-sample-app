@@ -112,8 +112,6 @@ postgresql:
 
   affinity: {}
 
-  topologySpreadConstraints: []
-
   persistentVolume:
     enabled: false
     annotations: {}
@@ -153,8 +151,6 @@ rabbitmq:
   tolerations: []
 
   affinity: {}
-
-  topologySpreadConstraints: []
 
   persistentVolume:
     enabled: false

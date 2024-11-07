@@ -19,10 +19,6 @@ spec:
       labels:
         {{- include "carts.dynamodb.selectorLabels" . | nindent 8 }}
     spec:
-      {{- with .carts.dynamodb.topologySpreadConstraints }}
-      topologySpreadConstraints:
-        {{- toYaml . | nindent 8 }}
-      {{- end }}
       {{- with .Values.imagePullSecrets }}
       imagePullSecrets:
         {{- toYaml . | nindent 8 }}

@@ -98,8 +98,6 @@ redis:
 
   affinity: {}
 
-  topologySpreadConstraints: []
-
 securityGroups:
   create: false
 

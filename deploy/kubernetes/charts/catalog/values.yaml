@@ -105,8 +105,6 @@ mysql:
 
   affinity: {}
 
-  topologySpreadConstraints: []
-
   persistentVolume:
     enabled: true
     annotations: {}

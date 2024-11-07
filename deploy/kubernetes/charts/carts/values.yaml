@@ -96,8 +96,6 @@ dynamodb:
 
   affinity: {}
 
-  topologySpreadConstraints: []
-
 opentelemetry:
   enabled: false
   instrumentation: ""

@@ -20,10 +20,6 @@ spec:
       labels:
         {{- include "orders.postgresql.selectorLabels" . | nindent 8 }}
     spec:
-      {{- with .Values.postgresql.topologySpreadConstraints }}
-      topologySpreadConstraints:
-        {{- toYaml . | nindent 8 }}
-      {{- end }}
       {{- with .Values.imagePullSecrets }}
       imagePullSecrets:
         {{- toYaml . | nindent 8 }}
