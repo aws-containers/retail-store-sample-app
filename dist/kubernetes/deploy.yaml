@@ -1162,4 +1162,17 @@ spec:
         - name: tmp-volume
           emptyDir:
             medium: Memory
-
+---
+# Source: ui/templates/hpa.yaml
+apiVersion: autoscaling/v1
+kind: HorizontalPodAutoscaler
+metadata:
+  name: ui
+spec:
+  minReplicas: 1
+  maxReplicas: 10
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: ui
+  targetCPUUtilizationPercentage: 80
