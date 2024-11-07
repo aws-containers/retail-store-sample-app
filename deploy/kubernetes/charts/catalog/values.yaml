@@ -104,19 +104,23 @@ mysql:
   affinity: {}
 
   persistentVolume:
-    enabled: false
+    enabled: true
     annotations: {}
     labels: {}
     accessModes:
       - ReadWriteOnce
-    size: 10Gi
-    # storageClass: gp2
+    size: 30Gi
+    storageClass: eks-auto-ebs-csi-sc
 
 securityGroups:
   create: false
-
   securityGroupIds: []
 
 opentelemetry:
   enabled: false
   instrumentation: ""
+
+pdb:
+  enabled: false
+  minAvailable: 2
+  maxUnavailable: 1

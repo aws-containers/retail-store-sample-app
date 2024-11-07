@@ -27,6 +27,10 @@ spec:
       labels:
         {{- include "ui.selectorLabels" . | nindent 8 }}
     spec:
+      {{- with .Values.topologySpreadConstraints }}
+      topologySpreadConstraints:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
       {{- with .Values.imagePullSecrets }}
       imagePullSecrets:
         {{- toYaml . | nindent 8 }}

@@ -79,7 +79,9 @@ endpoints: {}
 
 ## Ingress for load balancer
 ingress:
-  enabled: false
+  enabled: true
+  class: eks-auto-alb
+  
 
 istio:
   enabled: false
@@ -88,3 +90,8 @@ istio:
 opentelemetry:
   enabled: false
   instrumentation: ""
+
+pdb:
+  enabled: false
+  minAvailable: 2
+  maxUnavailable: 1
