@@ -60,6 +60,8 @@ tolerations: []
 
 affinity: {}
 
+topologySpreadConstraints: []
+
 metrics:
   enabled: true
   podAnnotations:
@@ -79,9 +81,7 @@ endpoints: {}
 
 ## Ingress for load balancer
 ingress:
-  enabled: true
-  class: eks-auto-alb
-  
+  enabled: false
 
 istio:
   enabled: false
@@ -91,7 +91,7 @@ opentelemetry:
   enabled: false
   instrumentation: ""
 
-pdb:
+podDisruptionBudget:
   enabled: false
   minAvailable: 2
   maxUnavailable: 1

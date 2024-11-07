@@ -19,6 +19,10 @@ spec:
       labels:
         {{- include "checkout.redis.selectorLabels" . | nindent 8 }}
     spec:
+      {{- with .Values.redis.topologySpreadConstraints }}
+      topologySpreadConstraints:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
       {{- with .Values.imagePullSecrets }}
       imagePullSecrets:
         {{- toYaml . | nindent 8 }}
