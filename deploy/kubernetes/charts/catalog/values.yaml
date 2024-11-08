@@ -106,13 +106,13 @@ mysql:
   affinity: {}
 
   persistentVolume:
-    enabled: true
+    enabled: false
     annotations: {}
     labels: {}
     accessModes:
       - ReadWriteOnce
     size: 30Gi
-    storageClass: eks-auto-ebs-csi-sc
+    storageClass: ""
 
 securityGroups:
   create: false
