@@ -83,6 +83,7 @@ endpoints:
 ## Ingress for load balancer
 ingress:
   enabled: false
+  # className: ""
 
 istio:
   enabled: false
