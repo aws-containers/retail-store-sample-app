@@ -73,7 +73,8 @@ configMap:
   create: true
   name: # if blank this will be generated
 
-endpoints: {}
+endpoints:
+  {}
   #catalog: http://catalog:80
   #carts: http://carts:80
   #orders: http://orders:80
