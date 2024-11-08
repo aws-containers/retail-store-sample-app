@@ -5,7 +5,7 @@ kind: ServiceAccount
 metadata:
   name: catalog
   labels:
-    helm.sh/chart: catalog-0.8.2
+    helm.sh/chart: catalog-0.8.3
     app.kubernetes.io/name: catalog
     app.kubernetes.io/instance: catalog
     app.kubernetes.io/component: service
@@ -19,7 +19,7 @@ metadata:
   name: catalog-db
 data:
   username: "Y2F0YWxvZw=="
-  password: "Rk9tUFhXbG9wUUpvR0p3TA=="
+  password: "bHZSNjcyVERqSURiVldvTg=="
 ---
 # Source: catalog/templates/configmap.yml
 apiVersion: v1
@@ -37,7 +37,7 @@ kind: Service
 metadata:
   name: catalog-mysql
   labels:
-    helm.sh/chart: catalog-0.8.2
+    helm.sh/chart: catalog-0.8.3
     app.kubernetes.io/name: catalog
     app.kubernetes.io/instance: catalog
     app.kubernetes.io/component: mysql
@@ -60,7 +60,7 @@ kind: Service
 metadata:
   name: catalog
   labels:
-    helm.sh/chart: catalog-0.8.2
+    helm.sh/chart: catalog-0.8.3
     app.kubernetes.io/name: catalog
     app.kubernetes.io/instance: catalog
     app.kubernetes.io/component: service
@@ -85,7 +85,7 @@ kind: Deployment
 metadata:
   name: catalog
   labels:
-    helm.sh/chart: catalog-0.8.2
+    helm.sh/chart: catalog-0.8.3
     app.kubernetes.io/name: catalog
     app.kubernetes.io/instance: catalog
     app.kubernetes.io/component: service
@@ -141,7 +141,7 @@ spec:
             readOnlyRootFilesystem: true
             runAsNonRoot: true
             runAsUser: 1000
-          image: "public.ecr.aws/aws-containers/retail-store-sample-catalog:0.8.2"
+          image: "public.ecr.aws/aws-containers/retail-store-sample-catalog:0.8.3"
           imagePullPolicy: IfNotPresent
           ports:
             - name: http
@@ -173,7 +173,7 @@ kind: StatefulSet
 metadata:
   name: catalog-mysql
   labels:
-    helm.sh/chart: catalog-0.8.2
+    helm.sh/chart: catalog-0.8.3
     app.kubernetes.io/name: catalog
     app.kubernetes.io/instance: catalog
     app.kubernetes.io/component: mysql
@@ -230,7 +230,7 @@ kind: ServiceAccount
 metadata:
   name: carts
   labels:
-    helm.sh/chart: carts-0.8.2
+    helm.sh/chart: carts-0.8.3
     app.kubernetes.io/name: carts
     app.kubernetes.io/instance: carts
     app.kubernetes.io/component: service
@@ -257,7 +257,7 @@ kind: Service
 metadata:
   name: carts-dynamodb
   labels:
-    helm.sh/chart: carts-0.8.2
+    helm.sh/chart: carts-0.8.3
     app.kubernetes.io/name: carts
     app.kubernetes.io/instance: carts
     app.kubernetes.io/component: dynamodb
@@ -280,7 +280,7 @@ kind: Service
 metadata:
   name: carts
   labels:
-    helm.sh/chart: carts-0.8.2
+    helm.sh/chart: carts-0.8.3
     app.kubernetes.io/name: carts
     app.kubernetes.io/instance: carts
     app.kubernetes.io/component: service
@@ -305,7 +305,7 @@ kind: Deployment
 metadata:
   name: carts
   labels:
-    helm.sh/chart: carts-0.8.2
+    helm.sh/chart: carts-0.8.3
     app.kubernetes.io/name: carts
     app.kubernetes.io/instance: carts
     app.kubernetes.io/component: service
@@ -353,7 +353,7 @@ spec:
             readOnlyRootFilesystem: true
             runAsNonRoot: true
             runAsUser: 1000
-          image: "public.ecr.aws/aws-containers/retail-store-sample-cart:0.8.2"
+          image: "public.ecr.aws/aws-containers/retail-store-sample-cart:0.8.3"
           imagePullPolicy: IfNotPresent
           ports:
             - name: http
@@ -385,7 +385,7 @@ kind: Deployment
 metadata:
   name: carts-dynamodb
   labels:
-    helm.sh/chart: carts-0.8.2
+    helm.sh/chart: carts-0.8.3
     app.kubernetes.io/name: carts
     app.kubernetes.io/instance: carts
     app.kubernetes.io/component: dynamodb
@@ -420,7 +420,7 @@ kind: ServiceAccount
 metadata:
   name: orders
   labels:
-    helm.sh/chart: orders-0.8.2
+    helm.sh/chart: orders-0.8.3
     app.kubernetes.io/name: orders
     app.kubernetes.io/instance: orders
     app.kubernetes.io/component: service
@@ -434,7 +434,7 @@ metadata:
   name: orders-db
 data:
   username: "b3JkZXJz"
-  password: "SVFYWEg3eTQ2ZVQ1ZnFGTg=="
+  password: "cnZWTjFoeWRFSlRCN05oRw=="
 ---
 # Source: orders/templates/rabbitmq-secret.yaml
 apiVersion: v1
@@ -459,7 +459,7 @@ kind: Service
 metadata:
   name: orders-postgresql
   labels:
-    helm.sh/chart: orders-0.8.2
+    helm.sh/chart: orders-0.8.3
     app.kubernetes.io/name: orders
     app.kubernetes.io/instance: orders
     app.kubernetes.io/component: postgresql
@@ -482,7 +482,7 @@ kind: Service
 metadata:
   name: orders-rabbitmq
   labels:
-    helm.sh/chart: orders-0.8.2
+    helm.sh/chart: orders-0.8.3
     app.kubernetes.io/name: orders
     app.kubernetes.io/instance: orders
     app.kubernetes.io/component: rabbitmq
@@ -509,7 +509,7 @@ kind: Service
 metadata:
   name: orders
   labels:
-    helm.sh/chart: orders-0.8.2
+    helm.sh/chart: orders-0.8.3
     app.kubernetes.io/name: orders
     app.kubernetes.io/instance: orders
     app.kubernetes.io/component: service
@@ -534,7 +534,7 @@ kind: Deployment
 metadata:
   name: orders
   labels:
-    helm.sh/chart: orders-0.8.2
+    helm.sh/chart: orders-0.8.3
     app.kubernetes.io/name: orders
     app.kubernetes.io/instance: orders
     app.kubernetes.io/component: service
@@ -594,7 +594,7 @@ spec:
             readOnlyRootFilesystem: true
             runAsNonRoot: true
             runAsUser: 1000
-          image: "public.ecr.aws/aws-containers/retail-store-sample-orders:0.8.2"
+          image: "public.ecr.aws/aws-containers/retail-store-sample-orders:0.8.3"
           imagePullPolicy: IfNotPresent
           ports:
             - name: http
@@ -626,7 +626,7 @@ kind: StatefulSet
 metadata:
   name: orders-postgresql
   labels:
-    helm.sh/chart: orders-0.8.2
+    helm.sh/chart: orders-0.8.3
     app.kubernetes.io/name: orders
     app.kubernetes.io/instance: orders
     app.kubernetes.io/component: postgresql
@@ -682,7 +682,7 @@ kind: StatefulSet
 metadata:
   name: orders-rabbitmq
   labels:
-    helm.sh/chart: orders-0.8.2
+    helm.sh/chart: orders-0.8.3
     app.kubernetes.io/name: orders
     app.kubernetes.io/instance: orders
     app.kubernetes.io/component: rabbitmq
@@ -727,7 +727,7 @@ kind: ServiceAccount
 metadata:
   name: checkout
   labels:
-    helm.sh/chart: checkout-0.8.2
+    helm.sh/chart: checkout-0.8.3
     app.kubernetes.io/name: checkout
     app.kubernetes.io/instance: checkout
     app.kubernetes.io/component: service
@@ -749,7 +749,7 @@ kind: Service
 metadata:
   name: checkout-redis
   labels:
-    helm.sh/chart: checkout-0.8.2
+    helm.sh/chart: checkout-0.8.3
     app.kubernetes.io/name: checkout
     app.kubernetes.io/instance: checkout
     app.kubernetes.io/component: redis
@@ -772,7 +772,7 @@ kind: Service
 metadata:
   name: checkout
   labels:
-    helm.sh/chart: checkout-0.8.2
+    helm.sh/chart: checkout-0.8.3
     app.kubernetes.io/name: checkout
     app.kubernetes.io/instance: checkout
     app.kubernetes.io/component: service
@@ -797,7 +797,7 @@ kind: Deployment
 metadata:
   name: checkout
   labels:
-    helm.sh/chart: checkout-0.8.2
+    helm.sh/chart: checkout-0.8.3
     app.kubernetes.io/name: checkout
     app.kubernetes.io/instance: checkout
     app.kubernetes.io/component: service
@@ -842,7 +842,7 @@ spec:
             readOnlyRootFilesystem: true
             runAsNonRoot: true
             runAsUser: 1000
-          image: "public.ecr.aws/aws-containers/retail-store-sample-checkout:0.8.2"
+          image: "public.ecr.aws/aws-containers/retail-store-sample-checkout:0.8.3"
           imagePullPolicy: IfNotPresent
           ports:
             - name: http
@@ -874,7 +874,7 @@ kind: Deployment
 metadata:
   name: checkout-redis
   labels:
-    helm.sh/chart: checkout-0.8.2
+    helm.sh/chart: checkout-0.8.3
     app.kubernetes.io/name: checkout
     app.kubernetes.io/instance: checkout
     app.kubernetes.io/component: redis
@@ -909,7 +909,7 @@ kind: ServiceAccount
 metadata:
   name: assets
   labels:
-    helm.sh/chart: assets-0.8.2
+    helm.sh/chart: assets-0.8.3
     app.kubernetes.io/name: assets
     app.kubernetes.io/instance: assets
     app.kubernetes.io/component: service
@@ -930,7 +930,7 @@ kind: Service
 metadata:
   name: assets
   labels:
-    helm.sh/chart: assets-0.8.2
+    helm.sh/chart: assets-0.8.3
     app.kubernetes.io/name: assets
     app.kubernetes.io/instance: assets
     app.kubernetes.io/component: service
@@ -955,7 +955,7 @@ kind: Deployment
 metadata:
   name: assets
   labels:
-    helm.sh/chart: assets-0.8.2
+    helm.sh/chart: assets-0.8.3
     app.kubernetes.io/name: assets
     app.kubernetes.io/instance: assets
     app.kubernetes.io/component: service
@@ -994,7 +994,7 @@ spec:
               drop:
               - ALL
             readOnlyRootFilesystem: false
-          image: "public.ecr.aws/aws-containers/retail-store-sample-assets:0.8.2"
+          image: "public.ecr.aws/aws-containers/retail-store-sample-assets:0.8.3"
           imagePullPolicy: IfNotPresent
           ports:
             - name: http
@@ -1027,7 +1027,7 @@ kind: ServiceAccount
 metadata:
   name: ui
   labels:
-    helm.sh/chart: ui-0.8.2
+    helm.sh/chart: ui-0.8.3
     app.kubernetes.io/name: ui
     app.kubernetes.io/instance: ui
     app.kubernetes.io/component: service
@@ -1053,7 +1053,7 @@ kind: Service
 metadata:
   name: ui
   labels:
-    helm.sh/chart: ui-0.8.2
+    helm.sh/chart: ui-0.8.3
     app.kubernetes.io/name: ui
     app.kubernetes.io/instance: ui
     app.kubernetes.io/component: service
@@ -1078,7 +1078,7 @@ kind: Deployment
 metadata:
   name: ui
   labels:
-    helm.sh/chart: ui-0.8.2
+    helm.sh/chart: ui-0.8.3
     app.kubernetes.io/name: ui
     app.kubernetes.io/instance: ui
     app.kubernetes.io/component: service
@@ -1128,7 +1128,7 @@ spec:
             readOnlyRootFilesystem: true
             runAsNonRoot: true
             runAsUser: 1000
-          image: "public.ecr.aws/aws-containers/retail-store-sample-ui:0.8.2"
+          image: "public.ecr.aws/aws-containers/retail-store-sample-ui:0.8.3"
           imagePullPolicy: IfNotPresent
           ports:
             - name: http
@@ -1153,3 +1153,4 @@ spec:
         - name: tmp-volume
           emptyDir:
             medium: Memory
+
