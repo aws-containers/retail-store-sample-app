@@ -1,1 +1,2 @@
 test-connection.yaml
+deploy/kubernetes/charts/**/*.yaml

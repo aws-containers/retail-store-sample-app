@@ -59,6 +59,8 @@ tolerations: []
 
 affinity: {}
 
+topologySpreadConstraints: []
+
 metrics:
   enabled: true
   podAnnotations:
@@ -110,13 +112,17 @@ mysql:
     accessModes:
       - ReadWriteOnce
     size: 10Gi
-    # storageClass: gp2
+    storageClass: ""
 
 securityGroups:
   create: false
-
   securityGroupIds: []
 
 opentelemetry:
   enabled: false
   instrumentation: ""
+
+podDisruptionBudget:
+  enabled: false
+  minAvailable: 2
+  maxUnavailable: 1

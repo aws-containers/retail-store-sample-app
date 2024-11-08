@@ -1153,4 +1153,3 @@ spec:
         - name: tmp-volume
           emptyDir:
             medium: Memory
-

@@ -9,6 +9,9 @@ metadata:
     {{- toYaml . | nindent 4 }}
   {{- end }}
 spec:
+  {{- if .Values.service.loadBalancerClass }}
+  loadBalancerClass: {{ .Values.service.loadBalancerClass }}
+  {{- end }}
   type: {{ .Values.service.type }}
   ports:
     - port: {{ .Values.service.port }}

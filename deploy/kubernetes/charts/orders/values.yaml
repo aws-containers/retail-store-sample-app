@@ -59,6 +59,8 @@ tolerations: []
 
 affinity: {}
 
+topologySpreadConstraints: []
+
 metrics:
   enabled: true
   podAnnotations:
@@ -167,3 +169,8 @@ securityGroups:
 opentelemetry:
   enabled: false
   instrumentation: ""
+
+podDisruptionBudget:
+  enabled: false
+  minAvailable: 2
+  maxUnavailable: 1
