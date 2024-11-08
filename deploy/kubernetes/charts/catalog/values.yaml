@@ -111,7 +111,7 @@ mysql:
     labels: {}
     accessModes:
       - ReadWriteOnce
-    size: 30Gi
+    size: 10Gi
     storageClass: ""
 
 securityGroups:
