@@ -90,6 +90,13 @@ jobs:
           # Push all images
           scripts/build-image.sh -r 'public.ecr.aws/aws-containers' -t $TAG --multi-arch -p
 
+      - name: Push Helm Charts
+        env:
+          TAG: "${{ github.event.inputs.tag }}"
+        run: |
+          # Push all charts
+          scripts/push-charts.sh -r 'public.ecr.aws/aws-containers'
+
   release:
     name: Release
     needs: [tag, images]
