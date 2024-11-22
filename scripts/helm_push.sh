@@ -3,9 +3,8 @@
 set -Eeuo pipefail
 
 script_dir=$(cd "$(dirname "${BASH_SOURCE[0]}")" &>/dev/null && pwd -P)
-SOURCE_DIR="$script_dir/../deploy/kubernetes/charts"
-REGION="us-east-1"
-REPO_URL="public.ecr.aws/b3u2a5x0"
+
+CHARTS_DIR="$script_dir/../deploy/kubernetes/charts"
 
 usage() {
   cat <<EOF
@@ -23,7 +22,7 @@ EOF
 
 parse_params() {
   # default values of variables set from params
-  repository=''
+  repository='public.ecr.aws/aws-containers'
   while :; do
     case "${1-}" in
     -h | --help) usage ;;
@@ -48,30 +47,30 @@ parse_params "$@"
 # Function to publish Helm chart to ECR
 publish_chart() {
     local chart_dir=$1
-    local chart_name=$(basename "$chart_dir")
-   # local helm_repository=$2
+
+    local chart_name=$(yq '.name' $chart_dir/Chart.yaml)
+    local chart_version=$(yq '.version' $chart_dir/Chart.yaml)
     
     echo "Publishing chart: $chart_name"
+
+    helm dependency build $chart_dir
     
     # Package the Helm chart
     helm package "$chart_dir" --destination /tmp/
-    #echo $helm_repository
         
     # Push the Helm chart to ECR
-    helm push /tmp/"${chart_name}-"*.tgz "oci://${ECR_REPO_NAME}/"
+    helm push /tmp/${chart_name}-${chart_version}.tgz "oci://${repository}/"
     
     # Clean up the packaged chart file
-    rm /tmp/"${chart_name}-"*.tgz
+    rm /tmp/${chart_name}-${chart_version}.tgz
 }
 
 # Main script execution
 main() {
-    # Ensure AWS CLI is configured for ECR public
-  #  aws ecr-public get-login-password --region us-east-1 | helm registry login --username AWS --password-stdin "${ECR_REPO_NAME}"
-   ECR_REPO_NAME="$REPO_URL/$repository"
-   aws ecr-public get-login-password --region us-east-1 | helm registry login --username AWS --password-stdin "${ECR_REPO_NAME}"
+  aws ecr-public get-login-password --region us-east-1 | helm registry login --username AWS --password-stdin "${repository}"
+
   # Recursively find and process Helm charts
-    find "$SOURCE_DIR" -name Chart.yaml -exec dirname {} \; | sort -z | while read -r chart_dir; do
+    find "$CHARTS_DIR" -name Chart.yaml -not -path "*/opentelemetry/*" -exec dirname {} \; | sort -z | while read -r chart_dir; do
         publish_chart "$chart_dir" 
     done
 }
@@ -79,4 +78,4 @@ main() {
 # Run the main function
 main
 
-echo "All charts have been published to $REPO_URL"
+echo "All charts have been published to $repository"
