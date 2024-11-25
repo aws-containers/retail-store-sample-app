@@ -12,7 +12,7 @@ data:
   CARTS_DYNAMODB_CREATETABLE: "true"
   AWS_ACCESS_KEY_ID: key
   AWS_SECRET_ACCESS_KEY: secret
-  CARTS_DYNAMODB_ENDPOINT: http://carts-dynamodb:8000
+  CARTS_DYNAMODB_ENDPOINT: http://{{ include "carts.dynamodb.fullname" . }}:8000
   {{- end }}
   {{- end }}
 {{- end }}
