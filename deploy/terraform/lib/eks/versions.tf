@@ -7,9 +7,9 @@ terraform {
       version = ">= 4.48"
     }
     kubernetes = {
-      source  = "hashicorp/kubernetes"
-      version = ">= 2.10"
-      configuration_aliases = [ kubernetes.cluster, kubernetes.addons ]
+      source                = "hashicorp/kubernetes"
+      version               = ">= 2.10"
+      configuration_aliases = [kubernetes.cluster, kubernetes.addons]
     }
     helm = {
       source  = "hashicorp/helm"

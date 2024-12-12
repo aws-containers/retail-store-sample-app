@@ -1,6 +1,7 @@
 variable "environment_name" {
-  type    = string
-  default = "retail-store"
+  description = "Name of the environment"
+  type        = string
+  default     = "retail-store"
 }
 
 variable "istio_enabled" {

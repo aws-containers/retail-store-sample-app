@@ -12,7 +12,6 @@ resource "kubernetes_namespace_v1" "adot" {
 resource "aws_eks_addon" "adot" {
   cluster_name                = module.eks_cluster.cluster_name
   addon_name                  = "adot"
-  addon_version               = "v0.94.1-eksbuild.1"
   resolve_conflicts_on_create = "OVERWRITE"
   resolve_conflicts_on_update = "OVERWRITE"
   preserve                    = false
