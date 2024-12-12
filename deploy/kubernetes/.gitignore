@@ -1,2 +1,4 @@
 tilt_option.json
 .random_password
+Chart.lock
+**/charts/*.tgz
