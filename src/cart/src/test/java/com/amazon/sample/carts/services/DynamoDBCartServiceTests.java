@@ -59,7 +59,7 @@ public class DynamoDBCartServiceTests extends AbstractServiceTests {
 
     @Container
     public static GenericContainer dynamodbContainer =
-            new GenericContainer<>("amazon/dynamodb-local:1.13.3")
+            new GenericContainer<>("amazon/dynamodb-local:1.20.0")
                     .withExposedPorts(DYNAMODB_PORT);
 
     @Override
