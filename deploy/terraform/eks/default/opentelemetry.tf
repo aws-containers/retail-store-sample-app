@@ -10,7 +10,7 @@ resource "kubectl_manifest" "otel_instrumentation" {
     "kind"       = "Instrumentation"
     "metadata" = {
       "name"      = "default-instrumentation"
-      "namespace" = "${module.retail_app_eks.adot_namespace}"
+      "namespace" = module.retail_app_eks.adot_namespace
     }
     "spec" = {
       "env" = [

@@ -39,5 +39,6 @@ output "configure_kubectl" {
 }
 
 output "adot_namespace" {
-  value = kubernetes_namespace_v1.adot.metadata[0].name
+  description = "Namespace where ADOT is deployed"
+  value       = kubernetes_namespace_v1.adot.metadata[0].name
 }
