@@ -37,7 +37,7 @@ services:
         condition: service_healthy
 
   carts-db:
-    image: amazon/dynamodb-local:1.13.1
+    image: amazon/dynamodb-local:1.20.0
     hostname: carts-db
     restart: always
     cap_drop:
