@@ -39,8 +39,8 @@ public class HomeController extends BaseController {
     }
 
     @GetMapping("/")
-    public String index() {
-        return "redirect:/home";
+    public String index(final Model model, final ServerHttpRequest request) {
+        return home(model, request);
     }
 
     @GetMapping("/home")
