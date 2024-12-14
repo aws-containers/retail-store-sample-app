@@ -7631,7 +7631,7 @@ THE SOFTWARE.
 
 ----
 
-### golang.org/x/crypto/sha3 @v0.24.0
+### golang.org/x/crypto/sha3 @v0.31.0
 
 Copyright (c) 2009 The Go Authors. All rights reserved.
 
@@ -7699,7 +7699,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 ----
 
-### golang.org/x/sys @v0.22.0
+### golang.org/x/sys @v0.28.0
 
 Copyright (c) 2009 The Go Authors. All rights reserved.
 
@@ -7733,7 +7733,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 ----
 
-### golang.org/x/text @v0.16.0
+### golang.org/x/text @v0.21.0
 
 Copyright (c) 2009 The Go Authors. All rights reserved.
 
