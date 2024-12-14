@@ -18752,7 +18752,7 @@ You may add additional accurate notices of copyright ownership.
 
 ----
 
-### org.mapstruct:mapstruct @1.6.2 - https://mapstruct.org/mapstruct/
+### org.mapstruct:mapstruct @1.6.3 - https://mapstruct.org/mapstruct/
 
  Copyright MapStruct Authors.
 
@@ -18784,11 +18784,11 @@ You may add additional accurate notices of copyright ownership.
      freemarker/ext/jsp/web-jsptaglibrary_2_1.xsd
 
 
-[Source code](https://repo.maven.apache.org/maven2/org/mapstruct/mapstruct/1.6.2/mapstruct-1.6.2-sources.jar)
+[Source code](https://repo.maven.apache.org/maven2/org/mapstruct/mapstruct/1.6.3/mapstruct-1.6.3-sources.jar)
 
 ----
 
-### org.mapstruct:mapstruct-processor @1.6.2 - https://mapstruct.org/mapstruct-processor/
+### org.mapstruct:mapstruct-processor @1.6.3 - https://mapstruct.org/mapstruct-processor/
 
  Copyright MapStruct Authors.
 
@@ -18820,7 +18820,7 @@ You may add additional accurate notices of copyright ownership.
      freemarker/ext/jsp/web-jsptaglibrary_2_1.xsd
 
 
-[Source code](https://repo.maven.apache.org/maven2/org/mapstruct/mapstruct-processor/1.6.2/mapstruct-processor-1.6.2-sources.jar)
+[Source code](https://repo.maven.apache.org/maven2/org/mapstruct/mapstruct-processor/1.6.3/mapstruct-processor-1.6.3-sources.jar)
 
 ----
 
