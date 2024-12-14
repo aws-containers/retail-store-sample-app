@@ -49,3 +49,5 @@ jobs:
           title: "chore(deps): Update OSS attribution for ${{ matrix.component }}"
           commit-message: "[Automated] Updating OSS attribution documents"
           delete-branch: true
+          labels: |
+            automerge

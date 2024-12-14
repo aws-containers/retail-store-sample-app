@@ -95,7 +95,7 @@ jobs:
           TAG: "${{ github.event.inputs.tag }}"
         run: |
           # Push all charts
-          scripts/push-charts.sh -r 'public.ecr.aws/aws-containers'
+          scripts/helm_push.sh -r 'public.ecr.aws/aws-containers'
 
   release:
     name: Release
