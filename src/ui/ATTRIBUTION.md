@@ -13050,7 +13050,7 @@ You may add additional accurate notices of copyright ownership.
 
 ----
 
-### org.mapstruct:mapstruct @1.6.2 - https://mapstruct.org/mapstruct/
+### org.mapstruct:mapstruct @1.6.3 - https://mapstruct.org/mapstruct/
 
  Copyright MapStruct Authors.
 
@@ -13082,7 +13082,7 @@ You may add additional accurate notices of copyright ownership.
      freemarker/ext/jsp/web-jsptaglibrary_2_1.xsd
 
 
-[Source code](https://repo.maven.apache.org/maven2/org/mapstruct/mapstruct/1.6.2/mapstruct-1.6.2-sources.jar)
+[Source code](https://repo.maven.apache.org/maven2/org/mapstruct/mapstruct/1.6.3/mapstruct-1.6.3-sources.jar)
 
 ----
 
@@ -19846,7 +19846,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 ----
 
-### org.springframework.cloud:spring-cloud-gateway-webflux @4.1.5 - https://spring.io/spring-cloud/spring-cloud-gateway/spring-cloud-gateway-webflux
+### org.springframework.cloud:spring-cloud-gateway-webflux @4.1.6 - https://spring.io/spring-cloud/spring-cloud-gateway/spring-cloud-gateway-webflux
 
                                  Apache License
                            Version 2.0, January 2004
@@ -20051,7 +20051,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
    limitations under the License.
 
 
-[Source code](https://repo.maven.apache.org/maven2/org/springframework/cloud/spring-cloud-gateway-webflux/4.1.5/spring-cloud-gateway-webflux-4.1.5-sources.jar)
+[Source code](https://repo.maven.apache.org/maven2/org/springframework/cloud/spring-cloud-gateway-webflux/4.1.6/spring-cloud-gateway-webflux-4.1.6-sources.jar)
 
 ----
 
