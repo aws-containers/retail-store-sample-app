@@ -12,8 +12,6 @@ orders: {}
 
 ui:
   endpoints:
-image:
-  tag: 0.8.4
     catalog: http://catalog:80
     carts: http://carts:80
     checkout: http://checkout:80
