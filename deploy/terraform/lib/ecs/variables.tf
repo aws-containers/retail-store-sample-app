@@ -1,10 +1,12 @@
 variable "environment_name" {
-  type = string
+  type        = string
+  description = "Name of the environment"
 }
 
 variable "tags" {
   description = "List of tags to be associated with resources."
   default     = {}
+  type        = any
 }
 
 variable "vpc_id" {
@@ -34,69 +36,86 @@ variable "container_image_overrides" {
 }
 
 variable "catalog_db_endpoint" {
-  type = string
+  type        = string
+  description = "Endpoint of the catalog database"
 }
 
 variable "catalog_db_port" {
-  type = string
+  type        = string
+  description = "Port of the catalog database"
 }
 
 variable "catalog_db_name" {
-  type = string
+  type        = string
+  description = "Name of the catalog database"
 }
 
 variable "catalog_db_username" {
-  type = string
+  type        = string
+  description = "Username for the catalog database"
 }
 
 variable "catalog_db_password" {
-  type = string
+  type        = string
+  description = "Password for the catalog database"
 }
 
 variable "carts_dynamodb_table_name" {
-  type = string
+  type        = string
+  description = "DynamoDB table name for the carts service"
 }
 
 variable "carts_dynamodb_policy_arn" {
-  type = string
+  type        = string
+  description = "IAM policy for DynamoDB table for the carts service"
 }
 
 variable "orders_db_endpoint" {
-  type = string
+  type        = string
+  description = "Endpoint of the orders database"
 }
 
 variable "orders_db_port" {
-  type = string
+  type        = string
+  description = "Port of the orders database"
 }
 
 variable "orders_db_name" {
-  type = string
+  type        = string
+  description = "Name of the orders database"
 }
 
 variable "orders_db_username" {
-  type = string
+  type        = string
+  description = "Username for the orders database"
 }
 
 variable "orders_db_password" {
-  type = string
+  type        = string
+  description = "Username for the password database"
 }
 
 variable "checkout_redis_endpoint" {
-  type = string
+  type        = string
+  description = "Endpoint of the checkout redis"
 }
 
 variable "checkout_redis_port" {
-  type = string
+  type        = string
+  description = "Port of the checkout redis"
 }
 
 variable "mq_endpoint" {
-  type = string
+  type        = string
+  description = "Endpoint of the shared MQ"
 }
 
 variable "mq_username" {
-  type = string
+  type        = string
+  description = "Username for the shared MQ"
 }
 
 variable "mq_password" {
-  type = string
+  type        = string
+  description = "Password for the shared MQ"
 }
