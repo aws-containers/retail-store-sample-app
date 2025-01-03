@@ -19,27 +19,25 @@
 import { IsOptional, IsString } from 'class-validator';
 
 export class ShippingAddress {
+  @IsString()
+  firstName: string;
 
   @IsString()
-  firstName : string;
+  lastName: string;
 
   @IsString()
-  lastName : string;
-
-  @IsString()
-  address1 : string;
+  address1: string;
 
   @IsString()
   @IsOptional()
-  address2 : string;
+  address2: string;
 
   @IsString()
-  city : string;
+  city: string;
 
   @IsString()
-  state : string;
+  state: string;
 
   @IsString()
-  zip : string;
-
+  zip: string;
 }

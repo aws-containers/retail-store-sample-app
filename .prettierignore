@@ -1,2 +1,7 @@
 test-connection.yaml
 deploy/kubernetes/charts/**/*.yaml
+deploy/kubernetes/charts/**/*.yml
+dist
+ATTRIBUTION.md
+deploy/terraform/eks/**/*.yaml
+src/**/target

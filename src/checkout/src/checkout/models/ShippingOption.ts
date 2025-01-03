@@ -19,17 +19,15 @@
 import { IsInt, IsNumber, IsString } from 'class-validator';
 
 export class ShippingOption {
-
   @IsString()
-  name : string;
+  name: string;
 
   @IsInt()
-  amount : number;
+  amount: number;
 
   @IsString()
-  token : string;
+  token: string;
 
   @IsInt()
-  estimatedDays : number;
-
+  estimatedDays: number;
 }
