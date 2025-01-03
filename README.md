@@ -35,6 +35,17 @@ The application has been deliberately over-engineered to generate multiple de-co
 
 The following sections provide quickstart instructions for various platforms. All of these assume that you have cloned this repository locally and are using a CLI thats current directory is the root of the code repository.
 
+### Terraform
+
+The following options are available to deploy the application using Terraform:
+
+| Name                                                    | Description                                                                                                     |
+| ------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- |
+| [Amazon EKS](./deploy/terraform/eks/default/)           | Deploys the application to Amazon EKS using other AWS services for dependencies, such as RDS, DynamoDB etc.     |
+| [Amazon EKS (Minimal)](./deploy/terraform/eks/minimal/) | Deploys the application to Amazon EKS using in-cluster dependencies instead of RDS, DynamoDB etc.               |
+| [Amazon ECS](./deploy/terraform/ecs/default/)           | Deploys the application to Amazon ECS using other AWS services for dependencies, such as RDS, DynamoDB etc.     |
+| [AWS App Runner](./deploy/terraform/apprunner/)         | Deploys the application to AWS App Runner using other AWS services for dependencies, such as RDS, DynamoDB etc. |
+
 ### Kubernetes
 
 This deployment method will run the application in an existing Kubernetes cluster.
@@ -78,6 +89,7 @@ cd dist/docker-compose
 ```
 
 Log in to the public ECR registry by following the instructions on the [AWS ECR documentation](https://docs.aws.amazon.com/AmazonECR/latest/public/public-registry-auth.html#public-registry-auth-token):
+
 ```
 aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin public.ecr.aws
 ```
