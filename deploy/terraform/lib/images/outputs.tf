@@ -19,4 +19,6 @@ output "result" {
       url = local.ui_image
     }, zipmap(["repository", "tag"], split(":", local.ui_image)))
   }
+
+  description = "Computed image results"
 }

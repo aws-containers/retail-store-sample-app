@@ -16,10 +16,9 @@
  * SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-let Checkout = require('./Checkout');
+let Checkout = require("./Checkout");
 
 class CheckoutReview extends Checkout {
-
   constructor(baseUrl) {
     super(baseUrl);
   }

@@ -97,4 +97,6 @@ resource "aws_ecs_service" "this" {
       container_port   = 8080
     }
   }
+
+  tags = var.tags
 }
