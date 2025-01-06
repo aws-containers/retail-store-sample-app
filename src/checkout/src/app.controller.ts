@@ -21,7 +21,9 @@ import { HealthCheck, HealthCheckService } from '@nestjs/terminus';
 
 @Controller()
 export class AppController {
-  constructor(private healthCheckService: HealthCheckService) {}
+  constructor(
+    private healthCheckService: HealthCheckService,
+  ){}
 
   @Get('health')
   @HealthCheck()

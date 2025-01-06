@@ -4,8 +4,8 @@ resource "aws_kms_key" "cmk" {
 }
 
 resource "random_string" "random_mq_secret" {
-  length  = 4
-  special = false
+  length           = 4
+  special          = false
 }
 
 resource "aws_secretsmanager_secret" "mq" {

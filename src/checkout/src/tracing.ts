@@ -1,4 +1,6 @@
-import { CompositePropagator } from '@opentelemetry/core';
+import {
+  CompositePropagator,
+} from '@opentelemetry/core';
 import { SimpleSpanProcessor } from '@opentelemetry/sdk-trace-base';
 import { getNodeAutoInstrumentations } from '@opentelemetry/auto-instrumentations-node';
 import { B3InjectEncoding, B3Propagator } from '@opentelemetry/propagator-b3';
@@ -12,9 +14,14 @@ import { AWSXRayIdGenerator } from '@opentelemetry/id-generator-aws-xray';
 
 const otelSDK = new NodeSDK({
   traceExporter: new OTLPTraceExporter(),
-  spanProcessor: new SimpleSpanProcessor(new OTLPTraceExporter()),
+  spanProcessor: new SimpleSpanProcessor(
+    new OTLPTraceExporter()
+  ),
   contextManager: new AsyncLocalStorageContextManager(),
-  resourceDetectors: [envDetector, awsEc2Detector],
+  resourceDetectors: [
+    envDetector,
+    awsEc2Detector,
+  ],
   instrumentations: [getNodeAutoInstrumentations()],
   idGenerator: new AWSXRayIdGenerator(),
 });
@@ -28,7 +35,7 @@ process.on('SIGTERM', () => {
     .shutdown()
     .then(
       () => console.log('SDK shut down successfully'),
-      (err) => console.log('Error shutting down SDK', err),
+      err => console.log('Error shutting down SDK', err)
     )
     .finally(() => process.exit(0));
 });

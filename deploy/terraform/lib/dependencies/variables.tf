@@ -1,11 +1,9 @@
 variable "environment_name" {
-  type        = string
-  description = "Name of the environment"
+  type = string
 }
 
 variable "vpc_id" {
-  type        = string
-  description = "VPC ID for the resources"
+  type = string
 }
 
 variable "subnet_ids" {
@@ -14,28 +12,27 @@ variable "subnet_ids" {
 }
 
 variable "tags" {
-  description = "List of tags to be associated with resources."
+  description = "A map of tags to add to all resources"
   default     = {}
-  type        = any
+}
+
+variable "availability_zones" {
+  type = list(string)
 }
 
 variable "catalog_security_group_id" {
-  type        = string
-  description = "Security group ID of the catalog component"
+  type = string
 }
 
 variable "orders_security_group_id" {
-  type        = string
-  description = "Security group ID of the orders component"
+  type = string
 }
 
 variable "checkout_security_group_id" {
-  type        = string
-  description = "Security group ID of the checkout component"
+  type = string
 }
 
 variable "allowed_security_group_ids" {
-  type        = list(string)
-  default     = []
-  description = "List of additional allowed security group IDs"
+  type    = list(string)
+  default = []
 }

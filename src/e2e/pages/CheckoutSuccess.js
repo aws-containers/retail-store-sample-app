@@ -16,9 +16,10 @@
  * SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-let Page = require("./Page");
+let Page = require('./Page');
 
 class CheckoutSuccess extends Page {
+
   constructor(baseUrl) {
     super(baseUrl);
   }

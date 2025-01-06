@@ -34,11 +34,15 @@ describe('AppController (e2e)', () => {
   });
 
   it('/health (GET)', () => {
-    return request(app.getHttpServer()).get('/health').expect(200);
+    return request(app.getHttpServer())
+      .get('/health')
+      .expect(200);
   });
 
   it('/checkout/test123 (GET)', () => {
-    return request(app.getHttpServer()).get('/checkout/test123').expect(404);
+    return request(app.getHttpServer())
+      .get('/checkout/test123')
+      .expect(404);
   });
 
   it('/checkout/test124 (POST)', () => {
@@ -52,31 +56,31 @@ describe('AppController (e2e)', () => {
 const valid = {
   customerEmail: 'asdasd@asdasd.com',
   items: [
-    {
-      id: 'a1',
-      name: 'A1',
-      quantity: 1,
-      unitCost: 123,
-      totalCost: 123,
-      imageUrl: 'localhost:8080/image.jpg',
-    },
-    {
-      id: 'b1',
-      name: 'B1',
-      quantity: 1,
-      unitCost: 123,
-      totalCost: 123,
-      imageUrl: 'localhost:8080/image.jpg',
-    },
+      {
+          id: 'a1',
+          name: 'A1',
+          quantity: 1,
+          unitCost: 123,
+          totalCost: 123,
+          imageUrl: "localhost:8080/image.jpg"
+      },
+      {
+        id: 'b1',
+        name: 'B1',
+        quantity: 1,
+        unitCost: 123,
+        totalCost: 123,
+        imageUrl: "localhost:8080/image.jpg"
+      }
   ],
   shippingAddress: {
-    firstName: 'John',
-    lastName: 'Doe',
-    address1: '999 Main St.',
-    address2: '#123',
-    city: 'Sometown',
-    state: 'AB',
-    zip: '12345',
+      'firstName': 'John',
+      'lastName': 'Doe',
+      'address1': '999 Main St.',
+      'address2': '#123',
+      'city': 'Sometown',
+      'state': 'AB',
+      'zip': '12345'
   },
-  subtotal: 492,
+  subtotal: 492
 };

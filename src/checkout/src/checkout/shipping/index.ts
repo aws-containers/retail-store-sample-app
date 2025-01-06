@@ -16,5 +16,5 @@
  * SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-export { MockShippingService } from './MockShippingService';
-export { IShippingService } from './IShippingService';
+export {MockShippingService} from './MockShippingService'
+export {IShippingService} from './IShippingService'

@@ -53,141 +53,141 @@ paths:
   /catalogue:
     get:
       consumes:
-        - application/json
+      - application/json
       description: Get catalog
       parameters:
-        - description: Tagged products to include
-          in: query
-          name: tags
-          type: string
-        - description: Order of response
-          in: query
-          name: order
-          type: string
-        - description: Page number
-          in: query
-          name: page
-          type: integer
-        - description: Page size
-          in: query
-          name: size
-          type: integer
+      - description: Tagged products to include
+        in: query
+        name: tags
+        type: string
+      - description: Order of response
+        in: query
+        name: order
+        type: string
+      - description: Page number
+        in: query
+        name: page
+        type: integer
+      - description: Page size
+        in: query
+        name: size
+        type: integer
       produces:
-        - application/json
+      - application/json
       responses:
         "200":
           description: OK
           schema:
             items:
-              $ref: "#/definitions/model.Product"
+              $ref: '#/definitions/model.Product'
             type: array
         "400":
           description: Bad Request
           schema:
-            $ref: "#/definitions/httputil.HTTPError"
+            $ref: '#/definitions/httputil.HTTPError'
         "404":
           description: Not Found
           schema:
-            $ref: "#/definitions/httputil.HTTPError"
+            $ref: '#/definitions/httputil.HTTPError'
         "500":
           description: Internal Server Error
           schema:
-            $ref: "#/definitions/httputil.HTTPError"
+            $ref: '#/definitions/httputil.HTTPError'
       summary: Get catalog
       tags:
-        - catalog
+      - catalog
   /catalogue/product/{id}:
     get:
       consumes:
-        - application/json
+      - application/json
       description: Get catalog
       parameters:
-        - description: product ID
-          in: path
-          name: id
-          required: true
-          type: string
+      - description: product ID
+        in: path
+        name: id
+        required: true
+        type: string
       produces:
-        - application/json
+      - application/json
       responses:
         "200":
           description: OK
           schema:
-            $ref: "#/definitions/model.Product"
+            $ref: '#/definitions/model.Product'
         "400":
           description: Bad Request
           schema:
-            $ref: "#/definitions/httputil.HTTPError"
+            $ref: '#/definitions/httputil.HTTPError'
         "404":
           description: Not Found
           schema:
-            $ref: "#/definitions/httputil.HTTPError"
+            $ref: '#/definitions/httputil.HTTPError'
         "500":
           description: Internal Server Error
           schema:
-            $ref: "#/definitions/httputil.HTTPError"
+            $ref: '#/definitions/httputil.HTTPError'
       summary: Get catalog
       tags:
-        - catalog
+      - catalog
   /catalogue/size:
     get:
       consumes:
-        - application/json
+      - application/json
       description: Get catalog size
       parameters:
-        - description: Tagged products to include
-          in: query
-          name: tags
-          type: string
+      - description: Tagged products to include
+        in: query
+        name: tags
+        type: string
       produces:
-        - application/json
+      - application/json
       responses:
         "200":
           description: OK
           schema:
-            $ref: "#/definitions/model.CatalogSizeResponse"
+            $ref: '#/definitions/model.CatalogSizeResponse'
         "400":
           description: Bad Request
           schema:
-            $ref: "#/definitions/httputil.HTTPError"
+            $ref: '#/definitions/httputil.HTTPError'
         "404":
           description: Not Found
           schema:
-            $ref: "#/definitions/httputil.HTTPError"
+            $ref: '#/definitions/httputil.HTTPError'
         "500":
           description: Internal Server Error
           schema:
-            $ref: "#/definitions/httputil.HTTPError"
+            $ref: '#/definitions/httputil.HTTPError'
       summary: Get catalog size
       tags:
-        - catalog
+      - catalog
   /catalogue/tags:
     get:
       consumes:
-        - application/json
+      - application/json
       description: get tags
       produces:
-        - application/json
+      - application/json
       responses:
         "200":
           description: OK
           schema:
             items:
-              $ref: "#/definitions/model.Tag"
+              $ref: '#/definitions/model.Tag'
             type: array
         "400":
           description: Bad Request
           schema:
-            $ref: "#/definitions/httputil.HTTPError"
+            $ref: '#/definitions/httputil.HTTPError'
         "404":
           description: Not Found
           schema:
-            $ref: "#/definitions/httputil.HTTPError"
+            $ref: '#/definitions/httputil.HTTPError'
         "500":
           description: Internal Server Error
           schema:
-            $ref: "#/definitions/httputil.HTTPError"
+            $ref: '#/definitions/httputil.HTTPError'
       summary: List tags
       tags:
-        - catalog
+      - catalog
 swagger: "2.0"

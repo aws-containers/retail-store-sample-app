@@ -74,12 +74,12 @@ output "orders_db_arn" {
 
 output "carts_dynamodb_table_arn" {
   description = "ARN of the carts DynamoDB table"
-  value       = module.dynamodb_carts.dynamodb_table_arn
+  value       = module.dynamodb-carts.dynamodb_table_arn
 }
 
 output "carts_dynamodb_table_name" {
   description = "Name of the carts DynamoDB table"
-  value       = module.dynamodb_carts.dynamodb_table_id
+  value       = module.dynamodb-carts.dynamodb_table_id
 }
 
 output "carts_dynamodb_policy_arn" {
@@ -114,21 +114,21 @@ output "mq_user" {
 }
 
 output "checkout_elasticache_arn" {
-  value       = module.checkout_elasticache_redis.arn
+  value       = module.checkout-elasticache-redis.arn
   description = "Checkout Redis ElastiCache ARN."
 }
 
 output "checkout_elasticache_primary_endpoint" {
-  value       = module.checkout_elasticache_redis.endpoint
+  value       = module.checkout-elasticache-redis.endpoint
   description = "Checkout Redis hostname"
 }
 
 output "checkout_elasticache_reader_endpoint" {
-  value       = module.checkout_elasticache_redis.reader_endpoint_address
+  value       = module.checkout-elasticache-redis.reader_endpoint_address
   description = "Checkout Redis reader hostname"
 }
 
 output "checkout_elasticache_port" {
-  value       = module.checkout_elasticache_redis.port
+  value       = module.checkout-elasticache-redis.port
   description = "Checkout Redis port"
 }

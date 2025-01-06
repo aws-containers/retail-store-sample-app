@@ -27,7 +27,6 @@ To run against Docker Compose running locally:
 ### NPM
 
 The tests can be run locally using NPM. To do so the following components must be installed:
-
 - NodeJS >= 16 & NPM
 - Chrome web browser
 

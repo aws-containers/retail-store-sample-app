@@ -33,7 +33,7 @@ scenarios:
             lastName: Doe
             email: jdoe789@example.com
             address1: 123 Main Street
-            address2:
+            address2: 
             city: New York
             state: NY
             zip: 12345

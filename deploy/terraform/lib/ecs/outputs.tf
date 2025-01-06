@@ -4,16 +4,13 @@ output "ui_service_url" {
 }
 
 output "catalog_security_group_id" {
-  value       = module.catalog_service.task_security_group_id
-  description = "Security group ID of the catalog service"
+  value = module.catalog_service.task_security_group_id
 }
 
 output "checkout_security_group_id" {
-  value       = module.checkout_service.task_security_group_id
-  description = "Security group ID of the checkout service"
+  value = module.checkout_service.task_security_group_id
 }
 
 output "orders_security_group_id" {
-  value       = module.orders_service.task_security_group_id
-  description = "Security group ID of the orders service"
+  value = module.orders_service.task_security_group_id
 }

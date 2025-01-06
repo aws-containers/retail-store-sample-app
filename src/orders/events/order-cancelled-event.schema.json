@@ -10,5 +10,5 @@
       "$ref": "order.schema.json"
     }
   },
-  "required": ["order"]
+  "required": [ "order" ]
 }

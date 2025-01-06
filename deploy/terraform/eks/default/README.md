@@ -3,7 +3,6 @@
 This Terraform module creates all the necessary infrastructure and deploys the retail sample application on [Amazon Elastic Kubernetes Service](https://aws.amazon.com/eks/) (EKS). This configuration will deploy all application dependencies using AWS managed services such as Amazon RDS and Amazon DynamoDB.
 
 It provides:
-
 - VPC with public and private subnets
 - EKS cluster and managed node groups in multiple availability zones
 - All application dependencies such as RDS, DynamoDB table, Elasticache etc.
@@ -16,7 +15,6 @@ NOTE: This will create resources in your AWS account which will incur costs. You
 ## Usage
 
 Pre-requisites for this are:
-
 - AWS, Terraform and kubectl installed locally
 - AWS CLI configured and authenticated with account to deploy to
 
@@ -65,14 +63,14 @@ This section documents the variables and outputs of the Terraform configuration.
 
 ### Inputs
 
-| Name                    | Description                                                                                                                                                                                        | Type     | Default        | Required |
-| ----------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | -------------- | :------: |
-| `environment_name`      | Name of the environment which will be used for all resources created                                                                                                                               | `string` | `retail-store` |   yes    |
-| `opentelemetry_enabled` | Flag to enable OpenTelemetry, which will install the AWS Distro for OpenTelemetry addon in the EKS cluster, create OpenTelemetry collectors and configure the application components appropriately | `bool`   | `false`        |    no    |
-| `istio_enabled`         | Flag to enable Istio, which will install Istio in the EKS cluster and configure the application components appropriately                                                                           | `bool`   | `false`        |    no    |
+| Name | Description | Type | Default | Required |
+|------|-------------|------|---------|:--------:|
+| `environment_name` | Name of the environment which will be used for all resources created | `string` | `retail-store` | yes |
+| `opentelemetry_enabled` | Flag to enable OpenTelemetry, which will install the AWS Distro for OpenTelemetry addon in the EKS cluster, create OpenTelemetry collectors and configure the application components appropriately | `bool` | `false` | no |
+| `istio_enabled` | Flag to enable Istio, which will install Istio in the EKS cluster and configure the application components appropriately | `bool` | `false` | no |
 
 ### Outputs
 
-| Name                | Description                                            |
-| ------------------- | ------------------------------------------------------ |
+| Name | Description |
+|------|-------------|
 | `configure_kubectl` | AWS CLI command to configure `kubectl` for EKS cluster |

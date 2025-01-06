@@ -16,19 +16,20 @@
  * SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-let Page = require("./Page");
+let Page = require('./Page');
 
 class Cart extends Page {
+
   constructor(baseUrl) {
     super(baseUrl);
   }
 
   getPath() {
-    return "/cart";
+    return '/cart';
   }
 
   getItems() {
-    return element(by.id("basket")).all(by.css(".cart-item"));
+    return element(by.id('basket')).all(by.css('.cart-item'));
   }
 }
 module.exports = Cart;

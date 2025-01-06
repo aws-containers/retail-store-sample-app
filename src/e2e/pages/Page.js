@@ -24,31 +24,31 @@ class Page {
   }
 
   async home() {
-    await element(by.id("menu-home")).click();
-  }
+    await element(by.id('menu-home')).click();
+  };
 
   async catalog() {
-    await element(by.id("menu-catalog")).click();
-  }
+    await element(by.id('menu-catalog')).click();
+  };
 
   async cart() {
-    await element(by.id("go-cart")).click();
-  }
+    await element(by.id('go-cart')).click();
+  };
 
   async get(path) {
     return await browser.get(path);
-  }
+  };
 
   async go() {
     return await this.get(this.getUrl());
-  }
+  };
 
   getTitle() {
     return browser.getTitle();
-  }
+  };
 
   getBreadcrumb() {
-    return element(by.css(".breadcrumb-item.active"));
+    return element(by.css('.breadcrumb-item.active'))
   }
 
   getPath() {
@@ -56,7 +56,7 @@ class Page {
   }
 
   getUrl() {
-    return this.baseUrl + this.getPath();
+    return this.baseUrl+this.getPath();
   }
 }
 module.exports = Page;

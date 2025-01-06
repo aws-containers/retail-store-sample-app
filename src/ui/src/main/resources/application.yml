@@ -8,7 +8,7 @@ endpoints:
   carts: false #http://localhost:8082
   orders: false #http://localhost:8083
   assets: false #http://localhost:8084
-  checkout: false #http://localhost:8085
+  checkout:  false #http://localhost:8085
   logging: false
   http:
     keep-alive: true
@@ -23,4 +23,4 @@ management:
   endpoints:
     web:
       exposure:
-        include: "*"
+        include: '*'

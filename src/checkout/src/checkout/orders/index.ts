@@ -16,6 +16,6 @@
  * SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-export { HttpOrdersService } from './HttpOrdersService';
-export { MockOrdersService } from './MockOrdersService';
-export { IOrdersService } from './IOrdersService';
+export {HttpOrdersService} from './HttpOrdersService'
+export {MockOrdersService} from './MockOrdersService'
+export {IOrdersService} from './IOrdersService'

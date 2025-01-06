@@ -22,29 +22,31 @@ import { CheckoutRequest } from './CheckoutRequest';
 import { ShippingRates } from './ShippingRates';
 
 export class Checkout {
+
   @ValidateNested()
   @Type(() => CheckoutRequest)
-  request: CheckoutRequest;
+  request : CheckoutRequest;
 
   @ValidateNested()
   @Type(() => ShippingRates)
-  shippingRates: ShippingRates;
+  shippingRates : ShippingRates;
 
   @IsString()
-  paymentId: string;
+  paymentId : string;
 
   @IsString()
-  paymentToken: string;
+  paymentToken : string;
 
   @IsInt()
   @Min(-1)
-  shipping: number;
+  shipping : number;
 
   @IsInt()
   @Min(-1)
-  tax: number;
+  tax : number;
 
   @IsInt()
   @Min(-1)
-  total: number;
+  total : number;
+
 }

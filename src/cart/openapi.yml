@@ -22,11 +22,11 @@ paths:
         "200":
           description: OK
           content:
-            "*/*":
+            '*/*':
               schema:
                 type: array
                 items:
-                  $ref: "#/components/schemas/Item"
+                  $ref: '#/components/schemas/Item'
     post:
       tags:
         - carts
@@ -42,15 +42,15 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/Item"
+              $ref: '#/components/schemas/Item'
         required: true
       responses:
         "201":
           description: Created
           content:
-            "*/*":
+            '*/*':
               schema:
-                $ref: "#/components/schemas/Item"
+                $ref: '#/components/schemas/Item'
     patch:
       tags:
         - carts
@@ -66,7 +66,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/Item"
+              $ref: '#/components/schemas/Item'
         required: true
       responses:
         "202":
@@ -87,9 +87,9 @@ paths:
         "200":
           description: OK
           content:
-            "*/*":
+            '*/*':
               schema:
-                $ref: "#/components/schemas/Cart"
+                $ref: '#/components/schemas/Cart'
     delete:
       tags:
         - carts
@@ -105,9 +105,9 @@ paths:
         "202":
           description: Accepted
           content:
-            "*/*":
+            '*/*':
               schema:
-                $ref: "#/components/schemas/Cart"
+                $ref: '#/components/schemas/Cart'
   /carts/{customerId}/merge:
     get:
       tags:
@@ -149,9 +149,9 @@ paths:
         "200":
           description: OK
           content:
-            "*/*":
+            '*/*':
               schema:
-                $ref: "#/components/schemas/Item"
+                $ref: '#/components/schemas/Item'
     delete:
       tags:
         - carts
@@ -192,4 +192,4 @@ components:
         items:
           type: array
           items:
-            $ref: "#/components/schemas/Item"
+            $ref: '#/components/schemas/Item'

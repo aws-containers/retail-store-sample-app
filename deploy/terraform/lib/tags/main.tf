@@ -1,6 +1,5 @@
 variable "environment_name" {
-  type        = string
-  description = "Name of the environment"
+  type = string
 }
 
 output "result" {
@@ -8,5 +7,4 @@ output "result" {
     environment-name = var.environment_name
     created-by       = "retail-store-sample-app"
   }
-  description = "Computed tag results"
 }

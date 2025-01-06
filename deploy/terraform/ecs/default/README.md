@@ -3,7 +3,6 @@
 This Terraform module creates all the necessary infrastructure and deploys the retail sample application on [Amazon Elastic Container Service](https://aws.amazon.com/ecs/).
 
 It provides:
-
 - VPC with public and private subnets
 - ECS cluster using Fargate for compute
 - All application dependencies such as RDS, DynamoDB table, Elasticache etc.
@@ -15,7 +14,6 @@ NOTE: This will create resources in your AWS account which will incur costs. You
 ## Usage
 
 Pre-requisites for this are:
-
 - AWS, Terraform and kubectl installed locally
 - AWS CLI configured and authenticated with account to deploy to
 
@@ -43,12 +41,12 @@ This section documents the variables and outputs of the Terraform configuration.
 
 ### Inputs
 
-| Name               | Description                                                          | Type     | Default            | Required |
-| ------------------ | -------------------------------------------------------------------- | -------- | ------------------ | :------: |
-| `environment_name` | Name of the environment which will be used for all resources created | `string` | `retail-store-ecs` |   yes    |
+| Name | Description | Type | Default | Required |
+|------|-------------|------|---------|:--------:|
+| `environment_name` | Name of the environment which will be used for all resources created | `string` | `retail-store-ecs` | yes |
 
 ### Outputs
 
-| Name              | Description                               |
-| ----------------- | ----------------------------------------- |
+| Name | Description |
+|------|-------------|
 | `application_url` | URL where the application can be accessed |

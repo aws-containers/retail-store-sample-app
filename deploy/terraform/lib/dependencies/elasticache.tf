@@ -1,4 +1,4 @@
-module "checkout_elasticache_redis" {
+module "checkout-elasticache-redis" {
   source  = "cloudposse/elasticache-redis/aws"
   version = "0.52.0"
 

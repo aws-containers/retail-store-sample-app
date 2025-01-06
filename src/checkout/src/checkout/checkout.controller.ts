@@ -16,15 +16,7 @@
  * SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-import {
-  Body,
-  Controller,
-  Get,
-  Inject,
-  NotFoundException,
-  Param,
-  Post,
-} from '@nestjs/common';
+import { Body, Controller, Get, Inject, NotFoundException, Param, Post } from '@nestjs/common';
 import { CheckoutService } from './checkout.service';
 import { Checkout } from './models/Checkout';
 import { CheckoutRequest } from './models/CheckoutRequest';
@@ -41,13 +33,11 @@ export class CheckoutController {
   }*/
 
   @Get(':customerId')
-  async getCheckout(
-    @Param('customerId') customerId: string,
-  ): Promise<Checkout> {
+  async getCheckout(@Param('customerId') customerId: string) : Promise<Checkout> {
     const checkout = this.checkoutService.get(customerId);
 
-    return checkout.then(function (data) {
-      if (!data) {
+    return checkout.then(function(data) {
+      if(!data) {
         throw new NotFoundException('Checkout not found');
       }
 
@@ -56,17 +46,12 @@ export class CheckoutController {
   }
 
   @Post(':customerId/update')
-  async updateCheckout(
-    @Param('customerId') customerId: string,
-    @Body() request: CheckoutRequest,
-  ): Promise<Checkout> {
+  async updateCheckout(@Param('customerId') customerId: string, @Body() request: CheckoutRequest) : Promise<Checkout> {
     return this.checkoutService.update(customerId, request);
   }
 
   @Post(':customerId/submit')
-  async submitCheckout(
-    @Param('customerId') customerId: string,
-  ): Promise<CheckoutSubmitted> {
+  async submitCheckout(@Param('customerId') customerId: string) : Promise<CheckoutSubmitted> {
     return this.checkoutService.submit(customerId);
   }
 }

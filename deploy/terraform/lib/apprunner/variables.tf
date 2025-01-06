@@ -1,15 +1,18 @@
 variable "environment_name" {
-  type        = string
-  description = "Name of the environment"
+  type = string
 }
 
 variable "tags" {
   description = "List of tags to be associated with resources."
   default     = {}
-  type        = any
 }
 
 variable "vpc_id" {
+  description = "VPC ID used to create EKS cluster."
+  type        = string
+}
+
+variable "vpc_cidr" {
   description = "VPC ID used to create EKS cluster."
   type        = string
 }
@@ -22,7 +25,6 @@ variable "subnet_ids" {
 variable "image_repository_type" {
   description = "The type of image repository where the images will be pulled from"
   default     = "ECR_PUBLIC"
-  type        = string
 }
 
 variable "container_image_overrides" {
@@ -32,86 +34,69 @@ variable "container_image_overrides" {
 }
 
 variable "catalog_db_endpoint" {
-  type        = string
-  description = "Endpoint of the catalog database"
+  type = string
 }
 
 variable "catalog_db_port" {
-  type        = string
-  description = "Port of the catalog database"
+  type = string
 }
 
 variable "catalog_db_name" {
-  type        = string
-  description = "Name of the catalog database"
+  type = string
 }
 
 variable "catalog_db_username" {
-  type        = string
-  description = "Username for the catalog database"
+  type = string
 }
 
 variable "catalog_db_password" {
-  type        = string
-  description = "Password for the catalog database"
+  type = string
 }
 
 variable "carts_dynamodb_table_name" {
-  type        = string
-  description = "DynamoDB table name for the carts service"
+  type = string
 }
 
 variable "carts_dynamodb_policy_arn" {
-  type        = string
-  description = "IAM policy for DynamoDB table for the carts service"
+  type = string
 }
 
 variable "orders_db_endpoint" {
-  type        = string
-  description = "Endpoint of the orders database"
+  type = string
 }
 
 variable "orders_db_port" {
-  type        = string
-  description = "Port of the orders database"
+  type = string
 }
 
 variable "orders_db_name" {
-  type        = string
-  description = "Name of the orders database"
+  type = string
 }
 
 variable "orders_db_username" {
-  type        = string
-  description = "Username for the orders database"
+  type = string
 }
 
 variable "orders_db_password" {
-  type        = string
-  description = "Username for the password database"
+  type = string
 }
 
 variable "checkout_redis_endpoint" {
-  type        = string
-  description = "Endpoint of the checkout redis"
+  type = string
 }
 
 variable "checkout_redis_port" {
-  type        = string
-  description = "Port of the checkout redis"
+  type = string
 }
 
 variable "mq_endpoint" {
-  type        = string
-  description = "Endpoint of the shared MQ"
+  type = string
 }
 
 variable "mq_username" {
-  type        = string
-  description = "Username for the shared MQ"
+  type = string
 }
 
 variable "mq_password" {
-  type        = string
-  description = "Password for the shared MQ"
+  type = string
 }

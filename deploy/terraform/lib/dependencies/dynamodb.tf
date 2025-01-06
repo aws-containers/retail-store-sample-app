@@ -1,4 +1,4 @@
-module "dynamodb_carts" {
+module "dynamodb-carts" {
   source  = "terraform-aws-modules/dynamodb-table/aws"
   version = "3.2.0"
 
@@ -41,8 +41,8 @@ resource "aws_iam_policy" "carts_dynamo" {
       "Effect": "Allow",
       "Action": "dynamodb:*",
       "Resource": [
-        "arn:${local.aws_partition}:dynamodb:${local.aws_region}:${local.aws_account_id}:table/${module.dynamodb_carts.dynamodb_table_id}",
-        "arn:${local.aws_partition}:dynamodb:${local.aws_region}:${local.aws_account_id}:table/${module.dynamodb_carts.dynamodb_table_id}/index/*"
+        "arn:${local.aws_partition}:dynamodb:${local.aws_region}:${local.aws_account_id}:table/${module.dynamodb-carts.dynamodb_table_id}",
+        "arn:${local.aws_partition}:dynamodb:${local.aws_region}:${local.aws_account_id}:table/${module.dynamodb-carts.dynamodb_table_id}/index/*"
       ]
     }
   ]

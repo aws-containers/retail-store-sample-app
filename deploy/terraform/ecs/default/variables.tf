@@ -1,7 +1,6 @@
 variable "environment_name" {
-  type        = string
-  default     = "retail-store-ecs"
-  description = "Name of the environment"
+  type    = string
+  default = "retail-store-ecs"
 }
 
 variable "container_image_overrides" {

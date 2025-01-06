@@ -16,15 +16,16 @@
  * SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-let Page = require("./Page");
+let Page = require('./Page');
 
 class Checkout extends Page {
+
   constructor(baseUrl) {
     super(baseUrl);
   }
 
   getPath() {
-    return "/checkout";
+    return '/checkout';
   }
 
   async populateField(name, value) {
@@ -34,7 +35,7 @@ class Checkout extends Page {
   }
 
   async next() {
-    return await element(by.id("checkoutForm")).submit();
-  }
+    return await element(by.id('checkoutForm')).submit();
+  };
 }
 module.exports = Checkout;

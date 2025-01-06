@@ -16,11 +16,11 @@ paths:
         "200":
           description: OK
           content:
-            "*/*":
+            '*/*':
               schema:
                 type: array
                 items:
-                  $ref: "#/components/schemas/ExistingOrder"
+                  $ref: '#/components/schemas/ExistingOrder'
     post:
       tags:
         - orders
@@ -30,15 +30,15 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/Order"
+              $ref: '#/components/schemas/Order'
         required: true
       responses:
         "200":
           description: OK
           content:
-            "*/*":
+            '*/*':
               schema:
-                $ref: "#/components/schemas/ExistingOrder"
+                $ref: '#/components/schemas/ExistingOrder'
 components:
   schemas:
     Order:
@@ -53,7 +53,7 @@ components:
         items:
           type: array
           items:
-            $ref: "#/components/schemas/OrderItem"
+            $ref: '#/components/schemas/OrderItem'
     OrderItem:
       type: object
       properties:
@@ -77,6 +77,6 @@ components:
         items:
           type: array
           items:
-            $ref: "#/components/schemas/OrderItem"
+            $ref: '#/components/schemas/OrderItem'
         id:
           type: string
