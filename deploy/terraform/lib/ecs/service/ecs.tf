@@ -52,7 +52,7 @@ resource "aws_ecs_task_definition" "this" {
     }
   ]
   DEFINITION
-  requires_compatibilities = ["FARGATE"]
+  requires_compatibilities = []
   network_mode             = "awsvpc"
   cpu                      = "1024"
   memory                   = "2048"
@@ -65,7 +65,7 @@ resource "aws_ecs_service" "this" {
   cluster                = var.cluster_arn
   task_definition        = aws_ecs_task_definition.this.arn
   desired_count          = 1
-  launch_type            = "FARGATE"
+  launch_type            = "EC2"
   enable_execute_command = true
   wait_for_steady_state  = true
 
