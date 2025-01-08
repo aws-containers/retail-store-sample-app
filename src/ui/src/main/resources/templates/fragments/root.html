@@ -1,0 +1,100 @@
+<!doctype html>
+<html
+  lang="en"
+  xmlns:th="http://www.thymeleaf.org"
+  th:fragment="root (content)"
+>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Modern E-commerce Store</title>
+
+    <!-- Inter Font -->
+    <link
+      href="https://fonts.googleapis.com/css?family=Inter"
+      rel="stylesheet"
+    />
+
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.0/css/all.min.css"
+    />
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ["Inter var", "Inter", "sans-serif"],
+            },
+            colors: {
+              primary: {
+                DEFAULT: "#ef4444",
+                50: "#fef2f2",
+                100: "#fee2e2",
+                200: "#fecaca",
+                300: "#fca5a5",
+                400: "#f87171",
+                500: "#ef4444",
+                600: "#dc2626",
+                700: "#b91c1c",
+                800: "#991b1b",
+                900: "#7f1d1d",
+              },
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+
+  <body class="flex flex-col min-h-screen">
+    <th:block th:insert="${content}" />
+
+    <!-- Footer -->
+    <footer class="bg-white mt-auto text-sm">
+      <!-- Grey Separator Line -->
+      <!-- Footer Content -->
+      <div class="max-w-6xl mx-auto px-4 py-8">
+        <div class="border-t border-gray-200"></div>
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8 py-8">
+          <div></div>
+          <!-- Quick Links -->
+          <div>
+            <h3 class="text-gray-800 font-semibold mb-4">Quick Links</h3>
+            <ul class="space-y-2">
+              <li>
+                <a href="#" class="text-gray-400 hover:text-primary-500"
+                  >Shop</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-gray-400 hover:text-primary-500"
+                  >About</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-gray-400 hover:text-primary-500"
+                  >Contact</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <!-- Contact Info -->
+          <div>
+            <h3 class="text-gray-800 font-semibold mb-4">Contact</h3>
+            <ul class="space-y-2">
+              <li class="text-gray-400">Email</li>
+              <li class="text-gray-400">Phone</li>
+            </ul>
+          </div>
+          <div></div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

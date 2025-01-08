@@ -24,7 +24,6 @@ import lombok.Data;
 @Data
 @AllArgsConstructor
 public class Order {
-    private String id;
 
-    private String email;
+  private String id;
 }

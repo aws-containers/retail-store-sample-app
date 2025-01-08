@@ -18,14 +18,18 @@
 
 package com.amazon.sample.ui.web.payload;
 
-import lombok.Data;
-
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Pattern;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class CheckoutDeliveryMethodRequest {
-    @Pattern(regexp = "^[A-Za-z0-9\\-]+$")
-    @NotEmpty
-    private String token;
+
+  @Pattern(regexp = "^[A-Za-z0-9\\-]+$")
+  @NotEmpty
+  private String token;
 }

@@ -29,26 +29,28 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @RequestMapping("/utility")
 public class UtilityController {
 
-    @GetMapping("/stress/{iterations}")
-    @ResponseBody
-    public double stress(@PathVariable int iterations) {
-        return monteCarloPi(iterations);
-    }
+  private static final double MONTE_CARLO_CONSTANT = 4.0;
 
-    private double monteCarloPi(int iterations) {
-        int inside = 0;
-        for (int i = 0; i < iterations; i++) {
-            double x = Math.random();
-            double y = Math.random();
-            if (Math.sqrt(x * x + y * y) < 1.0) {
-                inside++;
-            }
-        }
-        return 4.0 * inside / iterations;
-    }
+  @GetMapping("/stress/{iterations}")
+  @ResponseBody
+  public double stress(@PathVariable int iterations) {
+    return monteCarloPi(iterations);
+  }
 
-    @GetMapping("/status/{code}")
-    public ResponseEntity<String> status(@PathVariable int code) {
-        return ResponseEntity.status(code).body("OK");
+  private double monteCarloPi(int iterations) {
+    int inside = 0;
+    for (int i = 0; i < iterations; i++) {
+      double x = Math.random();
+      double y = Math.random();
+      if (Math.sqrt(x * x + y * y) < 1.0) {
+        inside++;
+      }
     }
+    return (MONTE_CARLO_CONSTANT * inside) / iterations;
+  }
+
+  @GetMapping("/status/{code}")
+  public ResponseEntity<String> status(@PathVariable int code) {
+    return ResponseEntity.status(code).body("OK");
+  }
 }

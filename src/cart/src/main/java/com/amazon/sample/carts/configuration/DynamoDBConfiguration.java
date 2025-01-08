@@ -18,49 +18,54 @@
 
 package com.amazon.sample.carts.configuration;
 
+import com.amazon.sample.carts.services.CartService;
+import com.amazon.sample.carts.services.DynamoDBCartService;
+import java.net.URI;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Profile;
+import org.springframework.util.StringUtils;
 import software.amazon.awssdk.enhanced.dynamodb.DynamoDbEnhancedClient;
 import software.amazon.awssdk.regions.Region;
 import software.amazon.awssdk.services.dynamodb.DynamoDbClient;
 import software.amazon.awssdk.services.dynamodb.DynamoDbClientBuilder;
 
-import com.amazon.sample.carts.services.DynamoDBCartService;
-
-import java.net.URI;
-
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Profile;
-import org.springframework.util.StringUtils;
-
-import com.amazon.sample.carts.services.CartService;
-
 @Configuration
 @Profile("dynamodb")
 public class DynamoDBConfiguration {
 
-    @Bean
-    DynamoDbClient dynamoDbClient(DynamoDBProperties properties) {
-        DynamoDbClientBuilder builder = DynamoDbClient.builder();
+  @Bean
+  DynamoDbClient dynamoDbClient(DynamoDBProperties properties) {
+    DynamoDbClientBuilder builder = DynamoDbClient.builder();
 
-        if (!StringUtils.isEmpty(properties.getEndpoint())) {
-            builder.region(Region.US_WEST_2);
-            builder.endpointOverride(URI.create(properties.getEndpoint()));
-        }
-
-        return builder.build();
+    if (!StringUtils.isEmpty(properties.getEndpoint())) {
+      builder.region(Region.US_WEST_2);
+      builder.endpointOverride(URI.create(properties.getEndpoint()));
     }
 
-    @Bean
-    public DynamoDbEnhancedClient dynamoDbEnhancedClient(DynamoDbClient dynamoDbClient) {
-        return DynamoDbEnhancedClient.builder()
-                .dynamoDbClient(dynamoDbClient)
-                .build();
-    }
+    return builder.build();
+  }
 
-    @Bean
-    public CartService dynamoCartService(DynamoDbClient dynamoDbClient, DynamoDbEnhancedClient dynamoDbEnhancedClient,
-            DynamoDBProperties properties) {
-        return new DynamoDBCartService(dynamoDbClient, dynamoDbEnhancedClient, properties.isCreateTable(),
-                properties.getTableName());
-    }
+  @Bean
+  public DynamoDbEnhancedClient dynamoDbEnhancedClient(
+    DynamoDbClient dynamoDbClient
+  ) {
+    return DynamoDbEnhancedClient.builder()
+      .dynamoDbClient(dynamoDbClient)
+      .build();
+  }
+
+  @Bean
+  public CartService dynamoCartService(
+    DynamoDbClient dynamoDbClient,
+    DynamoDbEnhancedClient dynamoDbEnhancedClient,
+    DynamoDBProperties properties
+  ) {
+    return new DynamoDBCartService(
+      dynamoDbClient,
+      dynamoDbEnhancedClient,
+      properties.isCreateTable(),
+      properties.getTableName()
+    );
+  }
 }

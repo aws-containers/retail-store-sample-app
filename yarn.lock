@@ -34,6 +34,20 @@
   resolved "https://registry.npmjs.org/@chevrotain/utils/-/utils-11.0.3.tgz"
   integrity sha512-YslZMgtJUyuMbZ+aKvfF3x1f5liK4mWNxghFRv7jqRR9C3R3fAOGTTKvxXDa2Y1s9zSbcpuO0cAxDYsc9SrXoQ==
 
+"@prettier/plugin-xml@^3.4.1":
+  version "3.4.1"
+  resolved "https://registry.yarnpkg.com/@prettier/plugin-xml/-/plugin-xml-3.4.1.tgz#6c3be1184871a983d08c9f81c8a8796f62a19568"
+  integrity sha512-Uf/6/+9ez6z/IvZErgobZ2G9n1ybxF5BhCd7eMcKqfoWuOzzNUxBipNo3QAP8kRC1VD18TIo84no7LhqtyDcTg==
+  dependencies:
+    "@xml-tools/parser" "^1.0.11"
+
+"@xml-tools/parser@^1.0.11":
+  version "1.0.11"
+  resolved "https://registry.yarnpkg.com/@xml-tools/parser/-/parser-1.0.11.tgz#a118a14099ea5c3c537e4781fad2fc195b57f8ff"
+  integrity sha512-aKqQ077XnR+oQtHJlrAflaZaL7qZsulWc/i/ZEooar5JiWj1eLt0+Wg28cpa+XLney107wXqneC+oG1IZvxkTA==
+  dependencies:
+    chevrotain "7.1.1"
+
 chevrotain-allstar@0.3.1:
   version "0.3.1"
   resolved "https://registry.npmjs.org/chevrotain-allstar/-/chevrotain-allstar-0.3.1.tgz"
@@ -52,6 +66,13 @@ chevrotain@11.0.3:
     "@chevrotain/types" "11.0.3"
     "@chevrotain/utils" "11.0.3"
     lodash-es "4.17.21"
+
+chevrotain@7.1.1:
+  version "7.1.1"
+  resolved "https://registry.yarnpkg.com/chevrotain/-/chevrotain-7.1.1.tgz#5122814eafd1585a9601f9180a7be9c42d5699c6"
+  integrity sha512-wy3mC1x4ye+O+QkEinVJkPf5u2vsrDIYW9G7ZuwFl6v/Yu0LwUuT2POsb+NUWApebyxfkQq6+yDfRExbnI5rcw==
+  dependencies:
+    regexp-to-ast "0.5.0"
 
 java-parser@2.3.2:
   version "2.3.2"
@@ -90,3 +111,8 @@ prettier@^3.3.2:
   version "3.3.2"
   resolved "https://registry.npmjs.org/prettier/-/prettier-3.3.2.tgz"
   integrity sha512-rAVeHYMcv8ATV5d508CFdn+8/pHPpXeIid1DdrPwXnaAdH7cqjVbpJaT5eq4yRAFU/lsbwYwSF/n5iNrdJHPQA==
+
+regexp-to-ast@0.5.0:
+  version "0.5.0"
+  resolved "https://registry.yarnpkg.com/regexp-to-ast/-/regexp-to-ast-0.5.0.tgz#56c73856bee5e1fef7f73a00f1473452ab712a24"
+  integrity sha512-tlbJqcMHnPKI9zSrystikWKwHkBqu2a/Sgw01h3zFjvYrMxEDYHzzoMZnUrbIfpTFEsoRnnviOXNCzFiSc54Qw==

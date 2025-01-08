@@ -18,24 +18,24 @@
 
 package com.amazon.sample.ui.services;
 
-import lombok.Data;
-
 import java.util.HashMap;
 import java.util.Map;
+import lombok.Data;
 
 @Data
 public class Metadata {
-    private String environmentType;
 
-    private Map<String, String> attributes = new HashMap<>();
+  private String environmentType;
 
-    public Metadata(String environmentType) {
-        this.environmentType = environmentType;
-    }
+  private Map<String, String> attributes = new HashMap<>();
 
-    public Metadata add(String name, String value) {
-        this.attributes.put(name, value);
+  public Metadata(String environmentType) {
+    this.environmentType = environmentType;
+  }
 
-        return this;
-    }
+  public Metadata add(String name, String value) {
+    this.attributes.put(name, value);
+
+    return this;
+  }
 }

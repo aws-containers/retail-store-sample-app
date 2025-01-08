@@ -18,9 +18,6 @@
 
 package com.amazon.sample.carts.services;
 
-import software.amazon.awssdk.enhanced.dynamodb.DynamoDbEnhancedClient;
-import software.amazon.awssdk.services.dynamodb.DynamoDbClient;
-
 import com.amazon.sample.carts.configuration.DynamoDBConfiguration;
 import com.amazon.sample.carts.configuration.DynamoDBProperties;
 import org.junit.jupiter.api.Tag;
@@ -37,57 +34,65 @@ import org.springframework.test.context.ContextConfiguration;
 import org.testcontainers.containers.GenericContainer;
 import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
+import software.amazon.awssdk.enhanced.dynamodb.DynamoDbEnhancedClient;
+import software.amazon.awssdk.services.dynamodb.DynamoDbClient;
 
 @SpringBootTest(
-    classes = {DynamoDBCartServiceTests.TestConfiguration.class, DynamoDBProperties.class},
-    properties = {
-            "carts.dynamodb.createTable=true"
-    })
+  classes = {
+    DynamoDBCartServiceTests.TestConfiguration.class, DynamoDBProperties.class,
+  },
+  properties = { "carts.dynamodb.createTable=true" }
+)
 @Testcontainers
 @ContextConfiguration(initializers = DynamoDBCartServiceTests.Initializer.class)
-@ActiveProfiles({"dynamodb"})
+@ActiveProfiles({ "dynamodb" })
 @Tag("docker")
 public class DynamoDBCartServiceTests extends AbstractServiceTests {
 
-    private static final int DYNAMODB_PORT = 8000;
+  private static final int DYNAMODB_PORT = 8000;
 
-    @Autowired
-    private DynamoDBCartService service;
+  @Autowired
+  private DynamoDBCartService service;
+
+  @Autowired
+  private DynamoDbClient dynamoDbClient;
+
+  @Container
+  public static GenericContainer dynamodbContainer = new GenericContainer<>(
+    "amazon/dynamodb-local:1.20.0"
+  ).withExposedPorts(DYNAMODB_PORT);
+
+  @Override
+  public CartService getService() {
+    return this.service;
+  }
+
+  @EnableAutoConfiguration
+  @Configuration
+  @Import(DynamoDBConfiguration.class)
+  static class TestConfiguration {
 
     @Autowired
     private DynamoDbClient dynamoDbClient;
 
-    @Container
-    public static GenericContainer dynamodbContainer =
-            new GenericContainer<>("amazon/dynamodb-local:1.20.0")
-                    .withExposedPorts(DYNAMODB_PORT);
+    @Autowired
+    private DynamoDbEnhancedClient dynamoDbEnhancedClient;
+  }
+
+  public static class Initializer
+    implements ApplicationContextInitializer<ConfigurableApplicationContext> {
 
     @Override
-    public CartService getService() {
-        return this.service;
+    public void initialize(
+      ConfigurableApplicationContext configurableApplicationContext
+    ) {
+      String endpoint = String.format(
+        "carts.dynamodb.endpoint=http://%s:%s",
+        dynamodbContainer.getHost(),
+        dynamodbContainer.getMappedPort(DYNAMODB_PORT)
+      );
+
+      TestPropertyValues.of(endpoint).applyTo(configurableApplicationContext);
     }
-
-    @EnableAutoConfiguration
-    @Configuration
-    @Import(DynamoDBConfiguration.class)
-    static class TestConfiguration {
-
-        @Autowired
-        private DynamoDbClient dynamoDbClient;
-
-        @Autowired
-        private DynamoDbEnhancedClient dynamoDbEnhancedClient;
-    }
-
-    public static class Initializer implements
-            ApplicationContextInitializer<ConfigurableApplicationContext> {
-        @Override
-        public void initialize(ConfigurableApplicationContext configurableApplicationContext) {
-            String endpoint = String.format("carts.dynamodb.endpoint=http://%s:%s",
-                    dynamodbContainer.getHost(),
-                    dynamodbContainer.getMappedPort(DYNAMODB_PORT));
-
-            TestPropertyValues.of(endpoint).applyTo(configurableApplicationContext);
-        }
-    }
+  }
 }

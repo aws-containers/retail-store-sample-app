@@ -27,18 +27,19 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Item {
-    private String itemId;
 
-    private int quantity;
+  private String itemId;
 
-    private int unitPrice;
+  private int quantity;
 
-    public static Item from(ItemEntity itemEntity) {
-        Item item = new Item();
-        item.itemId = itemEntity.getItemId();
-        item.quantity = itemEntity.getQuantity();
-        item.unitPrice = itemEntity.getUnitPrice();
+  private int unitPrice;
 
-        return item;
-    }
+  public static Item from(ItemEntity itemEntity) {
+    Item item = new Item();
+    item.itemId = itemEntity.getItemId();
+    item.quantity = itemEntity.getQuantity();
+    item.unitPrice = itemEntity.getUnitPrice();
+
+    return item;
+  }
 }

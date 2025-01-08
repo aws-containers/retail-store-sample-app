@@ -1,4 +1,4 @@
-openapi: 3.0.1
+openapi: 3.0.3
 info:
   title: OpenAPI definition
   version: v0
@@ -16,7 +16,7 @@ paths:
         "200":
           description: OK
           content:
-            "*/*":
+            application/json:
               schema:
                 type: array
                 items:
@@ -36,7 +36,7 @@ paths:
         "200":
           description: OK
           content:
-            "*/*":
+            application/json:
               schema:
                 $ref: "#/components/schemas/ExistingOrder"
 components:
@@ -44,12 +44,8 @@ components:
     Order:
       type: object
       properties:
-        firstName:
-          type: string
-        lastName:
-          type: string
-        email:
-          type: string
+        shippingAddress:
+          $ref: "#/components/schemas/ShippingAddress"
         items:
           type: array
           items:
@@ -62,10 +58,13 @@ components:
         quantity:
           type: integer
           format: int32
-        price:
+        totalCost:
           type: integer
           format: int32
-    ExistingOrder:
+        unitCost:
+          type: integer
+          format: int32
+    ShippingAddress:
       type: object
       properties:
         firstName:
@@ -74,9 +73,27 @@ components:
           type: string
         email:
           type: string
+        address1:
+          type: string
+        address2:
+          type: string
+        city:
+          type: string
+        zipCode:
+          type: string
+        state:
+          type: string
+    ExistingOrder:
+      type: object
+      properties:
+        shippingAddress:
+          $ref: "#/components/schemas/ShippingAddress"
         items:
           type: array
           items:
             $ref: "#/components/schemas/OrderItem"
         id:
           type: string
+        createdDate:
+          type: string
+          format: date-time

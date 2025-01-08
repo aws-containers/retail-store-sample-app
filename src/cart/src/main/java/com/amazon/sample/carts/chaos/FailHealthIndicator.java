@@ -25,14 +25,14 @@ import org.springframework.stereotype.Component;
 @Component
 public class FailHealthIndicator implements HealthIndicator {
 
-    private boolean down = false;
+  private boolean down = false;
 
-    public void fail() {
-        this.down = true;
-    }
+  public void fail() {
+    this.down = true;
+  }
 
-    @Override
-    public Health health() {
-        return this.down ? Health.down().build() : Health.up().build();
-    }
+  @Override
+  public Health health() {
+    return this.down ? Health.down().build() : Health.up().build();
+  }
 }

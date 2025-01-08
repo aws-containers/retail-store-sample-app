@@ -5,6 +5,7 @@
   "repository": "https://github.com/aws-containers/retail-store-sample-app.git",
   "license": "MIT",
   "devDependencies": {
+    "@prettier/plugin-xml": "^3.4.1",
     "prettier": "^3.3.2",
     "prettier-plugin-java": "^2.6.4"
   }

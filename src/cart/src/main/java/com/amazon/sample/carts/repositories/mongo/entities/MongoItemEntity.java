@@ -26,45 +26,51 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document
 @Data
 public class MongoItemEntity implements ItemEntity {
-    @Id
-    private String id;
 
-    private String itemId;
-    private int quantity;
-    private int unitPrice;
+  @Id
+  private String id;
 
-    public MongoItemEntity(String id, String itemId, int quantity, int unitPrice) {
-        this.id = id;
-        this.itemId = itemId;
-        this.quantity = quantity;
-        this.unitPrice = unitPrice;
-    }
+  private String itemId;
+  private int quantity;
+  private int unitPrice;
 
-    public MongoItemEntity() {
-        this(null, "", 1, 0);
-    }
+  public MongoItemEntity(
+    String id,
+    String itemId,
+    int quantity,
+    int unitPrice
+  ) {
+    this.id = id;
+    this.itemId = itemId;
+    this.quantity = quantity;
+    this.unitPrice = unitPrice;
+  }
 
-    public MongoItemEntity(String itemId) {
-        this(null, itemId, 1, 0);
-    }
+  public MongoItemEntity() {
+    this(null, "", 1, 0);
+  }
 
-    public MongoItemEntity(MongoItemEntity item, String id) {
-        this(id, item.itemId, item.quantity, item.unitPrice);
-    }
+  public MongoItemEntity(String itemId) {
+    this(null, itemId, 1, 0);
+  }
 
-    public MongoItemEntity(MongoItemEntity item, int quantity) {
-        this(item.id(), item.itemId, quantity, item.unitPrice);
-    }
+  public MongoItemEntity(MongoItemEntity item, String id) {
+    this(id, item.itemId, item.quantity, item.unitPrice);
+  }
 
-    public String id() {
-        return id;
-    }
+  public MongoItemEntity(MongoItemEntity item, int quantity) {
+    this(item.id(), item.itemId, quantity, item.unitPrice);
+  }
 
-    public String itemId() {
-        return itemId;
-    }
+  public String id() {
+    return id;
+  }
 
-    public int quantity() {
-        return quantity;
-    }
+  public String itemId() {
+    return itemId;
+  }
+
+  public int quantity() {
+    return quantity;
+  }
 }

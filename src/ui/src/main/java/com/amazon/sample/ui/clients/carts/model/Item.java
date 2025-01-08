@@ -28,29 +28,34 @@
  * Do not edit the class manually.
  */
 
-
 package com.amazon.sample.ui.clients.carts.model;
 
-import java.util.Objects;
-import java.util.Arrays;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import java.util.Arrays;
+import java.util.Objects;
 
 /**
  * Item
  */
-@JsonPropertyOrder({
-  Item.JSON_PROPERTY_ITEM_ID,
-  Item.JSON_PROPERTY_QUANTITY,
-  Item.JSON_PROPERTY_UNIT_PRICE
-})
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-07-01T20:15:13.760294-07:00[America/Los_Angeles]")
+@JsonPropertyOrder(
+  {
+    Item.JSON_PROPERTY_ITEM_ID,
+    Item.JSON_PROPERTY_QUANTITY,
+    Item.JSON_PROPERTY_UNIT_PRICE,
+  }
+)
+@jakarta.annotation.Generated(
+  value = "org.openapitools.codegen.languages.JavaClientCodegen",
+  date = "2020-07-01T20:15:13.760294-07:00[America/Los_Angeles]"
+)
 public class Item {
+
   public static final String JSON_PROPERTY_ITEM_ID = "itemId";
   private String itemId;
 
@@ -60,81 +65,68 @@ public class Item {
   public static final String JSON_PROPERTY_UNIT_PRICE = "unitPrice";
   private Integer unitPrice;
 
-
   public Item itemId(String itemId) {
-    
     this.itemId = itemId;
     return this;
   }
 
-   /**
+  /**
    * Get itemId
    * @return itemId
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
   @JsonProperty(JSON_PROPERTY_ITEM_ID)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
   public String getItemId() {
     return itemId;
   }
-
 
   public void setItemId(String itemId) {
     this.itemId = itemId;
   }
 
-
   public Item quantity(Integer quantity) {
-    
     this.quantity = quantity;
     return this;
   }
 
-   /**
+  /**
    * Get quantity
    * @return quantity
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
   @JsonProperty(JSON_PROPERTY_QUANTITY)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
   public Integer getQuantity() {
     return quantity;
   }
-
 
   public void setQuantity(Integer quantity) {
     this.quantity = quantity;
   }
 
-
   public Item unitPrice(Integer unitPrice) {
-    
     this.unitPrice = unitPrice;
     return this;
   }
 
-   /**
+  /**
    * Get unitPrice
    * @return unitPrice
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
   @JsonProperty(JSON_PROPERTY_UNIT_PRICE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
   public Integer getUnitPrice() {
     return unitPrice;
   }
 
-
   public void setUnitPrice(Integer unitPrice) {
     this.unitPrice = unitPrice;
   }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -145,9 +137,11 @@ public class Item {
       return false;
     }
     Item item = (Item) o;
-    return Objects.equals(this.itemId, item.itemId) &&
-        Objects.equals(this.quantity, item.quantity) &&
-        Objects.equals(this.unitPrice, item.unitPrice);
+    return (
+      Objects.equals(this.itemId, item.itemId) &&
+      Objects.equals(this.quantity, item.quantity) &&
+      Objects.equals(this.unitPrice, item.unitPrice)
+    );
   }
 
   @Override
@@ -155,14 +149,16 @@ public class Item {
     return Objects.hash(itemId, quantity, unitPrice);
   }
 
-
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class Item {\n");
     sb.append("    itemId: ").append(toIndentedString(itemId)).append("\n");
     sb.append("    quantity: ").append(toIndentedString(quantity)).append("\n");
-    sb.append("    unitPrice: ").append(toIndentedString(unitPrice)).append("\n");
+    sb
+      .append("    unitPrice: ")
+      .append(toIndentedString(unitPrice))
+      .append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -177,6 +173,4 @@ public class Item {
     }
     return o.toString().replace("\n", "\n    ");
   }
-
 }
-

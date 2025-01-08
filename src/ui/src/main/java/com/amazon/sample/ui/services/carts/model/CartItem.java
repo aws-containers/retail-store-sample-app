@@ -24,21 +24,22 @@ import lombok.Data;
 @Data
 @AllArgsConstructor
 public class CartItem {
-    private String id;
 
-    private int quantity;
+  private String id;
 
-    private int price;
+  private int quantity;
 
-    private String name;
+  private int price;
 
-    private String imageUrl;
+  private String name;
 
-    public int getTotalPrice() {
-        return this.quantity * this.price;
-    }
+  private String imageUrl;
 
-    public void addQuantity(int quantity) {
-        this.quantity+=quantity;
-    }
+  public int getTotalPrice() {
+    return this.quantity * this.price;
+  }
+
+  public void addQuantity(int quantity) {
+    this.quantity += quantity;
+  }
 }

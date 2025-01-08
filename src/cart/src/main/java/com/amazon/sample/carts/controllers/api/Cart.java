@@ -19,25 +19,28 @@
 package com.amazon.sample.carts.controllers.api;
 
 import com.amazon.sample.carts.repositories.CartEntity;
-import lombok.Data;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
+import lombok.Data;
 
 @Data
 public class Cart {
-    private String customerId;
 
-    private List<Item> items = new ArrayList<>();
+  private String customerId;
 
-    public static Cart from(CartEntity cartEntity) {
-        Cart cart = new Cart();
-        cart.setCustomerId(cartEntity.getCustomerId());
+  private List<Item> items = new ArrayList<>();
 
-        cart.items = cartEntity.getItems().stream()
-                .map(Item::from).collect(Collectors.toList());
+  public static Cart from(CartEntity cartEntity) {
+    Cart cart = new Cart();
+    cart.setCustomerId(cartEntity.getCustomerId());
 
-        return cart;
-    }
+    cart.items = cartEntity
+      .getItems()
+      .stream()
+      .map(Item::from)
+      .collect(Collectors.toList());
+
+    return cart;
+  }
 }

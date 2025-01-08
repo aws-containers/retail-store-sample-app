@@ -18,15 +18,13 @@
 
 package com.amazon.sample.ui.web;
 
+import com.amazon.sample.ui.services.assets.AssetsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
-
-import com.amazon.sample.ui.services.assets.AssetsService;
-
 import reactor.core.publisher.Mono;
 
 /**
@@ -36,14 +34,16 @@ import reactor.core.publisher.Mono;
 @RestController
 public class CatalogImageController {
 
-    private AssetsService assetsService;
+  private AssetsService assetsService;
 
-    public CatalogImageController(@Autowired AssetsService assetsService) {
-        this.assetsService = assetsService;
-    }
+  public CatalogImageController(@Autowired AssetsService assetsService) {
+    this.assetsService = assetsService;
+  }
 
-    @GetMapping(value = "/assets/{image}", produces = MediaType.IMAGE_JPEG_VALUE)
-    public Mono<ResponseEntity<byte[]>> catalogueImage(@PathVariable String image) {
-        return this.assetsService.getImage(image);
-    }
+  @GetMapping(value = "/assets/{image}", produces = MediaType.IMAGE_JPEG_VALUE)
+  public Mono<ResponseEntity<byte[]>> catalogueImage(
+    @PathVariable String image
+  ) {
+    return this.assetsService.getImage(image);
+  }
 }

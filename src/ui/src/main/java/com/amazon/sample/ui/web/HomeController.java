@@ -30,25 +30,34 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class HomeController extends BaseController {
 
-    private CatalogService catalogService;
+  private static final Integer DEFAULT_PAGE = 1;
+  private static final Integer DEFAULT_SIZE = 3;
 
-    public HomeController(@Autowired CatalogService catalogService, @Autowired CartsService cartsService, @Autowired Metadata metadata) {
-        super(cartsService, metadata);
+  private CatalogService catalogService;
 
-        this.catalogService = catalogService;
-    }
+  public HomeController(
+    @Autowired CatalogService catalogService,
+    @Autowired CartsService cartsService,
+    @Autowired Metadata metadata
+  ) {
+    super(cartsService, metadata);
+    this.catalogService = catalogService;
+  }
 
-    @GetMapping("/")
-    public String index(final Model model, final ServerHttpRequest request) {
-        return home(model, request);
-    }
+  @GetMapping("/")
+  public String index(final Model model, final ServerHttpRequest request) {
+    return home(model, request);
+  }
 
-    @GetMapping("/home")
-    public String home(final Model model, final ServerHttpRequest request) {
-        model.addAttribute("catalog", this.catalogService.getProducts("", "" ,1, 4));
+  @GetMapping("/home")
+  public String home(final Model model, final ServerHttpRequest request) {
+    model.addAttribute(
+      "catalog",
+      this.catalogService.getProducts("", "", DEFAULT_PAGE, DEFAULT_SIZE)
+    );
 
-        populateCommon(request, model);
+    populateCommon(request, model);
 
-        return "home";
-    }
+    return "home";
+  }
 }

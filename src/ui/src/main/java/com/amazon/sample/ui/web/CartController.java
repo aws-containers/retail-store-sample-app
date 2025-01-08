@@ -37,35 +37,46 @@ import reactor.core.publisher.Mono;
 @Slf4j
 public class CartController extends BaseController {
 
-    private CartsService cartsService;
+  private CartsService cartsService;
 
+  public CartController(
+    @Autowired CartsService cartsService,
+    @Autowired Metadata metadata
+  ) {
+    super(cartsService, metadata);
+    this.cartsService = cartsService;
+  }
 
-    public CartController(@Autowired CartsService cartsService, @Autowired Metadata metadata) {
-        super(cartsService, metadata);
+  @GetMapping
+  public String cart(ServerHttpRequest request, Model model) {
+    String sessionId = getSessionID(request);
 
-        this.cartsService = cartsService;
-    }
+    model.addAttribute("fullCart", cartsService.getCart(sessionId));
 
-    @GetMapping
-    public String cart(ServerHttpRequest request, Model model) {
-        String sessionId = getSessionID(request);
+    this.populateCommon(request, model);
 
-        model.addAttribute("fullCart", cartsService.getCart(sessionId));
+    return "cart";
+  }
 
-        this.populateCommon(request, model);
+  @PostMapping
+  public Mono<String> add(
+    @ModelAttribute CartChangeRequest addRequest,
+    ServerHttpRequest request
+  ) {
+    return this.cartsService.addItem(
+        getSessionID(request),
+        addRequest.getProductId()
+      ).thenReturn("redirect:/cart");
+  }
 
-        return "cart";
-    }
-
-    @PostMapping
-    public Mono<String> add(@ModelAttribute CartChangeRequest addRequest, ServerHttpRequest request) {
-        return this.cartsService.addItem(getSessionID(request), addRequest.getProductId())
-            .thenReturn("redirect:/cart");
-    }
-
-    @PostMapping("/remove")
-    public Mono<String> remove(@ModelAttribute CartChangeRequest addRequest, ServerHttpRequest request) {
-        return this.cartsService.removeItem(getSessionID(request), addRequest.getProductId())
-            .thenReturn("redirect:/cart");
-    }
+  @PostMapping("/remove")
+  public Mono<String> remove(
+    @ModelAttribute CartChangeRequest addRequest,
+    ServerHttpRequest request
+  ) {
+    return this.cartsService.removeItem(
+        getSessionID(request),
+        addRequest.getProductId()
+      ).thenReturn("redirect:/cart");
+  }
 }

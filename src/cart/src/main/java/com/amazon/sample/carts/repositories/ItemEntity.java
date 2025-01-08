@@ -19,9 +19,9 @@
 package com.amazon.sample.carts.repositories;
 
 public interface ItemEntity {
-    String getItemId();
+  String getItemId();
 
-    int getQuantity();
+  int getQuantity();
 
-    int getUnitPrice();
+  int getUnitPrice();
 }

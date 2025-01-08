@@ -26,9 +26,10 @@ import org.springframework.context.annotation.Configuration;
 @ConfigurationProperties("carts.dynamodb")
 @Data
 public class DynamoDBProperties {
-    private String endpoint;
 
-    private boolean createTable;
+  private String endpoint;
 
-    private String tableName;
+  private boolean createTable;
+
+  private String tableName;
 }

@@ -22,19 +22,20 @@ import lombok.Data;
 
 @Data
 public class ShippingAddress {
-    private String firstName;
 
-    private String lastName;
+  private String firstName;
 
-    private String email;
+  private String lastName;
 
-    private String address1;
+  private String email;
 
-    private String address2;
+  private String address1;
 
-    private String city;
+  private String address2;
 
-    private String zip;
+  private String city;
 
-    private String state;
+  private String zip;
+
+  private String state;
 }

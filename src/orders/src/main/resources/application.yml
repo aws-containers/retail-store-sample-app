@@ -17,3 +17,11 @@ retail:
   orders:
     messaging:
       provider: "in-memory"
+
+logging:
+  level:
+    "[org.springframework.jdbc.core]": TRACE
+
+springdoc:
+  api-docs:
+    version: OPENAPI_3_0

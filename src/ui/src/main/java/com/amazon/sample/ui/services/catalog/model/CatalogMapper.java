@@ -24,7 +24,7 @@ import org.mapstruct.Mapper;
 
 @Mapper
 public interface CatalogMapper {
-    Product product(ModelProduct product);
+  Product product(ModelProduct product);
 
-    ProductTag tag(ModelTag tag);
+  ProductTag tag(ModelTag tag);
 }

@@ -20,9 +20,7 @@ package com.amazon.sample.orders.config.messaging;
 
 import com.amazon.sample.orders.messaging.MessagingProvider;
 import com.amazon.sample.orders.messaging.rabbitmq.RabbitMQMessagingProvider;
-
 import lombok.extern.slf4j.Slf4j;
-
 import org.springframework.amqp.core.*;
 import org.springframework.amqp.rabbit.annotation.RabbitListenerConfigurer;
 import org.springframework.amqp.rabbit.connection.ConnectionFactory;
@@ -40,63 +38,77 @@ import org.springframework.messaging.handler.annotation.support.MessageHandlerMe
 
 @Configuration
 @Slf4j
-@ConditionalOnProperty(prefix = "retail.orders.messaging", name = "provider", havingValue = "rabbitmq")
-public class RabbitMQMessagingConfig extends RabbitAutoConfiguration implements RabbitListenerConfigurer  {
-    public static final String EXCHANGE_NAME = "orders-exchange";
+@ConditionalOnProperty(
+  prefix = "retail.orders.messaging",
+  name = "provider",
+  havingValue = "rabbitmq"
+)
+public class RabbitMQMessagingConfig
+  extends RabbitAutoConfiguration
+  implements RabbitListenerConfigurer {
 
-    public static final String ORDERS_ORDERS_QUEUE = "orders-orders-queue";
+  public static final String EXCHANGE_NAME = "orders-exchange";
 
-    @Bean
-    public MessagingProvider messagingProvider(RabbitTemplate template) {
-        log.info("Creating RabbitMQ messaging provider");
+  public static final String ORDERS_ORDERS_QUEUE = "orders-orders-queue";
 
-        return new RabbitMQMessagingProvider(template);
-    }
+  @Bean
+  public MessagingProvider messagingProvider(RabbitTemplate template) {
+    log.info("Creating RabbitMQ messaging provider");
 
-    @Bean
-    Queue queue() {
-        return new Queue(ORDERS_ORDERS_QUEUE, false);
-    }
+    return new RabbitMQMessagingProvider(template);
+  }
 
-    @Bean
-    FanoutExchange exchange() {
-        return new FanoutExchange(EXCHANGE_NAME);
-    }
+  @Bean
+  Queue queue() {
+    return new Queue(ORDERS_ORDERS_QUEUE, false);
+  }
 
-    @Bean
-    Binding binding(Queue queue, FanoutExchange exchange) {
-        return BindingBuilder.bind(queue).to(exchange);
-    }
+  @Bean
+  FanoutExchange exchange() {
+    return new FanoutExchange(EXCHANGE_NAME);
+  }
 
-    @Bean
-    @Primary
-    public RabbitTemplate customRabbitTemplate(final ConnectionFactory connectionFactory) {
-        final RabbitTemplate rabbitTemplate = new RabbitTemplate(connectionFactory);
-        rabbitTemplate.setMessageConverter(producerJackson2MessageConverter());
-        return rabbitTemplate;
-    }
+  @Bean
+  Binding binding(Queue queue, FanoutExchange exchange) {
+    return BindingBuilder.bind(queue).to(exchange);
+  }
 
-    @Bean
-    public Jackson2JsonMessageConverter producerJackson2MessageConverter() {
-        return new Jackson2JsonMessageConverter();
-    }
+  @Bean
+  @Primary
+  public RabbitTemplate customRabbitTemplate(
+    final ConnectionFactory connectionFactory
+  ) {
+    final RabbitTemplate rabbitTemplate = new RabbitTemplate(connectionFactory);
+    rabbitTemplate.setMessageConverter(producerJackson2MessageConverter());
+    return rabbitTemplate;
+  }
 
-    // =======
+  @Bean
+  public Jackson2JsonMessageConverter producerJackson2MessageConverter() {
+    return new Jackson2JsonMessageConverter();
+  }
 
-    @Override
-    public void configureRabbitListeners(RabbitListenerEndpointRegistrar registrar) {
-        registrar.setMessageHandlerMethodFactory(messageHandlerMethodFactory());
-    }
+  // =======
 
-    @Bean
-    MessageHandlerMethodFactory messageHandlerMethodFactory() {
-        DefaultMessageHandlerMethodFactory messageHandlerMethodFactory = new DefaultMessageHandlerMethodFactory();
-        messageHandlerMethodFactory.setMessageConverter(consumerJackson2MessageConverter());
-        return messageHandlerMethodFactory;
-    }
+  @Override
+  public void configureRabbitListeners(
+    RabbitListenerEndpointRegistrar registrar
+  ) {
+    registrar.setMessageHandlerMethodFactory(messageHandlerMethodFactory());
+  }
 
-    @Bean
-    public MappingJackson2MessageConverter consumerJackson2MessageConverter() {
-        return new MappingJackson2MessageConverter();
-    }
+  @Bean
+  MessageHandlerMethodFactory messageHandlerMethodFactory() {
+    DefaultMessageHandlerMethodFactory messageHandlerMethodFactory =
+      new DefaultMessageHandlerMethodFactory();
+    messageHandlerMethodFactory.setMessageConverter(
+      consumerJackson2MessageConverter()
+    );
+    return messageHandlerMethodFactory;
+  }
+
+  @Bean
+  public MappingJackson2MessageConverter consumerJackson2MessageConverter() {
+    return new MappingJackson2MessageConverter();
+  }
 }

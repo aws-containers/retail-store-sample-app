@@ -26,15 +26,16 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class CheckoutItem {
-    private String id;
 
-    private String name;
+  private String id;
 
-    private Integer quantity;
+  private String name;
 
-    private Integer unitCost;
+  private Integer quantity;
 
-    private Integer totalCost;
+  private Integer unitCost;
 
-    private String imageUrl;
+  private Integer totalCost;
+
+  private String imageUrl;
 }

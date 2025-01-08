@@ -1,0 +1,14 @@
+{
+  "properties": [
+    {
+      "name": "retail.ui.banner",
+      "type": "java.lang.String",
+      "description": "Set a banner that will appear on the UI"
+    },
+    {
+      "name": "retail.ui.metadata.region",
+      "type": "java.lang.String",
+      "description": "Set the region that will appear in the metadata"
+    }
+  ]
+}

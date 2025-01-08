@@ -4,39 +4,82 @@
   th:replace="~{fragments/layout :: layout (~{::body},'order')}"
 >
   <body>
-    <section class="bg-primary p-y-sm">
-      <div class="container">
-        <ol class="breadcrumb custom mb-0">
-          <li class="breadcrumb-item"><a href="/home">Home</a></li>
-          <li class="breadcrumb-item active" aria-current="page">Order</li>
-        </ol>
-      </div>
-    </section>
-    <section class="p-y-m">
-      <div class="container">
-        <div class="row">
-          <article class="card">
-            <div class="card-body">
-              <div class="mt-4 mx-auto text-center" style="max-width: 600px">
-                <div class="my-3">
-                  <h4>Thank you for order</h4>
-                  <p>
-                    Your order number is
-                    <b id="orderId" th:text="${order.orderId}">123</b>
-                  </p>
-                  <p>
-                    A confirmation email will be sent to
-                    <b id="orderEmail" th:text="${order.customerEmail}"
-                      >you@example.com</b
-                    >
-                    with tracking information.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </article>
+    <div class="max-w-3xl mx-auto px-4 py-8">
+      <!-- Order Header -->
+      <div class="bg-white p-6 mb-6">
+        <h1 class="text-2xl font-semibold text-gray-800 mb-4">Order Summary</h1>
+        <div class="grid grid-cols-2 gap-4">
+          <div>
+            <p class="text-sm text-gray-600">Order ID</p>
+            <p th:text="${summary.orderId}">#ORD-2023-1234</p>
+          </div>
+          <div>
+            <p class="text-sm text-gray-600">Contact Email</p>
+            <p th:text="${summary.customerEmail}">customer@example.com</p>
+          </div>
         </div>
       </div>
-    </section>
+
+      <!-- Order Items -->
+      <div class="bg-white p-6 mb-6">
+        <h2 class="text-lg font-semibold text-gray-800 mb-4">Order Items</h2>
+
+        <!-- Individual Items -->
+        <div class="divide-y divide-gray-200">
+          <!-- Item 1 -->
+          <div class="py-4 flex items-center" th:each="item : ${summary.items}">
+            <img
+              src="https://via.placeholder.com/100"
+              alt="Product"
+              class="w-[100px] h-[100px] rounded"
+              th:src="${item.imageUrl}"
+            />
+            <div class="ml-4 flex-1">
+              <h3 class="font-medium text-gray-800" th:text="${item.name}">
+                Luxury Watch Model X
+              </h3>
+              <p class="text-sm text-gray-600">
+                Quantity: <th:block th:text="${item.quantity}">1</th:block>
+              </p>
+            </div>
+            <div class="text-right">
+              <p>$<th:block th:text="${item.totalCost}">299</th:block></p>
+              <p class="text-sm text-gray-600">
+                $<th:block th:text="${item.unitCost}">299</th:block> each
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Order Summary -->
+      <div class="bg-gray-50 rounded-lg shadow-sm p-6">
+        <h2 class="text-lg font-semibold text-gray-800 mb-4">
+          Payment Summary
+        </h2>
+        <div class="space-y-3">
+          <div class="flex justify-between">
+            <span class="text-gray-600">Subtotal</span>
+            <span>$<th:block th:text="${summary.subtotal}">299</th:block></span>
+          </div>
+          <div class="flex justify-between">
+            <span class="text-gray-600">Shipping</span>
+            <span>$<th:block th:text="${summary.shipping}">299</th:block></span>
+          </div>
+          <div class="flex justify-between">
+            <span class="text-gray-600">Taxes</span>
+            <span>$<th:block th:text="${summary.tax}">299</th:block></span>
+          </div>
+          <div class="border-t pt-3 mt-3">
+            <div class="flex justify-between font-semibold text-gray-800">
+              <span>Total</span>
+              <span
+                >$<th:block th:text="${summary.totalCost}">299</th:block></span
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </body>
 </html>

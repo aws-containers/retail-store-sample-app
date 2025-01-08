@@ -27,8 +27,9 @@ import org.springframework.context.annotation.Profile;
 @Configuration
 @Profile("!mongo & !dynamodb")
 public class InMemoryConfiguration {
-    @Bean
-    public CartService cartService() {
-        return new InMemoryCartService();
-    }
+
+  @Bean
+  public CartService cartService() {
+    return new InMemoryCartService();
+  }
 }

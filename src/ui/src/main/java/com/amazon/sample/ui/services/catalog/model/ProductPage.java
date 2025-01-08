@@ -18,23 +18,23 @@
 
 package com.amazon.sample.ui.services.catalog.model;
 
+import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.Data;
-
-import java.util.List;
 
 @Data
 @AllArgsConstructor
 public class ProductPage {
-    private int page;
 
-    private int size;
+  private int page;
 
-    private int totalRecords;
+  private int size;
 
-    private List<Product> products;
+  private int totalRecords;
 
-    public int getTotalPages() {
-        return (totalRecords + size - 1) / size;
-    }
+  private List<Product> products;
+
+  public int getTotalPages() {
+    return (totalRecords + size - 1) / size;
+  }
 }

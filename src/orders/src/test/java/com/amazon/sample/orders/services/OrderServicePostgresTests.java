@@ -21,24 +21,23 @@ package com.amazon.sample.orders.services;
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.hasSize;
 
+import com.amazon.sample.orders.entities.OrderEntity;
+import com.amazon.sample.orders.entities.OrderItemEntity;
+import com.amazon.sample.orders.entities.ShippingAddressEntity;
+import com.amazon.sample.orders.repositories.OrderRepository;
+import io.restassured.RestAssured;
+import io.restassured.http.ContentType;
 import java.util.List;
-
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.server.LocalServerPort;
 import org.springframework.test.context.DynamicPropertyRegistry;
 import org.springframework.test.context.DynamicPropertySource;
 import org.testcontainers.containers.PostgreSQLContainer;
-
-import com.amazon.sample.orders.entities.OrderEntity;
-import com.amazon.sample.orders.repositories.OrderRepository;
-
-import io.restassured.RestAssured;
-import io.restassured.http.ContentType;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class OrderServicePostgresTests {
@@ -47,7 +46,8 @@ public class OrderServicePostgresTests {
   private Integer port;
 
   static PostgreSQLContainer<?> postgres = new PostgreSQLContainer<>(
-      "postgres:16.1");
+    "postgres:17.2"
+  );
 
   @BeforeAll
   static void beforeAll() {
@@ -78,27 +78,54 @@ public class OrderServicePostgresTests {
   @Test
   void shouldGetEmptyOrders() {
     given()
-        .contentType(ContentType.JSON)
-        .when()
-        .get("/orders")
-        .then()
-        .statusCode(200)
-        .body(".", hasSize(0));
+      .contentType(ContentType.JSON)
+      .when()
+      .get("/orders")
+      .then()
+      .statusCode(200)
+      .body(".", hasSize(0));
   }
 
   @Test
   void shouldGetAllOrders() {
+    var items = List.of(new OrderItemEntity("123", 1, 10, 10));
+
     List<OrderEntity> orders = List.of(
-        new OrderEntity("first", "last", "email@example.com"),
-        new OrderEntity("first", "last", "email@example.com"));
+      new OrderEntity(
+        items,
+        new ShippingAddressEntity(
+          "John",
+          "Doe",
+          "email@example.com",
+          "Some Address",
+          "",
+          "Some City",
+          "11111",
+          "CA"
+        )
+      ),
+      new OrderEntity(
+        items,
+        new ShippingAddressEntity(
+          "John",
+          "Doe",
+          "email@example.com",
+          "Some Address",
+          "",
+          "Some City",
+          "11111",
+          "CA"
+        )
+      )
+    );
     orderRepository.saveAll(orders);
 
     given()
-        .contentType(ContentType.JSON)
-        .when()
-        .get("/orders")
-        .then()
-        .statusCode(200)
-        .body(".", hasSize(2));
+      .contentType(ContentType.JSON)
+      .when()
+      .get("/orders")
+      .then()
+      .statusCode(200)
+      .body(".", hasSize(2));
   }
 }

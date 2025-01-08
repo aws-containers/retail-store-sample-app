@@ -25,49 +25,43 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.server.reactive.ServerHttpRequest;
 import org.springframework.ui.Model;
-import reactor.util.retry.Retry;
-import reactor.util.retry.RetryBackoffSpec;
-
-import java.time.Duration;
 
 @Slf4j
 public class BaseController {
 
-    protected CartsService cartsService;
+  private CartsService cartsService;
 
-    protected Metadata metadata;
+  private Metadata metadata;
 
-    @Value("${retail.ui.banner}")
-    protected String bannerText;
+  @Value("${retail.ui.banner}")
+  private String bannerText;
 
-    public BaseController(CartsService cartsService, Metadata metadata) {
-        this.cartsService = cartsService;
-        this.metadata = metadata;
-    }
+  public BaseController(CartsService cartsService, Metadata metadata) {
+    this.cartsService = cartsService;
+    this.metadata = metadata;
+  }
 
-    protected static RetryBackoffSpec retrySpec(String path) {
-        return Retry
-                .backoff(3, Duration.ofSeconds(1))
-                .doBeforeRetry(context -> log.warn("Retrying {}", path));
-    }
+  protected void populateCommon(ServerHttpRequest request, Model model) {
+    this.populateCart(request, model);
+    this.populateMetadata(model);
+  }
 
-    protected void populateCommon(ServerHttpRequest request, Model model) {
-        this.populateCart(request, model);
-        this.populateMetadata(model);
-    }
+  protected void populateCart(ServerHttpRequest request, Model model) {
+    String sessionId = getSessionID(request);
 
-    protected void populateCart(ServerHttpRequest request, Model model) {
-        String sessionId = getSessionID(request);
+    model.addAttribute("cart", this.cartsService.getCart(sessionId));
+  }
 
-        model.addAttribute("cart", this.cartsService.getCart(sessionId));
-    }
+  protected void populateMetadata(Model model) {
+    model.addAttribute("bannerText", this.bannerText);
+    model.addAttribute("metadata", metadata);
+  }
 
-    protected void populateMetadata(Model model) {
-        model.addAttribute("bannerText", this.bannerText);
-        model.addAttribute("metadata", metadata);
-    }
+  protected String getSessionID(ServerHttpRequest request) {
+    return SessionIDUtil.getSessionId(request);
+  }
 
-    protected String getSessionID(ServerHttpRequest request) {
-        return SessionIDUtil.getSessionId(request);
-    }
+  protected CartsService getCartsService() {
+    return cartsService;
+  }
 }

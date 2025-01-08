@@ -28,65 +28,59 @@
  * Do not edit the class manually.
  */
 
-
 package com.amazon.sample.ui.clients.carts.model;
 
-import java.util.Objects;
-import java.util.Arrays;
+import com.amazon.sample.ui.clients.carts.model.Item;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonValue;
-import com.amazon.sample.ui.clients.carts.model.Item;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
-import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import java.util.Objects;
 
 /**
  * Cart
  */
-@JsonPropertyOrder({
-  Cart.JSON_PROPERTY_CUSTOMER_ID,
-  Cart.JSON_PROPERTY_ITEMS
-})
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2020-07-01T20:15:13.760294-07:00[America/Los_Angeles]")
+@JsonPropertyOrder({ Cart.JSON_PROPERTY_CUSTOMER_ID, Cart.JSON_PROPERTY_ITEMS })
+@jakarta.annotation.Generated(
+  value = "org.openapitools.codegen.languages.JavaClientCodegen",
+  date = "2020-07-01T20:15:13.760294-07:00[America/Los_Angeles]"
+)
 public class Cart {
+
   public static final String JSON_PROPERTY_CUSTOMER_ID = "customerId";
   private String customerId;
 
   public static final String JSON_PROPERTY_ITEMS = "items";
   private List<Item> items = null;
 
-
   public Cart customerId(String customerId) {
-    
     this.customerId = customerId;
     return this;
   }
 
-   /**
+  /**
    * Get customerId
    * @return customerId
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
   @JsonProperty(JSON_PROPERTY_CUSTOMER_ID)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
   public String getCustomerId() {
     return customerId;
   }
-
 
   public void setCustomerId(String customerId) {
     this.customerId = customerId;
   }
 
-
   public Cart items(List<Item> items) {
-    
     this.items = items;
     return this;
   }
@@ -99,24 +93,21 @@ public class Cart {
     return this;
   }
 
-   /**
+  /**
    * Get items
    * @return items
-  **/
+   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
   @JsonProperty(JSON_PROPERTY_ITEMS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
   public List<Item> getItems() {
     return items;
   }
 
-
   public void setItems(List<Item> items) {
     this.items = items;
   }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -127,8 +118,10 @@ public class Cart {
       return false;
     }
     Cart cart = (Cart) o;
-    return Objects.equals(this.customerId, cart.customerId) &&
-        Objects.equals(this.items, cart.items);
+    return (
+      Objects.equals(this.customerId, cart.customerId) &&
+      Objects.equals(this.items, cart.items)
+    );
   }
 
   @Override
@@ -136,12 +129,14 @@ public class Cart {
     return Objects.hash(customerId, items);
   }
 
-
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class Cart {\n");
-    sb.append("    customerId: ").append(toIndentedString(customerId)).append("\n");
+    sb
+      .append("    customerId: ")
+      .append(toIndentedString(customerId))
+      .append("\n");
     sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -157,6 +152,4 @@ public class Cart {
     }
     return o.toString().replace("\n", "\n    ");
   }
-
 }
-

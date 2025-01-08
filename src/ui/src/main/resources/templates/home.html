@@ -1,94 +1,278 @@
 <!doctype html>
 <html
   xmlns:th="http://www.thymeleaf.org"
-  th:replace="~{fragments/layout :: layout (~{::body},'home')}"
+  th:replace="~{fragments/root :: root (~{::body})}"
 >
   <body>
-    <section class="bg-primary p-y-lg">
-      <div class="container">
-        <article class="my-5">
-          <h1 class="display-4 text-white">
-            Shop for top products <br />
-            in our store
-          </h1>
-          <p class="lead text-white">Latest Products, Low Prices</p>
-        </article>
-      </div>
-    </section>
-    <div>
-      <div class="container pt-4">
-        <div class="mt-4">
-          <h2 style="margin-bottom: 20px">Hot products!</h2>
-          <div class="row gx-4 gx-lg-5 row-cols-4 justify-content-center">
-            <div class="col mb-5" th:each="item : ${catalog.products}">
-              <div
-                th:replace="~{fragments/product_card :: card(${item}) }"
-              ></div>
+    <nav
+      class="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
+      id="navbar"
+    >
+      <div class="menu-marker bg-transparent">
+        <div class="max-w-6xl mx-auto px-4">
+          <div class="flex justify-between items-center h-16">
+            <div class="flex items-center">
+              <i class="fas fa-clock text-2xl text-white switch"></i>
+              <span class="ml-2 text-xl text-white switch">Demo Store</span>
+            </div>
+            <div class="hidden md:flex items-center space-x-8">
+              <a
+                href="/"
+                class="text-white/90 hover:text-white transition duration-300 text-sm switch"
+                >Home</a
+              >
+              <a
+                href="/catalog"
+                class="text-white/90 hover:text-white transition duration-300 text-sm switch"
+                >Catalog</a
+              >
+            </div>
+            <!-- Cart Button with Count -->
+            <div class="flex items-center">
+              <button class="p-2 text-white hover:text-white/80 relative">
+                <i class="fas fa-shopping-cart text-lg switch"></i>
+                <span
+                  class="absolute -top-2 -right-2 bg-white text-primary-600 text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center switch-other"
+                >
+                  3
+                </span>
+              </button>
             </div>
           </div>
         </div>
       </div>
-    </div>
-    <section class="p-y-m border-top bg-white">
-      <div class="container">
-        <header class="mt-2 mb-5">
-          <h3>Why choose us</h3>
-        </header>
 
-        <div class="row mb-4">
-          <div class="col-lg-4 col-md-6">
-            <figure class="couplet align-items-center mb-4">
-              <div class="picture">
-                <span
-                  class="rounded-circle shadow-sm text-primary home-icon"
-                  style="background-color: #dbe9ff !important"
-                >
-                  <i class="bi bi-heart-fill"></i>
-                </span>
-              </div>
-              <figcaption class="description">
-                <h6 class="title">We love our customers!</h6>
-                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</p>
-              </figcaption>
-            </figure>
-          </div>
-          <div class="col-lg-4 col-md-6">
-            <figure class="couplet align-items-center mb-4">
-              <div class="picture">
-                <span
-                  class="rounded-circle shadow-sm text-primary home-icon"
-                  style="background-color: #dbe9ff !important"
-                >
-                  <i class="bi bi-currency-dollar"></i>
-                </span>
-              </div>
-              <figcaption class="description">
-                <h6 class="title">Lowest prices</h6>
-                <p>Aenean commodo ligula eget dolor. Aenean massa.</p>
-              </figcaption>
-            </figure>
-          </div>
-          <div class="col-lg-4 col-md-6">
-            <figure class="couplet align-items-center mb-4">
-              <div class="picture">
-                <span
-                  class="rounded-circle shadow-sm text-primary home-icon"
-                  style="background-color: #dbe9ff !important"
-                >
-                  <i class="bi bi-box2-fill"></i>
-                </span>
-              </div>
-              <figcaption class="description">
-                <h6 class="title">Reliable shipping</h6>
-                <p>
-                  Com sociis natoque penatibus et magnis dis parturient montes,
-                  nascetur ridiculus mus.
-                </p>
-              </figcaption>
-            </figure>
+      <script>
+        // Add scroll effect to navbar
+        const navbar = document.getElementById("navbar");
+
+        window.addEventListener("scroll", () => {
+          if (window.scrollY > 50) {
+            navbar
+              .querySelector("div.menu-marker")
+              .classList.remove("bg-transparent");
+            navbar
+              .querySelector("div.menu-marker")
+              .classList.add(
+                "bg-white/80",
+                "backdrop-blur-md",
+                "border-b",
+                "border-white/10",
+              );
+            // Change text color on scroll
+            navbar
+              .querySelectorAll("a.switch, span.switch, i.switch")
+              .forEach((element) => {
+                element.classList.remove("text-white", "text-white/90");
+                element.classList.add("text-gray-700");
+              });
+            navbar.querySelectorAll("span.switch-other").forEach((element) => {
+              element.classList.remove("bg-white", "text-primary-600");
+              element.classList.add("bg-primary-600", "text-white");
+            });
+          } else {
+            navbar
+              .querySelector("div.menu-marker")
+              .classList.add("bg-transparent");
+            navbar
+              .querySelector("div.menu-marker")
+              .classList.remove(
+                "bg-white/80",
+                "backdrop-blur-md",
+                "border-b",
+                "border-white/10",
+              );
+            // Restore text color
+            navbar
+              .querySelectorAll("a.switch, span.switch, i.switch")
+              .forEach((element) => {
+                element.classList.add("text-white");
+                element.classList.remove("text-gray-700");
+              });
+            navbar.querySelectorAll("span.switch-other").forEach((element) => {
+              element.classList.add("bg-white", "text-primary-600");
+              element.classList.remove("bg-primary-600", "text-white");
+            });
+          }
+        });
+      </script>
+    </nav>
+
+    <!-- Hero Section -->
+    <div
+      class="relative overflow-hidden bg-gradient-to-br from-blue-600 to-primary-700 pt-8"
+    >
+      <!-- Multiple Radial Gradient Overlays -->
+      <!-- Primary Center Glow -->
+      <div
+        class="absolute inset-0"
+        style="
+          background: radial-gradient(
+            circle at center,
+            rgba(255, 255, 255, 0.15) 0%,
+            rgba(255, 255, 255, 0.1) 25%,
+            rgba(255, 255, 255, 0) 50%
+          );
+        "
+      ></div>
+
+      <!-- Blue Accent Glow -->
+      <div
+        class="absolute inset-0"
+        style="
+          background: radial-gradient(
+            circle at 30% 20%,
+            rgba(59, 130, 246, 0.15) 0%,
+            rgba(59, 130, 246, 0.08) 20%,
+            transparent 50%
+          );
+          transform: translate(-10%, -10%);
+        "
+      ></div>
+
+      <!-- Purple Accent Glow -->
+      <div
+        class="absolute inset-0"
+        style="
+          background: radial-gradient(
+            circle at 70% 60%,
+            rgba(139, 92, 246, 0.15) 0%,
+            rgba(139, 92, 246, 0.08) 20%,
+            transparent 50%
+          );
+          transform: translate(15%, 10%);
+        "
+      ></div>
+
+      <!-- Cyan Accent Glow -->
+      <div
+        class="absolute inset-0"
+        style="
+          background: radial-gradient(
+            circle at 80% 20%,
+            rgba(34, 211, 238, 0.12) 0%,
+            rgba(34, 211, 238, 0.06) 20%,
+            transparent 50%
+          );
+          transform: translate(5%, 0%);
+        "
+      ></div>
+
+      <!-- SVG Grid Pattern -->
+      <div class="absolute inset-0">
+        <svg width="100%" height="100%">
+          <defs>
+            <pattern
+              id="grid"
+              width="40"
+              height="40"
+              patternUnits="userSpaceOnUse"
+            >
+              <path
+                d="M 40 0 L 0 0 0 40"
+                fill="none"
+                stroke="rgba(255,255,255,0.1)"
+                stroke-width="1"
+              />
+            </pattern>
+          </defs>
+          <rect width="100%" height="100%" fill="url(#grid)" />
+        </svg>
+      </div>
+
+      <!-- Content Container -->
+      <div class="relative max-w-6xl mx-auto px-4 py-24 text-center">
+        <h1 class="text-4xl md:text-5xl font-bold mb-6 text-white">
+          Fashionably Late? Not On Our Watch!
+        </h1>
+        <p class="text-xl mb-8 text-primary-100">
+          Timepieces that make punctuality look good
+        </p>
+        <a href="/catalog">
+          <button
+            class="bg-white text-primary-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition duration-300 shadow-lg"
+          >
+            Shop Now
+          </button>
+        </a>
+      </div>
+    </div>
+
+    <!-- Main Content Area (can be filled with products) -->
+    <main class="flex-grow">
+      <!-- Content goes here -->
+      <!-- Popular products -->
+      <section class="max-w-4xl mx-auto px-4 py-8">
+        <div
+          class="flex justify-between items-center mb-8 border-b border-gray-200 pb-4"
+        >
+          <h2 class="text-2xl font-bold text-gray-700">Popular Products</h2>
+          <a
+            href="/catalog"
+            class="inline-flex items-center text-sm text-primary-600 hover:text-primary-500 font-medium transition duration-150 ease-in-out border-b-2 border-transparent hover:border-primary-500"
+          >
+            View Full Catalog
+            <i class="fas fa-arrow-right ml-2"></i>
+          </a>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <!-- Product Card -->
+          <div th:each="item : ${catalog.products}">
+            <div th:replace="~{fragments/product_card :: card(${item}) }"></div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+
+      <section class="bg-white py-16">
+        <div class="max-w-4xl mx-auto px-4">
+          <h2 class="text-2xl font-bold text-center text-gray-700 mb-4">
+            Why Choose Us
+          </h2>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- Fast Delivery -->
+            <div class="text-center p-6">
+              <div class="text-primary-500 mb-4">
+                <i class="fas fa-shipping-fast text-4xl"></i>
+              </div>
+              <h3 class="text-xl font-semibold text-gray-800 mb-2">
+                Fast Delivery
+              </h3>
+              <p class="text-gray-600">
+                Get your items delivered quickly and efficiently with our
+                premium shipping service
+              </p>
+            </div>
+
+            <!-- Quality Products -->
+            <div class="text-center p-6">
+              <div class="text-primary-500 mb-4">
+                <i class="fas fa-medal text-4xl"></i>
+              </div>
+              <h3 class="text-xl font-semibold text-gray-800 mb-2">
+                Quality Products
+              </h3>
+              <p class="text-gray-600">
+                We ensure all our products meet the highest standards of quality
+                and durability
+              </p>
+            </div>
+
+            <!-- 24/7 Support -->
+            <div class="text-center p-6">
+              <div class="text-primary-500 mb-4">
+                <i class="fas fa-headset text-4xl"></i>
+              </div>
+              <h3 class="text-xl font-semibold text-gray-800 mb-2">
+                24/7 Support
+              </h3>
+              <p class="text-gray-600">
+                Our customer service team is always available to help with any
+                questions or concerns
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
   </body>
 </html>
