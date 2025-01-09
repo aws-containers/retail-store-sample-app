@@ -1,4 +1,4 @@
-/*
+/**
  * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * SPDX-License-Identifier: MIT-0
  *
@@ -16,26 +16,15 @@
  * SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package com.amazon.sample.ui.services.assets;
-
-import java.io.IOException;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import reactor.core.publisher.Mono;
-
-public class MockAssetsService implements AssetsService {
-
-  public Mono<ResponseEntity<byte[]>> getImage(String image) {
-    byte[] data;
-    try {
-      data = this.getClass()
-        .getClassLoader()
-        .getResourceAsStream("static/assets/img/sample_product.png")
-        .readAllBytes();
-    } catch (IOException e) {
-      throw new RuntimeException(e);
-    }
-
-    return Mono.just(new ResponseEntity<byte[]>(data, HttpStatus.OK));
-  }
+:root {
+  --primary-color-50: 238, 242, 255;
+  --primary-color-100: 224, 231, 255;
+  --primary-color-200: 199, 210, 254;
+  --primary-color-300: 165, 180, 252;
+  --primary-color-400: 129, 140, 248;
+  --primary-color-500: 99, 102, 241;
+  --primary-color-600: 79, 70, 229;
+  --primary-color-700: 67, 56, 202;
+  --primary-color-800: 55, 48, 163;
+  --primary-color-900: 49, 46, 129;
 }

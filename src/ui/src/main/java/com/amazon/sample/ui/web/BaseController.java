@@ -36,6 +36,9 @@ public class BaseController {
   @Value("${retail.ui.banner}")
   private String bannerText;
 
+  @Value("${retail.ui.theme}")
+  private String theme;
+
   public BaseController(CartsService cartsService, Metadata metadata) {
     this.cartsService = cartsService;
     this.metadata = metadata;
@@ -44,6 +47,8 @@ public class BaseController {
   protected void populateCommon(ServerHttpRequest request, Model model) {
     this.populateCart(request, model);
     this.populateMetadata(model);
+
+    model.addAttribute("theme", this.theme);
   }
 
   protected void populateCart(ServerHttpRequest request, Model model) {

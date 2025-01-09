@@ -18,6 +18,7 @@ retail:
     metadata:
       region: "none"
     banner: ""
+    theme: default
 
 management:
   endpoints:

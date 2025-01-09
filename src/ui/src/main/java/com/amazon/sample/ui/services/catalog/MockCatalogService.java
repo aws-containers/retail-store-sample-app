@@ -40,7 +40,7 @@ public class MockCatalogService implements CatalogService {
           "Sample Product " + i,
           "This is a sample product description",
           1,
-          "/assets/img/sample_product.jpg",
+          "/assets/img/sample_product.png",
           123,
           new ArrayList<>()
         )

@@ -1,6 +1,11 @@
 {
   "properties": [
     {
+      "name": "retail.ui.theme",
+      "type": "java.lang.String",
+      "description": "Name of the theme for the UI"
+    },
+    {
       "name": "retail.ui.banner",
       "type": "java.lang.String",
       "description": "Set a banner that will appear on the UI"

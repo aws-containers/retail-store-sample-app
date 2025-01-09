@@ -1,17 +1,23 @@
 <div
-  class="bg-white rounded-lg"
+  class="bg-white"
   th:fragment="card (product)"
   xmlns:th="http://www.thymeleaf.org"
 >
-  <img
-    src="https://via.placeholder.com/300"
-    alt="Product 1"
-    class="w-full h-48 object-cover rounded-t-lg"
-    th:src="${item.imageUrl}"
-  />
+  <a href="#" th:href="@{/catalog/{itemId}(itemId=${product.id})}"
+    ><img
+      src="https://via.placeholder.com/300"
+      alt="Product 1"
+      class="w-full h-48 object-cover rounded-lg"
+      th:src="${item.imageUrl}"
+  /></a>
   <div class="p-4">
-    <h3 class="text-gray-800 mb-2" th:text="${product.name}">
-      Wireless Headphones
+    <h3
+      class="text-gray-800 mb-2 hover:text-primary-500 cursor-pointer"
+      th:text="${product.name}"
+    >
+      <a href="#" th:href="@{/catalog/{itemId}(itemId=${product.id})}"
+        >Wireless Headphones</a
+      >
     </h3>
     <p class="text-gray-600 mb-4">
       $<th:block th:text="${product.price}">143.00</th:block>

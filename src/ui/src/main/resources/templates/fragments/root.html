@@ -7,7 +7,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Modern E-commerce Store</title>
+    <title>Demo Store</title>
 
     <!-- Inter Font -->
     <link
@@ -21,6 +21,8 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.0/css/all.min.css"
     />
 
+    <link rel="stylesheet" th:href="'/assets/css/theme-'+${theme}+'.css'" />
+
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -32,17 +34,17 @@
             },
             colors: {
               primary: {
-                DEFAULT: "#ef4444",
-                50: "#fef2f2",
-                100: "#fee2e2",
-                200: "#fecaca",
-                300: "#fca5a5",
-                400: "#f87171",
-                500: "#ef4444",
-                600: "#dc2626",
-                700: "#b91c1c",
-                800: "#991b1b",
-                900: "#7f1d1d",
+                DEFAULT: "rgb(var(--primary-color-500))",
+                50: "rgb(var(--primary-color-50))",
+                100: "rgb(var(--primary-color-100))",
+                200: "rgb(var(--primary-color-20))",
+                300: "rgb(var(--primary-color-300))",
+                400: "rgb(var(--primary-color-400))",
+                500: "rgb(var(--primary-color-500))",
+                600: "rgb(var(--primary-color-600))",
+                700: "rgb(var(--primary-color-700))",
+                800: "rgb(var(--primary-color-800))",
+                900: "rgb(var(--primary-color-900))",
               },
             },
           },
