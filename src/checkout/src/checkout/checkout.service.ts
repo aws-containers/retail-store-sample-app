@@ -43,16 +43,18 @@ export class CheckoutService {
       return null;
     }
 
-    return deserialize(Checkout, json);
+    return deserialize(Checkout, JSON.parse(json));
   }
 
   async update(
     customerId: string,
     request: CheckoutRequest,
   ): Promise<Checkout> {
-    const tax = request.shippingAddress
-      ? Math.floor(request.subtotal * 0.05)
-      : -1; // Hardcoded 5% tax for now
+    const subtotal = request.items.reduce((acc, product) => {
+      return acc + product.price;
+    }, 0);
+
+    const tax = request.shippingAddress ? Math.floor(subtotal * 0.05) : -1; // Hardcoded 5% tax for now
     const effectiveTax = tax == -1 ? 0 : tax;
 
     return this.shippingService
@@ -68,14 +70,17 @@ export class CheckoutService {
           }
         }
 
+        const effectiveShipping = shipping == -1 ? 0 : shipping;
+
         const checkout: Checkout = {
           shippingRates,
           request,
           paymentId: this.makeid(16),
           paymentToken: this.makeid(32),
+          subtotal,
           shipping,
           tax,
-          total: request.subtotal + effectiveTax,
+          total: subtotal + effectiveTax + effectiveShipping,
         };
 
         await this.checkoutRepository.set(customerId, serialize(checkout));
@@ -85,19 +90,18 @@ export class CheckoutService {
   }
 
   async submit(customerId: string): Promise<CheckoutSubmitted> {
-    let checkout = await this.get(customerId);
+    const checkout = await this.get(customerId);
 
     if (!checkout) {
       throw new Error('Checkout not found');
     }
 
-    let order = await this.ordersService.create(checkout);
+    const order = await this.ordersService.create(checkout);
 
     await this.checkoutRepository.remove(customerId);
 
     return Promise.resolve({
       orderId: order.id,
-      customerEmail: checkout.request.customerEmail,
     });
   }
 

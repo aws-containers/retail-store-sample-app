@@ -1,0 +1,19 @@
+{
+  "properties": [
+    {
+      "name": "retail.orders.messaging.provider",
+      "type": "java.lang.String",
+      "description": "Messaging provider to use for sending events"
+    },
+    {
+      "name": "retail.orders.messaging.sqs.topic",
+      "type": "java.lang.String",
+      "description": "Name of the SQS topic to use"
+    },
+    {
+      "name": "retail.ui.metadata.region",
+      "type": "java.lang.String",
+      "description": "Set the region that will appear in the metadata"
+    }
+  ]
+}

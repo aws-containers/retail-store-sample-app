@@ -1,5 +1,5 @@
 <div
-  class="bg-white"
+  class="bg-white text-sm"
   th:fragment="card (product)"
   xmlns:th="http://www.thymeleaf.org"
 >
@@ -7,12 +7,12 @@
     ><img
       src="https://via.placeholder.com/300"
       alt="Product 1"
-      class="w-full h-48 object-cover rounded-lg"
-      th:src="${item.imageUrl}"
+      class="w-fit h-fit object-cover rounded-lg"
+      th:src="${'/assets/img/products/'+item.id+'.png'}"
   /></a>
-  <div class="p-4">
+  <div class="py-4">
     <h3
-      class="text-gray-800 mb-2 hover:text-primary-500 cursor-pointer"
+      class="text-gray-800 mb-2 text-base text-black font-bold hover:text-primary-500 cursor-pointer"
       th:text="${product.name}"
     >
       <a href="#" th:href="@{/catalog/{itemId}(itemId=${product.id})}"

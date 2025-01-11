@@ -19,13 +19,12 @@
 package com.amazon.sample.ui.services.orders;
 
 import com.amazon.sample.ui.services.orders.model.Order;
+import com.amazon.sample.ui.services.orders.model.PreparedOrder;
+import com.amazon.sample.ui.services.orders.model.ShippingAddress;
 import reactor.core.publisher.Mono;
 
 public interface OrdersService {
-  Mono<Order> order(
-    String sessionId,
-    String firstName,
-    String lastName,
-    String email
-  );
+  Mono<PreparedOrder> prepareOrder(String sessionId);
+
+  Mono<Order> placeOrder(String sessionId, ShippingAddress shippingAddress);
 }

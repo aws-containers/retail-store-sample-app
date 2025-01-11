@@ -16,12 +16,11 @@
  * SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-import { IsNumber, IsString } from 'class-validator';
+import { ApiProperty } from '@nestjs/swagger';
+import { IsString } from 'class-validator';
 
 export class CheckoutSubmitted {
   @IsString()
+  @ApiProperty()
   orderId: string;
-
-  @IsString()
-  customerEmail: string;
 }

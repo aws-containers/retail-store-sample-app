@@ -30,11 +30,9 @@ import (
 	"github.com/aws-containers/retail-store-sample-app/catalog/api"
 	"github.com/aws-containers/retail-store-sample-app/catalog/config"
 	"github.com/aws-containers/retail-store-sample-app/catalog/controller"
-	_ "github.com/aws-containers/retail-store-sample-app/catalog/docs"
 	"github.com/aws-containers/retail-store-sample-app/catalog/repository"
 	"github.com/gin-gonic/gin"
 	_ "github.com/go-sql-driver/mysql"
-	"github.com/prometheus/client_golang/prometheus"
 	"github.com/sethvargo/go-envconfig/pkg/envconfig"
 	ginprometheus "github.com/zsais/go-gin-prometheus"
 
@@ -46,9 +44,6 @@ import (
 	"go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc"
 	"go.opentelemetry.io/otel/propagation"
 	sdktrace "go.opentelemetry.io/otel/sdk/trace"
-
-	swaggerFiles "github.com/swaggo/files"
-	ginSwagger "github.com/swaggo/gin-swagger"
 )
 
 // @title Catalog API
@@ -60,8 +55,6 @@ import (
 
 // @host localhost:8080
 // @BasePath /
-
-var tracer = otel.Tracer("gin-server")
 
 func main() {
 	ctx := context.Background()
@@ -89,15 +82,15 @@ func main() {
 	p := ginprometheus.NewPrometheus("gin")
 	p.Use(r)
 
-	prometheus.MustRegister(db.Collector())
-	prometheus.MustRegister(db.ReaderCollector())
+	//prometheus.MustRegister(db.Collector())
+	//prometheus.MustRegister(db.ReaderCollector())
 
 	c, err := controller.NewController(api)
 	if err != nil {
 		log.Fatalln("Error creating controller", err)
 	}
 
-	catalog := r.Group("/catalogue")
+	catalog := r.Group("/catalog")
 
 	_, otelPresent := os.LookupEnv("OTEL_SERVICE_NAME")
 
@@ -109,13 +102,12 @@ func main() {
 		catalog.Use(otelgin.Middleware("catalog-server", otelgin.WithTracerProvider(tp)))
 	}
 
-	catalog.GET("", c.GetProducts)
+	catalog.GET("/products", c.GetProducts)
 
 	catalog.GET("/size", c.CatalogSize)
 	catalog.GET("/tags", c.ListTags)
-	catalog.GET("/product/:id", c.GetProduct)
+	catalog.GET("/products/:id", c.GetProduct)
 
-	r.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
 	r.GET("/health", func(c *gin.Context) {
 		c.String(http.StatusOK, "OK")
 	})
@@ -135,7 +127,7 @@ func main() {
 
 	// Wait for interrupt signal to gracefully shutdown the server with
 	// a timeout of 5 seconds.
-	quit := make(chan os.Signal)
+	quit := make(chan os.Signal, 1)
 	// kill (no param) default send syscall.SIGTERM
 	// kill -2 is syscall.SIGINT
 	// kill -9 is syscall.SIGKILL but can't be catch, so don't need add it
@@ -162,7 +154,7 @@ func initTracer(ctx context.Context) (*sdktrace.TracerProvider, error) {
 	}
 	idg := xray.NewIDGenerator()
 	ec2ResourceDetector := ec2.NewResourceDetector()
-	resource, err := ec2ResourceDetector.Detect(context.Background())
+	resource, _ := ec2ResourceDetector.Detect(context.Background())
 	tp := sdktrace.NewTracerProvider(
 		sdktrace.WithBatcher(exporter),
 		sdktrace.WithIDGenerator(idg),

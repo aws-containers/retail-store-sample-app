@@ -1,7 +1,7 @@
 <!doctype html>
 <html
   xmlns:th="http://www.thymeleaf.org"
-  th:replace="~{fragments/root :: root (~{::body})}"
+  th:replace="~{fragments/bare :: bare (~{::body})}"
 >
   <body>
     <nav
@@ -9,13 +9,15 @@
       id="navbar"
     >
       <div class="menu-marker bg-transparent">
-        <div class="max-w-6xl mx-auto px-4">
+        <div class="max-w-4xl mx-auto px-4">
           <div class="flex justify-between items-center h-16">
-            <div class="flex items-center">
-              <i class="fas fa-clock text-2xl text-white switch"></i>
-              <span class="ml-2 text-xl text-white switch">Demo Store</span>
-            </div>
-            <div class="hidden md:flex items-center space-x-8">
+            <a href="/">
+              <div class="flex items-center">
+                <i class="fas fa-briefcase text-2xl text-white switch"></i>
+                <span class="ml-2 text-xl text-white switch">SpyStore</span>
+              </div>
+            </a>
+            <div class="hidden md:flex items-center space-x-12">
               <a
                 href="/"
                 class="text-white/90 hover:text-white transition duration-300 text-sm switch"
@@ -29,14 +31,19 @@
             </div>
             <!-- Cart Button with Count -->
             <div class="flex items-center">
-              <button class="p-2 text-white hover:text-white/80 relative">
-                <i class="fas fa-shopping-cart text-lg switch"></i>
-                <span
-                  class="absolute -top-2 -right-2 bg-white text-primary-600 text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center switch-other"
+              <a href="/cart">
+                <button
+                  class="flex items-center gap-2 p-2 text-white hover:text-white/80"
                 >
-                  3
-                </span>
-              </button>
+                  <i class="fas fa-shopping-cart text-lg switch"></i>
+                  <span
+                    class="bg-white text-gray-700 text-xs font-bold rounded-full h-5 min-w-[1.25rem] flex items-center justify-center switch-other"
+                    th:text="${cart.numItems}"
+                  >
+                    3
+                  </span>
+                </button>
+              </a>
             </div>
           </div>
         </div>
@@ -67,7 +74,7 @@
                 element.classList.add("text-gray-700");
               });
             navbar.querySelectorAll("span.switch-other").forEach((element) => {
-              element.classList.remove("bg-white", "text-primary-600");
+              element.classList.remove("bg-white", "text-gray-700");
               element.classList.add("bg-primary-600", "text-white");
             });
           } else {
@@ -90,7 +97,7 @@
                 element.classList.remove("text-gray-700");
               });
             navbar.querySelectorAll("span.switch-other").forEach((element) => {
-              element.classList.add("bg-white", "text-primary-600");
+              element.classList.add("bg-white", "text-gray-700");
               element.classList.remove("bg-primary-600", "text-white");
             });
           }
@@ -99,104 +106,66 @@
     </nav>
 
     <!-- Hero Section -->
-    <div
-      class="relative overflow-hidden bg-gradient-to-br from-blue-600 to-primary-700 pt-8"
+    <section
+      class="relative flex items-center justify-center overflow-hidden h-[500px]"
     >
-      <!-- Multiple Radial Gradient Overlays -->
-      <!-- Primary Center Glow -->
-      <div
-        class="absolute inset-0"
-        style="
-          background: radial-gradient(
-            circle at center,
-            rgba(255, 255, 255, 0.15) 0%,
-            rgba(255, 255, 255, 0.1) 25%,
-            rgba(255, 255, 255, 0) 50%
-          );
-        "
-      ></div>
-
-      <!-- Blue Accent Glow -->
-      <div
-        class="absolute inset-0"
-        style="
-          background: radial-gradient(
-            circle at 30% 20%,
-            rgba(59, 130, 246, 0.15) 0%,
-            rgba(59, 130, 246, 0.08) 20%,
-            transparent 50%
-          );
-          transform: translate(-10%, -10%);
-        "
-      ></div>
-
-      <!-- Purple Accent Glow -->
-      <div
-        class="absolute inset-0"
-        style="
-          background: radial-gradient(
-            circle at 70% 60%,
-            rgba(139, 92, 246, 0.15) 0%,
-            rgba(139, 92, 246, 0.08) 20%,
-            transparent 50%
-          );
-          transform: translate(15%, 10%);
-        "
-      ></div>
-
-      <!-- Cyan Accent Glow -->
-      <div
-        class="absolute inset-0"
-        style="
-          background: radial-gradient(
-            circle at 80% 20%,
-            rgba(34, 211, 238, 0.12) 0%,
-            rgba(34, 211, 238, 0.06) 20%,
-            transparent 50%
-          );
-          transform: translate(5%, 0%);
-        "
-      ></div>
-
-      <!-- SVG Grid Pattern -->
+      <!-- Background Image with Overlay -->
       <div class="absolute inset-0">
-        <svg width="100%" height="100%">
-          <defs>
-            <pattern
-              id="grid"
-              width="40"
-              height="40"
-              patternUnits="userSpaceOnUse"
-            >
-              <path
-                d="M 40 0 L 0 0 0 40"
-                fill="none"
-                stroke="rgba(255,255,255,0.1)"
-                stroke-width="1"
-              />
-            </pattern>
-          </defs>
-          <rect width="100%" height="100%" fill="url(#grid)" />
-        </svg>
+        <img
+          src="/assets/img/hero.png"
+          alt="Hero Background"
+          class="w-full h-full object-cover"
+        />
+        <div class="absolute inset-0 bg-black/70"></div>
+        <div class="absolute inset-0">
+          <svg width="100%" height="100%">
+            <defs>
+              <pattern
+                id="grid"
+                width="40"
+                height="40"
+                patternUnits="userSpaceOnUse"
+              >
+                <path
+                  d="M 40 0 L 0 0 0 40"
+                  fill="none"
+                  stroke="rgba(255,255,255,0.1)"
+                  stroke-width="1"
+                />
+              </pattern>
+            </defs>
+            <rect width="100%" height="100%" fill="url(#grid)" />
+          </svg>
+        </div>
+        <div
+          class="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-t from-white to-transparent"
+        ></div>
       </div>
 
-      <!-- Content Container -->
-      <div class="relative max-w-6xl mx-auto px-4 py-24 text-center">
-        <h1 class="text-4xl md:text-5xl font-bold mb-6 text-white">
-          Fashionably Late? Not On Our Watch!
+      <!-- Content -->
+      <div class="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h1 class="text-4xl sm:text-5xl font-bold text-white mb-6">
+          The most public <span class="text-primary-400">Secret Shop</span>
         </h1>
-        <p class="text-xl mb-8 text-primary-100">
-          Timepieces that make punctuality look good
+        <p
+          class="text-xl md:text-2xl text-white/90 mb-8 max-w-2xl mx-auto text-gray-300"
+        >
+          Everything a secret agent needs, minus the paperwork
         </p>
-        <a href="/catalog">
-          <button
-            class="bg-white text-primary-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition duration-300 shadow-lg"
+        <div class="flex gap-4">
+          <a
+            href="/catalog"
+            class="relative inline-flex items-center gap-2 px-6 py-3 text-lg font-semibold text-white bg-primary-600 rounded-md hover:bg-primary-700 transition-colors overflow-hidden border border-gray-400"
           >
-            Shop Now
-          </button>
-        </a>
+            <span class="relative z-10">Shop Now</span>
+            <i class="fas fa-arrow-right relative z-10"></i>
+            <div
+              class="absolute inset-0 h-full w-[200%] animate-beam bg-gradient-to-r from-transparent via-white/20 to-transparent"
+            ></div>
+          </a>
+        </div>
       </div>
-    </div>
+    </section>
 
     <!-- Main Content Area (can be filled with products) -->
     <main class="flex-grow">
@@ -206,7 +175,7 @@
         <div
           class="flex justify-between items-center mb-8 border-b border-gray-200 pb-4"
         >
-          <h2 class="text-2xl font-bold text-gray-700">Popular Products</h2>
+          <h2 class="text-2xl font-bold text-gray-700">Popular Gadgets</h2>
           <a
             href="/catalog"
             class="inline-flex items-center text-sm text-primary-600 hover:text-primary-500 font-medium transition duration-150 ease-in-out border-b-2 border-transparent hover:border-primary-500"
@@ -217,7 +186,10 @@
         </div>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           <!-- Product Card -->
-          <div th:each="item : ${catalog.products}">
+          <div
+            th:each="item : ${catalog.products}"
+            class="border-b md:border-0 border-gray-300"
+          >
             <div th:replace="~{fragments/product_card :: card(${item}) }"></div>
           </div>
         </div>

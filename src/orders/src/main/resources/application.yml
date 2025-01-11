@@ -2,7 +2,7 @@ management:
   endpoints:
     web:
       exposure:
-        include: "*"
+        include: info,health,metrics,prometheus
 
 spring.autoconfigure.exclude:
   - org.springframework.boot.autoconfigure.amqp.RabbitAutoConfiguration
@@ -17,10 +17,6 @@ retail:
   orders:
     messaging:
       provider: "in-memory"
-
-logging:
-  level:
-    "[org.springframework.jdbc.core]": TRACE
 
 springdoc:
   api-docs:

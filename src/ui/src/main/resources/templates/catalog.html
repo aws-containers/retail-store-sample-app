@@ -4,11 +4,13 @@
   th:replace="~{fragments/layout :: layout (~{::body},'catalog')}"
 >
   <body>
-    <section class="max-w-6xl mx-auto px-4 py-8">
+    <section class="max-w-4xl mx-auto px-4 py-8">
       <div class="flex flex-col md:flex-row gap-8">
         <!-- Sidebar Filter -->
-        <div class="w-full md:w-64 bg-white p-4 rounded-lg h-fit">
-          <h3 class="font-semibold text-gray-800 mb-4">Categories</h3>
+        <div class="w-full md:w-36 h-fit">
+          <h3 class="font-semibold text-gray-800 mb-4 uppercase text-xs">
+            Categories
+          </h3>
           <ul class="space-y-2 text-sm">
             <li>
               <a
@@ -28,13 +30,12 @@
               >
             </li>
           </ul>
-          <hr class="my-4 border-gray-200" />
         </div>
 
         <!-- Product Grid -->
         <div class="flex-1">
           <div>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div class="grid grid-cols-2 lg:grid-cols-3 gap-6">
               <!-- Product Card 1 -->
               <div th:each="item : ${catalog.products}">
                 <div

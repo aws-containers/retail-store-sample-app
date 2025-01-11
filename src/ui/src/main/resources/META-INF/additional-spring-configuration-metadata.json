@@ -14,6 +14,21 @@
       "name": "retail.ui.metadata.region",
       "type": "java.lang.String",
       "description": "Set the region that will appear in the metadata"
+    },
+    {
+      "name": "retail.ui.endpoints.catalog",
+      "type": "java.lang.String",
+      "description": "HTTP endpoint for the catalog service"
+    },
+    {
+      "name": "retail.ui.endpoints.carts",
+      "type": "java.lang.String",
+      "description": "HTTP endpoint for the carts service"
+    },
+    {
+      "name": "retail.ui.endpoints.orders",
+      "type": "java.lang.String",
+      "description": "HTTP endpoint for the orders service"
     }
   ]
 }

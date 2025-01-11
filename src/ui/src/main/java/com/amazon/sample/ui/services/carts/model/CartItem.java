@@ -33,8 +33,6 @@ public class CartItem {
 
   private String name;
 
-  private String imageUrl;
-
   public int getTotalPrice() {
     return this.quantity * this.price;
   }

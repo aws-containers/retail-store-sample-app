@@ -25,27 +25,25 @@ import org.mapstruct.Mapping;
 @Mapper
 public interface CheckoutMapper {
   @Mapping(source = "request.items", target = "items")
-  @Mapping(source = "request.subtotal", target = "subtotal")
   @Mapping(source = "shippingRates.rates", target = "shippingOptions")
   Checkout checkout(
-    com.amazon.sample.ui.clients.checkout.model.Checkout checkout
+    com.amazon.sample.ui.client.checkout.models.Checkout checkout
   );
 
   CheckoutSubmitted submitted(
-    com.amazon.sample.ui.clients.checkout.model.CheckoutSubmitted submitted
+    com.amazon.sample.ui.client.checkout.models.CheckoutSubmitted submitted
   );
 
-  com.amazon.sample.ui.clients.checkout.model.ShippingAddress clientShippingAddress(
+  com.amazon.sample.ui.client.checkout.models.ShippingAddress clientShippingAddress(
     ShippingAddress address
   );
 
   CheckoutItem item(
-    com.amazon.sample.ui.clients.checkout.model.Item clientItem
+    com.amazon.sample.ui.client.checkout.models.Item clientItem
   );
 
-  @Mapping(source = "price", target = "unitCost")
   @Mapping(source = "totalPrice", target = "totalCost")
-  com.amazon.sample.ui.clients.checkout.model.Item fromCartItem(
+  com.amazon.sample.ui.client.checkout.models.Item fromCartItem(
     CartItem cartItem
   );
 }

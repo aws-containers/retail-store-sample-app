@@ -33,9 +33,7 @@ public class CheckoutItem {
 
   private Integer quantity;
 
-  private Integer unitCost;
+  private Integer price;
 
   private Integer totalCost;
-
-  private String imageUrl;
 }

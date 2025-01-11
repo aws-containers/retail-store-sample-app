@@ -1,0 +1,27 @@
+{
+  "descriptionHash": "F3F22B156884218D9E80BE9849032A0C2DDEC6D097786192C157C7137B35413A48E82FD0EB4F23B560B0D586E33B204019621977BB3C6258F45296B240267AC8",
+  "descriptionLocation": "../../../../../../../../../../checkout/openapi.yml",
+  "lockFileVersion": "1.0.0",
+  "kiotaVersion": "1.21.0",
+  "clientClassName": "CheckoutClient",
+  "typeAccessModifier": "Public",
+  "clientNamespaceName": "com.amazon.sample.ui.client.checkout",
+  "language": "Java",
+  "usesBackingStore": false,
+  "excludeBackwardCompatible": false,
+  "includeAdditionalData": true,
+  "disableSSLValidation": false,
+  "serializers": [
+    "com.microsoft.kiota.serialization.JsonSerializationWriterFactory"
+  ],
+  "deserializers": ["com.microsoft.kiota.serialization.JsonParseNodeFactory"],
+  "structuredMimeTypes": [
+    "application/json",
+    "text/plain;q=0.9",
+    "application/x-www-form-urlencoded;q=0.2",
+    "multipart/form-data;q=0.1"
+  ],
+  "includePatterns": [],
+  "excludePatterns": [],
+  "disabledValidationRules": []
+}

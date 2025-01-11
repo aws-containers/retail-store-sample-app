@@ -53,7 +53,7 @@ func NewController(api *api.CatalogAPI) (*Controller, error) {
 // @Failure 400 {object} httputil.HTTPError
 // @Failure 404 {object} httputil.HTTPError
 // @Failure 500 {object} httputil.HTTPError
-// @Router /catalogue [get]
+// @Router /catalog/products [get]
 func (c *Controller) GetProducts(ctx *gin.Context) {
 	var tags []string
 
@@ -78,7 +78,7 @@ func (c *Controller) GetProducts(ctx *gin.Context) {
 		return
 	}
 
-	products, err := c.api.GetProducts(tags, order, page, size, ctx.Request.Context())
+	products, err := c.api.GetProducts(tags, order, page, size)
 	if err != nil {
 		httputil.NewError(ctx, http.StatusNotFound, err)
 		return
@@ -97,11 +97,11 @@ func (c *Controller) GetProducts(ctx *gin.Context) {
 // @Failure 400 {object} httputil.HTTPError
 // @Failure 404 {object} httputil.HTTPError
 // @Failure 500 {object} httputil.HTTPError
-// @Router /catalogue/product/{id} [get]
+// @Router /catalog/products/{id} [get]
 func (c *Controller) GetProduct(ctx *gin.Context) {
 	id := ctx.Param("id")
 
-	product, err := c.api.GetProduct(id, ctx.Request.Context())
+	product, err := c.api.GetProduct(id)
 	if err != nil {
 		httputil.NewError(ctx, http.StatusNotFound, err)
 		return
@@ -120,7 +120,7 @@ func (c *Controller) GetProduct(ctx *gin.Context) {
 // @Failure 400 {object} httputil.HTTPError
 // @Failure 404 {object} httputil.HTTPError
 // @Failure 500 {object} httputil.HTTPError
-// @Router /catalogue/size [get]
+// @Router /catalog/size [get]
 func (c *Controller) CatalogSize(ctx *gin.Context) {
 	var tags []string
 
@@ -131,7 +131,7 @@ func (c *Controller) CatalogSize(ctx *gin.Context) {
 		tags = []string{}
 	}
 
-	count, err := c.api.GetSize(tags, ctx.Request.Context())
+	count, err := c.api.GetSize(tags)
 	if err != nil {
 		httputil.NewError(ctx, http.StatusNotFound, err)
 		return
@@ -151,9 +151,9 @@ func (c *Controller) CatalogSize(ctx *gin.Context) {
 // @Failure 400 {object} httputil.HTTPError
 // @Failure 404 {object} httputil.HTTPError
 // @Failure 500 {object} httputil.HTTPError
-// @Router /catalogue/tags [get]
+// @Router /catalog/tags [get]
 func (c *Controller) ListTags(ctx *gin.Context) {
-	accounts, err := c.api.GetTags(ctx.Request.Context())
+	accounts, err := c.api.GetTags()
 	if err != nil {
 		httputil.NewError(ctx, http.StatusNotFound, err)
 		return

@@ -11,12 +11,13 @@ services:
     restart: always
     cap_drop:
       - all
-    read_only: true
     security_opt:
       - no-new-privileges:true
     environment:
       - reschedule=on-node-failure
-      - DB_PASSWORD=${MYSQL_PASSWORD}
+      - RETAIL_CATALOG_DB_TYPE=mysql
+      - RETAIL_CATALOG_DB_PASSWORD=${MYSQL_PASSWORD}
+      - RETAIL_CATALOG_DB_ENDPOINT=catalog-db:3306
     ports:
       - "8081:8080"
   # nosemgrep: yaml.docker-compose.security.writable-filesystem-service.writable-filesystem-service

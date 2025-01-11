@@ -30,7 +30,7 @@ export class HttpOrdersService implements IOrdersService {
   async create(checkout: Checkout): Promise<ExistingOrder> {
     return this.ordersApi
       .createOrder({
-        email: checkout.request.customerEmail,
+        email: checkout.request.shippingAddress.email,
         firstName: 'John',
         lastName: 'Doe',
         items: checkout.request.items,

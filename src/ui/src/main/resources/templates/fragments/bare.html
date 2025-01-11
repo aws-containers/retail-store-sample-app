@@ -1,0 +1,55 @@
+<!doctype html>
+<html
+  lang="en"
+  xmlns:th="http://www.thymeleaf.org"
+  th:fragment="bare (bareContent)"
+  th:replace="~{fragments/root :: root (~{::body})}"
+>
+  <body class="flex flex-col min-h-screen">
+    <th:block th:insert="${bareContent}" />
+
+    <!-- Footer -->
+    <footer class="bg-white mt-auto text-sm">
+      <!-- Grey Separator Line -->
+      <!-- Footer Content -->
+      <div class="max-w-6xl mx-auto px-4 py-8">
+        <div class="border-t border-gray-200"></div>
+        <div class="grid grid-cols-2 gap-8 py-8 max-w-2xl text-center m-auto">
+          <!-- Quick Links -->
+          <div>
+            <h3 class="text-gray-800 font-semibold mb-4 uppercase text-xs">
+              Quick Links
+            </h3>
+            <ul class="space-y-2">
+              <li>
+                <a href="/catalog" class="text-gray-400 hover:text-primary-500"
+                  >Catalog</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-gray-400 hover:text-primary-500"
+                  >About</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <!-- Contact Info -->
+          <div>
+            <h3 class="text-gray-800 font-semibold mb-4 uppercase text-xs">
+              Contact
+            </h3>
+            <ul class="space-y-2">
+              <li class="text-gray-400">
+                <i class="fas fa-envelope mr-2"></i> Email
+              </li>
+              <li class="text-gray-400">
+                <i class="fas fa-phone mr-2"></i> Phone
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

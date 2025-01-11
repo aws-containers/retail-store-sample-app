@@ -32,11 +32,7 @@ public class Product {
 
   private String description;
 
-  private int count;
-
-  private String imageUrl;
-
   private int price;
 
-  private List<String> tag = null;
+  private List<ProductTag> tag = null;
 }

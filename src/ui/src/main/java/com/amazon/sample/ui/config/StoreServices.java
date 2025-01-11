@@ -18,24 +18,21 @@
 
 package com.amazon.sample.ui.config;
 
-import com.amazon.sample.ui.clients.carts.api.CartsApi;
-import com.amazon.sample.ui.clients.carts.api.ItemsApi;
-import com.amazon.sample.ui.clients.catalog.api.CatalogApi;
-import com.amazon.sample.ui.clients.checkout.api.CheckoutApi;
-import com.amazon.sample.ui.services.assets.AssetsService;
-import com.amazon.sample.ui.services.assets.MockAssetsService;
-import com.amazon.sample.ui.services.assets.ProxyingAssetsService;
+import com.amazon.sample.ui.client.cart.CartClient;
+import com.amazon.sample.ui.client.catalog.CatalogClient;
 import com.amazon.sample.ui.services.carts.CartsService;
+import com.amazon.sample.ui.services.carts.KiotaCartsService;
 import com.amazon.sample.ui.services.carts.MockCartsService;
-import com.amazon.sample.ui.services.carts.WebClientCartsService;
 import com.amazon.sample.ui.services.catalog.CatalogService;
+import com.amazon.sample.ui.services.catalog.KiotaCatalogService;
 import com.amazon.sample.ui.services.catalog.MockCatalogService;
-import com.amazon.sample.ui.services.catalog.WebClientCatalogService;
 import com.amazon.sample.ui.services.catalog.model.CatalogMapper;
 import com.amazon.sample.ui.services.checkout.CheckoutService;
 import com.amazon.sample.ui.services.checkout.MockCheckoutService;
-import com.amazon.sample.ui.services.checkout.WebClientCheckoutService;
 import com.amazon.sample.ui.services.checkout.model.CheckoutMapper;
+import com.microsoft.kiota.authentication.AnonymousAuthenticationProvider;
+import com.microsoft.kiota.bundle.DefaultRequestAdapter;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -44,17 +41,22 @@ import org.springframework.context.annotation.Configuration;
 public class StoreServices {
 
   @Bean
-  @ConditionalOnProperty(prefix = "endpoints", name = "catalog")
+  @ConditionalOnProperty(prefix = "retail.ui.endpoints", name = "catalog")
   public CatalogService catalogService(
-    CatalogApi catalogApi,
+    @Value("${retail.ui.endpoints.catalog}") String endpoint,
     CatalogMapper mapper
   ) {
-    return new WebClientCatalogService(catalogApi, mapper);
+    var requestAdapter = new DefaultRequestAdapter(
+      new AnonymousAuthenticationProvider()
+    );
+    requestAdapter.setBaseUrl(endpoint);
+
+    return new KiotaCatalogService(new CatalogClient(requestAdapter), mapper);
   }
 
   @Bean
   @ConditionalOnProperty(
-    prefix = "endpoints",
+    prefix = "retail.ui.endpoints",
     name = "catalog",
     havingValue = "false",
     matchIfMissing = true
@@ -64,18 +66,25 @@ public class StoreServices {
   }
 
   @Bean
-  @ConditionalOnProperty(prefix = "endpoints", name = "carts")
+  @ConditionalOnProperty(prefix = "retail.ui.endpoints", name = "carts")
   public CartsService cartsService(
-    CartsApi cartsApi,
-    ItemsApi itemsApi,
+    @Value("${retail.ui.endpoints.carts}") String endpoint,
     CatalogService catalogService
   ) {
-    return new WebClientCartsService(cartsApi, itemsApi, catalogService);
+    var requestAdapter = new DefaultRequestAdapter(
+      new AnonymousAuthenticationProvider()
+    );
+    requestAdapter.setBaseUrl(endpoint);
+
+    return new KiotaCartsService(
+      new CartClient(requestAdapter),
+      catalogService
+    );
   }
 
   @Bean
   @ConditionalOnProperty(
-    prefix = "endpoints",
+    prefix = "retail.ui.endpoints",
     name = "carts",
     havingValue = "false",
     matchIfMissing = true
@@ -85,18 +94,8 @@ public class StoreServices {
   }
 
   @Bean
-  @ConditionalOnProperty(prefix = "endpoints", name = "checkout")
-  public CheckoutService checkoutService(
-    CheckoutApi api,
-    CheckoutMapper mapper,
-    CartsService cartsService
-  ) {
-    return new WebClientCheckoutService(api, mapper, cartsService);
-  }
-
-  @Bean
   @ConditionalOnProperty(
-    prefix = "endpoints",
+    prefix = "retail.ui.endpoints",
     name = "checkout",
     havingValue = "false",
     matchIfMissing = true
@@ -107,21 +106,27 @@ public class StoreServices {
   ) {
     return new MockCheckoutService(mapper, cartsService);
   }
+  /*@Bean
+  @ConditionalOnProperty(prefix = "retail.ui.endpoints", name = "orders")
+  public OrdersService ordersService(
+    @Value("${retail.ui.endpoints.orders}") String endpoint
+  ) {
+    var requestAdapter = new DefaultRequestAdapter(
+      new AnonymousAuthenticationProvider()
+    );
+    requestAdapter.setBaseUrl(endpoint);
 
-  @Bean
-  @ConditionalOnProperty(prefix = "endpoints", name = "assets")
-  public AssetsService assetsService() {
-    return new ProxyingAssetsService();
+    return new KiotaOrdersService(new OrdersClient(requestAdapter));
   }
 
   @Bean
   @ConditionalOnProperty(
-    prefix = "endpoints",
-    name = "assets",
+    prefix = "retail.ui.endpoints.orders",
+    name = "orders",
     havingValue = "false",
     matchIfMissing = true
   )
-  public AssetsService mockAssetsService() {
-    return new MockAssetsService();
-  }
+  public OrdersService mockOrdersService() {
+    return new MockOrdersService();
+  }*/
 }

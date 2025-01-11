@@ -43,7 +43,7 @@ public class CartsController {
   @ResponseStatus(HttpStatus.OK)
   @GetMapping(
     value = "/{customerId}",
-    consumes = MediaType.APPLICATION_JSON_VALUE
+    produces = MediaType.APPLICATION_JSON_VALUE
   )
   @Operation(summary = "Retrieve a cart", operationId = "getCart")
   public Cart get(@PathVariable String customerId) {
@@ -53,7 +53,7 @@ public class CartsController {
   @ResponseStatus(HttpStatus.ACCEPTED)
   @DeleteMapping(
     value = "/{customerId}",
-    consumes = MediaType.APPLICATION_JSON_VALUE
+    produces = MediaType.APPLICATION_JSON_VALUE
   )
   @Operation(summary = "Delete a cart", operationId = "deleteCart")
   public Cart delete(@PathVariable String customerId) {
@@ -65,7 +65,7 @@ public class CartsController {
   @ResponseStatus(HttpStatus.ACCEPTED)
   @GetMapping(
     value = "/{customerId}/merge",
-    consumes = MediaType.APPLICATION_JSON_VALUE
+    produces = MediaType.APPLICATION_JSON_VALUE
   )
   @Operation(summary = "Merge two carts contents", operationId = "mergeCarts")
   public void mergeCarts(
@@ -78,7 +78,7 @@ public class CartsController {
   @ResponseStatus(HttpStatus.OK)
   @GetMapping(
     value = "/{customerId}/items/{itemId:.*}",
-    consumes = MediaType.APPLICATION_JSON_VALUE
+    produces = MediaType.APPLICATION_JSON_VALUE
   )
   @Operation(summary = "Retrieve an item from a cart", operationId = "getItem")
   public Item get(
@@ -91,7 +91,7 @@ public class CartsController {
   @ResponseStatus(HttpStatus.OK)
   @GetMapping(
     value = "/{customerId}/items",
-    consumes = MediaType.APPLICATION_JSON_VALUE
+    produces = MediaType.APPLICATION_JSON_VALUE
   )
   @Operation(summary = "Retrieve items from a cart", operationId = "getItems")
   public List<Item> getItems(@PathVariable String customerId) {
@@ -104,7 +104,7 @@ public class CartsController {
   @ResponseStatus(HttpStatus.CREATED)
   @PostMapping(
     value = "/{customerId}/items",
-    consumes = MediaType.APPLICATION_JSON_VALUE
+    produces = MediaType.APPLICATION_JSON_VALUE
   )
   @Operation(summary = "Add an item to a cart", operationId = "addItem")
   public Item addToCart(
@@ -124,7 +124,7 @@ public class CartsController {
   @ResponseStatus(HttpStatus.ACCEPTED)
   @DeleteMapping(
     value = "/{customerId}/items/{itemId:.*}",
-    consumes = MediaType.APPLICATION_JSON_VALUE
+    produces = MediaType.APPLICATION_JSON_VALUE
   )
   @Operation(summary = "Delete an item from a cart", operationId = "deleteItem")
   public void removeItem(
@@ -137,7 +137,7 @@ public class CartsController {
   @ResponseStatus(HttpStatus.ACCEPTED)
   @PatchMapping(
     value = "/{customerId}/items",
-    consumes = MediaType.APPLICATION_JSON_VALUE
+    produces = MediaType.APPLICATION_JSON_VALUE
   )
   @Operation(summary = "Update an item in a cart", operationId = "updateItem")
   public void updateItem(

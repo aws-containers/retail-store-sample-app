@@ -18,9 +18,10 @@
 
 package com.amazon.sample.ui.web;
 
-import com.amazon.sample.ui.services.Metadata;
 import com.amazon.sample.ui.services.carts.CartsService;
 import com.amazon.sample.ui.web.payload.CartChangeRequest;
+import com.amazon.sample.ui.web.util.RequiresCommonAttributes;
+import com.amazon.sample.ui.web.util.SessionIDUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.server.reactive.ServerHttpRequest;
@@ -35,25 +36,20 @@ import reactor.core.publisher.Mono;
 @Controller
 @RequestMapping("/cart")
 @Slf4j
-public class CartController extends BaseController {
+@RequiresCommonAttributes
+public class CartController {
 
-  private CartsService cartsService;
+  private final CartsService cartsService;
 
-  public CartController(
-    @Autowired CartsService cartsService,
-    @Autowired Metadata metadata
-  ) {
-    super(cartsService, metadata);
+  public CartController(@Autowired CartsService cartsService) {
     this.cartsService = cartsService;
   }
 
   @GetMapping
   public String cart(ServerHttpRequest request, Model model) {
-    String sessionId = getSessionID(request);
+    String sessionId = SessionIDUtil.getSessionId(request);
 
     model.addAttribute("fullCart", cartsService.getCart(sessionId));
-
-    this.populateCommon(request, model);
 
     return "cart";
   }
@@ -63,8 +59,10 @@ public class CartController extends BaseController {
     @ModelAttribute CartChangeRequest addRequest,
     ServerHttpRequest request
   ) {
+    String sessionId = SessionIDUtil.getSessionId(request);
+
     return this.cartsService.addItem(
-        getSessionID(request),
+        sessionId,
         addRequest.getProductId()
       ).thenReturn("redirect:/cart");
   }
@@ -74,8 +72,10 @@ public class CartController extends BaseController {
     @ModelAttribute CartChangeRequest addRequest,
     ServerHttpRequest request
   ) {
+    String sessionId = SessionIDUtil.getSessionId(request);
+
     return this.cartsService.removeItem(
-        getSessionID(request),
+        sessionId,
         addRequest.getProductId()
       ).thenReturn("redirect:/cart");
   }

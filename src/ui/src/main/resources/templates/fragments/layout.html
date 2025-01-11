@@ -2,37 +2,44 @@
 <html
   xmlns:th="http://www.thymeleaf.org"
   th:fragment="layout (template, menu)"
-  th:replace="~{fragments/root :: root (~{::body})}"
+  th:replace="~{fragments/bare :: bare (~{::body})}"
 >
   <body>
     <!-- Navigation -->
     <nav class="bg-white">
-      <div class="max-w-6xl mx-auto px-4">
+      <div class="max-w-4xl mx-auto px-4">
         <div class="flex justify-between items-center h-16">
-          <div class="flex items-center">
-            <i class="fas fa-clock text-2xl text-primary-500"></i>
-            <span class="ml-2 text-xl text-gray-800">Demo Store</span>
-          </div>
-          <div class="hidden md:flex items-center space-x-8">
+          <a href="/">
+            <div class="flex items-center">
+              <i class="fas fa-briefcase text-2xl text-primary-600"></i>
+              <span class="ml-2 text-xl text-gray-800"
+                ><span class="text-primary-600">Spy</span>Store</span
+              >
+            </div>
+          </a>
+          <div class="flex items-center space-x-12">
             <a
               href="/"
               class="hover:text-primary-500 transition duration-300 text-sm"
+              th:text="#{home}"
               >Home</a
             >
             <a
               href="/catalog"
               class="hover:text-primary-500 transition duration-300 text-sm"
+              th:text="#{catalog}"
               >Catalog</a
             >
           </div>
           <!-- Cart Button with Count -->
           <div class="flex items-center">
             <a href="/cart">
-              <button class="p-2 text-gray-400 hover:text-primary-500 relative">
+              <button
+                class="flex items-center gap-2 p-2 text-gray-700 hover:text-primary-500"
+              >
                 <i class="fas fa-shopping-cart text-lg"></i>
-                <!-- Cart Count Badge -->
                 <span
-                  class="absolute -top-2 -right-2 bg-primary-600 text-white text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center"
+                  class="bg-primary-600 text-white text-xs font-bold rounded-full h-5 min-w-[1.25rem] flex items-center justify-center switch-other"
                   th:text="${cart.numItems}"
                 >
                   3

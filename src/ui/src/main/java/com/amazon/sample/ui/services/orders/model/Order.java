@@ -18,6 +18,7 @@
 
 package com.amazon.sample.ui.services.orders.model;
 
+import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
@@ -26,4 +27,16 @@ import lombok.Data;
 public class Order {
 
   private String id;
+
+  private int subtotal;
+
+  private int tax;
+
+  private int shipping;
+
+  private int total;
+
+  private ShippingAddress shippingAddress;
+
+  private List<OrderItem> items;
 }

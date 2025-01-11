@@ -1,27 +1,25 @@
 server:
   port: ${port:8080}
-  codec.max-in-memory-size: 10MB
   compression.enabled: true
 
-endpoints:
-  catalog: false #http://localhost:8081
-  carts: false #http://localhost:8082
-  orders: false #http://localhost:8083
-  assets: false #http://localhost:8084
-  checkout: false #http://localhost:8085
-  logging: false
-  http:
-    keep-alive: true
+spring:
+  messages:
+    basename: lang/messages
+  codec:
+    max-in-memory-size: 10MB
 
 retail:
   ui:
     metadata:
       region: "none"
-    banner: ""
     theme: default
+    endpoints:
+      catalog: false # http://localhost:8081
+      carts: false # http://localhost:8081
+      orders: false #http://localhost:8083
 
 management:
   endpoints:
     web:
       exposure:
-        include: "*"
+        include: info,health,metrics,prometheus

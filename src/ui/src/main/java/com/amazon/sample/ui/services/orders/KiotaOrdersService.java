@@ -18,13 +18,10 @@
 
 package com.amazon.sample.ui.services.orders;
 
-import com.amazon.sample.ui.kiota.*;
-import com.amazon.sample.ui.kiota.models.OrderItem;
-import com.amazon.sample.ui.kiota.models.ShippingAddress;
+import com.amazon.sample.ui.client.orders.OrdersClient;
 import com.amazon.sample.ui.services.carts.CartsService;
-import com.amazon.sample.ui.services.carts.model.CartItem;
 import com.amazon.sample.ui.services.orders.model.Order;
-import java.util.ArrayList;
+import com.amazon.sample.ui.services.orders.model.PreparedOrder;
 import reactor.core.publisher.Mono;
 
 public class KiotaOrdersService implements OrdersService {
@@ -39,30 +36,19 @@ public class KiotaOrdersService implements OrdersService {
   }
 
   @Override
-  public Mono<Order> order(
+  public Mono<Order> placeOrder(
     String sessionId,
-    String firstName,
-    String lastName,
-    String email
+    com.amazon.sample.ui.services.orders.model.ShippingAddress shippingAddress
   ) {
-    var orderItems = new ArrayList<OrderItem>();
-    var shippingAddressRequest = new ShippingAddress();
-    var createOrderRequest = new com.amazon.sample.ui.kiota.models.Order();
+    // TODO Auto-generated method stub
+    throw new UnsupportedOperationException("Unimplemented method 'order'");
+  }
 
-    createOrderRequest.setShippingAddress(shippingAddressRequest);
-    return this.cartsService.getCart(sessionId)
-      .flatMap(cart -> {
-        for (CartItem item : cart.getItems()) {
-          OrderItem orderItem = new OrderItem();
-          orderItem.setProductId(item.getId());
-          orderItem.setQuantity(item.getQuantity());
-          orderItem.setUnitCost(item.getPrice());
-
-          orderItems.add(orderItem);
-        }
-
-        return Mono.just(this.client.orders().post(createOrderRequest));
-      })
-      .map(o -> new Order(o.getId()));
+  @Override
+  public Mono<PreparedOrder> prepareOrder(String sessionId) {
+    // TODO Auto-generated method stub
+    throw new UnsupportedOperationException(
+      "Unimplemented method 'prepareOrder'"
+    );
   }
 }

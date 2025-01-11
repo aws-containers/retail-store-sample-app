@@ -18,8 +18,8 @@
 
 package com.amazon.sample.carts.services;
 
-import com.amazon.sample.carts.configuration.DynamoDBConfiguration;
-import com.amazon.sample.carts.configuration.DynamoDBProperties;
+import com.amazon.sample.carts.config.DynamoDBConfiguration;
+import com.amazon.sample.carts.config.DynamoDBProperties;
 import org.junit.jupiter.api.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;

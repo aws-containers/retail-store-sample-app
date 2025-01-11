@@ -26,6 +26,7 @@ import lombok.Data;
 @Data
 public class ShippingAddressRequest {
 
+  // Shipping
   @NotEmpty(message = "First name is required")
   private String firstName = "John";
 

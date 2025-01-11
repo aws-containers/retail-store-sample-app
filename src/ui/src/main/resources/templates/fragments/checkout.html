@@ -63,10 +63,10 @@
             <th:block th:insert="${template1}" />
           </div>
           <!-- Order Summary Column -->
-          <div class="md:col-span-2 bg-gray-50">
-            <div class="rounded-lg p-6 text-sm">
+          <div class="md:col-span-2">
+            <div class="p-6 text-sm bg-gray-100 rounded-lg">
               <dl>
-                <dt class="mt-4 text-gray-600">Amount due</dt>
+                <dt class="mt-4 text-gray-500">Amount due</dt>
                 <dd class="text-2xl mt-2 mb-4">
                   $<th:block th:text="${checkout.total}">446</th:block>
                 </dd>
@@ -76,7 +76,7 @@
                 class="border-t border-gray border-opacity-20 mt-6 pt-2 space-y-2"
               >
                 <div class="flex items-center justify-between py-2">
-                  <dt class="text-gray-600">Subtotal</dt>
+                  <dt class="text-gray-500">Subtotal</dt>
                   <dd>
                     $<th:block th:text="${checkout.subtotal}">446</th:block>
                   </dd>
@@ -85,14 +85,14 @@
                   class="flex items-center justify-between py-2"
                   th:if="${checkout.tax > 0}"
                 >
-                  <dt class="text-gray-600">Taxes</dt>
+                  <dt class="text-gray-500">Taxes</dt>
                   <dd>$<th:block th:text="${checkout.tax}">446</th:block></dd>
                 </div>
                 <div
                   class="flex items-center justify-between py-2"
                   th:if="${checkout.shipping > 0}"
                 >
-                  <dt class="text-gray-600">Shipping</dt>
+                  <dt class="text-gray-500">Shipping</dt>
                   <dd>
                     $<th:block th:text="${checkout.shipping}">446</th:block>
                   </dd>

@@ -4,7 +4,7 @@
   th:replace="~{fragments/layout :: layout (~{::body},'cart')}"
 >
   <body>
-    <section class="max-w-4xl mx-auto px-4 py-8">
+    <section class="max-w-3xl mx-auto py-8">
       <div class="container mx-auto px-4 py-8">
         <!-- Cart Header -->
         <h1 class="text-2xl font-semibold mb-6">Shopping Cart</h1>
@@ -24,23 +24,27 @@
                 src="https://via.placeholder.com/100"
                 alt="Product"
                 class="w-[100px] h-[100px] rounded"
-                th:src="${item.imageUrl}"
+                th:src="${'/assets/img/products/'+item.id+'.png'}"
               />
               <div class="flex-1">
                 <h2 th:text="${item.name}">Product Name</h2>
+                <p class="text-sm text-gray-600">
+                  Quantity: <th:block th:text="${item.quantity}">1</th:block>
+                </p>
               </div>
               <div class="text-right">
-                <p>$<th:block th:text="${item.price}">123</th:block></p>
-                <p class="text-sm text-gray-400">
-                  x <th:block th:text="${item.quantity}">1</th:block>
+                <p>$<th:block th:text="${item.totalPrice}">299</th:block></p>
+                <p class="text-sm text-gray-600">
+                  $<th:block th:text="${item.price}">299</th:block> each
                 </p>
                 <form action="/cart/remove" method="POST">
                   <input type="hidden" name="productId" th:value="${item.id}" />
                   <button
                     type="submit"
                     class="text-red-500 hover:text-red-700 mt-2"
+                    aria-label="Remove item"
                   >
-                    Remove
+                    <i class="fas fa-trash-alt"></i>
                   </button>
                 </form>
               </div>

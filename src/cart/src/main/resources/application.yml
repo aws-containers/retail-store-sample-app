@@ -6,14 +6,12 @@ management:
 
 server:
   port: ${port:8080}
----
-spring:
-  config:
-    activate:
-      on-profile: "!mongo"
-  autoconfigure:
-    exclude:
-      - org.springframework.boot.autoconfigure.mongo.MongoAutoConfiguration
-      - org.springframework.boot.autoconfigure.data.mongo.MongoDataAutoConfiguration
-      - org.springframework.boot.autoconfigure.data.mongo.MongoRepositoriesAutoConfiguration
-      - org.springframework.boot.autoconfigure.mongo.embedded.EmbeddedMongoAutoConfiguration
+
+retail:
+  carts:
+    persistence:
+      provider: "in-memory"
+      dynamodb:
+        endpoint:
+        createTable: false
+        tableName: Items

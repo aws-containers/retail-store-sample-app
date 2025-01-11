@@ -49,12 +49,9 @@ func TestMain(m *testing.M) {
 	dbConfig = config.DatabaseConfiguration{
 		Type:           "mysql",
 		Endpoint:       endpoint,
-		ReadEndpoint:   endpoint,
 		Name:           "sampledb",
 		User:           "catalog_user",
 		Password:       "unittest123",
-		Migrate:        true,
-		MigrationsPath: "../db/migrations",
 		ConnectTimeout: 5,
 	}
 

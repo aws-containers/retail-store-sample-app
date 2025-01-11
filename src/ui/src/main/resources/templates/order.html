@@ -8,7 +8,7 @@
       <!-- Order Header -->
       <div class="bg-white p-6 mb-6">
         <h1 class="text-2xl font-semibold text-gray-800 mb-4">Order Summary</h1>
-        <div class="grid grid-cols-2 gap-4">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
             <p class="text-sm text-gray-600">Order ID</p>
             <p th:text="${summary.orderId}">#ORD-2023-1234</p>
@@ -32,7 +32,7 @@
               src="https://via.placeholder.com/100"
               alt="Product"
               class="w-[100px] h-[100px] rounded"
-              th:src="${item.imageUrl}"
+              th:src="${'/assets/img/products/'+item.id+'.png'}"
             />
             <div class="ml-4 flex-1">
               <h3 class="font-medium text-gray-800" th:text="${item.name}">
@@ -57,7 +57,7 @@
         <h2 class="text-lg font-semibold text-gray-800 mb-4">
           Payment Summary
         </h2>
-        <div class="space-y-3">
+        <div class="space-y-3 text-sm">
           <div class="flex justify-between">
             <span class="text-gray-600">Subtotal</span>
             <span>$<th:block th:text="${summary.subtotal}">299</th:block></span>
@@ -70,12 +70,10 @@
             <span class="text-gray-600">Taxes</span>
             <span>$<th:block th:text="${summary.tax}">299</th:block></span>
           </div>
-          <div class="border-t pt-3 mt-3">
+          <div class="border-t pt-3 mt-3 text-base">
             <div class="flex justify-between font-semibold text-gray-800">
               <span>Total</span>
-              <span
-                >$<th:block th:text="${summary.totalCost}">299</th:block></span
-              >
+              <span>$<th:block th:text="${summary.total}">299</th:block></span>
             </div>
           </div>
         </div>

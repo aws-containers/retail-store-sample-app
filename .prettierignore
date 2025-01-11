@@ -5,3 +5,5 @@ dist
 ATTRIBUTION.md
 deploy/terraform/eks/**/*.yaml
 src/**/target
+go.mod
+go.sum

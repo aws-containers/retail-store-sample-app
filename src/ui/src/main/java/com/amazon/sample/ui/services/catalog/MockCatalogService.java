@@ -21,31 +21,121 @@ package com.amazon.sample.ui.services.catalog;
 import com.amazon.sample.ui.services.catalog.model.Product;
 import com.amazon.sample.ui.services.catalog.model.ProductPage;
 import com.amazon.sample.ui.services.catalog.model.ProductTag;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.*;
+import java.util.stream.Collectors;
+import lombok.Data;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 public class MockCatalogService implements CatalogService {
 
   private Map<String, Product> products;
+  private Map<String, ProductTag> tags;
 
   public MockCatalogService() {
-    products = new HashMap<>();
+    tags = loadTagsFromJson();
+    products = loadProductsFromJson();
+  }
 
-    for (int i = 1; i < 21; i++) {
-      products.put(
-        "" + i,
-        new Product(
-          "" + i,
-          "Sample Product " + i,
-          "This is a sample product description",
-          1,
-          "/assets/img/sample_product.png",
-          123,
-          new ArrayList<>()
-        )
+  private Map<String, ProductTag> loadTagsFromJson() {
+    Map<String, ProductTag> tagMap = new HashMap<>();
+
+    try {
+      // Load the JSON file from classpath
+      InputStream inputStream = getClass()
+        .getResourceAsStream("/data/tags.json");
+      if (inputStream == null) {
+        throw new RuntimeException("Could not find tags.json in classpath");
+      }
+
+      // Read the JSON content
+      ObjectMapper mapper = new ObjectMapper();
+      List<TagData> tagList = mapper.readValue(
+        inputStream,
+        mapper
+          .getTypeFactory()
+          .constructCollectionType(List.class, TagData.class)
       );
+
+      // Convert to ProductTag objects and populate the map
+      for (TagData tag : tagList) {
+        tagMap.put(
+          tag.getName(),
+          new ProductTag(tag.getName(), tag.getDisplayName())
+        );
+      }
+    } catch (IOException e) {
+      throw new RuntimeException("Failed to load tags from JSON file", e);
     }
+
+    return tagMap;
+  }
+
+  private Map<String, Product> loadProductsFromJson() {
+    Map<String, Product> productMap = new HashMap<>();
+
+    try {
+      // Load the JSON file from classpath
+      InputStream inputStream = getClass()
+        .getResourceAsStream("/data/products.json");
+      if (inputStream == null) {
+        throw new RuntimeException("Could not find products.json in classpath");
+      }
+
+      // Read the JSON content
+      ObjectMapper mapper = new ObjectMapper();
+      List<ProductData> productList = mapper.readValue(
+        inputStream,
+        mapper
+          .getTypeFactory()
+          .constructCollectionType(List.class, ProductData.class)
+      );
+
+      // Convert to Product objects and populate the map
+      for (ProductData productData : productList) {
+        // Convert tags from strings to ProductTag objects
+        List<ProductTag> productTags = productData
+          .getTags()
+          .stream()
+          .map(tagName -> tags.get(tagName))
+          .filter(Objects::nonNull)
+          .collect(Collectors.toList());
+
+        Product product = new Product(
+          productData.getId(),
+          productData.getName(),
+          productData.getDescription(),
+          productData.getPrice(),
+          productTags
+        );
+
+        productMap.put(product.getId(), product);
+      }
+    } catch (IOException e) {
+      throw new RuntimeException("Failed to load products from JSON file", e);
+    }
+
+    return productMap;
+  }
+
+  @Data
+  private static class TagData {
+
+    private String name;
+    private String displayName;
+  }
+
+  @Data
+  private static class ProductData {
+
+    private String id;
+    private String name;
+    private String description;
+    private int price;
+    private List<String> tags;
   }
 
   @Override
@@ -80,6 +170,6 @@ public class MockCatalogService implements CatalogService {
 
   @Override
   public Flux<ProductTag> getTags() {
-    return Flux.just(new ProductTag("smart", "Smart"));
+    return Flux.fromIterable(this.tags.values());
   }
 }

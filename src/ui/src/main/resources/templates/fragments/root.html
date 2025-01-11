@@ -2,7 +2,7 @@
 <html
   lang="en"
   xmlns:th="http://www.thymeleaf.org"
-  th:fragment="root (content)"
+  th:fragment="root (rootContent)"
 >
   <head>
     <meta charset="UTF-8" />
@@ -21,7 +21,10 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.0/css/all.min.css"
     />
 
-    <link rel="stylesheet" th:href="'/assets/css/theme-'+${theme}+'.css'" />
+    <link
+      rel="stylesheet"
+      th:href="'/assets/css/theme-'+${#strings.defaultString(theme, 'default')}+'.css'"
+    />
 
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -51,52 +54,21 @@
         },
       };
     </script>
+    <style>
+      @keyframes beam {
+        from {
+          transform: translateX(-100%);
+        }
+        to {
+          transform: translateX(50%);
+        }
+      }
+
+      .animate-beam {
+        animation: beam 5s infinite;
+      }
+    </style>
   </head>
 
-  <body class="flex flex-col min-h-screen">
-    <th:block th:insert="${content}" />
-
-    <!-- Footer -->
-    <footer class="bg-white mt-auto text-sm">
-      <!-- Grey Separator Line -->
-      <!-- Footer Content -->
-      <div class="max-w-6xl mx-auto px-4 py-8">
-        <div class="border-t border-gray-200"></div>
-        <div class="grid grid-cols-1 md:grid-cols-4 gap-8 py-8">
-          <div></div>
-          <!-- Quick Links -->
-          <div>
-            <h3 class="text-gray-800 font-semibold mb-4">Quick Links</h3>
-            <ul class="space-y-2">
-              <li>
-                <a href="#" class="text-gray-400 hover:text-primary-500"
-                  >Shop</a
-                >
-              </li>
-              <li>
-                <a href="#" class="text-gray-400 hover:text-primary-500"
-                  >About</a
-                >
-              </li>
-              <li>
-                <a href="#" class="text-gray-400 hover:text-primary-500"
-                  >Contact</a
-                >
-              </li>
-            </ul>
-          </div>
-
-          <!-- Contact Info -->
-          <div>
-            <h3 class="text-gray-800 font-semibold mb-4">Contact</h3>
-            <ul class="space-y-2">
-              <li class="text-gray-400">Email</li>
-              <li class="text-gray-400">Phone</li>
-            </ul>
-          </div>
-          <div></div>
-        </div>
-      </div>
-    </footer>
-  </body>
+  <th:block th:insert="${rootContent}" />
 </html>

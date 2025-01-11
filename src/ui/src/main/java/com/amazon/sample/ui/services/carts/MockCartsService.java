@@ -73,9 +73,7 @@ public class MockCartsService implements CartsService {
     Cart cart = getOrCreate(sessionId);
 
     return this.catalogService.getProduct(productId)
-      .map(p ->
-        new CartItem(productId, 1, p.getPrice(), p.getName(), p.getImageUrl())
-      )
+      .map(p -> new CartItem(productId, 1, p.getPrice(), p.getName()))
       .doOnNext(i -> cart.addItem(i))
       .then();
   }

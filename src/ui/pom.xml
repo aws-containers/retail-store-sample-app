@@ -129,20 +129,6 @@
 			<scope>test</scope>
 		</dependency>
 		<dependency>
-		  <groupId>org.webjars</groupId>
-		  <artifactId>webjars-locator-core</artifactId>
-		</dependency>
-		<dependency>
-		  <groupId>org.webjars.npm</groupId>
-		  <artifactId>bootstrap</artifactId>
-		  <version>5.3.3</version>
-		</dependency>
-		<dependency>
-			<groupId>org.webjars.npm</groupId>
-			<artifactId>bootstrap-icons</artifactId>
-			<version>1.11.3</version>
-		</dependency>
-		<dependency>
 			<groupId>com.microsoft.kiota</groupId>
 			<artifactId>microsoft-kiota-bundle</artifactId>
 			<version>1.8.2</version>
@@ -151,6 +137,11 @@
 			<groupId>com.microsoft.kiota</groupId>
 			<artifactId>microsoft-kiota-serialization-json</artifactId>
 			<version>1.8.2</version>
+		</dependency>
+		<dependency>
+			<groupId>io.opentelemetry.contrib</groupId>
+			<artifactId>opentelemetry-aws-resources</artifactId>
+			<version>1.42.0-alpha</version>
 		</dependency>
 	</dependencies>
 
@@ -200,47 +191,53 @@
 				</configuration>
 			</plugin>
 			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>build-helper-maven-plugin</artifactId>
-				<version>3.2.0</version>
-				<executions>
-					<execution>
-						<id>add-source</id>
-						<phase>generate-sources</phase>
-						<goals>
-							<goal>add-source</goal>
-						</goals>
-						<configuration>
-							<sources>
-								<source>${project.build.directory}/generated-sources/kiota</source>
-							</sources>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
-			<plugin>
         <artifactId>kiota-maven-plugin</artifactId>
         <groupId>io.kiota</groupId>
         <version>0.0.19</version>
-        <executions>
-          <execution>
-            <goals>
-              <goal>generate</goal>
-            </goals>
-          </execution>
-        </executions>
         <configuration>
-          <file>../orders/openapi.yml</file>
-          <clientClass>OrdersClient</clientClass>
 					<kiotaVersion>1.21.0</kiotaVersion>
 					<serializers
           >com.microsoft.kiota.serialization.JsonSerializationWriterFactory</serializers>
 					<deserializers
           >com.microsoft.kiota.serialization.JsonParseNodeFactory</deserializers>
-					<namespace>com.amazon.sample.ui.kiota</namespace>
+					<targetDirectory>${project.build.sourceDirectory}</targetDirectory>
 					<cleanOutput>true</cleanOutput>
           <clearCache>true</clearCache>
         </configuration>
+				<executions>
+					<execution>
+						<id>orders</id>
+						<configuration>
+							<file>../orders/openapi.yml</file>
+							<namespace>com.amazon.sample.ui.client.orders</namespace>
+							<clientClass>OrdersClient</clientClass>
+						</configuration>
+					</execution>
+					<execution>
+						<id>cart</id>
+						<configuration>
+							<file>../cart/openapi.yml</file>
+							<namespace>com.amazon.sample.ui.client.cart</namespace>
+							<clientClass>CartClient</clientClass>
+						</configuration>
+					</execution>
+					<execution>
+						<id>catalog</id>
+						<configuration>
+							<file>../catalog/openapi.yml</file>
+							<namespace>com.amazon.sample.ui.client.catalog</namespace>
+							<clientClass>CatalogClient</clientClass>
+						</configuration>
+					</execution>
+					<execution>
+						<id>checkout</id>
+						<configuration>
+							<file>../checkout/openapi.yml</file>
+							<namespace>com.amazon.sample.ui.client.checkout</namespace>
+							<clientClass>CheckoutClient</clientClass>
+						</configuration>
+					</execution>
+				</executions>
       </plugin>
 		</plugins>
 	</build>

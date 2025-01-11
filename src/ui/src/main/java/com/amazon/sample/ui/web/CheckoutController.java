@@ -18,14 +18,14 @@
 
 package com.amazon.sample.ui.web;
 
-import com.amazon.sample.ui.services.Metadata;
-import com.amazon.sample.ui.services.carts.CartsService;
 import com.amazon.sample.ui.services.checkout.CheckoutService;
 import com.amazon.sample.ui.services.checkout.model.Checkout;
 import com.amazon.sample.ui.services.checkout.model.ShippingAddress;
 import com.amazon.sample.ui.web.payload.CheckoutDeliveryMethodRequest;
 import com.amazon.sample.ui.web.payload.PaymentDetailsRequest;
 import com.amazon.sample.ui.web.payload.ShippingAddressRequest;
+import com.amazon.sample.ui.web.util.RequiresCommonAttributes;
+import com.amazon.sample.ui.web.util.SessionIDUtil;
 import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,16 +42,12 @@ import reactor.core.publisher.Mono;
 @Controller
 @RequestMapping("/checkout")
 @Slf4j
-public class CheckoutController extends BaseController {
+@RequiresCommonAttributes
+public class CheckoutController {
 
   private CheckoutService checkoutService;
 
-  public CheckoutController(
-    @Autowired CartsService cartsService,
-    @Autowired CheckoutService checkoutService,
-    @Autowired Metadata metadata
-  ) {
-    super(cartsService, metadata);
+  public CheckoutController(@Autowired CheckoutService checkoutService) {
     this.checkoutService = checkoutService;
   }
 
@@ -65,9 +61,7 @@ public class CheckoutController extends BaseController {
     ServerHttpRequest request,
     Model model
   ) {
-    String sessionId = getSessionID(request);
-
-    this.populateCommon(request, model);
+    String sessionId = SessionIDUtil.getSessionId(request);
 
     model.addAttribute("shippingAddressRequest", shippingAddressRequest);
 
@@ -100,7 +94,7 @@ public class CheckoutController extends BaseController {
     address.setState(shippingAddressRequest.getState());
     address.setZip(shippingAddressRequest.getZipCode());
 
-    String sessionId = getSessionID(request);
+    String sessionId = SessionIDUtil.getSessionId(request);
 
     return this.checkoutService.shipping(
         sessionId,
@@ -127,8 +121,6 @@ public class CheckoutController extends BaseController {
     ServerHttpRequest request,
     Model model
   ) {
-    this.populateCommon(request, model);
-
     model.addAttribute(
       "checkoutDeliveryMethodRequest",
       checkoutDeliveryMethodRequest
@@ -147,15 +139,13 @@ public class CheckoutController extends BaseController {
     ServerHttpRequest request,
     Model model
   ) {
-    String sessionId = getSessionID(request);
+    String sessionId = SessionIDUtil.getSessionId(request);
 
     if (result.hasErrors()) {
       return this.checkoutService.get(sessionId).map(c ->
           showDelivery(c, checkoutDeliveryMethodRequest, request, model)
         );
     }
-
-    this.populateCommon(request, model);
 
     model.addAttribute("paymentDetailsRequest", checkoutDeliveryMethodRequest);
 
@@ -173,8 +163,6 @@ public class CheckoutController extends BaseController {
     ServerHttpRequest request,
     Model model
   ) {
-    this.populateCommon(request, model);
-
     model.addAttribute("paymentDetailsRequest", paymentDetailsRequest);
     model.addAttribute("checkout", checkout);
 
@@ -190,15 +178,13 @@ public class CheckoutController extends BaseController {
     ServerHttpRequest request,
     Model model
   ) {
-    String sessionId = getSessionID(request);
+    String sessionId = SessionIDUtil.getSessionId(request);
 
     if (result.hasErrors()) {
       return this.checkoutService.get(sessionId).map(c ->
           showPayment(c, paymentDetailsRequest, request, model)
         );
     }
-
-    this.populateCommon(request, model);
 
     return this.checkoutService.submit(sessionId)
       .doOnNext(o -> {

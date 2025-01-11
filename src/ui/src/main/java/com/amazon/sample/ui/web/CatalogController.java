@@ -18,9 +18,8 @@
 
 package com.amazon.sample.ui.web;
 
-import com.amazon.sample.ui.services.Metadata;
-import com.amazon.sample.ui.services.carts.CartsService;
 import com.amazon.sample.ui.services.catalog.CatalogService;
+import com.amazon.sample.ui.web.util.RequiresCommonAttributes;
 import java.util.Collections;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,19 +35,15 @@ import reactor.core.publisher.Flux;
 @Controller
 @RequestMapping("/catalog")
 @Slf4j
-public class CatalogController extends BaseController {
+@RequiresCommonAttributes
+public class CatalogController {
 
   private static final Integer DEFAULT_PAGE = 1;
   private static final Integer DEFAULT_SIZE = 6;
 
   private CatalogService catalogService;
 
-  public CatalogController(
-    @Autowired CatalogService catalogService,
-    @Autowired CartsService cartsService,
-    @Autowired Metadata metadata
-  ) {
-    super(cartsService, metadata);
+  public CatalogController(@Autowired CatalogService catalogService) {
     this.catalogService = catalogService;
   }
 
@@ -67,8 +62,6 @@ public class CatalogController extends BaseController {
       "catalog",
       catalogService.getProducts(tag, "", page, size)
     );
-
-    populateCommon(request, model);
 
     return "catalog";
   }
@@ -90,8 +83,6 @@ public class CatalogController extends BaseController {
         })
         .flatMapMany(Flux::fromIterable)
     );
-
-    populateCommon(request, model);
 
     return "detail";
   }

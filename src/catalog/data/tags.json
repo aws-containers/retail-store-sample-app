@@ -1,0 +1,5 @@
+[
+  { "name": "accessories", "displayName": "Accessories" },
+  { "name": "clothing", "displayName": "Clothing" },
+  { "name": "food", "displayName": "Food" }
+]

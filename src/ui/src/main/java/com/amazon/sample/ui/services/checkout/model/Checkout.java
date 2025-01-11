@@ -28,8 +28,6 @@ public class Checkout {
 
   private List<CheckoutItem> items;
 
-  private String paymentToken;
-
   private int subtotal;
 
   private int tax;

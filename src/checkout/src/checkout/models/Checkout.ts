@@ -20,30 +20,43 @@ import { Type } from 'class-transformer';
 import { IsInt, IsString, Min, ValidateNested } from 'class-validator';
 import { CheckoutRequest } from './CheckoutRequest';
 import { ShippingRates } from './ShippingRates';
+import { ApiProperty } from '@nestjs/swagger';
 
 export class Checkout {
+  @ApiProperty()
   @ValidateNested()
   @Type(() => CheckoutRequest)
   request: CheckoutRequest;
 
+  @ApiProperty()
   @ValidateNested()
   @Type(() => ShippingRates)
   shippingRates: ShippingRates;
 
+  @ApiProperty()
   @IsString()
   paymentId: string;
 
+  @ApiProperty()
   @IsString()
   paymentToken: string;
 
   @IsInt()
+  @Min(0)
+  @ApiProperty({ type: 'integer' })
+  subtotal: number;
+
+  @ApiProperty({ type: 'integer' })
+  @IsInt()
   @Min(-1)
   shipping: number;
 
+  @ApiProperty({ type: 'integer' })
   @IsInt()
   @Min(-1)
   tax: number;
 
+  @ApiProperty({ type: 'integer' })
   @IsInt()
   @Min(-1)
   total: number;

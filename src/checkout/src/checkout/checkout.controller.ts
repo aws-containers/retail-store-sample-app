@@ -20,7 +20,6 @@ import {
   Body,
   Controller,
   Get,
-  Inject,
   NotFoundException,
   Param,
   Post,
@@ -29,18 +28,17 @@ import { CheckoutService } from './checkout.service';
 import { Checkout } from './models/Checkout';
 import { CheckoutRequest } from './models/CheckoutRequest';
 import { CheckoutSubmitted } from './models/CheckoutSubmitted';
+import { ApiCreatedResponse } from '@nestjs/swagger';
 
 @Controller('checkout')
 export class CheckoutController {
   constructor(private readonly checkoutService: CheckoutService) {}
 
-  /*@Get()
-  getHello(): string {
-    this.appService
-    return this.appService.getHello();
-  }*/
-
   @Get(':customerId')
+  @ApiCreatedResponse({
+    description: 'The record has been successfully created.',
+    type: Checkout,
+  })
   async getCheckout(
     @Param('customerId') customerId: string,
   ): Promise<Checkout> {
@@ -56,6 +54,10 @@ export class CheckoutController {
   }
 
   @Post(':customerId/update')
+  @ApiCreatedResponse({
+    description: 'The record has been successfully created.',
+    type: Checkout,
+  })
   async updateCheckout(
     @Param('customerId') customerId: string,
     @Body() request: CheckoutRequest,
@@ -64,6 +66,10 @@ export class CheckoutController {
   }
 
   @Post(':customerId/submit')
+  @ApiCreatedResponse({
+    description: 'The record has been successfully created.',
+    type: CheckoutSubmitted,
+  })
   async submitCheckout(
     @Param('customerId') customerId: string,
   ): Promise<CheckoutSubmitted> {

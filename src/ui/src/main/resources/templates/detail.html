@@ -4,20 +4,20 @@
   th:replace="~{fragments/layout :: layout (~{::body},'catalog')}"
 >
   <body>
-    <section class="max-w-6xl mx-auto px-4 py-8">
+    <section class="max-w-4xl mx-auto px-4 py-8">
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
         <!-- Product Image -->
-        <div class="bg-white rounded-lg p-4">
+        <div class="bg-white rounded-lg py-4">
           <img
-            src="https://via.placeholder.com/600"
+            src="https://via.placeholder.com/300"
             alt="Product Name"
-            class="w-[500px] h-[500px] rounded-lg"
-            th:src="${item.imageUrl}"
+            class="w-fit h-fit rounded-lg"
+            th:src="${'/assets/img/products/'+item.id+'.png'}"
           />
         </div>
 
         <!-- Product Details -->
-        <div class="bg-white rounded-lg p-6 space-y-6">
+        <div class="bg-white rounded-lg py-4 space-y-6">
           <!-- Product Title -->
           <div class="space-y-2">
             <h1 class="text-3xl font-bold text-gray-800" th:text="${item.name}">
@@ -25,7 +25,7 @@
             </h1>
             <div class="flex items-center space-x-4">
               <span
-                class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-indigo-100 text-indigo-800"
+                class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-primary-100 text-primary-800"
               >
                 Smart
               </span>
@@ -70,7 +70,7 @@
                 >
                   <!-- Minus Button -->
                   <button
-                    class="flex-shrink-0 px-3 py-2 text-gray-600 hover:text-indigo-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                    class="flex-shrink-0 px-3 py-2 text-gray-600 hover:text-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2"
                     onclick="updateQuantity('decrease')"
                   >
                     <i class="fas fa-minus text-sm"></i>
@@ -86,7 +86,7 @@
 
                   <!-- Plus Button -->
                   <button
-                    class="flex-shrink-0 px-3 py-2 text-gray-600 hover:text-indigo-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                    class="flex-shrink-0 px-3 py-2 text-gray-600 hover:text-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2"
                     onclick="updateQuantity('increase')"
                   >
                     <i class="fas fa-plus text-sm"></i>
@@ -98,7 +98,7 @@
               <form action="/cart" method="POST">
                 <input type="hidden" name="productId" th:value="${item.id}" />
                 <button
-                  class="w-full bg-indigo-600 text-white py-3 rounded-lg hover:bg-indigo-700 transition duration-300 flex items-center justify-center space-x-2"
+                  class="w-full bg-primary-600 text-white py-3 rounded-lg hover:bg-primary-700 transition duration-300 flex items-center justify-center space-x-2"
                 >
                   <i class="fas fa-shopping-cart"></i>
                   <span>Add to Cart</span>
