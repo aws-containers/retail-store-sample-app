@@ -48,7 +48,7 @@ func NewRepository(config config.DatabaseConfiguration) (CatalogRepository, erro
 			},
 		)
 
-		db, err = gorm.Open(sqlite.Open("gorm.db"), &gorm.Config{
+		db, err = gorm.Open(sqlite.Open("file::memory:?cache=shared"), &gorm.Config{
 			Logger: newLogger,
 		})
 	}
