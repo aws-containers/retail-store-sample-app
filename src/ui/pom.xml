@@ -24,15 +24,34 @@
 		<org.mapstruct.version>1.6.3</org.mapstruct.version>
 	</properties>
 
+	<repositories>
+		<repository>
+			<id>spring-milestones</id>
+			<name>Spring Milestones</name>
+			<url>https://repo.spring.io/milestone</url>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+		<repository>
+			<id>spring-snapshots</id>
+			<name>Spring Snapshots</name>
+			<url>https://repo.spring.io/snapshot</url>
+			<releases>
+				<enabled>false</enabled>
+			</releases>
+		</repository>
+	</repositories>
+
 	<dependencyManagement>
         <dependencies>
-            <dependency>
-                <groupId>software.amazon.awssdk</groupId>
-                <artifactId>bom</artifactId>
-                <version>2.28.10</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
+						<dependency>
+								<groupId>org.springframework.ai</groupId>
+								<artifactId>spring-ai-bom</artifactId>
+								<version>1.0.0-SNAPSHOT</version>
+								<type>pom</type>
+								<scope>import</scope>
+						</dependency>
         </dependencies>
     </dependencyManagement>
 
@@ -156,12 +175,8 @@
 			<version>1.42.0-alpha</version>
 		</dependency>
 		<dependency>
-			<groupId>software.amazon.awssdk</groupId>
-			<artifactId>bedrockruntime</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>software.amazon.awssdk</groupId>
-			<artifactId>sts</artifactId>
+				<groupId>org.springframework.ai</groupId>
+				<artifactId>spring-ai-bedrock-converse-spring-boot-starter</artifactId>
 		</dependency>
 	</dependencies>
 

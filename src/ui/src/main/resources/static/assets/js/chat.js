@@ -15,6 +15,11 @@ const ChatUI = {
     this.converter = new showdown.Converter();
     this.bindEvents();
     this.appendMessage("bot", "Greetings operative! How can I help you?");
+
+    const chatTriggerContainer = document.getElementById(
+      "chat-trigger-container",
+    );
+    chatTriggerContainer.classList.remove("hidden");
   },
 
   bindEvents() {

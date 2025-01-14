@@ -52,7 +52,7 @@
       </div>
     </footer>
     <!-- Chat trigger button -->
-    <div class="fixed bottom-4 right-4">
+    <div id="chat-trigger-container" class="fixed bottom-4 right-4 hidden">
       <button
         id="chat-trigger"
         class="px-6 py-3 bg-primary-600 text-white rounded-full hover:bg-primary-500 focus:outline-none focus:ring-2 focus:ring-primary-500 shadow-lg"
@@ -92,10 +92,7 @@
           </div>
 
           <!-- Close button -->
-          <button
-            id="close-chat"
-            class="text-gray-500 hover:text-gray-700 pt-1"
-          >
+          <button id="close-chat" class="text-gray-500 hover:text-gray-700">
             <i class="fas fa-times text-xl"></i>
           </button>
         </div>

@@ -67,7 +67,10 @@
       };
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/2.1.0/showdown.min.js"></script>
-    <script src="/assets/js/chat.js"></script>
+    <script
+      th:if="${@environment.getProperty('retail.ui.chat.enabled')} == 'true'"
+      src="/assets/js/chat.js"
+    ></script>
   </head>
 
   <th:block th:insert="${rootContent}" />
