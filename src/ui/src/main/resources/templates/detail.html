@@ -70,7 +70,7 @@
                 >
                   <!-- Minus Button -->
                   <button
-                    class="flex-shrink-0 px-3 py-2 text-gray-600 hover:text-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2"
+                    class="flex-shrink-0 px-3 py-2 text-gray-600 hover:text-primary-500 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2"
                     onclick="updateQuantity('decrease')"
                   >
                     <i class="fas fa-minus text-sm"></i>
@@ -86,7 +86,7 @@
 
                   <!-- Plus Button -->
                   <button
-                    class="flex-shrink-0 px-3 py-2 text-gray-600 hover:text-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2"
+                    class="flex-shrink-0 px-3 py-2 text-gray-600 hover:text-primary-500 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2"
                     onclick="updateQuantity('increase')"
                   >
                     <i class="fas fa-plus text-sm"></i>
@@ -98,7 +98,7 @@
               <form action="/cart" method="POST">
                 <input type="hidden" name="productId" th:value="${item.id}" />
                 <button
-                  class="w-full bg-primary-600 text-white py-3 rounded-lg hover:bg-primary-700 transition duration-300 flex items-center justify-center space-x-2"
+                  class="w-full bg-primary-500 text-white py-3 rounded-lg hover:bg-primary-700 transition duration-300 flex items-center justify-center space-x-2"
                 >
                   <i class="fas fa-shopping-cart"></i>
                   <span>Add to Cart</span>

@@ -12,11 +12,11 @@
           <!-- Step 1: Address -->
           <div class="step-item flex flex-col items-center">
             <div
-              class="w-10 h-10 rounded-full bg-primary-600 flex items-center justify-center text-white"
+              class="w-10 h-10 rounded-full bg-primary-500 flex items-center justify-center text-white"
             >
               <i class="fas fa-home"></i>
             </div>
-            <div class="text-sm font-medium mt-2 text-primary-600">
+            <div class="text-sm font-medium mt-2 text-primary-500">
               Shipping
             </div>
           </div>
@@ -25,13 +25,13 @@
           <div class="step-item flex flex-col items-center">
             <div
               class="w-10 h-10 rounded-full flex items-center justify-center"
-              th:classappend="${step >= 2} ? 'bg-primary-600 text-white' : 'bg-gray-200 text-gray-600'"
+              th:classappend="${step >= 2} ? 'bg-primary-500 text-white' : 'bg-gray-200 text-gray-600'"
             >
               <i class="fas fa-truck"></i>
             </div>
             <div
               class="text-sm font-medium mt-2"
-              th:classappend="${step >= 2} ? 'text-primary-600' : 'text-gray-500'"
+              th:classappend="${step >= 2} ? 'text-primary-500' : 'text-gray-500'"
             >
               Delivery
             </div>
@@ -41,13 +41,13 @@
           <div class="step-item flex flex-col items-center">
             <div
               class="w-10 h-10 rounded-full flex items-center justify-center"
-              th:classappend="${step >= 3} ? 'bg-primary-600 text-white' : 'bg-gray-200 text-gray-600'"
+              th:classappend="${step >= 3} ? 'bg-primary-500 text-white' : 'bg-gray-200 text-gray-600'"
             >
               <i class="fas fa-credit-card"></i>
             </div>
             <div
               class="text-sm font-medium mt-2 text-gray-500"
-              th:classappend="${step >= 3} ? 'text-primary-600' : 'text-gray-500'"
+              th:classappend="${step >= 3} ? 'text-primary-500' : 'text-gray-500'"
             >
               Payment
             </div>

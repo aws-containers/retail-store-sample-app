@@ -114,6 +114,8 @@ public class ChatController {
         modelId,
         e.getCause().getMessage()
       );
+    } finally {
+      sink.tryEmitComplete();
     }
 
     return sink.asFlux();

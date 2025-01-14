@@ -1,193 +1,242 @@
-document.addEventListener("DOMContentLoaded", function () {
-  const chatMessages = document.getElementById("chat-messages");
-  const userInput = document.getElementById("user-input");
-  const sendButton = document.getElementById("send-button");
-  const chatTrigger = document.getElementById("chat-trigger");
-  const chatModal = document.getElementById("chat-modal");
-  const closeChat = document.getElementById("close-chat");
+const ChatUI = {
+  elements: null,
+  converter: null,
 
-  // Modal controls remain the same
-  chatTrigger.addEventListener("click", () => {
-    chatModal.classList.remove("hidden");
-    userInput.focus();
-  });
+  init() {
+    this.elements = {
+      chatMessages: document.getElementById("chat-messages"),
+      userInput: document.getElementById("user-input"),
+      sendButton: document.getElementById("send-button"),
+      clearButton: document.getElementById("clear-button"),
+      chatTrigger: document.getElementById("chat-trigger"),
+      chatModal: document.getElementById("chat-modal"),
+      closeChat: document.getElementById("close-chat"),
+    };
+    this.converter = new showdown.Converter();
+    this.bindEvents();
+    this.appendMessage("bot", "Greetings operative! How can I help you?");
+  },
 
-  closeChat.addEventListener("click", () => {
-    chatModal.classList.add("hidden");
-  });
+  bindEvents() {
+    this.elements.chatTrigger.addEventListener("click", () => this.openChat());
+    this.elements.closeChat.addEventListener("click", () => this.closeChat());
+    this.elements.chatModal.addEventListener("click", (e) =>
+      this.handleModalClick(e),
+    );
 
-  chatModal.addEventListener("click", (e) => {
-    if (e.target === chatModal) {
-      chatModal.classList.add("hidden");
-    }
-  });
+    this.elements.userInput.addEventListener("keypress", (e) => {
+      if (e.key === "Enter" && !e.shiftKey) {
+        e.preventDefault();
+        this.handleSendMessage();
+      }
+    });
 
-  var converter = new showdown.Converter();
+    this.elements.sendButton.addEventListener("click", () =>
+      this.handleSendMessage(),
+    );
+    this.elements.clearButton.addEventListener("click", () =>
+      this.clearMessages(),
+    );
+  },
 
-  // Create loading indicator
-  function createLoadingIndicator() {
-    const loadingDiv = document.createElement("div");
-    loadingDiv.className = "flex justify-start";
-
-    const innerDiv = document.createElement("div");
-    innerDiv.className =
-      "max-w-xs md:max-w-md p-3 rounded-lg flex items-center gap-2 bg-gray-200 text-gray-800";
-
-    const iconDiv = document.createElement("div");
-    const icon = document.createElement("i");
-    icon.className = "fas fa-robot";
-    iconDiv.appendChild(icon);
-
-    const loadingText = document.createElement("div");
-    loadingText.className = "loading-dots";
-    loadingText.textContent = "Thinking";
-
-    innerDiv.appendChild(iconDiv);
-    innerDiv.appendChild(loadingText);
-    loadingDiv.appendChild(innerDiv);
-
-    return loadingDiv;
-  }
-
-  // Send message function
-  async function sendMessage() {
-    const message = userInput.value.trim();
-    userInput.value = "";
+  handleSendMessage() {
+    const message = this.elements.userInput.value.trim();
+    this.elements.userInput.value = "";
     if (message) {
-      userInput.disabled = true;
+      ChatMessageHandler.sendMessage(message);
+    }
+  },
 
-      // Add user message to chat
-      appendMessage("user", message);
+  clearMessages() {
+    this.elements.chatMessages.innerHTML = "";
 
-      // Add loading indicator
-      const loadingDiv = createLoadingIndicator();
-      chatMessages.appendChild(loadingDiv);
-      chatMessages.scrollTop = chatMessages.scrollHeight;
+    this.elements.userInput.value = "";
 
-      let botMessageDiv = null;
-      let botTextDiv = null;
-      let isFirstMessage = true;
+    this.scrollToBottom();
+  },
 
-      try {
-        const response = await fetch("/chat/submit", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Accept: "text/event-stream",
-          },
-          body: JSON.stringify({ message: message }),
-        });
+  openChat() {
+    this.elements.chatModal.classList.remove("hidden");
+    this.elements.userInput.focus();
+  },
 
-        const reader = response.body.getReader();
-        const decoder = new TextDecoder();
+  closeChat() {
+    this.elements.chatModal.classList.add("hidden");
+  },
 
-        let runningText = "";
+  handleModalClick(e) {
+    if (e.target === this.elements.chatModal) {
+      this.closeChat();
+    }
+  },
 
-        // Read the streaming response
-        while (true) {
-          var thing = await reader.read();
+  createMessageElement(sender, text) {
+    const messageDiv = document.createElement("div");
+    messageDiv.className = "flex items-start space-x-3";
 
-          const { value, done } = thing;
-          if (done) {
-            console.log("BREAK");
-            break;
-          }
+    // Create avatar container
+    const avatarContainer = document.createElement("div");
+    avatarContainer.className = "flex-shrink-0";
 
-          const chunk = decoder.decode(value);
-          const lines = chunk.split("\n\n");
+    if (sender === "bot") {
+      // Bot avatar - using image
+      const avatar = document.createElement("img");
+      avatar.src = "/assets/img/chat-avatar.png";
+      avatar.alt = "Chat Avatar";
+      avatar.className = "w-10 h-10 rounded-full object-cover";
+      avatarContainer.appendChild(avatar);
+    } else {
+      // User avatar - using Font Awesome icon
+      const iconContainer = document.createElement("div");
+      iconContainer.className =
+        "w-10 h-10 rounded-full bg-gray-600 text-white flex items-center justify-center text-xl";
 
-          for (const line of lines) {
-            if (line.startsWith("data:")) {
-              try {
-                const data = JSON.parse(line.slice(5));
+      const icon = document.createElement("i");
+      icon.className = "fas fa-user";
+      iconContainer.appendChild(icon);
+      avatarContainer.appendChild(iconContainer);
+    }
 
-                // Create bot message div on first message and remove loading indicator
-                if (isFirstMessage) {
-                  loadingDiv.remove();
-                  botMessageDiv = createMessageDiv("bot", "");
-                  chatMessages.appendChild(botMessageDiv);
-                  botTextDiv = botMessageDiv.querySelector(".message-text");
-                  isFirstMessage = false;
-                }
+    // Create message bubble
+    const bubbleDiv = document.createElement("div");
+    bubbleDiv.className = `flex-1 rounded-lg p-3 ${
+      sender === "bot"
+        ? "bg-primary-500 text-white rounded-tl-none"
+        : "bg-gray-100 text-gray-800 rounded-tl-none"
+    }`;
 
-                runningText += data.text;
+    // Create message content wrapper
+    const contentWrapper = document.createElement("div");
+    contentWrapper.className = "flex flex-col";
 
-                var markdownHtml = converter.makeHtml(runningText);
+    // Create message text
+    const textP = document.createElement("p");
+    textP.className = "message-text";
+    textP.textContent = text;
+    contentWrapper.appendChild(textP);
 
-                botTextDiv.innerHTML = markdownHtml;
-                //botTextDiv.appendChild();
-                // Scroll to bottom as text is appended
-                chatMessages.scrollTop = chatMessages.scrollHeight;
-              } catch (e) {
-                console.error("Error parsing SSE data:", e);
-              }
+    // Create timestamp
+    const timestamp = document.createElement("span");
+    timestamp.className = `text-xs mt-1 ${
+      sender === "bot" ? "text-gray-100" : "text-gray-500"
+    }`;
+    const time = new Date().toLocaleTimeString([], {
+      hour: "2-digit",
+      minute: "2-digit",
+    });
+    timestamp.textContent = time;
+    contentWrapper.appendChild(timestamp);
+
+    bubbleDiv.appendChild(contentWrapper);
+
+    // Assemble the message
+    messageDiv.appendChild(avatarContainer);
+    messageDiv.appendChild(bubbleDiv);
+
+    return messageDiv;
+  },
+  createLoadingIndicator() {
+    const loadingDiv = document.createElement("div");
+    loadingDiv.className = "flex justify-center items-center pt-2";
+
+    const spinner = document.createElement("div");
+    spinner.className =
+      "animate-spin rounded-full h-8 w-8 border-4 border-gray-200 border-t-primary-500";
+
+    loadingDiv.appendChild(spinner);
+    return loadingDiv;
+  },
+
+  appendMessage(sender, text) {
+    const messageDiv = this.createMessageElement(sender, text);
+    this.elements.chatMessages.appendChild(messageDiv);
+    this.scrollToBottom();
+  },
+
+  scrollToBottom() {
+    this.elements.chatMessages.scrollTop =
+      this.elements.chatMessages.scrollHeight;
+  },
+
+  updateBotMessage(messageDiv, text) {
+    const textDiv = messageDiv.querySelector(".message-text");
+    textDiv.innerHTML = this.converter.makeHtml(text);
+    this.scrollToBottom();
+  },
+};
+
+const ChatMessageHandler = {
+  async sendMessage(message) {
+    if (!message) return;
+
+    ChatUI.elements.userInput.disabled = true;
+    ChatUI.appendMessage("user", message);
+
+    const loadingDiv = ChatUI.createLoadingIndicator();
+    ChatUI.elements.chatMessages.appendChild(loadingDiv);
+    ChatUI.scrollToBottom();
+
+    try {
+      await this.processResponse(message, loadingDiv);
+    } catch (error) {
+      console.error("Error:", error);
+      loadingDiv.remove();
+      ChatUI.appendMessage(
+        "bot",
+        "Sorry, there was an error processing your message.",
+      );
+    } finally {
+      ChatUI.elements.userInput.disabled = false;
+    }
+  },
+
+  async processResponse(message, loadingDiv) {
+    const response = await this.fetchBotResponse(message);
+    const reader = response.body.getReader();
+    const decoder = new TextDecoder();
+    let runningText = "";
+    let botMessageDiv = null;
+
+    while (true) {
+      const { value, done } = await reader.read();
+      if (done) break;
+
+      const chunk = decoder.decode(value);
+      const lines = chunk.split("\n\n");
+
+      for (const line of lines) {
+        if (line.startsWith("data:")) {
+          try {
+            const data = JSON.parse(line.slice(5));
+
+            if (!botMessageDiv) {
+              loadingDiv.remove();
+              botMessageDiv = ChatUI.createMessageElement("bot", "");
+              ChatUI.elements.chatMessages.appendChild(botMessageDiv);
             }
+
+            runningText += data.text;
+            ChatUI.updateBotMessage(botMessageDiv, runningText);
+          } catch (e) {
+            console.error("Error parsing SSE data:", e);
           }
         }
-
-        console.log("ASDASDASDASDDS");
-      } catch (error) {
-        console.error("Error:", error);
-        // Remove loading indicator and show error message
-        loadingDiv.remove();
-        appendMessage(
-          "bot",
-          "Sorry, there was an error processing your message.",
-        );
-      } finally {
-        userInput.disabled = false;
       }
     }
-  }
+  },
 
-  // Create message div structure
-  function createMessageDiv(sender, text) {
-    const messageDiv = document.createElement("div");
-    messageDiv.className = `flex ${
-      sender === "user" ? "justify-end" : "justify-start"
-    }`;
+  async fetchBotResponse(message) {
+    return await fetch("/chat/submit", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "text/event-stream",
+      },
+      body: JSON.stringify({ message }),
+    });
+  },
+};
 
-    const innerDiv = document.createElement("div");
-    innerDiv.className = `max-w-xs md:max-w-md p-3 rounded-lg flex items-start gap-2 ${
-      sender === "user"
-        ? "bg-primary-500 text-white"
-        : "bg-gray-200 text-gray-800"
-    }`;
-
-    const iconDiv = document.createElement("div");
-    const icon = document.createElement("i");
-    icon.className = sender === "user" ? "fas fa-user" : "fas fa-robot";
-    iconDiv.appendChild(icon);
-
-    const textDiv = document.createElement("div");
-    textDiv.className = "message-text";
-    textDiv.textContent = text;
-
-    if (sender === "user") {
-      innerDiv.appendChild(textDiv);
-      innerDiv.appendChild(iconDiv);
-    } else {
-      innerDiv.appendChild(iconDiv);
-      innerDiv.appendChild(textDiv);
-    }
-    messageDiv.appendChild(innerDiv);
-    return messageDiv;
-  }
-
-  // Append complete message
-  function appendMessage(sender, text) {
-    const messageDiv = createMessageDiv(sender, text);
-    chatMessages.appendChild(messageDiv);
-    chatMessages.scrollTop = chatMessages.scrollHeight;
-  }
-
-  // Event listeners
-  sendButton.addEventListener("click", sendMessage);
-  userInput.addEventListener("keypress", async function (e) {
-    if (e.key === "Enter") {
-      await sendMessage();
-
-      console.log("ASDASDASD");
-    }
-  });
+document.addEventListener("DOMContentLoaded", () => {
+  ChatUI.init();
 });
