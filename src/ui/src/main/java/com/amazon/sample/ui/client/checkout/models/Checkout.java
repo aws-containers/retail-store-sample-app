@@ -16,6 +16,14 @@ public class Checkout implements AdditionalDataHolder, Parsable {
    */
   private Map<String, Object> additionalData;
   /**
+   * The deliveryOptionToken property
+   */
+  private String deliveryOptionToken;
+  /**
+   * The items property
+   */
+  private java.util.List<Item> items;
+  /**
    * The paymentId property
    */
   private String paymentId;
@@ -24,13 +32,13 @@ public class Checkout implements AdditionalDataHolder, Parsable {
    */
   private String paymentToken;
   /**
-   * The request property
-   */
-  private CheckoutRequest request;
-  /**
    * The shipping property
    */
   private Integer shipping;
+  /**
+   * The shippingAddress property
+   */
+  private ShippingAddress shippingAddress;
   /**
    * The shippingRates property
    */
@@ -78,6 +86,15 @@ public class Checkout implements AdditionalDataHolder, Parsable {
   }
 
   /**
+   * Gets the deliveryOptionToken property value. The deliveryOptionToken property
+   * @return a {@link String}
+   */
+  @jakarta.annotation.Nullable
+  public String getDeliveryOptionToken() {
+    return this.deliveryOptionToken;
+  }
+
+  /**
    * The deserialization information for the current model
    * @return a {@link Map<String, java.util.function.Consumer<ParseNode>>}
    */
@@ -92,20 +109,28 @@ public class Checkout implements AdditionalDataHolder, Parsable {
     > deserializerMap = new HashMap<
       String,
       java.util.function.Consumer<ParseNode>
-    >(8);
+    >(10);
+    deserializerMap.put("deliveryOptionToken", n -> {
+      this.setDeliveryOptionToken(n.getStringValue());
+    });
+    deserializerMap.put("items", n -> {
+      this.setItems(
+          n.getCollectionOfObjectValues(Item::createFromDiscriminatorValue)
+        );
+    });
     deserializerMap.put("paymentId", n -> {
       this.setPaymentId(n.getStringValue());
     });
     deserializerMap.put("paymentToken", n -> {
       this.setPaymentToken(n.getStringValue());
     });
-    deserializerMap.put("request", n -> {
-      this.setRequest(
-          n.getObjectValue(CheckoutRequest::createFromDiscriminatorValue)
-        );
-    });
     deserializerMap.put("shipping", n -> {
       this.setShipping(n.getIntegerValue());
+    });
+    deserializerMap.put("shippingAddress", n -> {
+      this.setShippingAddress(
+          n.getObjectValue(ShippingAddress::createFromDiscriminatorValue)
+        );
     });
     deserializerMap.put("shippingRates", n -> {
       this.setShippingRates(
@@ -122,6 +147,15 @@ public class Checkout implements AdditionalDataHolder, Parsable {
       this.setTotal(n.getIntegerValue());
     });
     return deserializerMap;
+  }
+
+  /**
+   * Gets the items property value. The items property
+   * @return a {@link java.util.List<Item>}
+   */
+  @jakarta.annotation.Nullable
+  public java.util.List<Item> getItems() {
+    return this.items;
   }
 
   /**
@@ -143,21 +177,21 @@ public class Checkout implements AdditionalDataHolder, Parsable {
   }
 
   /**
-   * Gets the request property value. The request property
-   * @return a {@link CheckoutRequest}
-   */
-  @jakarta.annotation.Nullable
-  public CheckoutRequest getRequest() {
-    return this.request;
-  }
-
-  /**
    * Gets the shipping property value. The shipping property
    * @return a {@link Integer}
    */
   @jakarta.annotation.Nullable
   public Integer getShipping() {
     return this.shipping;
+  }
+
+  /**
+   * Gets the shippingAddress property value. The shippingAddress property
+   * @return a {@link ShippingAddress}
+   */
+  @jakarta.annotation.Nullable
+  public ShippingAddress getShippingAddress() {
+    return this.shippingAddress;
   }
 
   /**
@@ -204,10 +238,15 @@ public class Checkout implements AdditionalDataHolder, Parsable {
     @jakarta.annotation.Nonnull final SerializationWriter writer
   ) {
     Objects.requireNonNull(writer);
+    writer.writeStringValue(
+      "deliveryOptionToken",
+      this.getDeliveryOptionToken()
+    );
+    writer.writeCollectionOfObjectValues("items", this.getItems());
     writer.writeStringValue("paymentId", this.getPaymentId());
     writer.writeStringValue("paymentToken", this.getPaymentToken());
-    writer.writeObjectValue("request", this.getRequest());
     writer.writeIntegerValue("shipping", this.getShipping());
+    writer.writeObjectValue("shippingAddress", this.getShippingAddress());
     writer.writeObjectValue("shippingRates", this.getShippingRates());
     writer.writeIntegerValue("subtotal", this.getSubtotal());
     writer.writeIntegerValue("tax", this.getTax());
@@ -223,6 +262,26 @@ public class Checkout implements AdditionalDataHolder, Parsable {
     @jakarta.annotation.Nullable final Map<String, Object> value
   ) {
     this.additionalData = value;
+  }
+
+  /**
+   * Sets the deliveryOptionToken property value. The deliveryOptionToken property
+   * @param value Value to set for the deliveryOptionToken property.
+   */
+  public void setDeliveryOptionToken(
+    @jakarta.annotation.Nullable final String value
+  ) {
+    this.deliveryOptionToken = value;
+  }
+
+  /**
+   * Sets the items property value. The items property
+   * @param value Value to set for the items property.
+   */
+  public void setItems(
+    @jakarta.annotation.Nullable final java.util.List<Item> value
+  ) {
+    this.items = value;
   }
 
   /**
@@ -242,21 +301,21 @@ public class Checkout implements AdditionalDataHolder, Parsable {
   }
 
   /**
-   * Sets the request property value. The request property
-   * @param value Value to set for the request property.
-   */
-  public void setRequest(
-    @jakarta.annotation.Nullable final CheckoutRequest value
-  ) {
-    this.request = value;
-  }
-
-  /**
    * Sets the shipping property value. The shipping property
    * @param value Value to set for the shipping property.
    */
   public void setShipping(@jakarta.annotation.Nullable final Integer value) {
     this.shipping = value;
+  }
+
+  /**
+   * Sets the shippingAddress property value. The shippingAddress property
+   * @param value Value to set for the shippingAddress property.
+   */
+  public void setShippingAddress(
+    @jakarta.annotation.Nullable final ShippingAddress value
+  ) {
+    this.shippingAddress = value;
   }
 
   /**

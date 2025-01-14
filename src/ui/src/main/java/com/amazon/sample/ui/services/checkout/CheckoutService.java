@@ -28,11 +28,7 @@ public interface CheckoutService {
 
   Mono<Checkout> create(String sessionId);
 
-  Mono<Checkout> shipping(
-    String sessionId,
-    String customerEmail,
-    ShippingAddress shippingAddress
-  );
+  Mono<Checkout> shipping(String sessionId, ShippingAddress shippingAddress);
 
   Mono<Checkout> delivery(String sessionId, String token);
 

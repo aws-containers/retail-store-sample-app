@@ -25,6 +25,8 @@ import { serialize, deserialize } from 'class-transformer';
 import { CheckoutSubmitted } from './models/CheckoutSubmitted';
 import { IShippingService } from './shipping';
 import { ICheckoutRepository } from './repositories';
+import { Item } from './models/Item';
+import { stringify } from 'querystring';
 
 @Injectable()
 export class CheckoutService {
@@ -43,16 +45,24 @@ export class CheckoutService {
       return null;
     }
 
-    return deserialize(Checkout, JSON.parse(json));
+    return deserialize(Checkout, json);
   }
 
   async update(
     customerId: string,
     request: CheckoutRequest,
   ): Promise<Checkout> {
-    const subtotal = request.items.reduce((acc, product) => {
-      return acc + product.price;
-    }, 0);
+    let subtotal = 0;
+
+    const items: Item[] = request.items.map((item) => {
+      const totalCost = item.price * item.quantity;
+      subtotal += totalCost;
+
+      return {
+        ...item,
+        totalCost,
+      };
+    });
 
     const tax = request.shippingAddress ? Math.floor(subtotal * 0.05) : -1; // Hardcoded 5% tax for now
     const effectiveTax = tax == -1 ? 0 : tax;
@@ -74,7 +84,9 @@ export class CheckoutService {
 
         const checkout: Checkout = {
           shippingRates,
-          request,
+          shippingAddress: request.shippingAddress,
+          deliveryOptionToken: request.deliveryOptionToken,
+          items,
           paymentId: this.makeid(16),
           paymentToken: this.makeid(32),
           subtotal,
@@ -91,6 +103,7 @@ export class CheckoutService {
 
   async submit(customerId: string): Promise<CheckoutSubmitted> {
     const checkout = await this.get(customerId);
+    console.log(JSON.stringify(checkout));
 
     if (!checkout) {
       throw new Error('Checkout not found');
@@ -102,6 +115,12 @@ export class CheckoutService {
 
     return Promise.resolve({
       orderId: order.id,
+      email: checkout.shippingAddress.email,
+      items: checkout.items,
+      subtotal: checkout.subtotal,
+      shipping: checkout.shipping,
+      tax: checkout.tax,
+      total: checkout.total,
     });
   }
 

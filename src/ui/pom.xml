@@ -24,6 +24,18 @@
 		<org.mapstruct.version>1.6.3</org.mapstruct.version>
 	</properties>
 
+	<dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>software.amazon.awssdk</groupId>
+                <artifactId>bom</artifactId>
+                <version>2.28.10</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -142,6 +154,14 @@
 			<groupId>io.opentelemetry.contrib</groupId>
 			<artifactId>opentelemetry-aws-resources</artifactId>
 			<version>1.42.0-alpha</version>
+		</dependency>
+		<dependency>
+			<groupId>software.amazon.awssdk</groupId>
+			<artifactId>bedrockruntime</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>software.amazon.awssdk</groupId>
+			<artifactId>sts</artifactId>
 		</dependency>
 	</dependencies>
 

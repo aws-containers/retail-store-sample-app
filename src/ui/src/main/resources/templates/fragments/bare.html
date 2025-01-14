@@ -51,5 +51,48 @@
         </div>
       </div>
     </footer>
+    <!-- Chat trigger button -->
+    <div class="fixed bottom-4 right-4">
+      <button
+        id="chat-trigger"
+        class="px-6 py-3 bg-primary-500 text-white rounded-full hover:bg-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-500 shadow-lg"
+      >
+        <i class="fas fa-comments"></i> Chat
+      </button>
+    </div>
+    <!-- Chat -->
+    <div
+      id="chat-modal"
+      class="fixed inset-0 bg-black bg-opacity-50 hidden flex items-center justify-center"
+    >
+      <div
+        class="bg-white rounded-lg shadow-xl p-4 max-w-4xl w-full mx-4 relative"
+      >
+        <div class="flex justify-between items-center mb-4">
+          <h1 class="text-2xl font-bold text-gray-800">Chat</h1>
+          <button id="close-chat" class="text-gray-500 hover:text-gray-700">
+            <i class="fas fa-times text-xl"></i>
+          </button>
+        </div>
+        <div
+          id="chat-messages"
+          class="space-y-4 mb-4 h-96 overflow-y-auto p-4 border border-gray-200 rounded text-sm"
+        ></div>
+        <div class="flex gap-2">
+          <input
+            type="text"
+            id="user-input"
+            class="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500"
+            placeholder="Type your message..."
+          />
+          <button
+            id="send-button"
+            class="px-6 py-2 bg-primary-500 text-white rounded-lg hover:bg-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-500"
+          >
+            <i class="fas fa-paper-plane"></i> Send
+          </button>
+        </div>
+      </div>
+    </div>
   </body>
 </html>

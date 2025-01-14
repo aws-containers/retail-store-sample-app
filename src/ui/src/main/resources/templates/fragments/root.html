@@ -26,6 +26,8 @@
       th:href="'/assets/css/theme-'+${#strings.defaultString(theme, 'default')}+'.css'"
     />
 
+    <link rel="stylesheet" th:href="'/assets/css/styles.css'" />
+
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -54,20 +56,8 @@
         },
       };
     </script>
-    <style>
-      @keyframes beam {
-        from {
-          transform: translateX(-100%);
-        }
-        to {
-          transform: translateX(50%);
-        }
-      }
-
-      .animate-beam {
-        animation: beam 5s infinite;
-      }
-    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/2.1.0/showdown.min.js"></script>
+    <script src="/assets/js/chat.js"></script>
   </head>
 
   <th:block th:insert="${rootContent}" />

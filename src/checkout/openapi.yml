@@ -113,21 +113,6 @@ components:
         - state
         - zip
         - email
-    CheckoutRequest:
-      type: object
-      properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/Item'
-        shippingAddress:
-          $ref: '#/components/schemas/ShippingAddress'
-        deliveryOptionToken:
-          type: string
-      required:
-        - items
-        - shippingAddress
-        - deliveryOptionToken
     ShippingOption:
       type: object
       properties:
@@ -159,8 +144,14 @@ components:
     Checkout:
       type: object
       properties:
-        request:
-          $ref: '#/components/schemas/CheckoutRequest'
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/Item'
+        shippingAddress:
+          $ref: '#/components/schemas/ShippingAddress'
+        deliveryOptionToken:
+          type: string
         shippingRates:
           $ref: '#/components/schemas/ShippingRates'
         paymentId:
@@ -176,7 +167,9 @@ components:
         total:
           type: integer
       required:
-        - request
+        - items
+        - shippingAddress
+        - deliveryOptionToken
         - shippingRates
         - paymentId
         - paymentToken
@@ -184,10 +177,61 @@ components:
         - shipping
         - tax
         - total
+    ItemRequest:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        quantity:
+          type: integer
+        price:
+          type: integer
+      required:
+        - id
+        - name
+        - quantity
+        - price
+    CheckoutRequest:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ItemRequest'
+        shippingAddress:
+          $ref: '#/components/schemas/ShippingAddress'
+        deliveryOptionToken:
+          type: string
+      required:
+        - items
+        - shippingAddress
+        - deliveryOptionToken
     CheckoutSubmitted:
       type: object
       properties:
         orderId:
           type: string
+        email:
+          type: string
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/Item'
+        subtotal:
+          type: integer
+        shipping:
+          type: integer
+        tax:
+          type: integer
+        total:
+          type: integer
       required:
         - orderId
+        - email
+        - items
+        - subtotal
+        - shipping
+        - tax
+        - total

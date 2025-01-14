@@ -25,6 +25,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 import java.util.stream.Collectors;
 import reactor.core.publisher.Mono;
 
@@ -62,7 +63,6 @@ public class MockCheckoutService implements CheckoutService {
   @Override
   public Mono<Checkout> shipping(
     String sessionId,
-    String customerEmail,
     ShippingAddress shippingAddress
   ) {
     var checkoutData = checkoutDataMap.get(sessionId);
@@ -86,8 +86,16 @@ public class MockCheckoutService implements CheckoutService {
     return this.buildCheckout(checkoutData, sessionId)
       .zipWith(this.cartsService.deleteCart(sessionId))
       .map(tuple -> {
-        //Checkout checkout = tuple.getT1();
-        return new CheckoutSubmitted("1234");
+        Checkout checkout = tuple.getT1();
+        return new CheckoutSubmitted(
+          UUID.randomUUID().toString(),
+          checkoutData.shippingAddress.getEmail(),
+          checkout.getSubtotal(),
+          checkout.getTax(),
+          checkout.getShipping(),
+          checkout.getTotal(),
+          checkout.getItems()
+        );
       });
   }
 
@@ -101,8 +109,11 @@ public class MockCheckoutService implements CheckoutService {
       var checkoutItems = c
         .getItems()
         .stream()
-        .map(mapper::fromCartItem)
-        .map(mapper::item)
+        .map(mapper::cartItem)
+        .map(i -> {
+          i.setTotalCost(i.getQuantity() * i.getPrice());
+          return i;
+        })
         .collect(
           Collectors.teeing(
             Collectors.toList(),
@@ -147,8 +158,8 @@ public class MockCheckoutService implements CheckoutService {
 
   private static class ItemsWithTotal {
 
-    final List<CheckoutItem> items;
-    final int total;
+    protected final List<CheckoutItem> items;
+    protected final int total;
 
     ItemsWithTotal(List<CheckoutItem> items, int total) {
       this.items = items;
@@ -158,8 +169,8 @@ public class MockCheckoutService implements CheckoutService {
 
   private static class CheckoutData {
 
-    String token;
+    protected String token;
 
-    ShippingAddress shippingAddress;
+    protected ShippingAddress shippingAddress;
   }
 }

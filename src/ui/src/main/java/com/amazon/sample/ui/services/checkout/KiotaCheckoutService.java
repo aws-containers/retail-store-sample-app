@@ -84,15 +84,17 @@ public class KiotaCheckoutService implements CheckoutService {
   @Override
   public Mono<Checkout> shipping(
     String sessionId,
-    String customerEmail,
     ShippingAddress shippingAddress
   ) {
     return Mono.just(
       this.checkoutClient.checkout().byCustomerId(sessionId).get()
     ).flatMap(c -> {
-      CheckoutRequest request = c.getRequest();
+      CheckoutRequest request = new CheckoutRequest();
       request.setShippingAddress(
         this.mapper.clientShippingAddress(shippingAddress)
+      );
+      request.setItems(
+        c.getItems().stream().map(i -> mapper.modelitem(i)).toList()
       );
 
       return Mono.just(
@@ -109,8 +111,12 @@ public class KiotaCheckoutService implements CheckoutService {
     return Mono.just(
       this.checkoutClient.checkout().byCustomerId(sessionId).get()
     ).flatMap(c -> {
-      CheckoutRequest request = c.getRequest();
+      CheckoutRequest request = new CheckoutRequest();
+      request.setShippingAddress(c.getShippingAddress());
       request.setDeliveryOptionToken(token);
+      request.setItems(
+        c.getItems().stream().map(i -> mapper.modelitem(i)).toList()
+      );
 
       return Mono.just(
         this.checkoutClient.checkout()
@@ -126,7 +132,8 @@ public class KiotaCheckoutService implements CheckoutService {
     return Mono.just(
       this.checkoutClient.checkout().byCustomerId(sessionId).submit().post()
     ).zipWith(this.cartsService.deleteCart(sessionId), (e, f) -> {
-      return mapper.submitted(e);
+      var result = mapper.submitted(e);
+      return result;
     });
   }
 }

@@ -26,9 +26,9 @@
       "description": "HTTP endpoint for the carts service"
     },
     {
-      "name": "retail.ui.endpoints.orders",
+      "name": "retail.ui.endpoints.checkout",
       "type": "java.lang.String",
-      "description": "HTTP endpoint for the orders service"
+      "description": "HTTP endpoint for the checkout service"
     }
   ]
 }

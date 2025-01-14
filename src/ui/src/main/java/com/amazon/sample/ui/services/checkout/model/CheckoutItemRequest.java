@@ -16,27 +16,22 @@
  * SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package com.amazon.sample.ui.services.orders.model;
+package com.amazon.sample.ui.services.checkout.model;
 
-import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
 @AllArgsConstructor
-public class Order {
+@NoArgsConstructor
+public class CheckoutItemRequest {
 
   private String id;
 
-  private int subtotal;
+  private String name;
 
-  private int tax;
+  private Integer quantity;
 
-  private int shipping;
-
-  private int total;
-
-  private ShippingAddress shippingAddress;
-
-  private List<OrderItem> items;
+  private Integer price;
 }

@@ -9,43 +9,47 @@ import java.util.Map;
 import java.util.Objects;
 
 @jakarta.annotation.Generated("com.microsoft.kiota")
-public class CheckoutRequest implements AdditionalDataHolder, Parsable {
+public class ItemRequest implements AdditionalDataHolder, Parsable {
 
   /**
    * Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
    */
   private Map<String, Object> additionalData;
   /**
-   * The deliveryOptionToken property
+   * The id property
    */
-  private String deliveryOptionToken;
+  private String id;
   /**
-   * The items property
+   * The name property
    */
-  private java.util.List<ItemRequest> items;
+  private String name;
   /**
-   * The shippingAddress property
+   * The price property
    */
-  private ShippingAddress shippingAddress;
+  private Integer price;
+  /**
+   * The quantity property
+   */
+  private Integer quantity;
 
   /**
-   * Instantiates a new {@link CheckoutRequest} and sets the default values.
+   * Instantiates a new {@link ItemRequest} and sets the default values.
    */
-  public CheckoutRequest() {
+  public ItemRequest() {
     this.setAdditionalData(new HashMap<>());
   }
 
   /**
    * Creates a new instance of the appropriate class based on discriminator value
    * @param parseNode The parse node to use to read the discriminator value and create the object
-   * @return a {@link CheckoutRequest}
+   * @return a {@link ItemRequest}
    */
   @jakarta.annotation.Nonnull
-  public static CheckoutRequest createFromDiscriminatorValue(
+  public static ItemRequest createFromDiscriminatorValue(
     @jakarta.annotation.Nonnull final ParseNode parseNode
   ) {
     Objects.requireNonNull(parseNode);
-    return new CheckoutRequest();
+    return new ItemRequest();
   }
 
   /**
@@ -55,15 +59,6 @@ public class CheckoutRequest implements AdditionalDataHolder, Parsable {
   @jakarta.annotation.Nonnull
   public Map<String, Object> getAdditionalData() {
     return this.additionalData;
-  }
-
-  /**
-   * Gets the deliveryOptionToken property value. The deliveryOptionToken property
-   * @return a {@link String}
-   */
-  @jakarta.annotation.Nullable
-  public String getDeliveryOptionToken() {
-    return this.deliveryOptionToken;
   }
 
   /**
@@ -81,41 +76,56 @@ public class CheckoutRequest implements AdditionalDataHolder, Parsable {
     > deserializerMap = new HashMap<
       String,
       java.util.function.Consumer<ParseNode>
-    >(3);
-    deserializerMap.put("deliveryOptionToken", n -> {
-      this.setDeliveryOptionToken(n.getStringValue());
+    >(4);
+    deserializerMap.put("id", n -> {
+      this.setId(n.getStringValue());
     });
-    deserializerMap.put("items", n -> {
-      this.setItems(
-          n.getCollectionOfObjectValues(
-            ItemRequest::createFromDiscriminatorValue
-          )
-        );
+    deserializerMap.put("name", n -> {
+      this.setName(n.getStringValue());
     });
-    deserializerMap.put("shippingAddress", n -> {
-      this.setShippingAddress(
-          n.getObjectValue(ShippingAddress::createFromDiscriminatorValue)
-        );
+    deserializerMap.put("price", n -> {
+      this.setPrice(n.getIntegerValue());
+    });
+    deserializerMap.put("quantity", n -> {
+      this.setQuantity(n.getIntegerValue());
     });
     return deserializerMap;
   }
 
   /**
-   * Gets the items property value. The items property
-   * @return a {@link java.util.List<ItemRequest>}
+   * Gets the id property value. The id property
+   * @return a {@link String}
    */
   @jakarta.annotation.Nullable
-  public java.util.List<ItemRequest> getItems() {
-    return this.items;
+  public String getId() {
+    return this.id;
   }
 
   /**
-   * Gets the shippingAddress property value. The shippingAddress property
-   * @return a {@link ShippingAddress}
+   * Gets the name property value. The name property
+   * @return a {@link String}
    */
   @jakarta.annotation.Nullable
-  public ShippingAddress getShippingAddress() {
-    return this.shippingAddress;
+  public String getName() {
+    return this.name;
+  }
+
+  /**
+   * Gets the price property value. The price property
+   * @return a {@link Integer}
+   */
+  @jakarta.annotation.Nullable
+  public Integer getPrice() {
+    return this.price;
+  }
+
+  /**
+   * Gets the quantity property value. The quantity property
+   * @return a {@link Integer}
+   */
+  @jakarta.annotation.Nullable
+  public Integer getQuantity() {
+    return this.quantity;
   }
 
   /**
@@ -126,12 +136,10 @@ public class CheckoutRequest implements AdditionalDataHolder, Parsable {
     @jakarta.annotation.Nonnull final SerializationWriter writer
   ) {
     Objects.requireNonNull(writer);
-    writer.writeStringValue(
-      "deliveryOptionToken",
-      this.getDeliveryOptionToken()
-    );
-    writer.writeCollectionOfObjectValues("items", this.getItems());
-    writer.writeObjectValue("shippingAddress", this.getShippingAddress());
+    writer.writeStringValue("id", this.getId());
+    writer.writeStringValue("name", this.getName());
+    writer.writeIntegerValue("price", this.getPrice());
+    writer.writeIntegerValue("quantity", this.getQuantity());
     writer.writeAdditionalData(this.getAdditionalData());
   }
 
@@ -146,32 +154,34 @@ public class CheckoutRequest implements AdditionalDataHolder, Parsable {
   }
 
   /**
-   * Sets the deliveryOptionToken property value. The deliveryOptionToken property
-   * @param value Value to set for the deliveryOptionToken property.
+   * Sets the id property value. The id property
+   * @param value Value to set for the id property.
    */
-  public void setDeliveryOptionToken(
-    @jakarta.annotation.Nullable final String value
-  ) {
-    this.deliveryOptionToken = value;
+  public void setId(@jakarta.annotation.Nullable final String value) {
+    this.id = value;
   }
 
   /**
-   * Sets the items property value. The items property
-   * @param value Value to set for the items property.
+   * Sets the name property value. The name property
+   * @param value Value to set for the name property.
    */
-  public void setItems(
-    @jakarta.annotation.Nullable final java.util.List<ItemRequest> value
-  ) {
-    this.items = value;
+  public void setName(@jakarta.annotation.Nullable final String value) {
+    this.name = value;
   }
 
   /**
-   * Sets the shippingAddress property value. The shippingAddress property
-   * @param value Value to set for the shippingAddress property.
+   * Sets the price property value. The price property
+   * @param value Value to set for the price property.
    */
-  public void setShippingAddress(
-    @jakarta.annotation.Nullable final ShippingAddress value
-  ) {
-    this.shippingAddress = value;
+  public void setPrice(@jakarta.annotation.Nullable final Integer value) {
+    this.price = value;
+  }
+
+  /**
+   * Sets the quantity property value. The quantity property
+   * @param value Value to set for the quantity property.
+   */
+  public void setQuantity(@jakarta.annotation.Nullable final Integer value) {
+    this.quantity = value;
   }
 }

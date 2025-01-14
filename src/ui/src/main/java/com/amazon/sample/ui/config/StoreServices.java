@@ -20,6 +20,7 @@ package com.amazon.sample.ui.config;
 
 import com.amazon.sample.ui.client.cart.CartClient;
 import com.amazon.sample.ui.client.catalog.CatalogClient;
+import com.amazon.sample.ui.client.checkout.CheckoutClient;
 import com.amazon.sample.ui.services.carts.CartsService;
 import com.amazon.sample.ui.services.carts.KiotaCartsService;
 import com.amazon.sample.ui.services.carts.MockCartsService;
@@ -28,6 +29,7 @@ import com.amazon.sample.ui.services.catalog.KiotaCatalogService;
 import com.amazon.sample.ui.services.catalog.MockCatalogService;
 import com.amazon.sample.ui.services.catalog.model.CatalogMapper;
 import com.amazon.sample.ui.services.checkout.CheckoutService;
+import com.amazon.sample.ui.services.checkout.KiotaCheckoutService;
 import com.amazon.sample.ui.services.checkout.MockCheckoutService;
 import com.amazon.sample.ui.services.checkout.model.CheckoutMapper;
 import com.microsoft.kiota.authentication.AnonymousAuthenticationProvider;
@@ -94,6 +96,25 @@ public class StoreServices {
   }
 
   @Bean
+  @ConditionalOnProperty(prefix = "retail.ui.endpoints", name = "checkout")
+  public CheckoutService checkoutService(
+    @Value("${retail.ui.endpoints.checkout}") String endpoint,
+    CartsService cartsService,
+    CheckoutMapper mapper
+  ) {
+    var requestAdapter = new DefaultRequestAdapter(
+      new AnonymousAuthenticationProvider()
+    );
+    requestAdapter.setBaseUrl(endpoint);
+
+    return new KiotaCheckoutService(
+      new CheckoutClient(requestAdapter),
+      mapper,
+      cartsService
+    );
+  }
+
+  @Bean
   @ConditionalOnProperty(
     prefix = "retail.ui.endpoints",
     name = "checkout",
@@ -106,27 +127,4 @@ public class StoreServices {
   ) {
     return new MockCheckoutService(mapper, cartsService);
   }
-  /*@Bean
-  @ConditionalOnProperty(prefix = "retail.ui.endpoints", name = "orders")
-  public OrdersService ordersService(
-    @Value("${retail.ui.endpoints.orders}") String endpoint
-  ) {
-    var requestAdapter = new DefaultRequestAdapter(
-      new AnonymousAuthenticationProvider()
-    );
-    requestAdapter.setBaseUrl(endpoint);
-
-    return new KiotaOrdersService(new OrdersClient(requestAdapter));
-  }
-
-  @Bean
-  @ConditionalOnProperty(
-    prefix = "retail.ui.endpoints.orders",
-    name = "orders",
-    havingValue = "false",
-    matchIfMissing = true
-  )
-  public OrdersService mockOrdersService() {
-    return new MockOrdersService();
-  }*/
 }

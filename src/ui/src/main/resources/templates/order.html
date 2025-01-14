@@ -15,7 +15,7 @@
           </div>
           <div>
             <p class="text-sm text-gray-600">Contact Email</p>
-            <p th:text="${summary.customerEmail}">customer@example.com</p>
+            <p th:text="${summary.email}">customer@example.com</p>
           </div>
         </div>
       </div>
@@ -45,7 +45,7 @@
             <div class="text-right">
               <p>$<th:block th:text="${item.totalCost}">299</th:block></p>
               <p class="text-sm text-gray-600">
-                $<th:block th:text="${item.unitCost}">299</th:block> each
+                $<th:block th:text="${item.price}">299</th:block> each
               </p>
             </div>
           </div>

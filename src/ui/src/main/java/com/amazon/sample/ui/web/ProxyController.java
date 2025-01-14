@@ -43,7 +43,7 @@ public class ProxyController {
   @Value("${endpoints.checkout:}")
   private String checkoutEndpoint;
 
-  @GetMapping("/catalogue/**")
+  @GetMapping("/catalog/**")
   public Mono<ResponseEntity<byte[]>> catalogProxy(ProxyExchange<byte[]> proxy)
     throws Exception {
     return doProxy(proxy, "catalog", catalogEndpoint);

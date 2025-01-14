@@ -17,16 +17,34 @@
  */
 
 import { Type } from 'class-transformer';
-import { IsInt, IsString, Min, ValidateNested } from 'class-validator';
-import { CheckoutRequest } from './CheckoutRequest';
+import {
+  IsInt,
+  IsOptional,
+  IsString,
+  Min,
+  ValidateNested,
+} from 'class-validator';
 import { ShippingRates } from './ShippingRates';
 import { ApiProperty } from '@nestjs/swagger';
+import { ShippingAddress } from './ShippingAddress';
+import { Item } from './Item';
 
 export class Checkout {
-  @ApiProperty()
+  @ValidateNested({ each: true })
+  @Type(() => Item)
+  @ApiProperty({ type: [Item] })
+  items: Item[];
+
   @ValidateNested()
-  @Type(() => CheckoutRequest)
-  request: CheckoutRequest;
+  @Type(() => ShippingAddress)
+  @IsOptional()
+  @ApiProperty()
+  shippingAddress: ShippingAddress;
+
+  @IsString()
+  @IsOptional()
+  @ApiProperty()
+  deliveryOptionToken: string;
 
   @ApiProperty()
   @ValidateNested()

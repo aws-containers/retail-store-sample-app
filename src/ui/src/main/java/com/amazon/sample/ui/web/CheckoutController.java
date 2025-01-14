@@ -93,14 +93,11 @@ public class CheckoutController {
     address.setCity(shippingAddressRequest.getCity());
     address.setState(shippingAddressRequest.getState());
     address.setZip(shippingAddressRequest.getZipCode());
+    address.setEmail(shippingAddressRequest.getEmail());
 
     String sessionId = SessionIDUtil.getSessionId(request);
 
-    return this.checkoutService.shipping(
-        sessionId,
-        shippingAddressRequest.getEmail(),
-        address
-      ).map(c -> {
+    return this.checkoutService.shipping(sessionId, address).map(c -> {
         String defaultToken = null;
 
         if (c.getShippingOptions().size() > 0) {

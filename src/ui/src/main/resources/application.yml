@@ -16,7 +16,7 @@ retail:
     endpoints:
       catalog: false # http://localhost:8081
       carts: false # http://localhost:8081
-      orders: false #http://localhost:8083
+      checkout: http://localhost:8082
 
 management:
   endpoints:
