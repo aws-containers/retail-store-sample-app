@@ -65,13 +65,14 @@
                     Shipping and taxes calculated at checkout
                   </p>
                 </div>
-                <p class="text-xl font-semibold">
+                <p class="text-xl font-semibold cart-subtotal">
                   $<th:block th:text="${fullCart.subtotal}">446</th:block>
                 </p>
               </div>
 
               <a href="/checkout">
                 <button
+                  id="checkout"
                   class="w-full bg-primary-500 text-white rounded-lg py-3 mt-6 hover:bg-primary-700"
                 >
                   Proceed to Checkout

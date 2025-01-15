@@ -15,7 +15,9 @@
           </div>
           <div>
             <p class="text-sm text-gray-600">Contact Email</p>
-            <p th:text="${summary.email}">customer@example.com</p>
+            <p id="order-email" th:text="${summary.email}">
+              customer@example.com
+            </p>
           </div>
         </div>
       </div>
@@ -60,20 +62,28 @@
         <div class="space-y-3 text-sm">
           <div class="flex justify-between">
             <span class="text-gray-600">Subtotal</span>
-            <span>$<th:block th:text="${summary.subtotal}">299</th:block></span>
+            <span id="order-subtotal"
+              >$<th:block th:text="${summary.subtotal}">299</th:block></span
+            >
           </div>
           <div class="flex justify-between">
             <span class="text-gray-600">Shipping</span>
-            <span>$<th:block th:text="${summary.shipping}">299</th:block></span>
+            <span id="order-shipping"
+              >$<th:block th:text="${summary.shipping}">299</th:block></span
+            >
           </div>
           <div class="flex justify-between">
             <span class="text-gray-600">Taxes</span>
-            <span>$<th:block th:text="${summary.tax}">299</th:block></span>
+            <span id="order-tax"
+              >$<th:block th:text="${summary.tax}">299</th:block></span
+            >
           </div>
           <div class="border-t pt-3 mt-3 text-base">
             <div class="flex justify-between font-semibold text-gray-800">
               <span>Total</span>
-              <span>$<th:block th:text="${summary.total}">299</th:block></span>
+              <span id="order-total"
+                >$<th:block th:text="${summary.total}">299</th:block></span
+              >
             </div>
           </div>
         </div>

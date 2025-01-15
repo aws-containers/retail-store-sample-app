@@ -73,8 +73,4 @@ setup_colors
 
 cd $script_dir/../
 
-echo "Building e2e container image..."
-
-docker build -q -t aws-containers/retail-sample-app-e2e:local .
-
-docker run -i --rm --network $network -e "ENDPOINT=${args[0]}" aws-containers/retail-sample-app-e2e:local
+docker run -i --rm --network $network -v $PWD:/e2e --env CYPRESS_BASE_URL="${args[0]}" -w /e2e cypress/included:13.17.0

@@ -3,7 +3,7 @@ class Page {
     this.url = "/";
   }
   visit() {
-    cy.visit(this.url);
+    return cy.visit(this.url);
   }
 
   home() {
