@@ -19846,7 +19846,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 ----
 
-### org.springframework.cloud:spring-cloud-gateway-webflux @4.1.6 - https://spring.io/spring-cloud/spring-cloud-gateway/spring-cloud-gateway-webflux
+### org.springframework.cloud:spring-cloud-gateway-webflux @4.2.0 - https://spring.io/spring-cloud/spring-cloud-gateway/spring-cloud-gateway-webflux
 
                                  Apache License
                            Version 2.0, January 2004
@@ -20051,7 +20051,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
    limitations under the License.
 
 
-[Source code](https://repo.maven.apache.org/maven2/org/springframework/cloud/spring-cloud-gateway-webflux/4.1.6/spring-cloud-gateway-webflux-4.1.6-sources.jar)
+[Source code](https://repo.maven.apache.org/maven2/org/springframework/cloud/spring-cloud-gateway-webflux/4.2.0/spring-cloud-gateway-webflux-4.2.0-sources.jar)
 
 ----
 
