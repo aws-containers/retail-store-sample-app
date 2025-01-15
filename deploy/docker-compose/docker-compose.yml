@@ -23,11 +23,10 @@ services:
     environment:
       - JAVA_OPTS=-XX:MaxRAMPercentage=75.0 -Djava.security.egd=file:/dev/urandom
       - SERVER_TOMCAT_ACCESSLOG_ENABLED=true
-      - ENDPOINTS_CATALOG=http://catalog:8080
-      - ENDPOINTS_CARTS=http://carts:8080
-      - ENDPOINTS_ORDERS=http://orders:8080
-      - ENDPOINTS_CHECKOUT=http://checkout:8080
-      - ENDPOINTS_ASSETS=http://assets:8080
+      - RETAIL_UI_ENDPOINTS_CATALOG=http://catalog:8080
+      - RETAIL_UI_ENDPOINTS_CARTS=http://carts:8080
+      - RETAIL_UI_ENDPOINTS_ORDERS=http://orders:8080
+      - RETAIL_UI_ENDPOINTS_CHECKOUT=http://checkout:8080
     hostname: ui
     image: retail-store-sample-ui:${TAG:-latest}
     restart: always
@@ -41,7 +40,9 @@ services:
     restart: always
     environment:
       - GIN_MODE=release
-      - DB_PASSWORD=${MYSQL_PASSWORD}
+      - RETAIL_CATALOG_PERSISTENCE_PROVIDER=mysql
+      - RETAIL_CATALOG_PERSISTENCE_PASSWORD=${MYSQL_PASSWORD}
+      - RETAIL_CATALOG_PERSISTENCE_ENDPOINT=catalog-db:3306
     mem_limit: 128m
     cap_drop:
       - ALL
@@ -65,9 +66,9 @@ services:
     environment:
       - JAVA_OPTS=-XX:MaxRAMPercentage=75.0 -Djava.security.egd=file:/dev/urandom
       - SERVER_TOMCAT_ACCESSLOG_ENABLED=true
-      - SPRING_PROFILES_ACTIVE=dynamodb
-      - CARTS_DYNAMODB_ENDPOINT=http://carts-db:8000
-      - CARTS_DYNAMODB_CREATETABLE=true
+      - RETAIL_CARTS_PERSISTENCE_PROVIDER=dynamodb
+      - RETAIL_CARTS_PERSISTENCE_DYNAMODB_ENDPOINT=http://carts-db:8000
+      - RETAIL_CARTS_PERSISTENCE_DYNAMODB_CREATETABLE=true
       - AWS_ACCESS_KEY_ID=key
       - AWS_SECRET_ACCESS_KEY=dummy
     mem_limit: 256m
@@ -122,8 +123,9 @@ services:
     tmpfs:
       - /tmp:rw,noexec,nosuid
     environment:
-      - REDIS_URL=redis://checkout-redis:6379
-      - ENDPOINTS_ORDERS=http://orders:8080
+      - RETAIL_CHECKOUT_PERSISTENCE_PROVIDER=redis
+      - RETAIL_CHECKOUT_PERSISTENCE_REDIS_URL=redis://checkout-redis:6379
+      - RETAIL_CHECKOUT_ENDPOINTS_ORDERS=http://orders:8080
     mem_limit: 256m
     cap_drop:
       - ALL
@@ -133,16 +135,6 @@ services:
     hostname: checkout-redis
     restart: always
     mem_limit: 128m
-
-  assets:
-    hostname: assets
-    environment:
-      - PORT=8080
-    image: retail-store-sample-assets:${TAG:-latest}
-    restart: always
-    mem_limit: 64m
-    cap_drop:
-      - ALL
 
   rabbitmq:
     image: rabbitmq:3-management

@@ -17,16 +17,19 @@
  */
 
 export default () => ({
-  endpoints: {
-    orders: process.env.ENDPOINTS_ORDERS || '',
-  },
-  redis: {
-    url: process.env.REDIS_URL || '',
-    reader: {
-      url: process.env.REDIS_READER_URL || '',
+  persistence: {
+    provider: process.env.RETAIL_CHECKOUT_PERSISTENCE_PROVIDER || 'in-memory',
+    redis: {
+      url: process.env.RETAIL_CHECKOUT_PERSISTENCE_REDIS_URL || '',
+      reader: {
+        url: process.env.RETAIL_CHECKOUT_PERSISTENCE_REDIS_READER_URL || '',
+      },
     },
   },
+  endpoints: {
+    orders: process.env.RETAIL_CHECKOUT_ENDPOINTS_ORDERS || '',
+  },
   shipping: {
-    prefix: process.env.SHIPPING_NAME_PREFIX || '',
+    prefix: process.env.RETAIL_CHECKOUT_SHIPPING_NAME_PREFIX || '',
   },
 });

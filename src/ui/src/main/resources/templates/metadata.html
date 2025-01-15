@@ -2,7 +2,7 @@
 <html
   lang="en"
   xmlns:th="http://www.thymeleaf.org"
-  xmlns:dcol="http://www.thymeleaf.org/dcol"
+  xmlns:retail="http://www.thymeleaf.org/retail"
   th:replace="~{fragments/root :: root (~{::body})}"
 >
   <body class="bg-gray-50">
@@ -17,7 +17,7 @@
         <div
           class="bg-white rounded-lg shadow-sm p-4"
           th:each="focusAttribute : ${focusAttributes}"
-          dcol:dynamic-col-span="${focusAttribute.value}"
+          retail:dynamic-col-span="${focusAttribute.value}"
         >
           <div class="flex items-center justify-between">
             <div class="space-y-1 truncate">

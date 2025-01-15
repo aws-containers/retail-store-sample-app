@@ -10,9 +10,9 @@
       class="w-fit h-fit object-cover rounded-lg"
       th:src="${'/assets/img/products/'+item.id+'.png'}"
   /></a>
-  <div class="py-4">
+  <div class="py-4 product-card">
     <h3
-      class="text-gray-800 mb-2 text-base text-black font-bold hover:text-primary-500 cursor-pointer"
+      class="text-gray-800 mb-2 text-base text-black font-bold hover:text-primary-500 cursor-pointer product-name"
       th:text="${product.name}"
     >
       <a href="#" th:href="@{/catalog/{itemId}(itemId=${product.id})}"
@@ -32,15 +32,17 @@
         <i class="fas fa-star text-gray-300"></i>
       </div>
     </div>
-    <p class="text-gray-600 mb-4">
+    <p class="text-gray-600 mb-4 product-price">
       $<th:block th:text="${product.price}">143.00</th:block>
     </p>
     <form action="/cart" method="POST">
       <input type="hidden" name="productId" th:value="${product.id}" />
       <button
+        id="add-to-cart"
         class="w-full bg-primary-500 text-white py-2 rounded-lg hover:bg-primary-700 transition duration-300"
         href="#"
         onclick="this.closest('form').submit();return false;"
+        th:text="#{button.addtocart}"
       >
         Add to Cart
       </button>

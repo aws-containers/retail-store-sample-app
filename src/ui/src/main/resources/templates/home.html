@@ -19,19 +19,23 @@
             </a>
             <div class="hidden md:flex items-center space-x-12">
               <a
+                id="menu-home"
                 href="/"
                 class="text-white/90 hover:text-white transition duration-300 text-sm switch"
+                th:text="#{nav.home}"
                 >Home</a
               >
               <a
+                id="menu-catalog"
                 href="/catalog"
                 class="text-white/90 hover:text-white transition duration-300 text-sm switch"
+                th:text="#{nav.catalog}"
                 >Catalog</a
               >
             </div>
             <!-- Cart Button with Count -->
             <div class="flex items-center">
-              <a href="/cart">
+              <a href="/cart" id="go-cart">
                 <button
                   class="flex items-center gap-2 p-2 text-white hover:text-white/80"
                 >
@@ -154,10 +158,13 @@
         </p>
         <div class="flex gap-4">
           <a
+            id="shop-now"
             href="/catalog"
             class="relative inline-flex items-center gap-2 px-6 py-3 text-lg font-semibold text-white bg-primary-500 rounded-md hover:bg-primary-700 transition-colors overflow-hidden border border-gray-400"
           >
-            <span class="relative z-10">Shop Now</span>
+            <span class="relative z-10" th:text="#{hero.shopnow}"
+              >Shop Now</span
+            >
             <i class="fas fa-arrow-right relative z-10"></i>
             <div
               class="absolute inset-0 h-full w-[200%] animate-beam bg-gradient-to-r from-transparent via-white/20 to-transparent"
@@ -175,12 +182,19 @@
         <div
           class="flex justify-between items-center mb-8 border-b border-gray-200 pb-4"
         >
-          <h2 class="text-2xl font-bold text-gray-700">Popular Gadgets</h2>
+          <h2
+            class="text-2xl font-bold text-gray-700"
+            th:text="#{home.populargadgets}"
+          >
+            Popular Gadgets
+          </h2>
           <a
             href="/catalog"
             class="inline-flex items-center text-sm text-primary-500 hover:text-primary-500 font-medium transition duration-150 ease-in-out border-b-2 border-transparent hover:border-primary-500"
           >
-            View Full Catalog
+            <th:block th:text="#{home.viewfullcatalog}"
+              >View Full Catalog</th:block
+            >
             <i class="fas fa-arrow-right ml-2"></i>
           </a>
         </div>

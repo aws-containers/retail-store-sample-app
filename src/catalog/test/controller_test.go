@@ -11,29 +11,29 @@ import (
 )
 
 func TestCatalogList(t *testing.T) {
-	writer := makeRequest("GET", "/catalogue", nil)
+	writer := makeRequest("GET", "/catalog", nil)
 
 	assert.Equal(t, http.StatusOK, writer.Code)
 
 	var response []model.Product
 	json.Unmarshal(writer.Body.Bytes(), &response)
 
-	assert.Equal(t, 6, len(response))
+	assert.Equal(t, 9, len(response))
 }
 
 func TestCatalogProduct(t *testing.T) {
-	writer := makeRequest("GET", "/catalogue/product/6d62d909-f957-430e-8689-b5129c0bb75e", nil)
+	writer := makeRequest("GET", "/catalog/product/cc789f85-1476-452a-8100-9e74502198e0", nil)
 
 	assert.Equal(t, http.StatusOK, writer.Code)
 
 	var response model.Product
 	json.Unmarshal(writer.Body.Bytes(), &response)
 
-	assert.Equal(t, "Pocket Watch", response.Name)
+	assert.Equal(t, "Temporal Tickstopper", response.Name)
 }
 
 func TestCatalogProductMissing(t *testing.T) {
-	writer := makeRequest("GET", "/catalogue/product/missing", nil)
+	writer := makeRequest("GET", "/catalog/product/missing", nil)
 
 	assert.Equal(t, http.StatusNotFound, writer.Code)
 }

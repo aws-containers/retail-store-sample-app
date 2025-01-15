@@ -1,10 +1,16 @@
 package repository
 
 import (
+	_ "embed"
 	"encoding/json"
 	"fmt"
-	"os"
 )
+
+//go:embed products.json
+var productsString []byte
+
+//go:embed products.json
+var tagsString []byte
 
 type ProductData struct {
 	Name        string   `json:"name"`
@@ -20,17 +26,11 @@ type ProductTagData struct {
 }
 
 func LoadProductData() ([]ProductData, error) {
-	// Read the file
-	data, err := os.ReadFile("data/products.json")
-	if err != nil {
-		return nil, fmt.Errorf("error reading file: %v", err)
-	}
-
 	// Create a slice to hold the products
 	var products []ProductData
 
 	// Unmarshal JSON array into the slice
-	err = json.Unmarshal(data, &products)
+	err := json.Unmarshal(productsString, &products)
 	if err != nil {
 		return nil, fmt.Errorf("error parsing JSON: %v", err)
 	}
@@ -39,17 +39,11 @@ func LoadProductData() ([]ProductData, error) {
 }
 
 func LoadProductTagData() ([]ProductTagData, error) {
-	// Read the file
-	data, err := os.ReadFile("data/tags.json")
-	if err != nil {
-		return nil, fmt.Errorf("error reading file: %v", err)
-	}
-
 	// Create a slice to hold the products
 	var productTags []ProductTagData
 
 	// Unmarshal JSON array into the slice
-	err = json.Unmarshal(data, &productTags)
+	err := json.Unmarshal(tagsString, &productTags)
 	if err != nil {
 		return nil, fmt.Errorf("error parsing JSON: %v", err)
 	}

@@ -51,8 +51,9 @@ const shippingServiceProvider = {
 const repositoryProvider = {
   provide: 'CheckoutRepository',
   useFactory: (configService: ConfigService) => {
-    const redisUrl = configService.get('redis.url');
-    let redisReaderUrl = configService.get('redis.reader.url');
+    const persistenceProvider = configService.get('persistence.provider');
+    const redisUrl = configService.get('persistence.redis.url');
+    let redisReaderUrl = configService.get('persistence.redis.reader.url');
 
     if (!redisReaderUrl) {
       redisReaderUrl = redisUrl;
@@ -61,7 +62,7 @@ const repositoryProvider = {
     let repository: ICheckoutRepository;
     const logger = new Logger();
 
-    if (redisUrl) {
+    if (persistenceProvider === 'redis') {
       logger.log('Creating RedisRepository...');
       repository = new RedisCheckoutRepository(redisUrl, redisReaderUrl);
     } else {

@@ -17,7 +17,7 @@
         </div>
 
         <!-- Product Details -->
-        <div class="bg-white rounded-lg py-4 space-y-6">
+        <div class="bg-white rounded-lg py-4 space-y-6 product-detail">
           <!-- Product Title -->
           <div class="space-y-2">
             <h1 class="text-3xl font-bold text-gray-800" th:text="${item.name}">
@@ -64,7 +64,9 @@
             <!-- Quantity Selector with Plus/Minus -->
             <div class="space-y-4 pt-6 border-t border-gray-200">
               <div class="flex items-center space-x-4">
-                <label class="text-gray-700 font-medium">Quantity:</label>
+                <label class="text-gray-700 font-medium"
+                  ><th:block th:text="#{field.quantity}"></th:block>:</label
+                >
                 <div
                   class="flex items-center border border-gray-300 rounded-lg"
                 >
@@ -101,7 +103,7 @@
                   class="w-full bg-primary-500 text-white py-3 rounded-lg hover:bg-primary-700 transition duration-300 flex items-center justify-center space-x-2"
                 >
                   <i class="fas fa-shopping-cart"></i>
-                  <span>Add to Cart</span>
+                  <span th:text="#{button.addtocart}">Add to Cart</span>
                 </button>
               </form>
             </div>

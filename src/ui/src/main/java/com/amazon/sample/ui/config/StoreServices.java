@@ -32,99 +32,67 @@ import com.amazon.sample.ui.services.checkout.CheckoutService;
 import com.amazon.sample.ui.services.checkout.KiotaCheckoutService;
 import com.amazon.sample.ui.services.checkout.MockCheckoutService;
 import com.amazon.sample.ui.services.checkout.model.CheckoutMapper;
+import com.microsoft.kiota.RequestAdapter;
 import com.microsoft.kiota.authentication.AnonymousAuthenticationProvider;
 import com.microsoft.kiota.bundle.DefaultRequestAdapter;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.util.StringUtils;
 
 @Configuration
 public class StoreServices {
 
-  @Bean
-  @ConditionalOnProperty(prefix = "retail.ui.endpoints", name = "catalog")
-  public CatalogService catalogService(
-    @Value("${retail.ui.endpoints.catalog}") String endpoint,
-    CatalogMapper mapper
-  ) {
-    var requestAdapter = new DefaultRequestAdapter(
+  @Autowired
+  private EndpointProperties endpoints;
+
+  public RequestAdapter getRequestAdapter(String endpoint) {
+    var adapter = new DefaultRequestAdapter(
       new AnonymousAuthenticationProvider()
     );
-    requestAdapter.setBaseUrl(endpoint);
 
-    return new KiotaCatalogService(new CatalogClient(requestAdapter), mapper);
+    adapter.setBaseUrl(endpoint);
+
+    return adapter;
   }
 
   @Bean
-  @ConditionalOnProperty(
-    prefix = "retail.ui.endpoints",
-    name = "catalog",
-    havingValue = "false",
-    matchIfMissing = true
-  )
-  public CatalogService mockCatalogService() {
+  public CatalogService catalogService(CatalogMapper mapper) {
+    if (StringUtils.hasText(this.endpoints.getCatalog())) {
+      return new KiotaCatalogService(
+        new CatalogClient(getRequestAdapter(this.endpoints.getCatalog())),
+        mapper
+      );
+    }
+
     return new MockCatalogService();
   }
 
   @Bean
-  @ConditionalOnProperty(prefix = "retail.ui.endpoints", name = "carts")
-  public CartsService cartsService(
-    @Value("${retail.ui.endpoints.carts}") String endpoint,
-    CatalogService catalogService
-  ) {
-    var requestAdapter = new DefaultRequestAdapter(
-      new AnonymousAuthenticationProvider()
-    );
-    requestAdapter.setBaseUrl(endpoint);
+  public CartsService cartsService(CatalogService catalogService) {
+    if (StringUtils.hasText(this.endpoints.getCarts())) {
+      return new KiotaCartsService(
+        new CartClient(getRequestAdapter(this.endpoints.getCarts())),
+        catalogService
+      );
+    }
 
-    return new KiotaCartsService(
-      new CartClient(requestAdapter),
-      catalogService
-    );
-  }
-
-  @Bean
-  @ConditionalOnProperty(
-    prefix = "retail.ui.endpoints",
-    name = "carts",
-    havingValue = "false",
-    matchIfMissing = true
-  )
-  public CartsService mockCartsService(CatalogService catalogService) {
     return new MockCartsService(catalogService);
   }
 
   @Bean
-  @ConditionalOnProperty(prefix = "retail.ui.endpoints", name = "checkout")
   public CheckoutService checkoutService(
-    @Value("${retail.ui.endpoints.checkout}") String endpoint,
     CartsService cartsService,
     CheckoutMapper mapper
   ) {
-    var requestAdapter = new DefaultRequestAdapter(
-      new AnonymousAuthenticationProvider()
-    );
-    requestAdapter.setBaseUrl(endpoint);
+    if (StringUtils.hasText(this.endpoints.getCheckout())) {
+      return new KiotaCheckoutService(
+        new CheckoutClient(getRequestAdapter(this.endpoints.getCheckout())),
+        mapper,
+        cartsService
+      );
+    }
 
-    return new KiotaCheckoutService(
-      new CheckoutClient(requestAdapter),
-      mapper,
-      cartsService
-    );
-  }
-
-  @Bean
-  @ConditionalOnProperty(
-    prefix = "retail.ui.endpoints",
-    name = "checkout",
-    havingValue = "false",
-    matchIfMissing = true
-  )
-  public CheckoutService mockCheckoutService(
-    CheckoutMapper mapper,
-    CartsService cartsService
-  ) {
     return new MockCheckoutService(mapper, cartsService);
   }
 }

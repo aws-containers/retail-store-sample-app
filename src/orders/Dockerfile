@@ -5,8 +5,10 @@ FROM public.ecr.aws/amazonlinux/amazonlinux:2023 as build-env
 # installed set of packages as minimal as possible.
 RUN dnf --setopt=install_weak_deps=False install -q -y \
     maven \
-    java-17-amazon-corretto-headless \
+    java-21-amazon-corretto-headless \
     which \
+    tar \
+    gzip \
     && \
     dnf clean all
 
@@ -33,7 +35,7 @@ FROM public.ecr.aws/amazonlinux/amazonlinux:2023
 # weak dependencies in DNF terminology, thus keeping our installed set of
 # packages as minimal as possible.
 RUN dnf --setopt=install_weak_deps=False install -q -y \
-    java-17-amazon-corretto-headless \
+    java-21-amazon-corretto-headless \
     shadow-utils \
     && \
     dnf clean all

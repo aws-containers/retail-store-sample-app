@@ -15,9 +15,9 @@ services:
       - no-new-privileges:true
     environment:
       - reschedule=on-node-failure
-      - RETAIL_CATALOG_DB_TYPE=mysql
-      - RETAIL_CATALOG_DB_PASSWORD=${MYSQL_PASSWORD}
-      - RETAIL_CATALOG_DB_ENDPOINT=catalog-db:3306
+      - RETAIL_CATALOG_PERSISTENCE_PROVIDER=mysql
+      - RETAIL_CATALOG_PERSISTENCE_PASSWORD=${MYSQL_PASSWORD}
+      - RETAIL_CATALOG_PERSISTENCE_ENDPOINT=catalog-db:3306
     ports:
       - "8081:8080"
   # nosemgrep: yaml.docker-compose.security.writable-filesystem-service.writable-filesystem-service

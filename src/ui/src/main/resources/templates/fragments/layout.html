@@ -19,21 +19,23 @@
           </a>
           <div class="flex items-center space-x-12">
             <a
+              id="menu-home"
               href="/"
               class="hover:text-primary-500 transition duration-300 text-sm"
-              th:text="#{home}"
+              th:text="#{nav.home}"
               >Home</a
             >
             <a
+              id="menu-catalog"
               href="/catalog"
               class="hover:text-primary-500 transition duration-300 text-sm"
-              th:text="#{catalog}"
+              th:text="#{nav.catalog}"
               >Catalog</a
             >
           </div>
           <!-- Cart Button with Count -->
           <div class="flex items-center">
-            <a href="/cart">
+            <a href="/cart" id="go-cart">
               <button
                 class="flex items-center gap-2 p-2 text-gray-700 hover:text-primary-500"
               >

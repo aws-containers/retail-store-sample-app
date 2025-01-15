@@ -11,7 +11,7 @@
           <h3 class="font-semibold text-gray-800 mb-4 uppercase text-xs">
             Categories
           </h3>
-          <ul class="space-y-2 text-sm">
+          <ul class="space-y-2 text-sm category-menu">
             <li>
               <a
                 href="#"
@@ -47,7 +47,7 @@
           <!-- Pagination -->
           <div class="flex justify-center mt-8">
             <nav
-              class="inline-flex items-center rounded-lg bg-white border border-gray-200"
+              class="inline-flex items-center rounded-lg bg-white border border-gray-200 pagination"
               aria-label="Pagination"
               th:with="prevIndex=${{catalog.page == 1} ? 1: catalog.page-1}, nextIndex=${{catalog.page == catalog.totalPages} ? catalog.totalPages: catalog.page+1}"
             >

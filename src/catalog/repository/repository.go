@@ -35,8 +35,10 @@ func NewRepository(config config.DatabaseConfiguration) (CatalogRepository, erro
 	var err error
 
 	if config.Type == "mysql" {
+		fmt.Printf("Using mysql database %s\n", config.Endpoint)
 		db, err = createMySQLDatabase(config)
 	} else {
+		fmt.Println("Using in-memory database")
 		newLogger := logger.New(
 			log.New(os.Stdout, "\r\n", log.LstdFlags), // io writer
 			logger.Config{
@@ -57,8 +59,12 @@ func NewRepository(config config.DatabaseConfiguration) (CatalogRepository, erro
 		panic("failed to connect database")
 	}
 
+	fmt.Println("Running database migration...")
+
 	// Migrate the schema
 	db.AutoMigrate(&model.Product{})
+
+	fmt.Println("Database migration complete")
 
 	products, err := LoadProductData()
 	if err != nil {

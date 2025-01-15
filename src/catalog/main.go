@@ -112,6 +112,19 @@ func main() {
 		c.String(http.StatusOK, "OK")
 	})
 
+	r.GET("/topology", func(c *gin.Context) {
+		topology := make(map[string]string)
+
+		topology["persistenceProvider"] = config.Database.Type
+		topology["databaseEndpoint"] = "N/A"
+
+		if config.Database.Type != "in-memory" {
+			topology["databaseEndpoint"] = config.Database.Endpoint
+		}
+
+		c.JSON(http.StatusOK, topology)
+	})
+
 	srv := &http.Server{
 		Addr:    ":" + strconv.Itoa(config.Port),
 		Handler: r,

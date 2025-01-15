@@ -80,7 +80,7 @@ func router() *gin.Engine {
 		log.Fatalln("Error creating controller", err)
 	}
 
-	catalog := router.Group("/catalogue")
+	catalog := router.Group("/catalog")
 
 	catalog.GET("", c.GetProducts)
 

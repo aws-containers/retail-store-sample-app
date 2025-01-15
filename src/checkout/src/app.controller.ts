@@ -17,15 +17,35 @@
  */
 
 import { Controller, Get } from '@nestjs/common';
+import { ConfigService } from '@nestjs/config';
 import { HealthCheck, HealthCheckService } from '@nestjs/terminus';
 
 @Controller()
 export class AppController {
-  constructor(private healthCheckService: HealthCheckService) {}
+  constructor(
+    private healthCheckService: HealthCheckService,
+    private configService: ConfigService,
+  ) {}
 
   @Get('health')
   @HealthCheck()
   health() {
     return this.healthCheckService.check([]);
+  }
+
+  @Get('topology')
+  @HealthCheck()
+  topology() {
+    const persistenceProvider = this.configService.get('persistence.provider');
+    let databaseEndpoint = 'N/A';
+
+    if (persistenceProvider === 'redis') {
+      databaseEndpoint = this.configService.get('persistence.redis.url');
+    }
+
+    return {
+      persistenceProvider,
+      databaseEndpoint,
+    };
   }
 }

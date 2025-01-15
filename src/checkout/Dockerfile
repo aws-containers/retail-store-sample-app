@@ -2,8 +2,8 @@ FROM node:20-alpine AS build
 WORKDIR /usr/src/app
 COPY --chown=node:node package*.json ./
 COPY --chown=node:node . .
-RUN npm ci -f
-RUN npm run build
+RUN yarn install --frozen-lockfile
+RUN yarn build
 USER node
 
 
