@@ -84,6 +84,23 @@ endpoints:
 ingress:
   enabled: false
   # className: ""
+  annotations: {}
+  #   alb.ingress.kubernetes.io/scheme: internet-facing
+  #   alb.ingress.kubernetes.io/target-type: ip
+  #   alb.ingress.kubernetes.io/healthcheck-path: /actuator/health/liveness
+  tls: []
+  #  - secretName: chart-example-tls
+  #    hosts:
+  #      - chart-example.local
+  hosts: []
+  #  - "chart-example.local"
+
+ingresses: []
+  # - name: default
+  #   className: ""
+  #   hosts: []
+  #   annotations: {}
+  #   tls: []
 
 istio:
   enabled: false
