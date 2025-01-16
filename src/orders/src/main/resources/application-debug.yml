@@ -1,6 +1,0 @@
-logging:
-  level:
-    org:
-      hibernate:
-        stat: debug
-        type: trace

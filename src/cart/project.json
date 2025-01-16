@@ -1,0 +1,46 @@
+{
+  "name": "cart",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "sourceRoot": "src/cart",
+  "targets": {
+    "build": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "cd src/cart && ./mvnw package"
+      }
+    },
+    "test": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "cd src/cart && ./mvnw test -DexcludedGroups=integration"
+      }
+    },
+    "test:integration": {
+      "executor": "nx:run-commands",
+      "options": {
+        "env": {
+          "AWS_ACCESS_KEY_ID": "dummy",
+          "AWS_SECRET_ACCESS_KEY": "dummy"
+        },
+        "command": "cd src/cart && ./mvnw test -Dgroups=integration"
+      }
+    },
+    "start": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "cd src/cart && ./mvnw spring-boot:run"
+      }
+    },
+    "container": {
+      "executor": "@nx-tools/nx-container:bcartld",
+      "options": {
+        "context": "src/cart",
+        "metadata": {
+          "images": ["public.ecr.aws/aws-containers/retail-store-sample-cart"]
+        }
+      }
+    }
+  },
+  "tags": ["service"]
+}

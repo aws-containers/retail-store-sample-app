@@ -31,6 +31,7 @@ import java.util.List;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -40,6 +41,7 @@ import org.springframework.test.context.DynamicPropertySource;
 import org.testcontainers.containers.PostgreSQLContainer;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+@Tag("integration")
 public class OrderServicePostgresTests {
 
   @LocalServerPort
@@ -61,9 +63,19 @@ public class OrderServicePostgresTests {
 
   @DynamicPropertySource
   static void configureProperties(DynamicPropertyRegistry registry) {
-    registry.add("spring.datasource.url", postgres::getJdbcUrl);
-    registry.add("spring.datasource.username", postgres::getUsername);
-    registry.add("spring.datasource.password", postgres::getPassword);
+    registry.add("retail.orders.persistence.provider", () -> "postgres");
+    registry.add(
+      "retail.orders.persistence.postgres.endpoint",
+      postgres::getJdbcUrl
+    );
+    registry.add(
+      "retail.orders.persistence.postgres.username",
+      postgres::getUsername
+    );
+    registry.add(
+      "retail.orders.persistence.postgres.password",
+      postgres::getPassword
+    );
   }
 
   @Autowired

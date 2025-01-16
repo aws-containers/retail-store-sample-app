@@ -47,8 +47,6 @@ ENV APPUSER=appuser
 ENV APPUID=1000
 ENV APPGID=1000
 
-ENV SPRING_PROFILES_ACTIVE=prod
-
 RUN useradd \
     --home "/app" \
     --create-home \
@@ -57,6 +55,7 @@ RUN useradd \
     "$APPUSER"
 
 ENV JAVA_TOOL_OPTIONS=
+ENV SPRING_PROFILES_ACTIVE=prod
 
 WORKDIR /app
 USER appuser

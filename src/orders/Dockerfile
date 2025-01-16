@@ -45,8 +45,6 @@ RUN dnf --setopt=install_weak_deps=False install -q -y \
 RUN dnf -q -y swap libcurl-minimal libcurl-full \
     && dnf -q -y swap curl-minimal curl-full
 
-ARG aws_opentelemetry_agent_version=1.24.0
-
 ENV APPUSER=appuser
 ENV APPUID=1000
 ENV APPGID=1000
@@ -58,10 +56,8 @@ RUN useradd \
     --uid "$APPUID" \
     "$APPUSER"
 
-RUN curl -L https://github.com/aws-observability/aws-otel-java-instrumentation/releases/download/v${aws_opentelemetry_agent_version}/aws-opentelemetry-agent.jar -o /opt/aws-opentelemetry-agent.jar && \
-    curl -L https://raw.githubusercontent.com/aws-observability/aws-otel-java-instrumentation/v${aws_opentelemetry_agent_version}/licenses/licenses.md -o aws-opentelemetry-agent-licenses.md
-ENV JAVA_TOOL_OPTIONS=-javaagent:/opt/aws-opentelemetry-agent.jar
-ENV OTEL_JAVAAGENT_ENABLED=false
+ENV JAVA_TOOL_OPTIONS=
+ENV SPRING_PROFILES_ACTIVE=prod
 
 WORKDIR /app
 USER appuser

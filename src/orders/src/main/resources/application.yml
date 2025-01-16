@@ -17,13 +17,13 @@ retail:
   orders:
     persistence:
       provider: "in-memory"
-    messaging:
-      provider: "in-memory"
       postgres:
         endpoint:
         name:
         username:
         password:
+    messaging:
+      provider: "in-memory"
 
 springdoc:
   api-docs:

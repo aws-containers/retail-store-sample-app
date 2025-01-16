@@ -52,6 +52,7 @@ RUN useradd \
     "$APPUSER"
 
 ENV JAVA_TOOL_OPTIONS=
+ENV SPRING_PROFILES_ACTIVE=prod
 
 WORKDIR /app
 USER appuser

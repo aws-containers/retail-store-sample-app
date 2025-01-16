@@ -16,13 +16,14 @@
  * SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package com.amazon.sample.carts.chaos;
+package com.amazon.sample.carts;
 
-import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.ResponseStatus;
+import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
 
-@ResponseStatus(
-  code = HttpStatus.INTERNAL_SERVER_ERROR,
-  reason = "Actor Not Found"
-)
-public class Http500StatusException extends RuntimeException {}
+@SpringBootTest
+class UiApplicationTests {
+
+  @Test
+  void contextLoads() {}
+}

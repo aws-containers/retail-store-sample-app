@@ -5,7 +5,14 @@
   "repository": "https://github.com/aws-containers/retail-store-sample-app.git",
   "license": "MIT",
   "devDependencies": {
+    "@nx-go/nx-go": "^3.3.1",
+    "@nx-tools/nx-container": "^6.2.0",
+    "@nx/devkit": "20.3.1",
+    "@nx/gradle": "20.3.1",
+    "@nx/js": "^20.3.1",
     "@prettier/plugin-xml": "^3.4.1",
+    "@swc/helpers": "^0.5.15",
+    "nx": "20.3.1",
     "prettier": "^3.3.2",
     "prettier-plugin-java": "^2.6.4"
   }

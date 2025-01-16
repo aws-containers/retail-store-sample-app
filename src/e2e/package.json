@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "description": "TODO",
   "main": "conf.js",
-  "scripts": {},
+  "scripts": {
+    "test": "cypress run"
+  },
   "keywords": [],
   "author": "",
   "devDependencies": {
