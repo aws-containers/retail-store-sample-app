@@ -7,6 +7,9 @@
     pkgs.yq
     pkgs.pre-commit
     pkgs.kubectl
+    pkgs.helm
+    pkgs.helmfile
+    pkgs.tilt
     pkgs.awscli
     pkgs.yarn
   ];
@@ -28,4 +31,6 @@
     package = pkgs.go_1_22;
   };
   languages.terraform.enable = true;
+
+  devcontainer.enable = true;
 }
