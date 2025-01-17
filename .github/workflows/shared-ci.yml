@@ -31,4 +31,5 @@ jobs:
       - name: Test
         run: |
 
-          yarn nx run-many --targets=build --projects=${{ inputs.component }}
+          cd src/cart
+          ./mvnw package
