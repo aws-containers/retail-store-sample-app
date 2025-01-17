@@ -27,7 +27,7 @@ jobs:
         with:
           timeout_minutes: 10
           max_attempts: 3
-          command: yarn install
+          command: devenv shell yarn install
       - name: Test
         shell: devenv shell bash -- -e {0}
         run: |
