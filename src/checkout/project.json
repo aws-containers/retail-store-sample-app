@@ -6,11 +6,18 @@
     "install": {
       "executor": "nx:run-commands",
       "options": {
-        "command": "cd src/checkout && yarn install"
+        "cwd": "src/checkout",
+        "command": "yarn install"
       }
     },
-    "test:e2e": {
+    "build": {
       "dependsOn": ["install"]
+    },
+    "test": {
+      "dependsOn": ["build"]
+    },
+    "test:e2e": {
+      "dependsOn": ["test"]
     }
   },
   "tags": ["service"]
