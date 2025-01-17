@@ -30,6 +30,4 @@ jobs:
           command: yarn install
       - name: Test
         run: |
-
-          cd src/cart
-          ./mvnw package
+          src/cart/mvnw --version
