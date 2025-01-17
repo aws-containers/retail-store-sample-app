@@ -29,5 +29,6 @@ jobs:
           max_attempts: 3
           command: yarn install
       - name: Test
+        shell: devenv shell bash -- -e {0}
         run: |
-          src/cart/mvnw --version
+          yarn nx run-many --targets=build --projects=${{ inputs.component }}
