@@ -23,4 +23,6 @@ jobs:
       - name: Install devenv.sh
         run: nix profile install nixpkgs#devenv
       - name: Test
-        run: nx run-many --targets=lint,test:integration,test,build --projects=${{ inputs.module }}
+        run: |
+          yarn install
+          yarn nx run-many --targets=lint,test:integration,test,build --projects=${{ inputs.module }}
