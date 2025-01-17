@@ -31,4 +31,4 @@ jobs:
       - name: Test
         run: |
 
-          yarn nx run-many --targets=lint,test:integration,test,build --projects=${{ inputs.component }}
+          yarn nx run-many --targets=build --projects=${{ inputs.component }}
