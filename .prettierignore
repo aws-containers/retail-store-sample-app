@@ -1,9 +1,11 @@
 test-connection.yaml
-deploy/kubernetes/charts/**/*.yaml
-deploy/kubernetes/charts/**/*.yml
+src/**/chart/**/*.yaml
+src/**/chart/**/*.yml
 dist
 ATTRIBUTION.md
 deploy/terraform/eks/**/*.yaml
 src/**/target
 go.mod
 go.sum
+/.nx/cache
+/.nx/workspace-data
