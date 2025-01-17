@@ -42,14 +42,17 @@ import reactor.netty.http.client.HttpClient;
 @Slf4j
 public class TopologyController {
 
+  private static final int CONNECT_TIMEOUT = 1000;
+  private static final int RESPONSE_TIMEOUT = 1000;
+
   @Autowired
   private EndpointProperties endpoints;
 
   @GetMapping
   public String topology(Model model) {
     HttpClient httpClient = HttpClient.create()
-      .option(ChannelOption.CONNECT_TIMEOUT_MILLIS, 1000)
-      .responseTimeout(Duration.ofMillis(1000));
+      .option(ChannelOption.CONNECT_TIMEOUT_MILLIS, CONNECT_TIMEOUT)
+      .responseTimeout(Duration.ofMillis(RESPONSE_TIMEOUT));
 
     var webClient = WebClient.builder()
       .clientConnector(new ReactorClientHttpConnector(httpClient))

@@ -1,10 +1,7 @@
-version: "2.3"
-
 services:
   carts:
     build:
       context: .
-    image: microservices-demo/carts
     hostname: carts
     restart: always
     cap_drop:
@@ -56,8 +53,14 @@ services:
       interval: 5s
       timeout: 15s
       retries: 3
+    develop:
+      watch:
+        - action: rebuild
+          path: src
+        - action: rebuild
+          path: pom.xml
 
-  waiter:
+  waiter-carts:
     image: busybox:1.33.0
     restart: "no"
     cap_drop:

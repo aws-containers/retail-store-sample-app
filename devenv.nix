@@ -2,7 +2,6 @@
 
 {
   packages = [ 
-    pkgs.git
     pkgs.jq
     pkgs.yq
     pkgs.pre-commit
@@ -26,11 +25,14 @@
     jdk.package = pkgs.jdk21_headless;
     maven.enable = true;
   };
-  languages.go = {
-    enable = true;
-    package = pkgs.go_1_22;
-  };
   languages.terraform.enable = true;
 
   devcontainer.enable = true;
+
+  git-hooks.hooks = {
+    prettier.enable = true;
+    terraform-format.enable = true;
+    tflint.enable = true;
+    gofmt.enable = true;
+  };
 }

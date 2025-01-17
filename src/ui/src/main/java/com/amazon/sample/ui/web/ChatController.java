@@ -57,7 +57,7 @@ public class ChatController {
     @JsonProperty("text")
     private String text;
 
-    public ResponseMessage(String text) {
+    ResponseMessage(String text) {
       this.text = text;
     }
 

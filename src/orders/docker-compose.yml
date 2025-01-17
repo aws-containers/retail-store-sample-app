@@ -1,10 +1,7 @@
-version: "3.4"
-
 services:
   orders:
     build:
       context: .
-    image: microservices-demo/orders
     hostname: orders
     restart: always
     cap_drop:
@@ -35,6 +32,12 @@ services:
       timeout: 10s
       retries: 3
       start_period: 15s
+    develop:
+      watch:
+        - action: rebuild
+          path: src
+        - action: rebuild
+          path: pom.xml
 
   # nosemgrep: yaml.docker-compose.security.writable-filesystem-service.writable-filesystem-service
   orders-db:

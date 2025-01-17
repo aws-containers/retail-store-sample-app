@@ -42,7 +42,7 @@ class DynamicColSpanDialect extends AbstractProcessorDialect {
   private static final String DIALECT_NAME = "Retail Dialect";
   private static final String DIALECT_PREFIX = "retail";
 
-  public DynamicColSpanDialect() {
+  DynamicColSpanDialect() {
     super(DIALECT_NAME, DIALECT_PREFIX, StandardDialect.PROCESSOR_PRECEDENCE);
   }
 

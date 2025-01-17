@@ -20,13 +20,19 @@ package com.amazon.sample.ui.services.checkout;
 
 import com.amazon.sample.ui.services.carts.CartsService;
 import com.amazon.sample.ui.services.carts.model.Cart;
-import com.amazon.sample.ui.services.checkout.model.*;
+import com.amazon.sample.ui.services.checkout.model.Checkout;
+import com.amazon.sample.ui.services.checkout.model.CheckoutItem;
+import com.amazon.sample.ui.services.checkout.model.CheckoutMapper;
+import com.amazon.sample.ui.services.checkout.model.CheckoutSubmitted;
+import com.amazon.sample.ui.services.checkout.model.ShippingAddress;
+import com.amazon.sample.ui.services.checkout.model.ShippingOption;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 import java.util.stream.Collectors;
+import lombok.Data;
 import reactor.core.publisher.Mono;
 
 public class MockCheckoutService implements CheckoutService {
@@ -156,10 +162,11 @@ public class MockCheckoutService implements CheckoutService {
     });
   }
 
+  @Data
   private static class ItemsWithTotal {
 
-    protected final List<CheckoutItem> items;
-    protected final int total;
+    private final List<CheckoutItem> items;
+    private final int total;
 
     ItemsWithTotal(List<CheckoutItem> items, int total) {
       this.items = items;
@@ -169,8 +176,8 @@ public class MockCheckoutService implements CheckoutService {
 
   private static class CheckoutData {
 
-    protected String token;
+    private String token;
 
-    protected ShippingAddress shippingAddress;
+    private ShippingAddress shippingAddress;
   }
 }

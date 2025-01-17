@@ -1,10 +1,7 @@
-version: '3.4'
-
 services:
   checkout:
     build:
       context: .
-    image: microservices-demo/checkout
     hostname: checkout
     restart: always
     cap_drop:
@@ -27,6 +24,12 @@ services:
     depends_on:
       checkout-redis:
         condition: service_healthy
+    develop:
+      watch:
+        - action: rebuild
+          path: src
+        - action: rebuild
+          path: package.json
 
   checkout-redis:
     image: redis:6.0-alpine
@@ -40,7 +43,7 @@ services:
       timeout: 3s
       retries: 30
 
-  waiter:
+  waiter-checkout:
     image: busybox:1.33.0
     restart: 'no'
     cap_drop:

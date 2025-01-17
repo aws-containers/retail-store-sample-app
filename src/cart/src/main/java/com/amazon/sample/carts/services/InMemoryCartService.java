@@ -20,7 +20,11 @@ package com.amazon.sample.carts.services;
 
 import com.amazon.sample.carts.repositories.CartEntity;
 import com.amazon.sample.carts.repositories.ItemEntity;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
@@ -124,7 +128,7 @@ class Cart implements CartEntity {
 
   private List<CartItem> items = new ArrayList<>();
 
-  public Cart(String customerId) {
+  Cart(String customerId) {
     this.customerId = customerId;
   }
 }

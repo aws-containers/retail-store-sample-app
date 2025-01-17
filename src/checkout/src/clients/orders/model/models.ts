@@ -27,7 +27,7 @@ import { Order } from './order';
 import { OrderItem } from './orderItem';
 
 /* tslint:disable:no-unused-variable */
-let primitives = [
+const primitives = [
   'string',
   'boolean',
   'double',
@@ -38,9 +38,9 @@ let primitives = [
   'any',
 ];
 
-let enumsMap: { [index: string]: any } = {};
+const enumsMap: { [index: string]: any } = {};
 
-let typeMap: { [index: string]: any } = {
+const typeMap: { [index: string]: any } = {
   ExistingOrder: ExistingOrder,
   Order: Order,
   OrderItem: OrderItem,
@@ -64,12 +64,12 @@ export class ObjectSerializer {
       }
 
       // Check the discriminator
-      let discriminatorProperty = typeMap[expectedType].discriminator;
+      const discriminatorProperty = typeMap[expectedType].discriminator;
       if (discriminatorProperty == null) {
         return expectedType; // the type does not have a discriminator. use it.
       } else {
         if (data[discriminatorProperty]) {
-          var discriminatorType = data[discriminatorProperty];
+          const discriminatorType = data[discriminatorProperty];
           if (typeMap[discriminatorType]) {
             return discriminatorType; // use the type given in the discriminator
           } else {
@@ -91,9 +91,9 @@ export class ObjectSerializer {
       // string.startsWith pre es6
       let subType: string = type.replace('Array<', ''); // Array<Type> => Type>
       subType = subType.substring(0, subType.length - 1); // Type> => Type
-      let transformedData: any[] = [];
-      for (let index in data) {
-        let date = data[index];
+      const transformedData: any[] = [];
+      for (const index in data) {
+        const date = data[index];
         transformedData.push(ObjectSerializer.serialize(date, subType));
       }
       return transformedData;
@@ -112,10 +112,10 @@ export class ObjectSerializer {
       type = this.findCorrectType(data, type);
 
       // get the map for the correct type.
-      let attributeTypes = typeMap[type].getAttributeTypeMap();
-      let instance: { [index: string]: any } = {};
-      for (let index in attributeTypes) {
-        let attributeType = attributeTypes[index];
+      const attributeTypes = typeMap[type].getAttributeTypeMap();
+      const instance: { [index: string]: any } = {};
+      for (const index in attributeTypes) {
+        const attributeType = attributeTypes[index];
         instance[attributeType.baseName] = ObjectSerializer.serialize(
           data[attributeType.name],
           attributeType.type,
@@ -136,9 +136,9 @@ export class ObjectSerializer {
       // string.startsWith pre es6
       let subType: string = type.replace('Array<', ''); // Array<Type> => Type>
       subType = subType.substring(0, subType.length - 1); // Type> => Type
-      let transformedData: any[] = [];
-      for (let index in data) {
-        let date = data[index];
+      const transformedData: any[] = [];
+      for (const index in data) {
+        const date = data[index];
         transformedData.push(ObjectSerializer.deserialize(date, subType));
       }
       return transformedData;
@@ -154,10 +154,10 @@ export class ObjectSerializer {
         // dont know the type
         return data;
       }
-      let instance = new typeMap[type]();
-      let attributeTypes = typeMap[type].getAttributeTypeMap();
-      for (let index in attributeTypes) {
-        let attributeType = attributeTypes[index];
+      const instance = new typeMap[type]();
+      const attributeTypes = typeMap[type].getAttributeTypeMap();
+      for (const index in attributeTypes) {
+        const attributeType = attributeTypes[index];
         instance[attributeType.name] = ObjectSerializer.deserialize(
           data[attributeType.baseName],
           attributeType.type,
@@ -176,8 +176,8 @@ export interface Authentication {
 }
 
 export class HttpBasicAuth implements Authentication {
-  public username: string = '';
-  public password: string = '';
+  public username = '';
+  public password = '';
 
   applyToRequest(requestOptions: localVarRequest.Options): void {
     requestOptions.auth = {
@@ -202,7 +202,7 @@ export class HttpBearerAuth implements Authentication {
 }
 
 export class ApiKeyAuth implements Authentication {
-  public apiKey: string = '';
+  public apiKey = '';
 
   constructor(
     private location: string,
@@ -235,7 +235,7 @@ export class ApiKeyAuth implements Authentication {
 }
 
 export class OAuth implements Authentication {
-  public accessToken: string = '';
+  public accessToken = '';
 
   applyToRequest(requestOptions: localVarRequest.Options): void {
     if (requestOptions && requestOptions.headers) {
@@ -245,8 +245,8 @@ export class OAuth implements Authentication {
 }
 
 export class VoidAuth implements Authentication {
-  public username: string = '';
-  public password: string = '';
+  public username = '';
+  public password = '';
 
   applyToRequest(_: localVarRequest.Options): void {
     // Do nothing

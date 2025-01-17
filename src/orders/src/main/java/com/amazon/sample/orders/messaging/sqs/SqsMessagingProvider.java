@@ -25,6 +25,8 @@ import io.awspring.cloud.sqs.operations.SqsOperations;
 
 public class SqsMessagingProvider implements MessagingProvider {
 
+  private static final int DELAY = 10;
+
   private final String messageQueueTopic;
   private final SqsOperations blockingTemplate;
   private final ObjectMapper mapper;
@@ -46,7 +48,7 @@ public class SqsMessagingProvider implements MessagingProvider {
         to
           .queue(messageQueueTopic)
           .payload(mapper.writeValueAsString(event))
-          .delaySeconds(10);
+          .delaySeconds(DELAY);
       } catch (JsonProcessingException e) {
         e.printStackTrace();
       }

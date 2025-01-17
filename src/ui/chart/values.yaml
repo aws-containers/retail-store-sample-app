@@ -95,7 +95,8 @@ ingress:
   hosts: []
   #  - "chart-example.local"
 
-ingresses: []
+ingresses:
+  []
   # - name: default
   #   className: ""
   #   hosts: []

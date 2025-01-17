@@ -32,12 +32,16 @@ import org.springframework.validation.annotation.Validated;
 @Setter
 public class RabbitMQProperties {
 
+  private static final int DEFAULT_PORT = 5672;
+  private static final int MIN_PORT = 1;
+  private static final int MAX_PORT = 65535;
+
   @NotBlank(message = "RabbitMQ host cannot be empty")
   private String host;
 
-  @Min(value = 1, message = "Port must be greater than 0")
-  @Max(value = 65535, message = "Port must be less than 65536")
-  private int port = 5672; // Default RabbitMQ port
+  @Min(value = MIN_PORT, message = "Port must be greater than 0")
+  @Max(value = MAX_PORT, message = "Port must be less than 65536")
+  private int port = DEFAULT_PORT; // Default RabbitMQ port
 
   private String username = "guest";
 

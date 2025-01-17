@@ -5,9 +5,32 @@
   "sourceRoot": "src/catalog",
   "targets": {
     "build": {
-      "executor": "@nx-go/nx-go:build",
+      "executor": "nx:run-commands",
+      "cache": true,
+      "inputs": ["{projectRoot}/**/*", "!{projectRoot}/dist/*"],
+      "outputs": ["{projectRoot}/dist/*"],
       "options": {
-        "main": "./main.go"
+        "command": "go build -o dist/main main.go"
+      }
+    },
+    "test": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "exit 0"
+      }
+    },
+    "test:integration": {
+      "executor": "nx:run-commands",
+      "cache": true,
+      "inputs": ["{projectRoot}/**/*"],
+      "options": {
+        "command": "go test -v ./test/..."
+      }
+    },
+    "serve": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "go run main.go"
       }
     }
   },

@@ -50,6 +50,7 @@ public class ShippingAddressEntity {
 
   public ShippingAddressEntity() {}
 
+  @SuppressWarnings("checkstyle:ParameterNumber")
   public ShippingAddressEntity(
     String firstName,
     String lastName,

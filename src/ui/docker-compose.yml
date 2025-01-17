@@ -1,5 +1,3 @@
-version: "3.4"
-
 services:
   ui:
     ports:
@@ -10,8 +8,20 @@ services:
     hostname: ui
     build:
       context: .
-    image: microservices-demo/ui
     restart: always
     mem_limit: 256m
     cap_drop:
       - ALL
+    healthcheck:
+      test:
+        ["CMD-SHELL", "curl -f http://localhost:8080/actuator/health || exit 1"]
+      interval: 10s
+      timeout: 10s
+      retries: 3
+      start_period: 15s
+    develop:
+      watch:
+        - action: rebuild
+          path: src
+        - action: rebuild
+          path: pom.xml

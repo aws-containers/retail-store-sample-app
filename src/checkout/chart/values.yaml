@@ -1,17 +1,17 @@
-# Default values for carts.
+# Default values for checkout.
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
 replicaCount: 1
 
 image:
-  repository: public.ecr.aws/aws-containers/retail-store-sample-cart
+  repository: public.ecr.aws/aws-containers/retail-store-sample-checkout
   pullPolicy: IfNotPresent
   tag: 0.8.4
-  
+
 imagePullSecrets: []
-nameOverride: ""
-fullnameOverride: ""
+nameOverride: ''
+fullnameOverride: ''
 
 serviceAccount:
   # Specifies whether a service account should be created
@@ -20,7 +20,7 @@ serviceAccount:
   annotations: {}
   # The name of the service account to use.
   # If not set and create is true, a name is generated using the fullname template
-  name: ""
+  name: ''
 
 podAnnotations: {}
 
@@ -41,10 +41,10 @@ service:
 
 resources:
   limits:
-    memory: 512Mi
+    memory: 256Mi
   requests:
     cpu: 128m
-    memory: 512Mi
+    memory: 256Mi
 
 autoscaling:
   enabled: false
@@ -64,29 +64,31 @@ topologySpreadConstraints: []
 metrics:
   enabled: true
   podAnnotations:
-    prometheus.io/scrape: "true"
-    prometheus.io/port: "8080"
-    prometheus.io/path: "/actuator/prometheus"
+    prometheus.io/scrape: 'true'
+    prometheus.io/port: '8080'
+    prometheus.io/path: '/metrics'
 
 configMap:
   create: true
   name:
 
-persistence: dynamodb
+endpoints:
+  orders: ''
 
-dynamodb:
-  tableName: Items
-  createTable: false
+redis:
   create: true
 
+  address: 'redis'
+  port: 6379
+
   image:
-    repository: amazon/dynamodb-local
+    repository: redis
     pullPolicy: IfNotPresent
-    tag: "1.20.0"
+    tag: '6.0-alpine'
 
   service:
     type: ClusterIP
-    port: 8000
+    port: 6379
 
   podAnnotations: {}
 
@@ -96,9 +98,14 @@ dynamodb:
 
   affinity: {}
 
+securityGroups:
+  create: false
+
+  securityGroupIds: []
+
 opentelemetry:
   enabled: false
-  instrumentation: ""
+  instrumentation: ''
 
 podDisruptionBudget:
   enabled: false

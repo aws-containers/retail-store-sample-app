@@ -1,11 +1,11 @@
-# Default values for checkout.
+# Default values for assets.
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
 replicaCount: 1
 
 image:
-  repository: public.ecr.aws/aws-containers/retail-store-sample-checkout
+  repository: public.ecr.aws/aws-containers/retail-store-sample-assets
   pullPolicy: IfNotPresent
   tag: 0.8.4
 
@@ -24,16 +24,13 @@ serviceAccount:
 
 podAnnotations: {}
 
-podSecurityContext:
-  fsGroup: 1000
+podSecurityContext: {}
 
 securityContext:
   capabilities:
     drop:
       - ALL
-  readOnlyRootFilesystem: true
-  runAsNonRoot: true
-  runAsUser: 1000
+  readOnlyRootFilesystem: false
 
 service:
   type: ClusterIP
@@ -41,10 +38,10 @@ service:
 
 resources:
   limits:
-    memory: 256Mi
+    memory: 128Mi
   requests:
     cpu: 128m
-    memory: 256Mi
+    memory: 128Mi
 
 autoscaling:
   enabled: false
@@ -62,7 +59,7 @@ affinity: {}
 topologySpreadConstraints: []
 
 metrics:
-  enabled: true
+  enabled: false
   podAnnotations:
     prometheus.io/scrape: "true"
     prometheus.io/port: "8080"
@@ -71,37 +68,6 @@ metrics:
 configMap:
   create: true
   name:
-
-endpoints:
-  orders: ""
-
-redis:
-  create: true
-
-  address: "redis"
-  port: 6379
-
-  image:
-    repository: redis
-    pullPolicy: IfNotPresent
-    tag: "6.0-alpine"
-
-  service:
-    type: ClusterIP
-    port: 6379
-
-  podAnnotations: {}
-
-  nodeSelector: {}
-
-  tolerations: []
-
-  affinity: {}
-
-securityGroups:
-  create: false
-
-  securityGroupIds: []
 
 opentelemetry:
   enabled: false

@@ -65,17 +65,12 @@ public class OrderServicePostgresTests {
   static void configureProperties(DynamicPropertyRegistry registry) {
     registry.add("retail.orders.persistence.provider", () -> "postgres");
     registry.add(
-      "retail.orders.persistence.postgres.endpoint",
-      postgres::getJdbcUrl
+      "retail.orders.persistence.endpoint",
+      () -> postgres.getHost() + ":" + postgres.getMappedPort(5432)
     );
-    registry.add(
-      "retail.orders.persistence.postgres.username",
-      postgres::getUsername
-    );
-    registry.add(
-      "retail.orders.persistence.postgres.password",
-      postgres::getPassword
-    );
+    registry.add("retail.orders.persistence.username", postgres::getUsername);
+    registry.add("retail.orders.persistence.password", postgres::getPassword);
+    registry.add("retail.orders.persistence.name", postgres::getDatabaseName);
   }
 
   @Autowired

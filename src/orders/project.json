@@ -6,35 +6,41 @@
   "targets": {
     "build": {
       "executor": "nx:run-commands",
+      "cache": true,
+      "inputs": ["{projectRoot}/src/**/*", "{projectRoot}/pom.xml"],
+      "outputs": ["{projectRoot}/target/*.jar"],
       "options": {
-        "command": "cd src/orders && ./mvnw package"
+        "command": "./mvnw -DskipTests package"
       }
     },
     "test": {
       "executor": "nx:run-commands",
+      "cache": true,
+      "inputs": ["{projectRoot}/src/**/*", "{projectRoot}/pom.xml"],
+      "outputs": ["{projectRoot}/target/surefire-reports/*.xml"],
       "options": {
-        "command": "cd src/orders && ./mvnw test -DexcludedGroups=integration"
+        "command": "./mvnw test -DexcludedGroups=integration"
       }
     },
     "test:integration": {
       "executor": "nx:run-commands",
+      "cache": true,
+      "inputs": ["{projectRoot}/src/**/*", "{projectRoot}/pom.xml"],
+      "outputs": ["{projectRoot}/target/surefire-reports/*.xml"],
       "options": {
-        "command": "cd src/orders && ./mvnw test -Dgroups=integration"
+        "command": "./mvnw test -Dgroups=integration"
       }
     },
-    "start": {
+    "lint": {
       "executor": "nx:run-commands",
       "options": {
-        "command": "cd src/orders && ./mvnw spring-boot:run"
+        "command": "./mvnw checkstyle:checkstyle"
       }
     },
-    "container": {
-      "executor": "@nx-tools/nx-container:bordersld",
+    "serve": {
+      "executor": "nx:run-commands",
       "options": {
-        "context": "src/orders",
-        "metadata": {
-          "images": ["public.ecr.aws/aws-containers/retail-store-sample-orders"]
-        }
+        "command": "./mvnw spring-boot:run"
       }
     }
   },

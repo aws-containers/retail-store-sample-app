@@ -17,16 +17,16 @@ def helmfile(file):
 
 k8s_yaml(helmfile("charts/helmfile.yaml"))
 
-docker_build('retail-store-sample-assets', '../../src/assets')
+docker_build('aws-containers/retail-store-sample-assets', '../../src/assets')
 
-docker_build('retail-store-sample-ui', '../../src/ui')
+docker_build('aws-containers/retail-store-sample-ui', '../../src/ui')
 
-docker_build('retail-store-sample-cart', '../../src/cart')
+docker_build('aws-containers/retail-store-sample-cart', '../../src/cart')
 
-docker_build('retail-store-sample-orders', '../../src/orders')
+docker_build('aws-containers/retail-store-sample-orders', '../../src/orders')
 
-docker_build('retail-store-sample-checkout', '../../src/checkout')
+docker_build('aws-containers/retail-store-sample-checkout', '../../src/checkout')
 
-docker_build('retail-store-sample-catalog', '../../src/catalog')
+docker_build('aws-containers/retail-store-sample-catalog', '../../src/catalog')
 
 k8s_resource('ui', port_forwards='8888:8080')

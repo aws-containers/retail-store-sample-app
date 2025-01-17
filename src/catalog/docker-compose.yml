@@ -1,10 +1,7 @@
-version: "2"
-
 services:
   catalog:
     build:
       context: .
-    image: microservices-demo/catalog
     hostname: catalog
     depends_on:
       - catalog-db
@@ -14,15 +11,21 @@ services:
     security_opt:
       - no-new-privileges:true
     environment:
+      - GIN_MODE=release
       - reschedule=on-node-failure
       - RETAIL_CATALOG_PERSISTENCE_PROVIDER=mysql
       - RETAIL_CATALOG_PERSISTENCE_PASSWORD=${MYSQL_PASSWORD}
       - RETAIL_CATALOG_PERSISTENCE_ENDPOINT=catalog-db:3306
     ports:
       - "8081:8080"
+    develop:
+      watch:
+        - action: rebuild
+          path: .
+
   # nosemgrep: yaml.docker-compose.security.writable-filesystem-service.writable-filesystem-service
   catalog-db:
-    image: mysql:8.0
+    image: mariadb:10.9
     hostname: catalog-db
     restart: always
     security_opt:

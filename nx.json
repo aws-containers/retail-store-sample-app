@@ -9,17 +9,55 @@
         "registry": "public.ecr.aws"
       }
     },
-    "@nx-go/nx-go",
-    {
-      "plugin": "@nx/gradle",
+    "@nx-go/nx-go"
+  ],
+  "targetDefaults": {
+    "build": {
+      "executor": "nx:run-commands",
       "options": {
-        "testTargetName": "test",
-        "classesTargetName": "classes",
-        "buildTargetName": "build",
-        "includeSubprojectsTasks": false
+        "cwd": "{projectRoot}"
+      }
+    },
+    "test": {
+      "executor": "nx:run-commands",
+      "options": {
+        "cwd": "{projectRoot}"
+      }
+    },
+    "test:e2e": {
+      "executor": "nx:run-commands",
+      "options": {
+        "cwd": "{projectRoot}"
+      }
+    },
+    "lint": {
+      "executor": "nx:run-commands",
+      "options": {
+        "cwd": "{projectRoot}"
+      }
+    },
+
+    "serve": {
+      "executor": "nx:run-commands",
+      "options": {
+        "cwd": "{projectRoot}"
+      }
+    },
+    "container": {
+      "executor": "@nx-tools/nx-container:build",
+      "dependsOn": ["build"],
+      "cache": true,
+      "options": {
+        "context": "{projectRoot}",
+        "tags": ["aws-containers/retail-store-sample-{projectName}"]
+      },
+      "configurations": {
+        "publish": {
+          "push": true
+        }
       }
     }
-  ],
+  },
   "namedInputs": {
     "sharedGlobals": ["{workspaceRoot}/go.work"],
     "default": ["{projectRoot}/**/*"],

@@ -49,7 +49,6 @@ WORKDIR /app
 USER appuser
 
 COPY --chown=appuser:appuser --from=build-env /appsrc/main /app/
-COPY --chown=appuser:appuser data/ /app/data/
 
 COPY ./ATTRIBUTION.md ./LICENSES.md
 

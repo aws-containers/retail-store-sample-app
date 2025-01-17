@@ -13,19 +13,21 @@ import org.thymeleaf.templatemode.TemplateMode;
 
 public class DynamicColSpanProcessor extends AbstractAttributeTagProcessor {
 
+  private static final int MAX_COLUMNS = 8;
+  private static final int MD_COL_RATIO = 2;
   private static final String ATTR_NAME = "dynamic-col-span";
   private static final int PRECEDENCE = 10000;
 
   public DynamicColSpanProcessor(final String dialectPrefix) {
     super(
-      TemplateMode.HTML, // Template mode
-      dialectPrefix, // Dialect prefix
-      null, // Tag name (null means any)
-      false, // Apply to tag end
-      ATTR_NAME, // Attribute name
-      true, // Remove attribute when processed
-      PRECEDENCE, // Precedence
-      true // Remove tag if empty
+      TemplateMode.HTML,
+      dialectPrefix,
+      null,
+      false,
+      ATTR_NAME,
+      true,
+      PRECEDENCE,
+      true
     );
   }
 
@@ -50,7 +52,7 @@ public class DynamicColSpanProcessor extends AbstractAttributeTagProcessor {
 
     // Calculate col-span based on name length
     var colspanLg = calculateColSpan(nameToMeasure);
-    var colspanMd = Math.round(Math.ceil((float) colspanLg / 2));
+    var colspanMd = Math.round(Math.ceil((float) colspanLg / MD_COL_RATIO));
 
     String colSpanLgClass = "lg:col-span-" + colspanLg;
     String colSpanMdClass = "md:col-span-" + colspanMd;
@@ -75,8 +77,8 @@ public class DynamicColSpanProcessor extends AbstractAttributeTagProcessor {
     }
 
     var colspanLg = Math.min(
-      Math.round(Math.ceil((float) name.length() / 8)),
-      8
+      Math.round(Math.ceil((float) name.length() / MAX_COLUMNS)),
+      MAX_COLUMNS
     );
 
     return colspanLg;

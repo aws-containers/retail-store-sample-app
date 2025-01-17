@@ -214,6 +214,17 @@
                     </annotationProcessorPaths>
                 </configuration>
             </plugin>
+            <plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-checkstyle-plugin</artifactId>
+				<version>3.6.0</version>
+				<configuration>
+					<configLocation>../misc/style/java/checkstyle.xml</configLocation>
+					<consoleOutput>true</consoleOutput>
+					<failsOnError>true</failsOnError>
+                    <excludes>**/sample/events/**/*</excludes>
+				</configuration>
+			</plugin>
         </plugins>
     </build>
 

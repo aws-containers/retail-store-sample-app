@@ -1,11 +1,11 @@
-# Default values for assets.
+# Default values for carts.
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
 replicaCount: 1
 
 image:
-  repository: public.ecr.aws/aws-containers/retail-store-sample-assets
+  repository: public.ecr.aws/aws-containers/retail-store-sample-cart
   pullPolicy: IfNotPresent
   tag: 0.8.4
 
@@ -24,13 +24,16 @@ serviceAccount:
 
 podAnnotations: {}
 
-podSecurityContext: {}
+podSecurityContext:
+  fsGroup: 1000
 
 securityContext:
   capabilities:
     drop:
       - ALL
-  readOnlyRootFilesystem: false
+  readOnlyRootFilesystem: true
+  runAsNonRoot: true
+  runAsUser: 1000
 
 service:
   type: ClusterIP
@@ -38,10 +41,10 @@ service:
 
 resources:
   limits:
-    memory: 128Mi
+    memory: 512Mi
   requests:
     cpu: 128m
-    memory: 128Mi
+    memory: 512Mi
 
 autoscaling:
   enabled: false
@@ -59,15 +62,39 @@ affinity: {}
 topologySpreadConstraints: []
 
 metrics:
-  enabled: false
+  enabled: true
   podAnnotations:
     prometheus.io/scrape: "true"
     prometheus.io/port: "8080"
-    prometheus.io/path: "/metrics"
+    prometheus.io/path: "/actuator/prometheus"
 
 configMap:
   create: true
   name:
+
+persistence: dynamodb
+
+dynamodb:
+  tableName: Items
+  createTable: false
+  create: true
+
+  image:
+    repository: amazon/dynamodb-local
+    pullPolicy: IfNotPresent
+    tag: "1.20.0"
+
+  service:
+    type: ClusterIP
+    port: 8000
+
+  podAnnotations: {}
+
+  nodeSelector: {}
+
+  tolerations: []
+
+  affinity: {}
 
 opentelemetry:
   enabled: false
@@ -77,4 +104,3 @@ podDisruptionBudget:
   enabled: false
   minAvailable: 2
   maxUnavailable: 1
-  

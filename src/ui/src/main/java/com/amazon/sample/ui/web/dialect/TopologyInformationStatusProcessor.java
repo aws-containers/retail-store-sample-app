@@ -63,6 +63,8 @@ public class TopologyInformationStatusProcessor
       case "UNHEALTHY":
         extraClasses = " bg-red-100 text-red-800";
         break;
+      default:
+        break;
     }
 
     structureHandler.setAttribute("class", cssClass + extraClasses);

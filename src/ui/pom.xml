@@ -223,6 +223,8 @@
 				<configuration>
 					<configLocation>../misc/style/java/checkstyle.xml</configLocation>
 					<consoleOutput>true</consoleOutput>
+					<failsOnError>true</failsOnError>
+					<excludes>**/ui/client/**/*</excludes>
 				</configuration>
 			</plugin>
 			<plugin>
