@@ -38,4 +38,6 @@ jobs:
           cd src/cart
           export AWS_ACCESS_KEY_ID="dummy"
           export AWS_SECRET_ACCESS_KEY="dummy"
+          ./mvnw -DskipTests package
+          ./mvnw test -DexcludedGroups=integration
           ./mvnw test -Dgroups=integration
