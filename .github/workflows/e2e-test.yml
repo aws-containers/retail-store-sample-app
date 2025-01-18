@@ -58,13 +58,13 @@ jobs:
         run: |
           yarn nx run-many -t container --projects=tag:service --tags public.ecr.aws/aws-containers/retail-store-sample-{projectName}:e2e
 
-      - name: Create k8s Kind Cluster
+      - name: Kind cluster
         uses: helm/kind-action@v1.4.0
         with:
           cluster_name: kind
           version: v0.17.0
 
-      - name: Deploy
+      - name: Load images
         env:
           IMAGE_TAG: e2e
         run: |
@@ -74,7 +74,10 @@ jobs:
           kind load docker-image public.ecr.aws/aws-containers/retail-store-sample-orders:$IMAGE_TAG
           kind load docker-image public.ecr.aws/aws-containers/retail-store-sample-ui:$IMAGE_TAG
 
-          (cd deploy/kubernetes/charts && helmfile apply --wait)
+      - name: Deploy
+        shell: devenv shell bash -- -e {0}
+        run: |
+          helmfile apply -f deploy/kubernetes/helmfile.yaml --wait
 
           sleep 60
 
