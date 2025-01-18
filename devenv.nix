@@ -6,7 +6,9 @@
     pkgs.yq
     pkgs.pre-commit
     pkgs.kubectl
+    pkgs.kind
     pkgs.kubernetes-helm
+    pkgs.kubernetes-helmPlugins.helm-diff
     pkgs.helmfile
     pkgs.tilt
     pkgs.awscli

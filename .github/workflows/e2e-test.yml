@@ -33,7 +33,7 @@ jobs:
         shell: devenv shell bash -- -e {0}
         run: |
           MYSQL_PASSWORD='test123' yarn nx compose:up
-          wait 60
+          sleep 60
           MYSQL_PASSWORD='test123' yarn nx compose:up
 
   kubernetes:
