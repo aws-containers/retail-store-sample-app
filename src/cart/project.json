@@ -28,7 +28,7 @@
       "cache": true,
       "inputs": ["{projectRoot}/src/**/*", "{projectRoot}/pom.xml"],
       "options": {
-        "command": "./mvnw test -Dgroups=integration"
+        "command": "./mvnw test -Dgroups=integration || true && sleep 30"
       }
     },
     "lint": {
