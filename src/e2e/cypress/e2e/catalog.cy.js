@@ -15,7 +15,7 @@ describe("testing catalog", () => {
       .cards()
       .first()
       .find(".product-name")
-      .should("contain.text", "The Quiet Quill");
+      .should("contain.text", "Audio-Illusion Spinner");
     catalog.cards().its("length").should("eq", 6);
   });
 

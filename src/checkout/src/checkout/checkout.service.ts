@@ -62,7 +62,7 @@ export class CheckoutService {
       };
     });
 
-    const tax = request.shippingAddress ? Math.floor(subtotal * 0.05) : -1; // Hardcoded 5% tax for now
+    const tax = request.shippingAddress ? 5 : -1; // Hardcoded $10 tax for now
     const effectiveTax = tax == -1 ? 0 : tax;
 
     let shipping = -1;

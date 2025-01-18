@@ -33,8 +33,10 @@ jobs:
         shell: devenv shell bash -- -e {0}
         run: |
           MYSQL_PASSWORD='test123' yarn nx compose:up
-          sleep 60
-          MYSQL_PASSWORD='test123' yarn nx compose:up
+
+          CYPRESS_BASE_URL='http://localhost:8888' yarn nx test e2e
+
+          MYSQL_PASSWORD='test123' yarn nx compose:down
 
   kubernetes:
     name: Kubernetes E2E Tests

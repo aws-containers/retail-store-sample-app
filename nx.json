@@ -36,7 +36,6 @@
         "cwd": "{projectRoot}"
       }
     },
-
     "serve": {
       "executor": "nx:run-commands",
       "options": {
@@ -53,7 +52,8 @@
       },
       "configurations": {
         "publish": {
-          "push": true
+          "push": true,
+          "platforms": ["linux/amd64", "linux/arm64"]
         }
       }
     }

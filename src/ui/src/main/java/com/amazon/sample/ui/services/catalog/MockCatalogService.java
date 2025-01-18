@@ -24,7 +24,7 @@ import com.amazon.sample.ui.services.catalog.model.ProductTag;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -149,7 +149,11 @@ public class MockCatalogService implements CatalogService {
     int page,
     int size
   ) {
-    List<Product> productList = new ArrayList<>(this.products.values());
+    List<Product> productList =
+      this.products.values()
+        .stream()
+        .sorted(Comparator.comparing(Product::getName))
+        .collect(Collectors.toList());
 
     int end = page * size;
 

@@ -29,13 +29,13 @@ export class MockShippingService implements IShippingService {
       rates: [
         {
           name: `${this.prefix}Priority Mail`,
-          amount: 5,
+          amount: 10,
           token: 'priority-mail',
           estimatedDays: 10,
         },
         {
           name: `${this.prefix}Priority Mail Express`,
-          amount: 15,
+          amount: 25,
           token: 'priority-mail-express',
           estimatedDays: 5,
         },
