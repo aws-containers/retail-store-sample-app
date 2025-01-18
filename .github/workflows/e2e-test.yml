@@ -32,9 +32,9 @@ jobs:
       - name: Test
         shell: devenv shell bash -- -e {0}
         run: |
-          MYSQL_PASSWORD='test123' yarn nx store:compose:up
+          MYSQL_PASSWORD='test123' yarn nx compose:up
           wait 60
-          MYSQL_PASSWORD='test123' yarn nx store:compose:up
+          MYSQL_PASSWORD='test123' yarn nx compose:up
 
   kubernetes:
     name: Kubernetes E2E Tests
