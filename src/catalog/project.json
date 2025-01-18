@@ -20,7 +20,7 @@
         "command": "exit 0"
       }
     },
-    "test:integration": {
+    "test:e2e": {
       "executor": "nx:run-commands",
       "dependsOn": ["test"],
       "cache": true,

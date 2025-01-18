@@ -31,4 +31,4 @@ jobs:
       - name: Test
         shell: devenv shell bash -- -e {0}
         run: |
-          yarn nx run-many --targets=container,lint,test:integration,test,build --projects=${{ inputs.component }}
+          yarn nx run-many --targets=container,lint,test:e2e,test,build --projects=${{ inputs.component }}
