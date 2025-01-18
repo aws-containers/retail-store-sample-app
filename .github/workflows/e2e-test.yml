@@ -77,7 +77,7 @@ jobs:
       - name: Deploy
         shell: devenv shell bash -- -e {0}
         run: |
-          helmfile apply -f deploy/kubernetes/helmfile.yaml --wait
+          helmfile apply -f deploy/kubernetes/helmfile.yaml --wait --skip-diff-on-install
 
           sleep 60
 
