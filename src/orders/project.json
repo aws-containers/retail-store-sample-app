@@ -20,7 +20,7 @@
       "inputs": ["{projectRoot}/src/**/*", "{projectRoot}/pom.xml"],
       "outputs": ["{projectRoot}/target/surefire-reports/*.xml"],
       "options": {
-        "command": "./mvnw test -DexcludedGroups=integration"
+        "command": "./mvnw clean test -DexcludedGroups=integration"
       }
     },
     "test:e2e": {
@@ -30,7 +30,7 @@
       "inputs": ["{projectRoot}/src/**/*", "{projectRoot}/pom.xml"],
       "outputs": ["{projectRoot}/target/surefire-reports/*.xml"],
       "options": {
-        "command": "./mvnw test -Dgroups=integration"
+        "command": "./mvnw clean test -Dgroups=integration"
       }
     },
     "lint": {
