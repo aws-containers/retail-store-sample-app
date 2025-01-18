@@ -28,7 +28,7 @@
       "cache": true,
       "inputs": ["{projectRoot}/src/**/*", "{projectRoot}/pom.xml"],
       "options": {
-        "command": "AWS_ACCESS_KEY_ID='dummy' AWS_SECRET_ACCESS_KEY_ID='dummy' ./mvnw test -Dgroups=integration"
+        "command": "AWS_ACCESS_KEY_ID='dummy' AWS_SECRET_ACCESS_KEY='dummy' ./mvnw test -Dgroups=integration"
       }
     },
     "lint": {
