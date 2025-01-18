@@ -44,4 +44,4 @@ jobs:
       - name: Build containers
         shell: devenv shell bash -- -e {0}
         run: |
-          yarn nx container ${{ inputs.component }} --platforms linux/amd64,linux/arm64 --builder ${{ steps.buildx.outputs.name }}
+          yarn nx container ${{ inputs.component }} --platforms linux/amd64,linux/arm64 --builder ${{ steps.buildx.outputs.name }} --load false
