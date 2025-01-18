@@ -16,10 +16,21 @@ jobs:
     name: Docker E2E Tests
     runs-on: ubuntu-latest
     steps:
-      - name: Check out code
-        uses: actions/checkout@v4
-
-      - name: Run Tests
+      - uses: actions/checkout@v4
+      - uses: cachix/install-nix-action@v26
+      - uses: cachix/cachix-action@v14
+        with:
+          name: devenv
+      - name: Install devenv.sh
+        run: nix profile install nixpkgs#devenv
+      - name: Yarn install
+        uses: nick-fields/retry@v3
+        with:
+          timeout_minutes: 10
+          max_attempts: 3
+          command: devenv shell yarn install
+      - name: Test
+        shell: devenv shell bash -- -e {0}
         run: |
           MYSQL_PASSWORD='test123' yarn nx store:compose:up
           wait 60
@@ -29,10 +40,21 @@ jobs:
     name: Kubernetes E2E Tests
     runs-on: ubuntu-latest
     steps:
-      - name: Check out code
-        uses: actions/checkout@v4
-
-      - name: Build Images
+      - uses: actions/checkout@v4
+      - uses: cachix/install-nix-action@v26
+      - uses: cachix/cachix-action@v14
+        with:
+          name: devenv
+      - name: Install devenv.sh
+        run: nix profile install nixpkgs#devenv
+      - name: Yarn install
+        uses: nick-fields/retry@v3
+        with:
+          timeout_minutes: 10
+          max_attempts: 3
+          command: devenv shell yarn install
+      - name: Test
+        shell: devenv shell bash -- -e {0}
         run: |
           yarn nx run-many -t container --projects=tag:service --tags public.ecr.aws/aws-containers/retail-store-sample-{projectName}:e2e
 
