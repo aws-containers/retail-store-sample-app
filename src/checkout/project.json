@@ -20,7 +20,12 @@
       "dependsOn": ["test"]
     },
     "lint": {
-      "dependsOn": ["install"]
+      "executor": "nx:run-commands",
+      "dependsOn": ["install"],
+
+      "options": {
+        "command": "yarn lint"
+      }
     }
   },
   "tags": ["service"]
