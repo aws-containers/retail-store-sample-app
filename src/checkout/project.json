@@ -18,6 +18,9 @@
     },
     "test:e2e": {
       "dependsOn": ["test"]
+    },
+    "lint": {
+      "dependsOn": ["install"]
     }
   },
   "tags": ["service"]
