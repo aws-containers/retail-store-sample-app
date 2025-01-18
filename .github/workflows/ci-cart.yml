@@ -11,14 +11,29 @@ on:
       - main
     paths:
       - "src/cart/**"
+      - "images/**"
   workflow_dispatch:
 
 permissions:
   contents: read
 
 jobs:
-  test-module:
-    uses: ./.github/workflows/shared-ci.yml
-    with:
-      component: cart
-    secrets: inherit
+  build:
+    name: CI
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v3
+
+      - name: Set up JDK
+        uses: actions/setup-java@v3
+        with:
+          distribution: corretto
+          java-version: 21
+
+      - name: Run CI script
+        env:
+          MAVEN_OPTS: "-Dorg.slf4j.simpleLogger.log.org.apache.maven.cli.transfer.Slf4jMavenTransferListener=warn"
+        run: |
+          cd src/cart
+          ./mvnw test -Dgroups=integration
