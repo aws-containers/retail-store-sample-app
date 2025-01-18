@@ -15,3 +15,5 @@ retail:
         endpoint:
         createTable: false
         tableName: Items
+
+logging.level.org.springframework.boot.autoconfigure: ERROR

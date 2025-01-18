@@ -28,7 +28,7 @@
       "cache": true,
       "inputs": ["{projectRoot}/src/**/*", "{projectRoot}/pom.xml"],
       "options": {
-        "command": "./mvnw test -Dgroups=integration > /tmp/test.log && tail -100 /tmp/test.log"
+        "command": "./mvnw test -Dgroups=integration > /tmp/test.log && tail -50 /tmp/test.log"
       }
     },
     "lint": {
