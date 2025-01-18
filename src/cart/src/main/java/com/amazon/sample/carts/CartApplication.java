@@ -20,8 +20,9 @@ package com.amazon.sample.carts;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.jms.activemq.ActiveMQAutoConfiguration;
 
-@SpringBootApplication
+@SpringBootApplication(exclude = ActiveMQAutoConfiguration.class)
 @SuppressWarnings("checkstyle:HideUtilityClassConstructor")
 public class CartApplication {
 
