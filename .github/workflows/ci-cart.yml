@@ -36,4 +36,6 @@ jobs:
           MAVEN_OPTS: "-Dorg.slf4j.simpleLogger.log.org.apache.maven.cli.transfer.Slf4jMavenTransferListener=warn"
         run: |
           cd src/cart
+          export AWS_ACCESS_KEY_ID="dummy"
+          export AWS_SECRET_ACCESS_KEY="dummy"
           ./mvnw test -Dgroups=integration
