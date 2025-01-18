@@ -56,7 +56,8 @@ jobs:
       - name: Test
         shell: devenv shell bash -- -e {0}
         run: |
-          yarn nx run-many -t container --projects=tag:service --tags public.ecr.aws/aws-containers/retail-store-sample-{projectName}:e2e
+          yarn nx run-many -t container --projects=tag:service \
+            --tags public.ecr.aws/aws-containers/retail-store-sample-{projectName}:e2e --parallel=5
 
       - name: Kind cluster
         uses: helm/kind-action@v1.4.0
