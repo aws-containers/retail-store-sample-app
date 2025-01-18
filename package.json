@@ -1,9 +1,14 @@
 {
-  "name": "retail-store-sample-app",
+  "name": "store",
   "version": "0.0.1",
   "main": "index.js",
   "repository": "https://github.com/aws-containers/retail-store-sample-app.git",
   "license": "MIT",
+  "nx": {},
+  "scripts": {
+    "compose:up": "docker compose --project-directory deploy/docker-compose up --build --detach",
+    "compose:down": "docker compose --project-directory deploy/docker-compose down"
+  },
   "devDependencies": {
     "@nx-go/nx-go": "^3.3.1",
     "@nx-tools/nx-container": "^6.2.0",

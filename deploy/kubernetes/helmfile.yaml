@@ -1,7 +1,7 @@
 releases:
   - name: "catalog"
     namespace: "default"
-    chart: ../../catalog
+    chart: ../../src/catalog/chart
     wait: true
     values:
       - templates/components.yaml.gotmpl
@@ -9,7 +9,7 @@ releases:
 
   - name: "carts"
     namespace: "default"
-    chart: ../../carts
+    chart: ../../src/cart/chart
     wait: true
     values:
       - templates/components.yaml.gotmpl
@@ -17,7 +17,7 @@ releases:
 
   - name: "orders"
     namespace: "default"
-    chart: ../../orders
+    chart: ../../src/orders/chart
     wait: true
     values:
       - templates/components.yaml.gotmpl
@@ -25,7 +25,7 @@ releases:
 
   - name: "checkout"
     namespace: "default"
-    chart: ../../checkout
+    chart: ../../src/checkout/chart
     wait: true
     values:
       - templates/components.yaml.gotmpl
@@ -33,17 +33,9 @@ releases:
       - endpoints:
           orders: http://orders:80
 
-  - name: "assets"
-    namespace: "default"
-    chart: ../../assets
-    wait: true
-    values:
-      - templates/components.yaml.gotmpl
-      - templates/assets.yaml.gotmpl
-
   - name: "ui"
     namespace: "default"
-    chart: ../../ui
+    chart: ../../src/ui/chart
     wait: true
     timeout: 600
     values:

@@ -1,7 +1,7 @@
 releases:
   - name: "catalog"
     namespace: "default"
-    chart: ../../catalog
+    chart: ../../src/catalog/chart
     wait: true
     values:
       - templates/components.yaml.gotmpl
@@ -9,7 +9,7 @@ releases:
 
   - name: "ui"
     namespace: "default"
-    chart: ../../ui
+    chart: ../../src/ui/chart
     wait: true
     timeout: 600
     values:
