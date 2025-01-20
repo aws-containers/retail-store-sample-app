@@ -86,20 +86,12 @@ jobs:
 
       - name: Deploy
         shell: devenv shell bash -- -e {0}
+        env:
+          IMAGE_TAG: e2e
         run: |
           NODE_PORT=30000 helmfile apply -f deploy/kubernetes/helmfile.yaml --wait --skip-diff-on-install
 
-          sleep 60
-
-          kubectl get pod
-
-          kubectl logs deployment/catalog
-
-          kubectl describe pod 
-
-          kubectl describe pod -l app.kubernetes.io/name=catalog
-
-          #kubectl wait --for=condition=Ready pod -l app.kubernetes.io/owner=retail-store-sample --timeout 180s
+          kubectl wait --for=condition=Ready pod -l app.kubernetes.io/owner=retail-store-sample --timeout 180s
 
       - name: Test
         shell: devenv shell bash -- -e {0}
