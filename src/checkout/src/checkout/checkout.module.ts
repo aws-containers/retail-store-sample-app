@@ -63,10 +63,10 @@ const repositoryProvider = {
     const logger = new Logger();
 
     if (persistenceProvider === 'redis') {
-      logger.log('Creating RedisRepository...');
+      logger.log('Using redis persistence');
       repository = new RedisCheckoutRepository(redisUrl, redisReaderUrl);
     } else {
-      logger.log('Creating InMemoryRepository...');
+      logger.log('Using in-memory persistence');
       repository = new InMemoryCheckoutRepository();
     }
 
