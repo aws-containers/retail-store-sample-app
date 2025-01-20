@@ -101,6 +101,8 @@ jobs:
 
           sleep 60
 
+          kubectl get pod
+
       - name: Test
         shell: devenv shell bash -- -e {0}
         run: |
