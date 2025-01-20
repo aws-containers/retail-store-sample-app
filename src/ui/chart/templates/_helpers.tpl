@@ -50,7 +50,7 @@ Selector labels
 app.kubernetes.io/name: {{ include "ui.name" . }}
 app.kubernetes.io/instance: {{ .Release.Name }}
 app.kubernetes.io/component: service
-app.kuberneres.io/owner: retail-store-sample
+app.kubernetes.io/owner: retail-store-sample
 {{- end }}
 
 {{/*
