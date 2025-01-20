@@ -66,9 +66,7 @@ public class TopologyController {
     if (messagingProvider.equals("rabbitmq")) {
       info.put(
         "messagingEndpoint",
-        this.rabbitMQProperties.getHost() +
-        ":" +
-        this.rabbitMQProperties.getPort()
+        String.join(",", this.rabbitMQProperties.getAddresses())
       );
     }
     return info;

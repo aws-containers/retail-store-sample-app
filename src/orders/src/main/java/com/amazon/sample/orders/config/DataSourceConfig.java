@@ -3,6 +3,7 @@ package com.amazon.sample.orders.config;
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
 import javax.sql.DataSource;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
@@ -16,6 +17,7 @@ import org.springframework.context.annotation.Configuration;
   havingValue = "postgres"
 )
 @EnableConfigurationProperties(DatabaseProperties.class)
+@Slf4j
 public class DataSourceConfig {
 
   @Autowired
@@ -23,6 +25,8 @@ public class DataSourceConfig {
 
   @Bean
   public DataSource dataSource() {
+    log.info("Using postgres database");
+
     HikariConfig config = new HikariConfig();
 
     String jdbcUrl = String.format(
@@ -30,6 +34,8 @@ public class DataSourceConfig {
       dbProps.getEndpoint(),
       dbProps.getName()
     );
+
+    log.info("Postgres endpoint: {}", jdbcUrl);
 
     config.setJdbcUrl(jdbcUrl);
     config.setUsername(dbProps.getUsername());

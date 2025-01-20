@@ -18,9 +18,7 @@
 
 package com.amazon.sample.orders.config.messaging;
 
-import jakarta.validation.constraints.Max;
-import jakarta.validation.constraints.Min;
-import jakarta.validation.constraints.NotBlank;
+import java.util.List;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.boot.context.properties.ConfigurationProperties;
@@ -32,16 +30,7 @@ import org.springframework.validation.annotation.Validated;
 @Setter
 public class RabbitMQProperties {
 
-  private static final int DEFAULT_PORT = 5672;
-  private static final int MIN_PORT = 1;
-  private static final int MAX_PORT = 65535;
-
-  @NotBlank(message = "RabbitMQ host cannot be empty")
-  private String host;
-
-  @Min(value = MIN_PORT, message = "Port must be greater than 0")
-  @Max(value = MAX_PORT, message = "Port must be less than 65536")
-  private int port = DEFAULT_PORT; // Default RabbitMQ port
+  private List<String> addresses;
 
   private String username = "guest";
 

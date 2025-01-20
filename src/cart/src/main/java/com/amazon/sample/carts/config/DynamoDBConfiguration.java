@@ -21,6 +21,7 @@ package com.amazon.sample.carts.config;
 import com.amazon.sample.carts.services.CartService;
 import com.amazon.sample.carts.services.DynamoDBCartService;
 import java.net.URI;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -36,13 +37,19 @@ import software.amazon.awssdk.services.dynamodb.DynamoDbClientBuilder;
   name = "provider",
   havingValue = "dynamodb"
 )
+@Slf4j
 public class DynamoDBConfiguration {
 
   @Bean
   DynamoDbClient dynamoDbClient(DynamoDBProperties properties) {
+    log.info("Using DynamoDB persistence");
+    log.info("DynamoDB table: {}", properties.getTableName());
+
     DynamoDbClientBuilder builder = DynamoDbClient.builder();
 
     if (StringUtils.hasLength(properties.getEndpoint())) {
+      log.info("DynamoDB endpoint: {}", properties.getEndpoint());
+
       builder.region(Region.US_WEST_2);
       builder.endpointOverride(URI.create(properties.getEndpoint()));
     }

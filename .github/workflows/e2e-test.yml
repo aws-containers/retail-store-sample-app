@@ -29,14 +29,18 @@ jobs:
           timeout_minutes: 10
           max_attempts: 3
           command: devenv shell yarn install
-      - name: Test
+      - name: Compose up
         shell: devenv shell bash -- -e {0}
         run: |
           MYSQL_PASSWORD='test123' yarn nx compose:up
-
+      - name: Test
+        shell: devenv shell bash -- -e {0}
+        run: |
           CYPRESS_BASE_URL='http://localhost:8888' yarn nx test e2e
-
-          MYSQL_PASSWORD='test123' yarn nx compose:down
+      - name: Compose down
+        shell: devenv shell bash -- -e {0}
+        run: |
+          MYSQL_PASSWORD='test123' yarn nx compose:up
 
   kubernetes:
     name: Kubernetes E2E Tests
@@ -55,11 +59,24 @@ jobs:
           timeout_minutes: 10
           max_attempts: 3
           command: devenv shell yarn install
-      - name: Test
+      - name: Build images
         shell: devenv shell bash -- -e {0}
         run: |
           yarn nx run-many -t container --projects=tag:service \
             --tags public.ecr.aws/aws-containers/retail-store-sample-{projectName}:e2e --parallel=5
+      - name: Kind config
+        run: |
+          cat <<EOF >>/tmp/config.yml
+          kind: Cluster
+          apiVersion: kind.x-k8s.io/v1alpha4
+          nodes:
+          - role: control-plane
+            extraPortMappings:
+            - containerPort: 8888
+              hostPort: 8888
+              listenAddress: "127.0.0.1"
+              protocol: TCP
+          EOF
 
       - name: Kind cluster
         uses: helm/kind-action@v1.4.0
@@ -80,27 +97,11 @@ jobs:
       - name: Deploy
         shell: devenv shell bash -- -e {0}
         run: |
-          helmfile apply -f deploy/kubernetes/helmfile.yaml --wait --skip-diff-on-install
+          NODE_PORT=30000 helmfile apply -f deploy/kubernetes/helmfile.yaml --wait --skip-diff-on-install
 
           sleep 60
 
-          cat <<EOF | kubectl apply -f -
-          apiVersion: v1
-          kind: Service
-          metadata:
-            name: ui-nodeport
-          spec:
-            type: NodePort
-            selector:
-              app.kubernetes.io/name: ui
-              app.kubernetes.io/instance: ui
-              app.kubernetes.io/component: service
-            ports:
-              - port: 80
-                targetPort: http
-                nodePort: 30000
-          EOF
-
-      #- name: Test
-      #  run: |
-      #    bash scripts/e2e-kind.sh
+      - name: Test
+        shell: devenv shell bash -- -e {0}
+        run: |
+          bash scripts/e2e-kind.sh

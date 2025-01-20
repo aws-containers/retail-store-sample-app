@@ -56,6 +56,20 @@
           "platforms": ["linux/amd64", "linux/arm64"]
         }
       }
+    },
+    "helm": {
+      "executor": "@nx-extensions/helm:package",
+      "outputs": ["{options.outputFolder}"],
+      "options": {
+        "chartFolder": "{projectRoot}/chart",
+        "outputFolder": "{workspaceRoot}/dist/charts/{projectName}",
+        "push": false,
+        "dependencies": {
+          "update": true,
+          "build": true,
+          "repositories": []
+        }
+      }
     }
   },
   "namedInputs": {

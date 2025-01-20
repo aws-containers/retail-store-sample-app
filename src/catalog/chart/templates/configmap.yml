@@ -4,7 +4,9 @@ kind: ConfigMap
 metadata:
   name: {{ include "catalog.configMapName" . }}
 data:
-  DB_ENDPOINT: {{ include "catalog.mysql.endpoint" . }}
-  DB_READ_ENDPOINT: {{ include "catalog.mysql.reader.endpoint" . }}
-  DB_NAME: {{ .Values.mysql.database }}
+  RETAIL_CATALOG_PERSISTENCE_PROVIDER: {{ .Values.app.persistence.provider }}
+  {{- if (eq "mysql" .Values.app.persistence.provider) }}
+  RETAIL_CATALOG_PERSISTENCE_ENDPOINT: {{ include "catalog.mysql.endpoint" . }}
+  RETAIL_CATALOG_PERSISTENCE_DB_NAME: {{ .Values.app.persistence.database }}
+  {{- end }}
 {{- end }}

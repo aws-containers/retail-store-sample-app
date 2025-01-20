@@ -20,6 +20,7 @@ package com.amazon.sample.carts.config;
 
 import com.amazon.sample.carts.services.CartService;
 import com.amazon.sample.carts.services.InMemoryCartService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -30,10 +31,12 @@ import org.springframework.context.annotation.Configuration;
   name = "provider",
   havingValue = "in-memory"
 )
+@Slf4j
 public class InMemoryConfiguration {
 
   @Bean
   public CartService cartService() {
+    log.info("Using in-memory persistence");
     return new InMemoryCartService();
   }
 }

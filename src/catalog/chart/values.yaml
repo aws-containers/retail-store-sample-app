@@ -72,21 +72,20 @@ configMap:
   create: true
   name:
 
-mysql:
-  create: true
-
-  endpoint: ""
-
-  database: catalog
-
-  secret:
-    create: true
-    name: catalog-db
-    username: catalog
-    password: ""
-
-  reader:
+app:
+  persistence:
+    provider: in-memory
     endpoint: ""
+    database: "catalog"
+
+    secret:
+      create: true
+      name: catalog-db
+      username: catalog
+      password: ""
+
+mysql:
+  create: false
 
   image:
     repository: public.ecr.aws/docker/library/mysql

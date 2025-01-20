@@ -123,34 +123,18 @@ app.kubernetes.io/component: mysql
 {{- end -}}
 {{- end }}
 
-{{- define "catalog.mysql.password" -}}
-{{- if not (empty .Values.mysql.secret.password) -}}
-  {{- .Values.mysql.secret.password | b64enc -}}
+{{- define "catalog.persistence.password" -}}
+{{- if not (empty .Values.app.persistence.secret.password) -}}
+  {{- .Values.app.persistence.secret.password | b64enc -}}
 {{- else -}}
-    {{- include "getOrGeneratePass" (dict "Namespace" .Release.Namespace "Kind" "Secret" "Name" .Values.mysql.secret.name "Key" "password") -}}
-{{- end -}}
-{{- end -}}
-
-{{- define "catalog.mysql.reader.password" -}}
-{{- if not (empty .Values.mysql.reader.secret.password) -}}
-  {{- .Values.mysql.reader.secret.password | b64enc -}}
-{{- else -}}
-    {{- include "getOrGeneratePass" (dict "Namespace" .Release.Namespace "Kind" "Secret" "Name" .Values.mysql.reader.secret.name "Key" "password") -}}
+  {{- include "getOrGeneratePass" (dict "Namespace" .Release.Namespace "Kind" "Secret" "Name" .Values.app.persistence.secret.name "Key" "RETAIL_CATALOG_PERSISTENCE_PASSWORD") -}}
 {{- end -}}
 {{- end -}}
 
 {{- define "catalog.mysql.endpoint" -}}
-{{- if not (empty .Values.mysql.endpoint) -}}
-    {{- .Values.mysql.endpoint -}}
-{{- else -}}
+{{- if .Values.mysql.create -}}
 {{ include "catalog.mysql.fullname" . }}:{{ .Values.mysql.service.port }}
-{{- end -}}
-{{- end -}}
-
-{{- define "catalog.mysql.reader.endpoint" -}}
-{{- if not (empty .Values.mysql.reader.endpoint) -}}
-    {{- .Values.mysql.reader.endpoint -}}
-{{- else -}}
-    {{- include "catalog.mysql.endpoint" . -}}
+{{- else }}
+{{ .Values.app.persistence.endpoint }}
 {{- end -}}
 {{- end -}}

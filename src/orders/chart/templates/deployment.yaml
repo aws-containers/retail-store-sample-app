@@ -43,19 +43,15 @@ spec:
           env:
             - name: JAVA_OPTS
               value: -XX:MaxRAMPercentage=75.0 -Djava.security.egd=file:/dev/urandom
-            - name: SPRING_DATASOURCE_USERNAME
-              valueFrom:
-                secretKeyRef:
-                  name: {{ .Values.postgresql.secret.name }}
-                  key: username
-            - name: SPRING_DATASOURCE_PASSWORD
-              valueFrom:
-                secretKeyRef:
-                  name: {{ .Values.postgresql.secret.name }}
-                  key: password
           envFrom:
+            {{- if (eq "rabbitmq" .Values.app.messaging.provider) }}
             - secretRef:
-                name: {{ .Values.rabbitmq.secret.name }}
+                name: {{ .Values.app.messaging.rabbitmq.secret.name }}
+            {{- end }}
+            {{- if (eq "postgres" .Values.app.persistence.provider) }}
+            - secretRef:
+                name: {{ .Values.app.persistence.secret.name }}
+            {{- end }}
             - configMapRef:
                 name: {{ include "orders.configMapName" . }}
           securityContext:

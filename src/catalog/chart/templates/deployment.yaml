@@ -40,20 +40,13 @@ spec:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
       containers:
         - name: {{ "catalog" }}
-          env:
-            - name: DB_USER
-              valueFrom:
-                secretKeyRef:
-                  name: {{ .Values.mysql.secret.name }}
-                  key: username
-            - name: DB_PASSWORD
-              valueFrom:
-                secretKeyRef:
-                  name: {{ .Values.mysql.secret.name }}
-                  key: password
           envFrom:
             - configMapRef:
                 name: {{ include "catalog.configMapName" . }}
+            {{- if (eq "mysql" .Values.app.persistence.provider) }}
+            - secretRef:
+                name: {{ .Values.app.persistence.secret.name }}
+            {{- end }}
           securityContext:
             {{- toYaml .Values.securityContext | nindent 12 }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"

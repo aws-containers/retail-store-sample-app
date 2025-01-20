@@ -72,14 +72,17 @@ configMap:
   create: true
   name:
 
-endpoints:
-  orders: ''
+app:
+  persistence:
+    provider: 'in-memory'
+    redis:
+      endpoint: ''
+
+  endpoints:
+    orders: ''
 
 redis:
-  create: true
-
-  address: 'redis'
-  port: 6379
+  create: false
 
   image:
     repository: redis

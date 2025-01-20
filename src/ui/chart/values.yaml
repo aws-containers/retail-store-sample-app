@@ -40,6 +40,9 @@ securityContext:
 service:
   type: ClusterIP
   port: 80
+  # annotations: {}
+  # loadBalancerClass: ""
+  # nodePort: 30000
 
 resources:
   limits:
@@ -73,12 +76,17 @@ configMap:
   create: true
   name: # if blank this will be generated
 
-endpoints:
-  {}
-  #catalog: http://catalog:80
-  #carts: http://carts:80
-  #orders: http://orders:80
-  #assets: http://assets:80
+app:
+  theme: default
+  endpoints: {}
+    #catalog: http://catalog:80
+    #carts: http://carts:80
+    #orders: http://orders:80
+    #checkout: http://checkout:80
+  chat:
+    enabled: false
+    provider: ""
+    model: ""
 
 ## Ingress for load balancer
 ingress:

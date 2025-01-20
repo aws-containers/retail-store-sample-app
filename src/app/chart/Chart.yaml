@@ -5,27 +5,23 @@ type: application
 version: 0.8.4
 
 dependencies:
-  - name: retail-store-sample-assets-chart
-    alias: assets
-    version: 0.8.4
-    repository: "file://../assets"
   - name: retail-store-sample-cart-chart
-    alias: carts
+    alias: cart
     version: 0.8.4
-    repository: "file://../carts"
+    repository: "file://../../cart/chart"
   - name: retail-store-sample-catalog-chart
     alias: catalog
     version: 0.8.4
-    repository: "file://../catalog"
+    repository: "file://../../catalog/chart"
   - name: retail-store-sample-checkout-chart
     alias: checkout
     version: 0.8.4
-    repository: "file://../checkout"
+    repository: "file://../../checkout/chart"
   - name: retail-store-sample-orders-chart
     alias: orders
     version: 0.8.4
-    repository: "file://../orders"
+    repository: "file://../../orders/chart"
   - name: retail-store-sample-ui-chart
     alias: ui
     version: 0.8.4
-    repository: "file://../ui"
+    repository: "file://../../ui/chart"

@@ -24,6 +24,12 @@ retail:
         password:
     messaging:
       provider: "in-memory"
+      rabbitmq:
+        addresses: []
+        username: ""
+        password: ""
+      sqs:
+        topic: ""
 
 springdoc:
   api-docs:

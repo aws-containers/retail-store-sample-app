@@ -72,17 +72,20 @@ configMap:
   create: true
   name:
 
-persistence: dynamodb
+app:
+  persistence:
+    provider: in-memory
+    dynamodb:
+      tableName: Items
+      createTable: false
 
 dynamodb:
-  tableName: Items
-  createTable: false
-  create: true
+  create: false
 
   image:
-    repository: amazon/dynamodb-local
+    repository: public.ecr.aws/aws-dynamodb-local/aws-dynamodb-local
     pullPolicy: IfNotPresent
-    tag: "1.20.0"
+    tag: "1.25.1"
 
   service:
     type: ClusterIP

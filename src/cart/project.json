@@ -43,7 +43,8 @@
       "options": {
         "command": "./mvnw spring-boot:run"
       }
-    }
+    },
+    "helm": {}
   },
-  "tags": ["service"]
+  "tags": ["service", "chart"]
 }

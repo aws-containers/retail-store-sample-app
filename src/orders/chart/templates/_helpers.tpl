@@ -124,18 +124,18 @@ app.kubernetes.io/component: postgresql
 {{- end }}
 
 {{- define "orders.postgresql.password" -}}
-{{- if not (empty .Values.postgresql.secret.password) -}}
-    {{- .Values.postgresql.secret.password | b64enc -}}
+{{- if not (empty .Values.app.persistence.secret.password) -}}
+    {{- .Values.app.persistence.secret.password | b64enc -}}
 {{- else -}}
-    {{- include "getOrGeneratePass" (dict "Namespace" .Release.Namespace "Kind" "Secret" "Name" .Values.postgresql.secret.name "Key" "password") -}}
+    {{- include "getOrGeneratePass" (dict "Namespace" .Release.Namespace "Kind" "Secret" "Name" .Values.app.persistence.secret.name "Key" "RETAIL_ORDERS_PERSISTENCE_PASSWORD") -}}
 {{- end -}}
 {{- end -}}
 
 {{- define "orders.postgresql.endpoint" -}}
-{{- if not (empty .Values.postgresql.endpoint.host) -}}
-jdbc:postgresql://{{- .Values.postgresql.endpoint.host -}}:{{- .Values.postgresql.endpoint.port -}}/{{ .Values.postgresql.database }}
-{{- else -}}
-jdbc:postgresql://{{ include "orders.postgresql.fullname" . }}:{{ .Values.postgresql.service.port }}/{{ .Values.postgresql.database }}
+{{- if .Values.postgresql.create -}}
+{{ include "orders.postgresql.fullname" . }}:{{ .Values.postgresql.service.port }}
+{{- else }}
+{{ .Values.app.persistence.endpoint }}
 {{- end -}}
 {{- end -}}
 
@@ -165,9 +165,9 @@ app.kubernetes.io/component: rabbitmq
 {{- end }}
 
 {{- define "orders.rabbitmq.addresses" -}}
-{{- if not (empty .Values.rabbitmq.address) -}}
-    {{- .Values.rabbitmq.address -}}
-{{- else -}}
-amqp://{{ include "orders.rabbitmq.fullname" . }}:{{ .Values.rabbitmq.service.amqp.port }}
+{{- if .Values.rabbitmq.create -}}
+{{ include "orders.rabbitmq.fullname" . }}:{{ .Values.rabbitmq.service.amqp.port }}
+{{- else }}
+{{- join "," .Values.app.messaging.rabbitmq.addresses }}
 {{- end -}}
 {{- end -}}

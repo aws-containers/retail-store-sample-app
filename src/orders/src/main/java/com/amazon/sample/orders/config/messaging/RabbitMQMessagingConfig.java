@@ -63,7 +63,11 @@ public class RabbitMQMessagingConfig
 
   @Bean
   public MessagingProvider messagingProvider(RabbitTemplate template) {
-    log.info("Creating RabbitMQ messaging provider");
+    log.info("Using RabbitMQ messaging");
+    log.info(
+      "RabbitMQ addresses: {}",
+      String.join(",", this.properties.getAddresses())
+    );
 
     return new RabbitMQMessagingProvider(template);
   }
@@ -125,8 +129,7 @@ public class RabbitMQMessagingConfig
   @Bean
   public ConnectionFactory connectionFactory() {
     CachingConnectionFactory connectionFactory = new CachingConnectionFactory();
-    connectionFactory.setHost(properties.getHost());
-    connectionFactory.setPort(properties.getPort());
+    connectionFactory.setAddresses(properties.getAddresses());
     connectionFactory.setUsername(properties.getUsername());
     connectionFactory.setPassword(properties.getPassword());
     return connectionFactory;

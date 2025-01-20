@@ -1040,6 +1040,25 @@
     "@nodelib/fs.scandir" "2.1.5"
     fastq "^1.6.0"
 
+"@nx-extensions/core@1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@nx-extensions/core/-/core-1.0.0.tgz#1a67f9100e715997d4f85b964df08f56c4afe323"
+  integrity sha512-9St9iWsvvDCptLaM/aF18eI07+Wxxj71mRKTBtXlO1I6wWXL+TmwYNkERonHQoI6Tt+h4Z0nmlY7sQ2Di93hfQ==
+  dependencies:
+    "@actions/exec" "^1.1.1"
+    "@nx/devkit" "^20.0.0"
+    prettier "^3.0.0"
+    tslib "^2.3.0"
+
+"@nx-extensions/helm@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@nx-extensions/helm/-/helm-1.0.0.tgz#23ceb9414b6dab6ff33af57eaa35392a20ca01b9"
+  integrity sha512-6QqC3YJCzPK1/sVRDVliOJBLHogZiJ5bjGJ7CSjSyqwstLmKtzliCsvH900kkyXJsM9mdMaUDlOAOt7Fxj+xVw==
+  dependencies:
+    "@nx-extensions/core" "1.0.0"
+    js-yaml "^4.1.0"
+    tslib "^2.3.0"
+
 "@nx-go/nx-go@^3.3.1":
   version "3.3.1"
   resolved "https://registry.yarnpkg.com/@nx-go/nx-go/-/nx-go-3.3.1.tgz#e4252bf009f3fa756115c841c6718cba8118ed6e"
@@ -1109,7 +1128,7 @@
     tslib "^2.3.0"
     yargs-parser "21.1.1"
 
-"@nx/devkit@20.3.2", "@nx/devkit@>= 17 < 21":
+"@nx/devkit@20.3.2", "@nx/devkit@>= 17 < 21", "@nx/devkit@^20.0.0":
   version "20.3.2"
   resolved "https://registry.yarnpkg.com/@nx/devkit/-/devkit-20.3.2.tgz#b16e66771dd7dd24670eafa060c01f8af1191645"
   integrity sha512-VhbxEsSTCZlOVgjuQC+6HQmb9Oz9VoHUeo4001Pw6BFBcSXZUi5q37C/lxbAgQPnMKLkFcLva3WKZ+fOLwhGIg==
@@ -2268,6 +2287,13 @@ js-yaml@^3.10.0, js-yaml@^3.13.1:
     argparse "^1.0.7"
     esprima "^4.0.0"
 
+js-yaml@^4.1.0:
+  version "4.1.0"
+  resolved "https://registry.yarnpkg.com/js-yaml/-/js-yaml-4.1.0.tgz#c1fb65f8f5017901cdd2c951864ba18458a10602"
+  integrity sha512-wpxZs9NoxZaJESJGIZTyDEaYpl0FKSA+FB9aJiyemKhMwkxQg63h4T1KJgUGHpTqPDNRcmmYLugrRjJlBtWvRA==
+  dependencies:
+    argparse "^2.0.1"
+
 jsesc@^3.0.2:
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/jsesc/-/jsesc-3.1.0.tgz#74d335a234f67ed19907fdadfac7ccf9d409825d"
@@ -2654,7 +2680,7 @@ prettier-plugin-java@^2.6.4:
     java-parser "2.3.3"
     lodash "4.17.21"
 
-prettier@^3.3.2:
+prettier@^3.0.0, prettier@^3.3.2:
   version "3.4.2"
   resolved "https://registry.yarnpkg.com/prettier/-/prettier-3.4.2.tgz#a5ce1fb522a588bf2b78ca44c6e6fe5aa5a2b13f"
   integrity sha512-e9MewbtFo+Fevyuxn/4rrcDAaq0IYxPGLvObpQjiZBMAzB9IGmzlnG9RZy3FFas+eBMu2vA0CszMeduow5dIuQ==

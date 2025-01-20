@@ -1,0 +1,31 @@
+cart:
+  app:
+    persistence:
+      provider: dynamodb
+  dynamodb:
+    create: true
+
+catalog:
+  app:
+    persistence:
+      provider: 'mysql'
+  mysql:
+    create: true
+
+checkout:
+  app:
+    persistence:
+      provider: redis
+  redis:
+    create: true
+
+orders:
+  app:
+    persistence:
+      provider: 'postgres'
+    messaging:
+      provider: 'rabbitmq'
+  postgresql:
+    create: true
+  rabbitmq:
+    create: true

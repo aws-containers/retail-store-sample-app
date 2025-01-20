@@ -40,7 +40,8 @@
       "options": {
         "command": "go run main.go"
       }
-    }
+    },
+    "helm": {}
   },
-  "tags": ["service"]
+  "tags": ["service", "chart"]
 }

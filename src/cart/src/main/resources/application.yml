@@ -2,7 +2,7 @@ management:
   endpoints:
     web:
       exposure:
-        include: "*"
+        include: info,health,metrics,prometheus
 
 server:
   port: ${port:8080}
@@ -15,5 +15,3 @@ retail:
         endpoint:
         createTable: false
         tableName: Items
-
-logging.level.org.springframework.boot.autoconfigure: ERROR

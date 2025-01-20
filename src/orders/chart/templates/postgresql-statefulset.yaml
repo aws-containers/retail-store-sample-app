@@ -30,17 +30,17 @@ spec:
           imagePullPolicy: {{ .Values.postgresql.image.pullPolicy }}
           env:
             - name: POSTGRES_DB
-              value: {{ .Values.postgresql.database }}
+              value: {{ .Values.app.persistence.database }}
             - name: POSTGRES_USER
               valueFrom:
                 secretKeyRef:
-                  name: {{ .Values.postgresql.secret.name }}
-                  key: username
+                  name: {{ .Values.app.persistence.secret.name }}
+                  key: RETAIL_ORDERS_PERSISTENCE_USERNAME
             - name: POSTGRES_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: {{ .Values.postgresql.secret.name }}
-                  key: password
+                  name: {{ .Values.app.persistence.secret.name }}
+                  key: RETAIL_ORDERS_PERSISTENCE_PASSWORD
             - name: PGDATA
               value: /data/pgdata
           volumeMounts:

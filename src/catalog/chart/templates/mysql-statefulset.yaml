@@ -32,17 +32,17 @@ spec:
             - name: MYSQL_ROOT_PASSWORD
               value: my-secret-pw
             - name: MYSQL_DATABASE
-              value: {{ .Values.mysql.database }}
+              value: {{ .Values.app.persistence.database }}
             - name: MYSQL_USER
               valueFrom:
                 secretKeyRef:
-                  name: {{ .Values.mysql.secret.name }}
-                  key: username
+                  name: {{ .Values.app.persistence.secret.name }}
+                  key: RETAIL_CATALOG_PERSISTENCE_USER
             - name: MYSQL_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: {{ .Values.mysql.secret.name }}
-                  key: password
+                  name: {{ .Values.app.persistence.secret.name }}
+                  key: RETAIL_CATALOG_PERSISTENCE_PASSWORD
           volumeMounts:
             - name: data
               mountPath: /var/lib/mysql

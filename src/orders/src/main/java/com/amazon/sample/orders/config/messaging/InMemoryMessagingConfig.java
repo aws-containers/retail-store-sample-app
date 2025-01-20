@@ -36,7 +36,7 @@ public class InMemoryMessagingConfig {
 
   @Bean
   public MessagingProvider messagingProvider() {
-    log.warn("Creating in-memory messaging provider");
+    log.warn("Using in-memory messaging");
 
     return new InMemoryMessagingProvider();
   }
