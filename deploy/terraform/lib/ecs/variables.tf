@@ -14,11 +14,6 @@ variable "vpc_id" {
   type        = string
 }
 
-variable "vpc_cidr" {
-  description = "VPC CIDR"
-  type        = string
-}
-
 variable "subnet_ids" {
   description = "List of private subnet IDs."
   type        = list(string)
@@ -30,10 +25,20 @@ variable "public_subnet_ids" {
 }
 
 variable "container_image_overrides" {
-  type        = any
+  type = object({
+    default_repository = optional(string)
+    default_tag        = optional(string)
+
+    ui       = optional(string)
+    catalog  = optional(string)
+    cart     = optional(string)
+    checkout = optional(string)
+    orders   = optional(string)
+  })
   default     = {}
-  description = "Container image override object"
+  description = "Object that encapsulates any overrides to default values"
 }
+
 
 variable "catalog_db_endpoint" {
   type        = string

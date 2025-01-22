@@ -136,6 +136,6 @@ app.kubernetes.io/owner: retail-store-sample
 {{- if .Values.mysql.create -}}
 {{ include "catalog.mysql.fullname" . }}:{{ .Values.mysql.service.port }}
 {{- else }}
-{{ .Values.app.persistence.endpoint }}
+{{- .Values.app.persistence.endpoint -}}
 {{- end -}}
 {{- end -}}

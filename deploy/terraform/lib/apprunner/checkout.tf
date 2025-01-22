@@ -9,8 +9,9 @@ module "app_runner_checkout" {
       image_configuration = {
         port = 8080
         runtime_environment_variables = {
-          REDIS_URL        = "redis://${var.checkout_redis_endpoint}:${var.checkout_redis_port}"
-          ENDPOINTS_ORDERS = "https://${aws_apprunner_vpc_ingress_connection.orders.domain_name}"
+          RETAIL_CHECKOUT_PERSISTENCE_PROVIDER  = "redis"
+          RETAIL_CHECKOUT_PERSISTENCE_REDIS_URL = "redis://${var.checkout_redis_endpoint}:${var.checkout_redis_port}"
+          RETAIL_CHECKOUT_ENDPOINTS_ORDERS      = "https://${aws_apprunner_vpc_ingress_connection.orders.domain_name}"
         }
       }
       image_identifier      = module.container_images.result.checkout.url

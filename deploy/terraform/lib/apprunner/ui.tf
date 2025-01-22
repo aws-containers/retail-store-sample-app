@@ -1,5 +1,6 @@
 module "app_runner_ui" {
-  source = "terraform-aws-modules/app-runner/aws"
+  source  = "terraform-aws-modules/app-runner/aws"
+  version = "1.2.1"
 
   service_name = "${var.environment_name}-ui"
 
@@ -9,11 +10,10 @@ module "app_runner_ui" {
       image_configuration = {
         port = 8080
         runtime_environment_variables = {
-          ENDPOINTS_CATALOG  = "https://${aws_apprunner_vpc_ingress_connection.catalog.domain_name}"
-          ENDPOINTS_CARTS    = "https://${module.app_runner_carts.vpc_ingress_connection_domain_name}"
-          ENDPOINTS_CHECKOUT = "https://${module.app_runner_checkout.vpc_ingress_connection_domain_name}"
-          ENDPOINTS_ORDERS   = "https://${aws_apprunner_vpc_ingress_connection.orders.domain_name}"
-          ENDPOINTS_ASSETS   = "https://${module.app_runner_assets.vpc_ingress_connection_domain_name}"
+          RETAIL_UI_ENDPOINTS_CATALOG  = "https://${aws_apprunner_vpc_ingress_connection.catalog.domain_name}"
+          RETAIL_UI_ENDPOINTS_CARTS    = "https://${module.app_runner_carts.vpc_ingress_connection_domain_name}"
+          RETAIL_UI_ENDPOINTS_CHECKOUT = "https://${module.app_runner_checkout.vpc_ingress_connection_domain_name}"
+          RETAIL_UI_ENDPOINTS_ORDERS   = "https://${aws_apprunner_vpc_ingress_connection.orders.domain_name}"
         }
       }
       image_identifier      = module.container_images.result.ui.url

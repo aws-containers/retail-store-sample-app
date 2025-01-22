@@ -136,7 +136,7 @@ app.kubernetes.io/owner: retail-store-sample
 {{- if .Values.postgresql.create -}}
 {{ include "orders.postgresql.fullname" . }}:{{ .Values.postgresql.service.port }}
 {{- else }}
-{{ .Values.app.persistence.endpoint }}
+{{- .Values.app.persistence.endpoint -}}
 {{- end -}}
 {{- end -}}
 

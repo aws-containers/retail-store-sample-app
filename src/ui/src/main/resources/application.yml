@@ -1,6 +1,5 @@
 server:
   port: ${port:8080}
-  compression.enabled: true
 
 spring:
   messages:
@@ -61,3 +60,5 @@ management:
     web:
       exposure:
         include: info,health,metrics,prometheus
+
+otel.sdk.disabled: true

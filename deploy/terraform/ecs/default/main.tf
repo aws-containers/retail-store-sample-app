@@ -18,9 +18,8 @@ module "dependencies" {
   environment_name = var.environment_name
   tags             = module.tags.result
 
-  vpc_id             = module.vpc.inner.vpc_id
-  subnet_ids         = module.vpc.inner.private_subnets
-  availability_zones = module.vpc.inner.azs
+  vpc_id     = module.vpc.inner.vpc_id
+  subnet_ids = module.vpc.inner.private_subnets
 
   catalog_security_group_id  = module.retail_app_ecs.catalog_security_group_id
   orders_security_group_id   = module.retail_app_ecs.orders_security_group_id
@@ -32,7 +31,6 @@ module "retail_app_ecs" {
 
   environment_name          = var.environment_name
   vpc_id                    = module.vpc.inner.vpc_id
-  vpc_cidr                  = module.vpc.inner.vpc_cidr_block
   subnet_ids                = module.vpc.inner.private_subnets
   public_subnet_ids         = module.vpc.inner.public_subnets
   tags                      = module.tags.result

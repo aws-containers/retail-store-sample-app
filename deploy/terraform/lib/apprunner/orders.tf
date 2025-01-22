@@ -11,17 +11,23 @@ resource "aws_apprunner_service" "orders" {
     image_repository {
       image_configuration {
         port = 8080
-        runtime_environment_secrets = {
-          SPRING_DATASOURCE_URL      = "${aws_secretsmanager_secret.orders_db.arn}:host::"
-          SPRING_DATASOURCE_USERNAME = "${aws_secretsmanager_secret.orders_db.arn}:username::"
-          SPRING_DATASOURCE_PASSWORD = "${aws_secretsmanager_secret.orders_db.arn}:password::"
-          SPRING_RABBITMQ_ADDRESSES  = "${aws_secretsmanager_secret.mq.arn}:host::"
-          SPRING_RABBITMQ_USERNAME   = "${aws_secretsmanager_secret.mq.arn}:username::"
-          SPRING_RABBITMQ_PASSWORD   = "${aws_secretsmanager_secret.mq.arn}:password::"
-        }
+
         runtime_environment_variables = {
-          RETAIL_ORDERS_MESSAGING_PROVIDER = "rabbitmq"
+          RETAIL_ORDERS_MESSAGING_PROVIDER   = "rabbitmq"
+          RETAIL_ORDERS_PERSISTENCE_PROVIDER = "postgres"
+          RETAIL_ORDERS_PERSISTENCE_NAME     = "orders"
         }
+
+        runtime_environment_secrets = {
+          RETAIL_ORDERS_MESSAGING_RABBITMQ_ADDRESSES = "${aws_secretsmanager_secret_version.mq.arn}:host::"
+          RETAIL_ORDERS_MESSAGING_RABBITMQ_USERNAME  = "${aws_secretsmanager_secret_version.mq.arn}:username::"
+          RETAIL_ORDERS_MESSAGING_RABBITMQ_PASSWORD  = "${aws_secretsmanager_secret_version.mq.arn}:password::"
+
+          RETAIL_ORDERS_PERSISTENCE_ENDPOINT = "${aws_secretsmanager_secret_version.orders_db.arn}:host::"
+          RETAIL_ORDERS_PERSISTENCE_USERNAME = "${aws_secretsmanager_secret_version.orders_db.arn}:username::"
+          RETAIL_ORDERS_PERSISTENCE_PASSWORD = "${aws_secretsmanager_secret_version.orders_db.arn}:password::"
+        }
+
       }
       image_identifier      = module.container_images.result.orders.url
       image_repository_type = var.image_repository_type
@@ -83,7 +89,7 @@ resource "aws_secretsmanager_secret_version" "orders_db" {
     {
       username = var.orders_db_username
       password = var.orders_db_password
-      host     = "jdbc:postgresql://${var.orders_db_endpoint}:${var.orders_db_port}/${var.orders_db_name}"
+      host     = "${var.orders_db_endpoint}:${var.orders_db_port}"
     }
   )
 }

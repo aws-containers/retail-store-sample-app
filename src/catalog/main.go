@@ -40,8 +40,9 @@ import (
 	"go.opentelemetry.io/contrib/instrumentation/github.com/gin-gonic/gin/otelgin"
 	"go.opentelemetry.io/contrib/propagators/aws/xray"
 	"go.opentelemetry.io/otel"
+
 	"go.opentelemetry.io/otel/exporters/otlp/otlptrace"
-	"go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc"
+	"go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracehttp"
 	"go.opentelemetry.io/otel/propagation"
 	sdktrace "go.opentelemetry.io/otel/sdk/trace"
 )
@@ -58,6 +59,15 @@ import (
 
 func main() {
 	ctx := context.Background()
+
+	_, otelPresent := os.LookupEnv("OTEL_SERVICE_NAME")
+
+	if otelPresent {
+		_, err := initTracer(ctx)
+		if err != nil {
+			log.Fatal(err)
+		}
+	}
 
 	var config config.AppConfiguration
 	if err := envconfig.Process(ctx, &config); err != nil {
@@ -92,15 +102,7 @@ func main() {
 
 	catalog := r.Group("/catalog")
 
-	_, otelPresent := os.LookupEnv("OTEL_SERVICE_NAME")
-
-	if otelPresent {
-		tp, err := initTracer(ctx)
-		if err != nil {
-			log.Fatal(err)
-		}
-		catalog.Use(otelgin.Middleware("catalog-server", otelgin.WithTracerProvider(tp)))
-	}
+	catalog.Use(otelgin.Middleware("catalog-server"))
 
 	catalog.GET("/products", c.GetProducts)
 
@@ -160,7 +162,7 @@ func main() {
 }
 
 func initTracer(ctx context.Context) (*sdktrace.TracerProvider, error) {
-	client := otlptracegrpc.NewClient()
+	client := otlptracehttp.NewClient()
 	exporter, err := otlptrace.New(ctx, client)
 	if err != nil {
 		return nil, fmt.Errorf("creating OTLP trace exporter: %w", err)
@@ -174,5 +176,6 @@ func initTracer(ctx context.Context) (*sdktrace.TracerProvider, error) {
 		sdktrace.WithResource(resource),
 	)
 	otel.SetTextMapPropagator(propagation.NewCompositeTextMapPropagator(propagation.TraceContext{}, propagation.Baggage{}))
+	otel.SetTracerProvider(tp)
 	return tp, nil
 }

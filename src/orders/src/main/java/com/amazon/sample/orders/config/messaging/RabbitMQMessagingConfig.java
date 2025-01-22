@@ -26,7 +26,6 @@ import org.springframework.amqp.core.BindingBuilder;
 import org.springframework.amqp.core.FanoutExchange;
 import org.springframework.amqp.core.Queue;
 import org.springframework.amqp.rabbit.annotation.RabbitListenerConfigurer;
-import org.springframework.amqp.rabbit.connection.CachingConnectionFactory;
 import org.springframework.amqp.rabbit.connection.ConnectionFactory;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.amqp.rabbit.listener.RabbitListenerEndpointRegistrar;
@@ -124,14 +123,5 @@ public class RabbitMQMessagingConfig
   @Bean
   public MappingJackson2MessageConverter consumerJackson2MessageConverter() {
     return new MappingJackson2MessageConverter();
-  }
-
-  @Bean
-  public ConnectionFactory connectionFactory() {
-    CachingConnectionFactory connectionFactory = new CachingConnectionFactory();
-    connectionFactory.setAddresses(properties.getAddresses());
-    connectionFactory.setUsername(properties.getUsername());
-    connectionFactory.setPassword(properties.getPassword());
-    return connectionFactory;
   }
 }

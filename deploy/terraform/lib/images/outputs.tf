@@ -1,8 +1,5 @@
 output "result" {
   value = {
-    assets = merge({
-      url = local.assets_image
-    }, zipmap(["repository", "tag"], split(":", local.assets_image)))
     catalog = merge({
       url = local.catalog_image
     }, zipmap(["repository", "tag"], split(":", local.catalog_image)))

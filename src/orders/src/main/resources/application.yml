@@ -25,7 +25,7 @@ retail:
     messaging:
       provider: "in-memory"
       rabbitmq:
-        addresses: []
+        addresses: ""
         username: ""
         password: ""
       sqs:
@@ -34,3 +34,5 @@ retail:
 springdoc:
   api-docs:
     version: OPENAPI_3_0
+
+otel.sdk.disabled: true

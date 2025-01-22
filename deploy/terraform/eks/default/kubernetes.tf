@@ -57,33 +57,6 @@ resource "time_sleep" "workloads" {
   ]
 }
 
-resource "kubernetes_namespace_v1" "assets" {
-  depends_on = [
-    time_sleep.workloads
-  ]
-
-  metadata {
-    name = "assets"
-
-    labels = var.istio_enabled ? local.istio_labels : {}
-  }
-}
-
-resource "helm_release" "assets" {
-  name  = "assets"
-  chart = "../../../kubernetes/charts/assets"
-
-  namespace = kubernetes_namespace_v1.assets.metadata[0].name
-  values = [
-    templatefile("${path.module}/values/assets.yaml", {
-      image_repository              = module.container_images.result.assets.repository
-      image_tag                     = module.container_images.result.assets.tag
-      opentelemetry_enabled         = var.opentelemetry_enabled
-      opentelemetry_instrumentation = local.opentelemetry_instrumentation
-    })
-  ]
-}
-
 resource "kubernetes_namespace_v1" "catalog" {
   depends_on = [
     time_sleep.workloads
@@ -98,7 +71,7 @@ resource "kubernetes_namespace_v1" "catalog" {
 
 resource "helm_release" "catalog" {
   name  = "catalog"
-  chart = "../../../kubernetes/charts/catalog"
+  chart = "../../../../src/catalog/chart"
 
   namespace = kubernetes_namespace_v1.catalog.metadata[0].name
 
@@ -130,7 +103,7 @@ resource "kubernetes_namespace_v1" "carts" {
 
 resource "helm_release" "carts" {
   name  = "carts"
-  chart = "../../../kubernetes/charts/carts"
+  chart = "../../../../src/cart/chart"
 
   namespace = kubernetes_namespace_v1.carts.metadata[0].name
 
@@ -160,7 +133,7 @@ resource "kubernetes_namespace_v1" "checkout" {
 
 resource "helm_release" "checkout" {
   name  = "checkout"
-  chart = "../../../kubernetes/charts/checkout"
+  chart = "../../../../src/checkout/chart"
 
   namespace = kubernetes_namespace_v1.checkout.metadata[0].name
 
@@ -191,7 +164,7 @@ resource "kubernetes_namespace_v1" "orders" {
 
 resource "helm_release" "orders" {
   name  = "orders"
-  chart = "../../../kubernetes/charts/orders"
+  chart = "../../../../src/orders/chart"
 
   namespace = kubernetes_namespace_v1.orders.metadata[0].name
 
@@ -231,12 +204,11 @@ resource "helm_release" "ui" {
     helm_release.catalog,
     helm_release.carts,
     helm_release.checkout,
-    helm_release.orders,
-    helm_release.assets
+    helm_release.orders
   ]
 
   name  = "ui"
-  chart = "../../../kubernetes/charts/ui"
+  chart = "../../../../src/ui/chart"
 
   namespace = kubernetes_namespace_v1.ui.metadata[0].name
 

@@ -5,22 +5,21 @@ module "catalog_service" {
   service_name                    = "catalog"
   cluster_arn                     = aws_ecs_cluster.cluster.arn
   vpc_id                          = var.vpc_id
-  vpc_cidr                        = var.vpc_cidr
   subnet_ids                      = var.subnet_ids
-  public_subnet_ids               = var.public_subnet_ids
   tags                            = var.tags
   container_image                 = module.container_images.result.catalog.url
   service_discovery_namespace_arn = aws_service_discovery_private_dns_namespace.this.arn
   cloudwatch_logs_group_id        = aws_cloudwatch_log_group.ecs_tasks.id
 
   environment_variables = {
-    DB_NAME = var.catalog_db_name
+    RETAIL_CATALOG_PERSISTENCE_PROVIDER = "mysql"
+    RETAIL_CATALOG_PERSISTENCE_DB_NAME  = var.catalog_db_name
   }
 
   secrets = {
-    DB_ENDPOINT = "${aws_secretsmanager_secret_version.catalog_db.arn}:host::"
-    DB_USER     = "${aws_secretsmanager_secret_version.catalog_db.arn}:username::"
-    DB_PASSWORD = "${aws_secretsmanager_secret_version.catalog_db.arn}:password::"
+    RETAIL_CATALOG_PERSISTENCE_ENDPOINT = "${aws_secretsmanager_secret_version.catalog_db.arn}:host::"
+    RETAIL_CATALOG_PERSISTENCE_USER     = "${aws_secretsmanager_secret_version.catalog_db.arn}:username::"
+    RETAIL_CATALOG_PERSISTENCE_PASSWORD = "${aws_secretsmanager_secret_version.catalog_db.arn}:password::"
   }
 
   additional_task_execution_role_iam_policy_arns = [

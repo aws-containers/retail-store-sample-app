@@ -2,15 +2,6 @@ image:
   repository: ${image_repository}
   tag: ${image_tag}
 
-redis:
-  create: false
-
-  address: ${redis_address}
-  port: ${redis_port}
-
-endpoints:
-  orders: http://orders.orders.svc:80
-
 %{ if opentelemetry_enabled }
 opentelemetry:
   enabled: true
@@ -22,3 +13,12 @@ securityGroups:
   securityGroupIds:
   - ${security_group_id}
 %{ endif }
+
+app:
+  persistence:
+    provider: 'redis'
+    redis:
+      endpoint: '${redis_address}:${redis_port}'
+
+  endpoints:
+    orders: 'http://orders.orders.svc:80'

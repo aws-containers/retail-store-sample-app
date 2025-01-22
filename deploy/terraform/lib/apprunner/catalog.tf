@@ -11,12 +11,13 @@ resource "aws_apprunner_service" "catalog" {
       image_configuration {
         port = 8080
         runtime_environment_variables = {
-          DB_NAME = var.catalog_db_name
+          RETAIL_CATALOG_PERSISTENCE_PROVIDER = "mysql"
+          RETAIL_CATALOG_PERSISTENCE_DB_NAME  = var.catalog_db_name
         }
         runtime_environment_secrets = {
-          DB_ENDPOINT = "${aws_secretsmanager_secret.catalog_db.arn}:host::"
-          DB_USER     = "${aws_secretsmanager_secret.catalog_db.arn}:username::"
-          DB_PASSWORD = "${aws_secretsmanager_secret.catalog_db.arn}:password::"
+          RETAIL_CATALOG_PERSISTENCE_ENDPOINT = "${aws_secretsmanager_secret_version.catalog_db.arn}:host::"
+          RETAIL_CATALOG_PERSISTENCE_USER     = "${aws_secretsmanager_secret_version.catalog_db.arn}:username::"
+          RETAIL_CATALOG_PERSISTENCE_PASSWORD = "${aws_secretsmanager_secret_version.catalog_db.arn}:password::"
         }
       }
       image_identifier      = module.container_images.result.catalog.url

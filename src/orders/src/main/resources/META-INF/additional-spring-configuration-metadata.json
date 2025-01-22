@@ -6,6 +6,21 @@
       "description": "Messaging provider to use for sending events"
     },
     {
+      "name": "retail.orders.messaging.rabbitmq.addresses",
+      "type": "java.lang.String",
+      "description": "Address for RabbitMQ"
+    },
+    {
+      "name": "retail.orders.messaging.rabbitmq.username",
+      "type": "java.lang.String",
+      "description": "Username for RabbitMQ"
+    },
+    {
+      "name": "retail.orders.messaging.rabbitmq.password",
+      "type": "java.lang.String",
+      "description": "Password for RabbitMQ"
+    },
+    {
       "name": "retail.orders.messaging.sqs.topic",
       "type": "java.lang.String",
       "description": "Name of the SQS topic to use"

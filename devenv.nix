@@ -13,6 +13,7 @@
     pkgs.tilt
     pkgs.awscli
     pkgs.yarn
+    pkgs.delve
   ];
 
   languages.javascript = {
@@ -37,4 +38,6 @@
     tflint.enable = true;
     gofmt.enable = true;
   };
+
+  hardeningDisable = ["fortify"];
 }

@@ -35,6 +35,10 @@ import com.amazon.sample.ui.services.checkout.model.CheckoutMapper;
 import com.microsoft.kiota.RequestAdapter;
 import com.microsoft.kiota.authentication.AnonymousAuthenticationProvider;
 import com.microsoft.kiota.bundle.DefaultRequestAdapter;
+import io.opentelemetry.api.OpenTelemetry;
+import io.opentelemetry.instrumentation.okhttp.v3_0.OkHttpTelemetry;
+import okhttp3.Call;
+import okhttp3.OkHttpClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -46,9 +50,15 @@ public class StoreServices {
   @Autowired
   private EndpointProperties endpoints;
 
-  public RequestAdapter getRequestAdapter(String endpoint) {
+  public RequestAdapter getRequestAdapter(
+    String endpoint,
+    Call.Factory factory
+  ) {
     var adapter = new DefaultRequestAdapter(
-      new AnonymousAuthenticationProvider()
+      new AnonymousAuthenticationProvider(),
+      null,
+      null,
+      factory
     );
 
     adapter.setBaseUrl(endpoint);
@@ -57,10 +67,22 @@ public class StoreServices {
   }
 
   @Bean
-  public CatalogService catalogService(CatalogMapper mapper) {
+  public Call.Factory tracedClientFactory(OpenTelemetry openTelemetry) {
+    return OkHttpTelemetry.builder(openTelemetry)
+      .build()
+      .newCallFactory(new OkHttpClient.Builder().build());
+  }
+
+  @Bean
+  public CatalogService catalogService(
+    CatalogMapper mapper,
+    Call.Factory factory
+  ) {
     if (StringUtils.hasText(this.endpoints.getCatalog())) {
       return new KiotaCatalogService(
-        new CatalogClient(getRequestAdapter(this.endpoints.getCatalog())),
+        new CatalogClient(
+          getRequestAdapter(this.endpoints.getCatalog(), factory)
+        ),
         mapper
       );
     }
@@ -69,10 +91,13 @@ public class StoreServices {
   }
 
   @Bean
-  public CartsService cartsService(CatalogService catalogService) {
+  public CartsService cartsService(
+    CatalogService catalogService,
+    Call.Factory factory
+  ) {
     if (StringUtils.hasText(this.endpoints.getCarts())) {
       return new KiotaCartsService(
-        new CartClient(getRequestAdapter(this.endpoints.getCarts())),
+        new CartClient(getRequestAdapter(this.endpoints.getCarts(), factory)),
         catalogService
       );
     }
@@ -83,11 +108,14 @@ public class StoreServices {
   @Bean
   public CheckoutService checkoutService(
     CartsService cartsService,
-    CheckoutMapper mapper
+    CheckoutMapper mapper,
+    Call.Factory factory
   ) {
     if (StringUtils.hasText(this.endpoints.getCheckout())) {
       return new KiotaCheckoutService(
-        new CheckoutClient(getRequestAdapter(this.endpoints.getCheckout())),
+        new CheckoutClient(
+          getRequestAdapter(this.endpoints.getCheckout(), factory)
+        ),
         mapper,
         cartsService
       );

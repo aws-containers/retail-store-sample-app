@@ -12,6 +12,8 @@ opentelemetry:
   instrumentation: ${opentelemetry_instrumentation}
 %{ endif }
 
-dynamodb:
-  tableName: ${table_name}
-  create: false
+app:
+  persistence:
+    provider: dynamodb
+    dynamodb:
+      tableName: ${table_name}

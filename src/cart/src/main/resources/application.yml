@@ -15,3 +15,5 @@ retail:
         endpoint:
         createTable: false
         tableName: Items
+
+otel.sdk.disabled: true

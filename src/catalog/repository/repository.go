@@ -1,6 +1,7 @@
 package repository
 
 import (
+	"context"
 	"fmt"
 	"log"
 	"os"
@@ -12,6 +13,7 @@ import (
 	"gorm.io/driver/sqlite"
 	"gorm.io/gorm"
 	"gorm.io/gorm/logger"
+	"gorm.io/plugin/opentelemetry/tracing"
 )
 
 type Database struct {
@@ -19,10 +21,10 @@ type Database struct {
 }
 
 type CatalogRepository interface {
-	GetProducts(tags []string, order string, pageNum, pageSize int) ([]model.Product, error)
-	CountProducts(tags []string) (int, error)
-	GetProduct(id string) (*model.Product, error)
-	GetTags() ([]model.Tag, error)
+	GetProducts(tags []string, order string, pageNum, pageSize int, ctx context.Context) ([]model.Product, error)
+	CountProducts(tags []string, ctx context.Context) (int, error)
+	GetProduct(id string, ctx context.Context) (*model.Product, error)
+	GetTags(ctx context.Context) ([]model.Tag, error)
 }
 
 func createMySQLDatabase(config config.DatabaseConfiguration) (*gorm.DB, error) {
@@ -42,11 +44,11 @@ func NewRepository(config config.DatabaseConfiguration) (CatalogRepository, erro
 		newLogger := logger.New(
 			log.New(os.Stdout, "\r\n", log.LstdFlags), // io writer
 			logger.Config{
-				SlowThreshold:             time.Second,   // Slow SQL threshold
-				LogLevel:                  logger.Silent, // Log level
-				IgnoreRecordNotFoundError: true,          // Ignore ErrRecordNotFound error for logger
-				ParameterizedQueries:      false,         // Don't include params in the SQL log
-				Colorful:                  false,         // Disable color
+				SlowThreshold:             time.Second, // Slow SQL threshold
+				LogLevel:                  logger.Info, // Log level
+				IgnoreRecordNotFoundError: true,        // Ignore ErrRecordNotFound error for logger
+				ParameterizedQueries:      false,       // Don't include params in the SQL log
+				Colorful:                  false,       // Disable color
 			},
 		)
 
@@ -57,6 +59,10 @@ func NewRepository(config config.DatabaseConfiguration) (CatalogRepository, erro
 
 	if err != nil {
 		panic("failed to connect database")
+	}
+
+	if err := db.Use(tracing.NewPlugin(tracing.WithoutMetrics())); err != nil {
+		panic(err)
 	}
 
 	fmt.Println("Running database migration...")
@@ -117,7 +123,7 @@ func NewRepository(config config.DatabaseConfiguration) (CatalogRepository, erro
 	}, nil
 }
 
-func (db *Database) GetProducts(tags []string, order string, pageNum, pageSize int) ([]model.Product, error) {
+func (db *Database) GetProducts(tags []string, order string, pageNum, pageSize int, ctx context.Context) ([]model.Product, error) {
 	products := []model.Product{}
 
 	query := db.DB.Preload("Tags")
@@ -145,7 +151,7 @@ func (db *Database) GetProducts(tags []string, order string, pageNum, pageSize i
 	query = query.Offset(offset).Limit(pageSize)
 
 	// Execute the query
-	err := query.Find(&products).Error
+	err := query.WithContext(ctx).Find(&products).Error
 	if err != nil {
 		return nil, err
 	}
@@ -153,10 +159,10 @@ func (db *Database) GetProducts(tags []string, order string, pageNum, pageSize i
 	return products, err
 }
 
-func (db *Database) GetProduct(id string) (*model.Product, error) {
+func (db *Database) GetProduct(id string, ctx context.Context) (*model.Product, error) {
 	product := model.Product{}
 
-	err := db.DB.
+	err := db.DB.WithContext(ctx).
 		Preload("Tags").
 		Where("id = ?", id).
 		First(&product).Error
@@ -168,10 +174,10 @@ func (db *Database) GetProduct(id string) (*model.Product, error) {
 	return &product, err
 }
 
-func (db *Database) CountProducts(tags []string) (int, error) {
+func (db *Database) CountProducts(tags []string, ctx context.Context) (int, error) {
 	var count int64
 
-	query := db.DB.Model(&model.Product{})
+	query := db.DB.WithContext(ctx).Model(&model.Product{})
 
 	// Apply tags filter if provided
 	if len(tags) > 0 {
@@ -189,10 +195,10 @@ func (db *Database) CountProducts(tags []string) (int, error) {
 	return int(count), nil
 }
 
-func (db *Database) GetTags() ([]model.Tag, error) {
+func (db *Database) GetTags(ctx context.Context) ([]model.Tag, error) {
 	tags := []model.Tag{}
 
-	err := db.DB.
+	err := db.DB.WithContext(ctx).
 		Model(&model.Tag{}).
 		Order("display_name asc"). // Order by display name alphabetically
 		Find(&tags).Error

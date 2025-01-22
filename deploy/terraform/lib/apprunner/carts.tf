@@ -1,5 +1,7 @@
+# tflint-ignore: terraform_module_version
 module "app_runner_carts" {
-  source = "terraform-aws-modules/app-runner/aws"
+  source  = "terraform-aws-modules/app-runner/aws"
+  version = "1.2.1"
 
   service_name = "${var.environment_name}-carts"
 
@@ -9,8 +11,8 @@ module "app_runner_carts" {
       image_configuration = {
         port = 8080
         runtime_environment_variables = {
-          CARTS_DYNAMODB_TABLENAME = var.carts_dynamodb_table_name
-          SPRING_PROFILES_ACTIVE   = "dynamodb"
+          RETAIL_CARTS_PERSISTENCE_PROVIDER           = "dynamodb"
+          RETAIL_CARTS_PERSISTENCE_DYNAMODB_TABLENAME = var.carts_dynamodb_table_name
         }
       }
       image_identifier      = module.container_images.result.cart.url

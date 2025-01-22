@@ -2,28 +2,6 @@ image:
   repository: ${image_repository}
   tag: ${image_tag}
 
-postgresql:
-  create: false
-
-  database: ${database_name}
-
-  endpoint:
-    host: ${database_endpoint_host}
-    port: "${database_endpoint_port}"
-
-  secret:
-    username: ${database_username}
-    password: "${database_password}"
-
-rabbitmq:
-  create: false
-  
-  address: ${rabbitmq_endpoint}
-
-  secret:
-    username: ${rabbitmq_username}
-    password: "${rabbitmq_password}"
-
 %{ if opentelemetry_enabled }
 opentelemetry:
   enabled: true
@@ -35,3 +13,23 @@ securityGroups:
   securityGroupIds:
   - ${security_group_id}
 %{ endif }
+
+app:
+  persistence:
+    provider: 'postgres'
+    endpoint: '${database_endpoint_host}:${database_endpoint_port}'
+    database: '${database_name}'
+
+    secret:
+      username: ${database_username}
+      password: "${database_password}"
+
+  messaging:
+    provider: 'rabbitmq'
+
+    rabbitmq:
+      addresses: ["${rabbitmq_endpoint}"]
+
+      secret:
+        username: ${rabbitmq_username}
+        password: "${rabbitmq_password}"

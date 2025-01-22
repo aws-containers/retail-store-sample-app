@@ -15,12 +15,20 @@ resource "kubectl_manifest" "otel_instrumentation" {
     "spec" = {
       "env" = [
         {
-          "name"  = "OTEL_JAVAAGENT_ENABLED"
+          "name"  = "OTEL_SDK_DISABLED"
+          "value" = "false"
+        },
+        {
+          "name"  = "OTEL_EXPORTER_OTLP_PROTOCOL"
+          "value" = "http/protobuf"
+        },
+        {
+          "name"  = "OTEL_RESOURCE_PROVIDERS_AWS_ENABLED"
           "value" = "true"
         },
       ]
       "exporter" = {
-        "endpoint" = "http://adot-col-otlp-ingest-collector.${module.retail_app_eks.adot_namespace}:4317"
+        "endpoint" = "http://adot-col-otlp-ingest-collector.${module.retail_app_eks.adot_namespace}:4318"
       }
       "propagators" = [
         "tracecontext",

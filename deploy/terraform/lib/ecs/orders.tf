@@ -5,9 +5,7 @@ module "orders_service" {
   service_name                    = "orders"
   cluster_arn                     = aws_ecs_cluster.cluster.arn
   vpc_id                          = var.vpc_id
-  vpc_cidr                        = var.vpc_cidr
   subnet_ids                      = var.subnet_ids
-  public_subnet_ids               = var.public_subnet_ids
   tags                            = var.tags
   container_image                 = module.container_images.result.orders.url
   service_discovery_namespace_arn = aws_service_discovery_private_dns_namespace.this.arn
@@ -15,16 +13,19 @@ module "orders_service" {
   healthcheck_path                = "/actuator/health"
 
   environment_variables = {
-    RETAIL_ORDERS_MESSAGING_PROVIDER = "rabbitmq"
+    RETAIL_ORDERS_MESSAGING_PROVIDER   = "rabbitmq"
+    RETAIL_ORDERS_PERSISTENCE_PROVIDER = "postgres"
+    RETAIL_ORDERS_PERSISTENCE_NAME     = var.orders_db_name
   }
 
   secrets = {
-    SPRING_DATASOURCE_URL      = "${aws_secretsmanager_secret_version.orders_db.arn}:host::"
-    SPRING_DATASOURCE_USERNAME = "${aws_secretsmanager_secret_version.orders_db.arn}:username::"
-    SPRING_DATASOURCE_PASSWORD = "${aws_secretsmanager_secret_version.orders_db.arn}:password::"
-    SPRING_RABBITMQ_ADDRESSES  = "${aws_secretsmanager_secret_version.mq.arn}:host::"
-    SPRING_RABBITMQ_USERNAME   = "${aws_secretsmanager_secret_version.mq.arn}:username::"
-    SPRING_RABBITMQ_PASSWORD   = "${aws_secretsmanager_secret_version.mq.arn}:password::"
+    RETAIL_ORDERS_MESSAGING_RABBITMQ_ADDRESSES = "${aws_secretsmanager_secret_version.mq.arn}:host::"
+    RETAIL_ORDERS_MESSAGING_RABBITMQ_USERNAME  = "${aws_secretsmanager_secret_version.mq.arn}:username::"
+    RETAIL_ORDERS_MESSAGING_RABBITMQ_PASSWORD  = "${aws_secretsmanager_secret_version.mq.arn}:password::"
+
+    RETAIL_ORDERS_PERSISTENCE_ENDPOINT = "${aws_secretsmanager_secret_version.orders_db.arn}:host::"
+    RETAIL_ORDERS_PERSISTENCE_USERNAME = "${aws_secretsmanager_secret_version.orders_db.arn}:username::"
+    RETAIL_ORDERS_PERSISTENCE_PASSWORD = "${aws_secretsmanager_secret_version.orders_db.arn}:password::"
   }
 
   additional_task_execution_role_iam_policy_arns = [
@@ -72,7 +73,7 @@ resource "aws_secretsmanager_secret_version" "orders_db" {
     {
       username = var.orders_db_username
       password = var.orders_db_password
-      host     = "jdbc:postgresql://${var.orders_db_endpoint}:${var.orders_db_port}/${var.orders_db_name}"
+      host     = "${var.orders_db_endpoint}:${var.orders_db_port}"
     }
   )
 }

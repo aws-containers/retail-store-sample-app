@@ -32,9 +32,8 @@ module "dependencies" {
   environment_name = var.environment_name
   tags             = module.tags.result
 
-  vpc_id             = module.vpc.inner.vpc_id
-  subnet_ids         = module.vpc.inner.private_subnets
-  availability_zones = module.vpc.inner.azs
+  vpc_id     = module.vpc.inner.vpc_id
+  subnet_ids = module.vpc.inner.private_subnets
 
   catalog_security_group_id  = local.security_groups_active ? aws_security_group.catalog.id : module.retail_app_eks.node_security_group_id
   orders_security_group_id   = local.security_groups_active ? aws_security_group.orders.id : module.retail_app_eks.node_security_group_id
