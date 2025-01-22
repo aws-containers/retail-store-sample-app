@@ -1,16 +1,6 @@
 name: Cart CI
 
 on:
-  push:
-    branches:
-      - main
-    paths:
-      - "src/cart/**"
-  pull_request:
-    branches:
-      - main
-    paths:
-      - "src/cart/**"
   workflow_dispatch:
 
 permissions:

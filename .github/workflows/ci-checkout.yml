@@ -1,16 +1,6 @@
 name: Checkout CI
 
 on:
-  push:
-    branches:
-      - main
-    paths:
-      - "src/checkout/**"
-  pull_request:
-    branches:
-      - main
-    paths:
-      - "src/checkout/**"
   workflow_dispatch:
 
 permissions:

@@ -1,16 +1,6 @@
 name: Orders CI
 
 on:
-  push:
-    branches:
-      - main
-    paths:
-      - "src/orders/**"
-  pull_request:
-    branches:
-      - main
-    paths:
-      - "src/orders/**"
   workflow_dispatch:
 
 permissions:

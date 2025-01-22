@@ -1,16 +1,6 @@
 name: UI CI
 
 on:
-  push:
-    branches:
-      - main
-    paths:
-      - "src/ui/**"
-  pull_request:
-    branches:
-      - main
-    paths:
-      - "src/ui/**"
   workflow_dispatch:
 
 permissions:

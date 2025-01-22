@@ -16,8 +16,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: ./.github/actions/setup-docker
-      - uses: ./.github/actions/setup-env
+      - name: "Setup Docker"
+        uses: ./.github/actions/setup-docker
+      - name: "Setup Env"
+        uses: ./.github/actions/setup-env
       - name: Test
         shell: devenv shell bash -- -e {0}
         run: |
