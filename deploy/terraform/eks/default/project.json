@@ -18,14 +18,14 @@
         "command": "terraform validate"
       }
     },
-    "lint": {
+    "test:e2e": {
       "executor": "nx:run-commands",
       "dependsOn": ["build"],
       "options": {
         "command": "exit 0"
       }
     },
-    "e2e": {
+    "lint": {
       "executor": "nx:run-commands",
       "dependsOn": ["build"],
       "options": {
