@@ -1,11 +1,11 @@
 module "tags" {
-  source = "../lib/tags"
+  source = "../../lib/tags"
 
   environment_name = var.environment_name
 }
 
 module "vpc" {
-  source = "../lib/vpc"
+  source = "../../lib/vpc"
 
   environment_name = var.environment_name
 
@@ -23,7 +23,7 @@ module "vpc" {
 }
 
 module "dependencies" {
-  source = "../lib/dependencies"
+  source = "../../lib/dependencies"
 
   environment_name = var.environment_name
   tags             = module.tags.result
@@ -37,7 +37,7 @@ module "dependencies" {
 }
 
 module "retail_app_apprunner" {
-  source = "../lib/apprunner"
+  source = "../../lib/apprunner"
 
   environment_name          = var.environment_name
   vpc_id                    = module.vpc.inner.vpc_id
