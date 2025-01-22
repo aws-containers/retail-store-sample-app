@@ -10,7 +10,7 @@
       "inputs": ["{projectRoot}/src/**/*", "{projectRoot}/pom.xml"],
       "outputs": ["{projectRoot}/target/*.jar"],
       "options": {
-        "command": "./mvnw -DskipTests package"
+        "command": "./mvnw --no-transfer-progress -DskipTests package"
       }
     },
     "test": {
