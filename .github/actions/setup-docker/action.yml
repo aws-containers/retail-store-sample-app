@@ -12,3 +12,7 @@ runs:
     - name: Set up Docker Buildx
       id: buildx
       uses: docker/setup-buildx-action@v3
+outputs:
+  builder:
+    description: "Buildx builder name"
+    value: ${{ steps.buildx.outputs.name }}

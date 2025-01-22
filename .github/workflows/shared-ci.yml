@@ -17,6 +17,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: "Setup Docker"
+        id: docker
         uses: ./.github/actions/setup-docker
       - name: "Setup Env"
         uses: ./.github/actions/setup-env
@@ -27,4 +28,4 @@ jobs:
       - name: Build containers
         shell: devenv shell bash -- -e {0}
         run: |
-          yarn nx container ${{ inputs.component }} --platforms linux/amd64,linux/arm64 --builder ${{ steps.buildx.outputs.name }} --load false
+          yarn nx container ${{ inputs.component }} --platforms linux/amd64,linux/arm64 --builder ${{ steps.docker.outputs.builder }} --load false
