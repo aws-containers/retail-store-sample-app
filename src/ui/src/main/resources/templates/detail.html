@@ -21,23 +21,25 @@
           <!-- Product Title -->
           <div class="space-y-2">
             <h1 class="text-3xl font-bold text-gray-800" th:text="${item.name}">
-              Classic Chronograph Watch
+              Product name
             </h1>
             <div class="flex items-center space-x-4">
               <span
                 class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-primary-100 text-primary-800"
+                th:each="tag : ${item.tags}"
+                th:text="${tag.displayName}"
               >
-                Smart
+                Tag
               </span>
               <!-- Rating Display -->
               <div class="flex items-center space-x-1">
                 <div
                   class="flex items-center"
                   role="img"
-                  aria-label="2 out of 5 stars"
+                  aria-label="0 out of 5 stars"
                 >
-                  <i class="fas fa-star text-yellow-400"></i>
-                  <i class="fas fa-star text-yellow-400"></i>
+                  <i class="fas fa-star text-gray-300"></i>
+                  <i class="fas fa-star text-gray-300"></i>
                   <i class="fas fa-star text-gray-300"></i>
                   <i class="fas fa-star text-gray-300"></i>
                   <i class="fas fa-star text-gray-300"></i>
@@ -54,10 +56,7 @@
           <!-- Description -->
           <div class="space-y-4">
             <p class="text-gray-600" th:text="${item.description}">
-              Elegant and sophisticated, this chronograph watch features a
-              premium stainless steel case, precise quartz movement, and water
-              resistance up to 50 meters. Perfect for both casual and formal
-              occasions.
+              Product description
             </p>
 
             <!-- Add to Cart Section -->

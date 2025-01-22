@@ -30,5 +30,6 @@ public interface OrderMapper {
   ExistingOrder toExistingOrder(OrderEntity entity);
 
   @Mapping(target = "id", ignore = true)
+  @Mapping(target = "createdDate", ignore = true)
   OrderEntity toOrderEntity(Order order);
 }

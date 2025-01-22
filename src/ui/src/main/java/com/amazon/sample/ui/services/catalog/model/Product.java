@@ -34,5 +34,5 @@ public class Product {
 
   private int price;
 
-  private List<ProductTag> tag = null;
+  private List<ProductTag> tags = null;
 }

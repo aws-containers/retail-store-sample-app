@@ -1,0 +1,42 @@
+{
+  "properties": [
+    {
+      "name": "retail.carts.persistence.provider",
+      "type": "java.lang.String",
+      "description": "The persistence provider for the cart service. Possible values: in-memory, dynamodb",
+      "defaultValue": "in-memory"
+    },
+    {
+      "name": "retail.carts.persistence.dynamodb.endpoint",
+      "type": "java.lang.String",
+      "description": "The DynamoDB endpoint URL for the cart service"
+    },
+    {
+      "name": "retail.carts.persistence.dynamodb.createTable",
+      "type": "java.lang.Boolean",
+      "description": "Flag to determine if the DynamoDB table should be created automatically",
+      "defaultValue": false
+    },
+    {
+      "name": "retail.carts.persistence.dynamodb.tableName",
+      "type": "java.lang.String",
+      "description": "The name of the DynamoDB table for storing cart items",
+      "defaultValue": "Items"
+    }
+  ],
+  "hints": [
+    {
+      "name": "retail.carts.persistence.provider",
+      "values": [
+        {
+          "value": "in-memory",
+          "description": "Use in-memory storage for cart items"
+        },
+        {
+          "value": "dynamodb",
+          "description": "Use Amazon DynamoDB for cart items storage"
+        }
+      ]
+    }
+  ]
+}
