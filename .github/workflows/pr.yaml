@@ -21,23 +21,27 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-  pre-commit:
-    name: "Pre-commit hooks"
+  hooks:
+    name: "Hooks"
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - name: Use Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
-      - uses: actions/setup-python@v5
-      - name: Setup TFLint
-        uses: terraform-linters/setup-tflint@v4
-      - name: Setup terraform-docs
-        uses: jaxxstorm/action-install-gh-release@v1.12.0
-        with:
-          repo: terraform-docs/terraform-docs
-      - name: Yarn install
+      - name: "Setup Env"
+        uses: ./.github/actions/setup-env
+      - name: Test
         run: |
-          yarn install
-      - uses: pre-commit/action@v3.0.1
+          devenv test
+
+  test:
+    name: "Project tests"
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Setup Env"
+        uses: ./.github/actions/setup-env
+      - name: Global
+        shell: devenv shell bash -- -e {0}
+        run: |
+          yarn nx affected --targets=lint,test:e2e,test,build
+      - name: Containers
+        shell: devenv shell bash -- -e {0}
+        run: |
+          yarn nx affected --targets=container --exclude='*,!tag:container'
