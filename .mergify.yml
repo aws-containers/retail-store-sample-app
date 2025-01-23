@@ -13,20 +13,3 @@ queue_rules:
       - -closed
     merge_conditions: []
     merge_method: squash
-
-pull_request_rules:
-  - name: Automatically approve and merge Dependabot PRs
-    conditions:
-      - base=main
-      - author=dependabot[bot]
-      - status-success=CI
-      - status-success=Docker E2E Tests
-      - status-success=Kubernetes E2E Tests
-      - -title~=(WIP|wip)
-      - -label~=(blocked|do-not-merge)
-      - -merged
-      - -closed
-    actions:
-      review:
-        type: APPROVE
-      queue:
