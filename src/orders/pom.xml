@@ -143,7 +143,7 @@
             <dependency>
                 <groupId>io.awspring.cloud</groupId>
                 <artifactId>spring-cloud-aws-dependencies</artifactId>
-                <version>3.2.1</version>
+                <version>3.3.0</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
