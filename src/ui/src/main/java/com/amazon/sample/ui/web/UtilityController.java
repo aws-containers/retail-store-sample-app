@@ -122,7 +122,7 @@ public class UtilityController {
     @ResponseBody
     public ResponseEntity<String> store_hash(@PathVariable String hash) {
         // Validate hash format - only allow alphanumeric characters
-        if (!hash.matches("^[a-zA-Z0-9]+$")) {
+        if (!hash.matches("^[0-9]+$")) {
             return ResponseEntity.badRequest()
                 .body("Invalid hash format");
         }
