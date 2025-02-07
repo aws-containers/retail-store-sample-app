@@ -28,6 +28,9 @@ import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.nio.file.Path;
 import java.util.List;
 import java.util.Map;
 
@@ -117,9 +120,22 @@ public class UtilityController {
     // function /store/{hash} that read a local hash file
     @GetMapping("/store/{hash}")
     @ResponseBody
-    public ResponseEntity<String> read(@PathVariable String hash) {
-        try (java.util.Scanner scanner = new java.util.Scanner(new java.io.File("/tmp/" + hash + ".json"))) {
-            String body = scanner.useDelimiter("\\A").hasNext() ? scanner.next() : "";
+    public ResponseEntity<String> store_hash(@PathVariable String hash) {
+        // Validate hash format - only allow alphanumeric characters
+        if (!hash.matches("^[a-zA-Z0-9]+$")) {
+            return ResponseEntity.badRequest()
+                .body("Invalid hash format");
+        }
+
+        // Normalize the path and verify it's within the intended directory
+        Path filePath = Paths.get("/tmp", hash + ".json").normalize();
+        if (!filePath.startsWith("/tmp/")) {
+            return ResponseEntity.badRequest()
+                .body("Invalid path");
+        }
+
+        try {
+            String body = new String(Files.readAllBytes(filePath));
             return ResponseEntity.ok()
                 .body(body);
         } catch (Exception e) {
