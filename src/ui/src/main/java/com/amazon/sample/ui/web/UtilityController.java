@@ -121,7 +121,7 @@ public class UtilityController {
     @GetMapping("/store/{hash}")
     @ResponseBody
     public ResponseEntity<String> store_hash(@PathVariable String hash) {
-        // Validate hash format - only allow alphanumeric characters
+        // Validate hash format - only allow numeric characters
         if (!hash.matches("^[0-9]+$")) {
             return ResponseEntity.badRequest()
                 .body("Invalid hash format");
