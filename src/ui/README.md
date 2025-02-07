@@ -27,8 +27,14 @@ Several "utility" endpoints are provided with useful functionality for various s
 
 | Method | Name                           | Description                                                                 |
 | ------ | ------------------------------ | --------------------------------------------------------------------------- |
-| `GET`  | `/utility/stress/{iterations}` | Stress the CPU with the number of iterations increasing the CPU consumption |
 | `GET`  | `/utility/status/{code}`       | Returns HTTP response with given HTTP status code                           |
+| `GET`  | `/utility/headers`             | Print the HTTP headers of the inbound request                               |
+| `GET`  | `/utility/panic`               | Shutdown the application with an error code                                 |
+| `POST` | `/utility/echo`                | Write back the POST payload sent                                            |
+| `POST` | `/utility/store`               | Write the payload to a file and return a hash                               | 
+| `GET`  | `/utility/store/{hash}`        | Return the payload from the file system previously written                  |
+| `GET`  | `/utility/stress/{iterations}` | Stress the CPU with the number of iterations increasing the CPU consumption |
+
 
 ## Running
 
