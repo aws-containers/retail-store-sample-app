@@ -1,0 +1,57 @@
+name: "PR"
+
+on:
+  pull_request:
+    branches:
+      - main
+    types:
+      - opened
+      - edited
+      - synchronize
+
+permissions:
+  pull-requests: read
+
+jobs:
+  semanticpr:
+    name: "Semantic Pull Request"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: amannn/action-semantic-pull-request@v5
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  hooks:
+    name: "Hooks"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v3
+      - name: Setup Env
+        uses: ./.github/actions/setup-env
+      - name: Test
+        run: |
+          devenv test
+
+  test:
+    name: "Project tests"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - name: "Setup Env"
+        uses: ./.github/actions/setup-env
+      - name: Build
+        shell: devenv shell bash -- -e {0}
+        run: |
+          yarn nx affected --targets=build --base origin/main --parallel 1
+      - name: Other tasks
+        shell: devenv shell bash -- -e {0}
+        run: |
+          yarn nx affected --targets=lint,test:integration,test --base origin/main
+      - name: Containers
+        shell: devenv shell bash -- -e {0}
+        run: |
+          yarn nx affected --targets=container --exclude='*,!tag:container' --base origin/main

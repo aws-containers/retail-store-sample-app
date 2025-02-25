@@ -18,17 +18,13 @@
 
 package com.amazon.sample.orders.web.payload;
 
-import lombok.Data;
-
 import java.util.List;
+import lombok.Data;
 
 @Data
 public class Order {
-    private String firstName;
 
-    private String lastName;
+  private ShippingAddress shippingAddress;
 
-    private String email;
-
-    private List<OrderItem> items;
+  private List<OrderItem> items;
 }

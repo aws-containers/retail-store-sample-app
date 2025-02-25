@@ -1,0 +1,47 @@
+name: "Publish artifacts"
+description: "Publish container images and helm charts"
+inputs:
+  tag:
+    description: "Tag ref to publish"
+    required: true
+  ecr-repository:
+    description: "ECR repository for publishing to"
+    required: true
+  gh-token:
+    description: "GitHub token for authentication"
+    required: true
+runs:
+  using: "composite"
+  steps:
+    - name: "Setup Docker"
+      uses: ./.github/actions/setup-docker
+
+    - name: "Setup Env"
+      uses: ./.github/actions/setup-env
+
+    - name: "Upload Release Artifact"
+      shell: devenv shell bash -- -e {0}
+      env:
+        GITHUB_TOKEN: ${{ inputs.gh-token }}
+        TAG_NAME: ${{ inputs.tag }}
+        AWS_ECR_REPOSITORY: ${{ inputs.ecr-repository }}
+      run: |
+        export IMAGE_TAG=${TAG_NAME#v}
+
+        yarn nx run-many -t build --projects=tag:service --parallel=1
+
+        # Ensure all containers build
+        yarn nx run-many -t container --projects=tag:service --tags ${AWS_ECR_REPOSITORY}/retail-store-sample-{projectName}:${IMAGE_TAG} --configuration publish --push false
+
+        # Then push
+        yarn nx run-many -t container --projects=tag:service --tags ${AWS_ECR_REPOSITORY}/retail-store-sample-{projectName}:${IMAGE_TAG} --configuration publish
+
+        yarn nx run-many -t helm --projects=tag:service --remote oci://${AWS_ECR_REPOSITORY} --push
+
+        bash scripts/compose-dist.sh
+
+        gh release upload ${TAG_NAME} ./dist/docker-compose/docker-compose.yaml --clobber
+
+        bash scripts/kubernetes-dist.sh
+
+        gh release upload ${TAG_NAME} ./dist/kubernetes/kubernetes.yaml --clobber

@@ -1,17 +1,30 @@
-version: "2"
-
 services:
   ui:
     ports:
-      - 8080
+      - 8888:8080
     environment:
       - JAVA_OPTS=-XX:MaxRAMPercentage=75.0 -Djava.security.egd=file:/dev/urandom
       - SERVER_TOMCAT_ACCESSLOG_ENABLED=true
     hostname: ui
     build:
       context: .
-    image: microservices-demo/ui
     restart: always
-    mem_limit: 256m
+    mem_limit: 512m
     cap_drop:
       - ALL
+    healthcheck:
+      test:
+        [
+          "CMD-SHELL",
+          "curl -s -f http://localhost:8080/actuator/health || exit 1",
+        ]
+      interval: 10s
+      timeout: 10s
+      retries: 3
+      start_period: 15s
+    develop:
+      watch:
+        - action: rebuild
+          path: src
+        - action: rebuild
+          path: pom.xml

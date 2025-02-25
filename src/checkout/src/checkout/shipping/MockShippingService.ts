@@ -23,19 +23,19 @@ import { IShippingService } from './IShippingService';
 export class MockShippingService implements IShippingService {
   constructor(private prefix: string) {}
 
-  async getShippingRates(request: CheckoutRequest): Promise<ShippingRates> {
+  async getShippingRates(_request: CheckoutRequest): Promise<ShippingRates> {
     return Promise.resolve({
       shipmentId: this.makeid(32),
       rates: [
         {
           name: `${this.prefix}Priority Mail`,
-          amount: 5,
+          amount: 10,
           token: 'priority-mail',
           estimatedDays: 10,
         },
         {
           name: `${this.prefix}Priority Mail Express`,
-          amount: 15,
+          amount: 25,
           token: 'priority-mail-express',
           estimatedDays: 5,
         },

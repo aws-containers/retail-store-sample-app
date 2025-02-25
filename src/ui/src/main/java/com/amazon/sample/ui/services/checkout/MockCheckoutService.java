@@ -20,75 +20,164 @@ package com.amazon.sample.ui.services.checkout;
 
 import com.amazon.sample.ui.services.carts.CartsService;
 import com.amazon.sample.ui.services.carts.model.Cart;
-import com.amazon.sample.ui.services.checkout.model.*;
-import reactor.core.publisher.Mono;
-
+import com.amazon.sample.ui.services.checkout.model.Checkout;
+import com.amazon.sample.ui.services.checkout.model.CheckoutItem;
+import com.amazon.sample.ui.services.checkout.model.CheckoutMapper;
+import com.amazon.sample.ui.services.checkout.model.CheckoutSubmitted;
+import com.amazon.sample.ui.services.checkout.model.ShippingAddress;
+import com.amazon.sample.ui.services.checkout.model.ShippingOption;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 import java.util.stream.Collectors;
+import lombok.Data;
+import reactor.core.publisher.Mono;
 
 public class MockCheckoutService implements CheckoutService {
 
-    private final CartsService cartsService;
-    private final CheckoutMapper mapper;
+  private static final int MOCK_TAX = 5;
+  private static final int MOCK_SHIPPING_COST = 10;
+  private static final int MOCK_SHIPPING_DAYS = 3;
 
-    private Map<String, Checkout> checkouts = new HashMap<>();
+  private final CartsService cartsService;
+  private final CheckoutMapper mapper;
 
-    public MockCheckoutService(CheckoutMapper mapper, CartsService cartsService) {
-        this.mapper = mapper;
-        this.cartsService = cartsService;
+  private Map<String, CheckoutData> checkoutDataMap = new HashMap<>();
+
+  public MockCheckoutService(CheckoutMapper mapper, CartsService cartsService) {
+    this.mapper = mapper;
+    this.cartsService = cartsService;
+  }
+
+  @Override
+  public Mono<Checkout> get(String sessionId) {
+    var checkoutData = checkoutDataMap.get(sessionId);
+    return buildCheckout(checkoutData, sessionId);
+  }
+
+  @Override
+  public Mono<Checkout> create(String sessionId) {
+    CheckoutData checkoutData = new CheckoutData();
+
+    this.checkoutDataMap.put(sessionId, checkoutData);
+
+    return buildCheckout(checkoutData, sessionId);
+  }
+
+  @Override
+  public Mono<Checkout> shipping(
+    String sessionId,
+    ShippingAddress shippingAddress
+  ) {
+    var checkoutData = checkoutDataMap.get(sessionId);
+    checkoutData.shippingAddress = shippingAddress;
+
+    return buildCheckout(checkoutData, sessionId);
+  }
+
+  @Override
+  public Mono<Checkout> delivery(String sessionId, String token) {
+    var checkoutData = checkoutDataMap.get(sessionId);
+    checkoutData.token = token;
+
+    return buildCheckout(checkoutData, sessionId);
+  }
+
+  @Override
+  public Mono<CheckoutSubmitted> submit(String sessionId) {
+    var checkoutData = checkoutDataMap.get(sessionId);
+
+    return this.buildCheckout(checkoutData, sessionId)
+      .zipWith(this.cartsService.deleteCart(sessionId))
+      .map(tuple -> {
+        Checkout checkout = tuple.getT1();
+        return new CheckoutSubmitted(
+          UUID.randomUUID().toString(),
+          checkoutData.shippingAddress.getEmail(),
+          checkout.getSubtotal(),
+          checkout.getTax(),
+          checkout.getShipping(),
+          checkout.getTotal(),
+          checkout.getItems()
+        );
+      });
+  }
+
+  private Mono<Checkout> buildCheckout(
+    CheckoutData checkoutData,
+    String sessionId
+  ) {
+    Mono<Cart> cart = cartsService.getCart(sessionId);
+
+    return cart.map(c -> {
+      var checkoutItems = c
+        .getItems()
+        .stream()
+        .map(mapper::cartItem)
+        .map(i -> {
+          i.setTotalCost(i.getQuantity() * i.getPrice());
+          return i;
+        })
+        .collect(
+          Collectors.teeing(
+            Collectors.toList(),
+            Collectors.summingInt(item -> item.getTotalCost()),
+            (items, total) -> new ItemsWithTotal(items, total)
+          )
+        );
+
+      List<ShippingOption> options = new ArrayList<>();
+      options.add(
+        new ShippingOption(
+          "Standard",
+          MOCK_SHIPPING_COST,
+          "standard",
+          MOCK_SHIPPING_DAYS
+        )
+      );
+
+      var tax = 0;
+      var shipping = 0;
+
+      if (checkoutData.shippingAddress != null) {
+        tax = MOCK_TAX;
+      }
+
+      if (checkoutData.token != null) {
+        shipping = MOCK_SHIPPING_COST;
+      }
+
+      var total = checkoutItems.total + tax + shipping;
+
+      return new Checkout(
+        checkoutItems.items,
+        checkoutItems.total,
+        tax,
+        shipping,
+        total,
+        options
+      );
+    });
+  }
+
+  @Data
+  private static class ItemsWithTotal {
+
+    private final List<CheckoutItem> items;
+    private final int total;
+
+    ItemsWithTotal(List<CheckoutItem> items, int total) {
+      this.items = items;
+      this.total = total;
     }
+  }
 
-    @Override
-    public Mono<Checkout> get(String sessionId) {
-        return Mono.just(checkouts.get(sessionId));
-    }
+  private static class CheckoutData {
 
-    @Override
-    public Mono<Checkout> create(String sessionId) {
-        Mono<Cart> cart = cartsService.getCart(sessionId);
+    private String token;
 
-        return cart.map(c -> {
-            Checkout checkout = new Checkout(null,
-                "asd",
-                c.getSubtotal(),
-                10,
-                0,
-                c.getTotalPrice(),
-                new ArrayList<>());
-
-            checkout.setItems(c.getItems().stream().map(mapper::fromCartItem).map(mapper::item).collect(Collectors.toList()));
-
-            List<ShippingOption> options = new ArrayList<>();
-            options.add(new ShippingOption("Standard", 10, "standard", 3));
-
-            checkout.setShippingOptions(options);
-
-            this.checkouts.put(sessionId, checkout);
-
-            return checkout;
-        });
-    }
-
-    @Override
-    public Mono<Checkout> shipping(String sessionId, String customerEmail, ShippingAddress shippingAddress) {
-        return get(sessionId);
-    }
-
-    @Override
-    public Mono<Checkout> delivery(String sessionId, String token) {
-        return get(sessionId).map(checkout -> {
-            checkout.setShipping(10);
-            checkout.setTotal(checkout.getTotal() + checkout.getShipping());
-
-            return checkout;
-        });
-    }
-
-    @Override
-    public Mono<CheckoutSubmittedResponse> submit(String sessionId) {
-        return this.cartsService.deleteCart(sessionId).map(c -> new CheckoutSubmittedResponse(new CheckoutSubmitted("1234", "something@example.com"), c));
-    }
+    private ShippingAddress shippingAddress;
+  }
 }

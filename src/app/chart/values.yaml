@@ -1,0 +1,24 @@
+cart:
+  fullnameOverride: carts
+
+catalog:
+  fullnameOverride: catalog
+
+checkout:
+  fullnameOverride: checkout
+  retail:
+    checkout:
+      endpoints:
+        orders: http://orders:80
+
+orders:
+  fullnameOverride: orders
+
+ui:
+  fullnameOverride: ui
+  app:
+    endpoints:
+      catalog: http://catalog:80
+      carts: http://carts:80
+      checkout: http://checkout:80
+      orders: http://orders:80

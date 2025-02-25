@@ -1,10 +1,7 @@
-version: "3.4"
-
 services:
   orders:
     build:
       context: .
-    image: microservices-demo/orders
     hostname: orders
     restart: always
     cap_drop:
@@ -19,13 +16,21 @@ services:
     environment:
       - reschedule=on-node-failure
       - SERVER_TOMCAT_ACCESSLOG_ENABLED=true
+      - RETAIL_ORDERS_PERSISTENCE_PROVIDER=postgres
+      - RETAIL_ORDERS_PERSISTENCE_ENDPOINT=orders-db:5432
+      - RETAIL_ORDERS_PERSISTENCE_NAME=orders
+      - RETAIL_ORDERS_PERSISTENCE_USERNAME=orders_user
+      - RETAIL_ORDERS_PERSISTENCE_PASSWORD=${DB_PASSWORD}
       - RETAIL_ORDERS_MESSAGING_PROVIDER=rabbitmq
-      - SPRING_DATASOURCE_URL=jdbc:postgresql://orders-db:5432/orders
-      - SPRING_DATASOURCE_USERNAME=orders_user
-      - SPRING_DATASOURCE_PASSWORD=${MYSQL_PASSWORD}
-      - SPRING_RABBITMQ_HOST=rabbitmq
+      - RETAIL_ORDERS_MESSAGING_RABBITMQ_ADDRESSES=rabbitmq:5672
+      - RETAIL_ORDERS_MESSAGING_RABBITMQ_USERNAME=rabbitmq
+      - RETAIL_ORDERS_MESSAGING_RABBITMQ_PASSWORD=${DB_PASSWORD}
     ports:
       - "8083:8080"
+    depends_on:
+      orders-db:
+        condition: service_healthy
+        restart: true
     healthcheck:
       test:
         ["CMD-SHELL", "curl -f http://localhost:8080/actuator/health || exit 1"]
@@ -33,6 +38,12 @@ services:
       timeout: 10s
       retries: 3
       start_period: 15s
+    develop:
+      watch:
+        - action: rebuild
+          path: src
+        - action: rebuild
+          path: pom.xml
 
   # nosemgrep: yaml.docker-compose.security.writable-filesystem-service.writable-filesystem-service
   orders-db:
@@ -43,7 +54,7 @@ services:
       - no-new-privileges:true
     environment:
       - reschedule=on-node-failure
-      - POSTGRES_PASSWORD=${MYSQL_PASSWORD}
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
       - POSTGRES_DB=orders
       - POSTGRES_USER=orders_user
     ports:
@@ -61,6 +72,9 @@ services:
     restart: always
     security_opt:
       - no-new-privileges:true
+    environment:
+      - RABBITMQ_DEFAULT_USER=rabbitmq
+      - RABBITMQ_DEFAULT_PASS=${DB_PASSWORD}
     ports:
       - "61616:61616"
       - "8161:8161"

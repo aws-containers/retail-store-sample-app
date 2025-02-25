@@ -25,7 +25,8 @@ import lombok.Data;
 @Data
 @AllArgsConstructor
 public class CheckoutSubmittedResponse {
-    private CheckoutSubmitted submitted;
 
-    private Cart cart;
+  private CheckoutSubmitted submitted;
+
+  private Cart cart;
 }

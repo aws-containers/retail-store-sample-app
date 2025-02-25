@@ -18,78 +18,109 @@
 
 package com.amazon.sample.ui.config;
 
-import com.amazon.sample.ui.clients.carts.api.CartsApi;
-import com.amazon.sample.ui.clients.carts.api.ItemsApi;
-import com.amazon.sample.ui.clients.catalog.api.CatalogApi;
-import com.amazon.sample.ui.clients.checkout.api.CheckoutApi;
-import com.amazon.sample.ui.services.assets.AssetsService;
-import com.amazon.sample.ui.services.assets.MockAssetsService;
-import com.amazon.sample.ui.services.assets.ProxyingAssetsService;
+import com.amazon.sample.ui.client.cart.CartClient;
+import com.amazon.sample.ui.client.catalog.CatalogClient;
+import com.amazon.sample.ui.client.checkout.CheckoutClient;
 import com.amazon.sample.ui.services.carts.CartsService;
+import com.amazon.sample.ui.services.carts.KiotaCartsService;
 import com.amazon.sample.ui.services.carts.MockCartsService;
-import com.amazon.sample.ui.services.carts.WebClientCartsService;
 import com.amazon.sample.ui.services.catalog.CatalogService;
+import com.amazon.sample.ui.services.catalog.KiotaCatalogService;
 import com.amazon.sample.ui.services.catalog.MockCatalogService;
-import com.amazon.sample.ui.services.catalog.WebClientCatalogService;
 import com.amazon.sample.ui.services.catalog.model.CatalogMapper;
 import com.amazon.sample.ui.services.checkout.CheckoutService;
+import com.amazon.sample.ui.services.checkout.KiotaCheckoutService;
 import com.amazon.sample.ui.services.checkout.MockCheckoutService;
-import com.amazon.sample.ui.services.checkout.WebClientCheckoutService;
 import com.amazon.sample.ui.services.checkout.model.CheckoutMapper;
-
-import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
+import com.microsoft.kiota.RequestAdapter;
+import com.microsoft.kiota.authentication.AnonymousAuthenticationProvider;
+import com.microsoft.kiota.bundle.DefaultRequestAdapter;
+import io.opentelemetry.api.OpenTelemetry;
+import io.opentelemetry.instrumentation.okhttp.v3_0.OkHttpTelemetry;
+import okhttp3.Call;
+import okhttp3.OkHttpClient;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.util.StringUtils;
 
 @Configuration
 public class StoreServices {
 
-    @Bean
-    @ConditionalOnProperty(prefix = "endpoints", name = "catalog")
-    public CatalogService catalogService(CatalogApi catalogApi, CatalogMapper mapper) {
-        return new WebClientCatalogService(catalogApi, mapper);
+  @Autowired
+  private EndpointProperties endpoints;
+
+  public RequestAdapter getRequestAdapter(
+    String endpoint,
+    Call.Factory factory
+  ) {
+    var adapter = new DefaultRequestAdapter(
+      new AnonymousAuthenticationProvider(),
+      null,
+      null,
+      factory
+    );
+
+    adapter.setBaseUrl(endpoint);
+
+    return adapter;
+  }
+
+  @Bean
+  public Call.Factory tracedClientFactory(OpenTelemetry openTelemetry) {
+    return OkHttpTelemetry.builder(openTelemetry)
+      .build()
+      .newCallFactory(new OkHttpClient.Builder().build());
+  }
+
+  @Bean
+  public CatalogService catalogService(
+    CatalogMapper mapper,
+    Call.Factory factory
+  ) {
+    if (StringUtils.hasText(this.endpoints.getCatalog())) {
+      return new KiotaCatalogService(
+        new CatalogClient(
+          getRequestAdapter(this.endpoints.getCatalog(), factory)
+        ),
+        mapper
+      );
     }
 
-    @Bean
-    @ConditionalOnProperty(prefix = "endpoints", name = "catalog", havingValue = "false", matchIfMissing = true)
-    public CatalogService mockCatalogService() {
-        return new MockCatalogService();
+    return new MockCatalogService();
+  }
+
+  @Bean
+  public CartsService cartsService(
+    CatalogService catalogService,
+    Call.Factory factory
+  ) {
+    if (StringUtils.hasText(this.endpoints.getCarts())) {
+      return new KiotaCartsService(
+        new CartClient(getRequestAdapter(this.endpoints.getCarts(), factory)),
+        catalogService
+      );
     }
 
-    @Bean
-    @ConditionalOnProperty(prefix = "endpoints", name = "carts")
-    public CartsService cartsService(CartsApi cartsApi, ItemsApi itemsApi, CatalogService catalogService) {
-        return new WebClientCartsService(cartsApi, itemsApi, catalogService);
+    return new MockCartsService(catalogService);
+  }
+
+  @Bean
+  public CheckoutService checkoutService(
+    CartsService cartsService,
+    CheckoutMapper mapper,
+    Call.Factory factory
+  ) {
+    if (StringUtils.hasText(this.endpoints.getCheckout())) {
+      return new KiotaCheckoutService(
+        new CheckoutClient(
+          getRequestAdapter(this.endpoints.getCheckout(), factory)
+        ),
+        mapper,
+        cartsService
+      );
     }
 
-
-    @Bean
-    @ConditionalOnProperty(prefix = "endpoints", name = "carts", havingValue = "false", matchIfMissing = true)
-    public CartsService mockCartsService(CatalogService catalogService) {
-        return new MockCartsService(catalogService);
-    }
-
-    @Bean
-    @ConditionalOnProperty(prefix = "endpoints", name = "checkout")
-    public CheckoutService checkoutService(CheckoutApi api, CheckoutMapper mapper, CartsService cartsService) {
-        return new WebClientCheckoutService(api, mapper, cartsService);
-    }
-
-    @Bean
-    @ConditionalOnProperty(prefix = "endpoints", name = "checkout", havingValue = "false", matchIfMissing = true)
-    public CheckoutService mockCheckoutService(CheckoutMapper mapper, CartsService cartsService) {
-        return new MockCheckoutService(mapper, cartsService);
-    }
-
-    @Bean
-    @ConditionalOnProperty(prefix = "endpoints", name = "assets")
-    public AssetsService<?> assetsService() {
-        return new ProxyingAssetsService();
-    }
-
-    @Bean
-    @ConditionalOnProperty(prefix = "endpoints", name = "assets", havingValue = "false", matchIfMissing = true)
-    public AssetsService<?> mockAssetsService() {
-        return new MockAssetsService();
-    }
+    return new MockCheckoutService(mapper, cartsService);
+  }
 }

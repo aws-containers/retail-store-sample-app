@@ -29,7 +29,7 @@ metadata:
 spec:
   containers:
   - name: artillery
-    image: artilleryio/artillery:2.0.0-31
+    image: artilleryio/artillery:2.0.22
     args:
     - "run"
     - "-t"

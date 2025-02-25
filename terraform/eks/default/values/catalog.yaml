@@ -1,0 +1,24 @@
+image:
+  repository: ${image_repository}
+  tag: ${image_tag}
+
+%{ if opentelemetry_enabled }
+opentelemetry:
+  enabled: true
+  instrumentation: ${opentelemetry_instrumentation}
+%{ else }
+securityGroups:
+  create: true
+
+  securityGroupIds:
+  - ${security_group_id}
+%{ endif }
+
+app:
+  persistence:
+    provider: mysql
+    endpoint: "${database_endpoint}"
+
+    secret:
+      username: ${database_username}
+      password: ${database_password}

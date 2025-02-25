@@ -1,7 +1,9 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xmlns="http://maven.apache.org/POM/4.0.0"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<?xml version="1.0" encoding="UTF-8" ?>
+<project
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns="http://maven.apache.org/POM/4.0.0"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+>
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>com.amazon.sample</groupId>
@@ -15,13 +17,13 @@
   <parent>
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-parent</artifactId>
-    <version>3.4.1</version>
-    <relativePath/> <!-- lookup parent from repository -->
+    <version>3.4.2</version>
+    <relativePath /> <!-- lookup parent from repository -->
   </parent>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <java.version>17</java.version>
+    <java.version>21</java.version>
     <mapstruct.version>1.6.3</mapstruct.version>
   </properties>
 
@@ -30,10 +32,17 @@
 			<dependency>
 				<groupId>software.amazon.awssdk</groupId>
 				<artifactId>bom</artifactId>
-				<version>2.29.43</version>
+				<version>2.30.7</version>
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>
+      <dependency>
+          <groupId>io.opentelemetry.instrumentation</groupId>
+          <artifactId>opentelemetry-instrumentation-bom</artifactId>
+          <version>2.12.0</version>
+          <type>pom</type>
+          <scope>import</scope>
+      </dependency>
 		</dependencies>
 	</dependencyManagement>
 
@@ -77,10 +86,6 @@
       <artifactId>micrometer-registry-prometheus</artifactId>
     </dependency>
     <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-data-mongodb</artifactId>
-    </dependency>
-    <dependency>
 			<groupId>software.amazon.awssdk</groupId>
 			<artifactId>dynamodb</artifactId>
 		</dependency>
@@ -95,13 +100,13 @@
     <dependency>
       <groupId>org.projectlombok</groupId>
       <artifactId>lombok</artifactId>
-      <version>1.18.24</version>
+      <version>1.18.36</version>
       <scope>provided</scope>
     </dependency>
     <dependency>
       <groupId>org.springdoc</groupId>
-      <artifactId>springdoc-openapi-ui</artifactId>
-      <version>1.8.0</version>
+      <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+      <version>2.8.4</version>
     </dependency>
 
     <dependency>
@@ -124,7 +129,7 @@
     <dependency>
       <groupId>de.codecentric</groupId>
       <artifactId>chaos-monkey-spring-boot</artifactId>
-      <version>3.1.0</version>
+      <version>3.1.3</version>
       <exclusions>
         <exclusion>
           <artifactId>jackson-databind</artifactId>
@@ -135,6 +140,16 @@
       <dependency>
         <groupId>com.fasterxml.jackson.core</groupId>
         <artifactId>jackson-databind</artifactId>
+    </dependency>
+    <dependency>
+        <groupId>io.opentelemetry.instrumentation</groupId>
+        <artifactId>opentelemetry-spring-boot-starter</artifactId>
+    </dependency>
+    <dependency>
+        <groupId>io.opentelemetry.instrumentation</groupId>
+        <artifactId>opentelemetry-aws-sdk-2.2-autoconfigure</artifactId>
+        <version>2.12.0-alpha</version>
+        <scope>runtime</scope>
     </dependency>
   </dependencies>
 
@@ -191,6 +206,16 @@
           </annotationProcessorPaths>
         </configuration>
       </plugin>
+      <plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-checkstyle-plugin</artifactId>
+				<version>3.6.0</version>
+				<configuration>
+					<configLocation>../misc/style/java/checkstyle.xml</configLocation>
+					<consoleOutput>true</consoleOutput>
+          <failsOnError>true</failsOnError>
+				</configuration>
+			</plugin>
     </plugins>
   </build>
 </project>

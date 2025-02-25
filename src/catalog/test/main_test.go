@@ -49,12 +49,9 @@ func TestMain(m *testing.M) {
 	dbConfig = config.DatabaseConfiguration{
 		Type:           "mysql",
 		Endpoint:       endpoint,
-		ReadEndpoint:   endpoint,
-		Name:           "sampledb",
+		Name:           "catalogdb",
 		User:           "catalog_user",
 		Password:       "unittest123",
-		Migrate:        true,
-		MigrationsPath: "../db/migrations",
 		ConnectTimeout: 5,
 	}
 
@@ -83,7 +80,7 @@ func router() *gin.Engine {
 		log.Fatalln("Error creating controller", err)
 	}
 
-	catalog := router.Group("/catalogue")
+	catalog := router.Group("/catalog")
 
 	catalog.GET("", c.GetProducts)
 
@@ -102,7 +99,7 @@ func prepareContainer(ctx context.Context) (testcontainers.Container, string, er
 		Env: map[string]string{
 			"MYSQL_ROOT_PASSWORD":        "unittest123",
 			"MYSQL_ALLOW_EMPTY_PASSWORD": "true",
-			"MYSQL_DATABASE":             "sampledb",
+			"MYSQL_DATABASE":             "catalogdb",
 			"MYSQL_USER":                 "catalog_user",
 			"MYSQL_PASSWORD":             "unittest123",
 		},

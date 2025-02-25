@@ -1,12 +1,14 @@
 # Build Stage
-FROM public.ecr.aws/amazonlinux/amazonlinux:2023 as build-env
+FROM public.ecr.aws/amazonlinux/amazonlinux:2023 AS build-env
 
 # We tell DNF not to install Recommends and Suggests packages, keeping our
 # installed set of packages as minimal as possible.
 RUN dnf --setopt=install_weak_deps=False install -q -y \
     maven \
-    java-17-amazon-corretto-headless \
+    java-21-amazon-corretto-headless \
     which \
+    tar \
+    gzip \
     && \
     dnf clean all
 
@@ -31,7 +33,7 @@ FROM public.ecr.aws/amazonlinux/amazonlinux:2023
 # weak dependencies in DNF terminology, thus keeping our installed set of
 # packages as minimal as possible.
 RUN dnf --setopt=install_weak_deps=False install -q -y \
-    java-17-amazon-corretto-headless \
+    java-21-amazon-corretto-headless \
     shadow-utils \
     && \
     dnf clean all
@@ -40,8 +42,6 @@ RUN dnf --setopt=install_weak_deps=False install -q -y \
 # https://docs.aws.amazon.com/linux/al2023/ug/curl-minimal.html
 RUN dnf -q -y swap libcurl-minimal libcurl-full \
     && dnf -q -y swap curl-minimal curl-full
-
-ARG aws_opentelemetry_agent_version=1.24.0
 
 ENV APPUSER=appuser
 ENV APPUID=1000
@@ -54,10 +54,8 @@ RUN useradd \
     --uid "$APPUID" \
     "$APPUSER"
 
-RUN curl -L https://github.com/aws-observability/aws-otel-java-instrumentation/releases/download/v${aws_opentelemetry_agent_version}/aws-opentelemetry-agent.jar -o /opt/aws-opentelemetry-agent.jar && \
-    curl -L https://raw.githubusercontent.com/aws-observability/aws-otel-java-instrumentation/v${aws_opentelemetry_agent_version}/licenses/licenses.md -o aws-opentelemetry-agent-licenses.md
-ENV JAVA_TOOL_OPTIONS=-javaagent:/opt/aws-opentelemetry-agent.jar
-ENV OTEL_JAVAAGENT_ENABLED=false
+ENV JAVA_TOOL_OPTIONS=
+ENV SPRING_PROFILES_ACTIVE=prod
 
 WORKDIR /app
 USER appuser

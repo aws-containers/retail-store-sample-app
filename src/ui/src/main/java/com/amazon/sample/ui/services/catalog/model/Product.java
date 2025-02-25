@@ -18,25 +18,21 @@
 
 package com.amazon.sample.ui.services.catalog.model;
 
+import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.Data;
-
-import java.util.List;
 
 @Data
 @AllArgsConstructor
 public class Product {
-    private String id;
 
-    private String name;
+  private String id;
 
-    private String description;
+  private String name;
 
-    private int count;
+  private String description;
 
-    private String imageUrl;
+  private int price;
 
-    private int price;
-
-    private List<String> tag = null;
+  private List<ProductTag> tags;
 }

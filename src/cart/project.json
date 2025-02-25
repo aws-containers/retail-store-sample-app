@@ -1,0 +1,50 @@
+{
+  "name": "cart",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "sourceRoot": "src/cart",
+  "targets": {
+    "build": {
+      "executor": "nx:run-commands",
+      "cache": true,
+      "inputs": ["{projectRoot}/src/**/*", "{projectRoot}/pom.xml"],
+      "outputs": ["{projectRoot}/target/*.jar"],
+      "options": {
+        "command": "./mvnw --no-transfer-progress -DskipTests package"
+      }
+    },
+    "test": {
+      "executor": "nx:run-commands",
+      "dependsOn": ["build"],
+      "cache": true,
+      "inputs": ["{projectRoot}/src/**/*", "{projectRoot}/pom.xml"],
+      "options": {
+        "command": "./mvnw test -DexcludedGroups=integration"
+      }
+    },
+    "test:integration": {
+      "executor": "nx:run-commands",
+      "dependsOn": ["test"],
+      "cache": true,
+      "inputs": ["{projectRoot}/src/**/*", "{projectRoot}/pom.xml"],
+      "options": {
+        "command": "AWS_ACCESS_KEY_ID='dummy' AWS_SECRET_ACCESS_KEY='dummy' ./mvnw test -Dgroups=integration"
+      }
+    },
+    "lint": {
+      "executor": "nx:run-commands",
+      "dependsOn": ["build"],
+      "options": {
+        "command": "./mvnw checkstyle:checkstyle"
+      }
+    },
+    "serve": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "./mvnw spring-boot:run"
+      }
+    },
+    "helm": {}
+  },
+  "tags": ["service", "chart"]
+}

@@ -18,22 +18,24 @@
 
 package com.amazon.sample.ui.services.assets;
 
-import org.springframework.http.ResponseEntity;
-import org.springframework.core.io.ClassPathResource;
-import org.springframework.http.CacheControl;
+import java.io.IOException;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
-import org.springframework.web.reactive.function.client.ExchangeStrategies;
-import org.springframework.web.reactive.function.client.WebClient;
+import org.springframework.http.ResponseEntity;
 import reactor.core.publisher.Mono;
 
-import java.util.concurrent.TimeUnit;
+public class MockAssetsService implements AssetsService {
 
-public class MockAssetsService implements AssetsService<ClassPathResource> {
-
-    public Mono<ResponseEntity<ClassPathResource>> getImage(String image) {
-      ClassPathResource classPathResource = new ClassPathResource("static/assets/img/sample_product.jpg");
-      
-      return Mono.just(new ResponseEntity<ClassPathResource>(classPathResource, HttpStatus.OK));
+  public Mono<ResponseEntity<byte[]>> getImage(String image) {
+    byte[] data;
+    try {
+      data = this.getClass()
+        .getClassLoader()
+        .getResourceAsStream("static/assets/img/sample_product.png")
+        .readAllBytes();
+    } catch (IOException e) {
+      throw new RuntimeException(e);
     }
+
+    return Mono.just(new ResponseEntity<byte[]>(data, HttpStatus.OK));
+  }
 }

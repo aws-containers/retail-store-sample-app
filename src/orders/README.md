@@ -10,18 +10,17 @@ This service provides an API for storing orders. Data is stored in MySQL.
 
 The following environment variables are available for configuring the service:
 
-| Name                                | Description                                                                                               | Default |
-| ----------------------------------- | --------------------------------------------------------------------------------------------------------- | ------- |
-| `PORT`                              | The port which the server will listen on                                                                  | `8080`  |
-| `RETAIL_ORDERS_MESSAGING_PROVIDER`  | The messaging provider to use to publish events (`in-memory`, `sqs`, `rabbitmq`)                          | `""`    |
-| `RETAIL_ORDERS_MESSAGING_SQS_TOPIC` | The name of the SQS topic to publish events to (SQS messaging provider)                                   | `""`    |
-| `SPRING_DATASOURCE_WRITER_URL`      | The URL for the MySQL database writer endpoint. Uses the format `jdbc:mariadb://<host>:<port>/<database>` | `""`    |
-| `SPRING_DATASOURCE_WRITER_USERNAME` | The username for the MySQL database writer endpoint.                                                      | `""`    |
-| `SPRING_DATASOURCE_WRITER_PASSWORD` | The password for the MySQL database writer endpoint.                                                      | `""`    |
-| `SPRING_DATASOURCE_READER_URL`      | The URL for the MySQL database reader endpoint. Uses the format `jdbc:mariadb://<host>:<port>/<database>` | `""`    |
-| `SPRING_DATASOURCE_READER_USERNAME` | The username for the MySQL database reader endpoint.                                                      | `""`    |
-| `SPRING_DATASOURCE_READER_PASSWORD` | The password for the MySQL database reader endpoint.                                                      | `""`    |
-| `SPRING_RABBITMQ_ADDRESSES`         | The address of the RabbitMQ endpoints. Uses the format `amqp://<endpoint>:<port>`                         | `""`    |
+| Name                                          | Description                                                                             | Default     |
+| --------------------------------------------- | --------------------------------------------------------------------------------------- | ----------- |
+| `PORT`                                        | The port which the server will listen on                                                | `8080`      |
+| `RETAIL_CHECKOUT_PERSISTENCE_PROVIDER`        | The persistence provider to use, can be `in-memory` or `postgres`.                      | `in-memory` |
+| `RETAIL_ORDERS_PERSISTENCE_POSTGRES_ENDPOINT` | The postgres database endpoint.                                                         | `""`        |
+| `RETAIL_ORDERS_PERSISTENCE_POSTGRES_NAME`     | The postgres database name                                                              | `""`        |
+| `RETAIL_ORDERS_PERSISTENCE_POSTGRES_USERNAME` | Username to authenticate with postgres database.                                        | `""`        |
+| `RETAIL_ORDERS_PERSISTENCE_POSTGRES_PASSWORD` | Password to authenticate with postgres database.                                        | `in-memory` |
+| `RETAIL_ORDERS_MESSAGING_PROVIDER`            | The messaging provider to use to publish events. Can be `in-memory`, `sqs`, `rabbitmq`. | `""`        |
+| `RETAIL_ORDERS_MESSAGING_SQS_TOPIC`           | The name of the SQS topic to publish events to (SQS messaging provider)                 | `""`        |
+| `RETAIL_ORDERS_MESSAGING_RABBITMQ_ADDRESSES`  | Endpoints for RabbitMQ messaing provider                                                | `""`        |
 
 ## Running
 
@@ -31,7 +30,7 @@ There are two main options for running the service:
 
 Pre-requisites:
 
-- Java 17 installed
+- Java 21 installed
 
 Run the Spring Boot application like so:
 

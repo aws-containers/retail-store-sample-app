@@ -28,7 +28,6 @@
  * Do not edit the class manually.
  */
 
-import { RequestFile } from '../api';
 import { OrderItem } from './orderItem';
 
 export class ExistingOrder {

@@ -4,106 +4,89 @@
   th:replace="~{fragments/layout :: layout (~{::body},'cart')}"
 >
   <body>
-    <section class="bg-primary p-y-sm">
-      <div class="container">
-        <ol class="breadcrumb custom mb-0">
-          <li class="breadcrumb-item"><a href="/home">Home</a></li>
-          <li class="breadcrumb-item active" aria-current="page">Cart</li>
-        </ol>
-      </div>
-    </section>
-    <section class="p-y-m">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-9">
-            <div class="card basket" id="basket">
-              <div class="content-body">
-                <h4 class="card-title mb-4">Shopping cart</h4>
+    <section class="max-w-3xl mx-auto py-8">
+      <div class="container mx-auto px-4 py-8">
+        <!-- Cart Header -->
+        <h1 class="text-2xl font-semibold mb-6" th:text="#{shoppingcart.title}">
+          Shopping Cart
+        </h1>
 
-                <div th:if="${fullCart.items.size() == 0}">
-                  You don't have any items in your cart!
-                </div>
-                <article
-                  class="row gy-3 mb-4 cart-item"
-                  th:each="item : ${fullCart.items}"
-                  th:if="${fullCart.items.size() > 0}"
-                >
-                  <div class="col-lg-5">
-                    <figure class="couplet me-lg-5">
-                      <div class="picture" style="height: 80px">
-                        <img
-                          style="max-height: 100%; max-width: 100%"
-                          src="images/items/13.webp"
-                          th:src="${item.imageUrl}"
-                          class="img-sm img-thumbnail"
-                        />
-                      </div>
-                      <figcaption class="description">
-                        <a
-                          href="#"
-                          class="title item-name"
-                          th:text="${item.name}"
-                          >Blazer Suit Dress Jacket for Men</a
-                        >
-                      </figcaption>
-                    </figure>
-                  </div>
-                  <div class="col-lg-2 col-sm-4 col-6">
-                    <div class="lh-sm">
-                      <var class="h6 item-price"
-                        >$
-                        <th:block th:text="${item.totalPrice}">123</th:block>
-                      </var>
-                      <br />
-                      <small class="text-muted">
-                        $
-                        <th:block th:text="${item.price}">123</th:block>
-                        x <th:block th:text="${item.quantity}">1</th:block>
-                      </small>
-                    </div>
-                  </div>
-                  <div class="col-lg col-sm-4">
-                    <div class="float-lg-end">
-                      <form action="/cart/remove" method="POST">
-                        <input
-                          type="hidden"
-                          name="productId"
-                          th:value="${item.id}"
-                        />
-                        <button
-                          type="submit"
-                          class="btn btn-remove remove-item text-danger"
-                        >
-                          Remove
-                        </button>
-                      </form>
-                    </div>
-                  </div>
-                </article>
+        <!-- Cart Items -->
+        <div class="w-full" id="basket">
+          <!-- Cart Item -->
+          <div th:if="${fullCart.items.size() == 0}">
+            You don't have any items!
+          </div>
+          <div th:if="${fullCart.items.size() > 0}">
+            <div
+              class="flex border-b py-4 space-x-4 cart-item"
+              th:each="item : ${fullCart.items}"
+            >
+              <img
+                src="https://via.placeholder.com/100"
+                alt="Product"
+                class="w-[100px] h-[100px] rounded"
+                th:src="@{/assets/img/products/{itemId}.png(itemId=${item.id})}"
+              />
+              <div class="flex-1">
+                <h2 th:text="${item.name}" class="item-name">Product Name</h2>
+                <p class="text-sm text-gray-600">
+                  <th:block th:text="#{field.quantity}"></th:block>:
+                  <th:block th:text="${item.quantity}" class="item-quantity"
+                    >1</th:block
+                  >
+                </p>
               </div>
+              <div class="text-right">
+                <p>$<th:block th:text="${item.totalPrice}">299</th:block></p>
+                <p class="text-sm text-gray-600">
+                  $<th:block class="item-price" th:text="${item.price}"
+                    >299</th:block
+                  >
+                  each
+                </p>
+                <form th:action="@{/cart/remove}" method="POST">
+                  <input type="hidden" name="productId" th:value="${item.id}" />
+                  <button
+                    type="submit"
+                    class="text-red-500 hover:text-red-700 mt-2 remove-item"
+                    aria-label="Remove item"
+                  >
+                    <i class="fas fa-trash-alt"></i>
+                  </button>
+                </form>
+              </div>
+            </div>
+
+            <!-- Cart Total and Checkout -->
+            <div class="mt-8">
+              <div class="flex justify-between items-center pt-2">
+                <div>
+                  <p class="text-lg">Subtotal</p>
+                  <p class="text-sm text-gray-500 mt-1">
+                    Shipping and taxes calculated at checkout
+                  </p>
+                </div>
+                <p class="text-xl cart-subtotal">
+                  $<th:block th:text="${fullCart.subtotal}">446</th:block>
+                </p>
+              </div>
+
+              <a th:href="@{/checkout}">
+                <button
+                  id="checkout"
+                  class="w-full bg-primary-500 text-white rounded-lg py-3 mt-6 hover:bg-primary-700"
+                >
+                  <i class="fa fa-credit-card"></i>
+
+                  <span th:text="#{shoppingcart.checkout}">
+                    Proceed to Checkout
+                  </span>
+                </button>
+              </a>
             </div>
           </div>
-          <aside class="col-lg-3">
-            <div class="card">
-              <div class="card-body">
-                <dl class="sidebarlist-align">
-                  <dt>Total:</dt>
-                  <dd class="text-end text-dark font-weight-bold">
-                    $
-                    <th:block th:text="${fullCart.subtotal}">446</th:block>
-                  </dd>
-                </dl>
-
-                <div class="d-grid gap-2 my-3">
-                  <a href="/checkout" class="btn btn-success w-100">
-                    Checkout
-                  </a>
-                </div>
-              </div>
-            </div>
-          </aside>
         </div>
-        <br /><br />
       </div>
     </section>
   </body>

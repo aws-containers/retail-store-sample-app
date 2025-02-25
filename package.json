@@ -1,11 +1,27 @@
 {
-  "name": "retail-store-sample-app",
+  "name": "store",
   "version": "0.0.1",
   "main": "index.js",
   "repository": "https://github.com/aws-containers/retail-store-sample-app.git",
   "license": "MIT",
+  "nx": {},
+  "scripts": {
+    "compose:up": "docker compose --project-directory src/app up --build --detach --wait --wait-timeout 120",
+    "compose:down": "docker compose --project-directory src/app down"
+  },
   "devDependencies": {
+    "@nx-extensions/helm": "^1.0.0",
+    "@nx-go/nx-go": "^3.3.1",
+    "@nx-tools/nx-container": "^6.2.0",
+    "@nx/devkit": "20.4.0",
+    "@nx/js": "^20.3.1",
+    "@prettier/plugin-xml": "^3.4.1",
+    "@swc/helpers": "^0.5.15",
+    "dotenv": "^16.4.7",
+    "nx": "20.4.0",
     "prettier": "^3.3.2",
-    "prettier-plugin-java": "^2.6.4"
+    "prettier-plugin-java": "2.6.5",
+    "tslib": "^2.8.1",
+    "typescript-eslint": "^8.20.0"
   }
 }

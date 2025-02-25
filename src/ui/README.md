@@ -10,16 +10,16 @@ This service provides the frontend for the retail store, serving the HTML UI and
 
 The following environment variables are available for configuring the service:
 
-| Name                       | Description                                                                       | Default |
-| -------------------------- | --------------------------------------------------------------------------------- | ------- |
-| `PORT`                     | The port which the server will listen on                                          | `8080`  |
-| `ENDPOINTS_CATALOG`        | The endpoint of the catalog API. If set to `false` uses a mock implementation     | `false` |
-| `ENDPOINTS_CARTS`          | The endpoint of the carts API. If set to `false` uses a mock implementation       | `false` |
-| `ENDPOINTS_ORDERS`         | The endpoint of the orders API. If set to `false` uses a mock implementation      | `false` |
-| `ENDPOINTS_CHECKOUT`       | The endpoint of the checkout API. If set to `false` uses a mock implementation    | `false` |
-| `ENDPOINTS_ASSETS`         | The endpoint of the assets service. If set to `false` uses a mock implementation  | `false` |
-| `ENDPOINTS_HTTP_KEEPALIVE` | Set to false to disable HTTP keepalive on requests to backend services            | `true`  |
-| `RETAIL_UI_BANNER`         | Sets text for a banner which will be displayed at the top of the UI on every page | `""`    |
+| Name                                 | Description                                                                    | Default     |
+| ------------------------------------ | ------------------------------------------------------------------------------ | ----------- |
+| `PORT`                               | The port which the server will listen on                                       | `8080`      |
+| `RETAIL_UI_THEME`                    | Name of the theme for the UI, valid values are `default`, `green`, `orange`    | `"default"` |
+| `RETAIL_UI_DISABLE_DEMO_WARNINGS`    | Disable the UI messages warning about demonstration content                    | `false`     |
+| `RETAIL_UI_ENDPOINTS_CATALOG`        | The endpoint of the catalog API. If set to `false` uses a mock implementation  | `false`     |
+| `RETAIL_UI_ENDPOINTS_CARTS`          | The endpoint of the carts API. If set to `false` uses a mock implementation    | `false`     |
+| `RETAIL_UI_ENDPOINTS_ORDERS`         | The endpoint of the orders API. If set to `false` uses a mock implementation   | `false`     |
+| `RETAIL_UI_ENDPOINTS_CHECKOUT`       | The endpoint of the checkout API. If set to `false` uses a mock implementation | `false`     |
+| `RETAIL_UI_ENDPOINTS_HTTP_KEEPALIVE` | Set to false to disable HTTP keepalive on requests to backend services         | `true`      |
 
 ## Endpoints
 
@@ -43,7 +43,7 @@ There are two main options for running the service:
 
 Pre-requisites:
 
-- Java 17 installed
+- Java 21 installed
 
 Run the Spring Boot application like so:
 

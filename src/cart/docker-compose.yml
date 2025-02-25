@@ -1,10 +1,7 @@
-version: "2.3"
-
 services:
-  carts:
+  cart:
     build:
       context: .
-    image: microservices-demo/carts
     hostname: carts
     restart: always
     cap_drop:
@@ -18,9 +15,9 @@ services:
       - /tmp:rw,noexec,nosuid
     environment:
       - SERVER_TOMCAT_ACCESSLOG_ENABLED=true
-      - SPRING_PROFILES_ACTIVE=dynamodb
-      - CARTS_DYNAMODB_ENDPOINT=http://carts-db:8000
-      - CARTS_DYNAMODB_CREATETABLE=true
+      - RETAIL_CART_PERSISTENCE_PROVIDER=dynamodb
+      - RETAIL_CART_PERSISTENCE_DYNAMODB_ENDPOINT=http://carts-db:8000
+      - RETAIL_CART_PERSISTENCE_DYNAMODB_CREATETABLE=true
       - AWS_ACCESS_KEY_ID=key
       - AWS_SECRET_ACCESS_KEY=dummy
     ports:
@@ -52,20 +49,13 @@ services:
     tmpfs:
       - /tmp:rw,noexec,nosuid
     healthcheck:
-      test: ["CMD-SHELL", "curl -f http://localhost:8000/shell/ || exit 1"]
+      test: ["CMD-SHELL", "exit 0"]
       interval: 5s
-      timeout: 10s
+      timeout: 15s
       retries: 3
-
-  waiter:
-    image: busybox:1.33.0
-    restart: "no"
-    cap_drop:
-      - all
-    read_only: true
-    security_opt:
-      - no-new-privileges:true
-    command: echo 'Ready'
-    depends_on:
-      carts:
-        condition: service_healthy
+    develop:
+      watch:
+        - action: rebuild
+          path: src
+        - action: rebuild
+          path: pom.xml

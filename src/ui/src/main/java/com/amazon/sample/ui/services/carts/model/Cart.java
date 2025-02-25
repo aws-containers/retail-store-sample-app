@@ -18,65 +18,67 @@
 
 package com.amazon.sample.ui.services.carts.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-
 import java.util.ArrayList;
 import java.util.List;
+import lombok.AllArgsConstructor;
+import lombok.Data;
 
 @Data
 @AllArgsConstructor
 public class Cart {
-    private List<CartItem> items = new ArrayList<>();
 
-    public void addItem(CartItem item) {
-        boolean existing = false;
+  private static final Integer SHIPPING_COST = 10;
 
-        for(CartItem i : items) {
-            if(i.getId().equals(item.getId())) {
-                i.addQuantity(item.getQuantity());
-                existing = true;
-            }
-        }
+  private List<CartItem> items = new ArrayList<>();
 
-        if(!existing) {
-            this.items.add(item);
-        }
+  public void addItem(CartItem item) {
+    boolean existing = false;
+
+    for (CartItem i : items) {
+      if (i.getId().equals(item.getId())) {
+        i.addQuantity(item.getQuantity());
+        existing = true;
+      }
     }
 
-    public void removeItem(String id) {
-        for(CartItem i : items) {
-            if(i.getId().equals(id)) {
-                this.items.remove(i);
-            }
-        }
+    if (!existing) {
+      this.items.add(item);
+    }
+  }
+
+  public void removeItem(String id) {
+    for (CartItem i : items) {
+      if (i.getId().equals(id)) {
+        this.items.remove(i);
+      }
+    }
+  }
+
+  public int getSubtotal() {
+    int subtotal = 0;
+
+    for (CartItem i : items) {
+      subtotal += i.getTotalPrice();
     }
 
-    public int getSubtotal() {
-        int subtotal = 0;
+    return subtotal;
+  }
 
-        for(CartItem i : items) {
-            subtotal += i.getTotalPrice();
-        }
+  public int getTotalPrice() {
+    return this.getSubtotal() + this.getShipping();
+  }
 
-        return subtotal;
+  public int getShipping() {
+    return this.items.size() > 0 ? SHIPPING_COST : 0;
+  }
+
+  public int getNumItems() {
+    int total = 0;
+
+    for (CartItem i : items) {
+      total += i.getQuantity();
     }
 
-    public int getTotalPrice() {
-        return this.getSubtotal() + this.getShipping();
-    }
-
-    public int getShipping() {
-        return this.items.size() > 0 ? 10 : 0;
-    }
-
-    public int getNumItems() {
-        int total = 0;
-
-        for(CartItem i : items) {
-            total += i.getQuantity();
-        }
-
-        return total;
-    }
+    return total;
+  }
 }

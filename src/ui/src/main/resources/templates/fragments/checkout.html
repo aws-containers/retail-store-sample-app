@@ -5,92 +5,130 @@
   th:replace="~{fragments/layout :: layout (~{::body},'checkout')}"
 >
   <body>
-    <section class="bg-primary p-y-sm">
-      <div class="container">
-        <ol class="breadcrumb custom mb-0">
-          <li class="breadcrumb-item"><a href="/home">Home</a></li>
-          <li class="breadcrumb-item active" aria-current="page">Checkout</li>
-        </ol>
-      </div>
-    </section>
-    <div class="bg-light py-4">
-      <div class="container">
-        <div class="row">
-          <main class="col-lg-8">
-            <article class="card">
-              <div class="content-body">
-                <h5 class="card-title">Guest checkout</h5>
-                <ul class="stepper my-5">
-                  <li class="step current">
-                    <span class="icon">1</span>
-                    <span class="text">Customer</span>
-                  </li>
-                  <li
-                    class="step"
-                    th:classappend="${step >= 2} ? 'current' : ''"
-                  >
-                    <span class="icon">2</span>
-                    <span class="text">Shipping</span>
-                  </li>
-                  <li
-                    class="step"
-                    th:classappend="${step >= 3} ? 'current' : ''"
-                  >
-                    <span class="icon">3</span>
-                    <span class="text">Payment</span>
-                  </li>
-                  <li
-                    class="step"
-                    th:classappend="${step >= 4} ? 'current' : ''"
-                  >
-                    <span class="icon">4</span>
-                    <span class="text">Review</span>
-                  </li>
-                </ul>
-                <hr />
-                <div class="mt-4">
-                  <th:block th:insert="${template1}" />
-                </div>
-              </div>
-            </article>
-          </main>
-          <aside class="col-xl-4 col-lg-4">
-            <article class="ms-lg-4 mt-4 mt-lg-0" style="max-width: 320px">
-              <h6 class="card-title">Summary</h6>
+    <section class="max-w-4xl mx-auto px-4 py-8">
+      <!-- Progress Bar -->
+      <div class="mb-8 mx-16">
+        <div class="flex items-center justify-between relative">
+          <!-- Step 1: Address -->
+          <div class="step-item flex flex-col items-center">
+            <div
+              class="w-10 h-10 rounded-full bg-primary-500 flex items-center justify-center text-white"
+            >
+              <i class="fas fa-home"></i>
+            </div>
+            <div
+              class="text-sm font-medium mt-2 text-primary-500"
+              th:text="#{checkout.shippingaddress}"
+            >
+              Shipping
+            </div>
+          </div>
 
-              <dl class="sidebarlist-align">
-                <dt>Total price:</dt>
-                <dd class="text-end">
-                  $<th:block th:text="${checkout.subtotal}">446</th:block>
-                </dd>
-              </dl>
-              <dl class="sidebarlist-align" th:if="${checkout.tax > -1}">
-                <dt>Tax:</dt>
-                <dd class="text-end">
-                  $<th:block th:text="${checkout.tax}">446</th:block>
-                </dd>
-              </dl>
-              <dl class="sidebarlist-align" th:if="${checkout.shipping > -1}">
-                <dt>Shipping cost:</dt>
-                <dd class="text-end">
-                  $<th:block th:text="${checkout.shipping}">446</th:block>
-                </dd>
-              </dl>
-              <hr />
-              <dl class="sidebarlist-align" th:if="${checkout.total > -1}">
-                <dt>Total:</dt>
-                <dd class="text-end">
-                  <strong class="text-dark"
-                    >$<th:block th:text="${checkout.total}"
-                      >446</th:block
-                    ></strong
-                  >
-                </dd>
-              </dl>
-            </article>
-          </aside>
+          <!-- Step 2: Delivery -->
+          <div class="step-item flex flex-col items-center">
+            <div
+              class="w-10 h-10 rounded-full flex items-center justify-center"
+              th:classappend="${step >= 2} ? 'bg-primary-500 text-white' : 'bg-gray-200 text-gray-600'"
+            >
+              <i class="fas fa-truck"></i>
+            </div>
+            <div
+              class="text-sm font-medium mt-2"
+              th:classappend="${step >= 2} ? 'text-primary-500' : 'text-gray-500'"
+              th:text="#{checkout.delivery}"
+            >
+              Delivery
+            </div>
+          </div>
+
+          <!-- Step 3: Payment -->
+          <div class="step-item flex flex-col items-center">
+            <div
+              class="w-10 h-10 rounded-full flex items-center justify-center"
+              th:classappend="${step >= 3} ? 'bg-primary-500 text-white' : 'bg-gray-200 text-gray-600'"
+            >
+              <i class="fas fa-credit-card"></i>
+            </div>
+            <div
+              class="text-sm font-medium mt-2 text-gray-500"
+              th:classappend="${step >= 3} ? 'text-primary-500' : 'text-gray-500'"
+              th:text="#{checkout.payment}"
+            >
+              Payment
+            </div>
+          </div>
         </div>
       </div>
-    </div>
+
+      <div
+        class="bg-yellow-100 border-l-4 border-yellow-500 text-yellow-700 p-4 rounded mb-4"
+        role="alert"
+        th:if="${!disableDemoWarnings}"
+      >
+        <p class="font-bold">
+          <i class="fas fa-exclamation-triangle mr-2"></i>Warning
+        </p>
+        <p>
+          This site is for demonstration/educational purposes only, do not enter
+          personal details
+        </p>
+      </div>
+
+      <!-- Form Container -->
+      <div>
+        <div class="grid grid-cols-1 md:grid-cols-5 gap-8">
+          <!-- Existing form - make it span 2 columns -->
+          <div class="md:col-span-3">
+            <th:block th:insert="${template1}" />
+          </div>
+          <!-- Order Summary Column -->
+          <div class="md:col-span-2">
+            <div class="p-6 text-sm bg-gray-100 rounded-lg">
+              <dl>
+                <dt class="text-gray-500">Amount due</dt>
+                <dd class="text-2xl mt-2 mb-4">
+                  $<th:block th:text="${checkout.total}">446</th:block>
+                </dd>
+              </dl>
+
+              <dl
+                class="border-t border-gray border-opacity-20 mt-6 pt-2 space-y-2"
+              >
+                <div class="flex items-center justify-between py-2">
+                  <dt class="text-gray-500">Subtotal</dt>
+                  <dd>
+                    $<th:block th:text="${checkout.subtotal}">446</th:block>
+                  </dd>
+                </div>
+                <div
+                  class="flex items-center justify-between py-2"
+                  th:if="${checkout.tax > 0}"
+                >
+                  <dt class="text-gray-500">Taxes</dt>
+                  <dd>$<th:block th:text="${checkout.tax}">446</th:block></dd>
+                </div>
+                <div
+                  class="flex items-center justify-between py-2"
+                  th:if="${checkout.shipping > 0}"
+                >
+                  <dt class="text-gray-500">Shipping</dt>
+                  <dd>
+                    $<th:block th:text="${checkout.shipping}">446</th:block>
+                  </dd>
+                </div>
+                <div
+                  class="flex items-center justify-between py-2 border-t border-gray border-opacity-20 mt-4 pt-4"
+                >
+                  <dt class="text-lg">Total</dt>
+                  <dd class="text-lg">
+                    $<th:block th:text="${checkout.total}">446</th:block>
+                  </dd>
+                </div>
+              </dl>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
   </body>
 </html>

@@ -1,20 +1,14 @@
-import { CompositePropagator } from '@opentelemetry/core';
-import { SimpleSpanProcessor } from '@opentelemetry/sdk-trace-base';
 import { getNodeAutoInstrumentations } from '@opentelemetry/auto-instrumentations-node';
-import { B3InjectEncoding, B3Propagator } from '@opentelemetry/propagator-b3';
 import { NodeSDK } from '@opentelemetry/sdk-node';
-import { AsyncLocalStorageContextManager } from '@opentelemetry/context-async-hooks';
 import * as process from 'process';
-import { OTLPTraceExporter } from '@opentelemetry/exporter-trace-otlp-grpc';
-import { awsEc2Detector } from '@opentelemetry/resource-detector-aws';
-import { envDetector } from '@opentelemetry/resources';
+import { OTLPTraceExporter } from '@opentelemetry/exporter-trace-otlp-http';
 import { AWSXRayIdGenerator } from '@opentelemetry/id-generator-aws-xray';
+// import { diag, DiagConsoleLogger, DiagLogLevel } from '@opentelemetry/api';
+
+// diag.setLogger(new DiagConsoleLogger(), DiagLogLevel.DEBUG);
 
 const otelSDK = new NodeSDK({
   traceExporter: new OTLPTraceExporter(),
-  spanProcessor: new SimpleSpanProcessor(new OTLPTraceExporter()),
-  contextManager: new AsyncLocalStorageContextManager(),
-  resourceDetectors: [envDetector, awsEc2Detector],
   instrumentations: [getNodeAutoInstrumentations()],
   idGenerator: new AWSXRayIdGenerator(),
 });

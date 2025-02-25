@@ -2,7 +2,7 @@
 
 This component provides a suite of end-to-end tests that exercise a broad set of functionality of the application as a whole. They are designed to be cross-cutting and treat the application as a black box rather than a set of distinct components.
 
-The tests are executed using `protractor`, and will run inside a headless Chromium browser.
+The tests are executed using `cypress`, and will run inside a headless Electron browser.
 
 ## Running
 
@@ -24,17 +24,16 @@ To run against Docker Compose running locally:
 ./scripts/run-docker.sh --network docker-compose_default 'http://ui:8080'
 ```
 
-### NPM
+### Yarn
 
 The tests can be run locally using NPM. To do so the following components must be installed:
 
-- NodeJS >= 16 & NPM
-- Chrome web browser
+- NodeJS >= 20 & Yarn
 
 ```
-npm install
+yarn
 
-ENDPOINT='http://endpoint:8080' npm test
+CYPRESS_BASE_URL='http://endpoint:8080' yarn cypress run
 ```
 
 Where the `ENDPOINT` environment variable should be adjusted to point at the endpoint of the UI service.

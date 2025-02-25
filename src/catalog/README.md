@@ -10,16 +10,15 @@ This service provides an API for retrieving product catalog information. Data is
 
 The following environment variables are available for configuring the service:
 
-| Name               | Description                                               | Default           |
-| ------------------ | --------------------------------------------------------- | ----------------- |
-| PORT               | The port which the server will listen on                  | `8080`            |
-| DB_ENDPOINT        | The endpoint of the MySQL database                        | `catalog-db:3306` |
-| DB_READ_ENDPOINT   | (Optional) The read endpoint of the MySQL database        |                   |
-| DB_NAME            | The name of the database to connect to                    | `sampledb`        |
-| DB_USER            | The username for authenticating to the database           | `catalog_user`    |
-| DB_PASSWORD        | The password for authenticating to the database           |                   |
-| DB_MIGRATE         | Whether to run the database migration function on startup | `true`            |
-| DB_CONNECT_TIMEOUT | Database connection timeout in seconds                    | `5`               |
+| Name                                       | Description                                                     | Default        |
+| ------------------------------------------ | --------------------------------------------------------------- | -------------- |
+| PORT                                       | The port which the server will listen on                        | `8080`         |
+| RETAIL_CATALOG_PERSISTENCE_PROVIDER        | The persistence provider to use, can be `in-memory` or `mysql`. | `in-memory`    |
+| RETAIL_CATALOG_PERSISTENCE_ENDPOINT        | Database endpoint URL                                           | `""`           |
+| RETAIL_CATALOG_PERSISTENCE_DB_NAME         | Database name                                                   | `catalogdb`    |
+| RETAIL_CATALOG_PERSISTENCE_USER            | Database user                                                   | `catalog_user` |
+| RETAIL_CATALOG_PERSISTENCE_PASSWORD        | Database password                                               | `""`           |
+| RETAIL_CATALOG_PERSISTENCE_CONNECT_TIMEOUT | Database connection timeout in seconds                          | `5`            |
 
 ## Running
 
@@ -52,7 +51,7 @@ curl localhost:8080/catalogue
 A `docker-compose.yml` file is included to run the service in Docker, including a MySQL database:
 
 ```
-MYSQL_PASSWORD="testing" docker compose up
+DB_PASSWORD="testing" docker compose up
 ```
 
 Test access:

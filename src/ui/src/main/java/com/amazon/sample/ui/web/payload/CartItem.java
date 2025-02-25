@@ -18,31 +18,22 @@
 
 package com.amazon.sample.ui.web.payload;
 
-import com.amazon.sample.ui.clients.carts.model.Item;
-import com.amazon.sample.ui.clients.catalog.model.ModelProduct;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
 @Data
 @AllArgsConstructor
 public class CartItem {
-    private String id;
 
-    private int quantity;
+  private String id;
 
-    private int price;
+  private Integer quantity;
 
-    private String name;
+  private Integer price;
 
-    private String imageUrl;
+  private String name;
 
-    public static CartItem from(Item item, ModelProduct product) {
-        return new CartItem(product.getId(),
-                item.getQuantity(), product.getPrice(),
-                product.getName(), product.getImageUrl());
-    }
-
-    public int getTotalPrice() {
-        return this.quantity * this.price;
-    }
+  public Integer getTotalPrice() {
+    return this.quantity * this.price;
+  }
 }

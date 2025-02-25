@@ -1,0 +1,22 @@
+releases:
+  - name: "catalog"
+    namespace: "default"
+    chart: ../catalog/chart
+    wait: true
+    values:
+      - templates/components.yaml.gotmpl
+      - templates/catalog.yaml.gotmpl
+
+  - name: "ui"
+    namespace: "default"
+    chart: ../ui/chart
+    wait: true
+    timeout: 600
+    values:
+      - templates/components.yaml.gotmpl
+      - templates/ui.yaml.gotmpl
+      - templates/ingress.yaml.gotmpl
+      - retail:
+          ui:
+            endpoints:
+              catalog: http://catalog

@@ -1,5 +1,5 @@
 # Build Stage
-FROM public.ecr.aws/amazonlinux/amazonlinux:2023 as build-env
+FROM public.ecr.aws/amazonlinux/amazonlinux:2023 AS build-env
 
 # We tell DNF not to install Recommends and Suggests packages, which are
 # weak dependencies in DNF terminology, thus keeping our installed set of
@@ -14,9 +14,13 @@ RUN mkdir -p "${GOPATH}/src" "${GOPATH}/bin" /appsrc
 
 WORKDIR /appsrc
 
+ENV GOPROXY=https://goproxy.io,direct
+
+COPY go.mod go.sum ./
+RUN go mod download
+
 COPY . .
 
-ENV GOPROXY=direct
 RUN go build -o main main.go
 
 # Final stage
@@ -45,7 +49,6 @@ WORKDIR /app
 USER appuser
 
 COPY --chown=appuser:appuser --from=build-env /appsrc/main /app/
-COPY --chown=appuser:appuser db/ /app/db/
 
 COPY ./ATTRIBUTION.md ./LICENSES.md
 

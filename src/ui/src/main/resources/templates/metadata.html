@@ -1,0 +1,109 @@
+<!doctype html>
+<html
+  lang="en"
+  xmlns:th="http://www.thymeleaf.org"
+  xmlns:retail="http://www.thymeleaf.org/retail"
+  th:replace="~{fragments/root :: root (~{::body})}"
+>
+  <body class="bg-gray-50">
+    <!-- Main Content -->
+    <main class="max-w-4xl mx-auto py-4">
+      <!-- Metadata Callouts -->
+      <div
+        class="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-8 gap-4 mb-6"
+        th:if="${focusAttributes?.size() > 0}"
+      >
+        <!-- Pod name -->
+        <div
+          class="bg-white rounded-lg shadow-sm p-4"
+          th:each="focusAttribute : ${focusAttributes}"
+          retail:dynamic-col-span="${focusAttribute.value}"
+        >
+          <div class="flex items-center justify-between">
+            <div class="space-y-1 truncate">
+              <p
+                class="text-sm text-gray-500"
+                th:text="${#strings.defaultString(#messages.msgOrNull('metadata.'+focusAttribute.provider+'.'+focusAttribute.name),focusAttribute.name)}"
+              >
+                Pod name
+              </p>
+              <p
+                class="text-lg text-gray-900 truncate"
+                th:text="${focusAttribute.value}"
+              >
+                nginx-deployment-75675f5897
+              </p>
+            </div>
+          </div>
+          <div class="mt-2">
+            <span
+              class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-primary-100 text-primary-800"
+              th:text="#{metadata.__${focusAttribute.provider}__}"
+            >
+              Kubernetes
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <!-- Table Header -->
+        <div class="px-6 py-4 border-b border-gray-200 bg-gray-50">
+          <div class="flex items-center space-x-2">
+            <i class="fas fa-circle-info text-primary-500"></i>
+            <h2 class="text-lg font-medium text-gray-800">Metadata</h2>
+          </div>
+        </div>
+
+        <!-- Table Content -->
+        <div class="divide-y divide-gray-200">
+          <div
+            class="bg-white text-gray-700 text-center py-3"
+            th:if="${metadata.sets.size() == 0}"
+          >
+            None
+          </div>
+          <div th:if="${metadata.sets.size() > 0}">
+            <!-- Table Section -->
+
+            <div th:each="set : ${metadata.sets}">
+              <div class="px-6 py-3 bg-gray-100">
+                <h3
+                  class="text-sm font-semibold text-gray-700"
+                  th:text="#{metadata.__${set.name}__}"
+                >
+                  EC2
+                </h3>
+              </div>
+              <div class="divide-y divide-gray-200">
+                <th:block
+                  th:each="attribute : ${set.attributes}"
+                  th:with="displayName=${#messages.msgOrNull('metadata.'+set.name+'.'+attribute.name)}"
+                >
+                  <div
+                    class="grid grid-cols-3 px-6 py-3"
+                    th:if="${displayName != null}"
+                  >
+                    <div
+                      class="text-sm text-gray-500"
+                      th:text="${displayName}"
+                      th:title="${set.name+'.'+attribute.name}"
+                    >
+                      Instance ID
+                    </div>
+                    <div
+                      class="col-span-2 text-sm text-gray-900"
+                      th:text="${attribute.value}"
+                    >
+                      i-abc123456
+                    </div>
+                  </div></th:block
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>

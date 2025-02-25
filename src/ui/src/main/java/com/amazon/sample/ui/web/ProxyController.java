@@ -18,66 +18,70 @@
 
 package com.amazon.sample.ui.web;
 
-import reactor.core.publisher.Mono;
-
-import org.springframework.beans.factory.annotation.Value;
+import com.amazon.sample.ui.config.EndpointProperties;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.gateway.webflux.ProxyExchange;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import reactor.core.publisher.Mono;
 
 @Controller
 @RequestMapping("/proxy")
 public class ProxyController {
 
-    @Value("${endpoints.catalog:}")
-    private String catalogEndpoint;
+  @Autowired
+  private EndpointProperties endpoints;
 
-    @Value("${endpoints.carts:}")
-    private String cartsEndpoint;
+  @GetMapping("/catalog/**")
+  public Mono<ResponseEntity<byte[]>> catalogProxy(ProxyExchange<byte[]> proxy)
+    throws Exception {
+    return doProxy(proxy, "catalog", this.endpoints.getCatalog());
+  }
 
-    @Value("${endpoints.orders:}")
-    private String ordersEndpoint;
+  @GetMapping("/carts/**")
+  public Mono<ResponseEntity<byte[]>> cartsProxy(ProxyExchange<byte[]> proxy)
+    throws Exception {
+    return doProxy(proxy, "carts", this.endpoints.getCarts());
+  }
 
-    @Value("${endpoints.checkout:}")
-    private String checkoutEndpoint;
+  @GetMapping("/checkout/**")
+  public Mono<ResponseEntity<byte[]>> checkoutProxy(
+    ProxyExchange<byte[]> proxy
+  ) throws Exception {
+    return doProxy(proxy, "checkout", this.endpoints.getCheckout());
+  }
 
-    @GetMapping("/catalogue/**")
-    public Mono<ResponseEntity<byte[]>> catalogProxy(ProxyExchange<byte[]> proxy) throws Exception {
-        return doProxy(proxy, "catalog", catalogEndpoint);
+  @GetMapping("/orders/**")
+  public Mono<ResponseEntity<byte[]>> ordersProxy(ProxyExchange<byte[]> proxy)
+    throws Exception {
+    return doProxy(proxy, "orders", this.endpoints.getOrders());
+  }
+
+  public Mono<ResponseEntity<byte[]>> doProxy(
+    ProxyExchange<byte[]> proxy,
+    String service,
+    String endpoint
+  ) throws Exception {
+    if (isEmpty(endpoint)) {
+      return Mono.just(
+        new ResponseEntity<>(
+          ("Endpoint not provided for " + service).getBytes(),
+          HttpStatus.NOT_FOUND
+        )
+      );
     }
 
-    @GetMapping("/carts/**")
-    public Mono<ResponseEntity<byte[]>> cartsProxy(ProxyExchange<byte[]> proxy) throws Exception {
-        return doProxy(proxy, "carts", cartsEndpoint);
-    }
+    String path = proxy.path("/proxy");
+    return proxy
+      .uri(endpoint + path)
+      .header("Content-Type", "application/json")
+      .forward();
+  }
 
-    @GetMapping("/checkout/**")
-    public Mono<ResponseEntity<byte[]>> checkoutProxy(ProxyExchange<byte[]> proxy) throws Exception {
-        return doProxy(proxy, "checkout", checkoutEndpoint);
-    }
-
-    @GetMapping("/orders/**")
-    public Mono<ResponseEntity<byte[]>> ordersProxy(ProxyExchange<byte[]> proxy) throws Exception {
-        return doProxy(proxy, "orders", checkoutEndpoint);
-    }
-
-    public Mono<ResponseEntity<byte[]>> doProxy(ProxyExchange<byte[]> proxy, String service, String endpoint)
-            throws Exception {
-        System.out.println("Endpoint is " + endpoint);
-        if (isEmpty(endpoint)) {
-            return Mono
-                    .just(new ResponseEntity<>(("Endpoint not provided for " + service).getBytes(),
-                            HttpStatus.NOT_FOUND));
-        }
-
-        String path = proxy.path("/proxy");
-        return proxy.uri(endpoint + path).header("Content-Type", "application/json").forward();
-    }
-
-    private boolean isEmpty(String check) {
-        return check.equals("false");
-    }
+  private boolean isEmpty(String check) {
+    return check.equals("false");
+  }
 }

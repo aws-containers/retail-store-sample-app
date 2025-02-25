@@ -16,96 +16,98 @@ jobs:
     name: Docker E2E Tests
     runs-on: ubuntu-latest
     steps:
-      - name: Check out code
-        uses: actions/checkout@v3
-
-      - name: Set up Docker Buildx
-        id: e2e-buildx
-        uses: docker/setup-buildx-action@v2
-
-      - name: Expose GitHub Runtime
-        uses: crazy-max/ghaction-github-runtime@v2
-
-      - name: Set up QEMU
-        id: e2e-qemu
-        uses: docker/setup-qemu-action@v2
-        with:
-          image: tonistiigi/binfmt:latest
-          platforms: all
-
-      - name: Build Images
+      - uses: actions/checkout@v4
+      - name: "Setup Env"
+        uses: ./.github/actions/setup-env
+      - name: Compose up
+        shell: devenv shell bash -- -e {0}
         run: |
-          scripts/build-image.sh -t e2e
-
-      - name: Run Tests
+          yarn nx compose:up ui
+          sleep 60
+      - name: Test
+        shell: devenv shell bash -- -e {0}
         run: |
-          (cd deploy/docker-compose && TAG=e2e MYSQL_PASSWORD='test123' docker compose up -d)
-          (bash scripts/e2e-compose.sh)
-          (cd deploy/docker-compose && docker compose down)
+          CYPRESS_BASE_URL='http://localhost:8888' yarn nx execute e2e
+      - name: Compose down
+        shell: devenv shell bash -- -e {0}
+        run: |
+          yarn nx compose:down ui
+
+  docker-multi:
+    name: Docker E2E Tests (Multi)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: "Setup Env"
+        uses: ./.github/actions/setup-env
+      - name: Compose up
+        shell: devenv shell bash -- -e {0}
+        run: |
+          DB_PASSWORD='test123' yarn nx compose:up
+          sleep 60
+      - name: Test
+        shell: devenv shell bash -- -e {0}
+        run: |
+          CYPRESS_BASE_URL='http://localhost:8888' yarn nx execute e2e
+      - name: Load Generator
+        shell: devenv shell bash -- -e {0}
+        run: |
+          cd src/load-generator
+          bash scripts/run-docker.sh -n app_default -t 'http://ui:8080' -d 30 -o /tmp/test.json
+
+          result=$(jq '.aggregate.counters."vusers.failed" == 0' /tmp/test.json)
+
+          if [ "$result" = "false" ]; then
+            echo "Check failed: vusers.failed is not 0"
+            exit 1
+          fi
+      - name: Compose down
+        shell: devenv shell bash -- -e {0}
+        run: |
+          DB_PASSWORD='test123' yarn nx compose:up
 
   kubernetes:
     name: Kubernetes E2E Tests
     runs-on: ubuntu-latest
     steps:
-      - name: Check out code
-        uses: actions/checkout@v3
+      - uses: actions/checkout@v4
+      - name: "Setup Env"
+        uses: ./.github/actions/setup-env
 
-      - name: Set up Docker Buildx
-        id: e2e-buildx
-        uses: docker/setup-buildx-action@v2
-
-      - name: Set up QEMU
-        id: e2e-qemu
-        uses: docker/setup-qemu-action@v2
-        with:
-          image: tonistiigi/binfmt:latest
-          platforms: all
-
-      - name: Build Images
+      - name: Build images
+        shell: devenv shell bash -- -e {0}
         run: |
-          scripts/build-image.sh -r 'public.ecr.aws/aws-containers' -t e2e
+          yarn nx run-many -t build --projects=tag:service --parallel=1
 
-      - name: Setup helmfile
-        uses: mamezou-tech/setup-helmfile@v1.2.0
+          yarn nx run-many -t container --projects=tag:service \
+            --tags public.ecr.aws/aws-containers/retail-store-sample-{projectName}:e2e --parallel=5
 
-      - name: Create k8s Kind Cluster
-        uses: helm/kind-action@v1.4.0
+      - name: Kind cluster
+        uses: helm/kind-action@v1.12.0
         with:
           cluster_name: kind
           version: v0.17.0
 
-      - name: Deploy
+      - name: Load images
         env:
           IMAGE_TAG: e2e
         run: |
-          kind load docker-image public.ecr.aws/aws-containers/retail-store-sample-assets:$IMAGE_TAG
           kind load docker-image public.ecr.aws/aws-containers/retail-store-sample-catalog:$IMAGE_TAG
           kind load docker-image public.ecr.aws/aws-containers/retail-store-sample-cart:$IMAGE_TAG
           kind load docker-image public.ecr.aws/aws-containers/retail-store-sample-checkout:$IMAGE_TAG
           kind load docker-image public.ecr.aws/aws-containers/retail-store-sample-orders:$IMAGE_TAG
           kind load docker-image public.ecr.aws/aws-containers/retail-store-sample-ui:$IMAGE_TAG
 
-          (cd deploy/kubernetes/charts && helmfile apply --wait)
+      - name: Deploy
+        shell: devenv shell bash -- -e {0}
+        env:
+          IMAGE_TAG: e2e
+        run: |
+          NODE_PORT=30000 helmfile apply -f src/app/helmfile.yaml --wait --skip-diff-on-install
 
-          sleep 60
-
-          cat <<EOF | kubectl apply -f -
-          apiVersion: v1
-          kind: Service
-          metadata:
-            name: ui-nodeport
-          spec:
-            type: NodePort
-            selector:
-              app.kubernetes.io/name: ui
-              app.kubernetes.io/instance: ui
-              app.kubernetes.io/component: service
-            ports:
-              - port: 80
-                targetPort: http
-                nodePort: 30000
-          EOF
+          kubectl wait --for=condition=Ready pod -l app.kubernetes.io/owner=retail-store-sample --timeout 180s || exit_code=$?
 
       - name: Test
+        shell: devenv shell bash -- -e {0}
         run: |
           bash scripts/e2e-kind.sh

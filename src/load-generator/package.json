@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "generator": "artillery run scenario.yml"
+    "execute": "artillery run scenario.yml"
   },
   "author": "",
   "license": "MIT-0",

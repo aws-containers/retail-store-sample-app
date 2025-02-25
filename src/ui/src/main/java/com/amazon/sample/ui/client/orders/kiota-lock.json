@@ -1,0 +1,27 @@
+{
+  "descriptionHash": "103CBBED2EFA2E15385274B7049D7A4A85BF05796CEB9CB7707C88429D6AE79A73F3BC110A27953CA5C0837238857216DD369E36CA20D88C1035B3D8606B1911",
+  "descriptionLocation": "../../../../../../../../../../orders/openapi.yml",
+  "lockFileVersion": "1.0.0",
+  "kiotaVersion": "1.21.0",
+  "clientClassName": "OrdersClient",
+  "typeAccessModifier": "Public",
+  "clientNamespaceName": "com.amazon.sample.ui.client.orders",
+  "language": "Java",
+  "usesBackingStore": false,
+  "excludeBackwardCompatible": false,
+  "includeAdditionalData": true,
+  "disableSSLValidation": false,
+  "serializers": [
+    "com.microsoft.kiota.serialization.JsonSerializationWriterFactory"
+  ],
+  "deserializers": ["com.microsoft.kiota.serialization.JsonParseNodeFactory"],
+  "structuredMimeTypes": [
+    "application/json",
+    "text/plain;q=0.9",
+    "application/x-www-form-urlencoded;q=0.2",
+    "multipart/form-data;q=0.1"
+  ],
+  "includePatterns": [],
+  "excludePatterns": [],
+  "disabledValidationRules": []
+}

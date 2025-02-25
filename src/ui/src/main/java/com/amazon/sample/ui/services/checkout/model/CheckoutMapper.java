@@ -24,18 +24,43 @@ import org.mapstruct.Mapping;
 
 @Mapper
 public interface CheckoutMapper {
-    @Mapping(source = "request.items", target = "items")
-    @Mapping(source = "request.subtotal", target = "subtotal")
-    @Mapping(source = "shippingRates.rates", target = "shippingOptions")
-    Checkout checkout(com.amazon.sample.ui.clients.checkout.model.Checkout checkout);
+  @Mapping(source = "shippingRates.rates", target = "shippingOptions")
+  Checkout checkout(
+    com.amazon.sample.ui.client.checkout.models.Checkout checkout
+  );
 
-    CheckoutSubmitted submitted(com.amazon.sample.ui.clients.checkout.model.CheckoutSubmitted submitted);
+  CheckoutSubmitted submitted(
+    com.amazon.sample.ui.client.checkout.models.CheckoutSubmitted submitted
+  );
 
-    com.amazon.sample.ui.clients.checkout.model.ShippingAddress clientShippingAddress(ShippingAddress address);
+  @Mapping(target = "additionalData", ignore = true)
+  @Mapping(target = "fieldDeserializers", ignore = true)
+  com.amazon.sample.ui.client.checkout.models.ShippingAddress clientShippingAddress(
+    ShippingAddress address
+  );
 
-    CheckoutItem item(com.amazon.sample.ui.clients.checkout.model.Item clientItem);
+  @Mapping(target = "totalCost", ignore = true)
+  CheckoutItem item(
+    com.amazon.sample.ui.client.checkout.models.ItemRequest clientItem
+  );
 
-    @Mapping(source = "price", target = "unitCost")
-    @Mapping(source = "totalPrice", target = "totalCost")
-    com.amazon.sample.ui.clients.checkout.model.Item fromCartItem(CartItem cartItem);
+  @Mapping(target = "additionalData", ignore = true)
+  @Mapping(target = "fieldDeserializers", ignore = true)
+  com.amazon.sample.ui.client.checkout.models.ItemRequest fromCartItem(
+    CartItem cartItem
+  );
+
+  com.amazon.sample.ui.client.checkout.models.ItemRequest modelitem(
+    com.amazon.sample.ui.client.checkout.models.Item cartItem
+  );
+
+  @Mapping(target = "totalCost", ignore = true)
+  CheckoutItem cartItem(CartItem cartItem);
+
+  @Mapping(target = "totalCost", ignore = true)
+  CheckoutItem item(CheckoutItemRequest item);
+
+  CheckoutItem fromModelItem(
+    com.amazon.sample.ui.client.checkout.models.Item item
+  );
 }

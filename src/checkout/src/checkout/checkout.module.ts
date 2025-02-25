@@ -16,7 +16,7 @@
  * SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-import { Module } from '@nestjs/common';
+import { Logger, Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { CheckoutController } from './checkout.controller';
 import { CheckoutService } from './checkout.service';
@@ -51,20 +51,22 @@ const shippingServiceProvider = {
 const repositoryProvider = {
   provide: 'CheckoutRepository',
   useFactory: (configService: ConfigService) => {
-    let redisUrl = configService.get('redis.url');
-    let redisReaderUrl = configService.get('redis.reader.url');
+    const persistenceProvider = configService.get('persistence.provider');
+    const redisUrl = configService.get('persistence.redis.url');
+    let redisReaderUrl = configService.get('persistence.redis.reader.url');
 
     if (!redisReaderUrl) {
       redisReaderUrl = redisUrl;
     }
 
     let repository: ICheckoutRepository;
+    const logger = new Logger();
 
-    if (redisUrl) {
-      console.log('Creating RedisRepository...');
+    if (persistenceProvider === 'redis') {
+      logger.log('Using redis persistence');
       repository = new RedisCheckoutRepository(redisUrl, redisReaderUrl);
     } else {
-      console.log('Creating InMemoryRepository...');
+      logger.log('Using in-memory persistence');
       repository = new InMemoryCheckoutRepository();
     }
 

@@ -18,35 +18,36 @@
 
 package com.amazon.sample.ui.web.payload;
 
-import lombok.Data;
-
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Pattern;
+import lombok.Data;
 
 @Data
 public class ShippingAddressRequest {
-    @NotEmpty
-    private String firstName;
 
-    @NotEmpty
-    private String lastName;
+  // Shipping
+  @NotEmpty(message = "First name is required")
+  private String firstName = "John";
 
-    @Email
-    @NotEmpty
-    private String email;
+  @NotEmpty(message = "Last name is required")
+  private String lastName = "Doe";
 
-    @NotEmpty
-    private String address1;
+  @Email(message = "Email invalid")
+  @NotEmpty(message = "Email is required")
+  private String email = "john_doe@example.com";
 
-    private String address2;
+  @NotEmpty(message = "Address is required")
+  private String address1 = "100 Main Street";
 
-    @NotEmpty
-    private String city;
+  private String address2;
 
-    @Pattern(regexp = "^\\d{5}$")
-    private String zip;
+  @NotEmpty(message = "City is required")
+  private String city = "Anytown";
 
-    @Pattern(regexp = "^[A-Z]{2}$")
-    private String state;
+  @Pattern(regexp = "^[0-9]{5}$", message = "Invalid zip code")
+  private String zipCode = "11111";
+
+  @Pattern(regexp = "^[A-Z]{2}$", message = "Invalid state")
+  private String state = "CA";
 }

@@ -4,39 +4,129 @@
   th:replace="~{fragments/layout :: layout (~{::body},'order')}"
 >
   <body>
-    <section class="bg-primary p-y-sm">
-      <div class="container">
-        <ol class="breadcrumb custom mb-0">
-          <li class="breadcrumb-item"><a href="/home">Home</a></li>
-          <li class="breadcrumb-item active" aria-current="page">Order</li>
-        </ol>
+    <div class="max-w-4xl mx-auto px-4 py-8">
+      <div
+        class="bg-yellow-100 border-l-4 border-yellow-500 text-yellow-700 p-4 rounded mb-4"
+        role="alert"
+        th:if="${!disableDemoWarnings}"
+      >
+        <p class="font-bold">
+          <i class="fas fa-exclamation-triangle mr-2"></i>Warning
+        </p>
+        <p>
+          This site is for demonstration/educational purposes only, this order
+          is not genuine
+        </p>
       </div>
-    </section>
-    <section class="p-y-m">
-      <div class="container">
-        <div class="row">
-          <article class="card">
-            <div class="card-body">
-              <div class="mt-4 mx-auto text-center" style="max-width: 600px">
-                <div class="my-3">
-                  <h4>Thank you for order</h4>
-                  <p>
-                    Your order number is
-                    <b id="orderId" th:text="${order.orderId}">123</b>
+      <div class="grid grid-cols-1 lg:grid-cols-2">
+        <div class="w-full">
+          <img
+            src="/assets/img/order.png"
+            class="w-full lg:h-full object-cover h-64 rounded-t-xl lg:rounded-r-none lg:rounded-l-lg"
+          />
+        </div>
+        <div class="w-full mt-6 lg:pl-6 lg:my-16">
+          <!-- Order Header -->
+          <div class="bg-white">
+            <h1
+              class="text-4xl font-bold text-gray-800 mb-4"
+              th:text="#{checkout.confirm.summary}"
+            >
+              Order Summary
+            </h1>
+            <div class="grid grid-cols-1 gap-4">
+              <div class="text-sm">
+                <p>Order ID</p>
+                <p
+                  class="text-primary-500 font-bold"
+                  th:text="${summary.orderId}"
+                >
+                  #ORD-2023-1234
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div aria-hidden="true" class="flex flex-col my-6">
+            <!-- Progress Bar -->
+            <div class="bg-gray-200 rounded-full">
+              <div
+                class="bg-primary-600 h-2 rounded-full"
+                style="width: calc(5%)"
+              ></div>
+            </div>
+
+            <!-- Stage Names -->
+            <div class="flex justify-between mt-2 text-sm">
+              <div class="text-primary-500">Order placed</div>
+              <div class="text-gray-500">Processing</div>
+              <div class="text-gray-500">Shipped</div>
+            </div>
+          </div>
+
+          <!-- Order Items -->
+          <div class="bg-white mb-6">
+            <!-- Individual Items -->
+            <div class="divide-y divide-gray-200 border-y">
+              <div
+                class="py-6 flex items-center"
+                th:each="item : ${summary.items}"
+              >
+                <img
+                  src="https://via.placeholder.com/100"
+                  alt="Product"
+                  class="w-[80px] h-[80px] rounded"
+                  th:src="${'/assets/img/products/'+item.id+'.png'}"
+                />
+                <div class="ml-4 flex-1">
+                  <h3 class="text-sm text-gray-800" th:text="${item.name}">
+                    Luxury Watch Model X
+                  </h3>
+                  <p class="text-sm text-gray-500">
+                    Quantity: <th:block th:text="${item.quantity}">1</th:block>
                   </p>
-                  <p>
-                    A confirmation email will be sent to
-                    <b id="orderEmail" th:text="${order.customerEmail}"
-                      >you@example.com</b
-                    >
-                    with tracking information.
+                </div>
+                <div class="text-sm text-right">
+                  <p>$<th:block th:text="${item.totalCost}">299</th:block></p>
+                  <p class="text-gray-500">
+                    $<th:block th:text="${item.price}">299</th:block> each
                   </p>
                 </div>
               </div>
             </div>
-          </article>
+          </div>
+
+          <!-- Order Summary -->
+          <div class="space-y-3 text-sm">
+            <div class="flex justify-between">
+              <span class="text-gray-600">Subtotal</span>
+              <span id="order-subtotal"
+                >$<th:block th:text="${summary.subtotal}">299</th:block></span
+              >
+            </div>
+            <div class="flex justify-between">
+              <span class="text-gray-600">Shipping</span>
+              <span id="order-shipping"
+                >$<th:block th:text="${summary.shipping}">299</th:block></span
+              >
+            </div>
+            <div class="flex justify-between">
+              <span class="text-gray-600">Taxes</span>
+              <span id="order-tax"
+                >$<th:block th:text="${summary.tax}">299</th:block></span
+              >
+            </div>
+            <div class="border-t pt-3 mt-3 text-base">
+              <div class="flex justify-between font-semibold text-gray-800">
+                <span>Total</span>
+                <span id="order-total"
+                  >$<th:block th:text="${summary.total}">299</th:block></span
+                >
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-    </section>
+    </div>
   </body>
 </html>

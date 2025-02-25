@@ -18,13 +18,25 @@
 
 package com.amazon.sample.ui.services.checkout.model;
 
+import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
 @Data
 @AllArgsConstructor
 public class CheckoutSubmitted {
-    private String orderId;
 
-    private String customerEmail;
+  private String orderId;
+
+  private String email;
+
+  private int subtotal;
+
+  private int tax;
+
+  private int shipping;
+
+  private int total;
+
+  private List<CheckoutItem> items;
 }

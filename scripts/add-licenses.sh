@@ -13,7 +13,6 @@ addlicense -f $DIR/misc/license-header.txt \
   --ignore "**/*.sql" \
   --ignore "**/Dockerfile" \
   $DIR/../src/ui \
-  $DIR/../src/assets \
   $DIR/../src/cart \
   $DIR/../src/catalog \
   $DIR/../src/orders \

@@ -18,75 +18,79 @@
 
 package com.amazon.sample.carts.repositories.dynamo.entities;
 
+import com.amazon.sample.carts.repositories.ItemEntity;
 import software.amazon.awssdk.enhanced.dynamodb.mapper.annotations.DynamoDbBean;
 import software.amazon.awssdk.enhanced.dynamodb.mapper.annotations.DynamoDbPartitionKey;
 import software.amazon.awssdk.enhanced.dynamodb.mapper.annotations.DynamoDbSecondaryPartitionKey;
 
-import com.amazon.sample.carts.repositories.ItemEntity;
-
-@DynamoDbBean()
+@DynamoDbBean
 public class DynamoItemEntity implements ItemEntity {
-    private String id;
 
-    private String customerId;
+  private String id;
 
-    private String itemId;
+  private String customerId;
 
-    private int quantity;
+  private String itemId;
 
-    private int unitPrice;
+  private int quantity;
 
-    public DynamoItemEntity(String id, String customerId, String itemId, int quantity, int unitPrice) {
-        this.id = id;
-        this.customerId = customerId;
-        this.itemId = itemId;
-        this.quantity = quantity;
-        this.unitPrice = unitPrice;
-    }
+  private int unitPrice;
 
-    public DynamoItemEntity() {
+  public DynamoItemEntity(
+    String id,
+    String customerId,
+    String itemId,
+    int quantity,
+    int unitPrice
+  ) {
+    this.id = id;
+    this.customerId = customerId;
+    this.itemId = itemId;
+    this.quantity = quantity;
+    this.unitPrice = unitPrice;
+  }
 
-    }
+  public DynamoItemEntity() {}
 
-    @DynamoDbPartitionKey
-    public String getId() {
-        return id;
-    }
+  @DynamoDbPartitionKey
+  public String getId() {
+    return id;
+  }
 
-    @DynamoDbSecondaryPartitionKey(indexNames = {"idx_global_customerId"})
-    public String getCustomerId() {
-        return customerId;
-    }
+  @DynamoDbSecondaryPartitionKey(indexNames = { "idx_global_customerId" })
+  public String getCustomerId() {
+    return customerId;
+  }
 
-    public String getItemId() {
-        return itemId;
-    }
+  public String getItemId() {
+    return itemId;
+  }
 
-    public int getQuantity() {
-        return quantity;
-    }
+  public int getQuantity() {
+    return quantity;
+  }
 
-    public int getUnitPrice() {
-        return unitPrice;
-    }
+  public int getUnitPrice() {
+    return unitPrice;
+  }
 
-    public void setId(String id) {
-        this.id = id;
-    }
+  public void setId(String id) {
+    this.id = id;
+  }
 
-    public void setCustomerId(String id) {
-        this.customerId = id;
-    }
+  public void setCustomerId(String id) {
+    this.customerId = id;
+  }
 
-    public void setItemId(String itemId) {
-        this.itemId = itemId;
-    }
+  public void setItemId(String itemId) {
+    this.itemId = itemId;
+  }
 
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
-    }
+  public void setQuantity(int quantity) {
+    this.quantity = quantity;
+  }
 
-    public void setUnitPrice(int unitPrice) {
-        this.unitPrice = unitPrice;
-    }
+  public void setUnitPrice(int unitPrice) {
+    this.unitPrice = unitPrice;
+  }
 }

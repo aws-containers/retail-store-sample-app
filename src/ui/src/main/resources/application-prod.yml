@@ -1,12 +1,16 @@
 spring:
-  resources:
-    cache:
-      cachecontrol:
-        cache-public: true
-        no-cache: false
-        no-store: false
-        must-revalidate: false
-        max-age: 31536000
+  web:
+    resources:
+      cache:
+        cachecontrol:
+          cache-public: true
+          no-cache: false
+          no-store: false
+          must-revalidate: false
+          max-age: 31536000
 
 server:
   shutdown: graceful
+  compression:
+    enabled: true
+    mime-types: application/json,application/xml,text/html,text/xml,text/plain

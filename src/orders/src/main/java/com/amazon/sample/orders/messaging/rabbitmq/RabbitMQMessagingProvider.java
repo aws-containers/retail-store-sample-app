@@ -24,14 +24,18 @@ import org.springframework.amqp.rabbit.core.RabbitTemplate;
 
 public class RabbitMQMessagingProvider implements MessagingProvider {
 
-    private RabbitTemplate rabbitTemplate;
+  private RabbitTemplate rabbitTemplate;
 
-    public RabbitMQMessagingProvider(RabbitTemplate rabbitTemplate) {
-        this.rabbitTemplate = rabbitTemplate;
-    }
+  public RabbitMQMessagingProvider(RabbitTemplate rabbitTemplate) {
+    this.rabbitTemplate = rabbitTemplate;
+  }
 
-    @Override
-    public void publishEvent(Object event) {
-        this.rabbitTemplate.convertAndSend(RabbitMQMessagingConfig.EXCHANGE_NAME, "", event);
-    }
+  @Override
+  public void publishEvent(Object event) {
+    this.rabbitTemplate.convertAndSend(
+        RabbitMQMessagingConfig.EXCHANGE_NAME,
+        "",
+        event
+      );
+  }
 }

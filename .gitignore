@@ -11,5 +11,22 @@ oss-output
 kubeconfig_*
 .idea
 node_modules
+dist
 
 ort-build
+
+Chart.lock
+**/charts/*.tgz
+
+.nx/cache
+.nx/workspace-data
+
+screenshots
+# Devenv
+.devenv*
+devenv.local.nix
+
+# direnv
+.direnv
+
+.pre-commit-config.yaml
