@@ -26,6 +26,14 @@ resource "kubectl_manifest" "otel_instrumentation" {
           "name"  = "OTEL_RESOURCE_PROVIDERS_AWS_ENABLED"
           "value" = "true"
         },
+        {
+          "name"  = "OTEL_METRICS_EXPORTER"
+          "value" = "none"
+        },
+        {
+          "name"  = "OTEL_JAVA_GLOBAL_AUTOCONFIGURE_ENABLED"
+          "value" = "true"
+        }
       ]
       "exporter" = {
         "endpoint" = "http://adot-col-otlp-ingest-collector.${module.retail_app_eks.adot_namespace}:4318"

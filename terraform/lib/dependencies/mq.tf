@@ -12,14 +12,15 @@ resource "random_password" "mq_password" {
 resource "aws_mq_broker" "mq" {
   broker_name = "${var.environment_name}-orders-broker"
 
-  engine_type         = "RabbitMQ"
-  engine_version      = "3.11.28"
-  host_instance_type  = "mq.t3.micro"
-  deployment_mode     = "SINGLE_INSTANCE"
-  subnet_ids          = [var.subnet_ids[0]]
-  security_groups     = [aws_security_group.mq.id]
-  apply_immediately   = true
-  publicly_accessible = false
+  engine_type                = "RabbitMQ"
+  engine_version             = "3.13"
+  host_instance_type         = "mq.t3.micro"
+  deployment_mode            = "SINGLE_INSTANCE"
+  subnet_ids                 = [var.subnet_ids[0]]
+  security_groups            = [aws_security_group.mq.id]
+  apply_immediately          = true
+  publicly_accessible        = false
+  auto_minor_version_upgrade = true
 
   user {
     username = local.mq_default_user
