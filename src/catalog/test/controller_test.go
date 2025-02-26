@@ -18,7 +18,7 @@ func TestCatalogList(t *testing.T) {
 	var response []model.Product
 	json.Unmarshal(writer.Body.Bytes(), &response)
 
-	assert.Equal(t, 9, len(response))
+	assert.Equal(t, 10, len(response))
 }
 
 func TestCatalogProduct(t *testing.T) {

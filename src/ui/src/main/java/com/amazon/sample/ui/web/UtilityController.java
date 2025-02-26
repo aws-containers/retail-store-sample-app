@@ -48,6 +48,8 @@ public class UtilityController {
   private final ApplicationContext context;
 
   private static final double MONTE_CARLO_CONSTANT = 4.0;
+  private static final int PANIC_DELAY = 500;
+  private static final int PANIC_EXIT_CODE = 255;
 
   @Autowired
   private ToggleHealthIndicator healthIndicator;
@@ -107,9 +109,9 @@ public class UtilityController {
   public ResponseEntity<String> panic() {
     Thread thread = new Thread(() -> {
       try {
-        Thread.sleep(500); // Small delay to allow response to be sent
+        Thread.sleep(PANIC_DELAY); // Small delay to allow response to be sent
         SpringApplication.exit(context, () -> 1);
-        System.exit(255);
+        System.exit(PANIC_EXIT_CODE);
       } catch (InterruptedException e) {
         Thread.currentThread().interrupt();
       }
@@ -149,7 +151,7 @@ public class UtilityController {
   // function /store/{hash} that read a local hash file
   @GetMapping("/store/{hash}")
   @ResponseBody
-  public ResponseEntity<String> store_hash(@PathVariable String hash) {
+  public ResponseEntity<String> read(@PathVariable String hash) {
     // Validate hash format - only allow numeric characters
     if (!hash.matches("^[0-9]+$")) {
       return ResponseEntity.badRequest().body("Invalid hash format");
