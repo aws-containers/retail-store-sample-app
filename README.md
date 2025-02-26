@@ -23,9 +23,10 @@ This is a sample application designed to illustrate various concepts related to 
 
 It provides:
 
-- A distributed component architecture in various languages and frameworks
-- Utilization of a variety of different persistence backends for different components like MariaDB (or MySQL), DynamoDB and Redis
-- The ability to run in various container orchestration technologies like Docker Compose, Kubernetes etc.
+- A [demo store-front application](./src/ui/) with themes, pages to show container and application topology information, generative AI chat bot and utility functions for experimentation and demos.
+- An optional distributed component architecture using various languages and frameworks
+- A variety of different persistence backends for the various components like MariaDB (or MySQL), DynamoDB and Redis
+- The ability to run in different container orchestration technologies like Docker Compose, Kubernetes etc.
 - Pre-built container images for both x86-64 and ARM64 CPU architectures
 - All components instrumented for Prometheus metrics and OpenTelemetry OTLP tracing
 - Support for Istio on Kubernetes
