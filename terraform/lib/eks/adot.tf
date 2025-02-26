@@ -296,26 +296,6 @@ locals {
           }
         }
       }
-    },
-    "containerLogs": {
-      "exporters": {
-        "awscloudwatchlogs": {
-          "log_group_name": "$${CLUSTER_NAME}/container/logs",
-          "log_stream_name": "$${NODE_NAME}"
-        }
-      },
-      "serviceAccount": {
-        "annotations": {
-          "eks.amazonaws.com/role-arn": "${module.iam_assumable_role_adot_logs.iam_role_arn}"
-        }
-      },
-      "pipelines": {
-        "logs": {
-          "cloudwatchLogs": {
-            "enabled": true
-          }
-        }
-      }
     }
   }
 }
