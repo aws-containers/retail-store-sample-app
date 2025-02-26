@@ -35,7 +35,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -55,12 +54,6 @@ public class UtilityController {
 
   public UtilityController(ApplicationContext context) {
     this.context = context;
-  }
-
-  @GetMapping("/stress/{iterations}")
-  @ResponseBody
-  public double stress(@PathVariable int iterations) {
-    return monteCarloPi(iterations);
   }
 
   @GetMapping("/stress/{iterations}")
