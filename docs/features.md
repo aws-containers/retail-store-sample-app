@@ -8,11 +8,11 @@ The primary color of the UI can be changed via configuration values, which is us
 
 This is the default theme:
 
-![Default theme](../../docs/images/theme-default.png)
+![Default theme](./images/theme-default.png)
 
 This is an alternative theme:
 
-![Alternative theme](../../docs/images/theme-orange.png)
+![Alternative theme](./images/theme-orange.png)
 
 The theme can be changed in two ways:
 
@@ -29,23 +29,23 @@ The implementation includes metadata for Kubernetes, Amazon EC2, Amazon ECS and 
 
 This example shows a container running in Amazon ECS:
 
-![Metadata page](../../docs/images/metadata.png)
+![Metadata page](./images/metadata.png)
 
 The page can be found at `/info`.
 
 To highlight specific attributes you add their names to the URL. For example `/info?attr=ecs.cloud.region,ecs.cloud.availability_zone,ecs.cloud.account.id`:
 
-![Metadata page attributes](../../docs/images/metadata-attr.png)
+![Metadata page attributes](./images/metadata-attr.png)
 
 You can find the attribute IDs by hovering your cursor over the relevant attribute name in the table:
 
-![Metadata page attribute ID](../../docs/images/metadata-attr-id.png)
+![Metadata page attribute ID](./images/metadata-attr-id.png)
 
 ### Application topology
 
 This is a page in the UI component that displays information about the application topology thats been deployed. For example it shows what components are deployed, their health and information about their configured dependencies like databases.
 
-![Metadata page attributes](../../docs/images/topology.png)
+![Metadata page attributes](./images/topology.png)
 
 The page can be found at `/topology`.
 
@@ -53,11 +53,11 @@ The page can be found at `/topology`.
 
 This feature provides a chat bot interface directly in the store UI which can be used to demonstrate basic LLM inference use-cases. It is works with Amazon Bedrock and OpenAI compatible endpoints via configuration properties.
 
-![Chat bot UI](../../docs/images/chat-bot.png)
+![Chat bot UI](./images/chat-bot.png)
 
 The chat bot is disabled by default, and can be enabled by setting the environment variable `RETAIL_UI_CHAT_ENABLED=true`. This will enable the following button to display on the botton-right area of the UI:
 
-![Chat bot button](../../docs/images/chat-bot-button.png)
+![Chat bot button](./images/chat-bot-button.png)
 
 You must also configure one of the below providers.
 
