@@ -21,7 +21,7 @@ package com.amazon.sample.ui.config.chat;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.ai.bedrock.converse.BedrockProxyChatModel;
 import org.springframework.ai.chat.client.ChatClient;
-import org.springframework.ai.model.function.FunctionCallingOptions;
+import org.springframework.ai.model.tool.ToolCallingChatOptions;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
@@ -46,16 +46,16 @@ public class BedrockChatConfig {
   ) {
     log.warn("Creating Amazon Bedrock chat client");
 
-    var modelOptions = FunctionCallingOptions.builder()
+    var modelOptions = ToolCallingChatOptions.builder()
       .model(properties.getModel())
       .maxTokens(properties.getMaxTokens())
       .temperature(properties.getTemperature())
       .build();
 
     var chatModel = BedrockProxyChatModel.builder()
-      .withCredentialsProvider(DefaultCredentialsProvider.create())
-      .withRegion(Region.of(bedrockProperties.getRegion()))
-      .withDefaultOptions(modelOptions)
+      .credentialsProvider(DefaultCredentialsProvider.create())
+      .region(Region.of(bedrockProperties.getRegion()))
+      .defaultOptions(modelOptions)
       .build();
 
     return ChatClient.create(chatModel);

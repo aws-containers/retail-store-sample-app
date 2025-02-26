@@ -41,7 +41,7 @@
       "description": "Chat assistant model temperature"
     },
     {
-      "name": "retail.ui.chat.maxTokens",
+      "name": "retail.ui.chat.max-tokens",
       "type": "java.lang.String",
       "description": "Chat assistant model maximum output tokens"
     },

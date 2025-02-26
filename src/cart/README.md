@@ -10,13 +10,13 @@ This service provides an API for storing customer shopping carts. Data is stored
 
 The following environment variables are available for configuring the service:
 
-| Name                                           | Description                                                        | Default     |
-| ---------------------------------------------- | ------------------------------------------------------------------ | ----------- |
-| `PORT`                                         | The port which the server will listen on                           | `8080`      |
-| `RETAIL_CART_PERSISTENCE_PROVIDER`             | The persistence provider to use, can be `in-memory` or `dynamodb`. | `in-memory` |
-| `RETAIL_CART_PERSISTENCE_DYNAMODB_TABLENAME`   | The name of the Amazon DynamoDB table used for persistence         | `Items`     |
-| `RETAIL_CART_PERSISTENCE_DYNAMODB_ENDPOINT`    | The Amazon DynamoDB endpoint to use                                | `""`        |
-| `RETAIL_CART_PERSISTENCE_DYNAMODB_CREATETABLE` | Enable to automatically create the Amazon DynamoDB table required  | `false`     |
+| Name                                            | Description                                                        | Default     |
+| ----------------------------------------------- | ------------------------------------------------------------------ | ----------- |
+| `PORT`                                          | The port which the server will listen on                           | `8080`      |
+| `RETAIL_CART_PERSISTENCE_PROVIDER`              | The persistence provider to use, can be `in-memory` or `dynamodb`. | `in-memory` |
+| `RETAIL_CART_PERSISTENCE_DYNAMODB_TABLE_NAME`   | The name of the Amazon DynamoDB table used for persistence         | `Items`     |
+| `RETAIL_CART_PERSISTENCE_DYNAMODB_ENDPOINT`     | The Amazon DynamoDB endpoint to use                                | `""`        |
+| `RETAIL_CART_PERSISTENCE_DYNAMODB_CREATE_TABLE` | Enable to automatically create the Amazon DynamoDB table required  | `false`     |
 
 ## Running
 

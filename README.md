@@ -23,7 +23,7 @@ This is a sample application designed to illustrate various concepts related to 
 
 It provides:
 
-- A [demo store-front application](./src/ui/) with themes, pages to show container and application topology information, generative AI chat bot and utility functions for experimentation and demos.
+- A demo store-front application with themes, pages to show container and application topology information, generative AI chat bot and utility functions for experimentation and demos.
 - An optional distributed component architecture using various languages and frameworks
 - A variety of different persistence backends for the various components like MariaDB (or MySQL), DynamoDB and Redis
 - The ability to run in different container orchestration technologies like Docker Compose, Kubernetes etc.
@@ -31,6 +31,8 @@ It provides:
 - All components instrumented for Prometheus metrics and OpenTelemetry OTLP tracing
 - Support for Istio on Kubernetes
 - Load generator which exercises all of the infrastructure
+
+See the [features documentation](./docs/features.md) for more information.
 
 **This project is intended for educational purposes only and not for production use**
 

@@ -13,8 +13,8 @@ module "carts_service" {
   healthcheck_path                = "/actuator/health"
 
   environment_variables = {
-    RETAIL_CART_PERSISTENCE_PROVIDER           = "dynamodb"
-    RETAIL_CART_PERSISTENCE_DYNAMODB_TABLENAME = var.carts_dynamodb_table_name
+    RETAIL_CART_PERSISTENCE_PROVIDER            = "dynamodb"
+    RETAIL_CART_PERSISTENCE_DYNAMODB_TABLE_NAME = var.carts_dynamodb_table_name
   }
 
   additional_task_role_iam_policy_arns = [

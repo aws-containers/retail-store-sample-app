@@ -42,7 +42,7 @@ spec:
         - name: {{ "carts" }}
           env:
             - name: JAVA_OPTS
-              value: -XX:MaxRAMPercentage=75.0 -Djava.security.egd=file:/dev/urandom -Dotel.java.global-autoconfigure.enabled=true
+              value: -XX:MaxRAMPercentage=75.0 -Djava.security.egd=file:/dev/urandom
           envFrom:
             - configMapRef:
                 name: {{ include "carts.configMapName" . }}

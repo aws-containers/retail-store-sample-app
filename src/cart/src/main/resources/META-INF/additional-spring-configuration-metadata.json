@@ -12,13 +12,13 @@
       "description": "The DynamoDB endpoint URL for the cart service"
     },
     {
-      "name": "retail.cart.persistence.dynamodb.createTable",
+      "name": "retail.cart.persistence.dynamodb.create-table",
       "type": "java.lang.Boolean",
       "description": "Flag to determine if the DynamoDB table should be created automatically",
       "defaultValue": false
     },
     {
-      "name": "retail.cart.persistence.dynamodb.tableName",
+      "name": "retail.cart.persistence.dynamodb.table-name",
       "type": "java.lang.String",
       "description": "The name of the DynamoDB table for storing cart items",
       "defaultValue": "Items"

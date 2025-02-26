@@ -13,7 +13,7 @@ retail:
       provider: "in-memory"
       dynamodb:
         endpoint:
-        createTable: false
-        tableName: Items
+        create-table: false
+        table-name: Items
 
 otel.sdk.disabled: true

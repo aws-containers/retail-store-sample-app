@@ -51,13 +51,15 @@ public class OpenAIChatConfig {
       .maxTokens(properties.getMaxTokens())
       .build();
 
-    var chatModel = new OpenAiChatModel(
-      new OpenAiApi(
-        openaiProperties.getBaseUrl(),
-        openaiProperties.getApiKey()
-      ),
-      modelOptions
-    );
+    var chatModel = OpenAiChatModel.builder()
+      .openAiApi(
+        OpenAiApi.builder()
+          .baseUrl(openaiProperties.getBaseUrl())
+          .apiKey(openaiProperties.getApiKey())
+          .build()
+      )
+      .defaultOptions(modelOptions)
+      .build();
     return ChatClient.create(chatModel);
   }
 }

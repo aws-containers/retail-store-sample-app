@@ -20,7 +20,7 @@ retail:
     chat:
       enabled: false
       temperature: 0.6
-      maxTokens: 300
+      max-tokens: 300
       provider:
       model:
       prompt: |
@@ -59,8 +59,8 @@ retail:
       bedrock:
         region:
       openai:
-        baseUrl: http://localhost:8000
-        apiKey:
+        base-url: http://localhost:8000
+        api-key:
 
 management:
   endpoints:

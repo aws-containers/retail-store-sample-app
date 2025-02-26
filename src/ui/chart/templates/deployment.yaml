@@ -42,7 +42,7 @@ spec:
         - name: {{ "ui" }}
           env:
             - name: JAVA_OPTS
-              value: -XX:MaxRAMPercentage=75.0 -Djava.security.egd=file:/dev/urandom -Dotel.java.global-autoconfigure.enabled=true
+              value: -XX:MaxRAMPercentage=75.0 -Djava.security.egd=file:/dev/urandom
             - name: METADATA_KUBERNETES_POD_NAME
               valueFrom:
                 fieldRef:

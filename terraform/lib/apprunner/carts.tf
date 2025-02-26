@@ -11,8 +11,8 @@ module "app_runner_carts" {
       image_configuration = {
         port = 8080
         runtime_environment_variables = {
-          RETAIL_CART_PERSISTENCE_PROVIDER           = "dynamodb"
-          RETAIL_CART_PERSISTENCE_DYNAMODB_TABLENAME = var.carts_dynamodb_table_name
+          RETAIL_CART_PERSISTENCE_PROVIDER            = "dynamodb"
+          RETAIL_CART_PERSISTENCE_DYNAMODB_TABLE_NAME = var.carts_dynamodb_table_name
         }
       }
       image_identifier      = module.container_images.result.cart.url

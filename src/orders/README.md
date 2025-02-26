@@ -20,7 +20,9 @@ The following environment variables are available for configuring the service:
 | `RETAIL_ORDERS_PERSISTENCE_POSTGRES_PASSWORD` | Password to authenticate with postgres database.                                        | `in-memory` |
 | `RETAIL_ORDERS_MESSAGING_PROVIDER`            | The messaging provider to use to publish events. Can be `in-memory`, `sqs`, `rabbitmq`. | `""`        |
 | `RETAIL_ORDERS_MESSAGING_SQS_TOPIC`           | The name of the SQS topic to publish events to (SQS messaging provider)                 | `""`        |
-| `RETAIL_ORDERS_MESSAGING_RABBITMQ_ADDRESSES`  | Endpoints for RabbitMQ messaing provider                                                | `""`        |
+| `RETAIL_ORDERS_MESSAGING_RABBITMQ_ADDRESSES`  | Endpoints for RabbitMQ messaging provider, format `host:port`                           | `""`        |
+| `RETAIL_ORDERS_MESSAGING_RABBITMQ_USERNAME`   | Username for RabbitMQ messaging provider                                                | `""`        |
+| `RETAIL_ORDERS_MESSAGING_RABBITMQ_PASSWORD`   | Password for RabbitMQ messaging provider                                                | `""`        |
 
 ## Running
 
