@@ -6,6 +6,7 @@ on:
 jobs:
   attribution:
     strategy:
+      fail-fast: false
       matrix:
         component: [cart, catalog, checkout, orders, ui]
     runs-on: ubuntu-latest
