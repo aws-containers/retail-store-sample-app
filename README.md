@@ -1,12 +1,6 @@
-<div align="center">
-  <a href="https://eksworkshop.com" target="_blank" rel="noopener noreferrer">
-    <picture>
-      <img width="160" src="/docs/images/containers.png" alt="AWS containers">
-    </picture>
-  </a>
-  
-  <br/>
+![Banner](./docs/images/banner.png)
 
+<div align="center">
   <div align="center">
 
 [![Stars](https://img.shields.io/github/stars/aws-containers/retail-store-sample-app)](Stars)
