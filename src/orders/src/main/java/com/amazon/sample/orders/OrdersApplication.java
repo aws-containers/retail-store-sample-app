@@ -18,13 +18,18 @@
 
 package com.amazon.sample.orders;
 
+import com.amazon.sample.orders.config.messaging.ApplicationEnvironmentPreparedListener;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
+@SuppressWarnings("checkstyle:HideUtilityClassConstructor")
 public class OrdersApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(OrdersApplication.class, args);
-	}
+  public static void main(String[] args) {
+    SpringApplication app = new SpringApplication(OrdersApplication.class);
+
+    app.addListeners(new ApplicationEnvironmentPreparedListener());
+    app.run(args);
+  }
 }

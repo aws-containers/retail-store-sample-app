@@ -1,0 +1,73 @@
+{
+  "name": "ui",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "sourceRoot": "src/ui",
+  "targets": {
+    "build": {
+      "executor": "nx:run-commands",
+      "cache": true,
+      "inputs": ["{projectRoot}/src/**/*", "{projectRoot}/pom.xml"],
+      "outputs": ["{projectRoot}/target/*.jar"],
+      "options": {
+        "command": "./mvnw --no-transfer-progress -DskipTests package"
+      }
+    },
+    "test": {
+      "executor": "nx:run-commands",
+      "dependsOn": ["build"],
+      "cache": true,
+      "inputs": ["{projectRoot}/src/**/*", "{projectRoot}/pom.xml"],
+      "outputs": ["{projectRoot}/target/surefire-reports/*.xml"],
+      "options": {
+        "command": "./mvnw test -DexcludedGroups=integration"
+      }
+    },
+    "test:integration": {
+      "executor": "nx:run-commands",
+      "dependsOn": ["test"],
+      "cache": true,
+      "inputs": ["{projectRoot}/src/**/*", "{projectRoot}/pom.xml"],
+      "outputs": ["{projectRoot}/target/surefire-reports/*.xml"],
+      "options": {
+        "command": "./mvnw test -Dgroups=integration"
+      }
+    },
+    "lint": {
+      "executor": "nx:run-commands",
+      "dependsOn": ["build"],
+      "options": {
+        "command": "./mvnw checkstyle:checkstyle"
+      }
+    },
+    "serve": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "./mvnw spring-boot:run"
+      }
+    },
+    "helm": {},
+    "compose:up": {
+      "executor": "nx:run-commands",
+      "options": {
+        "cwd": "src/ui",
+        "command": "docker compose up --build --detach --wait"
+      }
+    },
+    "compose:down": {
+      "executor": "nx:run-commands",
+      "options": {
+        "cwd": "src/ui",
+        "command": "docker compose down"
+      }
+    },
+    "update-samples": {
+      "executor": "nx:run-commands",
+      "options": {
+        "cwd": "src/ui",
+        "command": "cp -R ../../samples/data src/main/resources && cp ../../samples/images/* src/main/resources/static/assets/img/products"
+      }
+    }
+  },
+  "tags": ["service", "chart", "sample"]
+}

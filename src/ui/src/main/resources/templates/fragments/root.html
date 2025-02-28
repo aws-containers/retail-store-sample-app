@@ -1,0 +1,63 @@
+<!doctype html>
+<html
+  lang="en"
+  xmlns:th="http://www.thymeleaf.org"
+  th:fragment="root (rootContent)"
+>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Demo Store</title>
+
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.0/css/all.min.css"
+    />
+
+    <link
+      rel="stylesheet"
+      th:href="@{'/assets/css/theme-'+${#strings.defaultString(theme, 'default')}+'.css'}"
+    />
+
+    <link rel="stylesheet" th:href="@{/assets/css/styles.css}" />
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: {
+                DEFAULT: "rgb(var(--primary-color-500))",
+                50: "rgb(var(--primary-color-50))",
+                100: "rgb(var(--primary-color-100))",
+                200: "rgb(var(--primary-color-20))",
+                300: "rgb(var(--primary-color-300))",
+                400: "rgb(var(--primary-color-400))",
+                500: "rgb(var(--primary-color-500))",
+                600: "rgb(var(--primary-color-600))",
+                700: "rgb(var(--primary-color-700))",
+                800: "rgb(var(--primary-color-800))",
+                900: "rgb(var(--primary-color-900))",
+              },
+            },
+          },
+        },
+      };
+    </script>
+    <script th:inline="javascript">
+      /*<![CDATA[*/
+      var retailContextPath = /*[[@{/}]]*/ "";
+      /*]]>*/
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/2.1.0/showdown.min.js"></script>
+    <script
+      th:if="${@environment.getProperty('retail.ui.chat.enabled')} == 'true'"
+      th:src="@{/assets/js/chat.js}"
+    ></script>
+  </head>
+
+  <th:block th:insert="${rootContent}" />
+</html>

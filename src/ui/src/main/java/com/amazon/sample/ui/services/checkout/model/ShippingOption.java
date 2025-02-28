@@ -26,11 +26,12 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class ShippingOption {
-    private String name;
 
-    private Integer amount;
+  private String name;
 
-    private String token;
+  private Integer amount;
 
-    private Integer estimatedDays;
+  private String token;
+
+  private Integer estimatedDays;
 }

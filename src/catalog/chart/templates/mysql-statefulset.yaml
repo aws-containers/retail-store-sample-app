@@ -1,0 +1,95 @@
+{{- if .Values.mysql.create }}
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: {{ include "catalog.mysql.fullname" . }}
+  labels:
+    {{- include "catalog.mysql.labels" . | nindent 4 }}
+spec:
+  replicas: 1
+  serviceName: {{ include "catalog.mysql.fullname" . }}
+  selector:
+    matchLabels:
+      {{- include "catalog.mysql.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      {{- with .Values.mysql.podAnnotations }}
+      annotations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      labels:
+        {{- include "catalog.mysql.selectorLabels" . | nindent 8 }}
+    spec:
+      {{- with .Values.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      containers:
+        - name: mysql
+          image: "{{ .Values.mysql.image.repository }}:{{ .Values.mysql.image.tag }}"
+          imagePullPolicy: {{ .Values.mysql.image.pullPolicy }}
+          env:
+            - name: MYSQL_ROOT_PASSWORD
+              value: my-secret-pw
+            - name: MYSQL_DATABASE
+              value: {{ .Values.app.persistence.database }}
+            - name: MYSQL_USER
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .Values.app.persistence.secret.name }}
+                  key: RETAIL_CATALOG_PERSISTENCE_USER
+            - name: MYSQL_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .Values.app.persistence.secret.name }}
+                  key: RETAIL_CATALOG_PERSISTENCE_PASSWORD
+          volumeMounts:
+            - name: data
+              mountPath: /var/lib/mysql
+          ports:
+            - name: mysql
+              containerPort: 3306
+              protocol: TCP
+      {{- with .Values.mysql.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.mysql.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.mysql.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+{{- if .Values.mysql.persistentVolume.enabled }}
+  volumeClaimTemplates:
+    - metadata:
+        name: data
+        {{- if .Values.mysql.persistentVolume.annotations }}
+        annotations:
+{{ toYaml .Values.mysql.persistentVolume.annotations | indent 10 }}
+        {{- end }}
+        {{- if .Values.mysql.persistentVolume.labels }}
+        labels:
+{{ toYaml .Values.mysql.persistentVolume.labels | indent 10 }}
+        {{- end }}
+      spec:
+        accessModes:
+{{ toYaml .Values.mysql.persistentVolume.accessModes | indent 8 }}
+        resources:
+          requests:
+            storage: "{{ .Values.mysql.persistentVolume.size }}"
+      {{- if .Values.mysql.persistentVolume.storageClass }}
+      {{- if (eq "-" .Values.mysql.persistentVolume.storageClass) }}
+        storageClassName: ""
+      {{- else }}
+        storageClassName: "{{ .Values.mysql.persistentVolume.storageClass }}"
+      {{- end }}
+      {{- end }}
+{{- else }}
+      volumes:
+      - name: data
+        emptyDir: {}
+{{- end }}
+{{- end }}

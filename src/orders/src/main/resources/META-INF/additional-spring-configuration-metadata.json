@@ -1,0 +1,88 @@
+{
+  "properties": [
+    {
+      "name": "retail.orders.persistence.provider",
+      "type": "java.lang.String",
+      "description": "Provider type for order persistence. Possible values: 'in-memory', 'postgres'.",
+      "defaultValue": "in-memory"
+    },
+    {
+      "name": "retail.orders.persistence.postgres.endpoint",
+      "type": "java.lang.String",
+      "description": "PostgreSQL database endpoint for order persistence"
+    },
+    {
+      "name": "retail.orders.persistence.postgres.dbname",
+      "type": "java.lang.String",
+      "description": "PostgreSQL database name"
+    },
+    {
+      "name": "retail.orders.persistence.postgres.username",
+      "type": "java.lang.String",
+      "description": "PostgreSQL database username"
+    },
+    {
+      "name": "retail.orders.persistence.postgres.password",
+      "type": "java.lang.String",
+      "description": "PostgreSQL database password"
+    },
+    {
+      "name": "retail.orders.messaging.provider",
+      "type": "java.lang.String",
+      "description": "Provider type for order messaging. Possible values: 'in-memory', 'rabbitmq', 'sqs'.",
+      "defaultValue": "in-memory"
+    },
+    {
+      "name": "retail.orders.messaging.rabbitmq.addresses",
+      "type": "java.lang.String",
+      "description": "RabbitMQ server addresses for messaging"
+    },
+    {
+      "name": "retail.orders.messaging.rabbitmq.username",
+      "type": "java.lang.String",
+      "description": "RabbitMQ username for authentication"
+    },
+    {
+      "name": "retail.orders.messaging.rabbitmq.password",
+      "type": "java.lang.String",
+      "description": "RabbitMQ password for authentication"
+    },
+    {
+      "name": "retail.orders.messaging.sqs.topic",
+      "type": "java.lang.String",
+      "description": "AWS SQS topic name for messaging"
+    }
+  ],
+  "hints": [
+    {
+      "name": "retail.orders.persistence.provider",
+      "values": [
+        {
+          "value": "in-memory",
+          "description": "Use in-memory storage for orders"
+        },
+        {
+          "value": "postgres",
+          "description": "Use PostgreSQL database for orders"
+        }
+      ]
+    },
+    {
+      "name": "retail.orders.messaging.provider",
+      "values": [
+        {
+          "value": "in-memory",
+          "description": "Use in-memory message broker"
+        },
+        {
+          "value": "rabbitmq",
+          "description": "Use RabbitMQ message broker"
+        },
+        {
+          "value": "sqs",
+          "description": "Use AWS SQS message broker"
+        }
+      ]
+    }
+  ]
+}

@@ -24,13 +24,10 @@ type AppConfiguration struct {
 
 // DatabaseConfiguration exported
 type DatabaseConfiguration struct {
-	Type           string `env:"DB_TYPE,default=mysql"`
-	Endpoint       string `env:"DB_ENDPOINT,default=catalog-db:3306"`
-	ReadEndpoint   string `env:"DB_READ_ENDPOINT"`
-	Name           string `env:"DB_NAME,default=sampledb"`
-	User           string `env:"DB_USER,default=catalog_user"`
-	Password       string `env:"DB_PASSWORD"`
-	Migrate        bool   `env:"DB_MIGRATE,default=true"`
-	MigrationsPath string `env:"DB_MIGRATIONS_PATH,default=db/migrations"`
-	ConnectTimeout int    `env:"DB_CONNECT_TIMEOUT,default=5"`
+	Type           string `env:"RETAIL_CATALOG_PERSISTENCE_PROVIDER,default=in-memory"`
+	Endpoint       string `env:"RETAIL_CATALOG_PERSISTENCE_ENDPOINT"`
+	Name           string `env:"RETAIL_CATALOG_PERSISTENCE_DB_NAME,default=catalogdb"`
+	User           string `env:"RETAIL_CATALOG_PERSISTENCE_USER,default=catalog_user"`
+	Password       string `env:"RETAIL_CATALOG_PERSISTENCE_PASSWORD"`
+	ConnectTimeout int    `env:"RETAIL_CATALOG_PERSISTENCE_CONNECT_TIMEOUT,default=5"`
 }

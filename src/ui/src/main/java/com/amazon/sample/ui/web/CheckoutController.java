@@ -18,13 +18,15 @@
 
 package com.amazon.sample.ui.web;
 
-import com.amazon.sample.ui.services.Metadata;
-import com.amazon.sample.ui.services.carts.CartsService;
 import com.amazon.sample.ui.services.checkout.CheckoutService;
 import com.amazon.sample.ui.services.checkout.model.Checkout;
 import com.amazon.sample.ui.services.checkout.model.ShippingAddress;
 import com.amazon.sample.ui.web.payload.CheckoutDeliveryMethodRequest;
+import com.amazon.sample.ui.web.payload.PaymentDetailsRequest;
 import com.amazon.sample.ui.web.payload.ShippingAddressRequest;
+import com.amazon.sample.ui.web.util.RequiresCommonAttributes;
+import com.amazon.sample.ui.web.util.SessionIDUtil;
+import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.server.reactive.ServerHttpRequest;
@@ -37,120 +39,154 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import reactor.core.publisher.Mono;
 
-import jakarta.validation.Valid;
-
 @Controller
 @RequestMapping("/checkout")
 @Slf4j
-public class CheckoutController extends BaseController {
+@RequiresCommonAttributes
+public class CheckoutController {
 
-    private CheckoutService checkoutService;
+  private CheckoutService checkoutService;
 
-    public CheckoutController(@Autowired CartsService cartsService,
-                              @Autowired CheckoutService checkoutService,
-                              @Autowired Metadata metadata) {
-        super(cartsService, metadata);
+  public CheckoutController(@Autowired CheckoutService checkoutService) {
+    this.checkoutService = checkoutService;
+  }
 
-        this.cartsService = cartsService;
-        this.checkoutService = checkoutService;
+  @GetMapping
+  public Mono<String> checkout(ServerHttpRequest request, Model model) {
+    return showShipping(new ShippingAddressRequest(), request, model);
+  }
+
+  private Mono<String> showShipping(
+    ShippingAddressRequest shippingAddressRequest,
+    ServerHttpRequest request,
+    Model model
+  ) {
+    String sessionId = SessionIDUtil.getSessionId(request);
+
+    model.addAttribute("shippingAddressRequest", shippingAddressRequest);
+
+    return this.checkoutService.create(sessionId)
+      .doOnNext(o -> {
+        model.addAttribute("checkout", o);
+      })
+      .thenReturn("checkout-shipping");
+  }
+
+  @PostMapping
+  public Mono<String> handleShipping(
+    @Valid @ModelAttribute(
+      "shippingAddressRequest"
+    ) ShippingAddressRequest shippingAddressRequest,
+    BindingResult result,
+    ServerHttpRequest request,
+    Model model
+  ) {
+    if (result.hasErrors()) {
+      return showShipping(shippingAddressRequest, request, model);
     }
 
-    @GetMapping
-    public Mono<String> checkout(ServerHttpRequest request, Model model) {
-        return showShipping(new ShippingAddressRequest(), request, model);
-    }
+    ShippingAddress address = new ShippingAddress();
+    address.setFirstName(shippingAddressRequest.getFirstName());
+    address.setLastName(shippingAddressRequest.getLastName());
+    address.setAddress1(shippingAddressRequest.getAddress1());
+    address.setAddress2(shippingAddressRequest.getAddress2());
+    address.setCity(shippingAddressRequest.getCity());
+    address.setState(shippingAddressRequest.getState());
+    address.setZip(shippingAddressRequest.getZipCode());
+    address.setEmail(shippingAddressRequest.getEmail());
 
-    private Mono<String> showShipping(ShippingAddressRequest shippingAddressRequest, ServerHttpRequest request, Model model) {
-        String sessionId = getSessionID(request);
+    String sessionId = SessionIDUtil.getSessionId(request);
 
-        this.populateCommon(request, model);
+    return this.checkoutService.shipping(sessionId, address).map(c -> {
+        String defaultToken = null;
 
-        model.addAttribute("shippingAddressRequest", shippingAddressRequest);
-
-        return this.checkoutService.create(sessionId)
-                .doOnNext(o -> {
-                    model.addAttribute("checkout", o);
-                })
-                .thenReturn("checkout-shipping");
-    }
-
-    @PostMapping
-    public Mono<String> handleShipping(@Valid @ModelAttribute("shippingAddressRequest") ShippingAddressRequest shippingAddressRequest,
-                                       BindingResult result,
-                                       ServerHttpRequest request,
-                                       Model model) {
-        if (result.hasErrors()) {
-            return showShipping(shippingAddressRequest, request, model);
+        if (c.getShippingOptions().size() > 0) {
+          defaultToken = c.getShippingOptions().get(0).getToken();
         }
+        return this.showDelivery(
+            c,
+            new CheckoutDeliveryMethodRequest(defaultToken),
+            request,
+            model
+          );
+      });
+  }
 
-        ShippingAddress address = new ShippingAddress();
-        address.setFirstName(shippingAddressRequest.getFirstName());
-        address.setLastName(shippingAddressRequest.getLastName());
-        address.setAddress1(shippingAddressRequest.getAddress1());
-        address.setAddress2(shippingAddressRequest.getAddress2());
-        address.setCity(shippingAddressRequest.getCity());
-        address.setState(shippingAddressRequest.getState());
-        address.setZip(shippingAddressRequest.getZip());
+  public String showDelivery(
+    Checkout checkout,
+    CheckoutDeliveryMethodRequest checkoutDeliveryMethodRequest,
+    ServerHttpRequest request,
+    Model model
+  ) {
+    model.addAttribute(
+      "checkoutDeliveryMethodRequest",
+      checkoutDeliveryMethodRequest
+    );
+    model.addAttribute("checkout", checkout);
 
-        String sessionId = getSessionID(request);
+    return "checkout-delivery";
+  }
 
-        return this.checkoutService.shipping(sessionId, shippingAddressRequest.getEmail(), address)
-            .map(c -> this.showDelivery(c, new CheckoutDeliveryMethodRequest(), request, model));
+  @PostMapping("/delivery")
+  public Mono<String> handleDelivery(
+    @Valid @ModelAttribute(
+      "checkoutDeliveryMethodRequest"
+    ) CheckoutDeliveryMethodRequest checkoutDeliveryMethodRequest,
+    BindingResult result,
+    ServerHttpRequest request,
+    Model model
+  ) {
+    String sessionId = SessionIDUtil.getSessionId(request);
+
+    if (result.hasErrors()) {
+      return this.checkoutService.get(sessionId).map(c ->
+          showDelivery(c, checkoutDeliveryMethodRequest, request, model)
+        );
     }
 
-    public String showDelivery(Checkout checkout, CheckoutDeliveryMethodRequest checkoutDeliveryMethodRequest,
-                                     ServerHttpRequest request,
-                                     Model model) {
-        this.populateCommon(request, model);
+    model.addAttribute("paymentDetailsRequest", checkoutDeliveryMethodRequest);
 
-        model.addAttribute("checkoutDeliveryMethodRequest", checkoutDeliveryMethodRequest);
-        model.addAttribute("checkout", checkout);
+    return this.checkoutService.delivery(
+        sessionId,
+        checkoutDeliveryMethodRequest.getToken()
+      ).map(c ->
+        this.showPayment(c, new PaymentDetailsRequest(), request, model)
+      );
+  }
 
-        return "checkout-delivery";
+  public String showPayment(
+    Checkout checkout,
+    PaymentDetailsRequest paymentDetailsRequest,
+    ServerHttpRequest request,
+    Model model
+  ) {
+    model.addAttribute("paymentDetailsRequest", paymentDetailsRequest);
+    model.addAttribute("checkout", checkout);
+
+    return "checkout-payment";
+  }
+
+  @PostMapping("/payment")
+  public Mono<String> handlePayment(
+    @Valid @ModelAttribute(
+      "paymentDetailsRequest"
+    ) PaymentDetailsRequest paymentDetailsRequest,
+    BindingResult result,
+    ServerHttpRequest request,
+    Model model
+  ) {
+    String sessionId = SessionIDUtil.getSessionId(request);
+
+    if (result.hasErrors()) {
+      return this.checkoutService.get(sessionId).map(c ->
+          showPayment(c, paymentDetailsRequest, request, model)
+        );
     }
 
-    @PostMapping("/delivery")
-    public Mono<String> handleDelivery(@Valid @ModelAttribute("checkoutDeliveryMethodRequest") CheckoutDeliveryMethodRequest checkoutDeliveryMethodRequest,
-                                       BindingResult result,
-                                       ServerHttpRequest request,
-                                       Model model) {
-        String sessionId = getSessionID(request);
-
-        if (result.hasErrors()) {
-            return this.checkoutService.get(sessionId).map(c -> showDelivery(c, checkoutDeliveryMethodRequest, request, model));
-        }
-
-        this.populateCommon(request, model);
-
-        return this.checkoutService.delivery(sessionId, checkoutDeliveryMethodRequest.getToken())
-            .doOnNext(o -> {
-                model.addAttribute("checkout", o);
-            })
-            .thenReturn("checkout-payment");
-    }
-
-    @PostMapping("/payment")
-    public String handlePayment(ServerHttpRequest request, Model model) {
-        String sessionId = getSessionID(request);
-
-        this.populateCommon(request, model);
-
-        model.addAttribute("checkout", this.checkoutService.get(sessionId));
-
-        return "checkout-confirm";
-    }
-
-    @PostMapping("/confirm")
-    public Mono<String> confirm(ServerHttpRequest request, Model model) {
-        String sessionId = getSessionID(request);
-
-        populateMetadata(model);
-
-        return this.checkoutService.submit(sessionId)
-            .doOnNext(o -> {
-                model.addAttribute("order", o.getSubmitted());
-                model.addAttribute("cart", o.getCart());
-            })
-            .thenReturn("order");
-    }
+    return this.checkoutService.submit(sessionId)
+      .doOnNext(o -> {
+        model.addAttribute("summary", o);
+      })
+      .thenReturn("order");
+  }
 }

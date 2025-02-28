@@ -1,0 +1,95 @@
+{{- if .Values.postgresql.create }}
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: {{ include "orders.postgresql.fullname" . }}
+  labels:
+    {{- include "orders.postgresql.labels" . | nindent 4 }}
+spec:
+  replicas: 1
+  serviceName: {{ include "orders.postgresql.fullname" . }}
+  selector:
+    matchLabels:
+      {{- include "orders.postgresql.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      {{- with .Values.postgresql.podAnnotations }}
+      annotations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      labels:
+        {{- include "orders.postgresql.selectorLabels" . | nindent 8 }}
+    spec:
+      {{- with .Values.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      containers:
+        - name: postgresql
+          image: "{{ .Values.postgresql.image.repository }}:{{ .Values.postgresql.image.tag }}"
+          imagePullPolicy: {{ .Values.postgresql.image.pullPolicy }}
+          env:
+            - name: POSTGRES_DB
+              value: {{ .Values.app.persistence.database }}
+            - name: POSTGRES_USER
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .Values.app.persistence.secret.name }}
+                  key: RETAIL_ORDERS_PERSISTENCE_USERNAME
+            - name: POSTGRES_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .Values.app.persistence.secret.name }}
+                  key: RETAIL_ORDERS_PERSISTENCE_PASSWORD
+            - name: PGDATA
+              value: /data/pgdata
+          volumeMounts:
+            - name: data
+              mountPath: /data
+          ports:
+            - name: postgresql
+              containerPort: 5432
+              protocol: TCP
+      {{- with .Values.postgresql.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.postgresql.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.postgresql.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+{{- if .Values.postgresql.persistentVolume.enabled }}
+  volumeClaimTemplates:
+    - metadata:
+        name: data
+        {{- if .Values.postgresql.persistentVolume.annotations }}
+        annotations:
+{{ toYaml .Values.postgresql.persistentVolume.annotations | indent 10 }}
+        {{- end }}
+        {{- if .Values.postgresql.persistentVolume.labels }}
+        labels:
+{{ toYaml .Values.postgresql.persistentVolume.labels | indent 10 }}
+        {{- end }}
+      spec:
+        accessModes:
+{{ toYaml .Values.postgresql.persistentVolume.accessModes | indent 8 }}
+        resources:
+          requests:
+            storage: "{{ .Values.postgresql.persistentVolume.size }}"
+      {{- if .Values.postgresql.persistentVolume.storageClass }}
+      {{- if (eq "-" .Values.postgresql.persistentVolume.storageClass) }}
+        storageClassName: ""
+      {{- else }}
+        storageClassName: "{{ .Values.postgresql.persistentVolume.storageClass }}"
+      {{- end }}
+      {{- end }}
+{{- else }}
+      volumes:
+      - name: data
+        emptyDir: {}
+{{- end }}
+{{- end }}

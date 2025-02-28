@@ -1,0 +1,46 @@
+{{- if and (eq "dynamodb" .Values.app.persistence.provider) .Values.dynamodb.create }}
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "carts.dynamodb.fullname" . }}
+  labels:
+    {{- include "carts.dynamodb.labels" . | nindent 4 }}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      {{- include "carts.dynamodb.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      {{- with .Values.dynamodb.podAnnotations }}
+      annotations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      labels:
+        {{- include "carts.dynamodb.selectorLabels" . | nindent 8 }}
+    spec:
+      {{- with .Values.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      containers:
+        - name: dynamodb
+          image: "{{ .Values.dynamodb.image.repository }}:{{ .Values.dynamodb.image.tag }}"
+          imagePullPolicy: {{ .Values.dynamodb.image.pullPolicy }}
+          ports:
+            - name: dynamodb
+              containerPort: 8000
+              protocol: TCP
+      {{- with .Values.dynamodb.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.dynamodb.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.dynamodb.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+{{- end }}

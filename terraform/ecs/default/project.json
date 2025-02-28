@@ -1,0 +1,37 @@
+{
+  "name": "terraform-ecs-default",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "library",
+  "sourceRoot": "terraform/ecs/default",
+  "targets": {
+    "build": {
+      "executor": "nx:run-commands",
+      "inputs": ["{projectRoot}/**/*"],
+      "options": {
+        "command": "terraform init"
+      }
+    },
+    "test": {
+      "executor": "nx:run-commands",
+      "dependsOn": ["build"],
+      "options": {
+        "command": "terraform validate"
+      }
+    },
+    "test:integration": {
+      "executor": "nx:run-commands",
+      "dependsOn": ["build"],
+      "options": {
+        "command": "exit 0"
+      }
+    },
+    "lint": {
+      "executor": "nx:run-commands",
+      "dependsOn": ["build"],
+      "options": {
+        "command": "exit 0"
+      }
+    }
+  },
+  "tags": ["terraform"]
+}

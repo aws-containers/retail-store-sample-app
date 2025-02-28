@@ -1,0 +1,109 @@
+# Default values for carts.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+replicaCount: 1
+
+image:
+  repository: public.ecr.aws/aws-containers/retail-store-sample-cart
+  pullPolicy: IfNotPresent
+  tag: 
+
+imagePullSecrets: []
+nameOverride: ""
+fullnameOverride: ""
+
+serviceAccount:
+  # Specifies whether a service account should be created
+  create: true
+  # Annotations to add to the service account
+  annotations: {}
+  # The name of the service account to use.
+  # If not set and create is true, a name is generated using the fullname template
+  name: ""
+
+podAnnotations: {}
+
+podSecurityContext:
+  fsGroup: 1000
+
+securityContext:
+  capabilities:
+    drop:
+      - ALL
+  readOnlyRootFilesystem: true
+  runAsNonRoot: true
+  runAsUser: 1000
+
+service:
+  type: ClusterIP
+  port: 80
+
+resources:
+  limits:
+    memory: 512Mi
+  requests:
+    cpu: 256m
+    memory: 512Mi
+
+autoscaling:
+  enabled: false
+  minReplicas: 1
+  maxReplicas: 10
+  targetCPUUtilizationPercentage: 80
+  # targetMemoryUtilizationPercentage: 80
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}
+
+topologySpreadConstraints: []
+
+metrics:
+  enabled: true
+  podAnnotations:
+    prometheus.io/scrape: "true"
+    prometheus.io/port: "8080"
+    prometheus.io/path: "/actuator/prometheus"
+
+configMap:
+  create: true
+  name:
+
+app:
+  persistence:
+    provider: in-memory
+    dynamodb:
+      tableName: Items
+      createTable: false
+
+dynamodb:
+  create: false
+
+  image:
+    repository: public.ecr.aws/aws-dynamodb-local/aws-dynamodb-local
+    pullPolicy: IfNotPresent
+    tag: "1.25.1"
+
+  service:
+    type: ClusterIP
+    port: 8000
+
+  podAnnotations: {}
+
+  nodeSelector: {}
+
+  tolerations: []
+
+  affinity: {}
+
+opentelemetry:
+  enabled: false
+  instrumentation: ""
+
+podDisruptionBudget:
+  enabled: false
+  minAvailable: 2
+  maxUnavailable: 1

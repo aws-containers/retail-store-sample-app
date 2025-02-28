@@ -1,43 +1,211 @@
-// Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
-// SPDX-License-Identifier: MIT-0
-//
-// Permission is hereby granted, free of charge, to any person obtaining a copy of this
-// software and associated documentation files (the "Software"), to deal in the Software
-// without restriction, including without limitation the rights to use, copy, modify,
-// merge, publish, distribute, sublicense, and/or sell copies of the Software, and to
-// permit persons to whom the Software is furnished to do so.
-//
-// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED,
-// INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A
-// PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
-// HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
-// OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
-// SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-
 package repository
 
 import (
 	"context"
 	"fmt"
+	"log"
+	"os"
+	"time"
 
 	"github.com/aws-containers/retail-store-sample-app/catalog/config"
 	"github.com/aws-containers/retail-store-sample-app/catalog/model"
-	"github.com/prometheus/client_golang/prometheus"
+	"gorm.io/driver/mysql"
+	"gorm.io/driver/sqlite"
+	"gorm.io/gorm"
+	"gorm.io/gorm/logger"
+	"gorm.io/plugin/opentelemetry/tracing"
 )
 
-type Repository interface {
-	List(tags []string, order string, pageNum, pageSize int, ctx context.Context) ([]model.Product, error)
-	Count(tags []string, ctx context.Context) (int, error)
-	Get(id string, ctx context.Context) (*model.Product, error)
-	Tags(ctx context.Context) ([]model.Tag, error)
-	Collector() prometheus.Collector
-	ReaderCollector() prometheus.Collector
+type Database struct {
+	DB *gorm.DB
 }
 
-func NewRepository(config config.DatabaseConfiguration) (Repository, error) {
+type CatalogRepository interface {
+	GetProducts(tags []string, order string, pageNum, pageSize int, ctx context.Context) ([]model.Product, error)
+	CountProducts(tags []string, ctx context.Context) (int, error)
+	GetProduct(id string, ctx context.Context) (*model.Product, error)
+	GetTags(ctx context.Context) ([]model.Tag, error)
+}
+
+func createMySQLDatabase(config config.DatabaseConfiguration) (*gorm.DB, error) {
+	connectionString := fmt.Sprintf("%s:%s@tcp(%s)/%s?timeout=%ds&charset=utf8mb4&parseTime=True&loc=Local", config.User, config.Password, config.Endpoint, config.Name, config.ConnectTimeout)
+	return gorm.Open(mysql.Open(connectionString), &gorm.Config{})
+}
+
+func NewRepository(config config.DatabaseConfiguration) (CatalogRepository, error) {
+	var db *gorm.DB
+	var err error
+
 	if config.Type == "mysql" {
-		return newMySQLRepository(config)
+		fmt.Printf("Using mysql database %s\n", config.Endpoint)
+		db, err = createMySQLDatabase(config)
+	} else {
+		fmt.Println("Using in-memory database")
+		newLogger := logger.New(
+			log.New(os.Stdout, "\r\n", log.LstdFlags), // io writer
+			logger.Config{
+				SlowThreshold:             time.Second, // Slow SQL threshold
+				LogLevel:                  logger.Info, // Log level
+				IgnoreRecordNotFoundError: true,        // Ignore ErrRecordNotFound error for logger
+				ParameterizedQueries:      false,       // Don't include params in the SQL log
+				Colorful:                  false,       // Disable color
+			},
+		)
+
+		db, err = gorm.Open(sqlite.Open("file::memory:?cache=shared"), &gorm.Config{
+			Logger: newLogger,
+		})
 	}
 
-	return nil, fmt.Errorf("Unknown database type: %s", config.Type)
+	if err != nil {
+		panic("failed to connect database")
+	}
+
+	if err := db.Use(tracing.NewPlugin(tracing.WithoutMetrics())); err != nil {
+		panic(err)
+	}
+
+	fmt.Println("Running database migration...")
+
+	// Migrate the schema
+	db.AutoMigrate(&model.Product{})
+
+	fmt.Println("Database migration complete")
+
+	products, err := LoadProductData()
+	if err != nil {
+		fmt.Printf("Error: %v\n", err)
+		return nil, err
+	}
+
+	tags, err := LoadProductTagData()
+	if err != nil {
+		fmt.Printf("Error: %v\n", err)
+		return nil, err
+	}
+
+	tagMap := make(map[string]model.Tag)
+
+	for _, tag := range tags {
+		tagEntity := model.Tag{Name: tag.Name, DisplayName: tag.DisplayName}
+		db.Save(tagEntity)
+
+		tagMap[tag.Name] = tagEntity
+	}
+
+	for _, product := range products {
+		var result model.Product
+		r := db.
+			Where("id = ?", product.ID).
+			Limit(1).
+			Find(&result)
+
+		if r.RowsAffected > 0 {
+			continue
+		}
+
+		productTags := []model.Tag{}
+		for _, tag := range product.Tags {
+			productTags = append(productTags, tagMap[tag])
+		}
+
+		db.Create(&model.Product{
+			ID:          product.ID,
+			Name:        product.Name,
+			Description: product.Description,
+			Price:       product.Price,
+			Tags:        productTags,
+		})
+	}
+
+	return &Database{
+		DB: db,
+	}, nil
+}
+
+func (db *Database) GetProducts(tags []string, order string, pageNum, pageSize int, ctx context.Context) ([]model.Product, error) {
+	products := []model.Product{}
+
+	query := db.DB.Preload("Tags")
+
+	// Apply tags filter if provided
+	if len(tags) > 0 {
+		query = query.Joins("JOIN product_tags ON product_tags.product_id = products.id").
+			Joins("JOIN tags ON tags.name = product_tags.tag_name").
+			Where("tags.name IN ?", tags).
+			Group("products.id")
+	}
+
+	// Apply ordering
+	switch order {
+	case "price_asc":
+		query = query.Order("price asc")
+	case "price_desc":
+		query = query.Order("price desc")
+	default:
+		query = query.Order("products.name asc") // default ordering
+	}
+
+	// Apply pagination
+	offset := (pageNum - 1) * pageSize
+	query = query.Offset(offset).Limit(pageSize)
+
+	// Execute the query
+	err := query.WithContext(ctx).Find(&products).Error
+	if err != nil {
+		return nil, err
+	}
+
+	return products, err
+}
+
+func (db *Database) GetProduct(id string, ctx context.Context) (*model.Product, error) {
+	product := model.Product{}
+
+	err := db.DB.WithContext(ctx).
+		Preload("Tags").
+		Where("id = ?", id).
+		First(&product).Error
+
+	if err != nil {
+		return nil, err
+	}
+
+	return &product, err
+}
+
+func (db *Database) CountProducts(tags []string, ctx context.Context) (int, error) {
+	var count int64
+
+	query := db.DB.WithContext(ctx).Model(&model.Product{})
+
+	// Apply tags filter if provided
+	if len(tags) > 0 {
+		query = query.Joins("JOIN product_tags ON product_tags.product_id = products.id").
+			Joins("JOIN tags ON tags.name = product_tags.tag_name").
+			Where("tags.name IN ?", tags).
+			Group("products.id")
+	}
+
+	err := query.Count(&count).Error
+	if err != nil {
+		return 0, err
+	}
+
+	return int(count), nil
+}
+
+func (db *Database) GetTags(ctx context.Context) ([]model.Tag, error) {
+	tags := []model.Tag{}
+
+	err := db.DB.WithContext(ctx).
+		Model(&model.Tag{}).
+		Order("display_name asc"). // Order by display name alphabetically
+		Find(&tags).Error
+
+	if err != nil {
+		return nil, fmt.Errorf("failed to fetch tags: %w", err)
+	}
+
+	return tags, err
 }

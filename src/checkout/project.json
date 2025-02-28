@@ -1,0 +1,33 @@
+{
+  "name": "checkout",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "targets": {
+    "install": {
+      "executor": "nx:run-commands",
+      "options": {
+        "cwd": "src/checkout",
+        "command": "yarn install"
+      }
+    },
+    "build": {
+      "dependsOn": ["install"]
+    },
+    "test": {
+      "dependsOn": ["build"]
+    },
+    "test:integration": {
+      "dependsOn": ["test"]
+    },
+    "lint": {
+      "executor": "nx:run-commands",
+      "dependsOn": ["install"],
+
+      "options": {
+        "command": "yarn lint"
+      }
+    },
+    "helm": {}
+  },
+  "tags": ["service", "chart"]
+}

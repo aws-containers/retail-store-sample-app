@@ -21,31 +21,37 @@ package com.amazon.sample.orders.messaging.sqs;
 import com.amazon.sample.orders.messaging.MessagingProvider;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-
 import io.awspring.cloud.sqs.operations.SqsOperations;
 
 public class SqsMessagingProvider implements MessagingProvider {
 
-    private final String messageQueueTopic;
-    private final SqsOperations blockingTemplate;
-    private final ObjectMapper mapper;
+  private static final int DELAY = 10;
 
-    public SqsMessagingProvider(String messageQueueTopic, SqsOperations blockingTemplate, ObjectMapper mapper) {
-        this.blockingTemplate = blockingTemplate;
-        this.messageQueueTopic = messageQueueTopic;
-        this.mapper = mapper;
-    }
+  private final String messageQueueTopic;
+  private final SqsOperations blockingTemplate;
+  private final ObjectMapper mapper;
 
-    @Override
-    public void publishEvent(Object event) {
-        blockingTemplate.send(to -> {
-            try {
-                to.queue(messageQueueTopic)
-                    .payload(mapper.writeValueAsString(event))
-                    .delaySeconds(10);
-            } catch (JsonProcessingException e) {
-                e.printStackTrace();
-            }
-        });
-    }
+  public SqsMessagingProvider(
+    String messageQueueTopic,
+    SqsOperations blockingTemplate,
+    ObjectMapper mapper
+  ) {
+    this.blockingTemplate = blockingTemplate;
+    this.messageQueueTopic = messageQueueTopic;
+    this.mapper = mapper;
+  }
+
+  @Override
+  public void publishEvent(Object event) {
+    blockingTemplate.send(to -> {
+      try {
+        to
+          .queue(messageQueueTopic)
+          .payload(mapper.writeValueAsString(event))
+          .delaySeconds(DELAY);
+      } catch (JsonProcessingException e) {
+        e.printStackTrace();
+      }
+    });
+  }
 }

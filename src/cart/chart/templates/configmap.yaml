@@ -1,0 +1,19 @@
+{{- if .Values.configMap.create -}}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "carts.configMapName" . }}
+data:
+  RETAIL_CART_PERSISTENCE_PROVIDER: {{ .Values.app.persistence.provider }}
+  {{- if (eq "dynamodb" .Values.app.persistence.provider) }}
+  RETAIL_CART_PERSISTENCE_DYNAMODB_TABLE_NAME: {{ .Values.app.persistence.dynamodb.tableName }}
+  {{- if .Values.dynamodb.create }}
+  RETAIL_CART_PERSISTENCE_DYNAMODB_CREATE_TABLE: "true"
+  AWS_ACCESS_KEY_ID: key
+  AWS_SECRET_ACCESS_KEY: secret
+  RETAIL_CART_PERSISTENCE_DYNAMODB_ENDPOINT: http://{{ include "carts.dynamodb.fullname" . }}:{{ .Values.dynamodb.service.port }}
+  {{- else }}
+  RETAIL_CART_PERSISTENCE_DYNAMODB_CREATE_TABLE: "{{ .Values.app.persistence.dynamodb.createTable }}"
+  {{- end }}
+  {{- end }}
+{{- end }}

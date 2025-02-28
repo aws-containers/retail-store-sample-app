@@ -1,0 +1,172 @@
+# Default values for orders.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+replicaCount: 1
+
+image:
+  repository: public.ecr.aws/aws-containers/retail-store-sample-orders
+  pullPolicy: IfNotPresent
+  tag: 
+
+imagePullSecrets: []
+nameOverride: ""
+fullnameOverride: ""
+
+serviceAccount:
+  # Specifies whether a service account should be created
+  create: true
+  # Annotations to add to the service account
+  annotations: {}
+  # The name of the service account to use.
+  # If not set and create is true, a name is generated using the fullname template
+  name: ""
+
+podAnnotations: {}
+
+podSecurityContext:
+  fsGroup: 1000
+
+securityContext:
+  capabilities:
+    drop:
+      - ALL
+  readOnlyRootFilesystem: true
+  runAsNonRoot: true
+  runAsUser: 1000
+
+service:
+  type: ClusterIP
+  port: 80
+
+resources:
+  limits:
+    memory: 512Mi
+  requests:
+    cpu: 256m
+    memory: 512Mi
+
+autoscaling:
+  enabled: false
+  minReplicas: 1
+  maxReplicas: 10
+  targetCPUUtilizationPercentage: 80
+  # targetMemoryUtilizationPercentage: 80
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}
+
+topologySpreadConstraints: []
+
+metrics:
+  enabled: true
+  podAnnotations:
+    prometheus.io/scrape: "true"
+    prometheus.io/port: "8080"
+    prometheus.io/path: "/actuator/prometheus"
+
+configMap:
+  create: true
+  name:
+
+app:
+  persistence:
+    provider: 'in-memory'
+    endpoint: ''
+    database: 'orders'
+
+    secret:
+      create: true
+      name: orders-db
+      username: orders
+      password: ""
+
+  messaging:
+    provider: 'in-memory'
+
+    rabbitmq:
+      addresses: []
+
+      secret:
+        create: true
+        name: orders-rabbitmq
+        username: ""
+        password: ""
+
+postgresql:
+  create: false
+
+  image:
+    repository: public.ecr.aws/docker/library/postgres
+    pullPolicy: IfNotPresent
+    tag: "16.1"
+
+  service:
+    type: ClusterIP
+    port: 5432
+
+  podAnnotations: {}
+
+  nodeSelector: {}
+
+  tolerations: []
+
+  affinity: {}
+
+  persistentVolume:
+    enabled: false
+    annotations: {}
+    labels: {}
+    accessModes:
+      - ReadWriteOnce
+    size: 10Gi
+    # storageClass: gp2
+
+rabbitmq:
+  create: false
+
+  image:
+    repository: "public.ecr.aws/docker/library/rabbitmq"
+    pullPolicy: IfNotPresent
+    tag: "3-management"
+
+  service:
+    type: ClusterIP
+    amqp:
+      port: 5672
+    http:
+      port: 15672
+
+  podAnnotations: {}
+
+  nodeSelector: {}
+
+  tolerations: []
+
+  affinity: {}
+
+  persistentVolume:
+    enabled: false
+    annotations: {}
+    labels: {}
+    accessModes:
+      - ReadWriteOnce
+    size: 10Gi
+    # storageClass: gp2
+
+securityGroups:
+  create: false
+
+  securityGroupIds: []
+
+opentelemetry:
+  enabled: false
+  instrumentation: ""
+
+podDisruptionBudget:
+  enabled: false
+  minAvailable: 2
+  maxUnavailable: 1

@@ -5,7 +5,7 @@
 >
   <body>
     <div class="row">
-      <div class="col-md-6" th:each="item : ${checkout.items}">
+      <div class="col-md-6 order-item" th:each="item : ${checkout.items}">
         <div class="couplet mb-4">
           <div class="picture">
             <img
@@ -29,9 +29,9 @@
         </div>
       </div>
     </div>
-    <form method="POST" id="checkoutForm" action="/checkout/confirm">
+    <form method="POST" id="checkoutForm" th:action="@{/checkout/confirm}">
       <div class="box-footer d-flex justify-content-between">
-        <a href="/cart" class="btn btn-outline-secondary"
+        <a th:href="@{/cart}" class="btn btn-outline-secondary"
           ><i class="fa fa-chevron-left"></i>Back to Basket</a
         >
         <button type="submit" class="btn btn-primary">

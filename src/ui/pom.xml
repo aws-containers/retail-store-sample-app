@@ -1,12 +1,15 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+<?xml version="1.0" encoding="UTF-8" ?>
+<project
+  xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd"
+>
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>3.3.5</version>
-		<relativePath/> <!-- lookup parent from repository -->
+		<version>3.4.2</version>
+		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.amazon.sample</groupId>
 	<artifactId>ui</artifactId>
@@ -15,11 +18,49 @@
 	<description>UI component</description>
 
 	<properties>
-		<java.version>17</java.version>
+		<java.version>21</java.version>
 		<spring-cloud>2021.0.3</spring-cloud>
 		<spring-cloud-aws.version>2.4.2</spring-cloud-aws.version>
 		<org.mapstruct.version>1.6.3</org.mapstruct.version>
 	</properties>
+
+	<repositories>
+		<repository>
+			<id>spring-milestones</id>
+			<name>Spring Milestones</name>
+			<url>https://repo.spring.io/milestone</url>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+		<repository>
+			<id>spring-snapshots</id>
+			<name>Spring Snapshots</name>
+			<url>https://repo.spring.io/snapshot</url>
+			<releases>
+				<enabled>false</enabled>
+			</releases>
+		</repository>
+	</repositories>
+
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.springframework.ai</groupId>
+				<artifactId>spring-ai-bom</artifactId>
+				<version>1.0.0-M6</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+			<dependency>
+				<groupId>io.opentelemetry.instrumentation</groupId>
+				<artifactId>opentelemetry-instrumentation-bom</artifactId>
+				<version>2.12.0</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+		</dependencies>
+    </dependencyManagement>
 
 	<dependencies>
 		<dependency>
@@ -86,7 +127,6 @@
     <dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>
 			<artifactId>jackson-databind</artifactId>
-			<version>2.17.2</version>
 		</dependency>
     <dependency>
 			<groupId>com.google.code.findbugs</groupId>
@@ -96,7 +136,7 @@
 		<dependency>
 			<groupId>io.swagger</groupId>
 			<artifactId>swagger-annotations</artifactId>
-			<version>1.6.14</version>
+			<version>1.6.15</version>
 		</dependency>
 		<dependency>
 			<groupId>org.mapstruct</groupId>
@@ -127,19 +167,37 @@
 			<scope>test</scope>
 		</dependency>
 		<dependency>
-		  <groupId>org.webjars</groupId>
-		  <artifactId>webjars-locator-core</artifactId>
+			<groupId>com.microsoft.kiota</groupId>
+			<artifactId>microsoft-kiota-bundle</artifactId>
+			<version>1.8.3</version>
 		</dependency>
 		<dependency>
-		  <groupId>org.webjars.npm</groupId>
-		  <artifactId>bootstrap</artifactId>
-		  <version>5.3.3</version>
+			<groupId>com.microsoft.kiota</groupId>
+			<artifactId>microsoft-kiota-serialization-json</artifactId>
+			<version>1.8.3</version>
 		</dependency>
 		<dependency>
-			<groupId>org.webjars.npm</groupId>
-			<artifactId>bootstrap-icons</artifactId>
-			<version>1.11.3</version>
+			<groupId>io.opentelemetry.contrib</groupId>
+			<artifactId>opentelemetry-aws-resources</artifactId>
+			<version>1.42.0-alpha</version>
 		</dependency>
+		<dependency>
+				<groupId>org.springframework.ai</groupId>
+				<artifactId>spring-ai-bedrock-converse-spring-boot-starter</artifactId>
+		</dependency>
+		<dependency>
+				<groupId>org.springframework.ai</groupId>
+				<artifactId>spring-ai-openai</artifactId>
+		</dependency>
+		<dependency>
+				<groupId>io.opentelemetry.instrumentation</groupId>
+				<artifactId>opentelemetry-spring-boot-starter</artifactId>
+		</dependency>
+		<dependency>
+				<groupId>io.opentelemetry.instrumentation</groupId>
+				<artifactId>opentelemetry-okhttp-3.0</artifactId>
+				<version>2.12.0-alpha</version>
+  	</dependency>
 	</dependencies>
 
 	<build>
@@ -181,11 +239,63 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-checkstyle-plugin</artifactId>
-				<version>3.3.1</version>
+				<version>3.6.0</version>
 				<configuration>
 					<configLocation>../misc/style/java/checkstyle.xml</configLocation>
+					<consoleOutput>true</consoleOutput>
+					<failsOnError>true</failsOnError>
+					<excludes>**/ui/client/**/*</excludes>
 				</configuration>
 			</plugin>
+			<plugin>
+        <artifactId>kiota-maven-plugin</artifactId>
+        <groupId>io.kiota</groupId>
+        <version>0.0.20</version>
+        <configuration>
+					<kiotaVersion>1.21.0</kiotaVersion>
+					<serializers
+          >com.microsoft.kiota.serialization.JsonSerializationWriterFactory</serializers>
+					<deserializers
+          >com.microsoft.kiota.serialization.JsonParseNodeFactory</deserializers>
+					<targetDirectory>${project.build.sourceDirectory}</targetDirectory>
+					<cleanOutput>true</cleanOutput>
+          <clearCache>true</clearCache>
+        </configuration>
+				<executions>
+					<execution>
+						<id>orders</id>
+						<configuration>
+							<file>../orders/openapi.yml</file>
+							<namespace>com.amazon.sample.ui.client.orders</namespace>
+							<clientClass>OrdersClient</clientClass>
+						</configuration>
+					</execution>
+					<execution>
+						<id>cart</id>
+						<configuration>
+							<file>../cart/openapi.yml</file>
+							<namespace>com.amazon.sample.ui.client.cart</namespace>
+							<clientClass>CartClient</clientClass>
+						</configuration>
+					</execution>
+					<execution>
+						<id>catalog</id>
+						<configuration>
+							<file>../catalog/openapi.yml</file>
+							<namespace>com.amazon.sample.ui.client.catalog</namespace>
+							<clientClass>CatalogClient</clientClass>
+						</configuration>
+					</execution>
+					<execution>
+						<id>checkout</id>
+						<configuration>
+							<file>../checkout/openapi.yml</file>
+							<namespace>com.amazon.sample.ui.client.checkout</namespace>
+							<clientClass>CheckoutClient</clientClass>
+						</configuration>
+					</execution>
+				</executions>
+      </plugin>
 		</plugins>
 	</build>
 

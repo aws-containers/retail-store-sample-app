@@ -1,0 +1,27 @@
+{
+  "descriptionHash": "E6A0EE5B99C854A921D2DC2A991DAEC958EB8F2A6B72F3ECBDB2E3A42CF522A194D8C7F580B622181C589646F029C8CD2D9E072B5B3595E9153C3AC62098A57E",
+  "descriptionLocation": "../../../../../../../../../../cart/openapi.yml",
+  "lockFileVersion": "1.0.0",
+  "kiotaVersion": "1.21.0",
+  "clientClassName": "CartClient",
+  "typeAccessModifier": "Public",
+  "clientNamespaceName": "com.amazon.sample.ui.client.cart",
+  "language": "Java",
+  "usesBackingStore": false,
+  "excludeBackwardCompatible": false,
+  "includeAdditionalData": true,
+  "disableSSLValidation": false,
+  "serializers": [
+    "com.microsoft.kiota.serialization.JsonSerializationWriterFactory"
+  ],
+  "deserializers": ["com.microsoft.kiota.serialization.JsonParseNodeFactory"],
+  "structuredMimeTypes": [
+    "application/json",
+    "text/plain;q=0.9",
+    "application/x-www-form-urlencoded;q=0.2",
+    "multipart/form-data;q=0.1"
+  ],
+  "includePatterns": [],
+  "excludePatterns": [],
+  "disabledValidationRules": []
+}

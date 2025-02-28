@@ -28,62 +28,60 @@ import reactor.core.publisher.Mono;
 
 public class MockCartsService implements CartsService {
 
-    private CatalogService catalogService;
+  private CatalogService catalogService;
 
-    private Map<String, Cart> carts;
+  private Map<String, Cart> carts;
 
-    public MockCartsService(CatalogService catalogService) {
-            this.catalogService = catalogService;
+  public MockCartsService(CatalogService catalogService) {
+    this.catalogService = catalogService;
 
-        this.carts = new HashMap<>();
+    this.carts = new HashMap<>();
+  }
+
+  @Override
+  public Mono<Cart> getCart(String sessionId) {
+    return Mono.just(getOrCreate(sessionId));
+  }
+
+  private Cart getOrCreate(String sessionId) {
+    Cart cart;
+
+    if (!carts.containsKey(sessionId)) {
+      cart = this.create(sessionId);
+    } else {
+      cart = carts.get(sessionId);
     }
 
-    @Override
-    public Mono<Cart> getCart(String sessionId) {
-        return Mono.just(getOrCreate(sessionId));
-    }
+    return cart;
+  }
 
-    private Cart getOrCreate(String sessionId) {
-        Cart cart;
+  private Cart create(String sessionId) {
+    Cart cart = new Cart(new ArrayList<>());
 
-        if (!carts.containsKey(sessionId)) {
-            cart = this.create(sessionId);
-        } else {
-            cart = carts.get(sessionId);
-        }
+    this.carts.put(sessionId, cart);
 
-        return cart;
-    }
+    return cart;
+  }
 
-    private Cart create(String sessionId) {
-        Cart cart = new Cart(new ArrayList<>());
+  @Override
+  public Mono<Cart> deleteCart(String sessionId) {
+    return Mono.just(this.create(sessionId));
+  }
 
-        this.carts.put(sessionId, cart);
+  @Override
+  public Mono<Void> addItem(String sessionId, String productId, int quantity) {
+    Cart cart = getOrCreate(sessionId);
 
-        return cart;
-    }
+    return this.catalogService.getProduct(productId)
+      .map(p -> new CartItem(productId, quantity, p.getPrice(), p.getName()))
+      .doOnNext(i -> cart.addItem(i))
+      .then();
+  }
 
-    @Override
-    public Mono<Cart> deleteCart(String sessionId) {
-        return Mono.just(this.create(sessionId));
-    }
+  @Override
+  public Mono<Void> removeItem(String sessionId, String productId) {
+    getOrCreate(sessionId).removeItem(productId);
 
-    @Override
-    public Mono<Void> addItem(String sessionId, String productId) {
-        Cart cart = getOrCreate(sessionId);
-
-        return this.catalogService.getProduct(productId)
-                .map(p -> new CartItem(productId, 1,
-                    p.getPrice(),
-                    p.getName(),
-                    p.getImageUrl()))
-                .doOnNext(i -> cart.addItem(i)).then();
-    }
-
-    @Override
-    public Mono<Void> removeItem(String sessionId, String productId) {
-        getOrCreate(sessionId).removeItem(productId);
-
-        return Mono.empty();
-    }
+    return Mono.empty();
+  }
 }

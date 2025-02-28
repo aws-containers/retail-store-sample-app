@@ -1,18 +1,40 @@
-# AWS Containers Retail Sample
+<div align="center">
+  <a href="https://eksworkshop.com" target="_blank" rel="noopener noreferrer">
+    <picture>
+      <img width="160" src="/docs/images/containers.png" alt="AWS containers">
+    </picture>
+  </a>
+  
+  <br/>
+
+  <div align="center">
+
+[![Stars](https://img.shields.io/github/stars/aws-containers/retail-store-sample-app)](Stars)
+[![License](https://img.shields.io/github/license/aws-containers/retail-store-sample-app)](LICENSE)
+
+  </div>
+
+  <strong>
+  <h2>AWS Containers Retail Sample</h2>
+  </strong>
+</div>
 
 This is a sample application designed to illustrate various concepts related to containers on AWS. It presents a sample retail store application including a product catalog, shopping cart and checkout.
 
 It provides:
 
-- A distributed component architecture in various languages and frameworks
-- Utilization of a variety of different persistence backends for different components like MariaDB (or MySQL), DynamoDB and Redis
-- The ability to run in various container orchestration technologies like Docker Compose, Kubernetes etc.
+- A demo store-front application with themes, pages to show container and application topology information, generative AI chat bot and utility functions for experimentation and demos.
+- An optional distributed component architecture using various languages and frameworks
+- A variety of different persistence backends for the various components like MariaDB (or MySQL), DynamoDB and Redis
+- The ability to run in different container orchestration technologies like Docker Compose, Kubernetes etc.
 - Pre-built container images for both x86-64 and ARM64 CPU architectures
 - All components instrumented for Prometheus metrics and OpenTelemetry OTLP tracing
 - Support for Istio on Kubernetes
 - Load generator which exercises all of the infrastructure
 
-**This project is intended for educational purposes only and not for production use.**
+See the [features documentation](./docs/features.md) for more information.
+
+**This project is intended for educational purposes only and not for production use**
 
 ![Screenshot](/docs/images/screenshot.png)
 
@@ -22,29 +44,66 @@ The application has been deliberately over-engineered to generate multiple de-co
 
 ![Architecture](/docs/images/architecture.png)
 
-| Component                                                                                                                   | Language | Container Image                                                             | Description                                                                 |
-| --------------------------------------------------------------------------------------------------------------------------- | -------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------- |
-| ![ui workflow](https://github.com/aws-containers/retail-store-sample-app/actions/workflows/ci-ui.yml/badge.svg)             | Java     | [Link](https://gallery.ecr.aws/aws-containers/retail-store-sample-ui)       | Aggregates API calls to the various other services and renders the HTML UI. |
-| ![catalog workflow](https://github.com/aws-containers/retail-store-sample-app/actions/workflows/ci-catalog.yml/badge.svg)   | Go       | [Link](https://gallery.ecr.aws/aws-containers/retail-store-sample-catalog)  | Product catalog API                                                         |
-| ![cart workflow](https://github.com/aws-containers/retail-store-sample-app/actions/workflows/ci-cart.yml/badge.svg)         | Java     | [Link](https://gallery.ecr.aws/aws-containers/retail-store-sample-cart)     | User shopping carts API                                                     |
-| ![orders workflow](https://github.com/aws-containers/retail-store-sample-app/actions/workflows/ci-orders.yml/badge.svg)     | Java     | [Link](https://gallery.ecr.aws/aws-containers/retail-store-sample-orders)   | User orders API                                                             |
-| ![checkout workflow](https://github.com/aws-containers/retail-store-sample-app/actions/workflows/ci-checkout.yml/badge.svg) | Node     | [Link](https://gallery.ecr.aws/aws-containers/retail-store-sample-checkout) | API to orchestrate the checkout process                                     |
-| ![assets workflow](https://github.com/aws-containers/retail-store-sample-app/actions/workflows/ci-assets.yml/badge.svg)     | Nginx    | [Link](https://gallery.ecr.aws/aws-containers/retail-store-sample-assets)   | Serves static assets like images related to the product catalog             |
+| Component                  | Language | Container Image                                                             | Helm Chart                                                                        | Description                             |
+| -------------------------- | -------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------- |
+| [UI](./src/ui/)            | Java     | [Link](https://gallery.ecr.aws/aws-containers/retail-store-sample-ui)       | [Link](https://gallery.ecr.aws/aws-containers/retail-store-sample-ui-chart)       | Store user interface                    |
+| [Catalog](./src/catalog/)  | Go       | [Link](https://gallery.ecr.aws/aws-containers/retail-store-sample-catalog)  | [Link](https://gallery.ecr.aws/aws-containers/retail-store-sample-catalog-chart)  | Product catalog API                     |
+| [Cart](./src/cart/)        | Java     | [Link](https://gallery.ecr.aws/aws-containers/retail-store-sample-cart)     | [Link](https://gallery.ecr.aws/aws-containers/retail-store-sample-cart-chart)     | User shopping carts API                 |
+| [Orders](./src/orders)     | Java     | [Link](https://gallery.ecr.aws/aws-containers/retail-store-sample-orders)   | [Link](https://gallery.ecr.aws/aws-containers/retail-store-sample-orders-chart)   | User orders API                         |
+| [Checkout](./src/checkout) | Node     | [Link](https://gallery.ecr.aws/aws-containers/retail-store-sample-checkout) | [Link](https://gallery.ecr.aws/aws-containers/retail-store-sample-checkout-chart) | API to orchestrate the checkout process |
 
 ## Quickstart
 
-The following sections provide quickstart instructions for various platforms. All of these assume that you have cloned this repository locally and are using a CLI thats current directory is the root of the code repository.
+The following sections provide quickstart instructions for various platforms.
 
-### Terraform
+### Docker
 
-The following options are available to deploy the application using Terraform:
+This deployment method will run the application as a single container on your local machine using `docker`.
 
-| Name                                                    | Description                                                                                                     |
-| ------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- |
-| [Amazon EKS](./deploy/terraform/eks/default/)           | Deploys the application to Amazon EKS using other AWS services for dependencies, such as RDS, DynamoDB etc.     |
-| [Amazon EKS (Minimal)](./deploy/terraform/eks/minimal/) | Deploys the application to Amazon EKS using in-cluster dependencies instead of RDS, DynamoDB etc.               |
-| [Amazon ECS](./deploy/terraform/ecs/default/)           | Deploys the application to Amazon ECS using other AWS services for dependencies, such as RDS, DynamoDB etc.     |
-| [AWS App Runner](./deploy/terraform/apprunner/)         | Deploys the application to AWS App Runner using other AWS services for dependencies, such as RDS, DynamoDB etc. |
+Pre-requisites:
+
+- Docker installed locally
+
+Run the container:
+
+```
+docker run -it --rm -p 8888:8080 public.ecr.aws/aws-containers/retail-store-sample-ui:1.0.0
+```
+
+Open the frontend in a browser window:
+
+```
+http://localhost:8888
+```
+
+To stop the container in `docker` use Ctrl+C.
+
+### Docker Compose
+
+This deployment method will run the application on your local machine using `docker-compose`.
+
+Pre-requisites:
+
+- Docker installed locally
+
+Download the latest Docker Compose file and use `docker compose` to run the application containers:
+
+```
+curl https://github.com/aws-containers/retail-store-sample-app/releases/download/latest/docker-compose.yaml
+DB_PASSWORD='<some password>' docker compose --file docker-compose.yaml up
+```
+
+Open the frontend in a browser window:
+
+```
+http://localhost:8888
+```
+
+To stop the containers in `docker compose` use Ctrl+C. To delete all the containers and related resources run:
+
+```
+docker compose -f docker-compose.yaml down
+```
 
 ### Kubernetes
 
@@ -58,7 +117,7 @@ Pre-requisites:
 Use `kubectl` to run the application:
 
 ```
-kubectl apply -f https://raw.githubusercontent.com/aws-containers/retail-store-sample-app/main/dist/kubernetes/deploy.yaml
+kubectl apply -f https://github.com/aws-containers/retail-store-sample-app/releases/download/latest/kubernetes.yaml
 kubectl wait --for=condition=available deployments --all
 ```
 
@@ -71,46 +130,19 @@ kubectl get svc ui
 To remove the application use `kubectl` again:
 
 ```
-kubectl delete -f https://raw.githubusercontent.com/aws-containers/retail-store-sample-app/main/dist/kubernetes/deploy.yaml
+kubectl delete -f https://github.com/aws-containers/retail-store-sample-app/releases/download/latest/kubernetes.yaml
 ```
 
-### Docker Compose
+### Terraform
 
-This deployment method will run the application on your local machine using `docker-compose`, and will build the containers as part of the deployment.
+The following options are available to deploy the application using Terraform:
 
-Pre-requisites:
-
-- Docker installed locally
-
-Change directory to the Docker Compose deploy directory:
-
-```
-cd dist/docker-compose
-```
-
-Log in to the public ECR registry by following the instructions on the [AWS ECR documentation](https://docs.aws.amazon.com/AmazonECR/latest/public/public-registry-auth.html#public-registry-auth-token):
-
-```
-aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin public.ecr.aws
-```
-
-Use `docker compose` to run the application containers:
-
-```
-MYSQL_PASSWORD='<some password>' docker compose --file docker-compose.yml up
-```
-
-Open the frontend in a browser window:
-
-```
-http://localhost:8888
-```
-
-To stop the containers in `docker compose` use Ctrl+C. To delete all the containers and related resources run:
-
-```
-docker compose -f docker-compose.yml down
-```
+| Name                                             | Description                                                                                                     |
+| ------------------------------------------------ | --------------------------------------------------------------------------------------------------------------- |
+| [Amazon EKS](./terraform/eks/default/)           | Deploys the application to Amazon EKS using other AWS services for dependencies, such as RDS, DynamoDB etc.     |
+| [Amazon EKS (Minimal)](./terraform/eks/minimal/) | Deploys the application to Amazon EKS using in-cluster dependencies instead of RDS, DynamoDB etc.               |
+| [Amazon ECS](./terraform/ecs/default/)           | Deploys the application to Amazon ECS using other AWS services for dependencies, such as RDS, DynamoDB etc.     |
+| [AWS App Runner](./terraform/apprunner/)         | Deploys the application to AWS App Runner using other AWS services for dependencies, such as RDS, DynamoDB etc. |
 
 ## Security
 

@@ -18,88 +18,88 @@
 
 package com.amazon.sample.orders.entities;
 
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.relational.core.mapping.Column;
 import org.springframework.data.relational.core.mapping.MappedCollection;
 import org.springframework.data.relational.core.mapping.Table;
 
-import java.util.ArrayList;
-import java.util.List;
-
-@Table
+@Table(name = "orders")
 public class OrderEntity {
-    @Id
-    private String id;
-    private String firstName;
-    private String lastName;
-    private String email;
 
-    @MappedCollection(keyColumn = "product_id")
-    private List<OrderItemEntity> items = new ArrayList<>();
+  @Id
+  private String id;
 
-    public OrderEntity() {
+  private LocalDateTime createdDate;
 
-    }
+  @Column(value = "order_id")
+  private ShippingAddressEntity shippingAddress;
 
-    public OrderEntity(String firstName, String lastName, String email) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.email = email;
-    }
+  @MappedCollection(idColumn = "order_id", keyColumn = "product_id")
+  private List<OrderItemEntity> items = new ArrayList<>();
 
-    public String getId() {
-        return id;
-    }
+  public OrderEntity() {}
 
-    public void setId(String id) {
-        this.id = id;
-    }
+  public OrderEntity(
+    List<OrderItemEntity> items,
+    ShippingAddressEntity shippingAddress
+  ) {
+    this.items = items;
+    this.shippingAddress = shippingAddress;
+  }
 
-    public String getFirstName() {
-        return firstName;
-    }
+  public String getId() {
+    return id;
+  }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
+  public void setId(String id) {
+    this.id = id;
+  }
 
-    public String getLastName() {
-        return lastName;
-    }
+  public LocalDateTime getCreatedDate() {
+    return createdDate;
+  }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
+  public void setCreatedDate(LocalDateTime createdDate) {
+    this.createdDate = createdDate;
+  }
 
-    public String getEmail() {
-        return email;
-    }
+  public List<OrderItemEntity> getItems() {
+    return items;
+  }
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
+  public void setItems(List<OrderItemEntity> items) {
+    this.items = items;
+  }
 
-    public List<OrderItemEntity> getItems() {
-        return items;
-    }
+  public OrderEntity addItem(OrderItemEntity item) {
+    this.items.add(item);
 
-    public void setItems(List<OrderItemEntity> items) {
-        this.items = items;
-    }
+    return this;
+  }
 
-    public OrderEntity addItem(OrderItemEntity item) {
-        this.items.add(item);
+  public ShippingAddressEntity getShippingAddress() {
+    return shippingAddress;
+  }
 
-        return this;
-    }
+  public void setShippingAddress(ShippingAddressEntity shippingAddress) {
+    this.shippingAddress = shippingAddress;
+  }
 
-    @Override
-    public String toString() {
-        return "OrderEntity{" +
-                "id='" + id + '\'' +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", email='" + email + '\'' +
-                ", items=" + items +
-                '}';
-    }
+  @Override
+  public String toString() {
+    return (
+      "OrderEntity [id=" +
+      id +
+      ", createdDate=" +
+      createdDate +
+      ", shippingAddress=" +
+      shippingAddress +
+      ", items=" +
+      items +
+      "]"
+    );
+  }
 }

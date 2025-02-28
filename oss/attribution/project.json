@@ -1,0 +1,11 @@
+{
+  "name": "attribution",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "targets": {
+    "start": {
+      "dependsOn": ["build"]
+    }
+  },
+  "tags": ["tool"]
+}

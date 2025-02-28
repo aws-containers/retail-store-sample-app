@@ -20,21 +20,24 @@ package com.amazon.sample.orders.config.messaging;
 
 import com.amazon.sample.orders.messaging.MessagingProvider;
 import com.amazon.sample.orders.messaging.inmemory.InMemoryMessagingProvider;
-
 import lombok.extern.slf4j.Slf4j;
-
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
 @Slf4j
-@ConditionalOnProperty(prefix = "retail.orders.messaging", name = "provider", havingValue = "in-memory")
+@ConditionalOnProperty(
+  prefix = MessagingProperties.PREFIX,
+  name = "provider",
+  havingValue = "in-memory"
+)
 public class InMemoryMessagingConfig {
-    @Bean
-    public MessagingProvider messagingProvider() {
-        log.warn("Creating in-memory messaging provider");
 
-        return new InMemoryMessagingProvider();
-    }
+  @Bean
+  public MessagingProvider messagingProvider() {
+    log.warn("Using in-memory messaging");
+
+    return new InMemoryMessagingProvider();
+  }
 }

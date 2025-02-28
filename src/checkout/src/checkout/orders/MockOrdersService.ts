@@ -17,16 +17,15 @@
  */
 
 import { Checkout } from '../models/Checkout';
-import { ExistingOrder, Order, OrdersApi } from '../../clients/orders/api';
+import { ExistingOrder } from '../../clients/orders/api';
 import { IOrdersService } from './IOrdersService';
+import { v4 as uuidv4 } from 'uuid';
 
 export class MockOrdersService implements IOrdersService {
-  constructor() {}
-
   async create(checkout: Checkout): Promise<ExistingOrder> {
     return {
-      id: 'abc123',
-      email: checkout.request.customerEmail,
+      id: uuidv4(),
+      email: checkout.shippingAddress.email,
     };
   }
 }

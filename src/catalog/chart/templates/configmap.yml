@@ -1,0 +1,12 @@
+{{- if .Values.configMap.create -}}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "catalog.configMapName" . }}
+data:
+  RETAIL_CATALOG_PERSISTENCE_PROVIDER: {{ .Values.app.persistence.provider }}
+  {{- if (eq "mysql" .Values.app.persistence.provider) }}
+  RETAIL_CATALOG_PERSISTENCE_ENDPOINT: {{ include "catalog.mysql.endpoint" . }}
+  RETAIL_CATALOG_PERSISTENCE_DB_NAME: {{ .Values.app.persistence.database }}
+  {{- end }}
+{{- end }}

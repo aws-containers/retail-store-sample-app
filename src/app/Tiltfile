@@ -1,0 +1,30 @@
+# -*- mode: Python -*-
+
+load('ext://helm_resource', 'helm_resource', 'helm_repo')
+load('ext://namespace', 'namespace_create')
+
+settings = read_json('tilt_option.json', default={})
+default_registry(settings.get('default_registry', 'public.ecr.aws/aws-containers'))
+
+allow_k8s_contexts(k8s_context())
+
+random_password = local("bash scripts/generate_password.sh")
+
+def helmfile(file):
+  watch_file(file)
+  update_env={'TILT_MODE': '1', 'RANDOM_PASSWORD': random_password}
+  return local("helmfile -f %s template --skip-tests" % file, env = update_env)
+
+k8s_yaml(helmfile("./helmfile.yaml"))
+
+docker_build('retail-store-sample-ui', '../ui')
+
+docker_build('retail-store-sample-cart', '../cart')
+
+docker_build('retail-store-sample-orders', '../orders')
+
+docker_build('retail-store-sample-checkout', '../checkout')
+
+docker_build('retail-store-sample-catalog', '../catalog')
+
+k8s_resource('ui', port_forwards='8888:8080')

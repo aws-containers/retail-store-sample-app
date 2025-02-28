@@ -18,35 +18,43 @@
 
 package com.amazon.sample.ui.services.assets;
 
-import org.springframework.http.ResponseEntity;
+import java.util.concurrent.TimeUnit;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.CacheControl;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.reactive.function.client.ExchangeStrategies;
 import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Mono;
 
-import java.util.concurrent.TimeUnit;
+public class ProxyingAssetsService implements AssetsService {
 
-public class ProxyingAssetsService implements AssetsService<byte[]> {
+  private static final Integer MAX_MEMORY_SIZE = 16 * 1024 * 1024;
 
-    @Value("${endpoints.assets}")
-    private String assetsEndpoint;
+  private static final Integer CACHE_MAX_AGE = 30;
 
-    public Mono<ResponseEntity<byte[]>> getImage(String image) {
-      return WebClient.builder()
-            .exchangeStrategies(ExchangeStrategies.builder()
-            .codecs(configurer -> configurer
-                .defaultCodecs()
-                .maxInMemorySize(16 * 1024 * 1024))
-            .build())
-                .baseUrl(this.assetsEndpoint+"/assets/"+image)
-            .build().get()
-                .accept(MediaType.IMAGE_JPEG)
-                .retrieve()
-                .bodyToMono(byte[].class)
-                .map(payload -> ResponseEntity.ok()
-                    .cacheControl(CacheControl.maxAge(30, TimeUnit.DAYS))
-                    .body(payload));
-    }
+  @Value("${endpoints.assets}")
+  private String assetsEndpoint;
+
+  public Mono<ResponseEntity<byte[]>> getImage(String image) {
+    return WebClient.builder()
+      .exchangeStrategies(
+        ExchangeStrategies.builder()
+          .codecs(configurer ->
+            configurer.defaultCodecs().maxInMemorySize(MAX_MEMORY_SIZE)
+          )
+          .build()
+      )
+      .baseUrl(this.assetsEndpoint + "/assets/" + image)
+      .build()
+      .get()
+      .accept(MediaType.IMAGE_JPEG)
+      .retrieve()
+      .bodyToMono(byte[].class)
+      .map(payload ->
+        ResponseEntity.ok()
+          .cacheControl(CacheControl.maxAge(CACHE_MAX_AGE, TimeUnit.DAYS))
+          .body(payload)
+      );
+  }
 }

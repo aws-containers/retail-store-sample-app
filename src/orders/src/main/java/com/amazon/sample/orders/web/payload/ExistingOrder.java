@@ -18,9 +18,15 @@
 
 package com.amazon.sample.orders.web.payload;
 
+import java.time.LocalDateTime;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 @Data
+@EqualsAndHashCode(callSuper = true)
 public class ExistingOrder extends Order {
-    private String id;
+
+  private String id;
+
+  private LocalDateTime createdDate;
 }

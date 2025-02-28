@@ -18,13 +18,13 @@
 
 package com.amazon.sample.ui.services.catalog.model;
 
-import com.amazon.sample.ui.clients.catalog.model.ModelProduct;
-import com.amazon.sample.ui.clients.catalog.model.ModelTag;
 import org.mapstruct.Mapper;
 
 @Mapper
 public interface CatalogMapper {
-    Product product(ModelProduct product);
+  Product product(
+    com.amazon.sample.ui.client.catalog.models.model.Product product
+  );
 
-    ProductTag tag(ModelTag tag);
+  ProductTag tag(com.amazon.sample.ui.client.catalog.models.model.Tag tag);
 }

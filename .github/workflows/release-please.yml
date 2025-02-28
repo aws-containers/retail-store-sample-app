@@ -1,0 +1,46 @@
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: write
+  pull-requests: write
+  id-token: write
+
+name: Release
+
+jobs:
+  release-please:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: googleapis/release-please-action@v4
+        id: release
+
+      - name: "Get AWS credentials"
+        if: ${{ steps.release.outputs.release_created }}
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          role-to-assume: ${{ secrets.AWS_ROLE_ARN }}
+          aws-region: us-east-1
+          role-session-name: GithubActionsSession
+
+      - name: "Login to Amazon ECR Public"
+        id: login-ecr-public
+        if: ${{ steps.release.outputs.release_created }}
+        uses: aws-actions/amazon-ecr-login@v2
+        with:
+          registry-type: public
+
+      - uses: actions/checkout@v4
+        if: ${{ steps.release.outputs.release_created }}
+        with:
+          ref: ${{ steps.release.outputs.tag_name }}
+
+      - name: "Publish artifacts"
+        if: ${{ steps.release.outputs.release_created }}
+        uses: ./.github/actions/publish-artifacts
+        with:
+          tag: ${{ steps.release.outputs.tag_name }}
+          ecr-repository: ${{ secrets.AWS_ECR_REPOSITORY }}
+          gh-token: ${{ secrets.GITHUB_TOKEN }}

@@ -16,18 +16,25 @@
  * SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
- package com.amazon.sample.carts.diagnostics;
+package com.amazon.sample.carts.diagnostics;
 
 import org.springframework.boot.diagnostics.AbstractFailureAnalyzer;
 import org.springframework.boot.diagnostics.FailureAnalysis;
-
 import software.amazon.awssdk.services.dynamodb.model.DynamoDbException;
 
-public class DynamoFailureAnalyzer extends AbstractFailureAnalyzer<DynamoDbException> {
-    @Override
-    protected FailureAnalysis analyze(Throwable rootFailure, DynamoDbException cause) {
-        return new FailureAnalysis(
-            "An error occurred when accessing Amazon DynamoDB: \n\n"+cause.getMessage(), 
-      "Check that the DynamoDB table has been created and your IAM credentials are configured with the appropriate access.", cause);
-    }
+public class DynamoFailureAnalyzer
+  extends AbstractFailureAnalyzer<DynamoDbException> {
+
+  @Override
+  protected FailureAnalysis analyze(
+    Throwable rootFailure,
+    DynamoDbException cause
+  ) {
+    return new FailureAnalysis(
+      "An error occurred when accessing Amazon DynamoDB: \n\n" +
+      cause.getMessage(),
+      "Check that the DynamoDB table has been created and your IAM credentials are configured with the appropriate access.",
+      cause
+    );
+  }
 }

@@ -1,0 +1,8 @@
+image:
+  {{if env "IMAGE_TAG" }}
+  tag: {{ env "IMAGE_TAG" }}
+  {{end}}
+  {{if env "IMAGE_REPOSITORY" }}
+  repository: {{ env "IMAGE_REPOSITORY" }}
+  {{end}}
+  dummy: dummy

@@ -1,0 +1,64 @@
+{
+  "properties": [
+    {
+      "name": "retail.ui.theme",
+      "type": "java.lang.String",
+      "description": "Name of the theme for the UI"
+    },
+    {
+      "name": "retail.ui.disable-demo-warnings",
+      "type": "java.lang.String",
+      "description": "Disable the UI messages warning about demonstration content"
+    },
+    {
+      "name": "retail.ui.endpoints.catalog",
+      "type": "java.lang.String",
+      "description": "HTTP endpoint for the catalog service"
+    },
+    {
+      "name": "retail.ui.endpoints.carts",
+      "type": "java.lang.String",
+      "description": "HTTP endpoint for the carts service"
+    },
+    {
+      "name": "retail.ui.endpoints.checkout",
+      "type": "java.lang.String",
+      "description": "HTTP endpoint for the checkout service"
+    },
+    {
+      "name": "retail.ui.endpoints.orders",
+      "type": "java.lang.String",
+      "description": "HTTP endpoint for the orders service"
+    },
+    {
+      "name": "retail.ui.chat.enabled",
+      "type": "java.lang.String",
+      "description": "Enabled the chat assistant"
+    },
+    {
+      "name": "retail.ui.chat.temperature",
+      "type": "java.lang.String",
+      "description": "Chat assistant model temperature"
+    },
+    {
+      "name": "retail.ui.chat.max-tokens",
+      "type": "java.lang.String",
+      "description": "Chat assistant model maximum output tokens"
+    },
+    {
+      "name": "retail.ui.chat.provider",
+      "type": "java.lang.String",
+      "description": "Chat assistant model provider"
+    },
+    {
+      "name": "retail.ui.chat.model",
+      "type": "java.lang.String",
+      "description": "Chat assistant model provider model ID"
+    },
+    {
+      "name": "retail.ui.chat.prompt",
+      "type": "java.lang.String",
+      "description": "Chat assistant system prompt"
+    }
+  ]
+}

@@ -1,0 +1,163 @@
+<!doctype html>
+<html
+  lang="en"
+  xmlns:th="http://www.thymeleaf.org"
+  th:fragment="bare (bareContent)"
+  th:replace="~{fragments/root :: root (~{::body})}"
+>
+  <body class="flex flex-col min-h-screen">
+    <th:block th:insert="${bareContent}" />
+
+    <!-- Footer -->
+    <footer class="bg-white mt-auto text-sm">
+      <!-- Grey Separator Line -->
+      <!-- Footer Content -->
+      <div class="max-w-6xl mx-auto px-4 py-8">
+        <div class="border-t border-gray-200"></div>
+        <div class="grid grid-cols-3 gap-8 py-8 max-w-2xl text-center m-auto">
+          <!-- Quick Links -->
+          <div>
+            <h3 class="text-gray-800 font-semibold mb-4 uppercase text-xs">
+              Quick Links
+            </h3>
+            <ul class="space-y-2">
+              <li>
+                <a
+                  th:href="@{/catalog}"
+                  class="text-gray-400 hover:text-primary-500"
+                  th:text="#{nav.catalog}"
+                  >Catalog</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="text-gray-400 hover:text-primary-500"
+                  th:text="#{nav.about}"
+                  >About</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <!-- Tools -->
+          <div>
+            <h3 class="text-gray-800 font-semibold mb-4 uppercase text-xs">
+              Tools
+            </h3>
+            <ul class="space-y-2">
+              <li>
+                <a
+                  th:href="@{/info}"
+                  class="text-gray-400 hover:text-primary-500"
+                  th:text="#{nav.information}"
+                  >Information</a
+                >
+              </li>
+              <li>
+                <a
+                  th:href="@{/topology}"
+                  class="text-gray-400 hover:text-primary-500"
+                  th:text="#{nav.topology}"
+                  >Topology</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <!-- Contact Info -->
+          <div>
+            <h3 class="text-gray-800 font-semibold mb-4 uppercase text-xs">
+              Contact
+            </h3>
+            <ul class="space-y-2">
+              <li class="text-gray-400">
+                <i class="fas fa-envelope mr-2"></i>
+                <th:block th:text="#{footer.email}">Email</th:block>
+              </li>
+              <li class="text-gray-400">
+                <i class="fas fa-phone mr-2"></i>
+                <th:block th:text="#{footer.phone}">Phone</th:block>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="text-center text-gray-400" th:if="${!disableDemoWarnings}">
+          This site is for demonstration purposes only
+        </div>
+      </div>
+    </footer>
+    <!-- Chat trigger button -->
+    <div id="chat-trigger-container" class="fixed bottom-4 right-4 hidden">
+      <button
+        id="chat-trigger"
+        class="px-6 py-3 bg-primary-600 text-white rounded-full hover:bg-primary-500 focus:outline-none focus:ring-2 focus:ring-primary-500 shadow-lg"
+      >
+        <i class="fas fa-comments"></i> Chat
+      </button>
+    </div>
+    <!-- Chat -->
+    <div
+      id="chat-modal"
+      class="fixed inset-0 bg-black bg-opacity-50 hidden flex items-center justify-center z-20"
+    >
+      <div
+        class="bg-white rounded-lg shadow-xl p-4 max-w-4xl w-full mx-4 relative"
+      >
+        <div class="flex items-start justify-between mb-4">
+          <div class="flex items-center space-x-3">
+            <!-- Avatar with online status -->
+            <div class="relative">
+              <img
+                th:src="@{/assets/img/chat-avatar.png}"
+                alt="A.G.E.N.T Avatar"
+                class="w-16 h-16 rounded-full object-cover"
+              />
+              <div
+                class="absolute bottom-0 right-0 w-3 h-3 bg-green-500 border-2 border-white rounded-full"
+              ></div>
+            </div>
+
+            <!-- Title and subtitle -->
+            <div class="flex flex-col">
+              <h1 class="text-lg font-semibold text-gray-800">A.G.E.N.T</h1>
+              <p class="text-xs text-gray-500">
+                Automated Gadget Expert Navigation Tool
+              </p>
+            </div>
+          </div>
+
+          <!-- Close button -->
+          <button id="close-chat" class="text-gray-500 hover:text-gray-700">
+            <i class="fas fa-times text-xl"></i>
+          </button>
+        </div>
+
+        <div
+          id="chat-messages"
+          class="space-y-4 mb-4 h-96 overflow-y-auto p-4 rounded text-sm bg-gray-100"
+        ></div>
+        <div class="flex gap-2 text-sm">
+          <input
+            type="text"
+            id="user-input"
+            class="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500"
+            placeholder="Type your message..."
+          />
+          <button
+            id="send-button"
+            class="px-6 py-2 bg-primary-500 text-white rounded-lg hover:bg-primary-500 focus:outline-none focus:ring-2 focus:ring-primary-500"
+          >
+            <i class="fas fa-paper-plane"></i> Send
+          </button>
+          <button
+            id="clear-button"
+            class="px-6 py-2 border border-red-500 text-red-500 hover:bg-red-500 hover:text-white rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-red-500"
+          >
+            <i class="fas fa-trash"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

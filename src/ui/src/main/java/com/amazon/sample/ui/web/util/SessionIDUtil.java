@@ -18,29 +18,35 @@
 
 package com.amazon.sample.ui.web.util;
 
+import java.util.UUID;
 import org.springframework.http.ResponseCookie;
 import org.springframework.http.server.reactive.ServerHttpRequest;
 import org.springframework.web.server.ServerWebExchange;
 
-import java.util.UUID;
-
 public class SessionIDUtil {
-    public static final String COOKIE_NAME = "SESSIONID";
 
-    public static final String HEADER_NAME = "X-Session-ID";
+  public static final String COOKIE_NAME = "SESSIONID";
 
-    public static String addSessionCookie(ServerWebExchange exchange) {
-        String sessionId = UUID.randomUUID().toString();
+  public static final String HEADER_NAME = "X-Session-ID";
 
-        ResponseCookie newCookie = ResponseCookie.from(COOKIE_NAME, sessionId).build();
+  protected SessionIDUtil() {
+    throw new UnsupportedOperationException();
+  }
 
-        exchange.getResponse()
-                .getCookies().add(COOKIE_NAME, newCookie);
+  public static String addSessionCookie(ServerWebExchange exchange) {
+    String sessionId = UUID.randomUUID().toString();
 
-        return sessionId;
-    }
+    ResponseCookie newCookie = ResponseCookie.from(
+      COOKIE_NAME,
+      sessionId
+    ).build();
 
-    public static String getSessionId(ServerHttpRequest request) {
-        return request.getHeaders().getFirst(HEADER_NAME);
-    }
+    exchange.getResponse().getCookies().add(COOKIE_NAME, newCookie);
+
+    return sessionId;
+  }
+
+  public static String getSessionId(ServerHttpRequest request) {
+    return request.getHeaders().getFirst(HEADER_NAME);
+  }
 }

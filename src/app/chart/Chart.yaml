@@ -1,0 +1,27 @@
+apiVersion: v2
+name: retail-store-sample-chart
+description: A Helm chart for the AWS retail store containers sample application
+type: application
+version: 0.8.4
+
+dependencies:
+  - name: retail-store-sample-cart-chart
+    alias: cart
+    version: 0.8.4
+    repository: "file://../../cart/chart"
+  - name: retail-store-sample-catalog-chart
+    alias: catalog
+    version: 0.8.4
+    repository: "file://../../catalog/chart"
+  - name: retail-store-sample-checkout-chart
+    alias: checkout
+    version: 0.8.4
+    repository: "file://../../checkout/chart"
+  - name: retail-store-sample-orders-chart
+    alias: orders
+    version: 0.8.4
+    repository: "file://../../orders/chart"
+  - name: retail-store-sample-ui-chart
+    alias: ui
+    version: 0.8.4
+    repository: "file://../../ui/chart"

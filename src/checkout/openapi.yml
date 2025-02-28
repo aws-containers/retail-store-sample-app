@@ -1,0 +1,237 @@
+openapi: 3.0.0
+paths:
+  /checkout/{customerId}:
+    get:
+      operationId: CheckoutController_getCheckout
+      parameters:
+        - name: customerId
+          required: true
+          in: path
+          schema:
+            type: string
+      responses:
+        '201':
+          description: The record has been successfully created.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Checkout'
+  /checkout/{customerId}/update:
+    post:
+      operationId: CheckoutController_updateCheckout
+      parameters:
+        - name: customerId
+          required: true
+          in: path
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CheckoutRequest'
+      responses:
+        '201':
+          description: The record has been successfully created.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Checkout'
+  /checkout/{customerId}/submit:
+    post:
+      operationId: CheckoutController_submitCheckout
+      parameters:
+        - name: customerId
+          required: true
+          in: path
+          schema:
+            type: string
+      responses:
+        '201':
+          description: The record has been successfully created.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CheckoutSubmitted'
+info:
+  title: Checkout service
+  description: The checkout API
+  version: '1.0'
+  contact: {}
+tags:
+  - name: checkout
+    description: ''
+servers:
+  - url: http://localhost:8000
+components:
+  schemas:
+    Item:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        quantity:
+          type: integer
+        price:
+          type: integer
+        totalCost:
+          type: integer
+      required:
+        - id
+        - name
+        - quantity
+        - price
+        - totalCost
+    ShippingAddress:
+      type: object
+      properties:
+        firstName:
+          type: string
+        lastName:
+          type: string
+        address1:
+          type: string
+        address2:
+          type: string
+        city:
+          type: string
+        state:
+          type: string
+        zip:
+          type: string
+        email:
+          type: string
+      required:
+        - firstName
+        - lastName
+        - address1
+        - address2
+        - city
+        - state
+        - zip
+        - email
+    ShippingOption:
+      type: object
+      properties:
+        name:
+          type: string
+        amount:
+          type: integer
+        token:
+          type: string
+        estimatedDays:
+          type: integer
+      required:
+        - name
+        - amount
+        - token
+        - estimatedDays
+    ShippingRates:
+      type: object
+      properties:
+        shipmentId:
+          type: string
+        rates:
+          type: array
+          items:
+            $ref: '#/components/schemas/ShippingOption'
+      required:
+        - shipmentId
+        - rates
+    Checkout:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/Item'
+        shippingAddress:
+          $ref: '#/components/schemas/ShippingAddress'
+        deliveryOptionToken:
+          type: string
+        shippingRates:
+          $ref: '#/components/schemas/ShippingRates'
+        paymentId:
+          type: string
+        paymentToken:
+          type: string
+        subtotal:
+          type: integer
+        shipping:
+          type: integer
+        tax:
+          type: integer
+        total:
+          type: integer
+      required:
+        - items
+        - shippingAddress
+        - deliveryOptionToken
+        - shippingRates
+        - paymentId
+        - paymentToken
+        - subtotal
+        - shipping
+        - tax
+        - total
+    ItemRequest:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        quantity:
+          type: integer
+        price:
+          type: integer
+      required:
+        - id
+        - name
+        - quantity
+        - price
+    CheckoutRequest:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ItemRequest'
+        shippingAddress:
+          $ref: '#/components/schemas/ShippingAddress'
+        deliveryOptionToken:
+          type: string
+      required:
+        - items
+        - shippingAddress
+        - deliveryOptionToken
+    CheckoutSubmitted:
+      type: object
+      properties:
+        orderId:
+          type: string
+        email:
+          type: string
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/Item'
+        subtotal:
+          type: integer
+        shipping:
+          type: integer
+        tax:
+          type: integer
+        total:
+          type: integer
+      required:
+        - orderId
+        - email
+        - items
+        - subtotal
+        - shipping
+        - tax
+        - total

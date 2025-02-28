@@ -1,35 +1,62 @@
-version: "2"
-
 services:
   catalog:
     build:
       context: .
-    image: microservices-demo/catalog
     hostname: catalog
     depends_on:
-      - catalog-db
+      catalog-db:
+        condition: service_healthy
+        restart: true
     restart: always
     cap_drop:
       - all
-    read_only: true
     security_opt:
       - no-new-privileges:true
     environment:
+      - GIN_MODE=release
       - reschedule=on-node-failure
-      - DB_PASSWORD=${MYSQL_PASSWORD}
+      - RETAIL_CATALOG_PERSISTENCE_PROVIDER=mysql
+      - RETAIL_CATALOG_PERSISTENCE_PASSWORD=${DB_PASSWORD}
+      - RETAIL_CATALOG_PERSISTENCE_ENDPOINT=catalog-db:3306
     ports:
       - "8081:8080"
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:8080/health || exit 1"]
+      interval: 10s
+      timeout: 10s
+      retries: 3
+    develop:
+      watch:
+        - action: rebuild
+          path: .
+
   # nosemgrep: yaml.docker-compose.security.writable-filesystem-service.writable-filesystem-service
   catalog-db:
-    image: mysql:8.0
+    image: mariadb:10.9
     hostname: catalog-db
     restart: always
     security_opt:
       - no-new-privileges:true
     environment:
       - reschedule=on-node-failure
-      - MYSQL_ROOT_PASSWORD=${MYSQL_PASSWORD}
+      - MYSQL_ROOT_PASSWORD=${DB_PASSWORD}
       - MYSQL_ALLOW_EMPTY_PASSWORD=true
-      - MYSQL_DATABASE=sampledb
+      - MYSQL_DATABASE=catalogdb
       - MYSQL_USER=catalog_user
-      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+      - MYSQL_PASSWORD=${DB_PASSWORD}
+    healthcheck:
+      test:
+        [
+          "CMD",
+          "mysqladmin",
+          "ping",
+          "-h",
+          "localhost",
+          "-u",
+          "catalog_user",
+          "-p${DB_PASSWORD}",
+        ]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+      start_period: 30s

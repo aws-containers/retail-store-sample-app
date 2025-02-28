@@ -18,9 +18,10 @@
 
 package com.amazon.sample.ui.web;
 
-import com.amazon.sample.ui.services.Metadata;
 import com.amazon.sample.ui.services.carts.CartsService;
 import com.amazon.sample.ui.web.payload.CartChangeRequest;
+import com.amazon.sample.ui.web.util.RequiresCommonAttributes;
+import com.amazon.sample.ui.web.util.SessionIDUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.server.reactive.ServerHttpRequest;
@@ -35,37 +36,48 @@ import reactor.core.publisher.Mono;
 @Controller
 @RequestMapping("/cart")
 @Slf4j
-public class CartController extends BaseController {
+@RequiresCommonAttributes
+public class CartController {
 
-    private CartsService cartsService;
+  private final CartsService cartsService;
 
+  public CartController(@Autowired CartsService cartsService) {
+    this.cartsService = cartsService;
+  }
 
-    public CartController(@Autowired CartsService cartsService, @Autowired Metadata metadata) {
-        super(cartsService, metadata);
+  @GetMapping
+  public String cart(ServerHttpRequest request, Model model) {
+    String sessionId = SessionIDUtil.getSessionId(request);
 
-        this.cartsService = cartsService;
-    }
+    model.addAttribute("fullCart", cartsService.getCart(sessionId));
 
-    @GetMapping
-    public String cart(ServerHttpRequest request, Model model) {
-        String sessionId = getSessionID(request);
+    return "cart";
+  }
 
-        model.addAttribute("fullCart", cartsService.getCart(sessionId));
+  @PostMapping
+  public Mono<String> add(
+    @ModelAttribute CartChangeRequest addRequest,
+    ServerHttpRequest request
+  ) {
+    String sessionId = SessionIDUtil.getSessionId(request);
 
-        this.populateCommon(request, model);
+    return this.cartsService.addItem(
+        sessionId,
+        addRequest.getProductId(),
+        addRequest.getQuantity()
+      ).thenReturn("redirect:/cart");
+  }
 
-        return "cart";
-    }
+  @PostMapping("/remove")
+  public Mono<String> remove(
+    @ModelAttribute CartChangeRequest addRequest,
+    ServerHttpRequest request
+  ) {
+    String sessionId = SessionIDUtil.getSessionId(request);
 
-    @PostMapping
-    public Mono<String> add(@ModelAttribute CartChangeRequest addRequest, ServerHttpRequest request) {
-        return this.cartsService.addItem(getSessionID(request), addRequest.getProductId())
-            .thenReturn("redirect:/cart");
-    }
-
-    @PostMapping("/remove")
-    public Mono<String> remove(@ModelAttribute CartChangeRequest addRequest, ServerHttpRequest request) {
-        return this.cartsService.removeItem(getSessionID(request), addRequest.getProductId())
-            .thenReturn("redirect:/cart");
-    }
+    return this.cartsService.removeItem(
+        sessionId,
+        addRequest.getProductId()
+      ).thenReturn("redirect:/cart");
+  }
 }

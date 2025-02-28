@@ -19,16 +19,20 @@
 package com.amazon.sample.orders.web;
 
 import com.amazon.sample.orders.services.OrderService;
-import com.amazon.sample.orders.web.payload.*;
-
+import com.amazon.sample.orders.web.payload.ExistingOrder;
+import com.amazon.sample.orders.web.payload.Order;
+import com.amazon.sample.orders.web.payload.OrderMapper;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
-import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 import java.util.stream.Collectors;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/orders")
@@ -36,23 +40,29 @@ import java.util.stream.Collectors;
 @Slf4j
 public class OrderController {
 
-    @Autowired
-    private OrderService service;
+  @Autowired
+  private OrderService service;
 
-    @Autowired
-    private OrderMapper orderMapper;
+  @Autowired
+  private OrderMapper orderMapper;
 
-    @PostMapping
-    @Operation(summary = "Create an order", operationId = "createOrder")
-    public ExistingOrder order(@RequestBody Order orderRequest) {
-        log.debug("Creating order {}", orderRequest);
+  @PostMapping(produces = { "application/json" })
+  @Operation(summary = "Create an order", operationId = "createOrder")
+  public ExistingOrder order(@RequestBody Order orderRequest) {
+    log.debug("Creating order {}", orderRequest);
 
-        return this.orderMapper.toExistingOrder(this.service.create(this.orderMapper.toOrderEntity(orderRequest)));
-    }
+    return this.orderMapper.toExistingOrder(
+        this.service.create(this.orderMapper.toOrderEntity(orderRequest))
+      );
+  }
 
-    @GetMapping
-    @Operation(summary = "List orders", operationId = "listOrders")
-    public List<ExistingOrder> order() {
-        return this.service.list().stream().map(this.orderMapper::toExistingOrder).collect(Collectors.toList());
-    }
+  @GetMapping(produces = { "application/json" })
+  @Operation(summary = "List orders", operationId = "listOrders")
+  public List<ExistingOrder> order() {
+    return this.service.list()
+      .stream()
+      .peek(o -> System.out.println("Order: " + o))
+      .map(this.orderMapper::toExistingOrder)
+      .collect(Collectors.toList());
+  }
 }

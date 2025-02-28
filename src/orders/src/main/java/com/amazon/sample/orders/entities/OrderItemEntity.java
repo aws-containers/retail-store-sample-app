@@ -18,69 +18,82 @@
 
 package com.amazon.sample.orders.entities;
 
+import org.springframework.data.relational.core.mapping.Column;
 import org.springframework.data.relational.core.mapping.Table;
 
-@Table
+@Table(name = "order_items")
 public class OrderItemEntity {
 
-    private String productId;
+  @Column(value = "product_id")
+  private String productId;
 
-    private int quantity;
+  @Column(value = "quantity")
+  private int quantity;
 
-    private int unitCost;
+  @Column(value = "unit_cost")
+  private int unitCost;
 
-    private String name;
+  @Column(value = "total_cost")
+  private int totalCost;
 
-    private int totalCost;
+  public OrderItemEntity() {}
 
-    public String getProductId() {
-        return productId;
-    }
+  public OrderItemEntity(
+    String productId,
+    int quantity,
+    int unitCost,
+    int totalCost
+  ) {
+    this.productId = productId;
+    this.quantity = quantity;
+    this.unitCost = unitCost;
+    this.totalCost = totalCost;
+  }
 
-    public void setProductId(String productId) {
-        this.productId = productId;
-    }
+  public String getProductId() {
+    return productId;
+  }
 
-    public int getQuantity() {
-        return quantity;
-    }
+  public void setProductId(String productId) {
+    this.productId = productId;
+  }
 
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
-    }
+  public int getQuantity() {
+    return quantity;
+  }
 
-    public int getUnitCost() {
-        return unitCost;
-    }
+  public void setQuantity(int quantity) {
+    this.quantity = quantity;
+  }
 
-    public void setUnitCost(int unitCost) {
-        this.unitCost = unitCost;
-    }
+  public int getUnitCost() {
+    return unitCost;
+  }
 
-    public String getName() {
-        return name;
-    }
+  public void setUnitCost(int unitCost) {
+    this.unitCost = unitCost;
+  }
 
-    public void setName(String name) {
-        this.name = name;
-    }
+  public int getTotalCost() {
+    return totalCost;
+  }
 
-    public int getTotalCost() {
-        return totalCost;
-    }
+  public void setTotalCost(int totalCost) {
+    this.totalCost = totalCost;
+  }
 
-    public void setTotalCost(int totalCost) {
-        this.totalCost = totalCost;
-    }
-
-    @Override
-    public String toString() {
-        return "OrderItemEntity{" +
-                ", productId='" + productId + '\'' +
-                ", quantity=" + quantity +
-                ", unitCost=" + unitCost +
-                ", name='" + name + '\'' +
-                ", totalCost=" + totalCost +
-                '}';
-    }
+  @Override
+  public String toString() {
+    return (
+      "OrderItemEntity [productId=" +
+      productId +
+      ", quantity=" +
+      quantity +
+      ", unitCost=" +
+      unitCost +
+      ", totalCost=" +
+      totalCost +
+      "]"
+    );
+  }
 }

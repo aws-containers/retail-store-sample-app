@@ -1,0 +1,19 @@
+image:
+  repository: ${image_repository}
+  tag: ${image_tag}
+
+serviceAccount:
+  annotations:
+    eks.amazonaws.com/role-arn: ${role_arn}
+
+%{ if opentelemetry_enabled }
+opentelemetry:
+  enabled: true
+  instrumentation: ${opentelemetry_instrumentation}
+%{ endif }
+
+app:
+  persistence:
+    provider: dynamodb
+    dynamodb:
+      tableName: ${table_name}

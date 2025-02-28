@@ -4,116 +4,99 @@
   th:replace="~{fragments/layout :: layout (~{::body},'catalog')}"
 >
   <body>
-    <section class="bg-primary p-y-sm">
-      <div class="container">
-        <ol class="breadcrumb custom mb-0">
-          <li class="breadcrumb-item"><a href="/home">Home</a></li>
-          <li class="breadcrumb-item active" aria-current="page">Catalog</li>
-        </ol>
-      </div>
-    </section>
-    <div class="container mt-4">
-      <div class="row">
-        <div class="col-lg-3">
-          <div class="card sidebar-menu mb-4">
-            <div class="card-header">Categories</div>
-            <div class="card-body">
-              <ul class="nav nav-pills flex-column category-menu">
-                <li>
-                  <ul class="list-unstyled">
-                    <li>
-                      <a
-                        href="category.html"
-                        class="nav-link"
-                        th:each="tag : ${tags}"
-                        th:text="${tag.displayName}"
-                        th:href="@{/catalog(page=1,size=${catalog.size},tag=${tag.name})}"
-                        th:classappend="${selectedTag == tag.name} ? 'active' : ''"
-                        >T-shirts</a
-                      >
-                    </li>
-                  </ul>
-                </li>
-              </ul>
-            </div>
-          </div>
+    <section class="max-w-4xl mx-auto px-4 py-8">
+      <div class="flex flex-col md:flex-row gap-8">
+        <!-- Sidebar Filter -->
+        <div class="w-full md:w-36 h-fit">
+          <h3 class="font-semibold text-gray-800 mb-4 uppercase text-xs">
+            Categories
+          </h3>
+          <ul class="space-y-2 text-sm category-menu">
+            <li>
+              <a
+                href="#"
+                class="text-gray-600 hover:text-primary-500 block py-1"
+                th:href="@{/catalog(page=1)}"
+                >All Products</a
+              >
+            </li>
+            <li th:each="tag : ${tags}">
+              <a
+                href="#"
+                class="text-gray-600 hover:text-primary-500 block py-1"
+                th:text="${tag.displayName}"
+                th:href="@{/catalog(page=1,tag=${tag.name})}"
+                >Smart</a
+              >
+            </li>
+          </ul>
         </div>
-        <div class="col-lg-9">
-          <div class="box info-bar">
-            <div class="row">
-              <div class="col-md-12 col-lg-4 products-showing">
-                Showing
-                <strong th:text="${catalog.products.size()}">12</strong> of
-                <strong th:text="${catalog.totalRecords}">25</strong> products
-              </div>
-              <div class="col-md-12 col-lg-8 products-number-sort">
-                <form
-                  class="form-inline d-block d-lg-flex justify-content-end flex-column flex-md-row"
-                >
-                  <div class="products-number">
-                    <strong>Show</strong>
-                    <a
-                      th:href="@{/catalog(page=${catalog.page},size=3,tag=${selectedTag})}"
-                      class="btn btn-sm"
-                      th:classappend="${3 == catalog.size} ? 'btn-primary' : 'btn-outline-secondary'"
-                      >3</a
-                    >
-                    <a
-                      th:href="@{/catalog(page=${catalog.page},size=9,tag=${selectedTag})}"
-                      class="btn btn-sm"
-                      th:classappend="${9 == catalog.size} ? 'btn-primary' : 'btn-outline-secondary'"
-                      >9</a
-                    >
-                  </div>
-                </form>
-              </div>
-            </div>
-          </div>
-          <div class="row products mt-3">
+
+        <!-- Product Grid -->
+        <div class="flex-1">
+          <div>
             <div
-              class="col-lg-4 col-md-6 products"
-              th:each="item : ${catalog.products}"
+              class="text-center mb-4 text-sm text-gray-400"
+              th:if="${!disableDemoWarnings}"
             >
-              <div
-                th:replace="~{fragments/product_card :: card(${item}) }"
-              ></div>
+              These products are for demonstration purposes only
+            </div>
+            <div class="grid grid-cols-2 lg:grid-cols-3 gap-6">
+              <!-- Product Card 1 -->
+              <div th:each="item : ${catalog.products}">
+                <div
+                  th:replace="~{fragments/product_card :: card(${item}) }"
+                ></div>
+              </div>
             </div>
           </div>
-          <div class="pages mt-4">
+          <!-- Pagination -->
+          <div class="flex justify-center mt-8">
             <nav
-              aria-label="Page navigation example"
-              class="d-flex justify-content-center"
+              class="inline-flex items-center rounded-lg bg-white border border-gray-200 pagination"
+              aria-label="Pagination"
+              th:with="prevIndex=${{catalog.page == 1} ? 1: catalog.page-1}, nextIndex=${{catalog.page == catalog.totalPages} ? catalog.totalPages: catalog.page+1}"
             >
-              <ul class="pagination">
-                <li class="page-item">
-                  <a href="#" aria-label="Previous" class="page-link"
-                    ><span aria-hidden="true">«</span
-                    ><span class="sr-only">Previous</span></a
-                  >
-                </li>
-                <li
-                  class="page-item"
-                  th:each="i : ${#numbers.sequence(1, catalog.totalPages)}"
-                  th:classappend="${i == catalog.page} ? 'active' : ''"
+              <a
+                href="#"
+                th:href="@{/catalog(page=${prevIndex},tag=${selectedTag})}"
+              >
+                <button
+                  class="inline-flex items-center justify-center w-10 h-10 border-r border-gray-200 text-gray-500 hover:bg-gray-50"
                 >
-                  <a
-                    th:href="@{/catalog(page=${i},size=${catalog.size},tag=${selectedTag})}"
-                    class="page-link"
-                    th:text="${i}"
-                    >1</a
-                  >
-                </li>
-                <li class="page-item">
-                  <a href="#" aria-label="Next" class="page-link"
-                    ><span aria-hidden="true">»</span
-                    ><span class="sr-only">Next</span></a
-                  >
-                </li>
-              </ul>
+                  <span class="sr-only">Previous</span>
+                  <i class="fas fa-minus text-xs"></i></button
+              ></a>
+
+              <a
+                href="#"
+                th:each="i : ${#numbers.sequence(1, catalog.totalPages)}"
+                th:href="@{/catalog(page=${i},tag=${selectedTag})}"
+              >
+                <button
+                  class="inline-flex items-center justify-center w-10 h-10 border-r border-gray-200"
+                  th:classappend="${i == catalog.page} ? 'bg-primary-50 text-primary-500' : 'text-gray-700 hover:bg-gray-50'"
+                  th:text="${i}"
+                >
+                  1
+                </button></a
+              >
+
+              <a
+                href="#"
+                th:href="@{/catalog(page=${nextIndex},tag=${selectedTag})}"
+              >
+                <button
+                  class="inline-flex items-center justify-center w-10 h-10 text-gray-500 hover:bg-gray-50"
+                >
+                  <span class="sr-only">Next</span>
+                  <i class="fas fa-plus text-xs"></i>
+                </button>
+              </a>
             </nav>
           </div>
         </div>
       </div>
-    </div>
+    </section>
   </body>
 </html>

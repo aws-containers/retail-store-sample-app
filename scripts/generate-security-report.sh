@@ -12,7 +12,6 @@ mkdir -p $output_dir
 $DIR/build-image.sh -t scan
 
 trivy image aws-containers/retail-store-sample-catalog:scan --security-checks vuln -o $output_dir/catalog.txt
-trivy image aws-containers/retail-store-sample-assets:scan --security-checks vuln -o $output_dir/assets.txt
 trivy image aws-containers/retail-store-sample-ui:scan --security-checks vuln -o $output_dir/ui.txt
 trivy image aws-containers/retail-store-sample-checkout:scan --security-checks vuln -o $output_dir/checkout.txt
 trivy image aws-containers/retail-store-sample-cart:scan --security-checks vuln -o $output_dir/cart.txt

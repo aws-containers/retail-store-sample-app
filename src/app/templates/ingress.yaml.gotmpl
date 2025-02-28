@@ -1,0 +1,17 @@
+{{ if env "INGRESS" }}
+ingress:
+  enabled: ${ingress_enabled}
+  annotations:
+    kubernetes.io/ingress.class: nginx
+  hosts:
+    - localhost
+{{ end }}
+{{ if env "NODE_PORT" }}
+service:
+  type: NodePort
+  nodePort: {{ env "NODE_PORT" }}
+{{ end }}
+{{ if env "LOAD_BALANCER" }}
+service:
+  type: LoadBalancer
+{{ end }}

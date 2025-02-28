@@ -1,0 +1,29 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "config:recommended",
+    ":automergeStableNonMajor",
+    ":semanticCommitTypeAll(chore)"
+  ],
+  "enabledManagers": ["github-actions", "terraform", "npm", "maven", "gomod"],
+  "packageRules": [
+    {
+      "matchManagers": ["github-actions"],
+      "groupName": "GitHub Actions"
+    },
+    {
+      "matchManagers": ["terraform"],
+      "groupName": "Terraform"
+    },
+    {
+      "matchDepTypes": ["required_version"],
+      "enabled": false
+    },
+    {
+      "automerge": true,
+      "matchCurrentVersion": ">= 1.0.0",
+      "matchUpdateTypes": ["minor", "patch"],
+      "matchManagers": ["custom.regex"]
+    }
+  ]
+}

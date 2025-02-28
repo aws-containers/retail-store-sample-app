@@ -21,6 +21,9 @@ package com.amazon.sample.orders.services;
 import com.amazon.sample.orders.entities.OrderEntity;
 import com.amazon.sample.orders.messaging.OrdersEventHandler;
 import com.amazon.sample.orders.repositories.OrderRepository;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.relational.core.mapping.event.AbstractRelationalEventListener;
@@ -28,33 +31,33 @@ import org.springframework.data.relational.core.mapping.event.AfterSaveEvent;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.StreamSupport;
-
 @Service
 @Slf4j
 public class OrderService extends AbstractRelationalEventListener<OrderEntity> {
 
-    @Autowired
-    private OrderRepository repository;
+  @Autowired
+  private OrderRepository repository;
 
-    @Autowired
-    private OrdersEventHandler eventHandler;
+  @Autowired
+  private OrdersEventHandler eventHandler;
 
-    @Transactional
-    public OrderEntity create(OrderEntity order) {
-        OrderEntity entity = repository.save(order);
+  @Transactional
+  public OrderEntity create(OrderEntity order) {
+    System.out.println(order);
 
-        return entity;
-    }
+    OrderEntity entity = repository.save(order);
 
-    public List<OrderEntity> list() {
-        return StreamSupport.stream(this.repository.findAll().spliterator(), false)
-                .collect(Collectors.toList());
-    }
+    return entity;
+  }
 
-    protected void onAfterSave(AfterSaveEvent<OrderEntity> orderCreated) {
-        this.eventHandler.postCreatedEvent(orderCreated.getEntity());
-    }
+  public List<OrderEntity> list() {
+    return StreamSupport.stream(
+      this.repository.findAll().spliterator(),
+      false
+    ).collect(Collectors.toList());
+  }
+
+  protected void onAfterSave(AfterSaveEvent<OrderEntity> orderCreated) {
+    this.eventHandler.postCreatedEvent(orderCreated.getEntity());
+  }
 }

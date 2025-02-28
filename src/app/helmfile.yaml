@@ -1,0 +1,74 @@
+releases:
+  - name: "catalog"
+    namespace: "default"
+    chart: ../catalog/chart
+    wait: true
+    values:
+      - templates/components.yaml.gotmpl
+      - templates/catalog.yaml.gotmpl
+      - app:
+          persistence:
+            provider: mysql
+        mysql:
+          create: true
+
+  - name: "carts"
+    namespace: "default"
+    chart: ../cart/chart
+    wait: true
+    values:
+      - templates/components.yaml.gotmpl
+      - templates/carts.yaml.gotmpl
+      - app:
+          persistence:
+            provider: dynamodb
+        dynamodb:
+          create: true
+
+  - name: "orders"
+    namespace: "default"
+    chart: ../orders/chart
+    wait: true
+    values:
+      - templates/components.yaml.gotmpl
+      - templates/orders.yaml.gotmpl
+      - app:
+          persistence:
+            provider: postgres
+          messaging:
+            provider: rabbitmq
+        postgresql:
+          create: true
+        rabbitmq:
+          create: true
+
+  - name: "checkout"
+    namespace: "default"
+    chart: ../checkout/chart
+    wait: true
+    values:
+      - templates/components.yaml.gotmpl
+      - templates/checkout.yaml.gotmpl
+      - app:
+          persistence:
+            provider: redis
+          endpoints:
+            orders: http://orders:80
+        redis:
+          create: true
+
+  - name: "ui"
+    namespace: "default"
+    chart: ../ui/chart
+    wait: true
+    timeout: 600
+    values:
+      - templates/components.yaml.gotmpl
+      - templates/ui.yaml.gotmpl
+      - templates/ingress.yaml.gotmpl
+      - app:
+          endpoints:
+            catalog: http://catalog
+            carts: http://carts
+            checkout: http://checkout
+            orders: http://orders

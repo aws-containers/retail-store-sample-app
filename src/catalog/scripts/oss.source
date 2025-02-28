@@ -1,1 +1,1 @@
-golicenses 'catalog'
+run_ort 'catalog' 'go-mod'

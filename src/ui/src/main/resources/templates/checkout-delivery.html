@@ -8,48 +8,65 @@
       th:object="${checkoutDeliveryMethodRequest}"
       method="POST"
       id="checkoutForm"
-      action="/checkout/delivery"
+      th:action="@{/checkout/delivery}"
     >
-      <div
-        class="alert alert-danger"
-        role="alert"
-        th:if="${#fields.hasErrors('token')}"
-      >
-        Please select a delivery method.
-      </div>
-      <div class="row mb-3">
-        <div
-          class="col-lg-4 mb-3"
-          th:each="option : ${checkout.shippingOptions}"
-        >
-          <div class="box item-selector">
-            <label>
-              <input
-                type="radio"
-                th:field="*{token}"
-                name="delivery"
-                th:name="'delivery-'+${option.token}"
-                th:value="${option.token}"
-              />
-              <b class="item-candidate"></b>
-              <span>
-                <th:block th:text="${option.name}">Express</th:block><br />
-                <small class="text-muted"
-                  >Estimated
-                  <th:block th:text="${option.estimatedDays}">7</th:block>
-                  days</small
+      <h2 class="text-2xl font-bold mb-6" th:text="#{checkout.delivery}">
+        Delivery Method
+      </h2>
+      <fieldset class="mt-6">
+        <div class="space-y-4">
+          <label
+            class="relative flex cursor-pointer rounded-lg border bg-white p-4 shadow-sm focus:outline-none"
+            th:each="option : ${checkout.shippingOptions}"
+          >
+            <input
+              type="radio"
+              th:field="*{token}"
+              name="delivery"
+              th:name="'delivery-'+${option.token}"
+              th:value="${option.token}"
+              class="peer sr-only"
+            />
+            <div class="flex flex-1">
+              <div class="flex flex-col">
+                <span
+                  class="block text-sm font-medium text-gray-900"
+                  th:text="${option.name}"
+                  >Standard Shipping</span
                 >
-              </span>
-            </label>
-          </div>
+                <span class="mt-1 flex items-center text-sm text-gray-500"
+                  ><th:block th:text="${option.estimatedDays}">7</th:block>
+                  business days</span
+                >
+              </div>
+              <span class="ml-auto text-sm font-medium text-gray-900"
+                >$<th:block th:text="${option.amount}">7</th:block></span
+              >
+            </div>
+            <div
+              class="absolute -inset-px rounded-lg border-2 pointer-events-none peer-checked:border-primary-500"
+            ></div>
+          </label>
         </div>
-      </div>
-      <div class="box-footer d-flex justify-content-between">
-        <a href="/cart" class="btn btn-outline-secondary"
-          ><i class="fa fa-chevron-left"></i>Back to Basket</a
+      </fieldset>
+
+      <div class="mt-8 flex justify-between items-center">
+        <a th:href="@{/cart}">
+          <button
+            type="button"
+            class="px-6 py-2 border border-gray-300 text-gray-700 rounded-md hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2"
+          >
+            Back to Cart
+          </button>
+        </a>
+
+        <button
+          id="checkout-submit"
+          type="submit"
+          class="px-6 py-2 bg-primary-500 text-white rounded-md hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2"
         >
-        <button type="submit" class="btn btn-primary">
-          Next<i class="fa fa-chevron-right"></i>
+          Continue
+          <i class="fa-solid fa-arrow-right"></i>
         </button>
       </div>
     </form>

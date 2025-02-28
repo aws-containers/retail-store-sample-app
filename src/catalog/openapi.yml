@@ -1,0 +1,213 @@
+---
+openapi: 3.0.1
+info:
+  title: Catalog API
+  description: This API serves the product catalog
+  contact: {}
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  version: "1.0"
+servers:
+  - url: "http://localhost:8080/"
+paths:
+  "/catalog/products":
+    get:
+      tags:
+        - catalog
+      summary: Get catalog
+      description: Get catalog
+      parameters:
+        - name: tags
+          in: query
+          description: Tagged products to include
+          schema:
+            type: string
+        - name: order
+          in: query
+          description: Order of response
+          schema:
+            type: string
+        - name: page
+          in: query
+          description: Page number
+          schema:
+            type: integer
+        - name: size
+          in: query
+          description: Page size
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  "$ref": "#/components/schemas/model.Product"
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/httputil.HTTPError"
+        "404":
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/httputil.HTTPError"
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/httputil.HTTPError"
+  "/catalog/products/{id}":
+    get:
+      tags:
+        - catalog
+      summary: Get catalog
+      description: Get catalog
+      parameters:
+        - name: id
+          in: path
+          description: product ID
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/model.Product"
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/httputil.HTTPError"
+        "404":
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/httputil.HTTPError"
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/httputil.HTTPError"
+  "/catalog/size":
+    get:
+      tags:
+        - catalog
+      summary: Get catalog size
+      description: Get catalog size
+      parameters:
+        - name: tags
+          in: query
+          description: Tagged products to include
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/model.CatalogSizeResponse"
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/httputil.HTTPError"
+        "404":
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/httputil.HTTPError"
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/httputil.HTTPError"
+  "/catalog/tags":
+    get:
+      tags:
+        - catalog
+      summary: List tags
+      description: get tags
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  "$ref": "#/components/schemas/model.Tag"
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/httputil.HTTPError"
+        "404":
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/httputil.HTTPError"
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/httputil.HTTPError"
+components:
+  schemas:
+    httputil.HTTPError:
+      type: object
+      properties:
+        code:
+          type: integer
+          example: 400
+        message:
+          type: string
+          example: status bad request
+    model.CatalogSizeResponse:
+      type: object
+      properties:
+        size:
+          type: integer
+    model.Product:
+      type: object
+      properties:
+        description:
+          type: string
+        id:
+          type: string
+        name:
+          type: string
+        price:
+          type: integer
+        tags:
+          type: array
+          items:
+            "$ref": "#/components/schemas/model.Tag"
+    model.Tag:
+      type: object
+      properties:
+        displayName:
+          type: string
+        name:
+          type: string

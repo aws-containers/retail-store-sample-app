@@ -1,0 +1,248 @@
+<!doctype html>
+<html
+  lang="en"
+  xmlns:th="http://www.thymeleaf.org"
+  xmlns:retail="http://www.thymeleaf.org/retail"
+  th:replace="~{fragments/root :: root (~{::body})}"
+>
+  <body class="bg-gray-50">
+    <!-- Main Content -->
+    <section class="max-w-4xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center space-x-2 text-xl pb-4">
+        <i class="fas fa-cubes text-primary-500"></i>
+        <span class="font-medium">Application Services</span>
+      </div>
+      <!-- Catalog -->
+      <div
+        class="bg-white rounded-lg shadow-sm mb-6"
+        th:with="info=${topology.get('catalog')}"
+      >
+        <div class="px-6 py-4">
+          <div class="flex items-center space-x-2">
+            <i class="fas fa-tags text-primary-500"></i>
+            <span class="font-medium">Catalog</span>
+            <span
+              class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium"
+              retail:status="${info}"
+            >
+            </span>
+          </div>
+        </div>
+
+        <div
+          class="px-6 py-4 text-sm border-t border-gray-200"
+          th:if="${!info.isNone()}"
+        >
+          <div class="mb-4">
+            <div class="text-xs text-gray-500">Endpoint</div>
+            <div
+              class="mt-1 text-sm text-gray-900"
+              th:text="${info.endpoint}"
+            ></div>
+          </div>
+          <div class="grid grid-cols-3 gap-6">
+            <div>
+              <div class="text-xs text-gray-500">Persistence Provider</div>
+              <div
+                class="mt-1 text-sm text-gray-900"
+                th:text="${info.getMetadataValue('persistenceProvider')}"
+              >
+                MySQL
+              </div>
+            </div>
+            <div class="col-span-2">
+              <div class="text-xs text-gray-500">Database Endpoint</div>
+              <div
+                class="mt-1 text-sm text-gray-900"
+                th:text="${info.getMetadataValue('databaseEndpoint')}"
+              >
+                mysql://asdasdasdasdasd
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Carts -->
+      <div
+        class="bg-white rounded-lg shadow-sm mb-6"
+        th:with="info=${topology.get('carts')}"
+      >
+        <div class="px-6 py-4">
+          <div class="flex items-center space-x-2">
+            <i class="fas fa-shopping-cart text-primary-500"></i>
+            <span class="font-medium">Carts</span>
+            <span
+              class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium"
+              retail:status="${info}"
+            >
+            </span>
+          </div>
+        </div>
+
+        <div
+          class="px-6 py-4 text-sm border-t border-gray-200"
+          th:if="${!info.isNone()}"
+        >
+          <div class="mb-4">
+            <div class="text-xs text-gray-500">Endpoint</div>
+            <div
+              class="mt-1 text-sm text-gray-900"
+              th:text="${info.endpoint}"
+            ></div>
+          </div>
+          <div class="grid grid-cols-3 gap-6">
+            <div>
+              <div class="text-xs text-gray-500">Persistence Provider</div>
+              <div
+                class="mt-1 text-sm text-gray-900"
+                th:text="${info.getMetadataValue('persistenceProvider')}"
+              >
+                MySQL
+              </div>
+            </div>
+
+            <div class="col-span-2">
+              <div class="text-xs text-gray-500">DynamoDB Endpoint</div>
+              <div
+                class="mt-1 text-sm text-gray-900"
+                th:text="${info.getMetadataValue('dynamodbEndpoint')}"
+              >
+                mysql://asdasdasdasdasd
+              </div>
+            </div>
+            <div>
+              <div class="text-xs text-gray-500">DynamoDB Table</div>
+              <div
+                class="mt-1 text-sm text-gray-900"
+                th:text="${info.getMetadataValue('dynamodbTable')}"
+              >
+                MySQL
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Checkout -->
+      <div
+        class="bg-white rounded-lg shadow-sm mb-6"
+        th:with="info=${topology.get('checkout')}"
+      >
+        <div class="px-6 py-4">
+          <div class="flex items-center space-x-2">
+            <i class="fas fa-credit-card text-primary-500"></i>
+            <span class="font-medium">Checkout</span>
+            <span
+              class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium"
+              retail:status="${info}"
+            >
+            </span>
+          </div>
+        </div>
+
+        <div
+          class="px-6 py-4 text-sm border-t border-gray-200"
+          th:if="${!info.isNone()}"
+        >
+          <div class="mb-4">
+            <div class="text-xs text-gray-500">Endpoint</div>
+            <div
+              class="mt-1 text-sm text-gray-900"
+              th:text="${info.endpoint}"
+            ></div>
+          </div>
+          <div class="grid grid-cols-3 gap-6">
+            <div>
+              <div class="text-xs text-gray-500">Persistence Provider</div>
+              <div
+                class="mt-1 text-sm text-gray-900"
+                th:text="${info.getMetadataValue('persistenceProvider')}"
+              >
+                MySQL
+              </div>
+            </div>
+            <div class="col-span-2">
+              <div class="text-xs text-gray-500">Database Endpoint</div>
+              <div
+                class="mt-1 text-sm text-gray-900"
+                th:text="${info.getMetadataValue('databaseEndpoint')}"
+              >
+                mysql://asdasdasdasdasd
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Orders -->
+      <div
+        class="bg-white rounded-lg shadow-sm mb-6"
+        th:with="info=${topology.get('orders')}"
+      >
+        <div class="px-6 py-4">
+          <div class="flex items-center space-x-2">
+            <i class="fas fa-clipboard-list text-primary-500"></i>
+            <span class="font-medium">Orders</span>
+            <span
+              class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium"
+              retail:status="${info}"
+            >
+            </span>
+          </div>
+        </div>
+
+        <div
+          class="px-6 py-4 text-sm border-t border-gray-200"
+          th:if="${!info.isNone()}"
+        >
+          <div class="mb-4">
+            <div class="text-xs text-gray-500">Endpoint</div>
+            <div
+              class="mt-1 text-sm text-gray-900"
+              th:text="${info.endpoint}"
+            ></div>
+          </div>
+          <div class="grid grid-cols-3 gap-6">
+            <div>
+              <div class="text-xs text-gray-500">Persistence Provider</div>
+              <div
+                class="mt-1 text-sm text-gray-900"
+                th:text="${info.getMetadataValue('persistenceProvider')}"
+              >
+                MySQL
+              </div>
+            </div>
+            <div class="col-span-2">
+              <div class="text-xs text-gray-500">Database Endpoint</div>
+              <div
+                class="mt-1 text-sm text-gray-900"
+                th:text="${info.getMetadataValue('databaseEndpoint')}"
+              >
+                mysql://asdasdasdasdasd
+              </div>
+            </div>
+            <div>
+              <div class="text-xs text-gray-500">Messaging Provider</div>
+              <div
+                class="mt-1 text-sm text-gray-900"
+                th:text="${info.getMetadataValue('messagingProvider')}"
+              >
+                MySQL
+              </div>
+            </div>
+            <div class="col-span-2">
+              <div class="text-xs text-gray-500">Messaging Endpoint</div>
+              <div
+                class="mt-1 text-sm text-gray-900"
+                th:text="${info.getMetadataValue('messagingEndpoint')}"
+              >
+                mysql://asdasdasdasdasd
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>

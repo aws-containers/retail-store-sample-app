@@ -1,0 +1,16 @@
+{{- if .Values.configMap.create -}}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "orders.configMapName" . }}
+data:
+  RETAIL_ORDERS_MESSAGING_PROVIDER: {{ .Values.app.messaging.provider }}
+  {{- if (eq "rabbitmq" .Values.app.messaging.provider) }}
+  RETAIL_ORDERS_MESSAGING_RABBITMQ_ADDRESSES: {{ include "orders.rabbitmq.addresses" . }}
+  {{- end }}
+  RETAIL_ORDERS_PERSISTENCE_PROVIDER: {{ .Values.app.persistence.provider }}
+  {{- if (eq "postgres" .Values.app.persistence.provider) }}
+  RETAIL_ORDERS_PERSISTENCE_ENDPOINT: {{ include "orders.postgresql.endpoint" . }}
+  RETAIL_ORDERS_PERSISTENCE_NAME: {{ .Values.app.persistence.database }}
+  {{- end }}
+{{- end }}

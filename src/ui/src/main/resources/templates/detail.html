@@ -4,81 +4,146 @@
   th:replace="~{fragments/layout :: layout (~{::body},'catalog')}"
 >
   <body>
-    <section class="bg-primary p-y-sm">
-      <div class="container">
-        <ol class="breadcrumb custom mb-0">
-          <li class="breadcrumb-item"><a href="/home">Home</a></li>
-          <li class="breadcrumb-item"><a href="/catalog">Catalog</a></li>
-          <li
-            aria-current="page"
-            class="breadcrumb-item active"
-            th:text="${item.name}"
+    <section class="max-w-4xl mx-auto px-4 py-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <!-- Product Image -->
+        <div class="bg-white rounded-lg py-4">
+          <img
+            src="https://via.placeholder.com/300"
+            alt="Product Name"
+            class="w-fit h-fit rounded-lg"
+            th:src="@{/assets/img/products/{itemId}.png(itemId=${item.id})}"
+          />
+          <div
+            class="text-center mt-2 text-gray-400 text-sm"
+            th:if="${!disableDemoWarnings}"
           >
-            White Blouse Armani
-          </li>
-        </ol>
-      </div>
-    </section>
-    <div class="bg-light p-4">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-12 order-1 order-lg-2">
-            <div id="productMain" class="row">
-              <div class="col-md-4">
+            This product is for demonstration purposes only
+          </div>
+        </div>
+
+        <!-- Product Details -->
+        <div class="bg-white rounded-lg py-4 space-y-6 product-detail">
+          <!-- Product Title -->
+          <div class="space-y-2">
+            <h1 class="text-3xl font-bold text-gray-800" th:text="${item.name}">
+              Product name
+            </h1>
+            <div class="flex items-center space-x-4">
+              <span
+                class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-primary-100 text-primary-800"
+                th:each="tag : ${item.tags}"
+                th:text="${tag.displayName}"
+              >
+                Tag
+              </span>
+              <!-- Rating Display -->
+              <div class="flex items-center space-x-1">
                 <div
-                  data-slider-id="1"
-                  class="owl-carousel shop-detail-carousel"
+                  class="flex items-center"
+                  role="img"
+                  aria-label="0 out of 5 stars"
                 >
-                  <div class="item">
-                    <img
-                      th:src="${item.imageUrl}"
-                      alt=""
-                      class="img-fluid"
-                      style="border-radius: 10px"
-                    />
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-8">
-                <div class="box">
-                  <h1 th:text="${item.name}">White Blouse Armani</h1>
-                  <div class="price">
-                    $<th:block th:text="${item.price}">124.00</th:block>
-                  </div>
-                  <div
-                    class="mb-3"
-                    th:insert="~{fragments/stars.html :: stars}"
-                  ></div>
-                  <p th:text="${item.description}">
-                    White lace top, woven, has a round neck, short sleeves, has
-                    knitted lining attached
-                  </p>
-                  <hr />
-
-                  <form action="/cart" id="addToCart" method="POST">
-                    <input
-                      type="hidden"
-                      name="productId"
-                      th:value="${item.id}"
-                    />
-                    <a
-                      href="#"
-                      id="add-to-cart"
-                      class="btn btn-dark"
-                      onclick="this.closest('form').submit();return false;"
-                      ><i class="bi bi-cart"></i> Add to cart</a
-                    >
-
-                    <a href="basket.html" class="btn btn-outline-dark"
-                      ><i class="bi bi-heart"></i> Add to wishlist</a
-                    >
-                  </form>
+                  <i class="fas fa-star text-gray-300"></i>
+                  <i class="fas fa-star text-gray-300"></i>
+                  <i class="fas fa-star text-gray-300"></i>
+                  <i class="fas fa-star text-gray-300"></i>
+                  <i class="fas fa-star text-gray-300"></i>
                 </div>
               </div>
             </div>
           </div>
+
+          <!-- Price -->
+          <div class="text-xl text-gray-500">
+            $<th:block th:text="${item.price}">124.00</th:block>
+          </div>
+
+          <!-- Description -->
+          <div class="space-y-4">
+            <p class="text-gray-600" th:text="${item.description}">
+              Product description
+            </p>
+
+            <!-- Add to Cart Section -->
+            <!-- Quantity Selector with Plus/Minus -->
+            <div class="space-y-4 pt-6 border-t border-gray-200">
+              <div class="flex items-center space-x-4">
+                <label class="text-gray-700 font-medium"
+                  ><th:block th:text="#{field.quantity}"></th:block>:</label
+                >
+                <div
+                  class="flex items-center border border-gray-300 rounded-lg"
+                >
+                  <!-- Minus Button -->
+                  <button
+                    class="flex-shrink-0 px-3 py-2 text-gray-600 hover:text-primary-500 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2"
+                    onclick="updateQuantity('decrease')"
+                  >
+                    <i class="fas fa-minus text-sm"></i>
+                  </button>
+
+                  <!-- Quantity Display -->
+                  <div
+                    class="w-12 text-center py-2 text-gray-700 font-medium border-x border-gray-300"
+                    id="quantity"
+                  >
+                    1
+                  </div>
+
+                  <!-- Plus Button -->
+                  <button
+                    class="flex-shrink-0 px-3 py-2 text-gray-600 hover:text-primary-500 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2"
+                    onclick="updateQuantity('increase')"
+                  >
+                    <i class="fas fa-plus text-sm"></i>
+                  </button>
+                </div>
+              </div>
+
+              <!-- Add to Cart Button -->
+              <form th:action="@{/cart}" method="POST">
+                <input type="hidden" name="productId" th:value="${item.id}" />
+                <input
+                  type="hidden"
+                  name="quantity"
+                  id="quantityInput"
+                  value="1"
+                />
+                <button
+                  id="add-to-cart"
+                  class="w-full bg-primary-500 text-white py-3 rounded-lg hover:bg-primary-700 transition duration-300 flex items-center justify-center space-x-2"
+                >
+                  <i class="fas fa-square-plus"></i>
+                  <span th:text="#{button.addtocart}">Add to Cart</span>
+                </button>
+              </form>
+            </div>
+
+            <script>
+              function updateQuantity(action) {
+                const quantityElement = document.getElementById("quantity");
+                const quantityInput = document.getElementById("quantityInput");
+
+                let currentQuantity = parseInt(quantityElement.textContent);
+
+                if (action === "increase") {
+                  if (currentQuantity < 10) {
+                    currentQuantity++;
+                  }
+                } else if (action === "decrease") {
+                  if (currentQuantity > 1) {
+                    currentQuantity--;
+                  }
+                }
+
+                quantityElement.textContent = currentQuantity;
+                quantityInput.value = currentQuantity;
+              }
+            </script>
+          </div>
         </div>
       </div>
-    </div>
+    </section>
   </body>
 </html>

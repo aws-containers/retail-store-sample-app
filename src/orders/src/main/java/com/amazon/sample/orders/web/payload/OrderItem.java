@@ -22,16 +22,12 @@ import lombok.Data;
 
 @Data
 public class OrderItem {
-    private String productId;
 
-    private int quantity;
+  private String productId;
 
-    private int price;
+  private int quantity;
 
-    private String name;
+  private int totalCost;
 
-    private int totalCost;
-
-    private int unitCost;
-
+  private int unitCost;
 }

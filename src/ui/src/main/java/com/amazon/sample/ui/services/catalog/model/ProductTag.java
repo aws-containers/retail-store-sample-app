@@ -24,7 +24,8 @@ import lombok.Data;
 @Data
 @AllArgsConstructor
 public class ProductTag {
-    private String name;
 
-    private String displayName;
+  private String name;
+
+  private String displayName;
 }
