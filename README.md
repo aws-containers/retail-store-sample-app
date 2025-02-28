@@ -89,7 +89,7 @@ Pre-requisites:
 Download the latest Docker Compose file and use `docker compose` to run the application containers:
 
 ```
-curl https://github.com/aws-containers/retail-store-sample-app/releases/download/latest/docker-compose.yaml
+curl https://github.com/aws-containers/retail-store-sample-app/releases/latest/download/docker-compose.yaml
 DB_PASSWORD='<some password>' docker compose --file docker-compose.yaml up
 ```
 
@@ -117,7 +117,7 @@ Pre-requisites:
 Use `kubectl` to run the application:
 
 ```
-kubectl apply -f https://github.com/aws-containers/retail-store-sample-app/releases/download/latest/kubernetes.yaml
+kubectl apply -f https://github.com/aws-containers/retail-store-sample-app/releases/latest/download/kubernetes.yaml
 kubectl wait --for=condition=available deployments --all
 ```
 
@@ -130,7 +130,7 @@ kubectl get svc ui
 To remove the application use `kubectl` again:
 
 ```
-kubectl delete -f https://github.com/aws-containers/retail-store-sample-app/releases/download/latest/kubernetes.yaml
+kubectl delete -f https://github.com/aws-containers/retail-store-sample-app/releases/latest/download/kubernetes.yaml
 ```
 
 ### Terraform
