@@ -12,6 +12,7 @@ kubeconfig_*
 .idea
 node_modules
 dist
+.venv
 
 ort-build
 

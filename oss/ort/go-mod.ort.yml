@@ -1,1 +1,3 @@
+analyzer:
+  skip_excluded: true
 excludes: {}

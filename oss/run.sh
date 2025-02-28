@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+ORT_VERSION="52.0.1"
+
 set -Eeuo pipefail
 trap cleanup SIGINT SIGTERM ERR EXIT
 
@@ -55,7 +57,7 @@ parse_params() {
   # default values of variables set from params
   download=true
   service='*'
-  src_dir="$script_dir/../src"
+  root=false
 
   while :; do
     case "${1-}" in
@@ -64,11 +66,8 @@ parse_params() {
     --no-color) NO_COLOR=1 ;;
     -q | --quiet) quiet=true ;;
     -a | --all) all=true ;;
-    --src)
-      src_dir="${2-}"
-      shift
-      ;;
     --skip-download) download=false ;;
+    --root) root=true ;;
     -s | --service)
       service="${2-}"
       shift
@@ -89,56 +88,35 @@ parse_params() {
 parse_params "$@"
 setup_colors
 
-output_dir="$script_dir/oss-output"
+temp_dir=$(mktemp -d)
 
-function golicenses()
-{
-  component=$1
+echo "Using temp dir $temp_dir"
 
-  component_dir="$src_dir/$component"
+base_dir="/project"
+src_dir="$base_dir/src"
+ort_dir="$base_dir/oss/ort"
 
-  component_output_dir="$output_dir/$component"
+root_args=""
 
-  mkdir -p $component_output_dir
-
-  (cd $component_dir && go-licenses report --template $script_dir/golicenses/template.tpl --ignore github.com/aws-containers/retail-store-sample-app . > $component_output_dir/licenses.csv)
-}
+if [ "$root" = true ] ; then
+  root_args="--user 0"
+fi
 
 function run_ort()
 {
   component=$1
   profile=$2
+  output_dir=$3
 
-  component_dir="$src_dir/$component"
+  container_component_dir="$src_dir/$component"
 
-  component_output_dir="$output_dir/$component"
+  docker run --rm $root_args -v $output_dir:/output -v $script_dir/..:/project ghcr.io/oss-review-toolkit/ort-minimal:$ORT_VERSION analyze \
+    -i $container_component_dir -o /output \
+    --repository-configuration-file "$ort_dir/$profile.ort.yml" -f JSON
 
-  rm -rf $component_output_dir
-
-  ort analyze \
-    -i $component_dir \
-    --repository-configuration-file "$script_dir/ort/$profile.ort.yml" \
-    --package-curations-file $script_dir/ort/curations.yml \
-    -o $component_output_dir -f JSON
-
-  ort report \
-    -i $component_output_dir/analyzer-result.json \
-    -o $component_output_dir \
-    --report-formats NoticeTemplate,StaticHtml
-
-  if [ "$download" = true ] ; then
-    ort download \
-      -i $component_output_dir/analyzer-result.json \
-       --package-types PACKAGE \
-      -o $component_output_dir/src
-  fi
-  
+  docker run --rm $root_args -v $output_dir:/output -v $script_dir/..:/project ghcr.io/oss-review-toolkit/ort-minimal:$ORT_VERSION download \
+    -i /output/analyzer-result.json -o /output/src
 }
-
-if [ -f "$output_dir" ]; then
-  echo "Error: Output directory already exists please remove it"
-  exit 1
-fi
 
 function do_component()
 {
@@ -146,7 +124,9 @@ function do_component()
 
   component_dir="$script_dir/../src/$component"
 
-  component_output_dir="$output_dir/$component"
+  component_output_dir="$temp_dir/$component"
+
+  mkdir -p $component_output_dir
 
   msg "Processing component ${GREEN}$component${NOFORMAT}..."
 
@@ -155,11 +135,25 @@ function do_component()
     exit 1
   fi
 
-  source $component_dir/scripts/oss.source
+  if [ -f "$component_dir/pom.xml" ]; then
+    echo "Detected Java"
+    run_ort $component 'maven' $component_output_dir
+  elif [ -f "$component_dir/go.mod" ]; then
+    echo "Detected Go"
+    run_ort $component 'go-mod' $component_output_dir
+  elif [ -f "$component_dir/package.json" ]; then
+    echo "Detected Javascript"
+    run_ort $component 'npm' $component_output_dir
+  else
+    echo "Error: Component $component does not contain a supported build system"
+    exit 1
+  fi
 
-  (cd $script_dir/attribution && python3 main.py $component $component_output_dir $component_dir/ATTRIBUTION.md)
+  (cd $script_dir/attribution && yarn start $component_output_dir $component_dir/ATTRIBUTION.md)
 
-  rm -rf $component_output_dir/src
+  echo "Cleaning up..."
+
+  #rm -rf $component_output_dir/src
 }
 
 if [[ "$service" = '*' ]]; then

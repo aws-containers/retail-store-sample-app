@@ -4,11 +4,15 @@
   "main": "index.js",
   "repository": "https://github.com/aws-containers/retail-store-sample-app.git",
   "license": "MIT",
+  "private": true,
   "nx": {},
   "scripts": {
     "compose:up": "docker compose --project-directory src/app up --build --detach --wait --wait-timeout 120",
     "compose:down": "docker compose --project-directory src/app down"
   },
+  "workspaces": [
+    "oss/attribution"
+  ],
   "devDependencies": {
     "@nx-extensions/helm": "^1.0.0",
     "@nx-go/nx-go": "^3.3.1",
