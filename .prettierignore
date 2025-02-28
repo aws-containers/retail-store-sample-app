@@ -13,3 +13,4 @@ go.sum
 .release-please-manifest.json
 src/ui/src/main/java/com/amazon/sample/ui/client/**/*.java
 *.drawio.xml
+CHANGELOG.md
