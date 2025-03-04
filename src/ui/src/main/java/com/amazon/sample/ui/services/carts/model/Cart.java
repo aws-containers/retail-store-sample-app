@@ -47,11 +47,7 @@ public class Cart {
   }
 
   public void removeItem(String id) {
-    for (CartItem i : items) {
-      if (i.getId().equals(id)) {
-        this.items.remove(i);
-      }
-    }
+    items.removeIf(item -> item.getId().equals(id));
   }
 
   public int getSubtotal() {
