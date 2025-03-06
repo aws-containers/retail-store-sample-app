@@ -3,7 +3,6 @@
   "release-type": "simple",
   "include-component-in-tag": false,
   "bootstrap-sha": "adc57547da91f96e98fa5ab8df484474e72d09dc",
-  "release-as": "1.0.0",
   "extra-files": [
     {
       "type": "yaml",
