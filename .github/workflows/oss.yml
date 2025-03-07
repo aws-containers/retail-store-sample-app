@@ -33,3 +33,5 @@ jobs:
           delete-branch: true
           labels: |
             automerge
+          add-paths: |
+            src/*/ATTRIBUTION.md
