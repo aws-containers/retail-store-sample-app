@@ -45,6 +45,7 @@
     "container": {
       "executor": "@nx-tools/nx-container:build",
       "cache": true,
+      "dependsOn": [],
       "options": {
         "context": "{projectRoot}",
         "tags": ["aws-containers/retail-store-sample-{projectName}"]
@@ -54,6 +55,12 @@
           "push": true,
           "platforms": ["linux/amd64", "linux/arm64"]
         }
+      }
+    },
+    "manifest": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "bash scripts/create-manifest.sh {args.repository} {args.tag}"
       }
     },
     "helm": {

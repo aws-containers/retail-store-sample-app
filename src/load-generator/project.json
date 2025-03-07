@@ -11,7 +11,8 @@
     },
     "execute": {
       "dependsOn": ["install"]
-    }
+    },
+    "manifest": {}
   },
   "tags": ["tool"]
 }
