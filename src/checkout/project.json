@@ -27,6 +27,7 @@
         "command": "yarn lint"
       }
     },
+    "manifest": {},
     "helm": {}
   },
   "tags": ["service", "chart"]

@@ -1,0 +1,107 @@
+name: Publish Artifacts
+
+on:
+  workflow_call:
+    inputs:
+      version:
+        type: string
+        default: "-"
+
+permissions:
+  contents: write
+  id-token: write
+
+jobs:
+  build:
+    name: Build Images
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: ubuntu-22.04
+            arch: amd64
+          - os: ubuntu-22.04-arm
+            arch: arm64
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.version }}
+      - name: "Setup Docker"
+        uses: ./.github/actions/setup-docker
+      - name: "Setup Env"
+        uses: ./.github/actions/setup-env
+      - name: "Get AWS credentials"
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ secrets.AWS_ROLE_ARN }}
+          aws-region: us-east-1
+          role-session-name: GithubActionsSession
+
+      - name: "Login to Amazon ECR Public"
+        id: login-ecr-public
+        uses: aws-actions/amazon-ecr-login@v2
+        with:
+          registry-type: public
+
+      - name: Build
+        shell: devenv shell bash -- -e {0}
+        env:
+          TAG_NAME: ${{ inputs.version }}
+          TARGET_ARCH: ${{ matrix.arch }}
+          AWS_ECR_REPOSITORY: ${{ secrets.AWS_ECR_REPOSITORY }}
+        run: |
+          export IMAGE_TAG=${TAG_NAME#v}
+
+          # Build first to prevent partial container set push
+          yarn nx run-many -t container --projects=tag:service --tags ${AWS_ECR_REPOSITORY}/retail-store-sample-{projectName}:${IMAGE_TAG}-${TARGET_ARCH}
+          yarn nx container load-generator --tags ${AWS_ECR_REPOSITORY}/retail-store-sample-utils:load-gen.${IMAGE_TAG}-${TARGET_ARCH}
+
+          # Then push
+          yarn nx run-many -t container --push true --projects=tag:service --tags ${AWS_ECR_REPOSITORY}/retail-store-sample-{projectName}:${IMAGE_TAG}-${TARGET_ARCH}
+          yarn nx container load-generator --push true --tags ${AWS_ECR_REPOSITORY}/retail-store-sample-utils:load-gen.${IMAGE_TAG}-${TARGET_ARCH}
+
+  publish:
+    name: Publish
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.version }}
+      - name: "Setup Env"
+        uses: ./.github/actions/setup-env
+      - name: "Get AWS credentials"
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ secrets.AWS_ROLE_ARN }}
+          aws-region: us-east-1
+          role-session-name: GithubActionsSession
+
+      - name: "Login to Amazon ECR Public"
+        id: login-ecr-public
+        uses: aws-actions/amazon-ecr-login@v2
+        with:
+          registry-type: public
+
+      - name: Push manifests
+        shell: devenv shell bash -- -e {0}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          TAG_NAME: ${{ inputs.version }}
+          AWS_ECR_REPOSITORY: ${{ secrets.AWS_ECR_REPOSITORY }}
+        run: |
+          export IMAGE_TAG=${TAG_NAME#v}
+
+          yarn nx run-many -t manifest --projects=tag:service --args="--repository=${AWS_ECR_REPOSITORY}/retail-store-sample-{projectName},--tag=${IMAGE_TAG}"
+          yarn nx manifest load-generator --args="--repository=${AWS_ECR_REPOSITORY}/retail-store-sample-utils,--tag=load-gen.${IMAGE_TAG}"
+
+          yarn nx run-many -t helm --projects=tag:service --remote oci://${AWS_ECR_REPOSITORY} --push
+
+          bash scripts/compose-dist.sh
+
+          gh release upload ${TAG_NAME} ./dist/docker-compose/docker-compose.yaml --clobber
+
+          bash scripts/kubernetes-dist.sh
+
+          gh release upload ${TAG_NAME} ./dist/kubernetes/kubernetes.yaml --clobber

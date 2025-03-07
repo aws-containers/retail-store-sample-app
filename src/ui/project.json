@@ -46,6 +46,7 @@
         "command": "./mvnw spring-boot:run"
       }
     },
+    "manifest": {},
     "helm": {},
     "compose:up": {
       "executor": "nx:run-commands",
