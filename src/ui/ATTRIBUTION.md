@@ -2261,7 +2261,7 @@ SOFTWARE.
 
 ----
 
-### com.microsoft.kiota:microsoft-kiota-abstractions @1.8.3 - https://github.com/microsoft/kiota-java
+### com.microsoft.kiota:microsoft-kiota-abstractions @1.8.4 - https://github.com/microsoft/kiota-java
 
     MIT License
 
@@ -2286,13 +2286,13 @@ SOFTWARE.
     SOFTWARE
 
 
-[Source code](https://repo.maven.apache.org/maven2/com/microsoft/kiota/microsoft-kiota-abstractions/1.8.3/microsoft-kiota-abstractions-1.8.3-sources.jar)
+[Source code](https://repo.maven.apache.org/maven2/com/microsoft/kiota/microsoft-kiota-abstractions/1.8.4/microsoft-kiota-abstractions-1.8.4-sources.jar)
 
 
 
 ----
 
-### com.microsoft.kiota:microsoft-kiota-bundle @1.8.3 - https://github.com/microsoft/kiota-java
+### com.microsoft.kiota:microsoft-kiota-bundle @1.8.4 - https://github.com/microsoft/kiota-java
 
     MIT License
 
@@ -2317,13 +2317,13 @@ SOFTWARE.
     SOFTWARE
 
 
-[Source code](https://repo.maven.apache.org/maven2/com/microsoft/kiota/microsoft-kiota-bundle/1.8.3/microsoft-kiota-bundle-1.8.3-sources.jar)
+[Source code](https://repo.maven.apache.org/maven2/com/microsoft/kiota/microsoft-kiota-bundle/1.8.4/microsoft-kiota-bundle-1.8.4-sources.jar)
 
 
 
 ----
 
-### com.microsoft.kiota:microsoft-kiota-http-okHttp @1.8.3 - https://github.com/microsoft/kiota-java
+### com.microsoft.kiota:microsoft-kiota-http-okHttp @1.8.4 - https://github.com/microsoft/kiota-java
 
     MIT License
 
@@ -2348,13 +2348,13 @@ SOFTWARE.
     SOFTWARE
 
 
-[Source code](https://repo.maven.apache.org/maven2/com/microsoft/kiota/microsoft-kiota-http-okHttp/1.8.3/microsoft-kiota-http-okHttp-1.8.3-sources.jar)
+[Source code](https://repo.maven.apache.org/maven2/com/microsoft/kiota/microsoft-kiota-http-okHttp/1.8.4/microsoft-kiota-http-okHttp-1.8.4-sources.jar)
 
 
 
 ----
 
-### com.microsoft.kiota:microsoft-kiota-serialization-form @1.8.3 - https://github.com/microsoft/kiota-java
+### com.microsoft.kiota:microsoft-kiota-serialization-form @1.8.4 - https://github.com/microsoft/kiota-java
 
     MIT License
 
@@ -2379,13 +2379,13 @@ SOFTWARE.
     SOFTWARE
 
 
-[Source code](https://repo.maven.apache.org/maven2/com/microsoft/kiota/microsoft-kiota-serialization-form/1.8.3/microsoft-kiota-serialization-form-1.8.3-sources.jar)
+[Source code](https://repo.maven.apache.org/maven2/com/microsoft/kiota/microsoft-kiota-serialization-form/1.8.4/microsoft-kiota-serialization-form-1.8.4-sources.jar)
 
 
 
 ----
 
-### com.microsoft.kiota:microsoft-kiota-serialization-json @1.8.3 - https://github.com/microsoft/kiota-java
+### com.microsoft.kiota:microsoft-kiota-serialization-json @1.8.4 - https://github.com/microsoft/kiota-java
 
     MIT License
 
@@ -2410,13 +2410,13 @@ SOFTWARE.
     SOFTWARE
 
 
-[Source code](https://repo.maven.apache.org/maven2/com/microsoft/kiota/microsoft-kiota-serialization-json/1.8.3/microsoft-kiota-serialization-json-1.8.3-sources.jar)
+[Source code](https://repo.maven.apache.org/maven2/com/microsoft/kiota/microsoft-kiota-serialization-json/1.8.4/microsoft-kiota-serialization-json-1.8.4-sources.jar)
 
 
 
 ----
 
-### com.microsoft.kiota:microsoft-kiota-serialization-multipart @1.8.3 - https://github.com/microsoft/kiota-java
+### com.microsoft.kiota:microsoft-kiota-serialization-multipart @1.8.4 - https://github.com/microsoft/kiota-java
 
     MIT License
 
@@ -2441,13 +2441,13 @@ SOFTWARE.
     SOFTWARE
 
 
-[Source code](https://repo.maven.apache.org/maven2/com/microsoft/kiota/microsoft-kiota-serialization-multipart/1.8.3/microsoft-kiota-serialization-multipart-1.8.3-sources.jar)
+[Source code](https://repo.maven.apache.org/maven2/com/microsoft/kiota/microsoft-kiota-serialization-multipart/1.8.4/microsoft-kiota-serialization-multipart-1.8.4-sources.jar)
 
 
 
 ----
 
-### com.microsoft.kiota:microsoft-kiota-serialization-text @1.8.3 - https://github.com/microsoft/kiota-java
+### com.microsoft.kiota:microsoft-kiota-serialization-text @1.8.4 - https://github.com/microsoft/kiota-java
 
     MIT License
 
@@ -2472,7 +2472,7 @@ SOFTWARE.
     SOFTWARE
 
 
-[Source code](https://repo.maven.apache.org/maven2/com/microsoft/kiota/microsoft-kiota-serialization-text/1.8.3/microsoft-kiota-serialization-text-1.8.3-sources.jar)
+[Source code](https://repo.maven.apache.org/maven2/com/microsoft/kiota/microsoft-kiota-serialization-text/1.8.4/microsoft-kiota-serialization-text-1.8.4-sources.jar)
 
 
 
