@@ -91,6 +91,7 @@ The applicable license information is listed below:
 
 {{{license}}}
 {{#if source_url}}
+
 [Source code]({{source_url}})
 {{/if}}
 
