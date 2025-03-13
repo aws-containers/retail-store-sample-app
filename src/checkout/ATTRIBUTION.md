@@ -26721,7 +26721,7 @@ support library is itself covered by the above license.
 
 ----
 
-### @redis:bloom @1.2.0 - 
+### @redis:bloom @1.2.0
 
 MIT License
 
