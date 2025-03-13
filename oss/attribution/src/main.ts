@@ -198,7 +198,7 @@ async function main() {
         packages.push({
           name,
           url: url || vcsUrl || null,
-          license: licenseText.trim(),
+          license: licenseText,
           version,
           source_url: sourceUrl || vcsUrl || null,
         });
