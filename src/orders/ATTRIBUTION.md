@@ -15,15 +15,13 @@ You may obtain a copy of the License at:
 
 http://www.apache.org/licenses/LICENSE-2.0
 
-
 [Source code](https://repo.maven.apache.org/maven2/com/fasterxml/classmate/1.7.0/classmate-1.7.0-sources.jar)
 
 ----
 
 ### com.fasterxml.jackson.core:jackson-annotations @2.18.2 - https://github.com/FasterXML/jackson
 
-
-                                 Apache License
+Apache License
                            Version 2.0, January 2004
                         http://www.apache.org/licenses/
 
@@ -224,7 +222,6 @@ http://www.apache.org/licenses/LICENSE-2.0
    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
    See the License for the specific language governing permissions and
    limitations under the License.
-
 
 [Source code](https://repo.maven.apache.org/maven2/com/fasterxml/jackson/core/jackson-annotations/2.18.2/jackson-annotations-2.18.2-sources.jar)
 
@@ -232,8 +229,7 @@ http://www.apache.org/licenses/LICENSE-2.0
 
 ### com.fasterxml.jackson.core:jackson-core @2.18.2 - https://github.com/FasterXML/jackson-core
 
-
-                                 Apache License
+Apache License
                            Version 2.0, January 2004
                         http://www.apache.org/licenses/
 
@@ -434,7 +430,6 @@ http://www.apache.org/licenses/LICENSE-2.0
    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
    See the License for the specific language governing permissions and
    limitations under the License.
-
 
 [Source code](https://repo.maven.apache.org/maven2/com/fasterxml/jackson/core/jackson-core/2.18.2/jackson-core-2.18.2-sources.jar)
 
@@ -442,8 +437,7 @@ http://www.apache.org/licenses/LICENSE-2.0
 
 ### com.fasterxml.jackson.core:jackson-databind @2.18.2 - https://github.com/FasterXML/jackson
 
-
-                                 Apache License
+Apache License
                            Version 2.0, January 2004
                         http://www.apache.org/licenses/
 
@@ -644,7 +638,6 @@ http://www.apache.org/licenses/LICENSE-2.0
    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
    See the License for the specific language governing permissions and
    limitations under the License.
-
 
 [Source code](https://repo.maven.apache.org/maven2/com/fasterxml/jackson/core/jackson-databind/2.18.2/jackson-databind-2.18.2-sources.jar)
 
@@ -661,7 +654,6 @@ You may obtain a copy of the License at:
 
 http://www.apache.org/licenses/LICENSE-2.0
 
-
 [Source code](https://repo.maven.apache.org/maven2/com/fasterxml/jackson/dataformat/jackson-dataformat-toml/2.18.2/jackson-dataformat-toml-2.18.2-sources.jar)
 
 ----
@@ -676,7 +668,6 @@ specific rights regarding derivative works.
 You may obtain a copy of the License at:
 
 http://www.apache.org/licenses/LICENSE-2.0
-
 
 [Source code](https://repo.maven.apache.org/maven2/com/fasterxml/jackson/dataformat/jackson-dataformat-yaml/2.18.2/jackson-dataformat-yaml-2.18.2-sources.jar)
 
@@ -693,7 +684,6 @@ You may obtain a copy of the License at:
 
 http://www.apache.org/licenses/LICENSE-2.0
 
-
 [Source code](https://repo.maven.apache.org/maven2/com/fasterxml/jackson/datatype/jackson-datatype-jdk8/2.18.2/jackson-datatype-jdk8-2.18.2-sources.jar)
 
 ----
@@ -708,7 +698,6 @@ specific rights regarding derivative works.
 You may obtain a copy of the License at:
 
 http://www.apache.org/licenses/LICENSE-2.0
-
 
 [Source code](https://repo.maven.apache.org/maven2/com/fasterxml/jackson/datatype/jackson-datatype-jsr310/2.18.2/jackson-datatype-jsr310-2.18.2-sources.jar)
 
@@ -725,15 +714,13 @@ You may obtain a copy of the License at:
 
 http://www.apache.org/licenses/LICENSE-2.0
 
-
 [Source code](https://repo.maven.apache.org/maven2/com/fasterxml/jackson/module/jackson-module-parameter-names/2.18.2/jackson-module-parameter-names-2.18.2-sources.jar)
 
 ----
 
 ### com.google.cloud.opentelemetry:detector-resources-support @0.33.0 - https://github.com/GoogleCloudPlatform/opentelemetry-operations-java
 
-
-                                 Apache License
+Apache License
                            Version 2.0, January 2004
                         http://www.apache.org/licenses/
 
@@ -934,7 +921,6 @@ http://www.apache.org/licenses/LICENSE-2.0
    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
    See the License for the specific language governing permissions and
    limitations under the License.
-
 
 [Source code](https://repo.maven.apache.org/maven2/com/google/cloud/opentelemetry/detector-resources-support/0.33.0/detector-resources-support-0.33.0-sources.jar)
 
@@ -1495,7 +1481,6 @@ this Agreement will bring a legal action under this Agreement more than one
 year after the cause of action arose. Each party waives its rights to a
 jury trial in any resulting litigation.
 
-
 [Source code](https://repo.maven.apache.org/maven2/com/h2database/h2/2.3.232/h2-2.3.232-sources.jar)
 
 ----
@@ -1515,15 +1500,13 @@ copyright and other details of provenance, please refer to the source code.
 If you have any questions regarding licensing, please contact us at 
 info@rabbitmq.com.
 
-
 [Source code](https://repo.maven.apache.org/maven2/com/rabbitmq/amqp-client/5.22.0/amqp-client-5.22.0-sources.jar)
 
 ----
 
 ### com.squareup.okhttp3:okhttp @4.12.0 - https://square.github.io/okhttp/
 
-
-                                 Apache License
+Apache License
                            Version 2.0, January 2004
                         http://www.apache.org/licenses/
 
@@ -1724,7 +1707,6 @@ info@rabbitmq.com.
    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
    See the License for the specific language governing permissions and
    limitations under the License.
-
 
 [Source code](https://repo.maven.apache.org/maven2/com/squareup/okhttp3/okhttp/4.12.0/okhttp-4.12.0-sources.jar)
 
@@ -1732,8 +1714,7 @@ info@rabbitmq.com.
 
 ### com.squareup.okio:okio @3.6.0 - https://github.com/square/okio/
 
-
-                                 Apache License
+Apache License
                            Version 2.0, January 2004
                         http://www.apache.org/licenses/
 
@@ -1934,7 +1915,6 @@ info@rabbitmq.com.
    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
    See the License for the specific language governing permissions and
    limitations under the License.
-
 
 [Source code](https://repo.maven.apache.org/maven2/com/squareup/okio/okio/3.6.0/okio-3.6.0-sources.jar)
 
@@ -1942,8 +1922,7 @@ info@rabbitmq.com.
 
 ### com.squareup.okio:okio-jvm @3.6.0 - https://github.com/square/okio/
 
-
-                                 Apache License
+Apache License
                            Version 2.0, January 2004
                         http://www.apache.org/licenses/
 
@@ -2144,7 +2123,6 @@ info@rabbitmq.com.
    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
    See the License for the specific language governing permissions and
    limitations under the License.
-
 
 [Source code](https://repo.maven.apache.org/maven2/com/squareup/okio/okio-jvm/3.6.0/okio-jvm-3.6.0-sources.jar)
 
@@ -2152,8 +2130,7 @@ info@rabbitmq.com.
 
 ### com.vaadin.external.google:android-json @0.0.20131108.vaadin1 - http://developer.android.com/sdk
 
-
-                                 Apache License
+Apache License
                            Version 2.0, January 2004
                         http://www.apache.org/licenses/
 
@@ -2354,7 +2331,6 @@ info@rabbitmq.com.
    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
    See the License for the specific language governing permissions and
    limitations under the License.
-
 
 [Source code](https://repo.maven.apache.org/maven2/com/vaadin/external/google/android-json/0.0.20131108.vaadin1/android-json-0.0.20131108.vaadin1-sources.jar)
 
@@ -2362,8 +2338,7 @@ info@rabbitmq.com.
 
 ### com.zaxxer:HikariCP @5.1.0 - https://github.com/brettwooldridge/HikariCP
 
-
-                                 Apache License
+Apache License
                            Version 2.0, January 2004
                         http://www.apache.org/licenses/
 
@@ -2564,7 +2539,6 @@ info@rabbitmq.com.
    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
    See the License for the specific language governing permissions and
    limitations under the License.
-
 
 [Source code](https://repo.maven.apache.org/maven2/com/zaxxer/HikariCP/5.1.0/HikariCP-5.1.0-sources.jar)
 
@@ -2572,8 +2546,7 @@ info@rabbitmq.com.
 
 ### io.awspring.cloud:spring-cloud-aws-autoconfigure @3.3.0 - https://spring.io/spring-cloud/spring-cloud-aws/spring-cloud-aws-autoconfigure
 
-
-                                 Apache License
+Apache License
                            Version 2.0, January 2004
                         https://www.apache.org/licenses/
 
@@ -2774,7 +2747,6 @@ info@rabbitmq.com.
    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
    See the License for the specific language governing permissions and
    limitations under the License.
-
 
 [Source code](https://repo.maven.apache.org/maven2/io/awspring/cloud/spring-cloud-aws-autoconfigure/3.3.0/spring-cloud-aws-autoconfigure-3.3.0-sources.jar)
 
@@ -2782,8 +2754,7 @@ info@rabbitmq.com.
 
 ### io.awspring.cloud:spring-cloud-aws-core @3.3.0 - https://spring.io/spring-cloud/spring-cloud-aws/spring-cloud-aws-core
 
-
-                                 Apache License
+Apache License
                            Version 2.0, January 2004
                         https://www.apache.org/licenses/
 
@@ -2984,7 +2955,6 @@ info@rabbitmq.com.
    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
    See the License for the specific language governing permissions and
    limitations under the License.
-
 
 [Source code](https://repo.maven.apache.org/maven2/io/awspring/cloud/spring-cloud-aws-core/3.3.0/spring-cloud-aws-core-3.3.0-sources.jar)
 
@@ -2992,8 +2962,7 @@ info@rabbitmq.com.
 
 ### io.awspring.cloud:spring-cloud-aws-sqs @3.3.0 - https://spring.io/spring-cloud/spring-cloud-aws/spring-cloud-aws-sqs
 
-
-                                 Apache License
+Apache License
                            Version 2.0, January 2004
                         https://www.apache.org/licenses/
 
@@ -3194,7 +3163,6 @@ info@rabbitmq.com.
    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
    See the License for the specific language governing permissions and
    limitations under the License.
-
 
 [Source code](https://repo.maven.apache.org/maven2/io/awspring/cloud/spring-cloud-aws-sqs/3.3.0/spring-cloud-aws-sqs-3.3.0-sources.jar)
 
@@ -3202,8 +3170,7 @@ info@rabbitmq.com.
 
 ### io.awspring.cloud:spring-cloud-aws-starter @3.3.0 - https://spring.io/spring-cloud/spring-cloud-aws/spring-cloud-aws-starters/spring-cloud-aws-starter
 
-
-                                 Apache License
+Apache License
                            Version 2.0, January 2004
                         https://www.apache.org/licenses/
 
@@ -3404,7 +3371,6 @@ info@rabbitmq.com.
    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
    See the License for the specific language governing permissions and
    limitations under the License.
-
 
 [Source code](https://github.com/awspring/spring-cloud-aws.git)
 
@@ -3412,8 +3378,7 @@ info@rabbitmq.com.
 
 ### io.awspring.cloud:spring-cloud-aws-starter-sqs @3.3.0 - https://spring.io/spring-cloud/spring-cloud-aws/spring-cloud-aws-starters/spring-cloud-aws-starter-sqs
 
-
-                                 Apache License
+Apache License
                            Version 2.0, January 2004
                         https://www.apache.org/licenses/
 
@@ -3614,7 +3579,6 @@ info@rabbitmq.com.
    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
    See the License for the specific language governing permissions and
    limitations under the License.
-
 
 [Source code](https://github.com/awspring/spring-cloud-aws.git)
 
@@ -3622,8 +3586,7 @@ info@rabbitmq.com.
 
 ### io.micrometer:micrometer-commons @1.14.3 - https://github.com/micrometer-metrics/micrometer
 
-
-                                 Apache License
+Apache License
                            Version 2.0, January 2004
                         http://www.apache.org/licenses/
 
@@ -3824,7 +3787,6 @@ info@rabbitmq.com.
    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
    See the License for the specific language governing permissions and
    limitations under the License.
-
 
 [Source code](https://repo.maven.apache.org/maven2/io/micrometer/micrometer-commons/1.14.3/micrometer-commons-1.14.3-sources.jar)
 
@@ -3832,8 +3794,7 @@ info@rabbitmq.com.
 
 ### io.micrometer:micrometer-core @1.14.3 - https://github.com/micrometer-metrics/micrometer
 
-
-                                 Apache License
+Apache License
                            Version 2.0, January 2004
                         http://www.apache.org/licenses/
 
@@ -4034,7 +3995,6 @@ info@rabbitmq.com.
    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
    See the License for the specific language governing permissions and
    limitations under the License.
-
 
 [Source code](https://repo.maven.apache.org/maven2/io/micrometer/micrometer-core/1.14.3/micrometer-core-1.14.3-sources.jar)
 
@@ -4042,8 +4002,7 @@ info@rabbitmq.com.
 
 ### io.micrometer:micrometer-jakarta9 @1.14.3 - https://github.com/micrometer-metrics/micrometer
 
-
-                                 Apache License
+Apache License
                            Version 2.0, January 2004
                         http://www.apache.org/licenses/
 
@@ -4244,7 +4203,6 @@ info@rabbitmq.com.
    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
    See the License for the specific language governing permissions and
    limitations under the License.
-
 
 [Source code](https://repo.maven.apache.org/maven2/io/micrometer/micrometer-jakarta9/1.14.3/micrometer-jakarta9-1.14.3-sources.jar)
 
@@ -4252,8 +4210,7 @@ info@rabbitmq.com.
 
 ### io.micrometer:micrometer-observation @1.14.3 - https://github.com/micrometer-metrics/micrometer
 
-
-                                 Apache License
+Apache License
                            Version 2.0, January 2004
                         http://www.apache.org/licenses/
 
@@ -4454,7 +4411,6 @@ info@rabbitmq.com.
    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
    See the License for the specific language governing permissions and
    limitations under the License.
-
 
 [Source code](https://repo.maven.apache.org/maven2/io/micrometer/micrometer-observation/1.14.3/micrometer-observation-1.14.3-sources.jar)
 
@@ -4462,8 +4418,7 @@ info@rabbitmq.com.
 
 ### io.micrometer:micrometer-registry-prometheus @1.14.3 - https://github.com/micrometer-metrics/micrometer
 
-
-                                 Apache License
+Apache License
                            Version 2.0, January 2004
                         http://www.apache.org/licenses/
 
@@ -4664,7 +4619,6 @@ info@rabbitmq.com.
    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
    See the License for the specific language governing permissions and
    limitations under the License.
-
 
 [Source code](https://repo.maven.apache.org/maven2/io/micrometer/micrometer-registry-prometheus/1.14.3/micrometer-registry-prometheus-1.14.3-sources.jar)
 
@@ -4672,8 +4626,7 @@ info@rabbitmq.com.
 
 ### io.netty:netty-buffer @4.1.117.Final - https://netty.io/netty-buffer/
 
-
-                                 Apache License
+Apache License
                            Version 2.0, January 2004
                         https://www.apache.org/licenses/
 
@@ -4874,7 +4827,6 @@ info@rabbitmq.com.
    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
    See the License for the specific language governing permissions and
    limitations under the License.
-
 
 [Source code](https://repo.maven.apache.org/maven2/io/netty/netty-buffer/4.1.117.Final/netty-buffer-4.1.117.Final-sources.jar)
 
@@ -4882,8 +4834,7 @@ info@rabbitmq.com.
 
 ### io.netty:netty-codec @4.1.117.Final - https://netty.io/netty-codec/
 
-
-                                 Apache License
+Apache License
                            Version 2.0, January 2004
                         https://www.apache.org/licenses/
 
@@ -5084,7 +5035,6 @@ info@rabbitmq.com.
    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
    See the License for the specific language governing permissions and
    limitations under the License.
-
 
 [Source code](https://repo.maven.apache.org/maven2/io/netty/netty-codec/4.1.117.Final/netty-codec-4.1.117.Final-sources.jar)
 
@@ -5092,8 +5042,7 @@ info@rabbitmq.com.
 
 ### io.netty:netty-codec-http @4.1.117.Final - https://netty.io/netty-codec-http/
 
-
-                                 Apache License
+Apache License
                            Version 2.0, January 2004
                         https://www.apache.org/licenses/
 
@@ -5294,7 +5243,6 @@ info@rabbitmq.com.
    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
    See the License for the specific language governing permissions and
    limitations under the License.
-
 
 [Source code](https://repo.maven.apache.org/maven2/io/netty/netty-codec-http/4.1.117.Final/netty-codec-http-4.1.117.Final-sources.jar)
 
@@ -5302,8 +5250,7 @@ info@rabbitmq.com.
 
 ### io.netty:netty-codec-http2 @4.1.117.Final - https://netty.io/netty-codec-http2/
 
-
-                                 Apache License
+Apache License
                            Version 2.0, January 2004
                         https://www.apache.org/licenses/
 
@@ -5504,7 +5451,6 @@ info@rabbitmq.com.
    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
    See the License for the specific language governing permissions and
    limitations under the License.
-
 
 [Source code](https://repo.maven.apache.org/maven2/io/netty/netty-codec-http2/4.1.117.Final/netty-codec-http2-4.1.117.Final-sources.jar)
 
@@ -5512,8 +5458,7 @@ info@rabbitmq.com.
 
 ### io.netty:netty-common @4.1.117.Final - https://netty.io/netty-common/
 
-
-                                 Apache License
+Apache License
                            Version 2.0, January 2004
                         https://www.apache.org/licenses/
 
@@ -5714,7 +5659,6 @@ info@rabbitmq.com.
    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
    See the License for the specific language governing permissions and
    limitations under the License.
-
 
 [Source code](https://repo.maven.apache.org/maven2/io/netty/netty-common/4.1.117.Final/netty-common-4.1.117.Final-sources.jar)
 
@@ -5722,8 +5666,7 @@ info@rabbitmq.com.
 
 ### io.netty:netty-handler @4.1.117.Final - https://netty.io/netty-handler/
 
-
-                                 Apache License
+Apache License
                            Version 2.0, January 2004
                         https://www.apache.org/licenses/
 
@@ -5924,7 +5867,6 @@ info@rabbitmq.com.
    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
    See the License for the specific language governing permissions and
    limitations under the License.
-
 
 [Source code](https://repo.maven.apache.org/maven2/io/netty/netty-handler/4.1.117.Final/netty-handler-4.1.117.Final-sources.jar)
 
@@ -5932,8 +5874,7 @@ info@rabbitmq.com.
 
 ### io.netty:netty-resolver @4.1.117.Final - https://netty.io/netty-resolver/
 
-
-                                 Apache License
+Apache License
                            Version 2.0, January 2004
                         https://www.apache.org/licenses/
 
@@ -6134,7 +6075,6 @@ info@rabbitmq.com.
    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
    See the License for the specific language governing permissions and
    limitations under the License.
-
 
 [Source code](https://repo.maven.apache.org/maven2/io/netty/netty-resolver/4.1.117.Final/netty-resolver-4.1.117.Final-sources.jar)
 
@@ -6142,8 +6082,7 @@ info@rabbitmq.com.
 
 ### io.netty:netty-transport @4.1.117.Final - https://netty.io/netty-transport/
 
-
-                                 Apache License
+Apache License
                            Version 2.0, January 2004
                         https://www.apache.org/licenses/
 
@@ -6344,7 +6283,6 @@ info@rabbitmq.com.
    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
    See the License for the specific language governing permissions and
    limitations under the License.
-
 
 [Source code](https://repo.maven.apache.org/maven2/io/netty/netty-transport/4.1.117.Final/netty-transport-4.1.117.Final-sources.jar)
 
@@ -6352,8 +6290,7 @@ info@rabbitmq.com.
 
 ### io.netty:netty-transport-classes-epoll @4.1.117.Final - https://netty.io/netty-transport-classes-epoll/
 
-
-                                 Apache License
+Apache License
                            Version 2.0, January 2004
                         https://www.apache.org/licenses/
 
@@ -6554,7 +6491,6 @@ info@rabbitmq.com.
    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
    See the License for the specific language governing permissions and
    limitations under the License.
-
 
 [Source code](https://repo.maven.apache.org/maven2/io/netty/netty-transport-classes-epoll/4.1.117.Final/netty-transport-classes-epoll-4.1.117.Final-sources.jar)
 
@@ -6562,8 +6498,7 @@ info@rabbitmq.com.
 
 ### io.netty:netty-transport-native-unix-common @4.1.117.Final - https://netty.io/netty-transport-native-unix-common/
 
-
-                                 Apache License
+Apache License
                            Version 2.0, January 2004
                         https://www.apache.org/licenses/
 
@@ -6765,15 +6700,13 @@ info@rabbitmq.com.
    See the License for the specific language governing permissions and
    limitations under the License.
 
-
 [Source code](https://repo.maven.apache.org/maven2/io/netty/netty-transport-native-unix-common/4.1.117.Final/netty-transport-native-unix-common-4.1.117.Final-sources.jar)
 
 ----
 
 ### io.opentelemetry:opentelemetry-api @1.46.0 - https://github.com/open-telemetry/opentelemetry-java
 
-
-                                 Apache License
+Apache License
                            Version 2.0, January 2004
                         http://www.apache.org/licenses/
 
@@ -6974,7 +6907,6 @@ info@rabbitmq.com.
    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
    See the License for the specific language governing permissions and
    limitations under the License.
-
 
 [Source code](https://repo.maven.apache.org/maven2/io/opentelemetry/opentelemetry-api/1.46.0/opentelemetry-api-1.46.0-sources.jar)
 
@@ -6982,8 +6914,7 @@ info@rabbitmq.com.
 
 ### io.opentelemetry:opentelemetry-api-incubator @1.46.0-alpha - https://github.com/open-telemetry/opentelemetry-java
 
-
-                                 Apache License
+Apache License
                            Version 2.0, January 2004
                         http://www.apache.org/licenses/
 
@@ -7184,7 +7115,6 @@ info@rabbitmq.com.
    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
    See the License for the specific language governing permissions and
    limitations under the License.
-
 
 [Source code](https://repo.maven.apache.org/maven2/io/opentelemetry/opentelemetry-api-incubator/1.46.0-alpha/opentelemetry-api-incubator-1.46.0-alpha-sources.jar)
 
@@ -7192,8 +7122,7 @@ info@rabbitmq.com.
 
 ### io.opentelemetry:opentelemetry-context @1.46.0 - https://github.com/open-telemetry/opentelemetry-java
 
-
-                                 Apache License
+Apache License
                            Version 2.0, January 2004
                         http://www.apache.org/licenses/
 
@@ -7394,7 +7323,6 @@ info@rabbitmq.com.
    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
    See the License for the specific language governing permissions and
    limitations under the License.
-
 
 [Source code](https://repo.maven.apache.org/maven2/io/opentelemetry/opentelemetry-context/1.46.0/opentelemetry-context-1.46.0-sources.jar)
 
@@ -7402,8 +7330,7 @@ info@rabbitmq.com.
 
 ### io.opentelemetry:opentelemetry-exporter-common @1.46.0 - https://github.com/open-telemetry/opentelemetry-java
 
-
-                                 Apache License
+Apache License
                            Version 2.0, January 2004
                         http://www.apache.org/licenses/
 
@@ -7604,7 +7531,6 @@ info@rabbitmq.com.
    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
    See the License for the specific language governing permissions and
    limitations under the License.
-
 
 [Source code](https://repo.maven.apache.org/maven2/io/opentelemetry/opentelemetry-exporter-common/1.46.0/opentelemetry-exporter-common-1.46.0-sources.jar)
 
@@ -7612,8 +7538,7 @@ info@rabbitmq.com.
 
 ### io.opentelemetry:opentelemetry-exporter-logging @1.46.0 - https://github.com/open-telemetry/opentelemetry-java
 
-
-                                 Apache License
+Apache License
                            Version 2.0, January 2004
                         http://www.apache.org/licenses/
 
@@ -7814,7 +7739,6 @@ info@rabbitmq.com.
    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
    See the License for the specific language governing permissions and
    limitations under the License.
-
 
 [Source code](https://repo.maven.apache.org/maven2/io/opentelemetry/opentelemetry-exporter-logging/1.46.0/opentelemetry-exporter-logging-1.46.0-sources.jar)
 
@@ -7822,8 +7746,7 @@ info@rabbitmq.com.
 
 ### io.opentelemetry:opentelemetry-exporter-otlp @1.46.0 - https://github.com/open-telemetry/opentelemetry-java
 
-
-                                 Apache License
+Apache License
                            Version 2.0, January 2004
                         http://www.apache.org/licenses/
 
@@ -8024,7 +7947,6 @@ info@rabbitmq.com.
    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
    See the License for the specific language governing permissions and
    limitations under the License.
-
 
 [Source code](https://repo.maven.apache.org/maven2/io/opentelemetry/opentelemetry-exporter-otlp/1.46.0/opentelemetry-exporter-otlp-1.46.0-sources.jar)
 
@@ -8032,8 +7954,7 @@ info@rabbitmq.com.
 
 ### io.opentelemetry:opentelemetry-exporter-otlp-common @1.46.0 - https://github.com/open-telemetry/opentelemetry-java
 
-
-                                 Apache License
+Apache License
                            Version 2.0, January 2004
                         http://www.apache.org/licenses/
 
@@ -8234,7 +8155,6 @@ info@rabbitmq.com.
    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
    See the License for the specific language governing permissions and
    limitations under the License.
-
 
 [Source code](https://repo.maven.apache.org/maven2/io/opentelemetry/opentelemetry-exporter-otlp-common/1.46.0/opentelemetry-exporter-otlp-common-1.46.0-sources.jar)
 
@@ -8242,8 +8162,7 @@ info@rabbitmq.com.
 
 ### io.opentelemetry:opentelemetry-exporter-sender-okhttp @1.46.0 - https://github.com/open-telemetry/opentelemetry-java
 
-
-                                 Apache License
+Apache License
                            Version 2.0, January 2004
                         http://www.apache.org/licenses/
 
@@ -8444,7 +8363,6 @@ info@rabbitmq.com.
    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
    See the License for the specific language governing permissions and
    limitations under the License.
-
 
 [Source code](https://repo.maven.apache.org/maven2/io/opentelemetry/opentelemetry-exporter-sender-okhttp/1.46.0/opentelemetry-exporter-sender-okhttp-1.46.0-sources.jar)
 
@@ -8452,8 +8370,7 @@ info@rabbitmq.com.
 
 ### io.opentelemetry:opentelemetry-sdk @1.46.0 - https://github.com/open-telemetry/opentelemetry-java
 
-
-                                 Apache License
+Apache License
                            Version 2.0, January 2004
                         http://www.apache.org/licenses/
 
@@ -8654,7 +8571,6 @@ info@rabbitmq.com.
    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
    See the License for the specific language governing permissions and
    limitations under the License.
-
 
 [Source code](https://repo.maven.apache.org/maven2/io/opentelemetry/opentelemetry-sdk/1.46.0/opentelemetry-sdk-1.46.0-sources.jar)
 
@@ -8662,8 +8578,7 @@ info@rabbitmq.com.
 
 ### io.opentelemetry:opentelemetry-sdk-common @1.46.0 - https://github.com/open-telemetry/opentelemetry-java
 
-
-                                 Apache License
+Apache License
                            Version 2.0, January 2004
                         http://www.apache.org/licenses/
 
@@ -8864,7 +8779,6 @@ info@rabbitmq.com.
    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
    See the License for the specific language governing permissions and
    limitations under the License.
-
 
 [Source code](https://repo.maven.apache.org/maven2/io/opentelemetry/opentelemetry-sdk-common/1.46.0/opentelemetry-sdk-common-1.46.0-sources.jar)
 
@@ -8872,8 +8786,7 @@ info@rabbitmq.com.
 
 ### io.opentelemetry:opentelemetry-sdk-extension-autoconfigure @1.46.0 - https://github.com/open-telemetry/opentelemetry-java
 
-
-                                 Apache License
+Apache License
                            Version 2.0, January 2004
                         http://www.apache.org/licenses/
 
@@ -9074,7 +8987,6 @@ info@rabbitmq.com.
    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
    See the License for the specific language governing permissions and
    limitations under the License.
-
 
 [Source code](https://repo.maven.apache.org/maven2/io/opentelemetry/opentelemetry-sdk-extension-autoconfigure/1.46.0/opentelemetry-sdk-extension-autoconfigure-1.46.0-sources.jar)
 
@@ -9082,8 +8994,7 @@ info@rabbitmq.com.
 
 ### io.opentelemetry:opentelemetry-sdk-extension-autoconfigure-spi @1.46.0 - https://github.com/open-telemetry/opentelemetry-java
 
-
-                                 Apache License
+Apache License
                            Version 2.0, January 2004
                         http://www.apache.org/licenses/
 
@@ -9284,7 +9195,6 @@ info@rabbitmq.com.
    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
    See the License for the specific language governing permissions and
    limitations under the License.
-
 
 [Source code](https://repo.maven.apache.org/maven2/io/opentelemetry/opentelemetry-sdk-extension-autoconfigure-spi/1.46.0/opentelemetry-sdk-extension-autoconfigure-spi-1.46.0-sources.jar)
 
@@ -9292,8 +9202,7 @@ info@rabbitmq.com.
 
 ### io.opentelemetry:opentelemetry-sdk-extension-incubator @1.46.0-alpha - https://github.com/open-telemetry/opentelemetry-java
 
-
-                                 Apache License
+Apache License
                            Version 2.0, January 2004
                         http://www.apache.org/licenses/
 
@@ -9494,7 +9403,6 @@ info@rabbitmq.com.
    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
    See the License for the specific language governing permissions and
    limitations under the License.
-
 
 [Source code](https://repo.maven.apache.org/maven2/io/opentelemetry/opentelemetry-sdk-extension-incubator/1.46.0-alpha/opentelemetry-sdk-extension-incubator-1.46.0-alpha-sources.jar)
 
@@ -9502,8 +9410,7 @@ info@rabbitmq.com.
 
 ### io.opentelemetry:opentelemetry-sdk-logs @1.46.0 - https://github.com/open-telemetry/opentelemetry-java
 
-
-                                 Apache License
+Apache License
                            Version 2.0, January 2004
                         http://www.apache.org/licenses/
 
@@ -9704,7 +9611,6 @@ info@rabbitmq.com.
    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
    See the License for the specific language governing permissions and
    limitations under the License.
-
 
 [Source code](https://repo.maven.apache.org/maven2/io/opentelemetry/opentelemetry-sdk-logs/1.46.0/opentelemetry-sdk-logs-1.46.0-sources.jar)
 
@@ -9712,8 +9618,7 @@ info@rabbitmq.com.
 
 ### io.opentelemetry:opentelemetry-sdk-metrics @1.46.0 - https://github.com/open-telemetry/opentelemetry-java
 
-
-                                 Apache License
+Apache License
                            Version 2.0, January 2004
                         http://www.apache.org/licenses/
 
@@ -9914,7 +9819,6 @@ info@rabbitmq.com.
    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
    See the License for the specific language governing permissions and
    limitations under the License.
-
 
 [Source code](https://repo.maven.apache.org/maven2/io/opentelemetry/opentelemetry-sdk-metrics/1.46.0/opentelemetry-sdk-metrics-1.46.0-sources.jar)
 
@@ -9922,8 +9826,7 @@ info@rabbitmq.com.
 
 ### io.opentelemetry:opentelemetry-sdk-trace @1.46.0 - https://github.com/open-telemetry/opentelemetry-java
 
-
-                                 Apache License
+Apache License
                            Version 2.0, January 2004
                         http://www.apache.org/licenses/
 
@@ -10124,7 +10027,6 @@ info@rabbitmq.com.
    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
    See the License for the specific language governing permissions and
    limitations under the License.
-
 
 [Source code](https://repo.maven.apache.org/maven2/io/opentelemetry/opentelemetry-sdk-trace/1.46.0/opentelemetry-sdk-trace-1.46.0-sources.jar)
 
@@ -10132,8 +10034,7 @@ info@rabbitmq.com.
 
 ### io.opentelemetry.contrib:opentelemetry-aws-resources @1.42.0-alpha - https://github.com/open-telemetry/opentelemetry-java-contrib
 
-
-                                 Apache License
+Apache License
                            Version 2.0, January 2004
                         http://www.apache.org/licenses/
 
@@ -10334,7 +10235,6 @@ info@rabbitmq.com.
    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
    See the License for the specific language governing permissions and
    limitations under the License.
-
 
 [Source code](https://repo.maven.apache.org/maven2/io/opentelemetry/contrib/opentelemetry-aws-resources/1.42.0-alpha/opentelemetry-aws-resources-1.42.0-alpha-sources.jar)
 
@@ -10342,8 +10242,7 @@ info@rabbitmq.com.
 
 ### io.opentelemetry.contrib:opentelemetry-aws-xray-propagator @1.42.0-alpha - https://github.com/open-telemetry/opentelemetry-java-contrib
 
-
-                                 Apache License
+Apache License
                            Version 2.0, January 2004
                         http://www.apache.org/licenses/
 
@@ -10544,7 +10443,6 @@ info@rabbitmq.com.
    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
    See the License for the specific language governing permissions and
    limitations under the License.
-
 
 [Source code](https://repo.maven.apache.org/maven2/io/opentelemetry/contrib/opentelemetry-aws-xray-propagator/1.42.0-alpha/opentelemetry-aws-xray-propagator-1.42.0-alpha-sources.jar)
 
@@ -10552,8 +10450,7 @@ info@rabbitmq.com.
 
 ### io.opentelemetry.contrib:opentelemetry-baggage-processor @1.42.0-alpha - https://github.com/open-telemetry/opentelemetry-java-contrib
 
-
-                                 Apache License
+Apache License
                            Version 2.0, January 2004
                         http://www.apache.org/licenses/
 
@@ -10754,7 +10651,6 @@ info@rabbitmq.com.
    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
    See the License for the specific language governing permissions and
    limitations under the License.
-
 
 [Source code](https://repo.maven.apache.org/maven2/io/opentelemetry/contrib/opentelemetry-baggage-processor/1.42.0-alpha/opentelemetry-baggage-processor-1.42.0-alpha-sources.jar)
 
@@ -10762,8 +10658,7 @@ info@rabbitmq.com.
 
 ### io.opentelemetry.contrib:opentelemetry-gcp-resources @1.42.0-alpha - https://github.com/open-telemetry/opentelemetry-java-contrib
 
-
-                                 Apache License
+Apache License
                            Version 2.0, January 2004
                         http://www.apache.org/licenses/
 
@@ -10964,7 +10859,6 @@ info@rabbitmq.com.
    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
    See the License for the specific language governing permissions and
    limitations under the License.
-
 
 [Source code](https://repo.maven.apache.org/maven2/io/opentelemetry/contrib/opentelemetry-gcp-resources/1.42.0-alpha/opentelemetry-gcp-resources-1.42.0-alpha-sources.jar)
 
@@ -10972,8 +10866,7 @@ info@rabbitmq.com.
 
 ### io.opentelemetry.instrumentation:opentelemetry-aws-sdk-2.2 @2.12.0-alpha - https://github.com/open-telemetry/opentelemetry-java-instrumentation
 
-
-                                 Apache License
+Apache License
                            Version 2.0, January 2004
                         http://www.apache.org/licenses/
 
@@ -11174,7 +11067,6 @@ info@rabbitmq.com.
    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
    See the License for the specific language governing permissions and
    limitations under the License.
-
 
 [Source code](https://repo.maven.apache.org/maven2/io/opentelemetry/instrumentation/opentelemetry-aws-sdk-2.2/2.12.0-alpha/opentelemetry-aws-sdk-2.2-2.12.0-alpha-sources.jar)
 
@@ -11182,8 +11074,7 @@ info@rabbitmq.com.
 
 ### io.opentelemetry.instrumentation:opentelemetry-aws-sdk-2.2-autoconfigure @2.12.0-alpha - https://github.com/open-telemetry/opentelemetry-java-instrumentation
 
-
-                                 Apache License
+Apache License
                            Version 2.0, January 2004
                         http://www.apache.org/licenses/
 
@@ -11384,7 +11275,6 @@ info@rabbitmq.com.
    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
    See the License for the specific language governing permissions and
    limitations under the License.
-
 
 [Source code](https://repo.maven.apache.org/maven2/io/opentelemetry/instrumentation/opentelemetry-aws-sdk-2.2-autoconfigure/2.12.0-alpha/opentelemetry-aws-sdk-2.2-autoconfigure-2.12.0-alpha-sources.jar)
 
@@ -11392,8 +11282,7 @@ info@rabbitmq.com.
 
 ### io.opentelemetry.instrumentation:opentelemetry-instrumentation-annotations @2.12.0 - https://github.com/open-telemetry/opentelemetry-java-instrumentation
 
-
-                                 Apache License
+Apache License
                            Version 2.0, January 2004
                         http://www.apache.org/licenses/
 
@@ -11594,7 +11483,6 @@ info@rabbitmq.com.
    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
    See the License for the specific language governing permissions and
    limitations under the License.
-
 
 [Source code](https://repo.maven.apache.org/maven2/io/opentelemetry/instrumentation/opentelemetry-instrumentation-annotations/2.12.0/opentelemetry-instrumentation-annotations-2.12.0-sources.jar)
 
@@ -11602,8 +11490,7 @@ info@rabbitmq.com.
 
 ### io.opentelemetry.instrumentation:opentelemetry-instrumentation-annotations-support @2.12.0-alpha - https://github.com/open-telemetry/opentelemetry-java-instrumentation
 
-
-                                 Apache License
+Apache License
                            Version 2.0, January 2004
                         http://www.apache.org/licenses/
 
@@ -11804,7 +11691,6 @@ info@rabbitmq.com.
    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
    See the License for the specific language governing permissions and
    limitations under the License.
-
 
 [Source code](https://repo.maven.apache.org/maven2/io/opentelemetry/instrumentation/opentelemetry-instrumentation-annotations-support/2.12.0-alpha/opentelemetry-instrumentation-annotations-support-2.12.0-alpha-sources.jar)
 
@@ -11812,8 +11698,7 @@ info@rabbitmq.com.
 
 ### io.opentelemetry.instrumentation:opentelemetry-instrumentation-api @2.12.0 - https://github.com/open-telemetry/opentelemetry-java-instrumentation
 
-
-                                 Apache License
+Apache License
                            Version 2.0, January 2004
                         http://www.apache.org/licenses/
 
@@ -12014,7 +11899,6 @@ info@rabbitmq.com.
    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
    See the License for the specific language governing permissions and
    limitations under the License.
-
 
 [Source code](https://repo.maven.apache.org/maven2/io/opentelemetry/instrumentation/opentelemetry-instrumentation-api/2.12.0/opentelemetry-instrumentation-api-2.12.0-sources.jar)
 
@@ -12022,8 +11906,7 @@ info@rabbitmq.com.
 
 ### io.opentelemetry.instrumentation:opentelemetry-instrumentation-api-incubator @2.12.0-alpha - https://github.com/open-telemetry/opentelemetry-java-instrumentation
 
-
-                                 Apache License
+Apache License
                            Version 2.0, January 2004
                         http://www.apache.org/licenses/
 
@@ -12224,7 +12107,6 @@ info@rabbitmq.com.
    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
    See the License for the specific language governing permissions and
    limitations under the License.
-
 
 [Source code](https://repo.maven.apache.org/maven2/io/opentelemetry/instrumentation/opentelemetry-instrumentation-api-incubator/2.12.0-alpha/opentelemetry-instrumentation-api-incubator-2.12.0-alpha-sources.jar)
 
@@ -12232,8 +12114,7 @@ info@rabbitmq.com.
 
 ### io.opentelemetry.instrumentation:opentelemetry-jdbc @2.12.0-alpha - https://github.com/open-telemetry/opentelemetry-java-instrumentation
 
-
-                                 Apache License
+Apache License
                            Version 2.0, January 2004
                         http://www.apache.org/licenses/
 
@@ -12434,7 +12315,6 @@ info@rabbitmq.com.
    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
    See the License for the specific language governing permissions and
    limitations under the License.
-
 
 [Source code](https://repo.maven.apache.org/maven2/io/opentelemetry/instrumentation/opentelemetry-jdbc/2.12.0-alpha/opentelemetry-jdbc-2.12.0-alpha-sources.jar)
 
@@ -12442,8 +12322,7 @@ info@rabbitmq.com.
 
 ### io.opentelemetry.instrumentation:opentelemetry-kafka-clients-2.6 @2.12.0-alpha - https://github.com/open-telemetry/opentelemetry-java-instrumentation
 
-
-                                 Apache License
+Apache License
                            Version 2.0, January 2004
                         http://www.apache.org/licenses/
 
@@ -12644,7 +12523,6 @@ info@rabbitmq.com.
    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
    See the License for the specific language governing permissions and
    limitations under the License.
-
 
 [Source code](https://repo.maven.apache.org/maven2/io/opentelemetry/instrumentation/opentelemetry-kafka-clients-2.6/2.12.0-alpha/opentelemetry-kafka-clients-2.6-2.12.0-alpha-sources.jar)
 
@@ -12652,8 +12530,7 @@ info@rabbitmq.com.
 
 ### io.opentelemetry.instrumentation:opentelemetry-kafka-clients-common @2.12.0-alpha - https://github.com/open-telemetry/opentelemetry-java-instrumentation
 
-
-                                 Apache License
+Apache License
                            Version 2.0, January 2004
                         http://www.apache.org/licenses/
 
@@ -12854,7 +12731,6 @@ info@rabbitmq.com.
    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
    See the License for the specific language governing permissions and
    limitations under the License.
-
 
 [Source code](https://repo.maven.apache.org/maven2/io/opentelemetry/instrumentation/opentelemetry-kafka-clients-common/2.12.0-alpha/opentelemetry-kafka-clients-common-2.12.0-alpha-sources.jar)
 
@@ -12862,8 +12738,7 @@ info@rabbitmq.com.
 
 ### io.opentelemetry.instrumentation:opentelemetry-log4j-appender-2.17 @2.12.0-alpha - https://github.com/open-telemetry/opentelemetry-java-instrumentation
 
-
-                                 Apache License
+Apache License
                            Version 2.0, January 2004
                         http://www.apache.org/licenses/
 
@@ -13064,7 +12939,6 @@ info@rabbitmq.com.
    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
    See the License for the specific language governing permissions and
    limitations under the License.
-
 
 [Source code](https://repo.maven.apache.org/maven2/io/opentelemetry/instrumentation/opentelemetry-log4j-appender-2.17/2.12.0-alpha/opentelemetry-log4j-appender-2.17-2.12.0-alpha-sources.jar)
 
@@ -13072,8 +12946,7 @@ info@rabbitmq.com.
 
 ### io.opentelemetry.instrumentation:opentelemetry-log4j-context-data-2.17-autoconfigure @2.12.0-alpha - https://github.com/open-telemetry/opentelemetry-java-instrumentation
 
-
-                                 Apache License
+Apache License
                            Version 2.0, January 2004
                         http://www.apache.org/licenses/
 
@@ -13274,7 +13147,6 @@ info@rabbitmq.com.
    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
    See the License for the specific language governing permissions and
    limitations under the License.
-
 
 [Source code](https://repo.maven.apache.org/maven2/io/opentelemetry/instrumentation/opentelemetry-log4j-context-data-2.17-autoconfigure/2.12.0-alpha/opentelemetry-log4j-context-data-2.17-autoconfigure-2.12.0-alpha-sources.jar)
 
@@ -13282,8 +13154,7 @@ info@rabbitmq.com.
 
 ### io.opentelemetry.instrumentation:opentelemetry-logback-appender-1.0 @2.12.0-alpha - https://github.com/open-telemetry/opentelemetry-java-instrumentation
 
-
-                                 Apache License
+Apache License
                            Version 2.0, January 2004
                         http://www.apache.org/licenses/
 
@@ -13484,7 +13355,6 @@ info@rabbitmq.com.
    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
    See the License for the specific language governing permissions and
    limitations under the License.
-
 
 [Source code](https://repo.maven.apache.org/maven2/io/opentelemetry/instrumentation/opentelemetry-logback-appender-1.0/2.12.0-alpha/opentelemetry-logback-appender-1.0-2.12.0-alpha-sources.jar)
 
@@ -13492,8 +13362,7 @@ info@rabbitmq.com.
 
 ### io.opentelemetry.instrumentation:opentelemetry-logback-mdc-1.0 @2.12.0-alpha - https://github.com/open-telemetry/opentelemetry-java-instrumentation
 
-
-                                 Apache License
+Apache License
                            Version 2.0, January 2004
                         http://www.apache.org/licenses/
 
@@ -13694,7 +13563,6 @@ info@rabbitmq.com.
    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
    See the License for the specific language governing permissions and
    limitations under the License.
-
 
 [Source code](https://repo.maven.apache.org/maven2/io/opentelemetry/instrumentation/opentelemetry-logback-mdc-1.0/2.12.0-alpha/opentelemetry-logback-mdc-1.0-2.12.0-alpha-sources.jar)
 
@@ -13702,8 +13570,7 @@ info@rabbitmq.com.
 
 ### io.opentelemetry.instrumentation:opentelemetry-micrometer-1.5 @2.12.0-alpha - https://github.com/open-telemetry/opentelemetry-java-instrumentation
 
-
-                                 Apache License
+Apache License
                            Version 2.0, January 2004
                         http://www.apache.org/licenses/
 
@@ -13904,7 +13771,6 @@ info@rabbitmq.com.
    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
    See the License for the specific language governing permissions and
    limitations under the License.
-
 
 [Source code](https://repo.maven.apache.org/maven2/io/opentelemetry/instrumentation/opentelemetry-micrometer-1.5/2.12.0-alpha/opentelemetry-micrometer-1.5-2.12.0-alpha-sources.jar)
 
@@ -13912,8 +13778,7 @@ info@rabbitmq.com.
 
 ### io.opentelemetry.instrumentation:opentelemetry-mongo-3.1 @2.12.0-alpha - https://github.com/open-telemetry/opentelemetry-java-instrumentation
 
-
-                                 Apache License
+Apache License
                            Version 2.0, January 2004
                         http://www.apache.org/licenses/
 
@@ -14114,7 +13979,6 @@ info@rabbitmq.com.
    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
    See the License for the specific language governing permissions and
    limitations under the License.
-
 
 [Source code](https://repo.maven.apache.org/maven2/io/opentelemetry/instrumentation/opentelemetry-mongo-3.1/2.12.0-alpha/opentelemetry-mongo-3.1-2.12.0-alpha-sources.jar)
 
@@ -14122,8 +13986,7 @@ info@rabbitmq.com.
 
 ### io.opentelemetry.instrumentation:opentelemetry-reactor-3.1 @2.12.0-alpha - https://github.com/open-telemetry/opentelemetry-java-instrumentation
 
-
-                                 Apache License
+Apache License
                            Version 2.0, January 2004
                         http://www.apache.org/licenses/
 
@@ -14324,7 +14187,6 @@ info@rabbitmq.com.
    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
    See the License for the specific language governing permissions and
    limitations under the License.
-
 
 [Source code](https://repo.maven.apache.org/maven2/io/opentelemetry/instrumentation/opentelemetry-reactor-3.1/2.12.0-alpha/opentelemetry-reactor-3.1-2.12.0-alpha-sources.jar)
 
@@ -14332,8 +14194,7 @@ info@rabbitmq.com.
 
 ### io.opentelemetry.instrumentation:opentelemetry-resources @2.12.0-alpha - https://github.com/open-telemetry/opentelemetry-java-instrumentation
 
-
-                                 Apache License
+Apache License
                            Version 2.0, January 2004
                         http://www.apache.org/licenses/
 
@@ -14534,7 +14395,6 @@ info@rabbitmq.com.
    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
    See the License for the specific language governing permissions and
    limitations under the License.
-
 
 [Source code](https://repo.maven.apache.org/maven2/io/opentelemetry/instrumentation/opentelemetry-resources/2.12.0-alpha/opentelemetry-resources-2.12.0-alpha-sources.jar)
 
@@ -14542,8 +14402,7 @@ info@rabbitmq.com.
 
 ### io.opentelemetry.instrumentation:opentelemetry-sdk-autoconfigure-support @2.12.0-alpha - https://github.com/open-telemetry/opentelemetry-java-instrumentation
 
-
-                                 Apache License
+Apache License
                            Version 2.0, January 2004
                         http://www.apache.org/licenses/
 
@@ -14744,7 +14603,6 @@ info@rabbitmq.com.
    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
    See the License for the specific language governing permissions and
    limitations under the License.
-
 
 [Source code](https://repo.maven.apache.org/maven2/io/opentelemetry/instrumentation/opentelemetry-sdk-autoconfigure-support/2.12.0-alpha/opentelemetry-sdk-autoconfigure-support-2.12.0-alpha-sources.jar)
 
@@ -14752,8 +14610,7 @@ info@rabbitmq.com.
 
 ### io.opentelemetry.instrumentation:opentelemetry-spring-boot-autoconfigure @2.12.0 - https://github.com/open-telemetry/opentelemetry-java-instrumentation
 
-
-                                 Apache License
+Apache License
                            Version 2.0, January 2004
                         http://www.apache.org/licenses/
 
@@ -14954,7 +14811,6 @@ info@rabbitmq.com.
    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
    See the License for the specific language governing permissions and
    limitations under the License.
-
 
 [Source code](https://repo.maven.apache.org/maven2/io/opentelemetry/instrumentation/opentelemetry-spring-boot-autoconfigure/2.12.0/opentelemetry-spring-boot-autoconfigure-2.12.0-sources.jar)
 
@@ -14962,8 +14818,7 @@ info@rabbitmq.com.
 
 ### io.opentelemetry.instrumentation:opentelemetry-spring-boot-starter @2.12.0 - https://github.com/open-telemetry/opentelemetry-java-instrumentation
 
-
-                                 Apache License
+Apache License
                            Version 2.0, January 2004
                         http://www.apache.org/licenses/
 
@@ -15164,7 +15019,6 @@ info@rabbitmq.com.
    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
    See the License for the specific language governing permissions and
    limitations under the License.
-
 
 [Source code](https://repo.maven.apache.org/maven2/io/opentelemetry/instrumentation/opentelemetry-spring-boot-starter/2.12.0/opentelemetry-spring-boot-starter-2.12.0-sources.jar)
 
@@ -15172,8 +15026,7 @@ info@rabbitmq.com.
 
 ### io.opentelemetry.instrumentation:opentelemetry-spring-kafka-2.7 @2.12.0-alpha - https://github.com/open-telemetry/opentelemetry-java-instrumentation
 
-
-                                 Apache License
+Apache License
                            Version 2.0, January 2004
                         http://www.apache.org/licenses/
 
@@ -15374,7 +15227,6 @@ info@rabbitmq.com.
    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
    See the License for the specific language governing permissions and
    limitations under the License.
-
 
 [Source code](https://repo.maven.apache.org/maven2/io/opentelemetry/instrumentation/opentelemetry-spring-kafka-2.7/2.12.0-alpha/opentelemetry-spring-kafka-2.7-2.12.0-alpha-sources.jar)
 
@@ -15382,8 +15234,7 @@ info@rabbitmq.com.
 
 ### io.opentelemetry.instrumentation:opentelemetry-spring-web-3.1 @2.12.0-alpha - https://github.com/open-telemetry/opentelemetry-java-instrumentation
 
-
-                                 Apache License
+Apache License
                            Version 2.0, January 2004
                         http://www.apache.org/licenses/
 
@@ -15584,7 +15435,6 @@ info@rabbitmq.com.
    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
    See the License for the specific language governing permissions and
    limitations under the License.
-
 
 [Source code](https://repo.maven.apache.org/maven2/io/opentelemetry/instrumentation/opentelemetry-spring-web-3.1/2.12.0-alpha/opentelemetry-spring-web-3.1-2.12.0-alpha-sources.jar)
 
@@ -15592,8 +15442,7 @@ info@rabbitmq.com.
 
 ### io.opentelemetry.instrumentation:opentelemetry-spring-webflux-5.3 @2.12.0-alpha - https://github.com/open-telemetry/opentelemetry-java-instrumentation
 
-
-                                 Apache License
+Apache License
                            Version 2.0, January 2004
                         http://www.apache.org/licenses/
 
@@ -15794,7 +15643,6 @@ info@rabbitmq.com.
    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
    See the License for the specific language governing permissions and
    limitations under the License.
-
 
 [Source code](https://repo.maven.apache.org/maven2/io/opentelemetry/instrumentation/opentelemetry-spring-webflux-5.3/2.12.0-alpha/opentelemetry-spring-webflux-5.3-2.12.0-alpha-sources.jar)
 
@@ -15802,8 +15650,7 @@ info@rabbitmq.com.
 
 ### io.opentelemetry.instrumentation:opentelemetry-spring-webmvc-5.3 @2.12.0-alpha - https://github.com/open-telemetry/opentelemetry-java-instrumentation
 
-
-                                 Apache License
+Apache License
                            Version 2.0, January 2004
                         http://www.apache.org/licenses/
 
@@ -16004,7 +15851,6 @@ info@rabbitmq.com.
    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
    See the License for the specific language governing permissions and
    limitations under the License.
-
 
 [Source code](https://repo.maven.apache.org/maven2/io/opentelemetry/instrumentation/opentelemetry-spring-webmvc-5.3/2.12.0-alpha/opentelemetry-spring-webmvc-5.3-2.12.0-alpha-sources.jar)
 
@@ -16012,8 +15858,7 @@ info@rabbitmq.com.
 
 ### io.opentelemetry.instrumentation:opentelemetry-spring-webmvc-6.0 @2.12.0-alpha - https://github.com/open-telemetry/opentelemetry-java-instrumentation
 
-
-                                 Apache License
+Apache License
                            Version 2.0, January 2004
                         http://www.apache.org/licenses/
 
@@ -16214,7 +16059,6 @@ info@rabbitmq.com.
    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
    See the License for the specific language governing permissions and
    limitations under the License.
-
 
 [Source code](https://repo.maven.apache.org/maven2/io/opentelemetry/instrumentation/opentelemetry-spring-webmvc-6.0/2.12.0-alpha/opentelemetry-spring-webmvc-6.0-2.12.0-alpha-sources.jar)
 
@@ -16222,8 +16066,7 @@ info@rabbitmq.com.
 
 ### io.opentelemetry.semconv:opentelemetry-semconv @1.29.0-alpha - https://github.com/open-telemetry/semantic-conventions-java
 
-
-                                 Apache License
+Apache License
                            Version 2.0, January 2004
                         http://www.apache.org/licenses/
 
@@ -16424,7 +16267,6 @@ info@rabbitmq.com.
    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
    See the License for the specific language governing permissions and
    limitations under the License.
-
 
 [Source code](https://repo.maven.apache.org/maven2/io/opentelemetry/semconv/opentelemetry-semconv/1.29.0-alpha/opentelemetry-semconv-1.29.0-alpha-sources.jar)
 
@@ -16432,8 +16274,7 @@ info@rabbitmq.com.
 
 ### io.opentelemetry.semconv:opentelemetry-semconv-incubating @1.29.0-alpha - https://github.com/open-telemetry/semantic-conventions-java
 
-
-                                 Apache License
+Apache License
                            Version 2.0, January 2004
                         http://www.apache.org/licenses/
 
@@ -16634,7 +16475,6 @@ info@rabbitmq.com.
    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
    See the License for the specific language governing permissions and
    limitations under the License.
-
 
 [Source code](https://repo.maven.apache.org/maven2/io/opentelemetry/semconv/opentelemetry-semconv-incubating/1.29.0-alpha/opentelemetry-semconv-incubating-1.29.0-alpha-sources.jar)
 
@@ -16642,8 +16482,7 @@ info@rabbitmq.com.
 
 ### io.prometheus:prometheus-metrics-config @1.3.5 - http://github.com/prometheus/client_java/prometheus-metrics-config
 
-
-                                 Apache License
+Apache License
                            Version 2.0, January 2004
                         http://www.apache.org/licenses/
 
@@ -16844,7 +16683,6 @@ info@rabbitmq.com.
    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
    See the License for the specific language governing permissions and
    limitations under the License.
-
 
 [Source code](https://repo.maven.apache.org/maven2/io/prometheus/prometheus-metrics-config/1.3.5/prometheus-metrics-config-1.3.5-sources.jar)
 
@@ -16852,8 +16690,7 @@ info@rabbitmq.com.
 
 ### io.prometheus:prometheus-metrics-core @1.3.5 - http://github.com/prometheus/client_java/prometheus-metrics-core
 
-
-                                 Apache License
+Apache License
                            Version 2.0, January 2004
                         http://www.apache.org/licenses/
 
@@ -17054,7 +16891,6 @@ info@rabbitmq.com.
    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
    See the License for the specific language governing permissions and
    limitations under the License.
-
 
 [Source code](https://repo.maven.apache.org/maven2/io/prometheus/prometheus-metrics-core/1.3.5/prometheus-metrics-core-1.3.5-sources.jar)
 
@@ -17062,8 +16898,7 @@ info@rabbitmq.com.
 
 ### io.prometheus:prometheus-metrics-exposition-formats @1.3.5 - http://github.com/prometheus/client_java/prometheus-metrics-exposition-formats
 
-
-                                 Apache License
+Apache License
                            Version 2.0, January 2004
                         http://www.apache.org/licenses/
 
@@ -17264,7 +17099,6 @@ info@rabbitmq.com.
    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
    See the License for the specific language governing permissions and
    limitations under the License.
-
 
 [Source code](https://repo.maven.apache.org/maven2/io/prometheus/prometheus-metrics-exposition-formats/1.3.5/prometheus-metrics-exposition-formats-1.3.5-sources.jar)
 
@@ -17272,8 +17106,7 @@ info@rabbitmq.com.
 
 ### io.prometheus:prometheus-metrics-exposition-textformats @1.3.5 - http://github.com/prometheus/client_java/prometheus-metrics-exposition-textformats
 
-
-                                 Apache License
+Apache License
                            Version 2.0, January 2004
                         http://www.apache.org/licenses/
 
@@ -17474,7 +17307,6 @@ info@rabbitmq.com.
    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
    See the License for the specific language governing permissions and
    limitations under the License.
-
 
 [Source code](https://repo.maven.apache.org/maven2/io/prometheus/prometheus-metrics-exposition-textformats/1.3.5/prometheus-metrics-exposition-textformats-1.3.5-sources.jar)
 
@@ -17482,8 +17314,7 @@ info@rabbitmq.com.
 
 ### io.prometheus:prometheus-metrics-model @1.3.5 - http://github.com/prometheus/client_java/prometheus-metrics-model
 
-
-                                 Apache License
+Apache License
                            Version 2.0, January 2004
                         http://www.apache.org/licenses/
 
@@ -17684,7 +17515,6 @@ info@rabbitmq.com.
    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
    See the License for the specific language governing permissions and
    limitations under the License.
-
 
 [Source code](https://repo.maven.apache.org/maven2/io/prometheus/prometheus-metrics-model/1.3.5/prometheus-metrics-model-1.3.5-sources.jar)
 
@@ -17692,8 +17522,7 @@ info@rabbitmq.com.
 
 ### io.prometheus:prometheus-metrics-tracer-common @1.3.5 - http://github.com/prometheus/client_java/prometheus-metrics-tracer/prometheus-metrics-tracer-common
 
-
-                                 Apache License
+Apache License
                            Version 2.0, January 2004
                         http://www.apache.org/licenses/
 
@@ -17895,15 +17724,13 @@ info@rabbitmq.com.
    See the License for the specific language governing permissions and
    limitations under the License.
 
-
 [Source code](https://repo.maven.apache.org/maven2/io/prometheus/prometheus-metrics-tracer-common/1.3.5/prometheus-metrics-tracer-common-1.3.5-sources.jar)
 
 ----
 
 ### io.swagger.core.v3:swagger-annotations-jakarta @2.2.28 - https://github.com/swagger-api/swagger-core/modules/swagger-annotations-jakarta
 
-
-                                 Apache License
+Apache License
                            Version 2.0, January 2004
                         http://www.apache.org/licenses/
 
@@ -18104,7 +17931,6 @@ info@rabbitmq.com.
    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
    See the License for the specific language governing permissions and
    limitations under the License.
-
 
 [Source code](https://repo.maven.apache.org/maven2/io/swagger/core/v3/swagger-annotations-jakarta/2.2.28/swagger-annotations-jakarta-2.2.28-sources.jar)
 
@@ -18112,8 +17938,7 @@ info@rabbitmq.com.
 
 ### io.swagger.core.v3:swagger-core-jakarta @2.2.28 - https://github.com/swagger-api/swagger-core/modules/swagger-core-jakarta
 
-
-                                 Apache License
+Apache License
                            Version 2.0, January 2004
                         http://www.apache.org/licenses/
 
@@ -18314,7 +18139,6 @@ info@rabbitmq.com.
    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
    See the License for the specific language governing permissions and
    limitations under the License.
-
 
 [Source code](https://repo.maven.apache.org/maven2/io/swagger/core/v3/swagger-core-jakarta/2.2.28/swagger-core-jakarta-2.2.28-sources.jar)
 
@@ -18322,8 +18146,7 @@ info@rabbitmq.com.
 
 ### io.swagger.core.v3:swagger-models-jakarta @2.2.28 - https://github.com/swagger-api/swagger-core/modules/swagger-models-jakarta
 
-
-                                 Apache License
+Apache License
                            Version 2.0, January 2004
                         http://www.apache.org/licenses/
 
@@ -18524,7 +18347,6 @@ info@rabbitmq.com.
    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
    See the License for the specific language governing permissions and
    limitations under the License.
-
 
 [Source code](https://repo.maven.apache.org/maven2/io/swagger/core/v3/swagger-models-jakarta/2.2.28/swagger-models-jakarta-2.2.28-sources.jar)
 
@@ -19170,15 +18992,13 @@ info@rabbitmq.com.
     do so.  If you do not wish to do so, delete this exception statement
     from your version.
 
-
 [Source code](https://repo.maven.apache.org/maven2/jakarta/annotation/jakarta.annotation-api/2.1.1/jakarta.annotation-api-2.1.1-sources.jar)
 
 ----
 
 ### jakarta.validation:jakarta.validation-api @3.0.2 - https://beanvalidation.org
 
-
-                                 Apache License
+Apache License
                            Version 2.0, January 2004
                         http://www.apache.org/licenses/
 
@@ -19379,7 +19199,6 @@ info@rabbitmq.com.
    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
    See the License for the specific language governing permissions and
    limitations under the License.
-
 
 [Source code](https://repo.maven.apache.org/maven2/jakarta/validation/jakarta.validation-api/3.0.2/jakarta.validation-api-3.0.2-sources.jar)
 
@@ -19387,8 +19206,7 @@ info@rabbitmq.com.
 
 ### javax.validation:validation-api @2.0.1.Final - http://beanvalidation.org
 
-
-                                 Apache License
+Apache License
                            Version 2.0, January 2004
                         http://www.apache.org/licenses/
 
@@ -19590,15 +19408,13 @@ info@rabbitmq.com.
    See the License for the specific language governing permissions and
    limitations under the License.
 
-
 [Source code](https://repo.maven.apache.org/maven2/javax/validation/validation-api/2.0.1.Final/validation-api-2.0.1.Final-sources.jar)
 
 ----
 
 ### org.apache.logging.log4j:log4j-api @2.24.3 - https://logging.apache.org/log4j/2.x/log4j/log4j-api/
 
-
-                                 Apache License
+Apache License
                            Version 2.0, January 2004
                         http://www.apache.org/licenses/
 
@@ -19799,7 +19615,6 @@ info@rabbitmq.com.
    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
    See the License for the specific language governing permissions and
    limitations under the License.
-
 
 [Source code](https://repo.maven.apache.org/maven2/org/apache/logging/log4j/log4j-api/2.24.3/log4j-api-2.24.3-sources.jar)
 
@@ -19807,8 +19622,7 @@ info@rabbitmq.com.
 
 ### org.apache.logging.log4j:log4j-core @2.24.3 - https://logging.apache.org/log4j/2.x/log4j/log4j-core/
 
-
-                                 Apache License
+Apache License
                            Version 2.0, January 2004
                         http://www.apache.org/licenses/
 
@@ -20009,7 +19823,6 @@ info@rabbitmq.com.
    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
    See the License for the specific language governing permissions and
    limitations under the License.
-
 
 [Source code](https://repo.maven.apache.org/maven2/org/apache/logging/log4j/log4j-core/2.24.3/log4j-core-2.24.3-sources.jar)
 
@@ -20017,8 +19830,7 @@ info@rabbitmq.com.
 
 ### org.apache.logging.log4j:log4j-jul @2.24.3 - https://logging.apache.org/log4j/2.x/log4j/log4j-jul/
 
-
-                                 Apache License
+Apache License
                            Version 2.0, January 2004
                         http://www.apache.org/licenses/
 
@@ -20219,7 +20031,6 @@ info@rabbitmq.com.
    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
    See the License for the specific language governing permissions and
    limitations under the License.
-
 
 [Source code](https://repo.maven.apache.org/maven2/org/apache/logging/log4j/log4j-jul/2.24.3/log4j-jul-2.24.3-sources.jar)
 
@@ -20227,8 +20038,7 @@ info@rabbitmq.com.
 
 ### org.apache.logging.log4j:log4j-slf4j2-impl @2.24.3 - https://logging.apache.org/log4j/2.x/log4j/log4j-slf4j2-impl/
 
-
-                                 Apache License
+Apache License
                            Version 2.0, January 2004
                         http://www.apache.org/licenses/
 
@@ -20430,15 +20240,13 @@ info@rabbitmq.com.
    See the License for the specific language governing permissions and
    limitations under the License.
 
-
 [Source code](https://repo.maven.apache.org/maven2/org/apache/logging/log4j/log4j-slf4j2-impl/2.24.3/log4j-slf4j2-impl-2.24.3-sources.jar)
 
 ----
 
 ### org.apache.tomcat.embed:tomcat-embed-core @10.1.34 - https://tomcat.apache.org/
 
-
-                                 Apache License
+Apache License
                            Version 2.0, January 2004
                         http://www.apache.org/licenses/
 
@@ -21296,15 +21104,13 @@ version(s), and exceptions or additional permissions here}."
 
   You may add additional accurate notices of copyright ownership.
 
-
 [Source code](https://repo.maven.apache.org/maven2/org/apache/tomcat/embed/tomcat-embed-core/10.1.34/tomcat-embed-core-10.1.34-sources.jar)
 
 ----
 
 ### org.apache.tomcat.embed:tomcat-embed-el @10.1.34 - https://tomcat.apache.org/
 
-
-                                 Apache License
+Apache License
                            Version 2.0, January 2004
                         http://www.apache.org/licenses/
 
@@ -21505,7 +21311,6 @@ version(s), and exceptions or additional permissions here}."
    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
    See the License for the specific language governing permissions and
    limitations under the License.
-
 
 [Source code](https://repo.maven.apache.org/maven2/org/apache/tomcat/embed/tomcat-embed-el/10.1.34/tomcat-embed-el-10.1.34-sources.jar)
 
@@ -21513,8 +21318,7 @@ version(s), and exceptions or additional permissions here}."
 
 ### org.apache.tomcat.embed:tomcat-embed-websocket @10.1.34 - https://tomcat.apache.org/
 
-
-                                 Apache License
+Apache License
                            Version 2.0, January 2004
                         http://www.apache.org/licenses/
 
@@ -21715,7 +21519,6 @@ version(s), and exceptions or additional permissions here}."
    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
    See the License for the specific language governing permissions and
    limitations under the License.
-
 
 [Source code](https://repo.maven.apache.org/maven2/org/apache/tomcat/embed/tomcat-embed-websocket/10.1.34/tomcat-embed-websocket-10.1.34-sources.jar)
 
@@ -22137,15 +21940,13 @@ THE SOFTWARE.
 
 ===========================================================================
 
-
 [Source code](https://repo.maven.apache.org/maven2/org/checkerframework/checker-qual/3.48.3/checker-qual-3.48.3-sources.jar)
 
 ----
 
 ### org.flywaydb:flyway-core @10.20.1 - https://flywaydb.org/flyway-core
 
-
-                                 Apache License
+Apache License
                            Version 2.0, January 2004
                         http://www.apache.org/licenses/
 
@@ -22346,7 +22147,6 @@ THE SOFTWARE.
    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
    See the License for the specific language governing permissions and
    limitations under the License.
-
 
 [Source code](https://repo.maven.apache.org/maven2/org/flywaydb/flyway-core/10.20.1/flyway-core-10.20.1-sources.jar)
 
@@ -22354,8 +22154,7 @@ THE SOFTWARE.
 
 ### org.flywaydb:flyway-database-postgresql @10.20.1 - https://flywaydb.org/flyway-database-postgresql
 
-
-                                 Apache License
+Apache License
                            Version 2.0, January 2004
                         http://www.apache.org/licenses/
 
@@ -22556,7 +22355,6 @@ THE SOFTWARE.
    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
    See the License for the specific language governing permissions and
    limitations under the License.
-
 
 [Source code](https://repo.maven.apache.org/maven2/org/flywaydb/flyway-database-postgresql/10.20.1/flyway-database-postgresql-10.20.1-sources.jar)
 
@@ -22606,15 +22404,13 @@ the Author.
  ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF
  THE POSSIBILITY OF SUCH DAMAGE.
 
-
 [Source code](https://repo.maven.apache.org/maven2/org/hdrhistogram/HdrHistogram/2.2.2/HdrHistogram-2.2.2-sources.jar)
 
 ----
 
 ### org.hibernate.validator:hibernate-validator @8.0.2.Final - http://hibernate.org/validator/hibernate-validator
 
-
-                                 Apache License
+Apache License
                            Version 2.0, January 2004
                         http://www.apache.org/licenses/
 
@@ -22815,7 +22611,6 @@ the Author.
    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
    See the License for the specific language governing permissions and
    limitations under the License.
-
 
 [Source code](https://repo.maven.apache.org/maven2/org/hibernate/validator/hibernate-validator/8.0.2.Final/hibernate-validator-8.0.2.Final-sources.jar)
 
@@ -22823,8 +22618,7 @@ the Author.
 
 ### org.jboss.logging:jboss-logging @3.6.1.Final - http://www.jboss.org
 
-
-                                 Apache License
+Apache License
                            Version 2.0, January 2004
                         http://www.apache.org/licenses/
 
@@ -23025,7 +22819,6 @@ the Author.
    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
    See the License for the specific language governing permissions and
    limitations under the License.
-
 
 [Source code](https://repo.maven.apache.org/maven2/org/jboss/logging/jboss-logging/3.6.1.Final/jboss-logging-3.6.1.Final-sources.jar)
 
@@ -23033,60 +22826,7 @@ the Author.
 
 ### org.jetbrains.kotlin:kotlin-stdlib @1.9.25 - https://kotlinlang.org/
 
-Google Dart Js backend was removed - https://code.google.com/p/dart/source/detail?r=4771
-
-According to http://www.apache.org/legal/3party.html we can include "Google Dart Js backend" in source form, because code license is "New BSD License" (Authorized License).
-
-This part of code will be removed when kotlin will be rewritten on kotlin.
-
-
-[Source code](https://repo.maven.apache.org/maven2/org/jetbrains/kotlin/kotlin-stdlib/1.9.25/kotlin-stdlib-1.9.25-sources.jar)
-
-----
-
-### org.jetbrains.kotlin:kotlin-stdlib-common @1.9.25 - https://kotlinlang.org/
-
-Google Dart Js backend was removed - https://code.google.com/p/dart/source/detail?r=4771
-
-According to http://www.apache.org/legal/3party.html we can include "Google Dart Js backend" in source form, because code license is "New BSD License" (Authorized License).
-
-This part of code will be removed when kotlin will be rewritten on kotlin.
-
-
-[Source code](https://repo.maven.apache.org/maven2/org/jetbrains/kotlin/kotlin-stdlib-common/1.9.25/kotlin-stdlib-common-1.9.25-sources.jar)
-
-----
-
-### org.jetbrains.kotlin:kotlin-stdlib-jdk7 @1.9.25 - https://kotlinlang.org/
-
-Google Dart Js backend was removed - https://code.google.com/p/dart/source/detail?r=4771
-
-According to http://www.apache.org/legal/3party.html we can include "Google Dart Js backend" in source form, because code license is "New BSD License" (Authorized License).
-
-This part of code will be removed when kotlin will be rewritten on kotlin.
-
-
-[Source code](https://repo.maven.apache.org/maven2/org/jetbrains/kotlin/kotlin-stdlib-jdk7/1.9.25/kotlin-stdlib-jdk7-1.9.25-sources.jar)
-
-----
-
-### org.jetbrains.kotlin:kotlin-stdlib-jdk8 @1.9.25 - https://kotlinlang.org/
-
-Google Dart Js backend was removed - https://code.google.com/p/dart/source/detail?r=4771
-
-According to http://www.apache.org/legal/3party.html we can include "Google Dart Js backend" in source form, because code license is "New BSD License" (Authorized License).
-
-This part of code will be removed when kotlin will be rewritten on kotlin.
-
-
-[Source code](https://repo.maven.apache.org/maven2/org/jetbrains/kotlin/kotlin-stdlib-jdk8/1.9.25/kotlin-stdlib-jdk8-1.9.25-sources.jar)
-
-----
-
-### org.jspecify:jspecify @1.0.0 - http://jspecify.org/
-
-
-                                 Apache License
+Apache License
                            Version 2.0, January 2004
                         http://www.apache.org/licenses/
 
@@ -23288,6 +23028,837 @@ This part of code will be removed when kotlin will be rewritten on kotlin.
    See the License for the specific language governing permissions and
    limitations under the License.
 
+[Source code](https://repo.maven.apache.org/maven2/org/jetbrains/kotlin/kotlin-stdlib/1.9.25/kotlin-stdlib-1.9.25-sources.jar)
+
+----
+
+### org.jetbrains.kotlin:kotlin-stdlib-common @1.9.25 - https://kotlinlang.org/
+
+Apache License
+                           Version 2.0, January 2004
+                        http://www.apache.org/licenses/
+
+   TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
+
+   1. Definitions.
+
+      "License" shall mean the terms and conditions for use, reproduction,
+      and distribution as defined by Sections 1 through 9 of this document.
+
+      "Licensor" shall mean the copyright owner or entity authorized by
+      the copyright owner that is granting the License.
+
+      "Legal Entity" shall mean the union of the acting entity and all
+      other entities that control, are controlled by, or are under common
+      control with that entity. For the purposes of this definition,
+      "control" means (i) the power, direct or indirect, to cause the
+      direction or management of such entity, whether by contract or
+      otherwise, or (ii) ownership of fifty percent (50%) or more of the
+      outstanding shares, or (iii) beneficial ownership of such entity.
+
+      "You" (or "Your") shall mean an individual or Legal Entity
+      exercising permissions granted by this License.
+
+      "Source" form shall mean the preferred form for making modifications,
+      including but not limited to software source code, documentation
+      source, and configuration files.
+
+      "Object" form shall mean any form resulting from mechanical
+      transformation or translation of a Source form, including but
+      not limited to compiled object code, generated documentation,
+      and conversions to other media types.
+
+      "Work" shall mean the work of authorship, whether in Source or
+      Object form, made available under the License, as indicated by a
+      copyright notice that is included in or attached to the work
+      (an example is provided in the Appendix below).
+
+      "Derivative Works" shall mean any work, whether in Source or Object
+      form, that is based on (or derived from) the Work and for which the
+      editorial revisions, annotations, elaborations, or other modifications
+      represent, as a whole, an original work of authorship. For the purposes
+      of this License, Derivative Works shall not include works that remain
+      separable from, or merely link (or bind by name) to the interfaces of,
+      the Work and Derivative Works thereof.
+
+      "Contribution" shall mean any work of authorship, including
+      the original version of the Work and any modifications or additions
+      to that Work or Derivative Works thereof, that is intentionally
+      submitted to Licensor for inclusion in the Work by the copyright owner
+      or by an individual or Legal Entity authorized to submit on behalf of
+      the copyright owner. For the purposes of this definition, "submitted"
+      means any form of electronic, verbal, or written communication sent
+      to the Licensor or its representatives, including but not limited to
+      communication on electronic mailing lists, source code control systems,
+      and issue tracking systems that are managed by, or on behalf of, the
+      Licensor for the purpose of discussing and improving the Work, but
+      excluding communication that is conspicuously marked or otherwise
+      designated in writing by the copyright owner as "Not a Contribution."
+
+      "Contributor" shall mean Licensor and any individual or Legal Entity
+      on behalf of whom a Contribution has been received by Licensor and
+      subsequently incorporated within the Work.
+
+   2. Grant of Copyright License. Subject to the terms and conditions of
+      this License, each Contributor hereby grants to You a perpetual,
+      worldwide, non-exclusive, no-charge, royalty-free, irrevocable
+      copyright license to reproduce, prepare Derivative Works of,
+      publicly display, publicly perform, sublicense, and distribute the
+      Work and such Derivative Works in Source or Object form.
+
+   3. Grant of Patent License. Subject to the terms and conditions of
+      this License, each Contributor hereby grants to You a perpetual,
+      worldwide, non-exclusive, no-charge, royalty-free, irrevocable
+      (except as stated in this section) patent license to make, have made,
+      use, offer to sell, sell, import, and otherwise transfer the Work,
+      where such license applies only to those patent claims licensable
+      by such Contributor that are necessarily infringed by their
+      Contribution(s) alone or by combination of their Contribution(s)
+      with the Work to which such Contribution(s) was submitted. If You
+      institute patent litigation against any entity (including a
+      cross-claim or counterclaim in a lawsuit) alleging that the Work
+      or a Contribution incorporated within the Work constitutes direct
+      or contributory patent infringement, then any patent licenses
+      granted to You under this License for that Work shall terminate
+      as of the date such litigation is filed.
+
+   4. Redistribution. You may reproduce and distribute copies of the
+      Work or Derivative Works thereof in any medium, with or without
+      modifications, and in Source or Object form, provided that You
+      meet the following conditions:
+
+      (a) You must give any other recipients of the Work or
+          Derivative Works a copy of this License; and
+
+      (b) You must cause any modified files to carry prominent notices
+          stating that You changed the files; and
+
+      (c) You must retain, in the Source form of any Derivative Works
+          that You distribute, all copyright, patent, trademark, and
+          attribution notices from the Source form of the Work,
+          excluding those notices that do not pertain to any part of
+          the Derivative Works; and
+
+      (d) If the Work includes a "NOTICE" text file as part of its
+          distribution, then any Derivative Works that You distribute must
+          include a readable copy of the attribution notices contained
+          within such NOTICE file, excluding those notices that do not
+          pertain to any part of the Derivative Works, in at least one
+          of the following places: within a NOTICE text file distributed
+          as part of the Derivative Works; within the Source form or
+          documentation, if provided along with the Derivative Works; or,
+          within a display generated by the Derivative Works, if and
+          wherever such third-party notices normally appear. The contents
+          of the NOTICE file are for informational purposes only and
+          do not modify the License. You may add Your own attribution
+          notices within Derivative Works that You distribute, alongside
+          or as an addendum to the NOTICE text from the Work, provided
+          that such additional attribution notices cannot be construed
+          as modifying the License.
+
+      You may add Your own copyright statement to Your modifications and
+      may provide additional or different license terms and conditions
+      for use, reproduction, or distribution of Your modifications, or
+      for any such Derivative Works as a whole, provided Your use,
+      reproduction, and distribution of the Work otherwise complies with
+      the conditions stated in this License.
+
+   5. Submission of Contributions. Unless You explicitly state otherwise,
+      any Contribution intentionally submitted for inclusion in the Work
+      by You to the Licensor shall be under the terms and conditions of
+      this License, without any additional terms or conditions.
+      Notwithstanding the above, nothing herein shall supersede or modify
+      the terms of any separate license agreement you may have executed
+      with Licensor regarding such Contributions.
+
+   6. Trademarks. This License does not grant permission to use the trade
+      names, trademarks, service marks, or product names of the Licensor,
+      except as required for reasonable and customary use in describing the
+      origin of the Work and reproducing the content of the NOTICE file.
+
+   7. Disclaimer of Warranty. Unless required by applicable law or
+      agreed to in writing, Licensor provides the Work (and each
+      Contributor provides its Contributions) on an "AS IS" BASIS,
+      WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or
+      implied, including, without limitation, any warranties or conditions
+      of TITLE, NON-INFRINGEMENT, MERCHANTABILITY, or FITNESS FOR A
+      PARTICULAR PURPOSE. You are solely responsible for determining the
+      appropriateness of using or redistributing the Work and assume any
+      risks associated with Your exercise of permissions under this License.
+
+   8. Limitation of Liability. In no event and under no legal theory,
+      whether in tort (including negligence), contract, or otherwise,
+      unless required by applicable law (such as deliberate and grossly
+      negligent acts) or agreed to in writing, shall any Contributor be
+      liable to You for damages, including any direct, indirect, special,
+      incidental, or consequential damages of any character arising as a
+      result of this License or out of the use or inability to use the
+      Work (including but not limited to damages for loss of goodwill,
+      work stoppage, computer failure or malfunction, or any and all
+      other commercial damages or losses), even if such Contributor
+      has been advised of the possibility of such damages.
+
+   9. Accepting Warranty or Additional Liability. While redistributing
+      the Work or Derivative Works thereof, You may choose to offer,
+      and charge a fee for, acceptance of support, warranty, indemnity,
+      or other liability obligations and/or rights consistent with this
+      License. However, in accepting such obligations, You may act only
+      on Your own behalf and on Your sole responsibility, not on behalf
+      of any other Contributor, and only if You agree to indemnify,
+      defend, and hold each Contributor harmless for any liability
+      incurred by, or claims asserted against, such Contributor by reason
+      of your accepting any such warranty or additional liability.
+
+   END OF TERMS AND CONDITIONS
+
+   APPENDIX: How to apply the Apache License to your work.
+
+      To apply the Apache License to your work, attach the following
+      boilerplate notice, with the fields enclosed by brackets "[]"
+      replaced with your own identifying information. (Don't include
+      the brackets!)  The text should be enclosed in the appropriate
+      comment syntax for the file format. We also recommend that a
+      file or class name and description of purpose be included on the
+      same "printed page" as the copyright notice for easier
+      identification within third-party archives.
+
+   Copyright [yyyy] [name of copyright owner]
+
+   Licensed under the Apache License, Version 2.0 (the "License");
+   you may not use this file except in compliance with the License.
+   You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+
+[Source code](https://repo.maven.apache.org/maven2/org/jetbrains/kotlin/kotlin-stdlib-common/1.9.25/kotlin-stdlib-common-1.9.25-sources.jar)
+
+----
+
+### org.jetbrains.kotlin:kotlin-stdlib-jdk7 @1.9.25 - https://kotlinlang.org/
+
+Apache License
+                           Version 2.0, January 2004
+                        http://www.apache.org/licenses/
+
+   TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
+
+   1. Definitions.
+
+      "License" shall mean the terms and conditions for use, reproduction,
+      and distribution as defined by Sections 1 through 9 of this document.
+
+      "Licensor" shall mean the copyright owner or entity authorized by
+      the copyright owner that is granting the License.
+
+      "Legal Entity" shall mean the union of the acting entity and all
+      other entities that control, are controlled by, or are under common
+      control with that entity. For the purposes of this definition,
+      "control" means (i) the power, direct or indirect, to cause the
+      direction or management of such entity, whether by contract or
+      otherwise, or (ii) ownership of fifty percent (50%) or more of the
+      outstanding shares, or (iii) beneficial ownership of such entity.
+
+      "You" (or "Your") shall mean an individual or Legal Entity
+      exercising permissions granted by this License.
+
+      "Source" form shall mean the preferred form for making modifications,
+      including but not limited to software source code, documentation
+      source, and configuration files.
+
+      "Object" form shall mean any form resulting from mechanical
+      transformation or translation of a Source form, including but
+      not limited to compiled object code, generated documentation,
+      and conversions to other media types.
+
+      "Work" shall mean the work of authorship, whether in Source or
+      Object form, made available under the License, as indicated by a
+      copyright notice that is included in or attached to the work
+      (an example is provided in the Appendix below).
+
+      "Derivative Works" shall mean any work, whether in Source or Object
+      form, that is based on (or derived from) the Work and for which the
+      editorial revisions, annotations, elaborations, or other modifications
+      represent, as a whole, an original work of authorship. For the purposes
+      of this License, Derivative Works shall not include works that remain
+      separable from, or merely link (or bind by name) to the interfaces of,
+      the Work and Derivative Works thereof.
+
+      "Contribution" shall mean any work of authorship, including
+      the original version of the Work and any modifications or additions
+      to that Work or Derivative Works thereof, that is intentionally
+      submitted to Licensor for inclusion in the Work by the copyright owner
+      or by an individual or Legal Entity authorized to submit on behalf of
+      the copyright owner. For the purposes of this definition, "submitted"
+      means any form of electronic, verbal, or written communication sent
+      to the Licensor or its representatives, including but not limited to
+      communication on electronic mailing lists, source code control systems,
+      and issue tracking systems that are managed by, or on behalf of, the
+      Licensor for the purpose of discussing and improving the Work, but
+      excluding communication that is conspicuously marked or otherwise
+      designated in writing by the copyright owner as "Not a Contribution."
+
+      "Contributor" shall mean Licensor and any individual or Legal Entity
+      on behalf of whom a Contribution has been received by Licensor and
+      subsequently incorporated within the Work.
+
+   2. Grant of Copyright License. Subject to the terms and conditions of
+      this License, each Contributor hereby grants to You a perpetual,
+      worldwide, non-exclusive, no-charge, royalty-free, irrevocable
+      copyright license to reproduce, prepare Derivative Works of,
+      publicly display, publicly perform, sublicense, and distribute the
+      Work and such Derivative Works in Source or Object form.
+
+   3. Grant of Patent License. Subject to the terms and conditions of
+      this License, each Contributor hereby grants to You a perpetual,
+      worldwide, non-exclusive, no-charge, royalty-free, irrevocable
+      (except as stated in this section) patent license to make, have made,
+      use, offer to sell, sell, import, and otherwise transfer the Work,
+      where such license applies only to those patent claims licensable
+      by such Contributor that are necessarily infringed by their
+      Contribution(s) alone or by combination of their Contribution(s)
+      with the Work to which such Contribution(s) was submitted. If You
+      institute patent litigation against any entity (including a
+      cross-claim or counterclaim in a lawsuit) alleging that the Work
+      or a Contribution incorporated within the Work constitutes direct
+      or contributory patent infringement, then any patent licenses
+      granted to You under this License for that Work shall terminate
+      as of the date such litigation is filed.
+
+   4. Redistribution. You may reproduce and distribute copies of the
+      Work or Derivative Works thereof in any medium, with or without
+      modifications, and in Source or Object form, provided that You
+      meet the following conditions:
+
+      (a) You must give any other recipients of the Work or
+          Derivative Works a copy of this License; and
+
+      (b) You must cause any modified files to carry prominent notices
+          stating that You changed the files; and
+
+      (c) You must retain, in the Source form of any Derivative Works
+          that You distribute, all copyright, patent, trademark, and
+          attribution notices from the Source form of the Work,
+          excluding those notices that do not pertain to any part of
+          the Derivative Works; and
+
+      (d) If the Work includes a "NOTICE" text file as part of its
+          distribution, then any Derivative Works that You distribute must
+          include a readable copy of the attribution notices contained
+          within such NOTICE file, excluding those notices that do not
+          pertain to any part of the Derivative Works, in at least one
+          of the following places: within a NOTICE text file distributed
+          as part of the Derivative Works; within the Source form or
+          documentation, if provided along with the Derivative Works; or,
+          within a display generated by the Derivative Works, if and
+          wherever such third-party notices normally appear. The contents
+          of the NOTICE file are for informational purposes only and
+          do not modify the License. You may add Your own attribution
+          notices within Derivative Works that You distribute, alongside
+          or as an addendum to the NOTICE text from the Work, provided
+          that such additional attribution notices cannot be construed
+          as modifying the License.
+
+      You may add Your own copyright statement to Your modifications and
+      may provide additional or different license terms and conditions
+      for use, reproduction, or distribution of Your modifications, or
+      for any such Derivative Works as a whole, provided Your use,
+      reproduction, and distribution of the Work otherwise complies with
+      the conditions stated in this License.
+
+   5. Submission of Contributions. Unless You explicitly state otherwise,
+      any Contribution intentionally submitted for inclusion in the Work
+      by You to the Licensor shall be under the terms and conditions of
+      this License, without any additional terms or conditions.
+      Notwithstanding the above, nothing herein shall supersede or modify
+      the terms of any separate license agreement you may have executed
+      with Licensor regarding such Contributions.
+
+   6. Trademarks. This License does not grant permission to use the trade
+      names, trademarks, service marks, or product names of the Licensor,
+      except as required for reasonable and customary use in describing the
+      origin of the Work and reproducing the content of the NOTICE file.
+
+   7. Disclaimer of Warranty. Unless required by applicable law or
+      agreed to in writing, Licensor provides the Work (and each
+      Contributor provides its Contributions) on an "AS IS" BASIS,
+      WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or
+      implied, including, without limitation, any warranties or conditions
+      of TITLE, NON-INFRINGEMENT, MERCHANTABILITY, or FITNESS FOR A
+      PARTICULAR PURPOSE. You are solely responsible for determining the
+      appropriateness of using or redistributing the Work and assume any
+      risks associated with Your exercise of permissions under this License.
+
+   8. Limitation of Liability. In no event and under no legal theory,
+      whether in tort (including negligence), contract, or otherwise,
+      unless required by applicable law (such as deliberate and grossly
+      negligent acts) or agreed to in writing, shall any Contributor be
+      liable to You for damages, including any direct, indirect, special,
+      incidental, or consequential damages of any character arising as a
+      result of this License or out of the use or inability to use the
+      Work (including but not limited to damages for loss of goodwill,
+      work stoppage, computer failure or malfunction, or any and all
+      other commercial damages or losses), even if such Contributor
+      has been advised of the possibility of such damages.
+
+   9. Accepting Warranty or Additional Liability. While redistributing
+      the Work or Derivative Works thereof, You may choose to offer,
+      and charge a fee for, acceptance of support, warranty, indemnity,
+      or other liability obligations and/or rights consistent with this
+      License. However, in accepting such obligations, You may act only
+      on Your own behalf and on Your sole responsibility, not on behalf
+      of any other Contributor, and only if You agree to indemnify,
+      defend, and hold each Contributor harmless for any liability
+      incurred by, or claims asserted against, such Contributor by reason
+      of your accepting any such warranty or additional liability.
+
+   END OF TERMS AND CONDITIONS
+
+   APPENDIX: How to apply the Apache License to your work.
+
+      To apply the Apache License to your work, attach the following
+      boilerplate notice, with the fields enclosed by brackets "[]"
+      replaced with your own identifying information. (Don't include
+      the brackets!)  The text should be enclosed in the appropriate
+      comment syntax for the file format. We also recommend that a
+      file or class name and description of purpose be included on the
+      same "printed page" as the copyright notice for easier
+      identification within third-party archives.
+
+   Copyright [yyyy] [name of copyright owner]
+
+   Licensed under the Apache License, Version 2.0 (the "License");
+   you may not use this file except in compliance with the License.
+   You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+
+[Source code](https://repo.maven.apache.org/maven2/org/jetbrains/kotlin/kotlin-stdlib-jdk7/1.9.25/kotlin-stdlib-jdk7-1.9.25-sources.jar)
+
+----
+
+### org.jetbrains.kotlin:kotlin-stdlib-jdk8 @1.9.25 - https://kotlinlang.org/
+
+Apache License
+                           Version 2.0, January 2004
+                        http://www.apache.org/licenses/
+
+   TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
+
+   1. Definitions.
+
+      "License" shall mean the terms and conditions for use, reproduction,
+      and distribution as defined by Sections 1 through 9 of this document.
+
+      "Licensor" shall mean the copyright owner or entity authorized by
+      the copyright owner that is granting the License.
+
+      "Legal Entity" shall mean the union of the acting entity and all
+      other entities that control, are controlled by, or are under common
+      control with that entity. For the purposes of this definition,
+      "control" means (i) the power, direct or indirect, to cause the
+      direction or management of such entity, whether by contract or
+      otherwise, or (ii) ownership of fifty percent (50%) or more of the
+      outstanding shares, or (iii) beneficial ownership of such entity.
+
+      "You" (or "Your") shall mean an individual or Legal Entity
+      exercising permissions granted by this License.
+
+      "Source" form shall mean the preferred form for making modifications,
+      including but not limited to software source code, documentation
+      source, and configuration files.
+
+      "Object" form shall mean any form resulting from mechanical
+      transformation or translation of a Source form, including but
+      not limited to compiled object code, generated documentation,
+      and conversions to other media types.
+
+      "Work" shall mean the work of authorship, whether in Source or
+      Object form, made available under the License, as indicated by a
+      copyright notice that is included in or attached to the work
+      (an example is provided in the Appendix below).
+
+      "Derivative Works" shall mean any work, whether in Source or Object
+      form, that is based on (or derived from) the Work and for which the
+      editorial revisions, annotations, elaborations, or other modifications
+      represent, as a whole, an original work of authorship. For the purposes
+      of this License, Derivative Works shall not include works that remain
+      separable from, or merely link (or bind by name) to the interfaces of,
+      the Work and Derivative Works thereof.
+
+      "Contribution" shall mean any work of authorship, including
+      the original version of the Work and any modifications or additions
+      to that Work or Derivative Works thereof, that is intentionally
+      submitted to Licensor for inclusion in the Work by the copyright owner
+      or by an individual or Legal Entity authorized to submit on behalf of
+      the copyright owner. For the purposes of this definition, "submitted"
+      means any form of electronic, verbal, or written communication sent
+      to the Licensor or its representatives, including but not limited to
+      communication on electronic mailing lists, source code control systems,
+      and issue tracking systems that are managed by, or on behalf of, the
+      Licensor for the purpose of discussing and improving the Work, but
+      excluding communication that is conspicuously marked or otherwise
+      designated in writing by the copyright owner as "Not a Contribution."
+
+      "Contributor" shall mean Licensor and any individual or Legal Entity
+      on behalf of whom a Contribution has been received by Licensor and
+      subsequently incorporated within the Work.
+
+   2. Grant of Copyright License. Subject to the terms and conditions of
+      this License, each Contributor hereby grants to You a perpetual,
+      worldwide, non-exclusive, no-charge, royalty-free, irrevocable
+      copyright license to reproduce, prepare Derivative Works of,
+      publicly display, publicly perform, sublicense, and distribute the
+      Work and such Derivative Works in Source or Object form.
+
+   3. Grant of Patent License. Subject to the terms and conditions of
+      this License, each Contributor hereby grants to You a perpetual,
+      worldwide, non-exclusive, no-charge, royalty-free, irrevocable
+      (except as stated in this section) patent license to make, have made,
+      use, offer to sell, sell, import, and otherwise transfer the Work,
+      where such license applies only to those patent claims licensable
+      by such Contributor that are necessarily infringed by their
+      Contribution(s) alone or by combination of their Contribution(s)
+      with the Work to which such Contribution(s) was submitted. If You
+      institute patent litigation against any entity (including a
+      cross-claim or counterclaim in a lawsuit) alleging that the Work
+      or a Contribution incorporated within the Work constitutes direct
+      or contributory patent infringement, then any patent licenses
+      granted to You under this License for that Work shall terminate
+      as of the date such litigation is filed.
+
+   4. Redistribution. You may reproduce and distribute copies of the
+      Work or Derivative Works thereof in any medium, with or without
+      modifications, and in Source or Object form, provided that You
+      meet the following conditions:
+
+      (a) You must give any other recipients of the Work or
+          Derivative Works a copy of this License; and
+
+      (b) You must cause any modified files to carry prominent notices
+          stating that You changed the files; and
+
+      (c) You must retain, in the Source form of any Derivative Works
+          that You distribute, all copyright, patent, trademark, and
+          attribution notices from the Source form of the Work,
+          excluding those notices that do not pertain to any part of
+          the Derivative Works; and
+
+      (d) If the Work includes a "NOTICE" text file as part of its
+          distribution, then any Derivative Works that You distribute must
+          include a readable copy of the attribution notices contained
+          within such NOTICE file, excluding those notices that do not
+          pertain to any part of the Derivative Works, in at least one
+          of the following places: within a NOTICE text file distributed
+          as part of the Derivative Works; within the Source form or
+          documentation, if provided along with the Derivative Works; or,
+          within a display generated by the Derivative Works, if and
+          wherever such third-party notices normally appear. The contents
+          of the NOTICE file are for informational purposes only and
+          do not modify the License. You may add Your own attribution
+          notices within Derivative Works that You distribute, alongside
+          or as an addendum to the NOTICE text from the Work, provided
+          that such additional attribution notices cannot be construed
+          as modifying the License.
+
+      You may add Your own copyright statement to Your modifications and
+      may provide additional or different license terms and conditions
+      for use, reproduction, or distribution of Your modifications, or
+      for any such Derivative Works as a whole, provided Your use,
+      reproduction, and distribution of the Work otherwise complies with
+      the conditions stated in this License.
+
+   5. Submission of Contributions. Unless You explicitly state otherwise,
+      any Contribution intentionally submitted for inclusion in the Work
+      by You to the Licensor shall be under the terms and conditions of
+      this License, without any additional terms or conditions.
+      Notwithstanding the above, nothing herein shall supersede or modify
+      the terms of any separate license agreement you may have executed
+      with Licensor regarding such Contributions.
+
+   6. Trademarks. This License does not grant permission to use the trade
+      names, trademarks, service marks, or product names of the Licensor,
+      except as required for reasonable and customary use in describing the
+      origin of the Work and reproducing the content of the NOTICE file.
+
+   7. Disclaimer of Warranty. Unless required by applicable law or
+      agreed to in writing, Licensor provides the Work (and each
+      Contributor provides its Contributions) on an "AS IS" BASIS,
+      WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or
+      implied, including, without limitation, any warranties or conditions
+      of TITLE, NON-INFRINGEMENT, MERCHANTABILITY, or FITNESS FOR A
+      PARTICULAR PURPOSE. You are solely responsible for determining the
+      appropriateness of using or redistributing the Work and assume any
+      risks associated with Your exercise of permissions under this License.
+
+   8. Limitation of Liability. In no event and under no legal theory,
+      whether in tort (including negligence), contract, or otherwise,
+      unless required by applicable law (such as deliberate and grossly
+      negligent acts) or agreed to in writing, shall any Contributor be
+      liable to You for damages, including any direct, indirect, special,
+      incidental, or consequential damages of any character arising as a
+      result of this License or out of the use or inability to use the
+      Work (including but not limited to damages for loss of goodwill,
+      work stoppage, computer failure or malfunction, or any and all
+      other commercial damages or losses), even if such Contributor
+      has been advised of the possibility of such damages.
+
+   9. Accepting Warranty or Additional Liability. While redistributing
+      the Work or Derivative Works thereof, You may choose to offer,
+      and charge a fee for, acceptance of support, warranty, indemnity,
+      or other liability obligations and/or rights consistent with this
+      License. However, in accepting such obligations, You may act only
+      on Your own behalf and on Your sole responsibility, not on behalf
+      of any other Contributor, and only if You agree to indemnify,
+      defend, and hold each Contributor harmless for any liability
+      incurred by, or claims asserted against, such Contributor by reason
+      of your accepting any such warranty or additional liability.
+
+   END OF TERMS AND CONDITIONS
+
+   APPENDIX: How to apply the Apache License to your work.
+
+      To apply the Apache License to your work, attach the following
+      boilerplate notice, with the fields enclosed by brackets "[]"
+      replaced with your own identifying information. (Don't include
+      the brackets!)  The text should be enclosed in the appropriate
+      comment syntax for the file format. We also recommend that a
+      file or class name and description of purpose be included on the
+      same "printed page" as the copyright notice for easier
+      identification within third-party archives.
+
+   Copyright [yyyy] [name of copyright owner]
+
+   Licensed under the Apache License, Version 2.0 (the "License");
+   you may not use this file except in compliance with the License.
+   You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+
+[Source code](https://repo.maven.apache.org/maven2/org/jetbrains/kotlin/kotlin-stdlib-jdk8/1.9.25/kotlin-stdlib-jdk8-1.9.25-sources.jar)
+
+----
+
+### org.jspecify:jspecify @1.0.0 - http://jspecify.org/
+
+Apache License
+                           Version 2.0, January 2004
+                        http://www.apache.org/licenses/
+
+   TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
+
+   1. Definitions.
+
+      "License" shall mean the terms and conditions for use, reproduction,
+      and distribution as defined by Sections 1 through 9 of this document.
+
+      "Licensor" shall mean the copyright owner or entity authorized by
+      the copyright owner that is granting the License.
+
+      "Legal Entity" shall mean the union of the acting entity and all
+      other entities that control, are controlled by, or are under common
+      control with that entity. For the purposes of this definition,
+      "control" means (i) the power, direct or indirect, to cause the
+      direction or management of such entity, whether by contract or
+      otherwise, or (ii) ownership of fifty percent (50%) or more of the
+      outstanding shares, or (iii) beneficial ownership of such entity.
+
+      "You" (or "Your") shall mean an individual or Legal Entity
+      exercising permissions granted by this License.
+
+      "Source" form shall mean the preferred form for making modifications,
+      including but not limited to software source code, documentation
+      source, and configuration files.
+
+      "Object" form shall mean any form resulting from mechanical
+      transformation or translation of a Source form, including but
+      not limited to compiled object code, generated documentation,
+      and conversions to other media types.
+
+      "Work" shall mean the work of authorship, whether in Source or
+      Object form, made available under the License, as indicated by a
+      copyright notice that is included in or attached to the work
+      (an example is provided in the Appendix below).
+
+      "Derivative Works" shall mean any work, whether in Source or Object
+      form, that is based on (or derived from) the Work and for which the
+      editorial revisions, annotations, elaborations, or other modifications
+      represent, as a whole, an original work of authorship. For the purposes
+      of this License, Derivative Works shall not include works that remain
+      separable from, or merely link (or bind by name) to the interfaces of,
+      the Work and Derivative Works thereof.
+
+      "Contribution" shall mean any work of authorship, including
+      the original version of the Work and any modifications or additions
+      to that Work or Derivative Works thereof, that is intentionally
+      submitted to Licensor for inclusion in the Work by the copyright owner
+      or by an individual or Legal Entity authorized to submit on behalf of
+      the copyright owner. For the purposes of this definition, "submitted"
+      means any form of electronic, verbal, or written communication sent
+      to the Licensor or its representatives, including but not limited to
+      communication on electronic mailing lists, source code control systems,
+      and issue tracking systems that are managed by, or on behalf of, the
+      Licensor for the purpose of discussing and improving the Work, but
+      excluding communication that is conspicuously marked or otherwise
+      designated in writing by the copyright owner as "Not a Contribution."
+
+      "Contributor" shall mean Licensor and any individual or Legal Entity
+      on behalf of whom a Contribution has been received by Licensor and
+      subsequently incorporated within the Work.
+
+   2. Grant of Copyright License. Subject to the terms and conditions of
+      this License, each Contributor hereby grants to You a perpetual,
+      worldwide, non-exclusive, no-charge, royalty-free, irrevocable
+      copyright license to reproduce, prepare Derivative Works of,
+      publicly display, publicly perform, sublicense, and distribute the
+      Work and such Derivative Works in Source or Object form.
+
+   3. Grant of Patent License. Subject to the terms and conditions of
+      this License, each Contributor hereby grants to You a perpetual,
+      worldwide, non-exclusive, no-charge, royalty-free, irrevocable
+      (except as stated in this section) patent license to make, have made,
+      use, offer to sell, sell, import, and otherwise transfer the Work,
+      where such license applies only to those patent claims licensable
+      by such Contributor that are necessarily infringed by their
+      Contribution(s) alone or by combination of their Contribution(s)
+      with the Work to which such Contribution(s) was submitted. If You
+      institute patent litigation against any entity (including a
+      cross-claim or counterclaim in a lawsuit) alleging that the Work
+      or a Contribution incorporated within the Work constitutes direct
+      or contributory patent infringement, then any patent licenses
+      granted to You under this License for that Work shall terminate
+      as of the date such litigation is filed.
+
+   4. Redistribution. You may reproduce and distribute copies of the
+      Work or Derivative Works thereof in any medium, with or without
+      modifications, and in Source or Object form, provided that You
+      meet the following conditions:
+
+      (a) You must give any other recipients of the Work or
+          Derivative Works a copy of this License; and
+
+      (b) You must cause any modified files to carry prominent notices
+          stating that You changed the files; and
+
+      (c) You must retain, in the Source form of any Derivative Works
+          that You distribute, all copyright, patent, trademark, and
+          attribution notices from the Source form of the Work,
+          excluding those notices that do not pertain to any part of
+          the Derivative Works; and
+
+      (d) If the Work includes a "NOTICE" text file as part of its
+          distribution, then any Derivative Works that You distribute must
+          include a readable copy of the attribution notices contained
+          within such NOTICE file, excluding those notices that do not
+          pertain to any part of the Derivative Works, in at least one
+          of the following places: within a NOTICE text file distributed
+          as part of the Derivative Works; within the Source form or
+          documentation, if provided along with the Derivative Works; or,
+          within a display generated by the Derivative Works, if and
+          wherever such third-party notices normally appear. The contents
+          of the NOTICE file are for informational purposes only and
+          do not modify the License. You may add Your own attribution
+          notices within Derivative Works that You distribute, alongside
+          or as an addendum to the NOTICE text from the Work, provided
+          that such additional attribution notices cannot be construed
+          as modifying the License.
+
+      You may add Your own copyright statement to Your modifications and
+      may provide additional or different license terms and conditions
+      for use, reproduction, or distribution of Your modifications, or
+      for any such Derivative Works as a whole, provided Your use,
+      reproduction, and distribution of the Work otherwise complies with
+      the conditions stated in this License.
+
+   5. Submission of Contributions. Unless You explicitly state otherwise,
+      any Contribution intentionally submitted for inclusion in the Work
+      by You to the Licensor shall be under the terms and conditions of
+      this License, without any additional terms or conditions.
+      Notwithstanding the above, nothing herein shall supersede or modify
+      the terms of any separate license agreement you may have executed
+      with Licensor regarding such Contributions.
+
+   6. Trademarks. This License does not grant permission to use the trade
+      names, trademarks, service marks, or product names of the Licensor,
+      except as required for reasonable and customary use in describing the
+      origin of the Work and reproducing the content of the NOTICE file.
+
+   7. Disclaimer of Warranty. Unless required by applicable law or
+      agreed to in writing, Licensor provides the Work (and each
+      Contributor provides its Contributions) on an "AS IS" BASIS,
+      WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or
+      implied, including, without limitation, any warranties or conditions
+      of TITLE, NON-INFRINGEMENT, MERCHANTABILITY, or FITNESS FOR A
+      PARTICULAR PURPOSE. You are solely responsible for determining the
+      appropriateness of using or redistributing the Work and assume any
+      risks associated with Your exercise of permissions under this License.
+
+   8. Limitation of Liability. In no event and under no legal theory,
+      whether in tort (including negligence), contract, or otherwise,
+      unless required by applicable law (such as deliberate and grossly
+      negligent acts) or agreed to in writing, shall any Contributor be
+      liable to You for damages, including any direct, indirect, special,
+      incidental, or consequential damages of any character arising as a
+      result of this License or out of the use or inability to use the
+      Work (including but not limited to damages for loss of goodwill,
+      work stoppage, computer failure or malfunction, or any and all
+      other commercial damages or losses), even if such Contributor
+      has been advised of the possibility of such damages.
+
+   9. Accepting Warranty or Additional Liability. While redistributing
+      the Work or Derivative Works thereof, You may choose to offer,
+      and charge a fee for, acceptance of support, warranty, indemnity,
+      or other liability obligations and/or rights consistent with this
+      License. However, in accepting such obligations, You may act only
+      on Your own behalf and on Your sole responsibility, not on behalf
+      of any other Contributor, and only if You agree to indemnify,
+      defend, and hold each Contributor harmless for any liability
+      incurred by, or claims asserted against, such Contributor by reason
+      of your accepting any such warranty or additional liability.
+
+   END OF TERMS AND CONDITIONS
+
+   APPENDIX: How to apply the Apache License to your work.
+
+      To apply the Apache License to your work, attach the following
+      boilerplate notice, with the fields enclosed by brackets "[]"
+      replaced with your own identifying information. (Don't include
+      the brackets!)  The text should be enclosed in the appropriate
+      comment syntax for the file format. We also recommend that a
+      file or class name and description of purpose be included on the
+      same "printed page" as the copyright notice for easier
+      identification within third-party archives.
+
+   Copyright [yyyy] [name of copyright owner]
+
+   Licensed under the Apache License, Version 2.0 (the "License");
+   you may not use this file except in compliance with the License.
+   You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
 
 [Source code](https://repo.maven.apache.org/maven2/org/jspecify/jspecify/1.0.0/jspecify-1.0.0-sources.jar)
 
@@ -23295,7 +23866,7 @@ This part of code will be removed when kotlin will be rewritten on kotlin.
 
 ### org.latencyutils:LatencyUtils @2.0.3 - http://latencyutils.github.io/LatencyUtils/
 
-  * This code was Written by Gil Tene of Azul Systems, and released to the
+* This code was Written by Gil Tene of Azul Systems, and released to the
   * public domain, as explained at http://creativecommons.org/publicdomain/zero/1.0/
 
  For users of this code who wish to consume it under the "BSD" license
@@ -23334,14 +23905,13 @@ This part of code will be removed when kotlin will be rewritten on kotlin.
   ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF
   THE POSSIBILITY OF SUCH DAMAGE.
 
-
 [Source code](https://repo.maven.apache.org/maven2/org/latencyutils/LatencyUtils/2.0.3/LatencyUtils-2.0.3-sources.jar)
 
 ----
 
 ### org.mapstruct:mapstruct @1.6.3 - https://mapstruct.org/mapstruct/
 
- Copyright MapStruct Authors.
+Copyright MapStruct Authors.
 
  MapStruct is licensed under the Apache License version 2.0, available at http://www.apache.org/licenses/LICENSE-2.0
 
@@ -23369,7 +23939,6 @@ This part of code will be removed when kotlin will be rewritten on kotlin.
      freemarker/ext/jsp/web-jsptaglibrary_1_2.dtd
      freemarker/ext/jsp/web-jsptaglibrary_2_0.xsd
      freemarker/ext/jsp/web-jsptaglibrary_2_1.xsd
-
 
 [Source code](https://repo.maven.apache.org/maven2/org/mapstruct/mapstruct/1.6.3/mapstruct-1.6.3-sources.jar)
 
@@ -23400,7 +23969,6 @@ INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
 CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
 ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 POSSIBILITY OF SUCH DAMAGE.
-
 
 [Source code](https://repo.maven.apache.org/maven2/org/postgresql/postgresql/42.7.5/postgresql-42.7.5-sources.jar)
 
@@ -23536,7 +24104,6 @@ HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTIO
 OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-
 [Source code](https://repo.maven.apache.org/maven2/org/reactivestreams/reactive-streams/1.0.4/reactive-streams-1.0.4-sources.jar)
 
 ----
@@ -23565,17 +24132,13 @@ LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
 OF CONTRACT, TORT OR OTHERWISE,  ARISING FROM, OUT OF OR IN CONNECTION
 WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-
-
-
-
 [Source code](https://repo.maven.apache.org/maven2/org/slf4j/slf4j-api/2.0.16/slf4j-api-2.0.16-sources.jar)
 
 ----
 
 ### org.snakeyaml:snakeyaml-engine @2.8 - https://bitbucket.org/snakeyaml/snakeyaml-engine
 
-                                 Apache License
+Apache License
                            Version 2.0, January 2004
                         http://www.apache.org/licenses/
 
@@ -23751,16 +24314,14 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
       of your accepting any such warranty or additional liability.
 
    END OF TERMS AND CONDITIONS
-
 
 [Source code](https://repo.maven.apache.org/maven2/org/snakeyaml/snakeyaml-engine/2.8/snakeyaml-engine-2.8-sources.jar)
 
 ----
 
-### org.springdoc:springdoc-openapi-starter-common @2.8.4 - https://springdoc.org/springdoc-openapi-starter-common/
+### org.springdoc:springdoc-openapi-starter-common @2.8.5 - https://springdoc.org/springdoc-openapi-starter-common/
 
-
-                                 Apache License
+Apache License
                            Version 2.0, January 2004
                         http://www.apache.org/licenses/
 
@@ -23962,15 +24523,13 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
    See the License for the specific language governing permissions and
    limitations under the License.
 
-
-[Source code](https://repo.maven.apache.org/maven2/org/springdoc/springdoc-openapi-starter-common/2.8.4/springdoc-openapi-starter-common-2.8.4-sources.jar)
+[Source code](https://repo.maven.apache.org/maven2/org/springdoc/springdoc-openapi-starter-common/2.8.5/springdoc-openapi-starter-common-2.8.5-sources.jar)
 
 ----
 
-### org.springdoc:springdoc-openapi-starter-webmvc-api @2.8.4 - https://springdoc.org/springdoc-openapi-starter-webmvc-api/
+### org.springdoc:springdoc-openapi-starter-webmvc-api @2.8.5 - https://springdoc.org/springdoc-openapi-starter-webmvc-api/
 
-
-                                 Apache License
+Apache License
                            Version 2.0, January 2004
                         http://www.apache.org/licenses/
 
@@ -24172,15 +24731,13 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
    See the License for the specific language governing permissions and
    limitations under the License.
 
-
-[Source code](https://repo.maven.apache.org/maven2/org/springdoc/springdoc-openapi-starter-webmvc-api/2.8.4/springdoc-openapi-starter-webmvc-api-2.8.4-sources.jar)
+[Source code](https://repo.maven.apache.org/maven2/org/springdoc/springdoc-openapi-starter-webmvc-api/2.8.5/springdoc-openapi-starter-webmvc-api-2.8.5-sources.jar)
 
 ----
 
-### org.springdoc:springdoc-openapi-starter-webmvc-ui @2.8.4 - https://springdoc.org/springdoc-openapi-starter-webmvc-ui/
+### org.springdoc:springdoc-openapi-starter-webmvc-ui @2.8.5 - https://springdoc.org/springdoc-openapi-starter-webmvc-ui/
 
-
-                                 Apache License
+Apache License
                            Version 2.0, January 2004
                         http://www.apache.org/licenses/
 
@@ -24382,15 +24939,13 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
    See the License for the specific language governing permissions and
    limitations under the License.
 
-
-[Source code](https://repo.maven.apache.org/maven2/org/springdoc/springdoc-openapi-starter-webmvc-ui/2.8.4/springdoc-openapi-starter-webmvc-ui-2.8.4-sources.jar)
+[Source code](https://repo.maven.apache.org/maven2/org/springdoc/springdoc-openapi-starter-webmvc-ui/2.8.5/springdoc-openapi-starter-webmvc-ui-2.8.5-sources.jar)
 
 ----
 
 ### org.springframework:spring-aop @6.2.2 - https://github.com/spring-projects/spring-framework
 
-
-                                 Apache License
+Apache License
                            Version 2.0, January 2004
                         https://www.apache.org/licenses/
 
@@ -24591,7 +25146,6 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
    See the License for the specific language governing permissions and
    limitations under the License.
-
 
 [Source code](https://repo.maven.apache.org/maven2/org/springframework/spring-aop/6.2.2/spring-aop-6.2.2-sources.jar)
 
@@ -24599,8 +25153,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 ### org.springframework:spring-beans @6.2.2 - https://github.com/spring-projects/spring-framework
 
-
-                                 Apache License
+Apache License
                            Version 2.0, January 2004
                         https://www.apache.org/licenses/
 
@@ -24801,7 +25354,6 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
    See the License for the specific language governing permissions and
    limitations under the License.
-
 
 [Source code](https://repo.maven.apache.org/maven2/org/springframework/spring-beans/6.2.2/spring-beans-6.2.2-sources.jar)
 
@@ -24809,8 +25361,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 ### org.springframework:spring-context @6.2.2 - https://github.com/spring-projects/spring-framework
 
-
-                                 Apache License
+Apache License
                            Version 2.0, January 2004
                         https://www.apache.org/licenses/
 
@@ -25011,7 +25562,6 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
    See the License for the specific language governing permissions and
    limitations under the License.
-
 
 [Source code](https://repo.maven.apache.org/maven2/org/springframework/spring-context/6.2.2/spring-context-6.2.2-sources.jar)
 
@@ -25019,8 +25569,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 ### org.springframework:spring-expression @6.2.2 - https://github.com/spring-projects/spring-framework
 
-
-                                 Apache License
+Apache License
                            Version 2.0, January 2004
                         https://www.apache.org/licenses/
 
@@ -25221,7 +25770,6 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
    See the License for the specific language governing permissions and
    limitations under the License.
-
 
 [Source code](https://repo.maven.apache.org/maven2/org/springframework/spring-expression/6.2.2/spring-expression-6.2.2-sources.jar)
 
@@ -25229,8 +25777,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 ### org.springframework:spring-jdbc @6.2.2 - https://github.com/spring-projects/spring-framework
 
-
-                                 Apache License
+Apache License
                            Version 2.0, January 2004
                         https://www.apache.org/licenses/
 
@@ -25431,7 +25978,6 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
    See the License for the specific language governing permissions and
    limitations under the License.
-
 
 [Source code](https://repo.maven.apache.org/maven2/org/springframework/spring-jdbc/6.2.2/spring-jdbc-6.2.2-sources.jar)
 
@@ -25439,8 +25985,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 ### org.springframework:spring-messaging @6.2.2 - https://github.com/spring-projects/spring-framework
 
-
-                                 Apache License
+Apache License
                            Version 2.0, January 2004
                         https://www.apache.org/licenses/
 
@@ -25641,7 +26186,6 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
    See the License for the specific language governing permissions and
    limitations under the License.
-
 
 [Source code](https://repo.maven.apache.org/maven2/org/springframework/spring-messaging/6.2.2/spring-messaging-6.2.2-sources.jar)
 
@@ -25649,8 +26193,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 ### org.springframework:spring-tx @6.2.2 - https://github.com/spring-projects/spring-framework
 
-
-                                 Apache License
+Apache License
                            Version 2.0, January 2004
                         https://www.apache.org/licenses/
 
@@ -25851,7 +26394,6 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
    See the License for the specific language governing permissions and
    limitations under the License.
-
 
 [Source code](https://repo.maven.apache.org/maven2/org/springframework/spring-tx/6.2.2/spring-tx-6.2.2-sources.jar)
 
@@ -25859,8 +26401,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 ### org.springframework:spring-web @6.2.2 - https://github.com/spring-projects/spring-framework
 
-
-                                 Apache License
+Apache License
                            Version 2.0, January 2004
                         https://www.apache.org/licenses/
 
@@ -26061,7 +26602,6 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
    See the License for the specific language governing permissions and
    limitations under the License.
-
 
 [Source code](https://repo.maven.apache.org/maven2/org/springframework/spring-web/6.2.2/spring-web-6.2.2-sources.jar)
 
@@ -26069,8 +26609,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 ### org.springframework:spring-webmvc @6.2.2 - https://github.com/spring-projects/spring-framework
 
-
-                                 Apache License
+Apache License
                            Version 2.0, January 2004
                         https://www.apache.org/licenses/
 
@@ -26272,14 +26811,13 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
    See the License for the specific language governing permissions and
    limitations under the License.
 
-
 [Source code](https://repo.maven.apache.org/maven2/org/springframework/spring-webmvc/6.2.2/spring-webmvc-6.2.2-sources.jar)
 
 ----
 
 ### org.springframework.amqp:spring-amqp @3.2.2 - https://github.com/spring-projects/spring-amqp
 
-                                 Apache License
+Apache License
                            Version 2.0, January 2004
                         https://www.apache.org/licenses/
 
@@ -26480,7 +27018,6 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
    See the License for the specific language governing permissions and
    limitations under the License.
-
 
 [Source code](https://repo.maven.apache.org/maven2/org/springframework/amqp/spring-amqp/3.2.2/spring-amqp-3.2.2-sources.jar)
 
@@ -26488,7 +27025,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 ### org.springframework.amqp:spring-rabbit @3.2.2 - https://github.com/spring-projects/spring-amqp
 
-                                 Apache License
+Apache License
                            Version 2.0, January 2004
                         https://www.apache.org/licenses/
 
@@ -26690,15 +27227,13 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
    See the License for the specific language governing permissions and
    limitations under the License.
 
-
 [Source code](https://repo.maven.apache.org/maven2/org/springframework/amqp/spring-rabbit/3.2.2/spring-rabbit-3.2.2-sources.jar)
 
 ----
 
 ### org.springframework.boot:spring-boot @3.4.2 - https://spring.io/projects/spring-boot
 
-
-                                 Apache License
+Apache License
                            Version 2.0, January 2004
                         https://www.apache.org/licenses/
 
@@ -26906,8 +27441,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 ### org.springframework.boot:spring-boot-actuator @3.4.2 - https://spring.io/projects/spring-boot
 
-
-                                 Apache License
+Apache License
                            Version 2.0, January 2004
                         https://www.apache.org/licenses/
 
@@ -27115,8 +27649,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 ### org.springframework.boot:spring-boot-actuator-autoconfigure @3.4.2 - https://spring.io/projects/spring-boot
 
-
-                                 Apache License
+Apache License
                            Version 2.0, January 2004
                         https://www.apache.org/licenses/
 
@@ -27324,8 +27857,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 ### org.springframework.boot:spring-boot-autoconfigure @3.4.2 - https://spring.io/projects/spring-boot
 
-
-                                 Apache License
+Apache License
                            Version 2.0, January 2004
                         https://www.apache.org/licenses/
 
@@ -27533,8 +28065,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 ### org.springframework.boot:spring-boot-configuration-metadata @3.4.2 - https://spring.io/projects/spring-boot
 
-
-                                 Apache License
+Apache License
                            Version 2.0, January 2004
                         https://www.apache.org/licenses/
 
@@ -27742,8 +28273,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 ### org.springframework.boot:spring-boot-properties-migrator @3.4.2 - https://spring.io/projects/spring-boot
 
-
-                                 Apache License
+Apache License
                            Version 2.0, January 2004
                         https://www.apache.org/licenses/
 
@@ -27951,8 +28481,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 ### org.springframework.boot:spring-boot-starter @3.4.2 - https://spring.io/projects/spring-boot
 
-
-                                 Apache License
+Apache License
                            Version 2.0, January 2004
                         http://www.apache.org/licenses/
 
@@ -28153,7 +28682,6 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
    See the License for the specific language governing permissions and
    limitations under the License.
-
 
 [Source code](https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-starter/3.4.2/spring-boot-starter-3.4.2-sources.jar)
 
@@ -28161,8 +28689,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 ### org.springframework.boot:spring-boot-starter-actuator @3.4.2 - https://spring.io/projects/spring-boot
 
-
-                                 Apache License
+Apache License
                            Version 2.0, January 2004
                         http://www.apache.org/licenses/
 
@@ -28363,7 +28890,6 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
    See the License for the specific language governing permissions and
    limitations under the License.
-
 
 [Source code](https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-starter-actuator/3.4.2/spring-boot-starter-actuator-3.4.2-sources.jar)
 
@@ -28371,8 +28897,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 ### org.springframework.boot:spring-boot-starter-amqp @3.4.2 - https://spring.io/projects/spring-boot
 
-
-                                 Apache License
+Apache License
                            Version 2.0, January 2004
                         http://www.apache.org/licenses/
 
@@ -28573,7 +29098,6 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
    See the License for the specific language governing permissions and
    limitations under the License.
-
 
 [Source code](https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-starter-amqp/3.4.2/spring-boot-starter-amqp-3.4.2-sources.jar)
 
@@ -28581,8 +29105,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 ### org.springframework.boot:spring-boot-starter-data-jdbc @3.4.2 - https://spring.io/projects/spring-boot
 
-
-                                 Apache License
+Apache License
                            Version 2.0, January 2004
                         http://www.apache.org/licenses/
 
@@ -28783,7 +29306,6 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
    See the License for the specific language governing permissions and
    limitations under the License.
-
 
 [Source code](https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-starter-data-jdbc/3.4.2/spring-boot-starter-data-jdbc-3.4.2-sources.jar)
 
@@ -28791,8 +29313,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 ### org.springframework.boot:spring-boot-starter-jdbc @3.4.2 - https://spring.io/projects/spring-boot
 
-
-                                 Apache License
+Apache License
                            Version 2.0, January 2004
                         http://www.apache.org/licenses/
 
@@ -28993,7 +29514,6 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
    See the License for the specific language governing permissions and
    limitations under the License.
-
 
 [Source code](https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-starter-jdbc/3.4.2/spring-boot-starter-jdbc-3.4.2-sources.jar)
 
@@ -29001,8 +29521,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 ### org.springframework.boot:spring-boot-starter-json @3.4.2 - https://spring.io/projects/spring-boot
 
-
-                                 Apache License
+Apache License
                            Version 2.0, January 2004
                         http://www.apache.org/licenses/
 
@@ -29203,7 +29722,6 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
    See the License for the specific language governing permissions and
    limitations under the License.
-
 
 [Source code](https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-starter-json/3.4.2/spring-boot-starter-json-3.4.2-sources.jar)
 
@@ -29211,8 +29729,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 ### org.springframework.boot:spring-boot-starter-log4j2 @3.4.2 - https://spring.io/projects/spring-boot
 
-
-                                 Apache License
+Apache License
                            Version 2.0, January 2004
                         http://www.apache.org/licenses/
 
@@ -29413,7 +29930,6 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
    See the License for the specific language governing permissions and
    limitations under the License.
-
 
 [Source code](https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-starter-log4j2/3.4.2/spring-boot-starter-log4j2-3.4.2-sources.jar)
 
@@ -29421,8 +29937,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 ### org.springframework.boot:spring-boot-starter-tomcat @3.4.2 - https://spring.io/projects/spring-boot
 
-
-                                 Apache License
+Apache License
                            Version 2.0, January 2004
                         http://www.apache.org/licenses/
 
@@ -29623,7 +30138,6 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
    See the License for the specific language governing permissions and
    limitations under the License.
-
 
 [Source code](https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-starter-tomcat/3.4.2/spring-boot-starter-tomcat-3.4.2-sources.jar)
 
@@ -29631,8 +30145,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 ### org.springframework.boot:spring-boot-starter-validation @3.4.2 - https://spring.io/projects/spring-boot
 
-
-                                 Apache License
+Apache License
                            Version 2.0, January 2004
                         http://www.apache.org/licenses/
 
@@ -29833,7 +30346,6 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
    See the License for the specific language governing permissions and
    limitations under the License.
-
 
 [Source code](https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-starter-validation/3.4.2/spring-boot-starter-validation-3.4.2-sources.jar)
 
@@ -29841,8 +30353,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 ### org.springframework.boot:spring-boot-starter-web @3.4.2 - https://spring.io/projects/spring-boot
 
-
-                                 Apache License
+Apache License
                            Version 2.0, January 2004
                         http://www.apache.org/licenses/
 
@@ -30044,15 +30555,13 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
    See the License for the specific language governing permissions and
    limitations under the License.
 
-
 [Source code](https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-starter-web/3.4.2/spring-boot-starter-web-3.4.2-sources.jar)
 
 ----
 
 ### org.springframework.data:spring-data-commons @3.4.2 - https://spring.io/projects/spring-data
 
-
-                                 Apache License
+Apache License
                            Version 2.0, January 2004
                         https://www.apache.org/licenses/
 
@@ -30254,15 +30763,13 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
    See the License for the specific language governing permissions and
    limitations under the License.
 
-
 [Source code](https://repo.maven.apache.org/maven2/org/springframework/data/spring-data-commons/3.4.2/spring-data-commons-3.4.2-sources.jar)
 
 ----
 
 ### org.springframework.data:spring-data-jdbc @3.4.2 - https://projects.spring.io/spring-data-jdbc
 
-
-                                 Apache License
+Apache License
                            Version 2.0, January 2004
                         https://www.apache.org/licenses/
 
@@ -30463,7 +30970,6 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
    See the License for the specific language governing permissions and
    limitations under the License.
-
 
 [Source code](https://repo.maven.apache.org/maven2/org/springframework/data/spring-data-jdbc/3.4.2/spring-data-jdbc-3.4.2-sources.jar)
 
@@ -30471,8 +30977,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 ### org.springframework.data:spring-data-relational @3.4.2 - https://projects.spring.io/spring-data-jdbc/spring-data-relational
 
-
-                                 Apache License
+Apache License
                            Version 2.0, January 2004
                         https://www.apache.org/licenses/
 
@@ -30674,15 +31179,13 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
    See the License for the specific language governing permissions and
    limitations under the License.
 
-
 [Source code](https://repo.maven.apache.org/maven2/org/springframework/data/spring-data-relational/3.4.2/spring-data-relational-3.4.2-sources.jar)
 
 ----
 
 ### org.springframework.retry:spring-retry @2.0.11 - https://github.com/spring-projects/spring-retry
 
-
-                                 Apache License
+Apache License
                            Version 2.0, January 2004
                         http://www.apache.org/licenses/
 
@@ -30883,16 +31386,14 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
    See the License for the specific language governing permissions and
    limitations under the License.
-
 
 [Source code](https://repo.maven.apache.org/maven2/org/springframework/retry/spring-retry/2.0.11/spring-retry-2.0.11-sources.jar)
 
 ----
 
-### org.webjars:swagger-ui @5.18.2 - https://www.webjars.org
+### org.webjars:swagger-ui @5.18.3 - https://www.webjars.org
 
-
-                                 Apache License
+Apache License
                            Version 2.0, January 2004
                         http://www.apache.org/licenses/
 
@@ -31093,7 +31594,6 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
    See the License for the specific language governing permissions and
    limitations under the License.
-
 
 [Source code](https://github.com/swagger-api/swagger-ui.git)
 
@@ -31120,14 +31620,13 @@ COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
 IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-
 [Source code](https://repo.maven.apache.org/maven2/org/webjars/webjars-locator-lite/1.0.1/webjars-locator-lite-1.0.1-sources.jar)
 
 ----
 
 ### org.yaml:snakeyaml @2.3 - https://bitbucket.org/snakeyaml/snakeyaml
 
-                                 Apache License
+Apache License
                            Version 2.0, January 2004
                         http://www.apache.org/licenses/
 
@@ -31304,15 +31803,13 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
    END OF TERMS AND CONDITIONS
 
-
 [Source code](https://repo.maven.apache.org/maven2/org/yaml/snakeyaml/2.3/snakeyaml-2.3-sources.jar)
 
 ----
 
 ### software.amazon.awssdk:annotations @2.29.52 - https://aws.amazon.com/sdkforjava/core/annotations
 
-
-                                 Apache License
+Apache License
                            Version 2.0, January 2004
                         http://www.apache.org/licenses/
 
@@ -31524,8 +32021,7 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 ### software.amazon.awssdk:apache-client @2.29.52 - https://aws.amazon.com/sdkforjava/http-clients/apache-client
 
-
-                                 Apache License
+Apache License
                            Version 2.0, January 2004
                         http://www.apache.org/licenses/
 
@@ -31737,8 +32233,7 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 ### software.amazon.awssdk:arns @2.29.52 - https://aws.amazon.com/sdkforjava
 
-
-                                 Apache License
+Apache License
                            Version 2.0, January 2004
                         http://www.apache.org/licenses/
 
@@ -31950,8 +32445,7 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 ### software.amazon.awssdk:auth @2.29.52 - https://aws.amazon.com/sdkforjava
 
-
-                                 Apache License
+Apache License
                            Version 2.0, January 2004
                         http://www.apache.org/licenses/
 
@@ -32163,8 +32657,7 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 ### software.amazon.awssdk:aws-core @2.29.52 - https://aws.amazon.com/sdkforjava
 
-
-                                 Apache License
+Apache License
                            Version 2.0, January 2004
                         http://www.apache.org/licenses/
 
@@ -32376,8 +32869,7 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 ### software.amazon.awssdk:aws-json-protocol @2.29.52 - https://aws.amazon.com/sdkforjava
 
-
-                                 Apache License
+Apache License
                            Version 2.0, January 2004
                         http://www.apache.org/licenses/
 
@@ -32589,8 +33081,7 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 ### software.amazon.awssdk:checksums @2.29.52 - https://aws.amazon.com/sdkforjava
 
-
-                                 Apache License
+Apache License
                            Version 2.0, January 2004
                         http://www.apache.org/licenses/
 
@@ -32802,8 +33293,7 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 ### software.amazon.awssdk:checksums-spi @2.29.52 - https://aws.amazon.com/sdkforjava
 
-
-                                 Apache License
+Apache License
                            Version 2.0, January 2004
                         http://www.apache.org/licenses/
 
@@ -33015,8 +33505,7 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 ### software.amazon.awssdk:endpoints-spi @2.29.52 - https://aws.amazon.com/sdkforjava/core/endpoints-spi
 
-
-                                 Apache License
+Apache License
                            Version 2.0, January 2004
                         http://www.apache.org/licenses/
 
@@ -33228,8 +33717,7 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 ### software.amazon.awssdk:http-auth @2.29.52 - https://aws.amazon.com/sdkforjava
 
-
-                                 Apache License
+Apache License
                            Version 2.0, January 2004
                         http://www.apache.org/licenses/
 
@@ -33441,8 +33929,7 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 ### software.amazon.awssdk:http-auth-aws @2.29.52 - https://aws.amazon.com/sdkforjava
 
-
-                                 Apache License
+Apache License
                            Version 2.0, January 2004
                         http://www.apache.org/licenses/
 
@@ -33654,8 +34141,7 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 ### software.amazon.awssdk:http-auth-aws-eventstream @2.29.52 - https://aws.amazon.com/sdkforjava
 
-
-                                 Apache License
+Apache License
                            Version 2.0, January 2004
                         http://www.apache.org/licenses/
 
@@ -33867,8 +34353,7 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 ### software.amazon.awssdk:http-auth-spi @2.29.52 - https://aws.amazon.com/sdkforjava
 
-
-                                 Apache License
+Apache License
                            Version 2.0, January 2004
                         http://www.apache.org/licenses/
 
@@ -34080,8 +34565,7 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 ### software.amazon.awssdk:http-client-spi @2.29.52 - https://aws.amazon.com/sdkforjava/http-client-spi
 
-
-                                 Apache License
+Apache License
                            Version 2.0, January 2004
                         http://www.apache.org/licenses/
 
@@ -34293,8 +34777,7 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 ### software.amazon.awssdk:identity-spi @2.29.52 - https://aws.amazon.com/sdkforjava
 
-
-                                 Apache License
+Apache License
                            Version 2.0, January 2004
                         http://www.apache.org/licenses/
 
@@ -34506,8 +34989,7 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 ### software.amazon.awssdk:json-utils @2.29.52 - https://aws.amazon.com/sdkforjava
 
-
-                                 Apache License
+Apache License
                            Version 2.0, January 2004
                         http://www.apache.org/licenses/
 
@@ -34719,8 +35201,7 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 ### software.amazon.awssdk:metrics-spi @2.29.52 - https://aws.amazon.com/sdkforjava/core/metrics-spi
 
-
-                                 Apache License
+Apache License
                            Version 2.0, January 2004
                         http://www.apache.org/licenses/
 
@@ -34932,8 +35413,7 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 ### software.amazon.awssdk:netty-nio-client @2.29.52 - https://aws.amazon.com/sdkforjava/http-clients/netty-nio-client
 
-
-                                 Apache License
+Apache License
                            Version 2.0, January 2004
                         http://www.apache.org/licenses/
 
@@ -35145,8 +35625,7 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 ### software.amazon.awssdk:profiles @2.29.52 - https://aws.amazon.com/sdkforjava
 
-
-                                 Apache License
+Apache License
                            Version 2.0, January 2004
                         http://www.apache.org/licenses/
 
@@ -35358,8 +35837,7 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 ### software.amazon.awssdk:protocol-core @2.29.52 - https://aws.amazon.com/sdkforjava
 
-
-                                 Apache License
+Apache License
                            Version 2.0, January 2004
                         http://www.apache.org/licenses/
 
@@ -35571,8 +36049,7 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 ### software.amazon.awssdk:regions @2.29.52 - https://aws.amazon.com/sdkforjava/core/regions
 
-
-                                 Apache License
+Apache License
                            Version 2.0, January 2004
                         http://www.apache.org/licenses/
 
@@ -35784,8 +36261,7 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 ### software.amazon.awssdk:retries @2.29.52 - https://aws.amazon.com/sdkforjava/core/retries
 
-
-                                 Apache License
+Apache License
                            Version 2.0, January 2004
                         http://www.apache.org/licenses/
 
@@ -35997,8 +36473,7 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 ### software.amazon.awssdk:retries-spi @2.29.52 - https://aws.amazon.com/sdkforjava/core/retries-spi
 
-
-                                 Apache License
+Apache License
                            Version 2.0, January 2004
                         http://www.apache.org/licenses/
 
@@ -36210,8 +36685,7 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 ### software.amazon.awssdk:sdk-core @2.29.52 - https://aws.amazon.com/sdkforjava
 
-
-                                 Apache License
+Apache License
                            Version 2.0, January 2004
                         http://www.apache.org/licenses/
 
@@ -36423,8 +36897,7 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 ### software.amazon.awssdk:sqs @2.29.52 - https://aws.amazon.com/sdkforjava
 
-
-                                 Apache License
+Apache License
                            Version 2.0, January 2004
                         http://www.apache.org/licenses/
 
@@ -36636,8 +37109,7 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 ### software.amazon.awssdk:third-party-jackson-core @2.29.52 - https://aws.amazon.com/sdkforjava
 
-
-                                 Apache License
+Apache License
                            Version 2.0, January 2004
                         http://www.apache.org/licenses/
 
@@ -36849,8 +37321,7 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 ### software.amazon.awssdk:utils @2.29.52 - https://aws.amazon.com/sdkforjava/utils
 
-
-                                 Apache License
+Apache License
                            Version 2.0, January 2004
                         http://www.apache.org/licenses/
 
@@ -37062,8 +37533,7 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 ### software.amazon.eventstream:eventstream @1.0.1 - https://github.com/awslabs/aws-eventstream-java
 
-
-                                 Apache License
+Apache License
                            Version 2.0, January 2004
                         http://www.apache.org/licenses/
 
@@ -37264,7 +37734,6 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
    See the License for the specific language governing permissions and
    limitations under the License.
-
 
 [Source code](https://repo.maven.apache.org/maven2/software/amazon/eventstream/eventstream/1.0.1/eventstream-1.0.1-sources.jar)
 
