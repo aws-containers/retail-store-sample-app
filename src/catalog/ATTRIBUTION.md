@@ -3,7 +3,6 @@
 This software depends on external packages and source code.
 The applicable license information is listed below:
 
-
 ----
 
 ### dario.cat/mergo @1.0.0 - https://github.com/imdario/mergo.git
@@ -37,10 +36,7 @@ THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-
 [Source code](https://github.com/imdario/mergo.git)
-
-
 
 ----
 
@@ -74,10 +70,7 @@ THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-
 [Source code](https://github.com/FiloSottile/edwards25519.git)
-
-
 
 ----
 
@@ -105,10 +98,7 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 
-
 [Source code](https://github.com/Azure/go-ansiterm.git)
-
-
 
 ----
 
@@ -136,18 +126,13 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
-
-
 [Source code](https://github.com/Microsoft/go-winio.git)
-
-
 
 ----
 
 ### github.com/aws/aws-sdk-go @1.55.6 - https://github.com/aws/aws-sdk-go.git
 
-
-                                 Apache License
+Apache License
                            Version 2.0, January 2004
                         http://www.apache.org/licenses/
 
@@ -349,10 +334,7 @@ SOFTWARE.
    See the License for the specific language governing permissions and
    limitations under the License.
 
-
 [Source code](https://github.com/aws/aws-sdk-go.git)
-
-
 
 ----
 
@@ -379,16 +361,13 @@ LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
 OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-
 [Source code](https://github.com/beorn7/perks.git)
-
-
 
 ----
 
 ### github.com/bytedance/sonic @1.12.7 - https://github.com/bytedance/sonic.git
 
-                                 Apache License
+Apache License
                            Version 2.0, January 2004
                         http://www.apache.org/licenses/
 
@@ -590,16 +569,13 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
    See the License for the specific language governing permissions and
    limitations under the License.
 
-
 [Source code](https://github.com/bytedance/sonic.git)
-
-
 
 ----
 
 ### github.com/bytedance/sonic/loader @0.2.3 - https://github.com/bytedance/sonic.git
 
-                                 Apache License
+Apache License
                            Version 2.0, January 2004
                         http://www.apache.org/licenses/
 
@@ -801,10 +777,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
    See the License for the specific language governing permissions and
    limitations under the License.
 
-
 [Source code](https://github.com/bytedance/sonic.git)
-
-
 
 ----
 
@@ -831,10 +804,7 @@ COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
 IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-
 [Source code](https://github.com/cenkalti/backoff.git)
-
-
 
 ----
 
@@ -863,16 +833,13 @@ LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
 OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-
 [Source code](https://github.com/cespare/xxhash.git)
-
-
 
 ----
 
 ### github.com/cloudwego/base64x @0.1.5 - https://github.com/cloudwego/base64x.git
 
-                                 Apache License
+Apache License
                            Version 2.0, January 2004
                         http://www.apache.org/licenses/
 
@@ -1074,17 +1041,13 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
    See the License for the specific language governing permissions and
    limitations under the License.
 
-
 [Source code](https://github.com/cloudwego/base64x.git)
-
-
 
 ----
 
 ### github.com/containerd/containerd @1.7.18 - https://github.com/containerd/containerd.git
 
-
-                                 Apache License
+Apache License
                            Version 2.0, January 2004
                         https://www.apache.org/licenses/
 
@@ -1275,17 +1238,13 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
    See the License for the specific language governing permissions and
    limitations under the License.
 
-
 [Source code](https://github.com/containerd/containerd.git)
-
-
 
 ----
 
 ### github.com/containerd/log @0.1.0 - https://github.com/containerd/log.git
 
-
-                                 Apache License
+Apache License
                            Version 2.0, January 2004
                         https://www.apache.org/licenses/
 
@@ -1476,17 +1435,13 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
    See the License for the specific language governing permissions and
    limitations under the License.
 
-
 [Source code](https://github.com/containerd/log.git)
-
-
 
 ----
 
 ### github.com/containerd/platforms @0.2.1 - https://github.com/containerd/platforms.git
 
-
-                                 Apache License
+Apache License
                            Version 2.0, January 2004
                         https://www.apache.org/licenses/
 
@@ -1677,10 +1632,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
    See the License for the specific language governing permissions and
    limitations under the License.
 
-
 [Source code](https://github.com/containerd/platforms.git)
-
-
 
 ----
 
@@ -1710,8 +1662,6 @@ SOFTWARE.
 
 [Source code](https://github.com/cpuguy83/dockercfg.git)
 
-
-
 ----
 
 ### github.com/davecgh/go-spew @1.1.1 - https://github.com/davecgh/go-spew.git
@@ -1732,10 +1682,7 @@ WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
 ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
 OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
-
 [Source code](https://github.com/davecgh/go-spew.git)
-
-
 
 ----
 
@@ -1943,18 +1890,13 @@ Apache License
    See the License for the specific language governing permissions and
    limitations under the License.
 
-
-
 [Source code](https://github.com/distribution/reference.git)
-
-
 
 ----
 
 ### github.com/docker/docker @27.1.1 - https://github.com/docker/docker.git
 
-
-                                 Apache License
+Apache License
                            Version 2.0, January 2004
                         https://www.apache.org/licenses/
 
@@ -2145,17 +2087,13 @@ Apache License
    See the License for the specific language governing permissions and
    limitations under the License.
 
-
 [Source code](https://github.com/docker/docker.git)
-
-
 
 ----
 
 ### github.com/docker/go-connections @0.5.0 - https://github.com/docker/go-connections.git
 
-
-                                 Apache License
+Apache License
                            Version 2.0, January 2004
                         https://www.apache.org/licenses/
 
@@ -2346,17 +2284,13 @@ Apache License
    See the License for the specific language governing permissions and
    limitations under the License.
 
-
 [Source code](https://github.com/docker/go-connections.git)
-
-
 
 ----
 
 ### github.com/docker/go-units @0.5.0 - https://github.com/docker/go-units.git
 
-
-                                 Apache License
+Apache License
                            Version 2.0, January 2004
                         https://www.apache.org/licenses/
 
@@ -2547,10 +2481,7 @@ Apache License
    See the License for the specific language governing permissions and
    limitations under the License.
 
-
 [Source code](https://github.com/docker/go-units.git)
-
-
 
 ----
 
@@ -2576,10 +2507,7 @@ Copyright (c) 2016 Felix Geisendörfer (felix@debuggable.com)
  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  THE SOFTWARE.
 
-
 [Source code](https://github.com/felixge/httpsnoop.git)
-
-
 
 ----
 
@@ -2607,10 +2535,7 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
-
 [Source code](https://github.com/gabriel-vasile/mimetype.git)
-
-
 
 ----
 
@@ -2638,10 +2563,7 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 
-
 [Source code](https://github.com/gin-contrib/sse.git)
-
-
 
 ----
 
@@ -2669,16 +2591,13 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 
-
 [Source code](https://github.com/gin-gonic/gin.git)
-
-
 
 ----
 
 ### github.com/go-logr/logr @1.4.2 - https://github.com/go-logr/logr.git
 
-                                 Apache License
+Apache License
                            Version 2.0, January 2004
                         http://www.apache.org/licenses/
 
@@ -2880,16 +2799,13 @@ THE SOFTWARE.
    See the License for the specific language governing permissions and
    limitations under the License.
 
-
 [Source code](https://github.com/go-logr/logr.git)
-
-
 
 ----
 
 ### github.com/go-logr/stdr @1.2.2 - https://github.com/go-logr/stdr.git
 
-                                 Apache License
+Apache License
                            Version 2.0, January 2004
                         http://www.apache.org/licenses/
 
@@ -3091,10 +3007,7 @@ THE SOFTWARE.
    See the License for the specific language governing permissions and
    limitations under the License.
 
-
 [Source code](https://github.com/go-logr/stdr.git)
-
-
 
 ----
 
@@ -3122,10 +3035,7 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
-
 [Source code](https://github.com/go-ole/go-ole.git)
-
-
 
 ----
 
@@ -3155,8 +3065,6 @@ SOFTWARE.
 
 [Source code](https://github.com/go-playground/locales.git)
 
-
-
 ----
 
 ### github.com/go-playground/universal-translator @0.18.1 - https://github.com/go-playground/universal-translator.git
@@ -3183,10 +3091,7 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
-
 [Source code](https://github.com/go-playground/universal-translator.git)
-
-
 
 ----
 
@@ -3214,11 +3119,7 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
-
-
 [Source code](https://github.com/go-playground/validator.git)
-
-
 
 ----
 
@@ -3598,10 +3499,7 @@ Exhibit B - "Incompatible With Secondary Licenses" Notice
   This Source Code Form is "Incompatible With Secondary Licenses", as
   defined by the Mozilla Public License, v. 2.0.
 
-
 [Source code](https://github.com/go-sql-driver/mysql.git)
-
-
 
 ----
 
@@ -3629,10 +3527,7 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
-
 [Source code](https://github.com/goccy/go-json.git)
-
-
 
 ----
 
@@ -3673,11 +3568,7 @@ THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-
-
 [Source code](https://github.com/gogo/protobuf.git)
-
-
 
 ----
 
@@ -3711,10 +3602,7 @@ THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-
 [Source code](https://github.com/google/uuid.git)
-
-
 
 ----
 
@@ -3748,10 +3636,7 @@ ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-
 [Source code](https://github.com/grpc-ecosystem/grpc-gateway.git)
-
-
 
 ----
 
@@ -3779,10 +3664,7 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
-
 [Source code](https://github.com/jinzhu/inflection.git)
-
-
 
 ----
 
@@ -3810,10 +3692,7 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 
-
 [Source code](https://github.com/jinzhu/now.git)
-
-
 
 ----
 
@@ -3833,10 +3712,7 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 
-
 [Source code](https://github.com/jmespath/go-jmespath.git)
-
-
 
 ----
 
@@ -3864,10 +3740,7 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
-
 [Source code](https://github.com/json-iterator/go.git)
-
-
 
 ----
 
@@ -4178,10 +4051,7 @@ The above copyright notice and this permission notice shall be included in all c
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-
 [Source code](https://github.com/klauspost/compress.git)
-
-
 
 ----
 
@@ -4209,11 +4079,7 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
-
-
 [Source code](https://github.com/klauspost/cpuid.git)
-
-
 
 ----
 
@@ -4241,10 +4107,7 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
-
 [Source code](https://github.com/leodido/go-urn.git)
-
-
 
 ----
 
@@ -4280,10 +4143,7 @@ CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
 OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-
 [Source code](https://github.com/lufia/plan9stats.git)
-
-
 
 ----
 
@@ -4314,10 +4174,7 @@ ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-
 [Source code](https://github.com/magiconair/properties.git)
-
-
 
 ----
 
@@ -4333,10 +4190,7 @@ The above copyright notice and this permission notice shall be included in all c
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-
 [Source code](https://github.com/mattn/go-isatty.git)
-
-
 
 ----
 
@@ -4364,16 +4218,13 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
-
 [Source code](https://github.com/mattn/go-sqlite3.git)
-
-
 
 ----
 
 ### github.com/moby/docker-image-spec @1.3.1 - https://github.com/moby/docker-image-spec.git
 
-                                 Apache License
+Apache License
                            Version 2.0, January 2004
                         http://www.apache.org/licenses/
 
@@ -4575,17 +4426,13 @@ SOFTWARE.
    See the License for the specific language governing permissions and
    limitations under the License.
 
-
 [Source code](https://github.com/moby/docker-image-spec.git)
-
-
 
 ----
 
 ### github.com/moby/patternmatcher @0.6.0 - https://github.com/moby/patternmatcher.git
 
-
-                                 Apache License
+Apache License
                            Version 2.0, January 2004
                         https://www.apache.org/licenses/
 
@@ -4776,17 +4623,13 @@ SOFTWARE.
    See the License for the specific language governing permissions and
    limitations under the License.
 
-
 [Source code](https://github.com/moby/patternmatcher.git)
-
-
 
 ----
 
 ### github.com/moby/sys/sequential @0.5.0 - https://github.com/moby/sys.git
 
-
-                                 Apache License
+Apache License
                            Version 2.0, January 2004
                         http://www.apache.org/licenses/
 
@@ -4988,17 +4831,13 @@ SOFTWARE.
    See the License for the specific language governing permissions and
    limitations under the License.
 
-
 [Source code](https://github.com/moby/sys.git)
-
-
 
 ----
 
 ### github.com/moby/sys/user @0.1.0 - https://github.com/moby/sys.git
 
-
-                                 Apache License
+Apache License
                            Version 2.0, January 2004
                         http://www.apache.org/licenses/
 
@@ -5200,17 +5039,13 @@ SOFTWARE.
    See the License for the specific language governing permissions and
    limitations under the License.
 
-
 [Source code](https://github.com/moby/sys.git)
-
-
 
 ----
 
 ### github.com/moby/term @0.5.0 - https://github.com/moby/term.git
 
-
-                                 Apache License
+Apache License
                            Version 2.0, January 2004
                         https://www.apache.org/licenses/
 
@@ -5401,16 +5236,13 @@ SOFTWARE.
    See the License for the specific language governing permissions and
    limitations under the License.
 
-
 [Source code](https://github.com/moby/term.git)
-
-
 
 ----
 
 ### github.com/modern-go/concurrent @0.0.0-20180306012644-bacd9c7ef1dd - https://github.com/modern-go/concurrent.git
 
-                                 Apache License
+Apache License
                            Version 2.0, January 2004
                         http://www.apache.org/licenses/
 
@@ -5612,16 +5444,13 @@ SOFTWARE.
    See the License for the specific language governing permissions and
    limitations under the License.
 
-
 [Source code](https://github.com/modern-go/concurrent.git)
-
-
 
 ----
 
 ### github.com/modern-go/reflect2 @1.0.2 - https://github.com/modern-go/reflect2.git
 
-                                 Apache License
+Apache License
                            Version 2.0, January 2004
                         http://www.apache.org/licenses/
 
@@ -5823,10 +5652,7 @@ SOFTWARE.
    See the License for the specific language governing permissions and
    limitations under the License.
 
-
 [Source code](https://github.com/modern-go/reflect2.git)
-
-
 
 ----
 
@@ -5854,10 +5680,7 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
-
 [Source code](https://github.com/morikuni/aec.git)
-
-
 
 ----
 
@@ -5895,17 +5718,13 @@ THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-
 [Source code](https://github.com/munnerz/goautoneg.git)
-
-
 
 ----
 
 ### github.com/opencontainers/go-digest @1.0.0 - https://github.com/opencontainers/go-digest.git
 
-
-                                 Apache License
+Apache License
                            Version 2.0, January 2004
                         https://www.apache.org/licenses/
 
@@ -6097,17 +5916,13 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
    See the License for the specific language governing permissions and
    limitations under the License.
 
-
 [Source code](https://github.com/opencontainers/go-digest.git)
-
-
 
 ----
 
 ### github.com/opencontainers/image-spec @1.1.0 - https://github.com/opencontainers/image-spec.git
 
-
-                                 Apache License
+Apache License
                            Version 2.0, January 2004
                         http://www.apache.org/licenses/
 
@@ -6298,10 +6113,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
    See the License for the specific language governing permissions and
    limitations under the License.
 
-
 [Source code](https://github.com/opencontainers/image-spec.git)
-
-
 
 ----
 
@@ -6330,10 +6142,7 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
-
 [Source code](https://github.com/pelletier/go-toml.git)
-
-
 
 ----
 
@@ -6363,10 +6172,7 @@ CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
 OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-
 [Source code](https://github.com/pkg/errors.git)
-
-
 
 ----
 
@@ -6400,10 +6206,7 @@ LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
 NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-
 [Source code](https://github.com/pmezard/go-difflib.git)
-
-
 
 ----
 
@@ -6431,18 +6234,13 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
-
-
-
 [Source code](https://github.com/power-devops/perfstat.git)
-
-
 
 ----
 
 ### github.com/prometheus/client_golang @1.20.5 - https://github.com/prometheus/client_golang.git
 
-                                 Apache License
+Apache License
                            Version 2.0, January 2004
                         http://www.apache.org/licenses/
 
@@ -6644,16 +6442,13 @@ SOFTWARE.
    See the License for the specific language governing permissions and
    limitations under the License.
 
-
 [Source code](https://github.com/prometheus/client_golang.git)
-
-
 
 ----
 
 ### github.com/prometheus/client_model @0.6.1 - https://github.com/prometheus/client_model.git
 
-                                 Apache License
+Apache License
                            Version 2.0, January 2004
                         http://www.apache.org/licenses/
 
@@ -6855,16 +6650,13 @@ SOFTWARE.
    See the License for the specific language governing permissions and
    limitations under the License.
 
-
 [Source code](https://github.com/prometheus/client_model.git)
-
-
 
 ----
 
 ### github.com/prometheus/common @0.62.0 - https://github.com/prometheus/common.git
 
-                                 Apache License
+Apache License
                            Version 2.0, January 2004
                         http://www.apache.org/licenses/
 
@@ -7066,16 +6858,13 @@ SOFTWARE.
    See the License for the specific language governing permissions and
    limitations under the License.
 
-
 [Source code](https://github.com/prometheus/common.git)
-
-
 
 ----
 
 ### github.com/prometheus/procfs @0.15.1 - https://github.com/prometheus/procfs.git
 
-                                 Apache License
+Apache License
                            Version 2.0, January 2004
                         http://www.apache.org/licenses/
 
@@ -7277,17 +7066,13 @@ SOFTWARE.
    See the License for the specific language governing permissions and
    limitations under the License.
 
-
 [Source code](https://github.com/prometheus/procfs.git)
-
-
 
 ----
 
 ### github.com/sethvargo/go-envconfig @0.1.1 - https://github.com/sethvargo/go-envconfig.git
 
-
-                                 Apache License
+Apache License
                            Version 2.0, January 2004
                         http://www.apache.org/licenses/
 
@@ -7489,10 +7274,7 @@ SOFTWARE.
    See the License for the specific language governing permissions and
    limitations under the License.
 
-
 [Source code](https://github.com/sethvargo/go-envconfig.git)
-
-
 
 ----
 
@@ -7561,8 +7343,6 @@ THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 [Source code](https://github.com/shirou/gopsutil.git)
-
-
 
 ----
 
@@ -7931,11 +7711,7 @@ Exhibit B - "Incompatible With Secondary Licenses" Notice
       With Secondary Licenses", as defined by
       the Mozilla Public License, v. 2.0.
 
-
-
 [Source code](https://github.com/shoenig/go-m1cpu.git)
-
-
 
 ----
 
@@ -7963,10 +7739,7 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 
-
 [Source code](https://github.com/sirupsen/logrus.git)
-
-
 
 ----
 
@@ -7994,10 +7767,7 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
-
 [Source code](https://github.com/stretchr/testify.git)
-
-
 
 ----
 
@@ -8025,10 +7795,7 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
-
 [Source code](https://github.com/testcontainers/testcontainers-go.git)
-
-
 
 ----
 
@@ -8064,17 +7831,13 @@ CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
 OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-
 [Source code](https://github.com/tklauser/go-sysconf.git)
-
-
 
 ----
 
 ### github.com/tklauser/numcpus @0.6.1 - https://github.com/tklauser/numcpus.git
 
-
-                                 Apache License
+Apache License
                            Version 2.0, January 2004
                         http://www.apache.org/licenses/
 
@@ -8276,10 +8039,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
    See the License for the specific language governing permissions and
    limitations under the License.
 
-
 [Source code](https://github.com/tklauser/numcpus.git)
-
-
 
 ----
 
@@ -8313,10 +8073,7 @@ THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-
 [Source code](https://github.com/twitchyliquid64/golang-asm.git)
-
-
 
 ----
 
@@ -8345,10 +8102,7 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
-
 [Source code](https://github.com/ugorji/go.git)
-
-
 
 ----
 
@@ -8375,10 +8129,7 @@ COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
 IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-
 [Source code](https://github.com/yusufpapurcu/wmi.git)
-
-
 
 ----
 
@@ -8406,16 +8157,13 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
-
 [Source code](https://github.com/zsais/go-gin-prometheus.git)
-
-
 
 ----
 
 ### go.opentelemetry.io/auto/sdk @1.1.0 - https://github.com/open-telemetry/opentelemetry-go-instrumentation.git
 
-                                 Apache License
+Apache License
                            Version 2.0, January 2004
                         http://www.apache.org/licenses/
 
@@ -8617,16 +8365,13 @@ SOFTWARE.
    See the License for the specific language governing permissions and
    limitations under the License.
 
-
 [Source code](https://github.com/open-telemetry/opentelemetry-go-instrumentation.git)
-
-
 
 ----
 
 ### go.opentelemetry.io/contrib/detectors/aws/ec2 @1.34.0 - https://github.com/open-telemetry/opentelemetry-go-contrib.git
 
-                                 Apache License
+Apache License
                            Version 2.0, January 2004
                         http://www.apache.org/licenses/
 
@@ -8828,16 +8573,13 @@ SOFTWARE.
    See the License for the specific language governing permissions and
    limitations under the License.
 
-
 [Source code](https://github.com/open-telemetry/opentelemetry-go-contrib.git)
-
-
 
 ----
 
 ### go.opentelemetry.io/contrib/instrumentation/github.com/gin-gonic/gin/otelgin @0.59.0 - https://github.com/open-telemetry/opentelemetry-go-contrib.git
 
-                                 Apache License
+Apache License
                            Version 2.0, January 2004
                         http://www.apache.org/licenses/
 
@@ -9039,16 +8781,13 @@ SOFTWARE.
    See the License for the specific language governing permissions and
    limitations under the License.
 
-
 [Source code](https://github.com/open-telemetry/opentelemetry-go-contrib.git)
-
-
 
 ----
 
 ### go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp @0.49.0 - https://github.com/open-telemetry/opentelemetry-go-contrib.git
 
-                                 Apache License
+Apache License
                            Version 2.0, January 2004
                         http://www.apache.org/licenses/
 
@@ -9250,16 +8989,13 @@ SOFTWARE.
    See the License for the specific language governing permissions and
    limitations under the License.
 
-
 [Source code](https://github.com/open-telemetry/opentelemetry-go-contrib.git)
-
-
 
 ----
 
 ### go.opentelemetry.io/contrib/propagators/aws @1.34.0 - https://github.com/open-telemetry/opentelemetry-go-contrib.git
 
-                                 Apache License
+Apache License
                            Version 2.0, January 2004
                         http://www.apache.org/licenses/
 
@@ -9461,16 +9197,13 @@ SOFTWARE.
    See the License for the specific language governing permissions and
    limitations under the License.
 
-
 [Source code](https://github.com/open-telemetry/opentelemetry-go-contrib.git)
-
-
 
 ----
 
 ### go.opentelemetry.io/otel @1.34.0 - https://github.com/open-telemetry/opentelemetry-go.git
 
-                                 Apache License
+Apache License
                            Version 2.0, January 2004
                         http://www.apache.org/licenses/
 
@@ -9672,16 +9405,13 @@ SOFTWARE.
    See the License for the specific language governing permissions and
    limitations under the License.
 
-
 [Source code](https://github.com/open-telemetry/opentelemetry-go.git)
-
-
 
 ----
 
 ### go.opentelemetry.io/otel/exporters/otlp/otlptrace @1.34.0 - https://github.com/open-telemetry/opentelemetry-go.git
 
-                                 Apache License
+Apache License
                            Version 2.0, January 2004
                         http://www.apache.org/licenses/
 
@@ -9883,16 +9613,13 @@ SOFTWARE.
    See the License for the specific language governing permissions and
    limitations under the License.
 
-
 [Source code](https://github.com/open-telemetry/opentelemetry-go.git)
-
-
 
 ----
 
 ### go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracehttp @1.34.0 - https://github.com/open-telemetry/opentelemetry-go.git
 
-                                 Apache License
+Apache License
                            Version 2.0, January 2004
                         http://www.apache.org/licenses/
 
@@ -10094,16 +9821,13 @@ SOFTWARE.
    See the License for the specific language governing permissions and
    limitations under the License.
 
-
 [Source code](https://github.com/open-telemetry/opentelemetry-go.git)
-
-
 
 ----
 
 ### go.opentelemetry.io/otel/metric @1.34.0 - https://github.com/open-telemetry/opentelemetry-go.git
 
-                                 Apache License
+Apache License
                            Version 2.0, January 2004
                         http://www.apache.org/licenses/
 
@@ -10305,16 +10029,13 @@ SOFTWARE.
    See the License for the specific language governing permissions and
    limitations under the License.
 
-
 [Source code](https://github.com/open-telemetry/opentelemetry-go.git)
-
-
 
 ----
 
 ### go.opentelemetry.io/otel/sdk @1.34.0 - https://github.com/open-telemetry/opentelemetry-go.git
 
-                                 Apache License
+Apache License
                            Version 2.0, January 2004
                         http://www.apache.org/licenses/
 
@@ -10516,16 +10237,13 @@ SOFTWARE.
    See the License for the specific language governing permissions and
    limitations under the License.
 
-
 [Source code](https://github.com/open-telemetry/opentelemetry-go.git)
-
-
 
 ----
 
 ### go.opentelemetry.io/otel/trace @1.34.0 - https://github.com/open-telemetry/opentelemetry-go.git
 
-                                 Apache License
+Apache License
                            Version 2.0, January 2004
                         http://www.apache.org/licenses/
 
@@ -10727,16 +10445,13 @@ SOFTWARE.
    See the License for the specific language governing permissions and
    limitations under the License.
 
-
 [Source code](https://github.com/open-telemetry/opentelemetry-go.git)
-
-
 
 ----
 
 ### go.opentelemetry.io/proto/otlp @1.5.0 - https://github.com/open-telemetry/opentelemetry-proto-go.git
 
-                                 Apache License
+Apache License
                            Version 2.0, January 2004
                         http://www.apache.org/licenses/
 
@@ -10938,10 +10653,7 @@ SOFTWARE.
    See the License for the specific language governing permissions and
    limitations under the License.
 
-
 [Source code](https://github.com/open-telemetry/opentelemetry-proto-go.git)
-
-
 
 ----
 
@@ -10975,10 +10687,7 @@ THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-
 [Source code](https://go.googlesource.com/arch)
-
-
 
 ----
 
@@ -11012,10 +10721,7 @@ THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-
 [Source code](https://go.googlesource.com/crypto)
-
-
 
 ----
 
@@ -11049,10 +10755,7 @@ THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-
 [Source code](https://go.googlesource.com/net)
-
-
 
 ----
 
@@ -11086,10 +10789,7 @@ THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-
 [Source code](https://go.googlesource.com/sys)
-
-
 
 ----
 
@@ -11123,17 +10823,13 @@ THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-
 [Source code](https://go.googlesource.com/text)
-
-
 
 ----
 
 ### google.golang.org/genproto/googleapis/api @0.0.0-20250115164207-1a7da9e5054f - https://github.com/googleapis/go-genproto.git
 
-
-                                 Apache License
+Apache License
                            Version 2.0, January 2004
                         http://www.apache.org/licenses/
 
@@ -11335,17 +11031,13 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
    See the License for the specific language governing permissions and
    limitations under the License.
 
-
 [Source code](https://github.com/googleapis/go-genproto.git)
-
-
 
 ----
 
 ### google.golang.org/genproto/googleapis/rpc @0.0.0-20250115164207-1a7da9e5054f - https://github.com/googleapis/go-genproto.git
 
-
-                                 Apache License
+Apache License
                            Version 2.0, January 2004
                         http://www.apache.org/licenses/
 
@@ -11547,17 +11239,13 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
    See the License for the specific language governing permissions and
    limitations under the License.
 
-
 [Source code](https://github.com/googleapis/go-genproto.git)
-
-
 
 ----
 
 ### google.golang.org/grpc @1.69.4 - https://github.com/grpc/grpc-go.git
 
-
-                                 Apache License
+Apache License
                            Version 2.0, January 2004
                         http://www.apache.org/licenses/
 
@@ -11759,10 +11447,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
    See the License for the specific language governing permissions and
    limitations under the License.
 
-
 [Source code](https://github.com/grpc/grpc-go.git)
-
-
 
 ----
 
@@ -11796,15 +11481,11 @@ THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-
 [Source code](https://go.googlesource.com/protobuf)
-
-
 
 ----
 
 ### gopkg.in/yaml.v3 @3.0.1 - https://gopkg.in/yaml.v3
-
 
 This project is covered by two different licenses: MIT and Apache.
 
@@ -11856,10 +11537,7 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 
-
 [Source code](https://gopkg.in/yaml.v3)
-
-
 
 ----
 
@@ -11887,10 +11565,7 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 
-
 [Source code](https://github.com/go-gorm/mysql.git)
-
-
 
 ----
 
@@ -11918,10 +11593,7 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 
-
 [Source code](https://github.com/go-gorm/sqlite.git)
-
-
 
 ----
 
@@ -11949,10 +11621,7 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 
-
 [Source code](https://github.com/go-gorm/gorm.git)
-
-
 
 ----
 
@@ -11981,6 +11650,4 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 [Source code](https://github.com/go-gorm/opentelemetry.git)
-
-
 
