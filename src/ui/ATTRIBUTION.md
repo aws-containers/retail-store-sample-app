@@ -3,7 +3,6 @@
 This software depends on external packages and source code.
 The applicable license information is listed below:
 
-
 ----
 
 ### com.fasterxml:classmate @1.7.0 - https://github.com/FasterXML/java-classmate
@@ -18,8 +17,6 @@ http://www.apache.org/licenses/LICENSE-2.0
 
 
 [Source code](https://repo.maven.apache.org/maven2/com/fasterxml/classmate/1.7.0/classmate-1.7.0-sources.jar)
-
-
 
 ----
 
@@ -231,8 +228,6 @@ http://www.apache.org/licenses/LICENSE-2.0
 
 [Source code](https://repo.maven.apache.org/maven2/com/fasterxml/jackson/core/jackson-annotations/2.18.2/jackson-annotations-2.18.2-sources.jar)
 
-
-
 ----
 
 ### com.fasterxml.jackson.core:jackson-core @2.18.2 - https://github.com/FasterXML/jackson-core
@@ -442,8 +437,6 @@ http://www.apache.org/licenses/LICENSE-2.0
 
 
 [Source code](https://repo.maven.apache.org/maven2/com/fasterxml/jackson/core/jackson-core/2.18.2/jackson-core-2.18.2-sources.jar)
-
-
 
 ----
 
@@ -655,8 +648,6 @@ http://www.apache.org/licenses/LICENSE-2.0
 
 [Source code](https://repo.maven.apache.org/maven2/com/fasterxml/jackson/core/jackson-databind/2.18.2/jackson-databind-2.18.2-sources.jar)
 
-
-
 ----
 
 ### com.fasterxml.jackson.dataformat:jackson-dataformat-yaml @2.18.2 - https://github.com/FasterXML/jackson-dataformats-text
@@ -672,8 +663,6 @@ http://www.apache.org/licenses/LICENSE-2.0
 
 
 [Source code](https://repo.maven.apache.org/maven2/com/fasterxml/jackson/dataformat/jackson-dataformat-yaml/2.18.2/jackson-dataformat-yaml-2.18.2-sources.jar)
-
-
 
 ----
 
@@ -691,8 +680,6 @@ http://www.apache.org/licenses/LICENSE-2.0
 
 [Source code](https://repo.maven.apache.org/maven2/com/fasterxml/jackson/datatype/jackson-datatype-jdk8/2.18.2/jackson-datatype-jdk8-2.18.2-sources.jar)
 
-
-
 ----
 
 ### com.fasterxml.jackson.datatype:jackson-datatype-jsr310 @2.18.2 - https://github.com/FasterXML/jackson-modules-java8/jackson-datatype-jsr310
@@ -708,8 +695,6 @@ http://www.apache.org/licenses/LICENSE-2.0
 
 
 [Source code](https://repo.maven.apache.org/maven2/com/fasterxml/jackson/datatype/jackson-datatype-jsr310/2.18.2/jackson-datatype-jsr310-2.18.2-sources.jar)
-
-
 
 ----
 
@@ -727,8 +712,6 @@ http://www.apache.org/licenses/LICENSE-2.0
 
 [Source code](https://repo.maven.apache.org/maven2/com/fasterxml/jackson/module/jackson-module-jsonSchema/2.18.2/jackson-module-jsonSchema-2.18.2-sources.jar)
 
-
-
 ----
 
 ### com.fasterxml.jackson.module:jackson-module-parameter-names @2.18.2 - https://github.com/FasterXML/jackson-modules-java8/jackson-module-parameter-names
@@ -744,8 +727,6 @@ http://www.apache.org/licenses/LICENSE-2.0
 
 
 [Source code](https://repo.maven.apache.org/maven2/com/fasterxml/jackson/module/jackson-module-parameter-names/2.18.2/jackson-module-parameter-names-2.18.2-sources.jar)
-
-
 
 ----
 
@@ -956,8 +937,6 @@ http://www.apache.org/licenses/LICENSE-2.0
 
 [Source code](https://repo.maven.apache.org/maven2/com/github/victools/jsonschema-generator/4.37.0/jsonschema-generator-4.37.0-sources.jar)
 
-
-
 ----
 
 ### com.github.victools:jsonschema-module-jackson @4.37.0 - https://github.com/victools/jsonschema-generator
@@ -1167,8 +1146,6 @@ http://www.apache.org/licenses/LICENSE-2.0
 
 [Source code](https://repo.maven.apache.org/maven2/com/github/victools/jsonschema-module-jackson/4.37.0/jsonschema-module-jackson-4.37.0-sources.jar)
 
-
-
 ----
 
 ### com.github.victools:jsonschema-module-swagger-2 @4.37.0 - https://github.com/victools/jsonschema-generator/jsonschema-module-swagger-2
@@ -1377,8 +1354,6 @@ http://www.apache.org/licenses/LICENSE-2.0
 
 
 [Source code](https://repo.maven.apache.org/maven2/com/github/victools/jsonschema-module-swagger-2/4.37.0/jsonschema-module-swagger-2-4.37.0-sources.jar)
-
-
 
 ----
 
@@ -1590,8 +1565,6 @@ http://www.apache.org/licenses/LICENSE-2.0
 
 [Source code](https://repo.maven.apache.org/maven2/com/google/cloud/opentelemetry/detector-resources-support/0.33.0/detector-resources-support-0.33.0-sources.jar)
 
-
-
 ----
 
 ### com.google.code.findbugs:jsr305 @3.0.2 - http://findbugs.sourceforge.net/
@@ -1801,8 +1774,6 @@ http://www.apache.org/licenses/LICENSE-2.0
 
 
 [Source code](https://repo.maven.apache.org/maven2/com/google/code/findbugs/jsr305/3.0.2/jsr305-3.0.2-sources.jar)
-
-
 
 ----
 
@@ -2014,8 +1985,6 @@ http://www.apache.org/licenses/LICENSE-2.0
 
 [Source code](https://repo.maven.apache.org/maven2/com/google/code/gson/gson/2.11.0/gson-2.11.0-sources.jar)
 
-
-
 ----
 
 ### com.google.errorprone:error_prone_annotations @2.27.0 - https://errorprone.info/error_prone_annotations
@@ -2226,8 +2195,6 @@ http://www.apache.org/licenses/LICENSE-2.0
 
 [Source code](https://repo.maven.apache.org/maven2/com/google/errorprone/error_prone_annotations/2.27.0/error_prone_annotations-2.27.0-sources.jar)
 
-
-
 ----
 
 ### com.knuddels:jtokkit @1.1.0 - https://github.com/knuddelsgmbh/jtokkit
@@ -2257,11 +2224,9 @@ SOFTWARE.
 
 [Source code](https://repo.maven.apache.org/maven2/com/knuddels/jtokkit/1.1.0/jtokkit-1.1.0-sources.jar)
 
-
-
 ----
 
-### com.microsoft.kiota:microsoft-kiota-abstractions @1.8.3 - https://github.com/microsoft/kiota-java
+### com.microsoft.kiota:microsoft-kiota-abstractions @1.8.4 - https://github.com/microsoft/kiota-java
 
     MIT License
 
@@ -2286,13 +2251,11 @@ SOFTWARE.
     SOFTWARE
 
 
-[Source code](https://repo.maven.apache.org/maven2/com/microsoft/kiota/microsoft-kiota-abstractions/1.8.3/microsoft-kiota-abstractions-1.8.3-sources.jar)
-
-
+[Source code](https://repo.maven.apache.org/maven2/com/microsoft/kiota/microsoft-kiota-abstractions/1.8.4/microsoft-kiota-abstractions-1.8.4-sources.jar)
 
 ----
 
-### com.microsoft.kiota:microsoft-kiota-bundle @1.8.3 - https://github.com/microsoft/kiota-java
+### com.microsoft.kiota:microsoft-kiota-bundle @1.8.4 - https://github.com/microsoft/kiota-java
 
     MIT License
 
@@ -2317,13 +2280,11 @@ SOFTWARE.
     SOFTWARE
 
 
-[Source code](https://repo.maven.apache.org/maven2/com/microsoft/kiota/microsoft-kiota-bundle/1.8.3/microsoft-kiota-bundle-1.8.3-sources.jar)
-
-
+[Source code](https://repo.maven.apache.org/maven2/com/microsoft/kiota/microsoft-kiota-bundle/1.8.4/microsoft-kiota-bundle-1.8.4-sources.jar)
 
 ----
 
-### com.microsoft.kiota:microsoft-kiota-http-okHttp @1.8.3 - https://github.com/microsoft/kiota-java
+### com.microsoft.kiota:microsoft-kiota-http-okHttp @1.8.4 - https://github.com/microsoft/kiota-java
 
     MIT License
 
@@ -2348,13 +2309,11 @@ SOFTWARE.
     SOFTWARE
 
 
-[Source code](https://repo.maven.apache.org/maven2/com/microsoft/kiota/microsoft-kiota-http-okHttp/1.8.3/microsoft-kiota-http-okHttp-1.8.3-sources.jar)
-
-
+[Source code](https://repo.maven.apache.org/maven2/com/microsoft/kiota/microsoft-kiota-http-okHttp/1.8.4/microsoft-kiota-http-okHttp-1.8.4-sources.jar)
 
 ----
 
-### com.microsoft.kiota:microsoft-kiota-serialization-form @1.8.3 - https://github.com/microsoft/kiota-java
+### com.microsoft.kiota:microsoft-kiota-serialization-form @1.8.4 - https://github.com/microsoft/kiota-java
 
     MIT License
 
@@ -2379,13 +2338,11 @@ SOFTWARE.
     SOFTWARE
 
 
-[Source code](https://repo.maven.apache.org/maven2/com/microsoft/kiota/microsoft-kiota-serialization-form/1.8.3/microsoft-kiota-serialization-form-1.8.3-sources.jar)
-
-
+[Source code](https://repo.maven.apache.org/maven2/com/microsoft/kiota/microsoft-kiota-serialization-form/1.8.4/microsoft-kiota-serialization-form-1.8.4-sources.jar)
 
 ----
 
-### com.microsoft.kiota:microsoft-kiota-serialization-json @1.8.3 - https://github.com/microsoft/kiota-java
+### com.microsoft.kiota:microsoft-kiota-serialization-json @1.8.4 - https://github.com/microsoft/kiota-java
 
     MIT License
 
@@ -2410,13 +2367,11 @@ SOFTWARE.
     SOFTWARE
 
 
-[Source code](https://repo.maven.apache.org/maven2/com/microsoft/kiota/microsoft-kiota-serialization-json/1.8.3/microsoft-kiota-serialization-json-1.8.3-sources.jar)
-
-
+[Source code](https://repo.maven.apache.org/maven2/com/microsoft/kiota/microsoft-kiota-serialization-json/1.8.4/microsoft-kiota-serialization-json-1.8.4-sources.jar)
 
 ----
 
-### com.microsoft.kiota:microsoft-kiota-serialization-multipart @1.8.3 - https://github.com/microsoft/kiota-java
+### com.microsoft.kiota:microsoft-kiota-serialization-multipart @1.8.4 - https://github.com/microsoft/kiota-java
 
     MIT License
 
@@ -2441,13 +2396,11 @@ SOFTWARE.
     SOFTWARE
 
 
-[Source code](https://repo.maven.apache.org/maven2/com/microsoft/kiota/microsoft-kiota-serialization-multipart/1.8.3/microsoft-kiota-serialization-multipart-1.8.3-sources.jar)
-
-
+[Source code](https://repo.maven.apache.org/maven2/com/microsoft/kiota/microsoft-kiota-serialization-multipart/1.8.4/microsoft-kiota-serialization-multipart-1.8.4-sources.jar)
 
 ----
 
-### com.microsoft.kiota:microsoft-kiota-serialization-text @1.8.3 - https://github.com/microsoft/kiota-java
+### com.microsoft.kiota:microsoft-kiota-serialization-text @1.8.4 - https://github.com/microsoft/kiota-java
 
     MIT License
 
@@ -2472,9 +2425,7 @@ SOFTWARE.
     SOFTWARE
 
 
-[Source code](https://repo.maven.apache.org/maven2/com/microsoft/kiota/microsoft-kiota-serialization-text/1.8.3/microsoft-kiota-serialization-text-1.8.3-sources.jar)
-
-
+[Source code](https://repo.maven.apache.org/maven2/com/microsoft/kiota/microsoft-kiota-serialization-text/1.8.4/microsoft-kiota-serialization-text-1.8.4-sources.jar)
 
 ----
 
@@ -2686,8 +2637,6 @@ SOFTWARE.
 
 [Source code](https://repo.maven.apache.org/maven2/com/squareup/okhttp3/okhttp/4.12.0/okhttp-4.12.0-sources.jar)
 
-
-
 ----
 
 ### com.squareup.okio:okio @3.6.0 - https://github.com/square/okio/
@@ -2897,8 +2846,6 @@ SOFTWARE.
 
 
 [Source code](https://repo.maven.apache.org/maven2/com/squareup/okio/okio/3.6.0/okio-3.6.0-sources.jar)
-
-
 
 ----
 
@@ -3110,8 +3057,6 @@ SOFTWARE.
 
 [Source code](https://repo.maven.apache.org/maven2/com/squareup/okio/okio-jvm/3.6.0/okio-jvm-3.6.0-sources.jar)
 
-
-
 ----
 
 ### com.vaadin.external.google:android-json @0.0.20131108.vaadin1 - http://developer.android.com/sdk
@@ -3321,8 +3266,6 @@ SOFTWARE.
 
 
 [Source code](https://repo.maven.apache.org/maven2/com/vaadin/external/google/android-json/0.0.20131108.vaadin1/android-json-0.0.20131108.vaadin1-sources.jar)
-
-
 
 ----
 
@@ -3534,8 +3477,6 @@ SOFTWARE.
 
 [Source code](https://repo.maven.apache.org/maven2/commons-codec/commons-codec/1.17.2/commons-codec-1.17.2-sources.jar)
 
-
-
 ----
 
 ### io.github.std-uritemplate:std-uritemplate @2.0.0 - https://std-uritemplate.github.io/
@@ -3745,8 +3686,6 @@ SOFTWARE.
 
 
 [Source code](https://repo.maven.apache.org/maven2/io/github/std-uritemplate/std-uritemplate/2.0.0/std-uritemplate-2.0.0-sources.jar)
-
-
 
 ----
 
@@ -3958,8 +3897,6 @@ SOFTWARE.
 
 [Source code](https://repo.maven.apache.org/maven2/io/micrometer/context-propagation/1.1.2/context-propagation-1.1.2-sources.jar)
 
-
-
 ----
 
 ### io.micrometer:micrometer-commons @1.14.3 - https://github.com/micrometer-metrics/micrometer
@@ -4169,8 +4106,6 @@ SOFTWARE.
 
 
 [Source code](https://repo.maven.apache.org/maven2/io/micrometer/micrometer-commons/1.14.3/micrometer-commons-1.14.3-sources.jar)
-
-
 
 ----
 
@@ -4382,8 +4317,6 @@ SOFTWARE.
 
 [Source code](https://repo.maven.apache.org/maven2/io/micrometer/micrometer-core/1.14.3/micrometer-core-1.14.3-sources.jar)
 
-
-
 ----
 
 ### io.micrometer:micrometer-jakarta9 @1.14.3 - https://github.com/micrometer-metrics/micrometer
@@ -4593,8 +4526,6 @@ SOFTWARE.
 
 
 [Source code](https://repo.maven.apache.org/maven2/io/micrometer/micrometer-jakarta9/1.14.3/micrometer-jakarta9-1.14.3-sources.jar)
-
-
 
 ----
 
@@ -4806,8 +4737,6 @@ SOFTWARE.
 
 [Source code](https://repo.maven.apache.org/maven2/io/micrometer/micrometer-observation/1.14.3/micrometer-observation-1.14.3-sources.jar)
 
-
-
 ----
 
 ### io.micrometer:micrometer-registry-prometheus @1.14.3 - https://github.com/micrometer-metrics/micrometer
@@ -5017,8 +4946,6 @@ SOFTWARE.
 
 
 [Source code](https://repo.maven.apache.org/maven2/io/micrometer/micrometer-registry-prometheus/1.14.3/micrometer-registry-prometheus-1.14.3-sources.jar)
-
-
 
 ----
 
@@ -5230,8 +5157,6 @@ SOFTWARE.
 
 [Source code](https://repo.maven.apache.org/maven2/io/netty/netty-buffer/4.1.117.Final/netty-buffer-4.1.117.Final-sources.jar)
 
-
-
 ----
 
 ### io.netty:netty-codec @4.1.117.Final - https://netty.io/netty-codec/
@@ -5441,8 +5366,6 @@ SOFTWARE.
 
 
 [Source code](https://repo.maven.apache.org/maven2/io/netty/netty-codec/4.1.117.Final/netty-codec-4.1.117.Final-sources.jar)
-
-
 
 ----
 
@@ -5654,8 +5577,6 @@ SOFTWARE.
 
 [Source code](https://repo.maven.apache.org/maven2/io/netty/netty-codec-dns/4.1.117.Final/netty-codec-dns-4.1.117.Final-sources.jar)
 
-
-
 ----
 
 ### io.netty:netty-codec-http @4.1.117.Final - https://netty.io/netty-codec-http/
@@ -5865,8 +5786,6 @@ SOFTWARE.
 
 
 [Source code](https://repo.maven.apache.org/maven2/io/netty/netty-codec-http/4.1.117.Final/netty-codec-http-4.1.117.Final-sources.jar)
-
-
 
 ----
 
@@ -6078,8 +5997,6 @@ SOFTWARE.
 
 [Source code](https://repo.maven.apache.org/maven2/io/netty/netty-codec-http2/4.1.117.Final/netty-codec-http2-4.1.117.Final-sources.jar)
 
-
-
 ----
 
 ### io.netty:netty-codec-socks @4.1.117.Final - https://netty.io/netty-codec-socks/
@@ -6289,8 +6206,6 @@ SOFTWARE.
 
 
 [Source code](https://repo.maven.apache.org/maven2/io/netty/netty-codec-socks/4.1.117.Final/netty-codec-socks-4.1.117.Final-sources.jar)
-
-
 
 ----
 
@@ -6502,8 +6417,6 @@ SOFTWARE.
 
 [Source code](https://repo.maven.apache.org/maven2/io/netty/netty-common/4.1.117.Final/netty-common-4.1.117.Final-sources.jar)
 
-
-
 ----
 
 ### io.netty:netty-handler @4.1.117.Final - https://netty.io/netty-handler/
@@ -6713,8 +6626,6 @@ SOFTWARE.
 
 
 [Source code](https://repo.maven.apache.org/maven2/io/netty/netty-handler/4.1.117.Final/netty-handler-4.1.117.Final-sources.jar)
-
-
 
 ----
 
@@ -6926,8 +6837,6 @@ SOFTWARE.
 
 [Source code](https://repo.maven.apache.org/maven2/io/netty/netty-handler-proxy/4.1.117.Final/netty-handler-proxy-4.1.117.Final-sources.jar)
 
-
-
 ----
 
 ### io.netty:netty-resolver @4.1.117.Final - https://netty.io/netty-resolver/
@@ -7137,8 +7046,6 @@ SOFTWARE.
 
 
 [Source code](https://repo.maven.apache.org/maven2/io/netty/netty-resolver/4.1.117.Final/netty-resolver-4.1.117.Final-sources.jar)
-
-
 
 ----
 
@@ -7350,8 +7257,6 @@ SOFTWARE.
 
 [Source code](https://repo.maven.apache.org/maven2/io/netty/netty-resolver-dns/4.1.117.Final/netty-resolver-dns-4.1.117.Final-sources.jar)
 
-
-
 ----
 
 ### io.netty:netty-resolver-dns-classes-macos @4.1.117.Final - https://netty.io/netty-resolver-dns-classes-macos/
@@ -7561,8 +7466,6 @@ SOFTWARE.
 
 
 [Source code](https://repo.maven.apache.org/maven2/io/netty/netty-resolver-dns-classes-macos/4.1.117.Final/netty-resolver-dns-classes-macos-4.1.117.Final-sources.jar)
-
-
 
 ----
 
@@ -7774,8 +7677,6 @@ SOFTWARE.
 
 [Source code](https://repo.maven.apache.org/maven2/io/netty/netty-resolver-dns-native-macos/4.1.117.Final/netty-resolver-dns-native-macos-4.1.117.Final-sources.jar)
 
-
-
 ----
 
 ### io.netty:netty-transport @4.1.117.Final - https://netty.io/netty-transport/
@@ -7985,8 +7886,6 @@ SOFTWARE.
 
 
 [Source code](https://repo.maven.apache.org/maven2/io/netty/netty-transport/4.1.117.Final/netty-transport-4.1.117.Final-sources.jar)
-
-
 
 ----
 
@@ -8198,8 +8097,6 @@ SOFTWARE.
 
 [Source code](https://repo.maven.apache.org/maven2/io/netty/netty-transport-classes-epoll/4.1.117.Final/netty-transport-classes-epoll-4.1.117.Final-sources.jar)
 
-
-
 ----
 
 ### io.netty:netty-transport-native-epoll @4.1.117.Final - https://netty.io/netty-transport-native-epoll/
@@ -8409,8 +8306,6 @@ SOFTWARE.
 
 
 [Source code](https://repo.maven.apache.org/maven2/io/netty/netty-transport-native-epoll/4.1.117.Final/netty-transport-native-epoll-4.1.117.Final-sources.jar)
-
-
 
 ----
 
@@ -8622,8 +8517,6 @@ SOFTWARE.
 
 [Source code](https://repo.maven.apache.org/maven2/io/netty/netty-transport-native-unix-common/4.1.117.Final/netty-transport-native-unix-common-4.1.117.Final-sources.jar)
 
-
-
 ----
 
 ### io.opentelemetry:opentelemetry-api @1.46.0 - https://github.com/open-telemetry/opentelemetry-java
@@ -8833,8 +8726,6 @@ SOFTWARE.
 
 
 [Source code](https://repo.maven.apache.org/maven2/io/opentelemetry/opentelemetry-api/1.46.0/opentelemetry-api-1.46.0-sources.jar)
-
-
 
 ----
 
@@ -9046,8 +8937,6 @@ SOFTWARE.
 
 [Source code](https://repo.maven.apache.org/maven2/io/opentelemetry/opentelemetry-api-incubator/1.46.0-alpha/opentelemetry-api-incubator-1.46.0-alpha-sources.jar)
 
-
-
 ----
 
 ### io.opentelemetry:opentelemetry-context @1.46.0 - https://github.com/open-telemetry/opentelemetry-java
@@ -9257,8 +9146,6 @@ SOFTWARE.
 
 
 [Source code](https://repo.maven.apache.org/maven2/io/opentelemetry/opentelemetry-context/1.46.0/opentelemetry-context-1.46.0-sources.jar)
-
-
 
 ----
 
@@ -9470,8 +9357,6 @@ SOFTWARE.
 
 [Source code](https://repo.maven.apache.org/maven2/io/opentelemetry/opentelemetry-exporter-common/1.46.0/opentelemetry-exporter-common-1.46.0-sources.jar)
 
-
-
 ----
 
 ### io.opentelemetry:opentelemetry-exporter-logging @1.46.0 - https://github.com/open-telemetry/opentelemetry-java
@@ -9681,8 +9566,6 @@ SOFTWARE.
 
 
 [Source code](https://repo.maven.apache.org/maven2/io/opentelemetry/opentelemetry-exporter-logging/1.46.0/opentelemetry-exporter-logging-1.46.0-sources.jar)
-
-
 
 ----
 
@@ -9894,8 +9777,6 @@ SOFTWARE.
 
 [Source code](https://repo.maven.apache.org/maven2/io/opentelemetry/opentelemetry-exporter-otlp/1.46.0/opentelemetry-exporter-otlp-1.46.0-sources.jar)
 
-
-
 ----
 
 ### io.opentelemetry:opentelemetry-exporter-otlp-common @1.46.0 - https://github.com/open-telemetry/opentelemetry-java
@@ -10105,8 +9986,6 @@ SOFTWARE.
 
 
 [Source code](https://repo.maven.apache.org/maven2/io/opentelemetry/opentelemetry-exporter-otlp-common/1.46.0/opentelemetry-exporter-otlp-common-1.46.0-sources.jar)
-
-
 
 ----
 
@@ -10318,8 +10197,6 @@ SOFTWARE.
 
 [Source code](https://repo.maven.apache.org/maven2/io/opentelemetry/opentelemetry-exporter-sender-okhttp/1.46.0/opentelemetry-exporter-sender-okhttp-1.46.0-sources.jar)
 
-
-
 ----
 
 ### io.opentelemetry:opentelemetry-sdk @1.46.0 - https://github.com/open-telemetry/opentelemetry-java
@@ -10529,8 +10406,6 @@ SOFTWARE.
 
 
 [Source code](https://repo.maven.apache.org/maven2/io/opentelemetry/opentelemetry-sdk/1.46.0/opentelemetry-sdk-1.46.0-sources.jar)
-
-
 
 ----
 
@@ -10742,8 +10617,6 @@ SOFTWARE.
 
 [Source code](https://repo.maven.apache.org/maven2/io/opentelemetry/opentelemetry-sdk-common/1.46.0/opentelemetry-sdk-common-1.46.0-sources.jar)
 
-
-
 ----
 
 ### io.opentelemetry:opentelemetry-sdk-extension-autoconfigure @1.46.0 - https://github.com/open-telemetry/opentelemetry-java
@@ -10953,8 +10826,6 @@ SOFTWARE.
 
 
 [Source code](https://repo.maven.apache.org/maven2/io/opentelemetry/opentelemetry-sdk-extension-autoconfigure/1.46.0/opentelemetry-sdk-extension-autoconfigure-1.46.0-sources.jar)
-
-
 
 ----
 
@@ -11166,8 +11037,6 @@ SOFTWARE.
 
 [Source code](https://repo.maven.apache.org/maven2/io/opentelemetry/opentelemetry-sdk-extension-autoconfigure-spi/1.46.0/opentelemetry-sdk-extension-autoconfigure-spi-1.46.0-sources.jar)
 
-
-
 ----
 
 ### io.opentelemetry:opentelemetry-sdk-extension-incubator @1.46.0-alpha - https://github.com/open-telemetry/opentelemetry-java
@@ -11377,8 +11246,6 @@ SOFTWARE.
 
 
 [Source code](https://repo.maven.apache.org/maven2/io/opentelemetry/opentelemetry-sdk-extension-incubator/1.46.0-alpha/opentelemetry-sdk-extension-incubator-1.46.0-alpha-sources.jar)
-
-
 
 ----
 
@@ -11590,8 +11457,6 @@ SOFTWARE.
 
 [Source code](https://repo.maven.apache.org/maven2/io/opentelemetry/opentelemetry-sdk-logs/1.46.0/opentelemetry-sdk-logs-1.46.0-sources.jar)
 
-
-
 ----
 
 ### io.opentelemetry:opentelemetry-sdk-metrics @1.46.0 - https://github.com/open-telemetry/opentelemetry-java
@@ -11801,8 +11666,6 @@ SOFTWARE.
 
 
 [Source code](https://repo.maven.apache.org/maven2/io/opentelemetry/opentelemetry-sdk-metrics/1.46.0/opentelemetry-sdk-metrics-1.46.0-sources.jar)
-
-
 
 ----
 
@@ -12014,8 +11877,6 @@ SOFTWARE.
 
 [Source code](https://repo.maven.apache.org/maven2/io/opentelemetry/opentelemetry-sdk-trace/1.46.0/opentelemetry-sdk-trace-1.46.0-sources.jar)
 
-
-
 ----
 
 ### io.opentelemetry.contrib:opentelemetry-aws-resources @1.42.0-alpha - https://github.com/open-telemetry/opentelemetry-java-contrib
@@ -12225,8 +12086,6 @@ SOFTWARE.
 
 
 [Source code](https://repo.maven.apache.org/maven2/io/opentelemetry/contrib/opentelemetry-aws-resources/1.42.0-alpha/opentelemetry-aws-resources-1.42.0-alpha-sources.jar)
-
-
 
 ----
 
@@ -12438,8 +12297,6 @@ SOFTWARE.
 
 [Source code](https://repo.maven.apache.org/maven2/io/opentelemetry/contrib/opentelemetry-baggage-processor/1.42.0-alpha/opentelemetry-baggage-processor-1.42.0-alpha-sources.jar)
 
-
-
 ----
 
 ### io.opentelemetry.contrib:opentelemetry-gcp-resources @1.42.0-alpha - https://github.com/open-telemetry/opentelemetry-java-contrib
@@ -12649,8 +12506,6 @@ SOFTWARE.
 
 
 [Source code](https://repo.maven.apache.org/maven2/io/opentelemetry/contrib/opentelemetry-gcp-resources/1.42.0-alpha/opentelemetry-gcp-resources-1.42.0-alpha-sources.jar)
-
-
 
 ----
 
@@ -12862,8 +12717,6 @@ SOFTWARE.
 
 [Source code](https://repo.maven.apache.org/maven2/io/opentelemetry/instrumentation/opentelemetry-instrumentation-annotations/2.12.0/opentelemetry-instrumentation-annotations-2.12.0-sources.jar)
 
-
-
 ----
 
 ### io.opentelemetry.instrumentation:opentelemetry-instrumentation-annotations-support @2.12.0-alpha - https://github.com/open-telemetry/opentelemetry-java-instrumentation
@@ -13073,8 +12926,6 @@ SOFTWARE.
 
 
 [Source code](https://repo.maven.apache.org/maven2/io/opentelemetry/instrumentation/opentelemetry-instrumentation-annotations-support/2.12.0-alpha/opentelemetry-instrumentation-annotations-support-2.12.0-alpha-sources.jar)
-
-
 
 ----
 
@@ -13286,8 +13137,6 @@ SOFTWARE.
 
 [Source code](https://repo.maven.apache.org/maven2/io/opentelemetry/instrumentation/opentelemetry-instrumentation-api/2.12.0/opentelemetry-instrumentation-api-2.12.0-sources.jar)
 
-
-
 ----
 
 ### io.opentelemetry.instrumentation:opentelemetry-instrumentation-api-incubator @2.12.0-alpha - https://github.com/open-telemetry/opentelemetry-java-instrumentation
@@ -13497,8 +13346,6 @@ SOFTWARE.
 
 
 [Source code](https://repo.maven.apache.org/maven2/io/opentelemetry/instrumentation/opentelemetry-instrumentation-api-incubator/2.12.0-alpha/opentelemetry-instrumentation-api-incubator-2.12.0-alpha-sources.jar)
-
-
 
 ----
 
@@ -13710,8 +13557,6 @@ SOFTWARE.
 
 [Source code](https://repo.maven.apache.org/maven2/io/opentelemetry/instrumentation/opentelemetry-jdbc/2.12.0-alpha/opentelemetry-jdbc-2.12.0-alpha-sources.jar)
 
-
-
 ----
 
 ### io.opentelemetry.instrumentation:opentelemetry-kafka-clients-2.6 @2.12.0-alpha - https://github.com/open-telemetry/opentelemetry-java-instrumentation
@@ -13921,8 +13766,6 @@ SOFTWARE.
 
 
 [Source code](https://repo.maven.apache.org/maven2/io/opentelemetry/instrumentation/opentelemetry-kafka-clients-2.6/2.12.0-alpha/opentelemetry-kafka-clients-2.6-2.12.0-alpha-sources.jar)
-
-
 
 ----
 
@@ -14134,8 +13977,6 @@ SOFTWARE.
 
 [Source code](https://repo.maven.apache.org/maven2/io/opentelemetry/instrumentation/opentelemetry-kafka-clients-common/2.12.0-alpha/opentelemetry-kafka-clients-common-2.12.0-alpha-sources.jar)
 
-
-
 ----
 
 ### io.opentelemetry.instrumentation:opentelemetry-log4j-appender-2.17 @2.12.0-alpha - https://github.com/open-telemetry/opentelemetry-java-instrumentation
@@ -14345,8 +14186,6 @@ SOFTWARE.
 
 
 [Source code](https://repo.maven.apache.org/maven2/io/opentelemetry/instrumentation/opentelemetry-log4j-appender-2.17/2.12.0-alpha/opentelemetry-log4j-appender-2.17-2.12.0-alpha-sources.jar)
-
-
 
 ----
 
@@ -14558,8 +14397,6 @@ SOFTWARE.
 
 [Source code](https://repo.maven.apache.org/maven2/io/opentelemetry/instrumentation/opentelemetry-log4j-context-data-2.17-autoconfigure/2.12.0-alpha/opentelemetry-log4j-context-data-2.17-autoconfigure-2.12.0-alpha-sources.jar)
 
-
-
 ----
 
 ### io.opentelemetry.instrumentation:opentelemetry-logback-appender-1.0 @2.12.0-alpha - https://github.com/open-telemetry/opentelemetry-java-instrumentation
@@ -14769,8 +14606,6 @@ SOFTWARE.
 
 
 [Source code](https://repo.maven.apache.org/maven2/io/opentelemetry/instrumentation/opentelemetry-logback-appender-1.0/2.12.0-alpha/opentelemetry-logback-appender-1.0-2.12.0-alpha-sources.jar)
-
-
 
 ----
 
@@ -14982,8 +14817,6 @@ SOFTWARE.
 
 [Source code](https://repo.maven.apache.org/maven2/io/opentelemetry/instrumentation/opentelemetry-logback-mdc-1.0/2.12.0-alpha/opentelemetry-logback-mdc-1.0-2.12.0-alpha-sources.jar)
 
-
-
 ----
 
 ### io.opentelemetry.instrumentation:opentelemetry-micrometer-1.5 @2.12.0-alpha - https://github.com/open-telemetry/opentelemetry-java-instrumentation
@@ -15193,8 +15026,6 @@ SOFTWARE.
 
 
 [Source code](https://repo.maven.apache.org/maven2/io/opentelemetry/instrumentation/opentelemetry-micrometer-1.5/2.12.0-alpha/opentelemetry-micrometer-1.5-2.12.0-alpha-sources.jar)
-
-
 
 ----
 
@@ -15406,8 +15237,6 @@ SOFTWARE.
 
 [Source code](https://repo.maven.apache.org/maven2/io/opentelemetry/instrumentation/opentelemetry-mongo-3.1/2.12.0-alpha/opentelemetry-mongo-3.1-2.12.0-alpha-sources.jar)
 
-
-
 ----
 
 ### io.opentelemetry.instrumentation:opentelemetry-okhttp-3.0 @2.12.0-alpha - https://github.com/open-telemetry/opentelemetry-java-instrumentation
@@ -15617,8 +15446,6 @@ SOFTWARE.
 
 
 [Source code](https://repo.maven.apache.org/maven2/io/opentelemetry/instrumentation/opentelemetry-okhttp-3.0/2.12.0-alpha/opentelemetry-okhttp-3.0-2.12.0-alpha-sources.jar)
-
-
 
 ----
 
@@ -15830,8 +15657,6 @@ SOFTWARE.
 
 [Source code](https://repo.maven.apache.org/maven2/io/opentelemetry/instrumentation/opentelemetry-reactor-3.1/2.12.0-alpha/opentelemetry-reactor-3.1-2.12.0-alpha-sources.jar)
 
-
-
 ----
 
 ### io.opentelemetry.instrumentation:opentelemetry-resources @2.12.0-alpha - https://github.com/open-telemetry/opentelemetry-java-instrumentation
@@ -16041,8 +15866,6 @@ SOFTWARE.
 
 
 [Source code](https://repo.maven.apache.org/maven2/io/opentelemetry/instrumentation/opentelemetry-resources/2.12.0-alpha/opentelemetry-resources-2.12.0-alpha-sources.jar)
-
-
 
 ----
 
@@ -16254,8 +16077,6 @@ SOFTWARE.
 
 [Source code](https://repo.maven.apache.org/maven2/io/opentelemetry/instrumentation/opentelemetry-sdk-autoconfigure-support/2.12.0-alpha/opentelemetry-sdk-autoconfigure-support-2.12.0-alpha-sources.jar)
 
-
-
 ----
 
 ### io.opentelemetry.instrumentation:opentelemetry-spring-boot-autoconfigure @2.12.0 - https://github.com/open-telemetry/opentelemetry-java-instrumentation
@@ -16465,8 +16286,6 @@ SOFTWARE.
 
 
 [Source code](https://repo.maven.apache.org/maven2/io/opentelemetry/instrumentation/opentelemetry-spring-boot-autoconfigure/2.12.0/opentelemetry-spring-boot-autoconfigure-2.12.0-sources.jar)
-
-
 
 ----
 
@@ -16678,8 +16497,6 @@ SOFTWARE.
 
 [Source code](https://repo.maven.apache.org/maven2/io/opentelemetry/instrumentation/opentelemetry-spring-boot-starter/2.12.0/opentelemetry-spring-boot-starter-2.12.0-sources.jar)
 
-
-
 ----
 
 ### io.opentelemetry.instrumentation:opentelemetry-spring-kafka-2.7 @2.12.0-alpha - https://github.com/open-telemetry/opentelemetry-java-instrumentation
@@ -16889,8 +16706,6 @@ SOFTWARE.
 
 
 [Source code](https://repo.maven.apache.org/maven2/io/opentelemetry/instrumentation/opentelemetry-spring-kafka-2.7/2.12.0-alpha/opentelemetry-spring-kafka-2.7-2.12.0-alpha-sources.jar)
-
-
 
 ----
 
@@ -17102,8 +16917,6 @@ SOFTWARE.
 
 [Source code](https://repo.maven.apache.org/maven2/io/opentelemetry/instrumentation/opentelemetry-spring-web-3.1/2.12.0-alpha/opentelemetry-spring-web-3.1-2.12.0-alpha-sources.jar)
 
-
-
 ----
 
 ### io.opentelemetry.instrumentation:opentelemetry-spring-webflux-5.3 @2.12.0-alpha - https://github.com/open-telemetry/opentelemetry-java-instrumentation
@@ -17313,8 +17126,6 @@ SOFTWARE.
 
 
 [Source code](https://repo.maven.apache.org/maven2/io/opentelemetry/instrumentation/opentelemetry-spring-webflux-5.3/2.12.0-alpha/opentelemetry-spring-webflux-5.3-2.12.0-alpha-sources.jar)
-
-
 
 ----
 
@@ -17526,8 +17337,6 @@ SOFTWARE.
 
 [Source code](https://repo.maven.apache.org/maven2/io/opentelemetry/instrumentation/opentelemetry-spring-webmvc-5.3/2.12.0-alpha/opentelemetry-spring-webmvc-5.3-2.12.0-alpha-sources.jar)
 
-
-
 ----
 
 ### io.opentelemetry.instrumentation:opentelemetry-spring-webmvc-6.0 @2.12.0-alpha - https://github.com/open-telemetry/opentelemetry-java-instrumentation
@@ -17737,8 +17546,6 @@ SOFTWARE.
 
 
 [Source code](https://repo.maven.apache.org/maven2/io/opentelemetry/instrumentation/opentelemetry-spring-webmvc-6.0/2.12.0-alpha/opentelemetry-spring-webmvc-6.0-2.12.0-alpha-sources.jar)
-
-
 
 ----
 
@@ -17950,8 +17757,6 @@ SOFTWARE.
 
 [Source code](https://repo.maven.apache.org/maven2/io/opentelemetry/semconv/opentelemetry-semconv/1.28.0-alpha/opentelemetry-semconv-1.28.0-alpha-sources.jar)
 
-
-
 ----
 
 ### io.opentelemetry.semconv:opentelemetry-semconv-incubating @1.29.0-alpha - https://github.com/open-telemetry/semantic-conventions-java
@@ -18161,8 +17966,6 @@ SOFTWARE.
 
 
 [Source code](https://repo.maven.apache.org/maven2/io/opentelemetry/semconv/opentelemetry-semconv-incubating/1.29.0-alpha/opentelemetry-semconv-incubating-1.29.0-alpha-sources.jar)
-
-
 
 ----
 
@@ -18374,8 +18177,6 @@ SOFTWARE.
 
 [Source code](https://repo.maven.apache.org/maven2/io/projectreactor/netty/reactor-netty-core/1.2.2/reactor-netty-core-1.2.2-sources.jar)
 
-
-
 ----
 
 ### io.projectreactor.netty:reactor-netty-http @1.2.2 - https://github.com/reactor/reactor-netty
@@ -18585,8 +18386,6 @@ SOFTWARE.
 
 
 [Source code](https://repo.maven.apache.org/maven2/io/projectreactor/netty/reactor-netty-http/1.2.2/reactor-netty-http-1.2.2-sources.jar)
-
-
 
 ----
 
@@ -18798,8 +18597,6 @@ SOFTWARE.
 
 [Source code](https://repo.maven.apache.org/maven2/io/prometheus/prometheus-metrics-config/1.3.5/prometheus-metrics-config-1.3.5-sources.jar)
 
-
-
 ----
 
 ### io.prometheus:prometheus-metrics-core @1.3.5 - http://github.com/prometheus/client_java/prometheus-metrics-core
@@ -19009,8 +18806,6 @@ SOFTWARE.
 
 
 [Source code](https://repo.maven.apache.org/maven2/io/prometheus/prometheus-metrics-core/1.3.5/prometheus-metrics-core-1.3.5-sources.jar)
-
-
 
 ----
 
@@ -19222,8 +19017,6 @@ SOFTWARE.
 
 [Source code](https://repo.maven.apache.org/maven2/io/prometheus/prometheus-metrics-exposition-formats/1.3.5/prometheus-metrics-exposition-formats-1.3.5-sources.jar)
 
-
-
 ----
 
 ### io.prometheus:prometheus-metrics-exposition-textformats @1.3.5 - http://github.com/prometheus/client_java/prometheus-metrics-exposition-textformats
@@ -19433,8 +19226,6 @@ SOFTWARE.
 
 
 [Source code](https://repo.maven.apache.org/maven2/io/prometheus/prometheus-metrics-exposition-textformats/1.3.5/prometheus-metrics-exposition-textformats-1.3.5-sources.jar)
-
-
 
 ----
 
@@ -19646,8 +19437,6 @@ SOFTWARE.
 
 [Source code](https://repo.maven.apache.org/maven2/io/prometheus/prometheus-metrics-model/1.3.5/prometheus-metrics-model-1.3.5-sources.jar)
 
-
-
 ----
 
 ### io.prometheus:prometheus-metrics-tracer-common @1.3.5 - http://github.com/prometheus/client_java/prometheus-metrics-tracer/prometheus-metrics-tracer-common
@@ -19857,8 +19646,6 @@ SOFTWARE.
 
 
 [Source code](https://repo.maven.apache.org/maven2/io/prometheus/prometheus-metrics-tracer-common/1.3.5/prometheus-metrics-tracer-common-1.3.5-sources.jar)
-
-
 
 ----
 
@@ -20070,8 +19857,6 @@ SOFTWARE.
 
 [Source code](https://repo.maven.apache.org/maven2/io/rest-assured/json-path/5.5.0/json-path-5.5.0-sources.jar)
 
-
-
 ----
 
 ### io.rest-assured:rest-assured-common @5.5.0 - https://rest-assured.io/
@@ -20281,8 +20066,6 @@ SOFTWARE.
 
 
 [Source code](https://repo.maven.apache.org/maven2/io/rest-assured/rest-assured-common/5.5.0/rest-assured-common-5.5.0-sources.jar)
-
-
 
 ----
 
@@ -20494,8 +20277,6 @@ SOFTWARE.
 
 [Source code](https://repo.maven.apache.org/maven2/io/swagger/swagger-annotations/1.6.15/swagger-annotations-1.6.15-sources.jar)
 
-
-
 ----
 
 ### io.swagger.core.v3:swagger-annotations @2.2.25 - https://github.com/swagger-api/swagger-core/modules/swagger-annotations
@@ -20705,8 +20486,6 @@ SOFTWARE.
 
 
 [Source code](https://repo.maven.apache.org/maven2/io/swagger/core/v3/swagger-annotations/2.2.25/swagger-annotations-2.2.25-sources.jar)
-
-
 
 ----
 
@@ -21353,8 +21132,6 @@ SOFTWARE.
 
 [Source code](https://repo.maven.apache.org/maven2/jakarta/annotation/jakarta.annotation-api/2.1.1/jakarta.annotation-api-2.1.1-sources.jar)
 
-
-
 ----
 
 ### jakarta.validation:jakarta.validation-api @3.0.2 - https://beanvalidation.org
@@ -21564,8 +21341,6 @@ SOFTWARE.
 
 
 [Source code](https://repo.maven.apache.org/maven2/jakarta/validation/jakarta.validation-api/3.0.2/jakarta.validation-api-3.0.2-sources.jar)
-
-
 
 ----
 
@@ -21777,8 +21552,6 @@ SOFTWARE.
 
 [Source code](https://repo.maven.apache.org/maven2/javax/validation/validation-api/2.0.1.Final/validation-api-2.0.1.Final-sources.jar)
 
-
-
 ----
 
 ### org.antlr:ST4 @4.3.4 - http://nexus.sonatype.org/oss-repository-hosting.html/ST4
@@ -21813,8 +21586,6 @@ THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 [Source code](https://repo.maven.apache.org/maven2/org/antlr/ST4/4.3.4/ST4-4.3.4-sources.jar)
 
-
-
 ----
 
 ### org.antlr:antlr-runtime @3.5.3 - http://www.antlr.org
@@ -21848,8 +21619,6 @@ THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 
 [Source code](https://repo.maven.apache.org/maven2/org/antlr/antlr-runtime/3.5.3/antlr-runtime-3.5.3-sources.jar)
-
-
 
 ----
 
@@ -21886,8 +21655,6 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 
 [Source code](https://repo.maven.apache.org/maven2/org/antlr/antlr4-runtime/4.13.1/antlr4-runtime-4.13.1-sources.jar)
-
-
 
 ----
 
@@ -22098,8 +21865,6 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 
 [Source code](https://repo.maven.apache.org/maven2/org/apache/commons/commons-lang3/3.17.0/commons-lang3-3.17.0-sources.jar)
-
-
 
 ----
 
@@ -22353,8 +22118,6 @@ licenses/normalize-stylesheet-license.txt
 
 [Source code](https://repo.maven.apache.org/maven2/org/apache/groovy/groovy/4.0.24/groovy-4.0.24-sources.jar)
 
-
-
 ----
 
 ### org.apache.groovy:groovy-json @4.0.24 - https://groovy-lang.org
@@ -22607,8 +22370,6 @@ licenses/normalize-stylesheet-license.txt
 
 [Source code](https://repo.maven.apache.org/maven2/org/apache/groovy/groovy-json/4.0.24/groovy-json-4.0.24-sources.jar)
 
-
-
 ----
 
 ### org.apache.httpcomponents:httpclient @4.5.13 - http://hc.apache.org/httpcomponents-client
@@ -22818,8 +22579,6 @@ licenses/normalize-stylesheet-license.txt
 
 
 [Source code](https://repo.maven.apache.org/maven2/org/apache/httpcomponents/httpclient/4.5.13/httpclient-4.5.13-sources.jar)
-
-
 
 ----
 
@@ -23031,8 +22790,6 @@ licenses/normalize-stylesheet-license.txt
 
 [Source code](https://repo.maven.apache.org/maven2/org/apache/httpcomponents/httpcore/4.4.16/httpcore-4.4.16-sources.jar)
 
-
-
 ----
 
 ### org.apache.logging.log4j:log4j-api @2.24.3 - https://logging.apache.org/log4j/2.x/log4j/log4j-api/
@@ -23242,8 +22999,6 @@ licenses/normalize-stylesheet-license.txt
 
 
 [Source code](https://repo.maven.apache.org/maven2/org/apache/logging/log4j/log4j-api/2.24.3/log4j-api-2.24.3-sources.jar)
-
-
 
 ----
 
@@ -23455,8 +23210,6 @@ licenses/normalize-stylesheet-license.txt
 
 [Source code](https://repo.maven.apache.org/maven2/org/apache/logging/log4j/log4j-core/2.24.3/log4j-core-2.24.3-sources.jar)
 
-
-
 ----
 
 ### org.apache.logging.log4j:log4j-jul @2.24.3 - https://logging.apache.org/log4j/2.x/log4j/log4j-jul/
@@ -23666,8 +23419,6 @@ licenses/normalize-stylesheet-license.txt
 
 
 [Source code](https://repo.maven.apache.org/maven2/org/apache/logging/log4j/log4j-jul/2.24.3/log4j-jul-2.24.3-sources.jar)
-
-
 
 ----
 
@@ -23879,8 +23630,6 @@ licenses/normalize-stylesheet-license.txt
 
 [Source code](https://repo.maven.apache.org/maven2/org/apache/logging/log4j/log4j-slf4j2-impl/2.24.3/log4j-slf4j2-impl-2.24.3-sources.jar)
 
-
-
 ----
 
 ### org.apache.tomcat.embed:tomcat-embed-el @10.1.34 - https://tomcat.apache.org/
@@ -24090,8 +23839,6 @@ licenses/normalize-stylesheet-license.txt
 
 
 [Source code](https://repo.maven.apache.org/maven2/org/apache/tomcat/embed/tomcat-embed-el/10.1.34/tomcat-embed-el-10.1.34-sources.jar)
-
-
 
 ----
 
@@ -24303,8 +24050,6 @@ licenses/normalize-stylesheet-license.txt
 
 [Source code](https://repo.maven.apache.org/maven2/org/attoparser/attoparser/2.0.7.RELEASE/attoparser-2.0.7.RELEASE-sources.jar)
 
-
-
 ----
 
 ### org.hdrhistogram:HdrHistogram @2.2.2 - http://hdrhistogram.github.io/HdrHistogram/
@@ -24353,8 +24098,6 @@ the Author.
 
 
 [Source code](https://repo.maven.apache.org/maven2/org/hdrhistogram/HdrHistogram/2.2.2/HdrHistogram-2.2.2-sources.jar)
-
-
 
 ----
 
@@ -24566,8 +24309,6 @@ the Author.
 
 [Source code](https://repo.maven.apache.org/maven2/org/hibernate/validator/hibernate-validator/8.0.2.Final/hibernate-validator-8.0.2.Final-sources.jar)
 
-
-
 ----
 
 ### org.jboss.logging:jboss-logging @3.6.1.Final - http://www.jboss.org
@@ -24777,8 +24518,6 @@ the Author.
 
 
 [Source code](https://repo.maven.apache.org/maven2/org/jboss/logging/jboss-logging/3.6.1.Final/jboss-logging-3.6.1.Final-sources.jar)
-
-
 
 ----
 
@@ -24990,8 +24729,6 @@ the Author.
 
 [Source code](https://repo.maven.apache.org/maven2/org/jetbrains/annotations/13.0/annotations-13.0-sources.jar)
 
-
-
 ----
 
 ### org.jetbrains.kotlin:kotlin-stdlib @1.9.25 - https://kotlinlang.org/
@@ -25201,8 +24938,6 @@ the Author.
 
 
 [Source code](https://repo.maven.apache.org/maven2/org/jetbrains/kotlin/kotlin-stdlib/1.9.25/kotlin-stdlib-1.9.25-sources.jar)
-
-
 
 ----
 
@@ -25414,8 +25149,6 @@ the Author.
 
 [Source code](https://repo.maven.apache.org/maven2/org/jetbrains/kotlin/kotlin-stdlib-common/1.9.25/kotlin-stdlib-common-1.9.25-sources.jar)
 
-
-
 ----
 
 ### org.jetbrains.kotlin:kotlin-stdlib-jdk7 @1.9.25 - https://kotlinlang.org/
@@ -25625,8 +25358,6 @@ the Author.
 
 
 [Source code](https://repo.maven.apache.org/maven2/org/jetbrains/kotlin/kotlin-stdlib-jdk7/1.9.25/kotlin-stdlib-jdk7-1.9.25-sources.jar)
-
-
 
 ----
 
@@ -25838,8 +25569,6 @@ the Author.
 
 [Source code](https://repo.maven.apache.org/maven2/org/jetbrains/kotlin/kotlin-stdlib-jdk8/1.9.25/kotlin-stdlib-jdk8-1.9.25-sources.jar)
 
-
-
 ----
 
 ### org.latencyutils:LatencyUtils @2.0.3 - http://latencyutils.github.io/LatencyUtils/
@@ -25885,8 +25614,6 @@ the Author.
 
 
 [Source code](https://repo.maven.apache.org/maven2/org/latencyutils/LatencyUtils/2.0.3/LatencyUtils-2.0.3-sources.jar)
-
-
 
 ----
 
@@ -26098,8 +25825,6 @@ the Author.
 
 [Source code](https://repo.maven.apache.org/maven2/org/openapitools/jackson-databind-nullable/0.2.6/jackson-databind-nullable-0.2.6-sources.jar)
 
-
-
 ----
 
 ### org.projectlombok:lombok @1.18.36 - https://projectlombok.org
@@ -26211,8 +25936,6 @@ projectlombok/lombok.patcher
 
 [Source code](https://repo.maven.apache.org/maven2/org/projectlombok/lombok/1.18.36/lombok-1.18.36-sources.jar)
 
-
-
 ----
 
 ### org.slf4j:slf4j-api @2.0.16 - http://www.slf4j.org
@@ -26244,8 +25967,6 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 
 [Source code](https://repo.maven.apache.org/maven2/org/slf4j/slf4j-api/2.0.16/slf4j-api-2.0.16-sources.jar)
-
-
 
 ----
 
@@ -26430,8 +26151,6 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 
 [Source code](https://repo.maven.apache.org/maven2/org/snakeyaml/snakeyaml-engine/2.8/snakeyaml-engine-2.8-sources.jar)
-
-
 
 ----
 
@@ -26643,8 +26362,6 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 [Source code](https://repo.maven.apache.org/maven2/org/springframework/spring-aop/6.2.2/spring-aop-6.2.2-sources.jar)
 
-
-
 ----
 
 ### org.springframework:spring-beans @6.2.2 - https://github.com/spring-projects/spring-framework
@@ -26854,8 +26571,6 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 
 [Source code](https://repo.maven.apache.org/maven2/org/springframework/spring-beans/6.2.2/spring-beans-6.2.2-sources.jar)
-
-
 
 ----
 
@@ -27067,8 +26782,6 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 [Source code](https://repo.maven.apache.org/maven2/org/springframework/spring-context/6.2.2/spring-context-6.2.2-sources.jar)
 
-
-
 ----
 
 ### org.springframework:spring-context-support @6.2.2 - https://github.com/spring-projects/spring-framework
@@ -27278,8 +26991,6 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 
 [Source code](https://repo.maven.apache.org/maven2/org/springframework/spring-context-support/6.2.2/spring-context-support-6.2.2-sources.jar)
-
-
 
 ----
 
@@ -27491,8 +27202,6 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 [Source code](https://repo.maven.apache.org/maven2/org/springframework/spring-expression/6.2.2/spring-expression-6.2.2-sources.jar)
 
-
-
 ----
 
 ### org.springframework:spring-messaging @6.2.2 - https://github.com/spring-projects/spring-framework
@@ -27702,8 +27411,6 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 
 [Source code](https://repo.maven.apache.org/maven2/org/springframework/spring-messaging/6.2.2/spring-messaging-6.2.2-sources.jar)
-
-
 
 ----
 
@@ -27915,8 +27622,6 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 [Source code](https://repo.maven.apache.org/maven2/org/springframework/spring-web/6.2.2/spring-web-6.2.2-sources.jar)
 
-
-
 ----
 
 ### org.springframework:spring-webflux @6.2.2 - https://github.com/spring-projects/spring-framework
@@ -28126,8 +27831,6 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 
 [Source code](https://repo.maven.apache.org/maven2/org/springframework/spring-webflux/6.2.2/spring-webflux-6.2.2-sources.jar)
-
-
 
 ----
 
@@ -28339,8 +28042,6 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 [Source code](https://repo.maven.apache.org/maven2/org/springframework/ai/spring-ai-bedrock-converse/1.0.0-M6/spring-ai-bedrock-converse-1.0.0-M6-sources.jar)
 
-
-
 ----
 
 ### org.springframework.ai:spring-ai-bedrock-converse-spring-boot-starter @1.0.0-M6 - https://github.com/spring-projects/spring-ai
@@ -28550,8 +28251,6 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 
 [Source code](https://github.com/spring-projects/spring-ai.git)
-
-
 
 ----
 
@@ -28763,8 +28462,6 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 [Source code](https://repo.maven.apache.org/maven2/org/springframework/ai/spring-ai-core/1.0.0-M6/spring-ai-core-1.0.0-M6-sources.jar)
 
-
-
 ----
 
 ### org.springframework.ai:spring-ai-openai @1.0.0-M6 - https://github.com/spring-projects/spring-ai
@@ -28974,8 +28671,6 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 
 [Source code](https://repo.maven.apache.org/maven2/org/springframework/ai/spring-ai-openai/1.0.0-M6/spring-ai-openai-1.0.0-M6-sources.jar)
-
-
 
 ----
 
@@ -29187,8 +28882,6 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 [Source code](https://repo.maven.apache.org/maven2/org/springframework/ai/spring-ai-retry/1.0.0-M6/spring-ai-retry-1.0.0-M6-sources.jar)
 
-
-
 ----
 
 ### org.springframework.ai:spring-ai-spring-boot-autoconfigure @1.0.0-M6 - https://github.com/spring-projects/spring-ai
@@ -29399,8 +29092,6 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 [Source code](https://repo.maven.apache.org/maven2/org/springframework/ai/spring-ai-spring-boot-autoconfigure/1.0.0-M6/spring-ai-spring-boot-autoconfigure-1.0.0-M6-sources.jar)
 
-
-
 ----
 
 ### org.springframework.boot:spring-boot @3.4.2 - https://spring.io/projects/spring-boot
@@ -29609,8 +29300,6 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
    limitations under the License.
 
 [Source code](https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot/3.4.2/spring-boot-3.4.2-sources.jar)
-
-
 
 ----
 
@@ -29821,8 +29510,6 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 [Source code](https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-actuator/3.4.2/spring-boot-actuator-3.4.2-sources.jar)
 
-
-
 ----
 
 ### org.springframework.boot:spring-boot-actuator-autoconfigure @3.4.2 - https://spring.io/projects/spring-boot
@@ -30031,8 +29718,6 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
    limitations under the License.
 
 [Source code](https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-actuator-autoconfigure/3.4.2/spring-boot-actuator-autoconfigure-3.4.2-sources.jar)
-
-
 
 ----
 
@@ -30243,8 +29928,6 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 [Source code](https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-autoconfigure/3.4.2/spring-boot-autoconfigure-3.4.2-sources.jar)
 
-
-
 ----
 
 ### org.springframework.boot:spring-boot-configuration-metadata @3.4.2 - https://spring.io/projects/spring-boot
@@ -30453,8 +30136,6 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
    limitations under the License.
 
 [Source code](https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-configuration-metadata/3.4.2/spring-boot-configuration-metadata-3.4.2-sources.jar)
-
-
 
 ----
 
@@ -30665,8 +30346,6 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 [Source code](https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-devtools/3.4.2/spring-boot-devtools-3.4.2-sources.jar)
 
-
-
 ----
 
 ### org.springframework.boot:spring-boot-properties-migrator @3.4.2 - https://spring.io/projects/spring-boot
@@ -30875,8 +30554,6 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
    limitations under the License.
 
 [Source code](https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-properties-migrator/3.4.2/spring-boot-properties-migrator-3.4.2-sources.jar)
-
-
 
 ----
 
@@ -31088,8 +30765,6 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 [Source code](https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-starter/3.4.2/spring-boot-starter-3.4.2-sources.jar)
 
-
-
 ----
 
 ### org.springframework.boot:spring-boot-starter-actuator @3.4.2 - https://spring.io/projects/spring-boot
@@ -31299,8 +30974,6 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 
 [Source code](https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-starter-actuator/3.4.2/spring-boot-starter-actuator-3.4.2-sources.jar)
-
-
 
 ----
 
@@ -31512,8 +31185,6 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 [Source code](https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-starter-json/3.4.2/spring-boot-starter-json-3.4.2-sources.jar)
 
-
-
 ----
 
 ### org.springframework.boot:spring-boot-starter-log4j2 @3.4.2 - https://spring.io/projects/spring-boot
@@ -31723,8 +31394,6 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 
 [Source code](https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-starter-log4j2/3.4.2/spring-boot-starter-log4j2-3.4.2-sources.jar)
-
-
 
 ----
 
@@ -31936,8 +31605,6 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 [Source code](https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-starter-reactor-netty/3.4.2/spring-boot-starter-reactor-netty-3.4.2-sources.jar)
 
-
-
 ----
 
 ### org.springframework.boot:spring-boot-starter-thymeleaf @3.4.2 - https://spring.io/projects/spring-boot
@@ -32147,8 +31814,6 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 
 [Source code](https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-starter-thymeleaf/3.4.2/spring-boot-starter-thymeleaf-3.4.2-sources.jar)
-
-
 
 ----
 
@@ -32360,8 +32025,6 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 [Source code](https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-starter-validation/3.4.2/spring-boot-starter-validation-3.4.2-sources.jar)
 
-
-
 ----
 
 ### org.springframework.boot:spring-boot-starter-webflux @3.4.2 - https://spring.io/projects/spring-boot
@@ -32572,8 +32235,6 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 [Source code](https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-starter-webflux/3.4.2/spring-boot-starter-webflux-3.4.2-sources.jar)
 
-
-
 ----
 
 ### org.springframework.cloud:spring-cloud-gateway-webflux @4.2.0 - https://spring.io/spring-cloud/spring-cloud-gateway/spring-cloud-gateway-webflux
@@ -32782,8 +32443,6 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 
 [Source code](https://repo.maven.apache.org/maven2/org/springframework/cloud/spring-cloud-gateway-webflux/4.2.0/spring-cloud-gateway-webflux-4.2.0-sources.jar)
-
-
 
 ----
 
@@ -32995,8 +32654,6 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 [Source code](https://repo.maven.apache.org/maven2/org/springframework/retry/spring-retry/2.0.11/spring-retry-2.0.11-sources.jar)
 
-
-
 ----
 
 ### org.thymeleaf:thymeleaf @3.1.3.RELEASE - http://www.thymeleaf.org/thymeleaf-lib/thymeleaf
@@ -33206,8 +32863,6 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 
 [Source code](https://repo.maven.apache.org/maven2/org/thymeleaf/thymeleaf/3.1.3.RELEASE/thymeleaf-3.1.3.RELEASE-sources.jar)
-
-
 
 ----
 
@@ -33419,8 +33074,6 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 [Source code](https://repo.maven.apache.org/maven2/org/thymeleaf/thymeleaf-spring6/3.1.3.RELEASE/thymeleaf-spring6-3.1.3.RELEASE-sources.jar)
 
-
-
 ----
 
 ### org.unbescape:unbescape @1.1.6.RELEASE - http://www.unbescape.org
@@ -33631,8 +33284,6 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 [Source code](https://repo.maven.apache.org/maven2/org/unbescape/unbescape/1.1.6.RELEASE/unbescape-1.1.6.RELEASE-sources.jar)
 
-
-
 ----
 
 ### org.yaml:snakeyaml @2.3 - https://bitbucket.org/snakeyaml/snakeyaml
@@ -33816,8 +33467,6 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 
 [Source code](https://repo.maven.apache.org/maven2/org/yaml/snakeyaml/2.3/snakeyaml-2.3-sources.jar)
-
-
 
 ----
 
@@ -34032,8 +33681,6 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 [Source code](https://repo.maven.apache.org/maven2/software/amazon/awssdk/annotations/2.29.29/annotations-2.29.29-sources.jar)
 
-
-
 ----
 
 ### software.amazon.awssdk:apache-client @2.29.29 - https://aws.amazon.com/sdkforjava/http-clients/apache-client
@@ -34246,8 +33893,6 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
    Such other license terms will then apply in lieu of the terms of the software license above.
 
 [Source code](https://repo.maven.apache.org/maven2/software/amazon/awssdk/apache-client/2.29.29/apache-client-2.29.29-sources.jar)
-
-
 
 ----
 
@@ -34462,8 +34107,6 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 [Source code](https://repo.maven.apache.org/maven2/software/amazon/awssdk/auth/2.29.29/auth-2.29.29-sources.jar)
 
-
-
 ----
 
 ### software.amazon.awssdk:aws-core @2.29.29 - https://aws.amazon.com/sdkforjava
@@ -34676,8 +34319,6 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
    Such other license terms will then apply in lieu of the terms of the software license above.
 
 [Source code](https://repo.maven.apache.org/maven2/software/amazon/awssdk/aws-core/2.29.29/aws-core-2.29.29-sources.jar)
-
-
 
 ----
 
@@ -34892,8 +34533,6 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 [Source code](https://repo.maven.apache.org/maven2/software/amazon/awssdk/aws-json-protocol/2.29.29/aws-json-protocol-2.29.29-sources.jar)
 
-
-
 ----
 
 ### software.amazon.awssdk:aws-query-protocol @2.29.29 - https://aws.amazon.com/sdkforjava
@@ -35106,8 +34745,6 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
    Such other license terms will then apply in lieu of the terms of the software license above.
 
 [Source code](https://repo.maven.apache.org/maven2/software/amazon/awssdk/aws-query-protocol/2.29.29/aws-query-protocol-2.29.29-sources.jar)
-
-
 
 ----
 
@@ -35322,8 +34959,6 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 [Source code](https://repo.maven.apache.org/maven2/software/amazon/awssdk/bedrockruntime/2.29.29/bedrockruntime-2.29.29-sources.jar)
 
-
-
 ----
 
 ### software.amazon.awssdk:checksums @2.29.29 - https://aws.amazon.com/sdkforjava
@@ -35536,8 +35171,6 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
    Such other license terms will then apply in lieu of the terms of the software license above.
 
 [Source code](https://repo.maven.apache.org/maven2/software/amazon/awssdk/checksums/2.29.29/checksums-2.29.29-sources.jar)
-
-
 
 ----
 
@@ -35752,8 +35385,6 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 [Source code](https://repo.maven.apache.org/maven2/software/amazon/awssdk/checksums-spi/2.29.29/checksums-spi-2.29.29-sources.jar)
 
-
-
 ----
 
 ### software.amazon.awssdk:endpoints-spi @2.29.29 - https://aws.amazon.com/sdkforjava/core/endpoints-spi
@@ -35966,8 +35597,6 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
    Such other license terms will then apply in lieu of the terms of the software license above.
 
 [Source code](https://repo.maven.apache.org/maven2/software/amazon/awssdk/endpoints-spi/2.29.29/endpoints-spi-2.29.29-sources.jar)
-
-
 
 ----
 
@@ -36182,8 +35811,6 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 [Source code](https://repo.maven.apache.org/maven2/software/amazon/awssdk/http-auth/2.29.29/http-auth-2.29.29-sources.jar)
 
-
-
 ----
 
 ### software.amazon.awssdk:http-auth-aws @2.29.29 - https://aws.amazon.com/sdkforjava
@@ -36396,8 +36023,6 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
    Such other license terms will then apply in lieu of the terms of the software license above.
 
 [Source code](https://repo.maven.apache.org/maven2/software/amazon/awssdk/http-auth-aws/2.29.29/http-auth-aws-2.29.29-sources.jar)
-
-
 
 ----
 
@@ -36612,8 +36237,6 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 [Source code](https://repo.maven.apache.org/maven2/software/amazon/awssdk/http-auth-aws-eventstream/2.29.29/http-auth-aws-eventstream-2.29.29-sources.jar)
 
-
-
 ----
 
 ### software.amazon.awssdk:http-auth-spi @2.29.29 - https://aws.amazon.com/sdkforjava
@@ -36826,8 +36449,6 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
    Such other license terms will then apply in lieu of the terms of the software license above.
 
 [Source code](https://repo.maven.apache.org/maven2/software/amazon/awssdk/http-auth-spi/2.29.29/http-auth-spi-2.29.29-sources.jar)
-
-
 
 ----
 
@@ -37042,8 +36663,6 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 [Source code](https://repo.maven.apache.org/maven2/software/amazon/awssdk/http-client-spi/2.29.29/http-client-spi-2.29.29-sources.jar)
 
-
-
 ----
 
 ### software.amazon.awssdk:identity-spi @2.29.29 - https://aws.amazon.com/sdkforjava
@@ -37256,8 +36875,6 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
    Such other license terms will then apply in lieu of the terms of the software license above.
 
 [Source code](https://repo.maven.apache.org/maven2/software/amazon/awssdk/identity-spi/2.29.29/identity-spi-2.29.29-sources.jar)
-
-
 
 ----
 
@@ -37472,8 +37089,6 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 [Source code](https://repo.maven.apache.org/maven2/software/amazon/awssdk/json-utils/2.29.29/json-utils-2.29.29-sources.jar)
 
-
-
 ----
 
 ### software.amazon.awssdk:metrics-spi @2.29.29 - https://aws.amazon.com/sdkforjava/core/metrics-spi
@@ -37686,8 +37301,6 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
    Such other license terms will then apply in lieu of the terms of the software license above.
 
 [Source code](https://repo.maven.apache.org/maven2/software/amazon/awssdk/metrics-spi/2.29.29/metrics-spi-2.29.29-sources.jar)
-
-
 
 ----
 
@@ -37902,8 +37515,6 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 [Source code](https://repo.maven.apache.org/maven2/software/amazon/awssdk/netty-nio-client/2.29.29/netty-nio-client-2.29.29-sources.jar)
 
-
-
 ----
 
 ### software.amazon.awssdk:profiles @2.29.29 - https://aws.amazon.com/sdkforjava
@@ -38116,8 +37727,6 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
    Such other license terms will then apply in lieu of the terms of the software license above.
 
 [Source code](https://repo.maven.apache.org/maven2/software/amazon/awssdk/profiles/2.29.29/profiles-2.29.29-sources.jar)
-
-
 
 ----
 
@@ -38332,8 +37941,6 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 [Source code](https://repo.maven.apache.org/maven2/software/amazon/awssdk/protocol-core/2.29.29/protocol-core-2.29.29-sources.jar)
 
-
-
 ----
 
 ### software.amazon.awssdk:regions @2.29.29 - https://aws.amazon.com/sdkforjava/core/regions
@@ -38546,8 +38153,6 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
    Such other license terms will then apply in lieu of the terms of the software license above.
 
 [Source code](https://repo.maven.apache.org/maven2/software/amazon/awssdk/regions/2.29.29/regions-2.29.29-sources.jar)
-
-
 
 ----
 
@@ -38762,8 +38367,6 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 [Source code](https://repo.maven.apache.org/maven2/software/amazon/awssdk/retries/2.29.29/retries-2.29.29-sources.jar)
 
-
-
 ----
 
 ### software.amazon.awssdk:retries-spi @2.29.29 - https://aws.amazon.com/sdkforjava/core/retries-spi
@@ -38976,8 +38579,6 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
    Such other license terms will then apply in lieu of the terms of the software license above.
 
 [Source code](https://repo.maven.apache.org/maven2/software/amazon/awssdk/retries-spi/2.29.29/retries-spi-2.29.29-sources.jar)
-
-
 
 ----
 
@@ -39192,8 +38793,6 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 [Source code](https://repo.maven.apache.org/maven2/software/amazon/awssdk/sdk-core/2.29.29/sdk-core-2.29.29-sources.jar)
 
-
-
 ----
 
 ### software.amazon.awssdk:sts @2.29.29 - https://aws.amazon.com/sdkforjava
@@ -39406,8 +39005,6 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
    Such other license terms will then apply in lieu of the terms of the software license above.
 
 [Source code](https://repo.maven.apache.org/maven2/software/amazon/awssdk/sts/2.29.29/sts-2.29.29-sources.jar)
-
-
 
 ----
 
@@ -39622,8 +39219,6 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 [Source code](https://repo.maven.apache.org/maven2/software/amazon/awssdk/third-party-jackson-core/2.29.29/third-party-jackson-core-2.29.29-sources.jar)
 
-
-
 ----
 
 ### software.amazon.awssdk:utils @2.29.29 - https://aws.amazon.com/sdkforjava/utils
@@ -39837,8 +39432,6 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 [Source code](https://repo.maven.apache.org/maven2/software/amazon/awssdk/utils/2.29.29/utils-2.29.29-sources.jar)
 
-
-
 ----
 
 ### software.amazon.eventstream:eventstream @1.0.1 - https://github.com/awslabs/aws-eventstream-java
@@ -40048,6 +39641,4 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 
 [Source code](https://repo.maven.apache.org/maven2/software/amazon/eventstream/eventstream/1.0.1/eventstream-1.0.1-sources.jar)
-
-
 
