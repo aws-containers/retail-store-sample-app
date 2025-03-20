@@ -1,9 +1,6 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": [
-    "config:recommended",
-    ":automergeStableNonMajor"
-  ],
+  "extends": ["config:recommended", ":automergeStableNonMajor"],
   "enabledManagers": ["github-actions", "terraform", "npm", "maven", "gomod"],
   "packageRules": [
     {
