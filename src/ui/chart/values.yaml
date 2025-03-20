@@ -87,6 +87,15 @@ app:
     enabled: false
     provider: ""
     model: ""
+    # temperature: 0.7
+    # maxTokens: 300
+    # prompt: |
+    #   This will override the default system prompt
+    bedrock:
+      region: ""
+    openai:
+      baseUrl: ""
+      # apiKey: ""
 
 ## Ingress for load balancer
 ingress:

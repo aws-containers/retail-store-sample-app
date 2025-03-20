@@ -5,9 +5,29 @@ metadata:
   name: {{ include "ui.configMapName" . }}
 data:
   RETAIL_UI_THEME: {{ .Values.app.theme }}
+  {{- if .Values.app.chat.enabled }}
   RETAIL_UI_CHAT_ENABLED: "{{ .Values.app.chat.enabled }}"
   RETAIL_UI_CHAT_PROVIDER: {{ .Values.app.chat.provider }}
   RETAIL_UI_CHAT_MODEL: {{ .Values.app.chat.model }}
+  {{- if .Values.app.chat.temperature }}
+  RETAIL_UI_CHAT_TEMPERATURE: {{ .Values.app.chat.temperature }}
+  {{- end }}
+  {{- if .Values.app.chat.maxTokens }}
+  RETAIL_UI_CHAT_MAX_TOKENS: {{ .Values.app.chat.maxTokens }}
+  {{- end }}
+  {{- if .Values.app.chat.prompt }}
+  RETAIL_UI_CHAT_PROMPT: {{ .Values.app.chat.prompt }}
+  {{- end }}
+  {{- if (eq "openai" .Values.app.chat.provider) }}
+  RETAIL_UI_CHAT_OPENAI_BASE_URL: {{ .Values.app.chat.openai.baseUrl }}
+  {{- if .Values.app.chat.openai.apiKey }}
+  RETAIL_UI_CHAT_OPENAI_API_KEY: {{ .Values.app.chat.openai.apiKey }}
+  {{- end }}
+  {{- end }}
+  {{- if (eq "bedrock" .Values.app.chat.provider) }}
+  RETAIL_UI_CHAT_BEDROCK_REGION: {{ .Values.app.chat.bedrock.region }}
+  {{- end }}
+  {{- end }}
   {{- if .Values.app.endpoints.catalog }}
   RETAIL_UI_ENDPOINTS_CATALOG: {{ .Values.app.endpoints.catalog }}
   {{- end -}}
