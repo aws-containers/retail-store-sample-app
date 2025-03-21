@@ -122,5 +122,5 @@ require (
 	golang.org/x/tools v0.21.1-0.20240508182429-e35e4ccd0d2d // indirect
 	google.golang.org/protobuf v1.36.3 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
-	gorm.io/plugin/opentelemetry v0.1.11
+	gorm.io/plugin/opentelemetry v0.1.12
 )
