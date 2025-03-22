@@ -16,40 +16,29 @@
  * SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-import { Controller, Get } from '@nestjs/common';
-import { ConfigService } from '@nestjs/config';
-import { HealthCheck, HealthCheckService } from '@nestjs/terminus';
-import { ChaosHealthIndicator } from './checkout/chaos/chaos.health';
+import { Injectable, NestMiddleware } from '@nestjs/common';
+import { Request, Response, NextFunction } from 'express';
+import { ChaosService } from './chaos.service';
 
-@Controller()
-export class AppController {
-  constructor(
-    private healthCheckService: HealthCheckService,
-    private chaosHealthIndicator: ChaosHealthIndicator,
-    private configService: ConfigService,
-  ) {}
+@Injectable()
+export class ChaosMiddleware implements NestMiddleware {
+  constructor(private chaosService: ChaosService) {}
 
-  @Get('health')
-  @HealthCheck()
-  health() {
-    return this.healthCheckService.check([
-      () => this.chaosHealthIndicator.isHealthy(),
-    ]);
-  }
-
-  @Get('topology')
-  @HealthCheck()
-  topology() {
-    const persistenceProvider = this.configService.get('persistence.provider');
-    let databaseEndpoint = 'N/A';
-
-    if (persistenceProvider === 'redis') {
-      databaseEndpoint = this.configService.get('persistence.redis.url');
+  async use(req: Request, res: Response, next: NextFunction) {
+    if (!this.chaosService.shouldApplyChaos(req.path)) {
+      return next();
     }
 
-    return {
-      persistenceProvider,
-      databaseEndpoint,
-    };
+    const latencyDelay = this.chaosService.getLatencyDelay();
+    if (latencyDelay) {
+      await new Promise((resolve) => setTimeout(resolve, latencyDelay));
+    }
+
+    const errorStatus = this.chaosService.getErrorStatus();
+    if (errorStatus) {
+      return res.sendStatus(errorStatus);
+    }
+
+    next();
   }
 }

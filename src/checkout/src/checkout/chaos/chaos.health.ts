@@ -16,40 +16,30 @@
  * SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-import { Controller, Get } from '@nestjs/common';
-import { ConfigService } from '@nestjs/config';
-import { HealthCheck, HealthCheckService } from '@nestjs/terminus';
-import { ChaosHealthIndicator } from './checkout/chaos/chaos.health';
+import { Injectable } from '@nestjs/common';
+import {
+  HealthIndicator,
+  HealthIndicatorResult,
+  HealthCheckError,
+} from '@nestjs/terminus';
+import { ChaosService } from './chaos.service';
 
-@Controller()
-export class AppController {
-  constructor(
-    private healthCheckService: HealthCheckService,
-    private chaosHealthIndicator: ChaosHealthIndicator,
-    private configService: ConfigService,
-  ) {}
-
-  @Get('health')
-  @HealthCheck()
-  health() {
-    return this.healthCheckService.check([
-      () => this.chaosHealthIndicator.isHealthy(),
-    ]);
+@Injectable()
+export class ChaosHealthIndicator extends HealthIndicator {
+  constructor(private chaosService: ChaosService) {
+    super();
   }
 
-  @Get('topology')
-  @HealthCheck()
-  topology() {
-    const persistenceProvider = this.configService.get('persistence.provider');
-    let databaseEndpoint = 'N/A';
+  async isHealthy(key: string = 'chaos'): Promise<HealthIndicatorResult> {
+    const isHealthy = this.chaosService.isSystemHealthy();
 
-    if (persistenceProvider === 'redis') {
-      databaseEndpoint = this.configService.get('persistence.redis.url');
+    if (!isHealthy) {
+      throw new HealthCheckError(
+        'Chaos check failed',
+        this.getStatus(key, false, { reason: 'Chaos failure enabled' }),
+      );
     }
 
-    return {
-      persistenceProvider,
-      databaseEndpoint,
-    };
+    return this.getStatus(key, true);
   }
 }
