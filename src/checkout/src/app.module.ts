@@ -25,10 +25,10 @@ import { CheckoutModule } from './checkout/checkout.module';
 import { LoggerMiddleware } from './middleware/logger.middleware';
 import { PrometheusModule } from '@willsoto/nestjs-prometheus';
 import { OpenTelemetryModule } from 'nestjs-otel';
-import { ChaosController } from './checkout/chaos/chaos.controller';
-import { ChaosService } from './checkout/chaos/chaos.service';
-import { ChaosHealthIndicator } from './checkout/chaos/chaos.health';
-import { ChaosMiddleware } from './checkout/chaos/chaos.middleware';
+import { ChaosController } from './chaos/chaos.controller';
+import { ChaosService } from './chaos/chaos.service';
+import { ChaosHealthIndicator } from './chaos/chaos.health';
+import { ChaosMiddleware } from './chaos/chaos.middleware';
 
 const OpenTelemetryModuleConfig = OpenTelemetryModule.forRoot({});
 

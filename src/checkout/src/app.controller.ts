@@ -19,7 +19,7 @@
 import { Controller, Get } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { HealthCheck, HealthCheckService } from '@nestjs/terminus';
-import { ChaosHealthIndicator } from './checkout/chaos/chaos.health';
+import { ChaosHealthIndicator } from './chaos/chaos.health';
 
 @Controller()
 export class AppController {
