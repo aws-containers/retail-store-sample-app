@@ -19,6 +19,7 @@
 package com.amazon.sample.orders.chaos;
 
 import java.util.Map;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -56,7 +57,7 @@ public class ChaosController {
   public ResponseEntity<Map<String, String>> setErrorStatus(
     @PathVariable int code
   ) {
-    if (code < 100 || code > 599) {
+    if (HttpStatus.resolve(code) == null) {
       return ResponseEntity.badRequest()
         .body(Map.of("error", "Invalid HTTP status code"));
     }
