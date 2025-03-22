@@ -37,11 +37,11 @@
 				<scope>import</scope>
 			</dependency>
       <dependency>
-          <groupId>io.opentelemetry.instrumentation</groupId>
-          <artifactId>opentelemetry-instrumentation-bom</artifactId>
-          <version>2.12.0</version>
-          <type>pom</type>
-          <scope>import</scope>
+        <groupId>io.opentelemetry.instrumentation</groupId>
+        <artifactId>opentelemetry-instrumentation-bom</artifactId>
+        <version>2.12.0</version>
+        <type>pom</type>
+        <scope>import</scope>
       </dependency>
 		</dependencies>
 	</dependencyManagement>
@@ -127,29 +127,18 @@
       <scope>test</scope>
     </dependency>
     <dependency>
-      <groupId>de.codecentric</groupId>
-      <artifactId>chaos-monkey-spring-boot</artifactId>
-      <version>3.2.0</version>
-      <exclusions>
-        <exclusion>
-          <artifactId>jackson-databind</artifactId>
-          <groupId>com.fasterxml.jackson.core</groupId>
-        </exclusion>
-      </exclusions> 
-    </dependency>
-      <dependency>
-        <groupId>com.fasterxml.jackson.core</groupId>
-        <artifactId>jackson-databind</artifactId>
+      <groupId>com.fasterxml.jackson.core</groupId>
+      <artifactId>jackson-databind</artifactId>
     </dependency>
     <dependency>
-        <groupId>io.opentelemetry.instrumentation</groupId>
-        <artifactId>opentelemetry-spring-boot-starter</artifactId>
+      <groupId>io.opentelemetry.instrumentation</groupId>
+      <artifactId>opentelemetry-spring-boot-starter</artifactId>
     </dependency>
     <dependency>
-        <groupId>io.opentelemetry.instrumentation</groupId>
-        <artifactId>opentelemetry-aws-sdk-2.2-autoconfigure</artifactId>
-        <version>2.12.0-alpha</version>
-        <scope>runtime</scope>
+      <groupId>io.opentelemetry.instrumentation</groupId>
+      <artifactId>opentelemetry-aws-sdk-2.2-autoconfigure</artifactId>
+      <version>2.12.0-alpha</version>
+      <scope>runtime</scope>
     </dependency>
   </dependencies>
 
@@ -189,19 +178,19 @@
           <target>${java.version}</target>
           <annotationProcessorPaths>
             <path>
-                <groupId>org.mapstruct</groupId>
-                <artifactId>mapstruct-processor</artifactId>
-                <version>${mapstruct.version}</version>
+              <groupId>org.mapstruct</groupId>
+              <artifactId>mapstruct-processor</artifactId>
+              <version>${mapstruct.version}</version>
             </path>
             <path>
-                <groupId>org.projectlombok</groupId>
-                <artifactId>lombok-mapstruct-binding</artifactId>
-                <version>0.2.0</version>
+              <groupId>org.projectlombok</groupId>
+              <artifactId>lombok-mapstruct-binding</artifactId>
+              <version>0.2.0</version>
             </path>
             <path>
-                <groupId>org.projectlombok</groupId>
-                <artifactId>lombok</artifactId>
-                <version>${lombok.version}</version>
+              <groupId>org.projectlombok</groupId>
+              <artifactId>lombok</artifactId>
+              <version>${lombok.version}</version>
             </path>
           </annotationProcessorPaths>
         </configuration>

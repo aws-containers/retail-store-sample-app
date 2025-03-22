@@ -24,7 +24,6 @@ The following environment variables are available for configuring the service:
 | `RETAIL_UI_CHAT_MODEL`            | The chat model to use, depends on the provider.                                | `""`                    |
 | `RETAIL_UI_CHAT_TEMPERATURE`      | Model temperature                                                              | `0.6`                   |
 | `RETAIL_UI_CHAT_MAX_TOKENS`       | Model maximum response tokens                                                  | `300`                   |
-| `RETAIL_UI_CHAT_TEMPERATURE`      | Model temperature                                                              | `0.6`                   |
 | `RETAIL_UI_CHAT_PROMPT`           | Model system prompt                                                            | `(see source)`          |
 | `RETAIL_UI_CHAT_BEDROCK_REGION`   | Amazon Bedrock region                                                          | `""`                    |
 | `RETAIL_UI_CHAT_OPENAI_BASE_URL`  | Base URL for OpenAI endpoint                                                   | `http://localhost:8888` |

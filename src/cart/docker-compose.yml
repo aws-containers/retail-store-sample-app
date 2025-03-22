@@ -53,9 +53,3 @@ services:
       interval: 5s
       timeout: 15s
       retries: 3
-    develop:
-      watch:
-        - action: rebuild
-          path: src
-        - action: rebuild
-          path: pom.xml

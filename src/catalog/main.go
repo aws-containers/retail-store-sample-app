@@ -30,6 +30,7 @@ import (
 	"github.com/aws-containers/retail-store-sample-app/catalog/api"
 	"github.com/aws-containers/retail-store-sample-app/catalog/config"
 	"github.com/aws-containers/retail-store-sample-app/catalog/controller"
+	"github.com/aws-containers/retail-store-sample-app/catalog/middleware"
 	"github.com/aws-containers/retail-store-sample-app/catalog/repository"
 	"github.com/gin-gonic/gin"
 	_ "github.com/go-sql-driver/mysql"
@@ -92,16 +93,18 @@ func main() {
 	p := ginprometheus.NewPrometheus("gin")
 	p.Use(r)
 
-	//prometheus.MustRegister(db.Collector())
-	//prometheus.MustRegister(db.ReaderCollector())
-
 	c, err := controller.NewController(api)
 	if err != nil {
 		log.Fatalln("Error creating controller", err)
 	}
 
+	chaosController := middleware.NewChaosController()
+
+	chaosController.SetupChaosRoutes(r)
+
 	catalog := r.Group("/catalog")
 
+	catalog.Use(chaosController.ChaosMiddleware())
 	catalog.Use(otelgin.Middleware("catalog-server"))
 
 	catalog.GET("/products", c.GetProducts)
@@ -111,6 +114,11 @@ func main() {
 	catalog.GET("/products/:id", c.GetProduct)
 
 	r.GET("/health", func(c *gin.Context) {
+		if !chaosController.IsHealthy() {
+			c.AbortWithError(503, fmt.Errorf("health check failed"))
+			return
+		}
+
 		c.String(http.StatusOK, "OK")
 	})
 
