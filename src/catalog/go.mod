@@ -2,7 +2,7 @@ module github.com/aws-containers/retail-store-sample-app/catalog
 
 go 1.22.0
 
-toolchain go1.23.5
+toolchain go1.24.1
 
 require (
 	github.com/gin-gonic/gin v1.10.0
@@ -122,5 +122,5 @@ require (
 	golang.org/x/tools v0.21.1-0.20240508182429-e35e4ccd0d2d // indirect
 	google.golang.org/protobuf v1.36.3 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
-	gorm.io/plugin/opentelemetry v0.1.11
+	gorm.io/plugin/opentelemetry v0.1.12
 )
