@@ -24,6 +24,19 @@ The following environment variables are available for configuring the service:
 | `RETAIL_ORDERS_MESSAGING_RABBITMQ_USERNAME`   | Username for RabbitMQ messaging provider                                                | `""`        |
 | `RETAIL_ORDERS_MESSAGING_RABBITMQ_PASSWORD`   | Password for RabbitMQ messaging provider                                                | `""`        |
 
+## Endpoints
+
+Several "utility" endpoints are provided with useful functionality for various scenarios:
+
+| Method   | Name                     | Description                                                                        |
+| -------- | ------------------------ | ---------------------------------------------------------------------------------- |
+| `POST`   | `/chaos/status/{code}`   | All HTTP requests to API paths will return the given HTTP status code              |
+| `DELETE` | `/chaos/status`          | Disables the HTTP status response above                                            |
+| `POST`   | `/chaos/latency/{delay}` | All HTTP requests to API paths will have the specified delay added in milliseconds |
+| `DELETE` | `/chaos/latency`         | Disables the HTTP response latency above                                           |
+| `POST`   | `/chaos/health`          | Causes all health check requests to fail                                           |
+| `DELETE` | `/chaos/health`          | Returns the health check to its default behavior                                   |
+
 ## Running
 
 There are two main options for running the service:

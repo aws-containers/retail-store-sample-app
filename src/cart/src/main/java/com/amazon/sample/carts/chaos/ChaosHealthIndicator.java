@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * SPDX-License-Identifier: MIT-0
  *
@@ -16,40 +16,28 @@
  * SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-import { Controller, Get } from '@nestjs/common';
-import { ConfigService } from '@nestjs/config';
-import { HealthCheck, HealthCheckService } from '@nestjs/terminus';
-import { ChaosHealthIndicator } from './chaos/chaos.health';
+package com.amazon.sample.carts.chaos;
 
-@Controller()
-export class AppController {
-  constructor(
-    private healthCheckService: HealthCheckService,
-    private chaosHealthIndicator: ChaosHealthIndicator,
-    private configService: ConfigService,
-  ) {}
+import org.springframework.boot.actuate.health.Health;
+import org.springframework.boot.actuate.health.HealthIndicator;
+import org.springframework.stereotype.Component;
 
-  @Get('health')
-  @HealthCheck()
-  health() {
-    return this.healthCheckService.check([
-      () => this.chaosHealthIndicator.isHealthy(),
-    ]);
+@Component
+public class ChaosHealthIndicator implements HealthIndicator {
+
+  private final ChaosService chaosService;
+
+  public ChaosHealthIndicator(ChaosService chaosService) {
+    this.chaosService = chaosService;
   }
 
-  @Get('topology')
-  @HealthCheck()
-  topology() {
-    const persistenceProvider = this.configService.get('persistence.provider');
-    let databaseEndpoint = 'N/A';
-
-    if (persistenceProvider === 'redis') {
-      databaseEndpoint = this.configService.get('persistence.redis.url');
+  @Override
+  public Health health() {
+    if (!chaosService.isHealthy()) {
+      return Health.down()
+        .withDetail("reason", "Chaos failure enabled")
+        .build();
     }
-
-    return {
-      persistenceProvider,
-      databaseEndpoint,
-    };
+    return Health.up().build();
   }
 }
