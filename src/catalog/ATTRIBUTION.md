@@ -11751,7 +11751,7 @@ THE SOFTWARE.
 
 ----
 
-### gorm.io/plugin/opentelemetry @0.1.11 - https://github.com/go-gorm/opentelemetry.git
+### gorm.io/plugin/opentelemetry @0.1.12 - https://github.com/go-gorm/opentelemetry.git
 
 MIT License
 
