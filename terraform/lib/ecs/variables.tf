@@ -124,3 +124,20 @@ variable "mq_password" {
   type        = string
   description = "Password for the shared MQ"
 }
+
+variable "opentelemetry_enabled" {
+  type        = bool
+  default     = false
+  description = "Enable OpenTelemetry instrumentation"
+}
+
+variable "container_insights_setting" {
+  type        = string
+  default     = "disabled"
+  description = "Container Insights setting for ECS cluster (enhanced or disabled)"
+
+  validation {
+    condition     = contains(["enhanced", "disabled"], var.container_insights_setting)
+    error_message = "container_insights_setting must be either 'enhanced' or 'disabled'"
+  }
+}
