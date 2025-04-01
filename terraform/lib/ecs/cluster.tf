@@ -1,5 +1,10 @@
 resource "aws_ecs_cluster" "cluster" {
   name = "${var.environment_name}-cluster"
+
+  setting {
+    name  = "containerInsights"
+    value = var.container_insights_setting
+  }
 }
 
 resource "aws_cloudwatch_log_group" "ecs_tasks" {

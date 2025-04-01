@@ -12,6 +12,8 @@ module "ui_service" {
   cloudwatch_logs_group_id        = aws_cloudwatch_log_group.ecs_tasks.id
   healthcheck_path                = "/actuator/health"
   alb_target_group_arn            = element(module.alb.target_group_arns, 0)
+  opentelemetry_enabled           = var.opentelemetry_enabled
+
 
   environment_variables = {
     RETAIL_UI_ENDPOINTS_CATALOG  = "http://${module.catalog_service.ecs_service_name}"
