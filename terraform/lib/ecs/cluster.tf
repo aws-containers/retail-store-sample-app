@@ -8,7 +8,7 @@ resource "aws_ecs_cluster" "cluster" {
 }
 
 resource "aws_cloudwatch_log_group" "ecs_tasks" {
-  name              = "${var.environment_name}-tasks"
+  name = "${var.environment_name}-tasks"
 }
 
 resource "aws_service_discovery_private_dns_namespace" "this" {
