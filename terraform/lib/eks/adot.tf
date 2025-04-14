@@ -257,7 +257,7 @@ resource "kubernetes_cluster_role_binding_v1" "adot" {
 
 module "iam_assumable_role_adot_amp" {
   source       = "terraform-aws-modules/iam/aws//modules/iam-assumable-role-with-oidc"
-  version      = "~> v5.5.0"
+  version      = "~> 5.55.0"
   create_role  = true
   role_name    = "${var.environment_name}-adot-col-xray"
   provider_url = module.eks_cluster.cluster_oidc_issuer_url
@@ -269,7 +269,7 @@ module "iam_assumable_role_adot_amp" {
 
 module "iam_assumable_role_adot_logs" {
   source       = "terraform-aws-modules/iam/aws//modules/iam-assumable-role-with-oidc"
-  version      = "~> v5.5.0"
+  version      = "~> 5.55.0"
   create_role  = true
   role_name    = "${var.environment_name}-adot-col-logs"
   provider_url = module.eks_cluster.cluster_oidc_issuer_url
