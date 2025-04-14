@@ -1,6 +1,6 @@
 module "iam_assumable_role_carts" {
   source                        = "terraform-aws-modules/iam/aws//modules/iam-assumable-role-with-oidc"
-  version                       = "~> v5.5.5"
+  version                       = "~> 5.55.0"
   create_role                   = true
   role_name                     = "${var.environment_name}-carts-dynamo"
   provider_url                  = module.retail_app_eks.eks_oidc_issuer_url
