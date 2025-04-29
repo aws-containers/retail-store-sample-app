@@ -1,3 +1,6 @@
+
+
+
 module "tags" {
   source = "../../lib/tags"
 
@@ -57,4 +60,8 @@ module "retail_app_ecs" {
   mq_endpoint = module.dependencies.mq_broker_endpoint
   mq_username = module.dependencies.mq_user
   mq_password = module.dependencies.mq_password
+  datadog_container_def = local.datadog_container_def
+  datadog_api_key_arn   = aws_secretsmanager_secret.datadog_api_key.arn
+
+
 }

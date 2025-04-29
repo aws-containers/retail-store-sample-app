@@ -1,3 +1,13 @@
+
+
+variable "datadog_container_def" {
+  description = "Datadog agent container definition"
+  type        = any
+  default     = null
+}
+
+
+
 variable "environment_name" {
   type        = string
   description = "Name of the environment"
@@ -124,3 +134,10 @@ variable "mq_password" {
   type        = string
   description = "Password for the shared MQ"
 }
+
+variable "datadog_api_key_arn" {
+  description = "ARN of the Datadog API key secret"
+  type        = string
+  default     = ""
+}
+

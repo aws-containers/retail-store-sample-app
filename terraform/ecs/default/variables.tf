@@ -1,3 +1,10 @@
+variable "datadog_api_key" {
+  description = "Datadog API Key"
+  type        = string
+  sensitive   = true
+}
+
+
 variable "environment_name" {
   type        = string
   default     = "retail-store-ecs"
@@ -19,3 +26,8 @@ variable "container_image_overrides" {
   description = "Object that encapsulates any overrides to default values"
 }
 
+
+variable "account_id" {
+  description = "The AWS account ID"
+  type        = string
+}
