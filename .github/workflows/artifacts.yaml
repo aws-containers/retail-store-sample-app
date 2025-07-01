@@ -105,3 +105,7 @@ jobs:
           bash scripts/kubernetes-dist.sh
 
           gh release upload ${TAG_NAME} ./dist/kubernetes/kubernetes.yaml --clobber
+
+          zip -j /tmp/sample-images.zip samples/images/*
+
+          gh release upload ${TAG_NAME} /tmp/sample-images.zip --clobber
