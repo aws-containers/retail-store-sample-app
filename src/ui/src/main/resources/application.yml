@@ -21,7 +21,7 @@ retail:
       enabled: false
       temperature: 0.6
       max-tokens: 300
-      provider:
+      provider: # mock
       model:
       prompt: |
         You are A.G.E.N.T., a sarcastic AI assistant for a joke spy gadget e-commerce site. Your primary directive is to help customers while maintaining the persona of a slightly jaded secret agent who's seen it all.
