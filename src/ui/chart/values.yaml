@@ -77,7 +77,7 @@ configMap:
   name: # if blank this will be generated
 
 app:
-  theme: default
+  # theme: default
   endpoints: {}
     #catalog: http://catalog:80
     #carts: http://carts:80

@@ -4,7 +4,9 @@ kind: ConfigMap
 metadata:
   name: {{ include "ui.configMapName" . }}
 data:
+  {{- if .Values.app.theme }}
   RETAIL_UI_THEME: {{ .Values.app.theme }}
+  {{- end }}
   {{- if .Values.app.chat.enabled }}
   RETAIL_UI_CHAT_ENABLED: "{{ .Values.app.chat.enabled }}"
   RETAIL_UI_CHAT_PROVIDER: {{ .Values.app.chat.provider }}
