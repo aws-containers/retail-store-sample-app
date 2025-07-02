@@ -166,7 +166,7 @@
 		<dependency>
 			<groupId>com.microsoft.kiota</groupId>
 			<artifactId>microsoft-kiota-serialization-json</artifactId>
-			<version>1.8.4</version>
+			<version>1.8.6</version>
 		</dependency>
 		<dependency>
 			<groupId>io.opentelemetry.contrib</groupId>
