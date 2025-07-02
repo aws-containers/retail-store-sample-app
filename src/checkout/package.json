@@ -29,7 +29,7 @@
     "@nestjs/platform-express": "^9.4.3",
     "@nestjs/swagger": "^7.4.0",
     "@nestjs/terminus": "^10.2.3",
-    "@opentelemetry/auto-instrumentations-node": "^0.56.0",
+    "@opentelemetry/auto-instrumentations-node": "^0.60.0",
     "@opentelemetry/exporter-trace-otlp-http": "^0.57.1",
     "@opentelemetry/id-generator-aws-xray": "^1.2.2",
     "@opentelemetry/resource-detector-aws": "^1.11.0",
