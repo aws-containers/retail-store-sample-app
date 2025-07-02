@@ -110,4 +110,5 @@ jobs:
       - name: Test
         shell: devenv shell bash -- -e {0}
         run: |
+          devenv gc
           bash scripts/e2e-kind.sh
