@@ -12,6 +12,7 @@ retail:
   ui:
     theme: default
     disable-demo-warnings: false
+    product-images-path: # /mnt/products
     endpoints:
       catalog: # http://localhost:8081
       carts: # http://localhost:8082

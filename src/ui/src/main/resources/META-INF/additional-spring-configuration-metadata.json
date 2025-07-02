@@ -11,6 +11,11 @@
       "description": "Disable the UI messages warning about demonstration content"
     },
     {
+      "name": "retail.ui.product-images-path",
+      "type": "java.lang.String",
+      "description": "Overrides the location where the sample product images are sourced from to use the specified file path"
+    },
+    {
       "name": "retail.ui.endpoints.catalog",
       "type": "java.lang.String",
       "description": "HTTP endpoint for the catalog service"
