@@ -1,8 +1,9 @@
 import { getNodeAutoInstrumentations } from '@opentelemetry/auto-instrumentations-node';
 import { NodeSDK } from '@opentelemetry/sdk-node';
-import * as process from 'process';
 import { OTLPTraceExporter } from '@opentelemetry/exporter-trace-otlp-http';
 import { AWSXRayIdGenerator } from '@opentelemetry/id-generator-aws-xray';
+import process from 'node:process';
+
 // import { diag, DiagConsoleLogger, DiagLogLevel } from '@opentelemetry/api';
 
 // diag.setLogger(new DiagConsoleLogger(), DiagLogLevel.DEBUG);

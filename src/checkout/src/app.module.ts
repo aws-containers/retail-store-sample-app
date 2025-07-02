@@ -48,6 +48,6 @@ const OpenTelemetryModuleConfig = OpenTelemetryModule.forRoot({});
 export class AppModule implements NestModule {
   configure(consumer: MiddlewareConsumer) {
     consumer.apply(LoggerMiddleware).exclude('health').forRoutes('*');
-    consumer.apply(ChaosMiddleware).forRoutes('checkout/*');
+    consumer.apply(ChaosMiddleware).forRoutes('checkout/*splat');
   }
 }
