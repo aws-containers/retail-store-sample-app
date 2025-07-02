@@ -17,9 +17,7 @@
     },
     {
       "groupName": "kiota",
-      "matchPackageNames": [
-        "com.microsoft.kiota:*"
-      ]
+      "matchPackageNames": ["com.microsoft.kiota:*"]
     },
     {
       "automerge": true,
