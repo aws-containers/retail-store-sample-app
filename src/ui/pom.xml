@@ -242,7 +242,7 @@
 			<plugin>
         <artifactId>kiota-maven-plugin</artifactId>
         <groupId>io.kiota</groupId>
-        <version>0.0.21</version>
+        <version>0.0.29</version>
         <configuration>
 					<kiotaVersion>1.21.0</kiotaVersion>
 					<serializers
