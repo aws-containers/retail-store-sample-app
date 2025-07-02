@@ -26,7 +26,7 @@
                 src="https://via.placeholder.com/100"
                 alt="Product"
                 class="w-[100px] h-[100px] rounded"
-                th:src="@{/assets/img/products/{itemId}.png(itemId=${item.id})}"
+                th:src="@{/assets/img/products/{itemId}.jpg(itemId=${item.id})}"
               />
               <div class="flex-1">
                 <h2 th:text="${item.name}" class="item-name">Product Name</h2>

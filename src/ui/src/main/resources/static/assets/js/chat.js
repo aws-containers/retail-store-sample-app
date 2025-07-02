@@ -106,7 +106,7 @@ const ChatUI = {
     if (sender === "bot") {
       // Bot avatar - using image
       const avatar = document.createElement("img");
-      avatar.src = `${this.contextPath}assets/img/chat-avatar.png`;
+      avatar.src = `${this.contextPath}assets/img/chat-avatar-mini.jpg`;
       avatar.alt = "Chat Avatar";
       avatar.className = "w-10 h-10 rounded-full object-cover";
       avatarContainer.appendChild(avatar);
