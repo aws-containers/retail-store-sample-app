@@ -33,14 +33,6 @@
 				<enabled>false</enabled>
 			</snapshots>
 		</repository>
-		<repository>
-			<id>spring-snapshots</id>
-			<name>Spring Snapshots</name>
-			<url>https://repo.spring.io/snapshot</url>
-			<releases>
-				<enabled>false</enabled>
-			</releases>
-		</repository>
 	</repositories>
 
 	<dependencyManagement>
@@ -48,7 +40,7 @@
 			<dependency>
 				<groupId>org.springframework.ai</groupId>
 				<artifactId>spring-ai-bom</artifactId>
-				<version>1.0.0-M6</version>
+				<version>1.0.0</version>
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>
@@ -183,7 +175,7 @@
 		</dependency>
 		<dependency>
 				<groupId>org.springframework.ai</groupId>
-				<artifactId>spring-ai-bedrock-converse-spring-boot-starter</artifactId>
+				<artifactId>spring-ai-starter-model-bedrock-converse</artifactId>
 		</dependency>
 		<dependency>
 				<groupId>org.springframework.ai</groupId>
