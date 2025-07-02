@@ -68,11 +68,15 @@ export class RedisCheckoutRepository
 
   async get(key: string): Promise<string> {
     const client = await this.readClient();
+
+    //@ts-ignore
     return client.get(key);
   }
 
   async set(key: string, value: string): Promise<string> {
     const client = await this.client();
+
+    //@ts-ignore
     return client.set(key, value);
   }
 
