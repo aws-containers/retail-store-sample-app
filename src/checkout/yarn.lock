@@ -1032,7 +1032,7 @@
     "@opentelemetry/sdk-trace-base" "1.30.1"
     "@opentelemetry/semantic-conventions" "1.28.0"
 
-"@opentelemetry/host-metrics@^0.35.4":
+"@opentelemetry/host-metrics@^0.35.5":
   version "0.35.5"
   resolved "https://registry.yarnpkg.com/@opentelemetry/host-metrics/-/host-metrics-0.35.5.tgz#1bb7453558b2623c8331d0fea5b7766c995a68f1"
   integrity sha512-Zf9Cjl7H6JalspnK5KD1+LLKSVecSinouVctNmUxRy+WP+20KwHq+qg4hADllkEmJ99MZByLLmEmzrr7s92V6g==
@@ -5204,12 +5204,12 @@ neo-async@^2.6.2:
   integrity sha512-Yd3UES5mWCSqR+qNT93S3UoYUkqAZ9lLg8a7g9rimsWmYGK8cVToA4/sF3RrshdyV3sAGMXVUmpMYOw+dLpOuw==
 
 nestjs-otel@^6.0.0:
-  version "6.1.2"
-  resolved "https://registry.yarnpkg.com/nestjs-otel/-/nestjs-otel-6.1.2.tgz#eef92d9a2ea2c71c90602193451387f0465e05f5"
-  integrity sha512-Xs/6/3ypf8ujijM0h7lO/3kGjev1cP19FcdOw4gUc71owBu3ktf0k3BXvo0lxb/vP+37j9Ljl6lf2cJtwJ9h5A==
+  version "6.2.0"
+  resolved "https://registry.yarnpkg.com/nestjs-otel/-/nestjs-otel-6.2.0.tgz#3bb43afe291b1b04a574d3dcc82657f79e296b3f"
+  integrity sha512-F15GnWNrmHxDRdn0o2/cDx65gR7+s3xou1mEJ5vVONfOOYeneIJi1Mkf6h/Qu6NfO4SHPFPKGMXoovvTX1D8Iw==
   dependencies:
     "@opentelemetry/api" "^1.9.0"
-    "@opentelemetry/host-metrics" "^0.35.4"
+    "@opentelemetry/host-metrics" "^0.35.5"
     response-time "^2.3.3"
 
 node-abort-controller@^3.0.1:
