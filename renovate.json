@@ -16,6 +16,12 @@
       "enabled": false
     },
     {
+      "groupName": "kiota",
+      "matchPackageNames": [
+        "com.microsoft.kiota:*"
+      ]
+    },
+    {
       "automerge": true,
       "matchCurrentVersion": ">= 1.0.0",
       "matchUpdateTypes": ["minor", "patch"],
