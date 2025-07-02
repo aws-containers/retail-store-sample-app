@@ -98,6 +98,8 @@ jobs:
           kind load docker-image public.ecr.aws/aws-containers/retail-store-sample-orders:$IMAGE_TAG
           kind load docker-image public.ecr.aws/aws-containers/retail-store-sample-ui:$IMAGE_TAG
 
+          docker system prune --all --force
+
       - name: Deploy
         shell: devenv shell bash -- -e {0}
         env:
@@ -110,5 +112,4 @@ jobs:
       - name: Test
         shell: devenv shell bash -- -e {0}
         run: |
-          devenv gc
           bash scripts/e2e-kind.sh
