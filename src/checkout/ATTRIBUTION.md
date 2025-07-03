@@ -5,7 +5,7 @@ The applicable license information is listed below:
 
 ----
 
-### accepts @1.3.8 - https://github.com/jshttp/accepts#readme
+### accepts @2.0.0 - https://github.com/jshttp/accepts#readme
 
 (The MIT License)
 
@@ -32,7 +32,7 @@ TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 
-[Source code](https://registry.npmjs.org/accepts/-/accepts-1.3.8.tgz)
+[Source code](https://registry.npmjs.org/accepts/-/accepts-2.0.0.tgz)
 
 ----
 
@@ -533,35 +533,6 @@ OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
 ----
 
-### array-flatten @1.1.1 - https://github.com/blakeembrey/array-flatten
-
-The MIT License (MIT)
-
-Copyright (c) 2014 Blake Embrey (hello@blakeembrey.com)
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in
-all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-THE SOFTWARE.
-
-
-[Source code](https://registry.npmjs.org/array-flatten/-/array-flatten-1.1.1.tgz)
-
-----
-
 ### asn1 @0.2.6 - https://github.com/joyent/node-asn1#readme
 
 Copyright (c) 2011 Mark Cavage, All rights reserved.
@@ -887,7 +858,7 @@ THE SOFTWARE.
 
 ----
 
-### body-parser @1.20.1 - https://github.com/expressjs/body-parser#readme
+### body-parser @2.2.0 - https://github.com/expressjs/body-parser#readme
 
 (The MIT License)
 
@@ -914,38 +885,7 @@ TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 
-[Source code](https://registry.npmjs.org/body-parser/-/body-parser-1.20.1.tgz)
-
-----
-
-### body-parser @1.20.2 - https://github.com/expressjs/body-parser#readme
-
-(The MIT License)
-
-Copyright (c) 2014 Jonathan Ong <me@jongleberry.com>
-Copyright (c) 2014-2015 Douglas Christopher Wilson <doug@somethingdoug.com>
-
-Permission is hereby granted, free of charge, to any person obtaining
-a copy of this software and associated documentation files (the
-'Software'), to deal in the Software without restriction, including
-without limitation the rights to use, copy, modify, merge, publish,
-distribute, sublicense, and/or sell copies of the Software, and to
-permit persons to whom the Software is furnished to do so, subject to
-the following conditions:
-
-The above copyright notice and this permission notice shall be
-included in all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND,
-EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
-IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
-CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
-TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
-SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-
-
-[Source code](https://registry.npmjs.org/body-parser/-/body-parser-1.20.2.tgz)
+[Source code](https://registry.npmjs.org/body-parser/-/body-parser-2.2.0.tgz)
 
 ----
 
@@ -1283,7 +1223,7 @@ THE SOFTWARE.
 
 ----
 
-### class-validator @0.14.1 - https://github.com/typestack/class-validator#readme
+### class-validator @0.14.2 - https://github.com/typestack/class-validator#readme
 
 
 The MIT License
@@ -1308,7 +1248,7 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 
-[Source code](https://registry.npmjs.org/class-validator/-/class-validator-0.14.1.tgz)
+[Source code](https://registry.npmjs.org/class-validator/-/class-validator-0.14.2.tgz)
 
 ----
 
@@ -1443,7 +1383,7 @@ THE SOFTWARE.
 
 ----
 
-### concat-stream @1.6.2 - https://github.com/maxogden/concat-stream#readme
+### concat-stream @2.0.0 - https://github.com/maxogden/concat-stream#readme
 
 The MIT License
 
@@ -1470,15 +1410,41 @@ ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
 TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE 
 SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-[Source code](https://registry.npmjs.org/concat-stream/-/concat-stream-1.6.2.tgz)
+[Source code](https://registry.npmjs.org/concat-stream/-/concat-stream-2.0.0.tgz)
 
 ----
 
-### consola @2.15.3 - https://github.com/nuxt/consola#readme
+### consola @3.4.2 - https://github.com/unjs/consola#readme
 
 MIT License
 
-Copyright (c) <year> <copyright holders>
+Copyright (c) Pooya Parsa <pooya@pi0.io>
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+---
+
+Prompt support is based on https://github.com/bombshell-dev/clack
+
+MIT License
+
+Copyright (c) Nate Moore
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
@@ -1486,11 +1452,24 @@ The above copyright notice and this permission notice shall be included in all c
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-[Source code](https://registry.npmjs.org/consola/-/consola-2.15.3.tgz)
+---
+
+Color support is based on https://github.com/jorgebucaran/colorette
+
+Copyright © Jorge Bucaran <https://jorgebucaran.com>
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'Software'), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+
+[Source code](https://registry.npmjs.org/consola/-/consola-3.4.2.tgz)
 
 ----
 
-### content-disposition @0.5.4 - https://github.com/jshttp/content-disposition#readme
+### content-disposition @1.0.0 - https://github.com/jshttp/content-disposition#readme
 
 (The MIT License)
 
@@ -1516,7 +1495,7 @@ TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 
-[Source code](https://registry.npmjs.org/content-disposition/-/content-disposition-0.5.4.tgz)
+[Source code](https://registry.npmjs.org/content-disposition/-/content-disposition-1.0.0.tgz)
 
 ----
 
@@ -1550,7 +1529,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 ----
 
-### cookie @0.5.0 - https://github.com/jshttp/cookie#readme
+### cookie @0.7.2 - https://github.com/jshttp/cookie#readme
 
 (The MIT License)
 
@@ -1578,23 +1557,37 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 
 
-[Source code](https://registry.npmjs.org/cookie/-/cookie-0.5.0.tgz)
+[Source code](https://registry.npmjs.org/cookie/-/cookie-0.7.2.tgz)
 
 ----
 
-### cookie-signature @1.0.6 - https://github.com/visionmedia/node-cookie-signature
+### cookie-signature @1.2.2 - https://github.com/visionmedia/node-cookie-signature#readme
 
-MIT License
+(The MIT License)
 
-Copyright (c) <year> <copyright holders>
+Copyright (c) 2012–2024 LearnBoost <tj@learnboost.com> and other contributors;
 
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+Permission is hereby granted, free of charge, to any person obtaining
+a copy of this software and associated documentation files (the
+'Software'), to deal in the Software without restriction, including
+without limitation the rights to use, copy, modify, merge, publish,
+distribute, sublicense, and/or sell copies of the Software, and to
+permit persons to whom the Software is furnished to do so, subject to
+the following conditions:
 
-The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+The above copyright notice and this permission notice shall be
+included in all copies or substantial portions of the Software.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
+CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-[Source code](https://registry.npmjs.org/cookie-signature/-/cookie-signature-1.0.6.tgz)
+
+[Source code](https://registry.npmjs.org/cookie-signature/-/cookie-signature-1.2.2.tgz)
 
 ----
 
@@ -1622,33 +1615,6 @@ IN THE SOFTWARE.
 
 
 [Source code](https://registry.npmjs.org/core-util-is/-/core-util-is-1.0.2.tgz)
-
-----
-
-### core-util-is @1.0.3 - https://github.com/isaacs/core-util-is#readme
-
-Copyright Node.js contributors. All rights reserved.
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to
-deal in the Software without restriction, including without limitation the
-rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
-sell copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in
-all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
-IN THE SOFTWARE.
-
-
-[Source code](https://registry.npmjs.org/core-util-is/-/core-util-is-1.0.3.tgz)
 
 ----
 
@@ -1743,33 +1709,6 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 ----
 
-### debug @2.6.9 - https://github.com/visionmedia/debug#readme
-
-(The MIT License)
-
-Copyright (c) 2014 TJ Holowaychuk <tj@vision-media.ca>
-
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software 
-and associated documentation files (the 'Software'), to deal in the Software without restriction, 
-including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, 
-and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so,
-subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all copies or substantial 
-portions of the Software.
-
-THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT 
-LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. 
-IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, 
-WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE 
-SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-
-
-
-[Source code](https://registry.npmjs.org/debug/-/debug-2.6.9.tgz)
-
-----
-
 ### debug @4.4.0 - https://github.com/debug-js/debug#readme
 
 (The MIT License)
@@ -1795,6 +1734,34 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 
 [Source code](https://registry.npmjs.org/debug/-/debug-4.4.0.tgz)
+
+----
+
+### debug @4.4.1 - https://github.com/debug-js/debug#readme
+
+(The MIT License)
+
+Copyright (c) 2014-2017 TJ Holowaychuk <tj@vision-media.ca>
+Copyright (c) 2018-2021 Josh Junon
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software
+and associated documentation files (the 'Software'), to deal in the Software without restriction,
+including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense,
+and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so,
+subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial
+portions of the Software.
+
+THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT
+LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+
+
+[Source code](https://registry.npmjs.org/debug/-/debug-4.4.1.tgz)
 
 ----
 
@@ -1855,38 +1822,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 ----
 
-### destroy @1.2.0 - https://github.com/stream-utils/destroy#readme
-
-
-The MIT License (MIT)
-
-Copyright (c) 2014 Jonathan Ong me@jongleberry.com
-Copyright (c) 2015-2022 Douglas Christopher Wilson doug@somethingdoug.com
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in
-all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-THE SOFTWARE.
-
-
-[Source code](https://registry.npmjs.org/destroy/-/destroy-1.2.0.tgz)
-
-----
-
-### dotenv @16.1.4 - https://github.com/motdotla/dotenv#readme
+### dotenv @16.4.7 - https://github.com/motdotla/dotenv#readme
 
 Copyright (c) 2015, Scott Motte
 All rights reserved.
@@ -1913,11 +1849,42 @@ OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 
-[Source code](https://registry.npmjs.org/dotenv/-/dotenv-16.1.4.tgz)
+[Source code](https://registry.npmjs.org/dotenv/-/dotenv-16.4.7.tgz)
 
 ----
 
-### dotenv-expand @10.0.0 - https://github.com/motdotla/dotenv-expand#readme
+### dotenv @16.6.1 - https://github.com/motdotla/dotenv#readme
+
+Copyright (c) 2015, Scott Motte
+All rights reserved.
+
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions are met:
+
+* Redistributions of source code must retain the above copyright notice, this
+  list of conditions and the following disclaimer.
+
+* Redistributions in binary form must reproduce the above copyright notice,
+  this list of conditions and the following disclaimer in the documentation
+  and/or other materials provided with the distribution.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
+FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+
+[Source code](https://registry.npmjs.org/dotenv/-/dotenv-16.6.1.tgz)
+
+----
+
+### dotenv-expand @12.0.1 - https://github.com/motdotla/dotenv-expand#readme
 
 Copyright (c) 2016, Scott Motte
 All rights reserved.
@@ -1945,7 +1912,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 
 
-[Source code](https://registry.npmjs.org/dotenv-expand/-/dotenv-expand-10.0.0.tgz)
+[Source code](https://registry.npmjs.org/dotenv-expand/-/dotenv-expand-12.0.1.tgz)
 
 ----
 
@@ -2108,7 +2075,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 ----
 
-### encodeurl @1.0.2 - https://github.com/pillarjs/encodeurl#readme
+### encodeurl @2.0.0 - https://github.com/pillarjs/encodeurl#readme
 
 (The MIT License)
 
@@ -2134,7 +2101,7 @@ TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 
-[Source code](https://registry.npmjs.org/encodeurl/-/encodeurl-1.0.2.tgz)
+[Source code](https://registry.npmjs.org/encodeurl/-/encodeurl-2.0.0.tgz)
 
 ----
 
@@ -2304,7 +2271,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 ----
 
-### express @4.18.2 - http://expressjs.com/
+### express @5.1.0 - https://expressjs.com/
 
 (The MIT License)
 
@@ -2332,7 +2299,7 @@ TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 
-[Source code](https://registry.npmjs.org/express/-/express-4.18.2.tgz)
+[Source code](https://registry.npmjs.org/express/-/express-5.1.0.tgz)
 
 ----
 
@@ -2510,7 +2477,52 @@ SOFTWARE.
 
 ----
 
-### finalhandler @1.2.0 - https://github.com/pillarjs/finalhandler#readme
+### fflate @0.8.2 - https://101arrowz.github.io/fflate
+
+MIT License
+
+Copyright (c) 2023 Arjun Barrett
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+[Source code](https://registry.npmjs.org/fflate/-/fflate-0.8.2.tgz)
+
+----
+
+### file-type @21.0.0 - https://github.com/sindresorhus/file-type#readme
+
+MIT License
+
+Copyright (c) Sindre Sorhus <sindresorhus@gmail.com> (https://sindresorhus.com)
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+
+[Source code](https://registry.npmjs.org/file-type/-/file-type-21.0.0.tgz)
+
+----
+
+### finalhandler @2.1.0 - https://github.com/pillarjs/finalhandler#readme
 
 (The MIT License)
 
@@ -2536,7 +2548,7 @@ TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 
-[Source code](https://registry.npmjs.org/finalhandler/-/finalhandler-1.2.0.tgz)
+[Source code](https://registry.npmjs.org/finalhandler/-/finalhandler-2.1.0.tgz)
 
 ----
 
@@ -2709,7 +2721,7 @@ THE SOFTWARE.
 
 ----
 
-### fresh @0.5.2 - https://github.com/jshttp/fresh#readme
+### fresh @2.0.0 - https://github.com/jshttp/fresh#readme
 
 (The MIT License)
 
@@ -2736,7 +2748,7 @@ TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 
-[Source code](https://registry.npmjs.org/fresh/-/fresh-0.5.2.tgz)
+[Source code](https://registry.npmjs.org/fresh/-/fresh-2.0.0.tgz)
 
 ----
 
@@ -3188,22 +3200,6 @@ THE SOFTWARE.
 
 ----
 
-### generic-pool @3.9.0 - https://github.com/coopernurse/node-pool#readme
-
-MIT License
-
-Copyright (c) <year> <copyright holders>
-
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-
-[Source code](https://registry.npmjs.org/generic-pool/-/generic-pool-3.9.0.tgz)
-
-----
-
 ### get-caller-file @2.0.5 - https://github.com/stefanpenner/get-caller-file#readme
 
 ISC License (ISC)
@@ -3553,7 +3549,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 ----
 
-### iconv-lite @0.4.24 - https://github.com/ashtuchkin/iconv-lite
+### iconv-lite @0.6.3 - https://github.com/ashtuchkin/iconv-lite
 
 Copyright (c) 2011 Alexander Shtuchkin
 
@@ -3578,7 +3574,26 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 
 
-[Source code](https://registry.npmjs.org/iconv-lite/-/iconv-lite-0.4.24.tgz)
+[Source code](https://registry.npmjs.org/iconv-lite/-/iconv-lite-0.6.3.tgz)
+
+----
+
+### ieee754 @1.2.1 - https://github.com/feross/ieee754#readme
+
+Copyright 2008 Fair Oaks Labs, Inc.
+
+Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+
+1. Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+
+2. Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+
+3. Neither the name of the copyright holder nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+
+[Source code](https://registry.npmjs.org/ieee754/-/ieee754-1.2.1.tgz)
 
 ----
 
@@ -3886,6 +3901,32 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 ----
 
+### is-promise @4.0.0 - https://github.com/then/is-promise#readme
+
+Copyright (c) 2014 Forbes Lindesay
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
+
+[Source code](https://registry.npmjs.org/is-promise/-/is-promise-4.0.0.tgz)
+
+----
+
 ### is-stream @2.0.1 - https://github.com/sindresorhus/is-stream#readme
 
 MIT License
@@ -3926,22 +3967,6 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 
 [Source code](https://registry.npmjs.org/is-typedarray/-/is-typedarray-1.0.0.tgz)
-
-----
-
-### isarray @1.0.0 - https://github.com/juliangruber/isarray
-
-MIT License
-
-Copyright (c) <year> <copyright holders>
-
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-
-[Source code](https://registry.npmjs.org/isarray/-/isarray-1.0.0.tgz)
 
 ----
 
@@ -4459,7 +4484,7 @@ THE SOFTWARE
 
 ----
 
-### libphonenumber-js @1.11.18 - https://gitlab.com/catamphetamine/libphonenumber-js#readme
+### libphonenumber-js @1.12.9 - https://gitlab.com/catamphetamine/libphonenumber-js#readme
 
 (The MIT License)
 
@@ -4484,7 +4509,36 @@ CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
 TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-[Source code](https://registry.npmjs.org/libphonenumber-js/-/libphonenumber-js-1.11.18.tgz)
+[Source code](https://registry.npmjs.org/libphonenumber-js/-/libphonenumber-js-1.12.9.tgz)
+
+----
+
+### load-esm @1.0.2 - https://github.com/Borewit/load-esm#readme
+
+MIT License
+
+Copyright (c) 2024 Borewit
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+
+[Source code](https://registry.npmjs.org/load-esm/-/load-esm-1.0.2.tgz)
 
 ----
 
@@ -4866,12 +4920,11 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 ----
 
-### merge-descriptors @1.0.1 - https://github.com/component/merge-descriptors
+### media-typer @1.1.0 - https://github.com/jshttp/media-typer#readme
 
 (The MIT License)
 
-Copyright (c) 2013 Jonathan Ong <me@jongleberry.com>
-Copyright (c) 2015 Douglas Christopher Wilson <doug@somethingdoug.com>
+Copyright (c) 2014-2017 Douglas Christopher Wilson
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
@@ -4893,68 +4946,26 @@ TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 
-[Source code](https://registry.npmjs.org/merge-descriptors/-/merge-descriptors-1.0.1.tgz)
+[Source code](https://registry.npmjs.org/media-typer/-/media-typer-1.1.0.tgz)
 
 ----
 
-### methods @1.1.2 - https://github.com/jshttp/methods
+### merge-descriptors @2.0.0 - https://github.com/sindresorhus/merge-descriptors#readme
 
-(The MIT License)
+MIT License
 
-Copyright (c) 2013-2014 TJ Holowaychuk <tj@vision-media.ca>
-Copyright (c) 2015-2016 Douglas Christopher Wilson <doug@somethingdoug.com>
+Copyright (c) Jonathan Ong <me@jongleberry.com>
+Copyright (c) Douglas Christopher Wilson <doug@somethingdoug.com>
+Copyright (c) Sindre Sorhus <sindresorhus@gmail.com> (https://sindresorhus.com)
 
-Permission is hereby granted, free of charge, to any person obtaining
-a copy of this software and associated documentation files (the
-'Software'), to deal in the Software without restriction, including
-without limitation the rights to use, copy, modify, merge, publish,
-distribute, sublicense, and/or sell copies of the Software, and to
-permit persons to whom the Software is furnished to do so, subject to
-the following conditions:
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
-The above copyright notice and this permission notice shall be
-included in all copies or substantial portions of the Software.
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
-THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND,
-EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
-IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
-CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
-TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
-SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 
-
-[Source code](https://registry.npmjs.org/methods/-/methods-1.1.2.tgz)
-
-----
-
-### mime @1.6.0 - https://github.com/broofa/node-mime#readme
-
-The MIT License (MIT)
-
-Copyright (c) 2010 Benjamin Thomas, Robert Kieffer
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in
-all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-THE SOFTWARE.
-
-
-[Source code](https://registry.npmjs.org/mime/-/mime-1.6.0.tgz)
+[Source code](https://registry.npmjs.org/merge-descriptors/-/merge-descriptors-2.0.0.tgz)
 
 ----
 
@@ -4989,6 +5000,37 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 ----
 
+### mime-db @1.54.0 - https://github.com/jshttp/mime-db#readme
+
+(The MIT License)
+
+Copyright (c) 2014 Jonathan Ong <me@jongleberry.com>
+Copyright (c) 2015-2022 Douglas Christopher Wilson <doug@somethingdoug.com>
+
+Permission is hereby granted, free of charge, to any person obtaining
+a copy of this software and associated documentation files (the
+'Software'), to deal in the Software without restriction, including
+without limitation the rights to use, copy, modify, merge, publish,
+distribute, sublicense, and/or sell copies of the Software, and to
+permit persons to whom the Software is furnished to do so, subject to
+the following conditions:
+
+The above copyright notice and this permission notice shall be
+included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
+CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+
+[Source code](https://registry.npmjs.org/mime-db/-/mime-db-1.54.0.tgz)
+
+----
+
 ### mime-types @2.1.35 - https://github.com/jshttp/mime-types#readme
 
 (The MIT License)
@@ -5017,6 +5059,37 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 
 [Source code](https://registry.npmjs.org/mime-types/-/mime-types-2.1.35.tgz)
+
+----
+
+### mime-types @3.0.1 - https://github.com/jshttp/mime-types#readme
+
+(The MIT License)
+
+Copyright (c) 2014 Jonathan Ong <me@jongleberry.com>
+Copyright (c) 2015 Douglas Christopher Wilson <doug@somethingdoug.com>
+
+Permission is hereby granted, free of charge, to any person obtaining
+a copy of this software and associated documentation files (the
+'Software'), to deal in the Software without restriction, including
+without limitation the rights to use, copy, modify, merge, publish,
+distribute, sublicense, and/or sell copies of the Software, and to
+permit persons to whom the Software is furnished to do so, subject to
+the following conditions:
+
+The above copyright notice and this permission notice shall be
+included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
+CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+
+[Source code](https://registry.npmjs.org/mime-types/-/mime-types-3.0.1.tgz)
 
 ----
 
@@ -5150,35 +5223,6 @@ SOFTWARE.
 
 ----
 
-### ms @2.0.0 - https://github.com/zeit/ms#readme
-
-The MIT License (MIT)
-
-Copyright (c) 2016 Zeit, Inc.
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
-
-
-[Source code](https://registry.npmjs.org/ms/-/ms-2.0.0.tgz)
-
-----
-
 ### ms @2.1.3 - https://github.com/vercel/ms#readme
 
 The MIT License (MIT)
@@ -5208,7 +5252,7 @@ SOFTWARE.
 
 ----
 
-### multer @1.4.4-lts.1 - https://github.com/expressjs/multer#readme
+### multer @2.0.1 - https://github.com/expressjs/multer#readme
 
 Copyright (c) 2014 Hage Yaapa <[http://www.hacksparrow.com](http://www.hacksparrow.com)>
 
@@ -5229,11 +5273,11 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 
-[Source code](https://registry.npmjs.org/multer/-/multer-1.4.4-lts.1.tgz)
+[Source code](https://registry.npmjs.org/multer/-/multer-2.0.1.tgz)
 
 ----
 
-### negotiator @0.6.3 - https://github.com/jshttp/negotiator#readme
+### negotiator @1.0.0 - https://github.com/jshttp/negotiator#readme
 
 (The MIT License)
 
@@ -5261,11 +5305,11 @@ TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 
-[Source code](https://registry.npmjs.org/negotiator/-/negotiator-0.6.3.tgz)
+[Source code](https://registry.npmjs.org/negotiator/-/negotiator-1.0.0.tgz)
 
 ----
 
-### nestjs-otel @6.1.2 - https://github.com/pragmaticivan/nestjs-otel#readme
+### nestjs-otel @7.0.0 - https://github.com/pragmaticivan/nestjs-otel#readme
 
                                  Apache License
                            Version 2.0, January 2004
@@ -5445,7 +5489,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
    END OF TERMS AND CONDITIONS
 
 
-[Source code](https://registry.npmjs.org/nestjs-otel/-/nestjs-otel-6.1.2.tgz)
+[Source code](https://registry.npmjs.org/nestjs-otel/-/nestjs-otel-7.0.0.tgz)
 
 ----
 
@@ -5687,6 +5731,29 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 ----
 
+### once @1.4.0 - https://github.com/isaacs/once#readme
+
+The ISC License
+
+Copyright (c) Isaac Z. Schlueter and Contributors
+
+Permission to use, copy, modify, and/or distribute this software for any
+purpose with or without fee is hereby granted, provided that the above
+copyright notice and this permission notice appear in all copies.
+
+THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
+WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
+MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
+ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
+WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
+ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF OR
+IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+
+
+[Source code](https://registry.npmjs.org/once/-/once-1.4.0.tgz)
+
+----
+
 ### package-json-from-dist @1.0.1 - https://github.com/isaacs/package-json-from-dist#readme
 
 All packages under `src/` are licensed according to the terms in
@@ -5899,7 +5966,7 @@ software or this license, under any kind of legal claim.***
 
 ----
 
-### path-to-regexp @0.1.7 - https://github.com/component/path-to-regexp#readme
+### path-to-regexp @8.2.0 - https://github.com/pillarjs/path-to-regexp#readme
 
 The MIT License (MIT)
 
@@ -5924,65 +5991,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 
 
-[Source code](https://registry.npmjs.org/path-to-regexp/-/path-to-regexp-0.1.7.tgz)
-
-----
-
-### path-to-regexp @3.2.0 - https://github.com/pillarjs/path-to-regexp#readme
-
-The MIT License (MIT)
-
-Copyright (c) 2014 Blake Embrey (hello@blakeembrey.com)
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in
-all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-THE SOFTWARE.
-
-
-[Source code](https://registry.npmjs.org/path-to-regexp/-/path-to-regexp-3.2.0.tgz)
-
-----
-
-### path-to-regexp @3.3.0 - https://github.com/pillarjs/path-to-regexp#readme
-
-The MIT License (MIT)
-
-Copyright (c) 2014 Blake Embrey (hello@blakeembrey.com)
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in
-all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-THE SOFTWARE.
-
-
-[Source code](https://registry.npmjs.org/path-to-regexp/-/path-to-regexp-3.3.0.tgz)
+[Source code](https://registry.npmjs.org/path-to-regexp/-/path-to-regexp-8.2.0.tgz)
 
 ----
 
@@ -6071,22 +6080,6 @@ SOFTWARE.
 
 ----
 
-### pg-types @2.2.0 - https://github.com/brianc/node-pg-types
-
-MIT License
-
-Copyright (c) <year> <copyright holders>
-
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-
-[Source code](https://registry.npmjs.org/pg-types/-/pg-types-2.2.0.tgz)
-
-----
-
 ### pg-types @4.0.2 - https://github.com/brianc/node-pg-types
 
 MIT License
@@ -6100,35 +6093,6 @@ The above copyright notice and this permission notice shall be included in all c
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 [Source code](https://registry.npmjs.org/pg-types/-/pg-types-4.0.2.tgz)
-
-----
-
-### postgres-array @2.0.0 - https://github.com/bendrucker/postgres-array#readme
-
-The MIT License (MIT)
-
-Copyright (c) Ben Drucker <bvdrucker@gmail.com> (bendrucker.me)
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in
-all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-THE SOFTWARE.
-
-
-[Source code](https://registry.npmjs.org/postgres-array/-/postgres-array-2.0.0.tgz)
 
 ----
 
@@ -6161,35 +6125,6 @@ THE SOFTWARE.
 
 ----
 
-### postgres-bytea @1.0.0 - https://github.com/bendrucker/postgres-bytea#readme
-
-The MIT License (MIT)
-
-Copyright (c) Ben Drucker <bvdrucker@gmail.com> (bendrucker.me)
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in
-all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-THE SOFTWARE.
-
-
-[Source code](https://registry.npmjs.org/postgres-bytea/-/postgres-bytea-1.0.0.tgz)
-
-----
-
 ### postgres-bytea @3.0.0 - https://github.com/bendrucker/postgres-bytea#readme
 
 The MIT License (MIT)
@@ -6219,35 +6154,6 @@ THE SOFTWARE.
 
 ----
 
-### postgres-date @1.0.7 - https://github.com/bendrucker/postgres-date#readme
-
-The MIT License (MIT)
-
-Copyright (c) Ben Drucker <bvdrucker@gmail.com> (bendrucker.me)
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in
-all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-THE SOFTWARE.
-
-
-[Source code](https://registry.npmjs.org/postgres-date/-/postgres-date-1.0.7.tgz)
-
-----
-
 ### postgres-date @2.1.0 - https://github.com/bendrucker/postgres-date#readme
 
 The MIT License (MIT)
@@ -6274,35 +6180,6 @@ THE SOFTWARE.
 
 
 [Source code](https://registry.npmjs.org/postgres-date/-/postgres-date-2.1.0.tgz)
-
-----
-
-### postgres-interval @1.2.0 - https://github.com/bendrucker/postgres-interval#readme
-
-The MIT License (MIT)
-
-Copyright (c) Ben Drucker <bvdrucker@gmail.com> (bendrucker.me)
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in
-all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-THE SOFTWARE.
-
-
-[Source code](https://registry.npmjs.org/postgres-interval/-/postgres-interval-1.2.0.tgz)
 
 ----
 
@@ -6364,34 +6241,7 @@ SOFTWARE.
 
 ----
 
-### process-nextick-args @2.0.1 - https://github.com/calvinmetcalf/process-nextick-args
-
-# Copyright (c) 2015 Calvin Metcalf
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-**THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.**
-
-
-[Source code](https://registry.npmjs.org/process-nextick-args/-/process-nextick-args-2.0.1.tgz)
-
-----
-
-### prom-client @14.2.0 - https://github.com/siimon/prom-client
+### prom-client @15.1.3 - https://github.com/siimon/prom-client
 
                                 Apache License
                            Version 2.0, January 2004
@@ -6596,7 +6446,7 @@ SOFTWARE.**
    limitations under the License.
 
 
-[Source code](https://registry.npmjs.org/prom-client/-/prom-client-14.2.0.tgz)
+[Source code](https://registry.npmjs.org/prom-client/-/prom-client-15.1.3.tgz)
 
 ----
 
@@ -6759,7 +6609,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 ----
 
-### qs @6.11.0 - https://github.com/ljharb/qs
+### qs @6.14.0 - https://github.com/ljharb/qs
 
 BSD 3-Clause License
 
@@ -6792,7 +6642,7 @@ OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 
-[Source code](https://registry.npmjs.org/qs/-/qs-6.11.0.tgz)
+[Source code](https://registry.npmjs.org/qs/-/qs-6.14.0.tgz)
 
 ----
 
@@ -6827,7 +6677,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 ----
 
-### raw-body @2.5.1 - https://github.com/stream-utils/raw-body#readme
+### raw-body @3.0.0 - https://github.com/stream-utils/raw-body#readme
 
 The MIT License (MIT)
 
@@ -6853,41 +6703,11 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 
 
-[Source code](https://registry.npmjs.org/raw-body/-/raw-body-2.5.1.tgz)
+[Source code](https://registry.npmjs.org/raw-body/-/raw-body-3.0.0.tgz)
 
 ----
 
-### raw-body @2.5.2 - https://github.com/stream-utils/raw-body#readme
-
-The MIT License (MIT)
-
-Copyright (c) 2013-2014 Jonathan Ong <me@jongleberry.com>
-Copyright (c) 2014-2022 Douglas Christopher Wilson <doug@somethingdoug.com>
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in
-all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-THE SOFTWARE.
-
-
-[Source code](https://registry.npmjs.org/raw-body/-/raw-body-2.5.2.tgz)
-
-----
-
-### readable-stream @2.3.8 - https://github.com/nodejs/readable-stream#readme
+### readable-stream @3.6.2 - https://github.com/nodejs/readable-stream#readme
 
 Node.js is licensed for use as follows:
 
@@ -6938,11 +6758,11 @@ IN THE SOFTWARE.
 """
 
 
-[Source code](https://registry.npmjs.org/readable-stream/-/readable-stream-2.3.8.tgz)
+[Source code](https://registry.npmjs.org/readable-stream/-/readable-stream-3.6.2.tgz)
 
 ----
 
-### redis @4.7.0 - https://github.com/redis/node-redis
+### redis @5.5.6 - https://github.com/redis/node-redis
 
 MIT License
 
@@ -6967,7 +6787,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 
-[Source code](https://registry.npmjs.org/redis/-/redis-4.7.0.tgz)
+[Source code](https://registry.npmjs.org/redis/-/redis-5.5.6.tgz)
 
 ----
 
@@ -7238,6 +7058,37 @@ IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
 ----
 
+### router @2.2.0 - https://github.com/pillarjs/router#readme
+
+(The MIT License)
+
+Copyright (c) 2013 Roman Shtylman
+Copyright (c) 2014-2022 Douglas Christopher Wilson
+
+Permission is hereby granted, free of charge, to any person obtaining
+a copy of this software and associated documentation files (the
+'Software'), to deal in the Software without restriction, including
+without limitation the rights to use, copy, modify, merge, publish,
+distribute, sublicense, and/or sell copies of the Software, and to
+permit persons to whom the Software is furnished to do so, subject to
+the following conditions:
+
+The above copyright notice and this permission notice shall be
+included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
+CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+
+[Source code](https://registry.npmjs.org/router/-/router-2.2.0.tgz)
+
+----
+
 ### rxjs @7.8.2 - https://rxjs.dev
 
                                Apache License
@@ -7448,35 +7299,6 @@ IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
 ----
 
-### safe-buffer @5.1.2 - https://github.com/feross/safe-buffer
-
-The MIT License (MIT)
-
-Copyright (c) Feross Aboukhadijeh
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in
-all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-THE SOFTWARE.
-
-
-[Source code](https://registry.npmjs.org/safe-buffer/-/safe-buffer-5.1.2.tgz)
-
-----
-
 ### safe-buffer @5.2.1 - https://github.com/feross/safe-buffer
 
 The MIT License (MIT)
@@ -7535,30 +7357,7 @@ SOFTWARE.
 
 ----
 
-### semver @7.6.3 - https://github.com/npm/node-semver#readme
-
-The ISC License
-
-Copyright (c) Isaac Z. Schlueter and Contributors
-
-Permission to use, copy, modify, and/or distribute this software for any
-purpose with or without fee is hereby granted, provided that the above
-copyright notice and this permission notice appear in all copies.
-
-THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
-WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
-MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
-ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
-WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
-ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF OR
-IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
-
-
-[Source code](https://registry.npmjs.org/semver/-/semver-7.6.3.tgz)
-
-----
-
-### send @0.18.0 - https://github.com/pillarjs/send#readme
+### send @1.2.0 - https://github.com/pillarjs/send#readme
 
 (The MIT License)
 
@@ -7585,11 +7384,11 @@ TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 
-[Source code](https://registry.npmjs.org/send/-/send-0.18.0.tgz)
+[Source code](https://registry.npmjs.org/send/-/send-1.2.0.tgz)
 
 ----
 
-### serve-static @1.15.0 - https://github.com/expressjs/serve-static#readme
+### serve-static @2.2.0 - https://github.com/expressjs/serve-static#readme
 
 (The MIT License)
 
@@ -7618,7 +7417,7 @@ TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 
-[Source code](https://registry.npmjs.org/serve-static/-/serve-static-1.15.0.tgz)
+[Source code](https://registry.npmjs.org/serve-static/-/serve-static-2.2.0.tgz)
 
 ----
 
@@ -7674,39 +7473,6 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 
 [Source code](https://registry.npmjs.org/shebang-regex/-/shebang-regex-3.0.0.tgz)
-
-----
-
-### shimmer @1.2.1 - https://github.com/othiym23/shimmer#readme
-
-BSD 2-Clause License
-
-Copyright (c) 2013-2019, Forrest L Norvell
-All rights reserved.
-
-Redistribution and use in source and binary forms, with or without
-modification, are permitted provided that the following conditions are met:
-
-* Redistributions of source code must retain the above copyright notice, this
-  list of conditions and the following disclaimer.
-
-* Redistributions in binary form must reproduce the above copyright notice,
-  this list of conditions and the following disclaimer in the documentation
-  and/or other materials provided with the distribution.
-
-THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
-AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
-IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
-DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
-FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
-DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
-SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
-CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
-OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
-OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-
-
-[Source code](https://registry.npmjs.org/shimmer/-/shimmer-1.2.1.tgz)
 
 ----
 
@@ -7907,6 +7673,37 @@ THE SOFTWARE.
 
 ----
 
+### statuses @2.0.2 - https://github.com/jshttp/statuses#readme
+
+
+The MIT License (MIT)
+
+Copyright (c) 2014 Jonathan Ong <me@jongleberry.com>
+Copyright (c) 2016 Douglas Christopher Wilson <doug@somethingdoug.com>
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
+
+
+[Source code](https://registry.npmjs.org/statuses/-/statuses-2.0.2.tgz)
+
+----
+
 ### streamsearch @1.1.0 - https://github.com/mscdex/streamsearch#readme
 
 Copyright Brian White. All rights reserved.
@@ -7967,7 +7764,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 ----
 
-### string_decoder @1.1.1 - https://github.com/nodejs/string_decoder
+### string_decoder @1.3.0 - https://github.com/nodejs/string_decoder
 
 Node.js is licensed for use as follows:
 
@@ -8019,7 +7816,7 @@ IN THE SOFTWARE.
 
 
 
-[Source code](https://registry.npmjs.org/string_decoder/-/string_decoder-1.1.1.tgz)
+[Source code](https://registry.npmjs.org/string_decoder/-/string_decoder-1.3.0.tgz)
 
 ----
 
@@ -8054,6 +7851,35 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 
 [Source code](https://registry.npmjs.org/strip-ansi/-/strip-ansi-7.1.0.tgz)
+
+----
+
+### strtok3 @10.3.1 - https://github.com/Borewit/strtok3#readme
+
+MIT License
+
+Copyright © 2025 Borewit
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+
+[Source code](https://registry.npmjs.org/strtok3/-/strtok3-10.3.1.tgz)
 
 ----
 
@@ -8103,7 +7929,7 @@ SOFTWARE.
 
 ----
 
-### swagger-ui-dist @5.17.14 - https://github.com/swagger-api/swagger-ui#readme
+### swagger-ui-dist @5.21.0 - https://github.com/swagger-api/swagger-ui#readme
 
 
                                  Apache License
@@ -8309,7 +8135,7 @@ SOFTWARE.
    limitations under the License.
 
 
-[Source code](https://registry.npmjs.org/swagger-ui-dist/-/swagger-ui-dist-5.17.14.tgz)
+[Source code](https://registry.npmjs.org/swagger-ui-dist/-/swagger-ui-dist-5.21.0.tgz)
 
 ----
 
@@ -8400,6 +8226,23 @@ SOFTWARE.
 
 ----
 
+### token-types @6.0.3 - https://github.com/Borewit/token-types#readme
+
+The MIT License (MIT)
+
+Copyright © 2025 Borewit
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+
+[Source code](https://registry.npmjs.org/token-types/-/token-types-6.0.3.tgz)
+
+----
+
 ### tough-cookie @2.5.0 - https://github.com/salesforce/tough-cookie
 
 Copyright (c) 2015, Salesforce.com, Inc.
@@ -8433,25 +8276,6 @@ The above copyright notice and this permission notice shall be included in all c
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 [Source code](https://registry.npmjs.org/tr46/-/tr46-0.0.3.tgz)
-
-----
-
-### tslib @2.5.3 - https://www.typescriptlang.org/
-
-Copyright (c) Microsoft Corporation.
-
-Permission to use, copy, modify, and/or distribute this software for any
-purpose with or without fee is hereby granted.
-
-THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH
-REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY
-AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT,
-INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM
-LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR
-OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
-PERFORMANCE OF THIS SOFTWARE.
-
-[Source code](https://registry.npmjs.org/tslib/-/tslib-2.5.3.tgz)
 
 ----
 
@@ -8616,6 +8440,37 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 ----
 
+### type-is @2.0.1 - https://github.com/jshttp/type-is#readme
+
+(The MIT License)
+
+Copyright (c) 2014 Jonathan Ong <me@jongleberry.com>
+Copyright (c) 2014-2015 Douglas Christopher Wilson <doug@somethingdoug.com>
+
+Permission is hereby granted, free of charge, to any person obtaining
+a copy of this software and associated documentation files (the
+'Software'), to deal in the Software without restriction, including
+without limitation the rights to use, copy, modify, merge, publish,
+distribute, sublicense, and/or sell copies of the Software, and to
+permit persons to whom the Software is furnished to do so, subject to
+the following conditions:
+
+The above copyright notice and this permission notice shall be
+included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
+CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+
+[Source code](https://registry.npmjs.org/type-is/-/type-is-2.0.1.tgz)
+
+----
+
 ### typedarray @0.0.6 - https://github.com/substack/typedarray
 
 /*
@@ -8673,6 +8528,23 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 
 [Source code](https://registry.npmjs.org/uid/-/uid-2.0.2.tgz)
+
+----
+
+### uint8array-extras @1.4.0 - https://github.com/sindresorhus/uint8array-extras#readme
+
+MIT License
+
+Copyright (c) Sindre Sorhus <sindresorhus@gmail.com> (https://sindresorhus.com)
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+
+[Source code](https://registry.npmjs.org/uint8array-extras/-/uint8array-extras-1.4.0.tgz)
 
 ----
 
@@ -8786,34 +8658,6 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 ----
 
-### utils-merge @1.0.1 - https://github.com/jaredhanson/utils-merge#readme
-
-The MIT License (MIT)
-
-Copyright (c) 2013-2017 Jared Hanson
-
-Permission is hereby granted, free of charge, to any person obtaining a copy of
-this software and associated documentation files (the "Software"), to deal in
-the Software without restriction, including without limitation the rights to
-use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of
-the Software, and to permit persons to whom the Software is furnished to do so,
-subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
-FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
-COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
-IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
-CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-
-
-[Source code](https://registry.npmjs.org/utils-merge/-/utils-merge-1.0.1.tgz)
-
-----
-
 ### uuid @3.4.0 - https://github.com/uuidjs/uuid#readme
 
 The MIT License (MIT)
@@ -8840,23 +8684,6 @@ SOFTWARE.
 
 
 [Source code](https://registry.npmjs.org/uuid/-/uuid-3.4.0.tgz)
-
-----
-
-### uuid @9.0.0 - https://github.com/uuidjs/uuid#readme
-
-The MIT License (MIT)
-
-Copyright (c) 2010-2020 Robert Kieffer and other contributors
-
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-
-
-[Source code](https://registry.npmjs.org/uuid/-/uuid-9.0.0.tgz)
 
 ----
 
@@ -9085,6 +8912,29 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 ----
 
+### wrappy @1.0.2 - https://github.com/npm/wrappy
+
+The ISC License
+
+Copyright (c) Isaac Z. Schlueter and Contributors
+
+Permission to use, copy, modify, and/or distribute this software for any
+purpose with or without fee is hereby granted, provided that the above
+copyright notice and this permission notice appear in all copies.
+
+THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
+WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
+MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
+ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
+WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
+ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF OR
+IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+
+
+[Source code](https://registry.npmjs.org/wrappy/-/wrappy-1.0.2.tgz)
+
+----
+
 ### xtend @4.0.2 - https://github.com/Raynos/xtend
 
 The MIT License (MIT)
@@ -9131,29 +8981,6 @@ THIS SOFTWARE.
 
 
 [Source code](https://registry.npmjs.org/y18n/-/y18n-5.0.8.tgz)
-
-----
-
-### yallist @4.0.0 - https://github.com/isaacs/yallist#readme
-
-The ISC License
-
-Copyright (c) Isaac Z. Schlueter and Contributors
-
-Permission to use, copy, modify, and/or distribute this software for any
-purpose with or without fee is hereby granted, provided that the above
-copyright notice and this permission notice appear in all copies.
-
-THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
-WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
-MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
-ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
-WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
-ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF OR
-IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
-
-
-[Source code](https://registry.npmjs.org/yallist/-/yallist-4.0.0.tgz)
 
 ----
 
@@ -9724,11 +9551,11 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 ----
 
-### @nestjs:common @9.4.3 - https://nestjs.com
+### @nestjs:common @11.1.3 - https://nestjs.com
 
 (The MIT License)
 
-Copyright (c) 2017-2023 Kamil Mysliwiec <https://kamilmysliwiec.com>
+Copyright (c) 2017-2025 Kamil Mysliwiec <https://kamilmysliwiec.com>
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
@@ -9750,11 +9577,11 @@ TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 
-[Source code](https://registry.npmjs.org/@nestjs/common/-/common-9.4.3.tgz)
+[Source code](https://registry.npmjs.org/@nestjs/common/-/common-11.1.3.tgz)
 
 ----
 
-### @nestjs:config @2.3.4 - https://github.com/nestjs/config#readme
+### @nestjs:config @4.0.2 - https://github.com/nestjs/config#readme
 
 MIT License
 
@@ -9779,15 +9606,15 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 
-[Source code](https://registry.npmjs.org/@nestjs/config/-/config-2.3.4.tgz)
+[Source code](https://registry.npmjs.org/@nestjs/config/-/config-4.0.2.tgz)
 
 ----
 
-### @nestjs:core @9.4.3 - https://nestjs.com
+### @nestjs:core @11.1.3 - https://nestjs.com
 
 (The MIT License)
 
-Copyright (c) 2017-2023 Kamil Mysliwiec <https://kamilmysliwiec.com>
+Copyright (c) 2017-2025 Kamil Mysliwiec <https://kamilmysliwiec.com>
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
@@ -9809,11 +9636,11 @@ TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 
-[Source code](https://registry.npmjs.org/@nestjs/core/-/core-9.4.3.tgz)
+[Source code](https://registry.npmjs.org/@nestjs/core/-/core-11.1.3.tgz)
 
 ----
 
-### @nestjs:mapped-types @2.0.5 - https://github.com/nestjs/mapped-types#readme
+### @nestjs:mapped-types @2.1.0 - https://github.com/nestjs/mapped-types#readme
 
 (The MIT License)
 
@@ -9839,15 +9666,15 @@ TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 
-[Source code](https://registry.npmjs.org/@nestjs/mapped-types/-/mapped-types-2.0.5.tgz)
+[Source code](https://registry.npmjs.org/@nestjs/mapped-types/-/mapped-types-2.1.0.tgz)
 
 ----
 
-### @nestjs:platform-express @9.4.3 - https://nestjs.com
+### @nestjs:platform-express @11.1.3 - https://nestjs.com
 
 (The MIT License)
 
-Copyright (c) 2017-2023 Kamil Mysliwiec <https://kamilmysliwiec.com>
+Copyright (c) 2017-2025 Kamil Mysliwiec <https://kamilmysliwiec.com>
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
@@ -9869,11 +9696,11 @@ TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 
-[Source code](https://registry.npmjs.org/@nestjs/platform-express/-/platform-express-9.4.3.tgz)
+[Source code](https://registry.npmjs.org/@nestjs/platform-express/-/platform-express-11.1.3.tgz)
 
 ----
 
-### @nestjs:swagger @7.4.2 - https://github.com/nestjs/swagger#readme
+### @nestjs:swagger @11.2.0 - https://github.com/nestjs/swagger#readme
 
 MIT License
 
@@ -9898,11 +9725,11 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 
-[Source code](https://registry.npmjs.org/@nestjs/swagger/-/swagger-7.4.2.tgz)
+[Source code](https://registry.npmjs.org/@nestjs/swagger/-/swagger-11.2.0.tgz)
 
 ----
 
-### @nestjs:terminus @10.3.0 - https://github.com/nestjs/terminus#readme
+### @nestjs:terminus @11.0.0 - https://github.com/nestjs/terminus#readme
 
 (The MIT License)
 
@@ -9929,11 +9756,11 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 
 
-[Source code](https://registry.npmjs.org/@nestjs/terminus/-/terminus-10.3.0.tgz)
+[Source code](https://registry.npmjs.org/@nestjs/terminus/-/terminus-11.0.0.tgz)
 
 ----
 
-### @nuxtjs:opencollective @0.3.2 - https://github.com/nuxt-contrib/opencollective#readme
+### @nuxt:opencollective @0.4.1 - https://github.com/nuxt-contrib/opencollective#readme
 
 MIT License
 
@@ -9958,7 +9785,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 
-[Source code](https://registry.npmjs.org/@nuxtjs/opencollective/-/opencollective-0.3.2.tgz)
+[Source code](https://registry.npmjs.org/@nuxt/opencollective/-/opencollective-0.4.1.tgz)
 
 ----
 
@@ -10171,7 +9998,7 @@ SOFTWARE.
 
 ----
 
-### @opentelemetry:api-logs @0.57.1 - https://github.com/open-telemetry/opentelemetry-js/tree/main/experimental/packages/api-logs
+### @opentelemetry:api-logs @0.202.0 - https://github.com/open-telemetry/opentelemetry-js/tree/main/experimental/packages/api-logs
 
                                  Apache License
                            Version 2.0, January 2004
@@ -10376,11 +10203,11 @@ SOFTWARE.
    limitations under the License.
 
 
-[Source code](https://registry.npmjs.org/@opentelemetry/api-logs/-/api-logs-0.57.1.tgz)
+[Source code](https://registry.npmjs.org/@opentelemetry/api-logs/-/api-logs-0.202.0.tgz)
 
 ----
 
-### @opentelemetry:auto-instrumentations-node @0.56.0 - https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/metapackages/auto-instrumentations-node#readme
+### @opentelemetry:auto-instrumentations-node @0.60.1 - https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/metapackages/auto-instrumentations-node#readme
 
                                  Apache License
                            Version 2.0, January 2004
@@ -10585,11 +10412,11 @@ SOFTWARE.
    limitations under the License.
 
 
-[Source code](https://registry.npmjs.org/@opentelemetry/auto-instrumentations-node/-/auto-instrumentations-node-0.56.0.tgz)
+[Source code](https://registry.npmjs.org/@opentelemetry/auto-instrumentations-node/-/auto-instrumentations-node-0.60.1.tgz)
 
 ----
 
-### @opentelemetry:context-async-hooks @1.30.1 - https://github.com/open-telemetry/opentelemetry-js/tree/main/packages/opentelemetry-context-async-hooks
+### @opentelemetry:context-async-hooks @2.0.1 - https://github.com/open-telemetry/opentelemetry-js/tree/main/packages/opentelemetry-context-async-hooks
 
                                  Apache License
                            Version 2.0, January 2004
@@ -10794,11 +10621,11 @@ SOFTWARE.
    limitations under the License.
 
 
-[Source code](https://registry.npmjs.org/@opentelemetry/context-async-hooks/-/context-async-hooks-1.30.1.tgz)
+[Source code](https://registry.npmjs.org/@opentelemetry/context-async-hooks/-/context-async-hooks-2.0.1.tgz)
 
 ----
 
-### @opentelemetry:core @1.30.1 - https://github.com/open-telemetry/opentelemetry-js/tree/main/packages/opentelemetry-core
+### @opentelemetry:core @2.0.1 - https://github.com/open-telemetry/opentelemetry-js/tree/main/packages/opentelemetry-core
 
                                  Apache License
                            Version 2.0, January 2004
@@ -11003,11 +10830,11 @@ SOFTWARE.
    limitations under the License.
 
 
-[Source code](https://registry.npmjs.org/@opentelemetry/core/-/core-1.30.1.tgz)
+[Source code](https://registry.npmjs.org/@opentelemetry/core/-/core-2.0.1.tgz)
 
 ----
 
-### @opentelemetry:exporter-logs-otlp-grpc @0.57.1 - https://github.com/open-telemetry/opentelemetry-js/tree/main/experimental/packages/exporter-logs-otlp-grpc
+### @opentelemetry:exporter-logs-otlp-grpc @0.202.0 - https://github.com/open-telemetry/opentelemetry-js/tree/main/experimental/packages/exporter-logs-otlp-grpc
 
                                  Apache License
                            Version 2.0, January 2004
@@ -11212,11 +11039,11 @@ SOFTWARE.
    limitations under the License.
 
 
-[Source code](https://registry.npmjs.org/@opentelemetry/exporter-logs-otlp-grpc/-/exporter-logs-otlp-grpc-0.57.1.tgz)
+[Source code](https://registry.npmjs.org/@opentelemetry/exporter-logs-otlp-grpc/-/exporter-logs-otlp-grpc-0.202.0.tgz)
 
 ----
 
-### @opentelemetry:exporter-logs-otlp-http @0.57.1 - https://github.com/open-telemetry/opentelemetry-js/tree/main/experimental/packages/exporter-logs-otlp-http
+### @opentelemetry:exporter-logs-otlp-http @0.202.0 - https://github.com/open-telemetry/opentelemetry-js/tree/main/experimental/packages/exporter-logs-otlp-http
 
                                  Apache License
                            Version 2.0, January 2004
@@ -11421,11 +11248,11 @@ SOFTWARE.
    limitations under the License.
 
 
-[Source code](https://registry.npmjs.org/@opentelemetry/exporter-logs-otlp-http/-/exporter-logs-otlp-http-0.57.1.tgz)
+[Source code](https://registry.npmjs.org/@opentelemetry/exporter-logs-otlp-http/-/exporter-logs-otlp-http-0.202.0.tgz)
 
 ----
 
-### @opentelemetry:exporter-logs-otlp-proto @0.57.1 - https://github.com/open-telemetry/opentelemetry-js/tree/main/experimental/packages/exporter-logs-otlp-proto
+### @opentelemetry:exporter-logs-otlp-proto @0.202.0 - https://github.com/open-telemetry/opentelemetry-js/tree/main/experimental/packages/exporter-logs-otlp-proto
 
                                  Apache License
                            Version 2.0, January 2004
@@ -11630,11 +11457,11 @@ SOFTWARE.
    limitations under the License.
 
 
-[Source code](https://registry.npmjs.org/@opentelemetry/exporter-logs-otlp-proto/-/exporter-logs-otlp-proto-0.57.1.tgz)
+[Source code](https://registry.npmjs.org/@opentelemetry/exporter-logs-otlp-proto/-/exporter-logs-otlp-proto-0.202.0.tgz)
 
 ----
 
-### @opentelemetry:exporter-metrics-otlp-grpc @0.57.1 - https://github.com/open-telemetry/opentelemetry-js/tree/main/experimental/packages/opentelemetry-exporter-metrics-otlp-grpc
+### @opentelemetry:exporter-metrics-otlp-grpc @0.202.0 - https://github.com/open-telemetry/opentelemetry-js/tree/main/experimental/packages/opentelemetry-exporter-metrics-otlp-grpc
 
                                  Apache License
                            Version 2.0, January 2004
@@ -11839,11 +11666,11 @@ SOFTWARE.
    limitations under the License.
 
 
-[Source code](https://registry.npmjs.org/@opentelemetry/exporter-metrics-otlp-grpc/-/exporter-metrics-otlp-grpc-0.57.1.tgz)
+[Source code](https://registry.npmjs.org/@opentelemetry/exporter-metrics-otlp-grpc/-/exporter-metrics-otlp-grpc-0.202.0.tgz)
 
 ----
 
-### @opentelemetry:exporter-metrics-otlp-http @0.57.1 - https://github.com/open-telemetry/opentelemetry-js/tree/main/experimental/packages/opentelemetry-exporter-metrics-otlp-http
+### @opentelemetry:exporter-metrics-otlp-http @0.202.0 - https://github.com/open-telemetry/opentelemetry-js/tree/main/experimental/packages/opentelemetry-exporter-metrics-otlp-http
 
                                  Apache License
                            Version 2.0, January 2004
@@ -12048,11 +11875,11 @@ SOFTWARE.
    limitations under the License.
 
 
-[Source code](https://registry.npmjs.org/@opentelemetry/exporter-metrics-otlp-http/-/exporter-metrics-otlp-http-0.57.1.tgz)
+[Source code](https://registry.npmjs.org/@opentelemetry/exporter-metrics-otlp-http/-/exporter-metrics-otlp-http-0.202.0.tgz)
 
 ----
 
-### @opentelemetry:exporter-metrics-otlp-proto @0.57.1 - https://github.com/open-telemetry/opentelemetry-js/tree/main/experimental/packages/opentelemetry-exporter-metrics-otlp-proto
+### @opentelemetry:exporter-metrics-otlp-proto @0.202.0 - https://github.com/open-telemetry/opentelemetry-js/tree/main/experimental/packages/opentelemetry-exporter-metrics-otlp-proto
 
                                  Apache License
                            Version 2.0, January 2004
@@ -12257,11 +12084,11 @@ SOFTWARE.
    limitations under the License.
 
 
-[Source code](https://registry.npmjs.org/@opentelemetry/exporter-metrics-otlp-proto/-/exporter-metrics-otlp-proto-0.57.1.tgz)
+[Source code](https://registry.npmjs.org/@opentelemetry/exporter-metrics-otlp-proto/-/exporter-metrics-otlp-proto-0.202.0.tgz)
 
 ----
 
-### @opentelemetry:exporter-prometheus @0.57.1 - https://github.com/open-telemetry/opentelemetry-js/tree/main/experimental/packages/opentelemetry-exporter-prometheus
+### @opentelemetry:exporter-prometheus @0.202.0 - https://github.com/open-telemetry/opentelemetry-js/tree/main/experimental/packages/opentelemetry-exporter-prometheus
 
                                  Apache License
                            Version 2.0, January 2004
@@ -12466,11 +12293,11 @@ SOFTWARE.
    limitations under the License.
 
 
-[Source code](https://registry.npmjs.org/@opentelemetry/exporter-prometheus/-/exporter-prometheus-0.57.1.tgz)
+[Source code](https://registry.npmjs.org/@opentelemetry/exporter-prometheus/-/exporter-prometheus-0.202.0.tgz)
 
 ----
 
-### @opentelemetry:exporter-trace-otlp-grpc @0.57.1 - https://github.com/open-telemetry/opentelemetry-js/tree/main/experimental/packages/exporter-trace-otlp-grpc
+### @opentelemetry:exporter-trace-otlp-grpc @0.202.0 - https://github.com/open-telemetry/opentelemetry-js/tree/main/experimental/packages/exporter-trace-otlp-grpc
 
                                  Apache License
                            Version 2.0, January 2004
@@ -12675,11 +12502,11 @@ SOFTWARE.
    limitations under the License.
 
 
-[Source code](https://registry.npmjs.org/@opentelemetry/exporter-trace-otlp-grpc/-/exporter-trace-otlp-grpc-0.57.1.tgz)
+[Source code](https://registry.npmjs.org/@opentelemetry/exporter-trace-otlp-grpc/-/exporter-trace-otlp-grpc-0.202.0.tgz)
 
 ----
 
-### @opentelemetry:exporter-trace-otlp-http @0.57.1 - https://github.com/open-telemetry/opentelemetry-js/tree/main/experimental/packages/exporter-trace-otlp-http
+### @opentelemetry:exporter-trace-otlp-http @0.202.0 - https://github.com/open-telemetry/opentelemetry-js/tree/main/experimental/packages/exporter-trace-otlp-http
 
                                  Apache License
                            Version 2.0, January 2004
@@ -12884,11 +12711,11 @@ SOFTWARE.
    limitations under the License.
 
 
-[Source code](https://registry.npmjs.org/@opentelemetry/exporter-trace-otlp-http/-/exporter-trace-otlp-http-0.57.1.tgz)
+[Source code](https://registry.npmjs.org/@opentelemetry/exporter-trace-otlp-http/-/exporter-trace-otlp-http-0.202.0.tgz)
 
 ----
 
-### @opentelemetry:exporter-trace-otlp-proto @0.57.1 - https://github.com/open-telemetry/opentelemetry-js/tree/main/experimental/packages/exporter-trace-otlp-proto
+### @opentelemetry:exporter-trace-otlp-proto @0.202.0 - https://github.com/open-telemetry/opentelemetry-js/tree/main/experimental/packages/exporter-trace-otlp-proto
 
                                  Apache License
                            Version 2.0, January 2004
@@ -13093,11 +12920,11 @@ SOFTWARE.
    limitations under the License.
 
 
-[Source code](https://registry.npmjs.org/@opentelemetry/exporter-trace-otlp-proto/-/exporter-trace-otlp-proto-0.57.1.tgz)
+[Source code](https://registry.npmjs.org/@opentelemetry/exporter-trace-otlp-proto/-/exporter-trace-otlp-proto-0.202.0.tgz)
 
 ----
 
-### @opentelemetry:exporter-zipkin @1.30.1 - https://github.com/open-telemetry/opentelemetry-js/tree/main/packages/opentelemetry-exporter-zipkin
+### @opentelemetry:exporter-zipkin @2.0.1 - https://github.com/open-telemetry/opentelemetry-js/tree/main/packages/opentelemetry-exporter-zipkin
 
                                  Apache License
                            Version 2.0, January 2004
@@ -13302,11 +13129,11 @@ SOFTWARE.
    limitations under the License.
 
 
-[Source code](https://registry.npmjs.org/@opentelemetry/exporter-zipkin/-/exporter-zipkin-1.30.1.tgz)
+[Source code](https://registry.npmjs.org/@opentelemetry/exporter-zipkin/-/exporter-zipkin-2.0.1.tgz)
 
 ----
 
-### @opentelemetry:host-metrics @0.35.5 - https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/packages/opentelemetry-host-metrics#readme
+### @opentelemetry:host-metrics @0.36.0 - https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/packages/opentelemetry-host-metrics#readme
 
                                  Apache License
                            Version 2.0, January 2004
@@ -13511,11 +13338,11 @@ SOFTWARE.
    limitations under the License.
 
 
-[Source code](https://registry.npmjs.org/@opentelemetry/host-metrics/-/host-metrics-0.35.5.tgz)
+[Source code](https://registry.npmjs.org/@opentelemetry/host-metrics/-/host-metrics-0.36.0.tgz)
 
 ----
 
-### @opentelemetry:id-generator-aws-xray @1.2.2 - https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/packages/opentelemetry-id-generator-aws-xray#readme
+### @opentelemetry:id-generator-aws-xray @2.0.0 - https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/packages/opentelemetry-id-generator-aws-xray#readme
 
                                  Apache License
                            Version 2.0, January 2004
@@ -13720,11 +13547,11 @@ SOFTWARE.
    limitations under the License.
 
 
-[Source code](https://registry.npmjs.org/@opentelemetry/id-generator-aws-xray/-/id-generator-aws-xray-1.2.2.tgz)
+[Source code](https://registry.npmjs.org/@opentelemetry/id-generator-aws-xray/-/id-generator-aws-xray-2.0.0.tgz)
 
 ----
 
-### @opentelemetry:instrumentation @0.57.1 - https://github.com/open-telemetry/opentelemetry-js/tree/main/experimental/packages/opentelemetry-instrumentation
+### @opentelemetry:instrumentation @0.202.0 - https://github.com/open-telemetry/opentelemetry-js/tree/main/experimental/packages/opentelemetry-instrumentation
 
                                  Apache License
                            Version 2.0, January 2004
@@ -13929,11 +13756,11 @@ SOFTWARE.
    limitations under the License.
 
 
-[Source code](https://registry.npmjs.org/@opentelemetry/instrumentation/-/instrumentation-0.57.1.tgz)
+[Source code](https://registry.npmjs.org/@opentelemetry/instrumentation/-/instrumentation-0.202.0.tgz)
 
 ----
 
-### @opentelemetry:instrumentation-amqplib @0.46.0 - https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/plugins/node/instrumentation-amqplib#readme
+### @opentelemetry:instrumentation-amqplib @0.49.0 - https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/plugins/node/instrumentation-amqplib#readme
 
                                  Apache License
                            Version 2.0, January 2004
@@ -14138,11 +13965,11 @@ SOFTWARE.
    limitations under the License.
 
 
-[Source code](https://registry.npmjs.org/@opentelemetry/instrumentation-amqplib/-/instrumentation-amqplib-0.46.0.tgz)
+[Source code](https://registry.npmjs.org/@opentelemetry/instrumentation-amqplib/-/instrumentation-amqplib-0.49.0.tgz)
 
 ----
 
-### @opentelemetry:instrumentation-aws-lambda @0.50.2 - https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/plugins/node/opentelemetry-instrumentation-aws-lambda#readme
+### @opentelemetry:instrumentation-aws-lambda @0.53.0 - https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/plugins/node/opentelemetry-instrumentation-aws-lambda#readme
 
                                  Apache License
                            Version 2.0, January 2004
@@ -14347,11 +14174,11 @@ SOFTWARE.
    limitations under the License.
 
 
-[Source code](https://registry.npmjs.org/@opentelemetry/instrumentation-aws-lambda/-/instrumentation-aws-lambda-0.50.2.tgz)
+[Source code](https://registry.npmjs.org/@opentelemetry/instrumentation-aws-lambda/-/instrumentation-aws-lambda-0.53.0.tgz)
 
 ----
 
-### @opentelemetry:instrumentation-aws-sdk @0.49.0 - https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/plugins/node/opentelemetry-instrumentation-aws-sdk#readme
+### @opentelemetry:instrumentation-aws-sdk @0.54.0 - https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/plugins/node/opentelemetry-instrumentation-aws-sdk#readme
 
                                  Apache License
                            Version 2.0, January 2004
@@ -14556,11 +14383,11 @@ SOFTWARE.
    limitations under the License.
 
 
-[Source code](https://registry.npmjs.org/@opentelemetry/instrumentation-aws-sdk/-/instrumentation-aws-sdk-0.49.0.tgz)
+[Source code](https://registry.npmjs.org/@opentelemetry/instrumentation-aws-sdk/-/instrumentation-aws-sdk-0.54.0.tgz)
 
 ----
 
-### @opentelemetry:instrumentation-bunyan @0.45.0 - https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/plugins/node/opentelemetry-instrumentation-bunyan#readme
+### @opentelemetry:instrumentation-bunyan @0.48.0 - https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/plugins/node/opentelemetry-instrumentation-bunyan#readme
 
                                  Apache License
                            Version 2.0, January 2004
@@ -14765,11 +14592,11 @@ SOFTWARE.
    limitations under the License.
 
 
-[Source code](https://registry.npmjs.org/@opentelemetry/instrumentation-bunyan/-/instrumentation-bunyan-0.45.0.tgz)
+[Source code](https://registry.npmjs.org/@opentelemetry/instrumentation-bunyan/-/instrumentation-bunyan-0.48.0.tgz)
 
 ----
 
-### @opentelemetry:instrumentation-cassandra-driver @0.45.0 - https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/plugins/node/opentelemetry-instrumentation-cassandra#readme
+### @opentelemetry:instrumentation-cassandra-driver @0.48.0 - https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/plugins/node/opentelemetry-instrumentation-cassandra#readme
 
                                  Apache License
                            Version 2.0, January 2004
@@ -14974,11 +14801,11 @@ SOFTWARE.
    limitations under the License.
 
 
-[Source code](https://registry.npmjs.org/@opentelemetry/instrumentation-cassandra-driver/-/instrumentation-cassandra-driver-0.45.0.tgz)
+[Source code](https://registry.npmjs.org/@opentelemetry/instrumentation-cassandra-driver/-/instrumentation-cassandra-driver-0.48.0.tgz)
 
 ----
 
-### @opentelemetry:instrumentation-connect @0.43.0 - https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/plugins/node/opentelemetry-instrumentation-connect#readme
+### @opentelemetry:instrumentation-connect @0.46.0 - https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/plugins/node/opentelemetry-instrumentation-connect#readme
 
                                  Apache License
                            Version 2.0, January 2004
@@ -15183,11 +15010,11 @@ SOFTWARE.
    limitations under the License.
 
 
-[Source code](https://registry.npmjs.org/@opentelemetry/instrumentation-connect/-/instrumentation-connect-0.43.0.tgz)
+[Source code](https://registry.npmjs.org/@opentelemetry/instrumentation-connect/-/instrumentation-connect-0.46.0.tgz)
 
 ----
 
-### @opentelemetry:instrumentation-cucumber @0.14.0 - https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/plugins/node/instrumentation-cucumber#readme
+### @opentelemetry:instrumentation-cucumber @0.17.0 - https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/plugins/node/instrumentation-cucumber#readme
 
                                  Apache License
                            Version 2.0, January 2004
@@ -15392,11 +15219,11 @@ SOFTWARE.
    limitations under the License.
 
 
-[Source code](https://registry.npmjs.org/@opentelemetry/instrumentation-cucumber/-/instrumentation-cucumber-0.14.0.tgz)
+[Source code](https://registry.npmjs.org/@opentelemetry/instrumentation-cucumber/-/instrumentation-cucumber-0.17.0.tgz)
 
 ----
 
-### @opentelemetry:instrumentation-dataloader @0.16.0 - https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/plugins/node/instrumentation-dataloader#readme
+### @opentelemetry:instrumentation-dataloader @0.19.0 - https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/plugins/node/instrumentation-dataloader#readme
 
                                  Apache License
                            Version 2.0, January 2004
@@ -15601,11 +15428,11 @@ SOFTWARE.
    limitations under the License.
 
 
-[Source code](https://registry.npmjs.org/@opentelemetry/instrumentation-dataloader/-/instrumentation-dataloader-0.16.0.tgz)
+[Source code](https://registry.npmjs.org/@opentelemetry/instrumentation-dataloader/-/instrumentation-dataloader-0.19.0.tgz)
 
 ----
 
-### @opentelemetry:instrumentation-dns @0.43.0 - https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/plugins/node/opentelemetry-instrumentation-dns#readme
+### @opentelemetry:instrumentation-dns @0.46.0 - https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/plugins/node/opentelemetry-instrumentation-dns#readme
 
                                  Apache License
                            Version 2.0, January 2004
@@ -15810,11 +15637,11 @@ SOFTWARE.
    limitations under the License.
 
 
-[Source code](https://registry.npmjs.org/@opentelemetry/instrumentation-dns/-/instrumentation-dns-0.43.0.tgz)
+[Source code](https://registry.npmjs.org/@opentelemetry/instrumentation-dns/-/instrumentation-dns-0.46.0.tgz)
 
 ----
 
-### @opentelemetry:instrumentation-express @0.47.0 - https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/plugins/node/opentelemetry-instrumentation-express#readme
+### @opentelemetry:instrumentation-express @0.51.0 - https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/plugins/node/opentelemetry-instrumentation-express#readme
 
                                  Apache License
                            Version 2.0, January 2004
@@ -16019,11 +15846,11 @@ SOFTWARE.
    limitations under the License.
 
 
-[Source code](https://registry.npmjs.org/@opentelemetry/instrumentation-express/-/instrumentation-express-0.47.0.tgz)
+[Source code](https://registry.npmjs.org/@opentelemetry/instrumentation-express/-/instrumentation-express-0.51.0.tgz)
 
 ----
 
-### @opentelemetry:instrumentation-fastify @0.44.1 - https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/plugins/node/opentelemetry-instrumentation-fastify#readme
+### @opentelemetry:instrumentation-fastify @0.47.0 - https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/plugins/node/opentelemetry-instrumentation-fastify#readme
 
                                  Apache License
                            Version 2.0, January 2004
@@ -16228,11 +16055,11 @@ SOFTWARE.
    limitations under the License.
 
 
-[Source code](https://registry.npmjs.org/@opentelemetry/instrumentation-fastify/-/instrumentation-fastify-0.44.1.tgz)
+[Source code](https://registry.npmjs.org/@opentelemetry/instrumentation-fastify/-/instrumentation-fastify-0.47.0.tgz)
 
 ----
 
-### @opentelemetry:instrumentation-fs @0.19.0 - https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/plugins/node/instrumentation-fs#readme
+### @opentelemetry:instrumentation-fs @0.22.0 - https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/plugins/node/instrumentation-fs#readme
 
                                  Apache License
                            Version 2.0, January 2004
@@ -16437,11 +16264,11 @@ SOFTWARE.
    limitations under the License.
 
 
-[Source code](https://registry.npmjs.org/@opentelemetry/instrumentation-fs/-/instrumentation-fs-0.19.0.tgz)
+[Source code](https://registry.npmjs.org/@opentelemetry/instrumentation-fs/-/instrumentation-fs-0.22.0.tgz)
 
 ----
 
-### @opentelemetry:instrumentation-generic-pool @0.43.0 - https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/plugins/node/opentelemetry-instrumentation-generic-pool#readme
+### @opentelemetry:instrumentation-generic-pool @0.46.0 - https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/plugins/node/opentelemetry-instrumentation-generic-pool#readme
 
                                  Apache License
                            Version 2.0, January 2004
@@ -16646,11 +16473,11 @@ SOFTWARE.
    limitations under the License.
 
 
-[Source code](https://registry.npmjs.org/@opentelemetry/instrumentation-generic-pool/-/instrumentation-generic-pool-0.43.0.tgz)
+[Source code](https://registry.npmjs.org/@opentelemetry/instrumentation-generic-pool/-/instrumentation-generic-pool-0.46.0.tgz)
 
 ----
 
-### @opentelemetry:instrumentation-graphql @0.47.0 - https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/plugins/node/opentelemetry-instrumentation-graphql#readme
+### @opentelemetry:instrumentation-graphql @0.50.0 - https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/plugins/node/opentelemetry-instrumentation-graphql#readme
 
                                  Apache License
                            Version 2.0, January 2004
@@ -16855,11 +16682,11 @@ SOFTWARE.
    limitations under the License.
 
 
-[Source code](https://registry.npmjs.org/@opentelemetry/instrumentation-graphql/-/instrumentation-graphql-0.47.0.tgz)
+[Source code](https://registry.npmjs.org/@opentelemetry/instrumentation-graphql/-/instrumentation-graphql-0.50.0.tgz)
 
 ----
 
-### @opentelemetry:instrumentation-grpc @0.57.1 - https://github.com/open-telemetry/opentelemetry-js/tree/main/experimental/packages/opentelemetry-instrumentation-grpc
+### @opentelemetry:instrumentation-grpc @0.202.0 - https://github.com/open-telemetry/opentelemetry-js/tree/main/experimental/packages/opentelemetry-instrumentation-grpc
 
                                  Apache License
                            Version 2.0, January 2004
@@ -17064,11 +16891,11 @@ SOFTWARE.
    limitations under the License.
 
 
-[Source code](https://registry.npmjs.org/@opentelemetry/instrumentation-grpc/-/instrumentation-grpc-0.57.1.tgz)
+[Source code](https://registry.npmjs.org/@opentelemetry/instrumentation-grpc/-/instrumentation-grpc-0.202.0.tgz)
 
 ----
 
-### @opentelemetry:instrumentation-hapi @0.45.1 - https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/plugins/node/opentelemetry-instrumentation-hapi#readme
+### @opentelemetry:instrumentation-hapi @0.49.0 - https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/plugins/node/opentelemetry-instrumentation-hapi#readme
 
                                  Apache License
                            Version 2.0, January 2004
@@ -17273,11 +17100,11 @@ SOFTWARE.
    limitations under the License.
 
 
-[Source code](https://registry.npmjs.org/@opentelemetry/instrumentation-hapi/-/instrumentation-hapi-0.45.1.tgz)
+[Source code](https://registry.npmjs.org/@opentelemetry/instrumentation-hapi/-/instrumentation-hapi-0.49.0.tgz)
 
 ----
 
-### @opentelemetry:instrumentation-http @0.57.1 - https://github.com/open-telemetry/opentelemetry-js/tree/main/experimental/packages/opentelemetry-instrumentation-http
+### @opentelemetry:instrumentation-http @0.202.0 - https://github.com/open-telemetry/opentelemetry-js/tree/main/experimental/packages/opentelemetry-instrumentation-http
 
                                  Apache License
                            Version 2.0, January 2004
@@ -17482,11 +17309,11 @@ SOFTWARE.
    limitations under the License.
 
 
-[Source code](https://registry.npmjs.org/@opentelemetry/instrumentation-http/-/instrumentation-http-0.57.1.tgz)
+[Source code](https://registry.npmjs.org/@opentelemetry/instrumentation-http/-/instrumentation-http-0.202.0.tgz)
 
 ----
 
-### @opentelemetry:instrumentation-ioredis @0.47.0 - https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/plugins/node/opentelemetry-instrumentation-ioredis#readme
+### @opentelemetry:instrumentation-ioredis @0.50.0 - https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/plugins/node/opentelemetry-instrumentation-ioredis#readme
 
                                  Apache License
                            Version 2.0, January 2004
@@ -17691,11 +17518,11 @@ SOFTWARE.
    limitations under the License.
 
 
-[Source code](https://registry.npmjs.org/@opentelemetry/instrumentation-ioredis/-/instrumentation-ioredis-0.47.0.tgz)
+[Source code](https://registry.npmjs.org/@opentelemetry/instrumentation-ioredis/-/instrumentation-ioredis-0.50.0.tgz)
 
 ----
 
-### @opentelemetry:instrumentation-kafkajs @0.7.0 - https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/plugins/node/instrumentation-kafkajs#readme
+### @opentelemetry:instrumentation-kafkajs @0.11.0 - https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/plugins/node/instrumentation-kafkajs#readme
 
                                  Apache License
                            Version 2.0, January 2004
@@ -17900,11 +17727,11 @@ SOFTWARE.
    limitations under the License.
 
 
-[Source code](https://registry.npmjs.org/@opentelemetry/instrumentation-kafkajs/-/instrumentation-kafkajs-0.7.0.tgz)
+[Source code](https://registry.npmjs.org/@opentelemetry/instrumentation-kafkajs/-/instrumentation-kafkajs-0.11.0.tgz)
 
 ----
 
-### @opentelemetry:instrumentation-knex @0.44.0 - https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/plugins/node/opentelemetry-instrumentation-knex#readme
+### @opentelemetry:instrumentation-knex @0.47.0 - https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/plugins/node/opentelemetry-instrumentation-knex#readme
 
                                  Apache License
                            Version 2.0, January 2004
@@ -18109,11 +17936,11 @@ SOFTWARE.
    limitations under the License.
 
 
-[Source code](https://registry.npmjs.org/@opentelemetry/instrumentation-knex/-/instrumentation-knex-0.44.0.tgz)
+[Source code](https://registry.npmjs.org/@opentelemetry/instrumentation-knex/-/instrumentation-knex-0.47.0.tgz)
 
 ----
 
-### @opentelemetry:instrumentation-koa @0.47.0 - https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/plugins/node/opentelemetry-instrumentation-koa#readme
+### @opentelemetry:instrumentation-koa @0.50.1 - https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/plugins/node/opentelemetry-instrumentation-koa#readme
 
                                  Apache License
                            Version 2.0, January 2004
@@ -18318,11 +18145,11 @@ SOFTWARE.
    limitations under the License.
 
 
-[Source code](https://registry.npmjs.org/@opentelemetry/instrumentation-koa/-/instrumentation-koa-0.47.0.tgz)
+[Source code](https://registry.npmjs.org/@opentelemetry/instrumentation-koa/-/instrumentation-koa-0.50.1.tgz)
 
 ----
 
-### @opentelemetry:instrumentation-lru-memoizer @0.44.0 - https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/plugins/node/instrumentation-lru-memoizer#readme
+### @opentelemetry:instrumentation-lru-memoizer @0.47.0 - https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/plugins/node/instrumentation-lru-memoizer#readme
 
                                  Apache License
                            Version 2.0, January 2004
@@ -18527,11 +18354,11 @@ SOFTWARE.
    limitations under the License.
 
 
-[Source code](https://registry.npmjs.org/@opentelemetry/instrumentation-lru-memoizer/-/instrumentation-lru-memoizer-0.44.0.tgz)
+[Source code](https://registry.npmjs.org/@opentelemetry/instrumentation-lru-memoizer/-/instrumentation-lru-memoizer-0.47.0.tgz)
 
 ----
 
-### @opentelemetry:instrumentation-memcached @0.43.0 - https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/plugins/node/opentelemetry-instrumentation-memcached#readme
+### @opentelemetry:instrumentation-memcached @0.46.0 - https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/plugins/node/opentelemetry-instrumentation-memcached#readme
 
                                  Apache License
                            Version 2.0, January 2004
@@ -18736,11 +18563,11 @@ SOFTWARE.
    limitations under the License.
 
 
-[Source code](https://registry.npmjs.org/@opentelemetry/instrumentation-memcached/-/instrumentation-memcached-0.43.0.tgz)
+[Source code](https://registry.npmjs.org/@opentelemetry/instrumentation-memcached/-/instrumentation-memcached-0.46.0.tgz)
 
 ----
 
-### @opentelemetry:instrumentation-mongodb @0.51.0 - https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/plugins/node/opentelemetry-instrumentation-mongodb#readme
+### @opentelemetry:instrumentation-mongodb @0.55.1 - https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/plugins/node/opentelemetry-instrumentation-mongodb#readme
 
                                  Apache License
                            Version 2.0, January 2004
@@ -18945,11 +18772,11 @@ SOFTWARE.
    limitations under the License.
 
 
-[Source code](https://registry.npmjs.org/@opentelemetry/instrumentation-mongodb/-/instrumentation-mongodb-0.51.0.tgz)
+[Source code](https://registry.npmjs.org/@opentelemetry/instrumentation-mongodb/-/instrumentation-mongodb-0.55.1.tgz)
 
 ----
 
-### @opentelemetry:instrumentation-mongoose @0.46.0 - https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/plugins/node/instrumentation-mongoose#readme
+### @opentelemetry:instrumentation-mongoose @0.49.0 - https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/plugins/node/instrumentation-mongoose#readme
 
                                  Apache License
                            Version 2.0, January 2004
@@ -19154,11 +18981,11 @@ SOFTWARE.
    limitations under the License.
 
 
-[Source code](https://registry.npmjs.org/@opentelemetry/instrumentation-mongoose/-/instrumentation-mongoose-0.46.0.tgz)
+[Source code](https://registry.npmjs.org/@opentelemetry/instrumentation-mongoose/-/instrumentation-mongoose-0.49.0.tgz)
 
 ----
 
-### @opentelemetry:instrumentation-mysql @0.45.0 - https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/plugins/node/opentelemetry-instrumentation-mysql#readme
+### @opentelemetry:instrumentation-mysql @0.48.0 - https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/plugins/node/opentelemetry-instrumentation-mysql#readme
 
                                  Apache License
                            Version 2.0, January 2004
@@ -19363,11 +19190,11 @@ SOFTWARE.
    limitations under the License.
 
 
-[Source code](https://registry.npmjs.org/@opentelemetry/instrumentation-mysql/-/instrumentation-mysql-0.45.0.tgz)
+[Source code](https://registry.npmjs.org/@opentelemetry/instrumentation-mysql/-/instrumentation-mysql-0.48.0.tgz)
 
 ----
 
-### @opentelemetry:instrumentation-mysql2 @0.45.1 - https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/plugins/node/opentelemetry-instrumentation-mysql2#readme
+### @opentelemetry:instrumentation-mysql2 @0.48.0 - https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/plugins/node/opentelemetry-instrumentation-mysql2#readme
 
                                  Apache License
                            Version 2.0, January 2004
@@ -19572,11 +19399,11 @@ SOFTWARE.
    limitations under the License.
 
 
-[Source code](https://registry.npmjs.org/@opentelemetry/instrumentation-mysql2/-/instrumentation-mysql2-0.45.1.tgz)
+[Source code](https://registry.npmjs.org/@opentelemetry/instrumentation-mysql2/-/instrumentation-mysql2-0.48.0.tgz)
 
 ----
 
-### @opentelemetry:instrumentation-nestjs-core @0.44.0 - https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/plugins/node/opentelemetry-instrumentation-nestjs-core#readme
+### @opentelemetry:instrumentation-nestjs-core @0.48.0 - https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/plugins/node/opentelemetry-instrumentation-nestjs-core#readme
 
                                  Apache License
                            Version 2.0, January 2004
@@ -19781,11 +19608,11 @@ SOFTWARE.
    limitations under the License.
 
 
-[Source code](https://registry.npmjs.org/@opentelemetry/instrumentation-nestjs-core/-/instrumentation-nestjs-core-0.44.0.tgz)
+[Source code](https://registry.npmjs.org/@opentelemetry/instrumentation-nestjs-core/-/instrumentation-nestjs-core-0.48.0.tgz)
 
 ----
 
-### @opentelemetry:instrumentation-net @0.43.0 - https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/plugins/node/opentelemetry-instrumentation-net#readme
+### @opentelemetry:instrumentation-net @0.46.1 - https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/plugins/node/opentelemetry-instrumentation-net#readme
 
                                  Apache License
                            Version 2.0, January 2004
@@ -19990,11 +19817,11 @@ SOFTWARE.
    limitations under the License.
 
 
-[Source code](https://registry.npmjs.org/@opentelemetry/instrumentation-net/-/instrumentation-net-0.43.0.tgz)
+[Source code](https://registry.npmjs.org/@opentelemetry/instrumentation-net/-/instrumentation-net-0.46.1.tgz)
 
 ----
 
-### @opentelemetry:instrumentation-pg @0.51.0 - https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/plugins/node/opentelemetry-instrumentation-pg#readme
+### @opentelemetry:instrumentation-oracledb @0.28.0 - https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/plugins/node/opentelemetry-instrumentation-oracledb#readme
 
                                  Apache License
                            Version 2.0, January 2004
@@ -20199,11 +20026,11 @@ SOFTWARE.
    limitations under the License.
 
 
-[Source code](https://registry.npmjs.org/@opentelemetry/instrumentation-pg/-/instrumentation-pg-0.51.0.tgz)
+[Source code](https://registry.npmjs.org/@opentelemetry/instrumentation-oracledb/-/instrumentation-oracledb-0.28.0.tgz)
 
 ----
 
-### @opentelemetry:instrumentation-pino @0.46.0 - https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/plugins/node/opentelemetry-instrumentation-pino#readme
+### @opentelemetry:instrumentation-pg @0.54.0 - https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/plugins/node/opentelemetry-instrumentation-pg#readme
 
                                  Apache License
                            Version 2.0, January 2004
@@ -20408,11 +20235,11 @@ SOFTWARE.
    limitations under the License.
 
 
-[Source code](https://registry.npmjs.org/@opentelemetry/instrumentation-pino/-/instrumentation-pino-0.46.0.tgz)
+[Source code](https://registry.npmjs.org/@opentelemetry/instrumentation-pg/-/instrumentation-pg-0.54.0.tgz)
 
 ----
 
-### @opentelemetry:instrumentation-redis @0.46.0 - https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/plugins/node/opentelemetry-instrumentation-redis#readme
+### @opentelemetry:instrumentation-pino @0.49.0 - https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/plugins/node/opentelemetry-instrumentation-pino#readme
 
                                  Apache License
                            Version 2.0, January 2004
@@ -20617,11 +20444,11 @@ SOFTWARE.
    limitations under the License.
 
 
-[Source code](https://registry.npmjs.org/@opentelemetry/instrumentation-redis/-/instrumentation-redis-0.46.0.tgz)
+[Source code](https://registry.npmjs.org/@opentelemetry/instrumentation-pino/-/instrumentation-pino-0.49.0.tgz)
 
 ----
 
-### @opentelemetry:instrumentation-redis-4 @0.46.0 - https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/plugins/node/opentelemetry-instrumentation-redis-4#readme
+### @opentelemetry:instrumentation-redis @0.49.1 - https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/plugins/node/opentelemetry-instrumentation-redis#readme
 
                                  Apache License
                            Version 2.0, January 2004
@@ -20826,11 +20653,11 @@ SOFTWARE.
    limitations under the License.
 
 
-[Source code](https://registry.npmjs.org/@opentelemetry/instrumentation-redis-4/-/instrumentation-redis-4-0.46.0.tgz)
+[Source code](https://registry.npmjs.org/@opentelemetry/instrumentation-redis/-/instrumentation-redis-0.49.1.tgz)
 
 ----
 
-### @opentelemetry:instrumentation-restify @0.45.0 - https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/plugins/node/opentelemetry-instrumentation-restify#readme
+### @opentelemetry:instrumentation-redis-4 @0.49.0 - https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/plugins/node/opentelemetry-instrumentation-redis-4#readme
 
                                  Apache License
                            Version 2.0, January 2004
@@ -21035,11 +20862,11 @@ SOFTWARE.
    limitations under the License.
 
 
-[Source code](https://registry.npmjs.org/@opentelemetry/instrumentation-restify/-/instrumentation-restify-0.45.0.tgz)
+[Source code](https://registry.npmjs.org/@opentelemetry/instrumentation-redis-4/-/instrumentation-redis-4-0.49.0.tgz)
 
 ----
 
-### @opentelemetry:instrumentation-router @0.44.0 - https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/plugins/node/opentelemetry-instrumentation-router#readme
+### @opentelemetry:instrumentation-restify @0.48.1 - https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/plugins/node/opentelemetry-instrumentation-restify#readme
 
                                  Apache License
                            Version 2.0, January 2004
@@ -21244,11 +21071,11 @@ SOFTWARE.
    limitations under the License.
 
 
-[Source code](https://registry.npmjs.org/@opentelemetry/instrumentation-router/-/instrumentation-router-0.44.0.tgz)
+[Source code](https://registry.npmjs.org/@opentelemetry/instrumentation-restify/-/instrumentation-restify-0.48.1.tgz)
 
 ----
 
-### @opentelemetry:instrumentation-socket.io @0.46.0 - https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/plugins/node/instrumentation-socket.io#readme
+### @opentelemetry:instrumentation-router @0.47.0 - https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/plugins/node/opentelemetry-instrumentation-router#readme
 
                                  Apache License
                            Version 2.0, January 2004
@@ -21453,11 +21280,11 @@ SOFTWARE.
    limitations under the License.
 
 
-[Source code](https://registry.npmjs.org/@opentelemetry/instrumentation-socket.io/-/instrumentation-socket.io-0.46.0.tgz)
+[Source code](https://registry.npmjs.org/@opentelemetry/instrumentation-router/-/instrumentation-router-0.47.0.tgz)
 
 ----
 
-### @opentelemetry:instrumentation-tedious @0.18.0 - https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/plugins/node/instrumentation-tedious#readme
+### @opentelemetry:instrumentation-runtime-node @0.16.0 - https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/plugins/node/instrumentation-runtime-node
 
                                  Apache License
                            Version 2.0, January 2004
@@ -21662,11 +21489,11 @@ SOFTWARE.
    limitations under the License.
 
 
-[Source code](https://registry.npmjs.org/@opentelemetry/instrumentation-tedious/-/instrumentation-tedious-0.18.0.tgz)
+[Source code](https://registry.npmjs.org/@opentelemetry/instrumentation-runtime-node/-/instrumentation-runtime-node-0.16.0.tgz)
 
 ----
 
-### @opentelemetry:instrumentation-undici @0.10.0 - https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/plugins/node/instrumentation-undici
+### @opentelemetry:instrumentation-socket.io @0.49.0 - https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/plugins/node/instrumentation-socket.io#readme
 
                                  Apache License
                            Version 2.0, January 2004
@@ -21871,11 +21698,11 @@ SOFTWARE.
    limitations under the License.
 
 
-[Source code](https://registry.npmjs.org/@opentelemetry/instrumentation-undici/-/instrumentation-undici-0.10.0.tgz)
+[Source code](https://registry.npmjs.org/@opentelemetry/instrumentation-socket.io/-/instrumentation-socket.io-0.49.0.tgz)
 
 ----
 
-### @opentelemetry:instrumentation-winston @0.44.0 - https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/plugins/node/opentelemetry-instrumentation-winston#readme
+### @opentelemetry:instrumentation-tedious @0.21.0 - https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/plugins/node/instrumentation-tedious#readme
 
                                  Apache License
                            Version 2.0, January 2004
@@ -22080,11 +21907,11 @@ SOFTWARE.
    limitations under the License.
 
 
-[Source code](https://registry.npmjs.org/@opentelemetry/instrumentation-winston/-/instrumentation-winston-0.44.0.tgz)
+[Source code](https://registry.npmjs.org/@opentelemetry/instrumentation-tedious/-/instrumentation-tedious-0.21.0.tgz)
 
 ----
 
-### @opentelemetry:otlp-exporter-base @0.57.1 - https://github.com/open-telemetry/opentelemetry-js/tree/main/experimental/packages/otlp-exporter-base
+### @opentelemetry:instrumentation-undici @0.13.1 - https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/plugins/node/instrumentation-undici
 
                                  Apache License
                            Version 2.0, January 2004
@@ -22289,11 +22116,11 @@ SOFTWARE.
    limitations under the License.
 
 
-[Source code](https://registry.npmjs.org/@opentelemetry/otlp-exporter-base/-/otlp-exporter-base-0.57.1.tgz)
+[Source code](https://registry.npmjs.org/@opentelemetry/instrumentation-undici/-/instrumentation-undici-0.13.1.tgz)
 
 ----
 
-### @opentelemetry:otlp-grpc-exporter-base @0.57.1 - https://github.com/open-telemetry/opentelemetry-js/tree/main/experimental/packages/otlp-grpc-exporter-base
+### @opentelemetry:instrumentation-winston @0.47.0 - https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/plugins/node/opentelemetry-instrumentation-winston#readme
 
                                  Apache License
                            Version 2.0, January 2004
@@ -22498,11 +22325,11 @@ SOFTWARE.
    limitations under the License.
 
 
-[Source code](https://registry.npmjs.org/@opentelemetry/otlp-grpc-exporter-base/-/otlp-grpc-exporter-base-0.57.1.tgz)
+[Source code](https://registry.npmjs.org/@opentelemetry/instrumentation-winston/-/instrumentation-winston-0.47.0.tgz)
 
 ----
 
-### @opentelemetry:otlp-transformer @0.57.1 - https://github.com/open-telemetry/opentelemetry-js/tree/main/experimental/packages/otlp-transformer
+### @opentelemetry:otlp-exporter-base @0.202.0 - https://github.com/open-telemetry/opentelemetry-js/tree/main/experimental/packages/otlp-exporter-base
 
                                  Apache License
                            Version 2.0, January 2004
@@ -22707,11 +22534,11 @@ SOFTWARE.
    limitations under the License.
 
 
-[Source code](https://registry.npmjs.org/@opentelemetry/otlp-transformer/-/otlp-transformer-0.57.1.tgz)
+[Source code](https://registry.npmjs.org/@opentelemetry/otlp-exporter-base/-/otlp-exporter-base-0.202.0.tgz)
 
 ----
 
-### @opentelemetry:propagation-utils @0.30.15 - https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/packages/opentelemetry-propagation-utils#readme
+### @opentelemetry:otlp-grpc-exporter-base @0.202.0 - https://github.com/open-telemetry/opentelemetry-js/tree/main/experimental/packages/otlp-grpc-exporter-base
 
                                  Apache License
                            Version 2.0, January 2004
@@ -22916,11 +22743,11 @@ SOFTWARE.
    limitations under the License.
 
 
-[Source code](https://registry.npmjs.org/@opentelemetry/propagation-utils/-/propagation-utils-0.30.15.tgz)
+[Source code](https://registry.npmjs.org/@opentelemetry/otlp-grpc-exporter-base/-/otlp-grpc-exporter-base-0.202.0.tgz)
 
 ----
 
-### @opentelemetry:propagator-b3 @1.30.1 - https://github.com/open-telemetry/opentelemetry-js/tree/main/packages/opentelemetry-propagator-b3
+### @opentelemetry:otlp-transformer @0.202.0 - https://github.com/open-telemetry/opentelemetry-js/tree/main/experimental/packages/otlp-transformer
 
                                  Apache License
                            Version 2.0, January 2004
@@ -23125,11 +22952,11 @@ SOFTWARE.
    limitations under the License.
 
 
-[Source code](https://registry.npmjs.org/@opentelemetry/propagator-b3/-/propagator-b3-1.30.1.tgz)
+[Source code](https://registry.npmjs.org/@opentelemetry/otlp-transformer/-/otlp-transformer-0.202.0.tgz)
 
 ----
 
-### @opentelemetry:propagator-jaeger @1.30.1 - https://github.com/open-telemetry/opentelemetry-js/tree/main/packages/opentelemetry-propagator-jaeger
+### @opentelemetry:propagation-utils @0.31.2 - https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/packages/opentelemetry-propagation-utils#readme
 
                                  Apache License
                            Version 2.0, January 2004
@@ -23334,11 +23161,11 @@ SOFTWARE.
    limitations under the License.
 
 
-[Source code](https://registry.npmjs.org/@opentelemetry/propagator-jaeger/-/propagator-jaeger-1.30.1.tgz)
+[Source code](https://registry.npmjs.org/@opentelemetry/propagation-utils/-/propagation-utils-0.31.2.tgz)
 
 ----
 
-### @opentelemetry:redis-common @0.36.2 - https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/packages/redis-common#readme
+### @opentelemetry:propagator-b3 @2.0.1 - https://github.com/open-telemetry/opentelemetry-js/tree/main/packages/opentelemetry-propagator-b3
 
                                  Apache License
                            Version 2.0, January 2004
@@ -23543,11 +23370,11 @@ SOFTWARE.
    limitations under the License.
 
 
-[Source code](https://registry.npmjs.org/@opentelemetry/redis-common/-/redis-common-0.36.2.tgz)
+[Source code](https://registry.npmjs.org/@opentelemetry/propagator-b3/-/propagator-b3-2.0.1.tgz)
 
 ----
 
-### @opentelemetry:resource-detector-alibaba-cloud @0.30.0 - https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/detectors/node/opentelemetry-resource-detector-alibaba-cloud#readme
+### @opentelemetry:propagator-jaeger @2.0.1 - https://github.com/open-telemetry/opentelemetry-js/tree/main/packages/opentelemetry-propagator-jaeger
 
                                  Apache License
                            Version 2.0, January 2004
@@ -23752,11 +23579,11 @@ SOFTWARE.
    limitations under the License.
 
 
-[Source code](https://registry.npmjs.org/@opentelemetry/resource-detector-alibaba-cloud/-/resource-detector-alibaba-cloud-0.30.0.tgz)
+[Source code](https://registry.npmjs.org/@opentelemetry/propagator-jaeger/-/propagator-jaeger-2.0.1.tgz)
 
 ----
 
-### @opentelemetry:resource-detector-aws @1.11.0 - https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/detectors/node/opentelemetry-resource-detector-aws#readme
+### @opentelemetry:redis-common @0.37.0 - https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/packages/redis-common#readme
 
                                  Apache License
                            Version 2.0, January 2004
@@ -23961,11 +23788,11 @@ SOFTWARE.
    limitations under the License.
 
 
-[Source code](https://registry.npmjs.org/@opentelemetry/resource-detector-aws/-/resource-detector-aws-1.11.0.tgz)
+[Source code](https://registry.npmjs.org/@opentelemetry/redis-common/-/redis-common-0.37.0.tgz)
 
 ----
 
-### @opentelemetry:resource-detector-azure @0.6.0 - https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/detectors/node/opentelemetry-resource-detector-azure#readme
+### @opentelemetry:resource-detector-alibaba-cloud @0.31.2 - https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/detectors/node/opentelemetry-resource-detector-alibaba-cloud#readme
 
                                  Apache License
                            Version 2.0, January 2004
@@ -24170,11 +23997,11 @@ SOFTWARE.
    limitations under the License.
 
 
-[Source code](https://registry.npmjs.org/@opentelemetry/resource-detector-azure/-/resource-detector-azure-0.6.0.tgz)
+[Source code](https://registry.npmjs.org/@opentelemetry/resource-detector-alibaba-cloud/-/resource-detector-alibaba-cloud-0.31.2.tgz)
 
 ----
 
-### @opentelemetry:resource-detector-container @0.6.0 - https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/detectors/node/opentelemetry-resource-detector-container#readme
+### @opentelemetry:resource-detector-aws @2.2.0 - https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/detectors/node/opentelemetry-resource-detector-aws#readme
 
                                  Apache License
                            Version 2.0, January 2004
@@ -24379,11 +24206,11 @@ SOFTWARE.
    limitations under the License.
 
 
-[Source code](https://registry.npmjs.org/@opentelemetry/resource-detector-container/-/resource-detector-container-0.6.0.tgz)
+[Source code](https://registry.npmjs.org/@opentelemetry/resource-detector-aws/-/resource-detector-aws-2.2.0.tgz)
 
 ----
 
-### @opentelemetry:resource-detector-gcp @0.33.0 - https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/detectors/node/opentelemetry-resource-detector-gcp#readme
+### @opentelemetry:resource-detector-azure @0.9.0 - https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/detectors/node/opentelemetry-resource-detector-azure#readme
 
                                  Apache License
                            Version 2.0, January 2004
@@ -24588,11 +24415,11 @@ SOFTWARE.
    limitations under the License.
 
 
-[Source code](https://registry.npmjs.org/@opentelemetry/resource-detector-gcp/-/resource-detector-gcp-0.33.0.tgz)
+[Source code](https://registry.npmjs.org/@opentelemetry/resource-detector-azure/-/resource-detector-azure-0.9.0.tgz)
 
 ----
 
-### @opentelemetry:resources @1.30.1 - https://github.com/open-telemetry/opentelemetry-js/tree/main/packages/opentelemetry-resources
+### @opentelemetry:resource-detector-container @0.7.2 - https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/detectors/node/opentelemetry-resource-detector-container#readme
 
                                  Apache License
                            Version 2.0, January 2004
@@ -24797,11 +24624,11 @@ SOFTWARE.
    limitations under the License.
 
 
-[Source code](https://registry.npmjs.org/@opentelemetry/resources/-/resources-1.30.1.tgz)
+[Source code](https://registry.npmjs.org/@opentelemetry/resource-detector-container/-/resource-detector-container-0.7.2.tgz)
 
 ----
 
-### @opentelemetry:sdk-logs @0.57.1 - https://github.com/open-telemetry/opentelemetry-js/tree/main/experimental/packages/sdk-logs
+### @opentelemetry:resource-detector-gcp @0.36.0 - https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/detectors/node/opentelemetry-resource-detector-gcp#readme
 
                                  Apache License
                            Version 2.0, January 2004
@@ -25006,11 +24833,11 @@ SOFTWARE.
    limitations under the License.
 
 
-[Source code](https://registry.npmjs.org/@opentelemetry/sdk-logs/-/sdk-logs-0.57.1.tgz)
+[Source code](https://registry.npmjs.org/@opentelemetry/resource-detector-gcp/-/resource-detector-gcp-0.36.0.tgz)
 
 ----
 
-### @opentelemetry:sdk-metrics @1.30.1 - https://github.com/open-telemetry/opentelemetry-js/tree/main/packages/sdk-metrics
+### @opentelemetry:resources @2.0.1 - https://github.com/open-telemetry/opentelemetry-js/tree/main/packages/opentelemetry-resources
 
                                  Apache License
                            Version 2.0, January 2004
@@ -25215,11 +25042,11 @@ SOFTWARE.
    limitations under the License.
 
 
-[Source code](https://registry.npmjs.org/@opentelemetry/sdk-metrics/-/sdk-metrics-1.30.1.tgz)
+[Source code](https://registry.npmjs.org/@opentelemetry/resources/-/resources-2.0.1.tgz)
 
 ----
 
-### @opentelemetry:sdk-node @0.57.1 - https://github.com/open-telemetry/opentelemetry-js/tree/main/experimental/packages/opentelemetry-sdk-node
+### @opentelemetry:sdk-logs @0.202.0 - https://github.com/open-telemetry/opentelemetry-js/tree/main/experimental/packages/sdk-logs
 
                                  Apache License
                            Version 2.0, January 2004
@@ -25424,11 +25251,11 @@ SOFTWARE.
    limitations under the License.
 
 
-[Source code](https://registry.npmjs.org/@opentelemetry/sdk-node/-/sdk-node-0.57.1.tgz)
+[Source code](https://registry.npmjs.org/@opentelemetry/sdk-logs/-/sdk-logs-0.202.0.tgz)
 
 ----
 
-### @opentelemetry:sdk-trace-base @1.30.1 - https://github.com/open-telemetry/opentelemetry-js/tree/main/packages/opentelemetry-sdk-trace-base
+### @opentelemetry:sdk-metrics @2.0.1 - https://github.com/open-telemetry/opentelemetry-js/tree/main/packages/sdk-metrics
 
                                  Apache License
                            Version 2.0, January 2004
@@ -25633,11 +25460,11 @@ SOFTWARE.
    limitations under the License.
 
 
-[Source code](https://registry.npmjs.org/@opentelemetry/sdk-trace-base/-/sdk-trace-base-1.30.1.tgz)
+[Source code](https://registry.npmjs.org/@opentelemetry/sdk-metrics/-/sdk-metrics-2.0.1.tgz)
 
 ----
 
-### @opentelemetry:sdk-trace-node @1.30.1 - https://github.com/open-telemetry/opentelemetry-js/tree/main/packages/opentelemetry-sdk-trace-node
+### @opentelemetry:sdk-node @0.202.0 - https://github.com/open-telemetry/opentelemetry-js/tree/main/experimental/packages/opentelemetry-sdk-node
 
                                  Apache License
                            Version 2.0, January 2004
@@ -25842,7 +25669,425 @@ SOFTWARE.
    limitations under the License.
 
 
-[Source code](https://registry.npmjs.org/@opentelemetry/sdk-trace-node/-/sdk-trace-node-1.30.1.tgz)
+[Source code](https://registry.npmjs.org/@opentelemetry/sdk-node/-/sdk-node-0.202.0.tgz)
+
+----
+
+### @opentelemetry:sdk-trace-base @2.0.1 - https://github.com/open-telemetry/opentelemetry-js/tree/main/packages/opentelemetry-sdk-trace-base
+
+                                 Apache License
+                           Version 2.0, January 2004
+                        http://www.apache.org/licenses/
+
+   TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
+
+   1. Definitions.
+
+      "License" shall mean the terms and conditions for use, reproduction,
+      and distribution as defined by Sections 1 through 9 of this document.
+
+      "Licensor" shall mean the copyright owner or entity authorized by
+      the copyright owner that is granting the License.
+
+      "Legal Entity" shall mean the union of the acting entity and all
+      other entities that control, are controlled by, or are under common
+      control with that entity. For the purposes of this definition,
+      "control" means (i) the power, direct or indirect, to cause the
+      direction or management of such entity, whether by contract or
+      otherwise, or (ii) ownership of fifty percent (50%) or more of the
+      outstanding shares, or (iii) beneficial ownership of such entity.
+
+      "You" (or "Your") shall mean an individual or Legal Entity
+      exercising permissions granted by this License.
+
+      "Source" form shall mean the preferred form for making modifications,
+      including but not limited to software source code, documentation
+      source, and configuration files.
+
+      "Object" form shall mean any form resulting from mechanical
+      transformation or translation of a Source form, including but
+      not limited to compiled object code, generated documentation,
+      and conversions to other media types.
+
+      "Work" shall mean the work of authorship, whether in Source or
+      Object form, made available under the License, as indicated by a
+      copyright notice that is included in or attached to the work
+      (an example is provided in the Appendix below).
+
+      "Derivative Works" shall mean any work, whether in Source or Object
+      form, that is based on (or derived from) the Work and for which the
+      editorial revisions, annotations, elaborations, or other modifications
+      represent, as a whole, an original work of authorship. For the purposes
+      of this License, Derivative Works shall not include works that remain
+      separable from, or merely link (or bind by name) to the interfaces of,
+      the Work and Derivative Works thereof.
+
+      "Contribution" shall mean any work of authorship, including
+      the original version of the Work and any modifications or additions
+      to that Work or Derivative Works thereof, that is intentionally
+      submitted to Licensor for inclusion in the Work by the copyright owner
+      or by an individual or Legal Entity authorized to submit on behalf of
+      the copyright owner. For the purposes of this definition, "submitted"
+      means any form of electronic, verbal, or written communication sent
+      to the Licensor or its representatives, including but not limited to
+      communication on electronic mailing lists, source code control systems,
+      and issue tracking systems that are managed by, or on behalf of, the
+      Licensor for the purpose of discussing and improving the Work, but
+      excluding communication that is conspicuously marked or otherwise
+      designated in writing by the copyright owner as "Not a Contribution."
+
+      "Contributor" shall mean Licensor and any individual or Legal Entity
+      on behalf of whom a Contribution has been received by Licensor and
+      subsequently incorporated within the Work.
+
+   2. Grant of Copyright License. Subject to the terms and conditions of
+      this License, each Contributor hereby grants to You a perpetual,
+      worldwide, non-exclusive, no-charge, royalty-free, irrevocable
+      copyright license to reproduce, prepare Derivative Works of,
+      publicly display, publicly perform, sublicense, and distribute the
+      Work and such Derivative Works in Source or Object form.
+
+   3. Grant of Patent License. Subject to the terms and conditions of
+      this License, each Contributor hereby grants to You a perpetual,
+      worldwide, non-exclusive, no-charge, royalty-free, irrevocable
+      (except as stated in this section) patent license to make, have made,
+      use, offer to sell, sell, import, and otherwise transfer the Work,
+      where such license applies only to those patent claims licensable
+      by such Contributor that are necessarily infringed by their
+      Contribution(s) alone or by combination of their Contribution(s)
+      with the Work to which such Contribution(s) was submitted. If You
+      institute patent litigation against any entity (including a
+      cross-claim or counterclaim in a lawsuit) alleging that the Work
+      or a Contribution incorporated within the Work constitutes direct
+      or contributory patent infringement, then any patent licenses
+      granted to You under this License for that Work shall terminate
+      as of the date such litigation is filed.
+
+   4. Redistribution. You may reproduce and distribute copies of the
+      Work or Derivative Works thereof in any medium, with or without
+      modifications, and in Source or Object form, provided that You
+      meet the following conditions:
+
+      (a) You must give any other recipients of the Work or
+          Derivative Works a copy of this License; and
+
+      (b) You must cause any modified files to carry prominent notices
+          stating that You changed the files; and
+
+      (c) You must retain, in the Source form of any Derivative Works
+          that You distribute, all copyright, patent, trademark, and
+          attribution notices from the Source form of the Work,
+          excluding those notices that do not pertain to any part of
+          the Derivative Works; and
+
+      (d) If the Work includes a "NOTICE" text file as part of its
+          distribution, then any Derivative Works that You distribute must
+          include a readable copy of the attribution notices contained
+          within such NOTICE file, excluding those notices that do not
+          pertain to any part of the Derivative Works, in at least one
+          of the following places: within a NOTICE text file distributed
+          as part of the Derivative Works; within the Source form or
+          documentation, if provided along with the Derivative Works; or,
+          within a display generated by the Derivative Works, if and
+          wherever such third-party notices normally appear. The contents
+          of the NOTICE file are for informational purposes only and
+          do not modify the License. You may add Your own attribution
+          notices within Derivative Works that You distribute, alongside
+          or as an addendum to the NOTICE text from the Work, provided
+          that such additional attribution notices cannot be construed
+          as modifying the License.
+
+      You may add Your own copyright statement to Your modifications and
+      may provide additional or different license terms and conditions
+      for use, reproduction, or distribution of Your modifications, or
+      for any such Derivative Works as a whole, provided Your use,
+      reproduction, and distribution of the Work otherwise complies with
+      the conditions stated in this License.
+
+   5. Submission of Contributions. Unless You explicitly state otherwise,
+      any Contribution intentionally submitted for inclusion in the Work
+      by You to the Licensor shall be under the terms and conditions of
+      this License, without any additional terms or conditions.
+      Notwithstanding the above, nothing herein shall supersede or modify
+      the terms of any separate license agreement you may have executed
+      with Licensor regarding such Contributions.
+
+   6. Trademarks. This License does not grant permission to use the trade
+      names, trademarks, service marks, or product names of the Licensor,
+      except as required for reasonable and customary use in describing the
+      origin of the Work and reproducing the content of the NOTICE file.
+
+   7. Disclaimer of Warranty. Unless required by applicable law or
+      agreed to in writing, Licensor provides the Work (and each
+      Contributor provides its Contributions) on an "AS IS" BASIS,
+      WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or
+      implied, including, without limitation, any warranties or conditions
+      of TITLE, NON-INFRINGEMENT, MERCHANTABILITY, or FITNESS FOR A
+      PARTICULAR PURPOSE. You are solely responsible for determining the
+      appropriateness of using or redistributing the Work and assume any
+      risks associated with Your exercise of permissions under this License.
+
+   8. Limitation of Liability. In no event and under no legal theory,
+      whether in tort (including negligence), contract, or otherwise,
+      unless required by applicable law (such as deliberate and grossly
+      negligent acts) or agreed to in writing, shall any Contributor be
+      liable to You for damages, including any direct, indirect, special,
+      incidental, or consequential damages of any character arising as a
+      result of this License or out of the use or inability to use the
+      Work (including but not limited to damages for loss of goodwill,
+      work stoppage, computer failure or malfunction, or any and all
+      other commercial damages or losses), even if such Contributor
+      has been advised of the possibility of such damages.
+
+   9. Accepting Warranty or Additional Liability. While redistributing
+      the Work or Derivative Works thereof, You may choose to offer,
+      and charge a fee for, acceptance of support, warranty, indemnity,
+      or other liability obligations and/or rights consistent with this
+      License. However, in accepting such obligations, You may act only
+      on Your own behalf and on Your sole responsibility, not on behalf
+      of any other Contributor, and only if You agree to indemnify,
+      defend, and hold each Contributor harmless for any liability
+      incurred by, or claims asserted against, such Contributor by reason
+      of your accepting any such warranty or additional liability.
+
+   END OF TERMS AND CONDITIONS
+
+   APPENDIX: How to apply the Apache License to your work.
+
+      To apply the Apache License to your work, attach the following
+      boilerplate notice, with the fields enclosed by brackets "[]"
+      replaced with your own identifying information. (Don't include
+      the brackets!)  The text should be enclosed in the appropriate
+      comment syntax for the file format. We also recommend that a
+      file or class name and description of purpose be included on the
+      same "printed page" as the copyright notice for easier
+      identification within third-party archives.
+
+   Copyright [yyyy] [name of copyright owner]
+
+   Licensed under the Apache License, Version 2.0 (the "License");
+   you may not use this file except in compliance with the License.
+   You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+
+
+[Source code](https://registry.npmjs.org/@opentelemetry/sdk-trace-base/-/sdk-trace-base-2.0.1.tgz)
+
+----
+
+### @opentelemetry:sdk-trace-node @2.0.1 - https://github.com/open-telemetry/opentelemetry-js/tree/main/packages/opentelemetry-sdk-trace-node
+
+                                 Apache License
+                           Version 2.0, January 2004
+                        http://www.apache.org/licenses/
+
+   TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
+
+   1. Definitions.
+
+      "License" shall mean the terms and conditions for use, reproduction,
+      and distribution as defined by Sections 1 through 9 of this document.
+
+      "Licensor" shall mean the copyright owner or entity authorized by
+      the copyright owner that is granting the License.
+
+      "Legal Entity" shall mean the union of the acting entity and all
+      other entities that control, are controlled by, or are under common
+      control with that entity. For the purposes of this definition,
+      "control" means (i) the power, direct or indirect, to cause the
+      direction or management of such entity, whether by contract or
+      otherwise, or (ii) ownership of fifty percent (50%) or more of the
+      outstanding shares, or (iii) beneficial ownership of such entity.
+
+      "You" (or "Your") shall mean an individual or Legal Entity
+      exercising permissions granted by this License.
+
+      "Source" form shall mean the preferred form for making modifications,
+      including but not limited to software source code, documentation
+      source, and configuration files.
+
+      "Object" form shall mean any form resulting from mechanical
+      transformation or translation of a Source form, including but
+      not limited to compiled object code, generated documentation,
+      and conversions to other media types.
+
+      "Work" shall mean the work of authorship, whether in Source or
+      Object form, made available under the License, as indicated by a
+      copyright notice that is included in or attached to the work
+      (an example is provided in the Appendix below).
+
+      "Derivative Works" shall mean any work, whether in Source or Object
+      form, that is based on (or derived from) the Work and for which the
+      editorial revisions, annotations, elaborations, or other modifications
+      represent, as a whole, an original work of authorship. For the purposes
+      of this License, Derivative Works shall not include works that remain
+      separable from, or merely link (or bind by name) to the interfaces of,
+      the Work and Derivative Works thereof.
+
+      "Contribution" shall mean any work of authorship, including
+      the original version of the Work and any modifications or additions
+      to that Work or Derivative Works thereof, that is intentionally
+      submitted to Licensor for inclusion in the Work by the copyright owner
+      or by an individual or Legal Entity authorized to submit on behalf of
+      the copyright owner. For the purposes of this definition, "submitted"
+      means any form of electronic, verbal, or written communication sent
+      to the Licensor or its representatives, including but not limited to
+      communication on electronic mailing lists, source code control systems,
+      and issue tracking systems that are managed by, or on behalf of, the
+      Licensor for the purpose of discussing and improving the Work, but
+      excluding communication that is conspicuously marked or otherwise
+      designated in writing by the copyright owner as "Not a Contribution."
+
+      "Contributor" shall mean Licensor and any individual or Legal Entity
+      on behalf of whom a Contribution has been received by Licensor and
+      subsequently incorporated within the Work.
+
+   2. Grant of Copyright License. Subject to the terms and conditions of
+      this License, each Contributor hereby grants to You a perpetual,
+      worldwide, non-exclusive, no-charge, royalty-free, irrevocable
+      copyright license to reproduce, prepare Derivative Works of,
+      publicly display, publicly perform, sublicense, and distribute the
+      Work and such Derivative Works in Source or Object form.
+
+   3. Grant of Patent License. Subject to the terms and conditions of
+      this License, each Contributor hereby grants to You a perpetual,
+      worldwide, non-exclusive, no-charge, royalty-free, irrevocable
+      (except as stated in this section) patent license to make, have made,
+      use, offer to sell, sell, import, and otherwise transfer the Work,
+      where such license applies only to those patent claims licensable
+      by such Contributor that are necessarily infringed by their
+      Contribution(s) alone or by combination of their Contribution(s)
+      with the Work to which such Contribution(s) was submitted. If You
+      institute patent litigation against any entity (including a
+      cross-claim or counterclaim in a lawsuit) alleging that the Work
+      or a Contribution incorporated within the Work constitutes direct
+      or contributory patent infringement, then any patent licenses
+      granted to You under this License for that Work shall terminate
+      as of the date such litigation is filed.
+
+   4. Redistribution. You may reproduce and distribute copies of the
+      Work or Derivative Works thereof in any medium, with or without
+      modifications, and in Source or Object form, provided that You
+      meet the following conditions:
+
+      (a) You must give any other recipients of the Work or
+          Derivative Works a copy of this License; and
+
+      (b) You must cause any modified files to carry prominent notices
+          stating that You changed the files; and
+
+      (c) You must retain, in the Source form of any Derivative Works
+          that You distribute, all copyright, patent, trademark, and
+          attribution notices from the Source form of the Work,
+          excluding those notices that do not pertain to any part of
+          the Derivative Works; and
+
+      (d) If the Work includes a "NOTICE" text file as part of its
+          distribution, then any Derivative Works that You distribute must
+          include a readable copy of the attribution notices contained
+          within such NOTICE file, excluding those notices that do not
+          pertain to any part of the Derivative Works, in at least one
+          of the following places: within a NOTICE text file distributed
+          as part of the Derivative Works; within the Source form or
+          documentation, if provided along with the Derivative Works; or,
+          within a display generated by the Derivative Works, if and
+          wherever such third-party notices normally appear. The contents
+          of the NOTICE file are for informational purposes only and
+          do not modify the License. You may add Your own attribution
+          notices within Derivative Works that You distribute, alongside
+          or as an addendum to the NOTICE text from the Work, provided
+          that such additional attribution notices cannot be construed
+          as modifying the License.
+
+      You may add Your own copyright statement to Your modifications and
+      may provide additional or different license terms and conditions
+      for use, reproduction, or distribution of Your modifications, or
+      for any such Derivative Works as a whole, provided Your use,
+      reproduction, and distribution of the Work otherwise complies with
+      the conditions stated in this License.
+
+   5. Submission of Contributions. Unless You explicitly state otherwise,
+      any Contribution intentionally submitted for inclusion in the Work
+      by You to the Licensor shall be under the terms and conditions of
+      this License, without any additional terms or conditions.
+      Notwithstanding the above, nothing herein shall supersede or modify
+      the terms of any separate license agreement you may have executed
+      with Licensor regarding such Contributions.
+
+   6. Trademarks. This License does not grant permission to use the trade
+      names, trademarks, service marks, or product names of the Licensor,
+      except as required for reasonable and customary use in describing the
+      origin of the Work and reproducing the content of the NOTICE file.
+
+   7. Disclaimer of Warranty. Unless required by applicable law or
+      agreed to in writing, Licensor provides the Work (and each
+      Contributor provides its Contributions) on an "AS IS" BASIS,
+      WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or
+      implied, including, without limitation, any warranties or conditions
+      of TITLE, NON-INFRINGEMENT, MERCHANTABILITY, or FITNESS FOR A
+      PARTICULAR PURPOSE. You are solely responsible for determining the
+      appropriateness of using or redistributing the Work and assume any
+      risks associated with Your exercise of permissions under this License.
+
+   8. Limitation of Liability. In no event and under no legal theory,
+      whether in tort (including negligence), contract, or otherwise,
+      unless required by applicable law (such as deliberate and grossly
+      negligent acts) or agreed to in writing, shall any Contributor be
+      liable to You for damages, including any direct, indirect, special,
+      incidental, or consequential damages of any character arising as a
+      result of this License or out of the use or inability to use the
+      Work (including but not limited to damages for loss of goodwill,
+      work stoppage, computer failure or malfunction, or any and all
+      other commercial damages or losses), even if such Contributor
+      has been advised of the possibility of such damages.
+
+   9. Accepting Warranty or Additional Liability. While redistributing
+      the Work or Derivative Works thereof, You may choose to offer,
+      and charge a fee for, acceptance of support, warranty, indemnity,
+      or other liability obligations and/or rights consistent with this
+      License. However, in accepting such obligations, You may act only
+      on Your own behalf and on Your sole responsibility, not on behalf
+      of any other Contributor, and only if You agree to indemnify,
+      defend, and hold each Contributor harmless for any liability
+      incurred by, or claims asserted against, such Contributor by reason
+      of your accepting any such warranty or additional liability.
+
+   END OF TERMS AND CONDITIONS
+
+   APPENDIX: How to apply the Apache License to your work.
+
+      To apply the Apache License to your work, attach the following
+      boilerplate notice, with the fields enclosed by brackets "[]"
+      replaced with your own identifying information. (Don't include
+      the brackets!)  The text should be enclosed in the appropriate
+      comment syntax for the file format. We also recommend that a
+      file or class name and description of purpose be included on the
+      same "printed page" as the copyright notice for easier
+      identification within third-party archives.
+
+   Copyright [yyyy] [name of copyright owner]
+
+   Licensed under the Apache License, Version 2.0 (the "License");
+   you may not use this file except in compliance with the License.
+   You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+
+
+[Source code](https://registry.npmjs.org/@opentelemetry/sdk-trace-node/-/sdk-trace-node-2.0.1.tgz)
 
 ----
 
@@ -26055,7 +26300,7 @@ SOFTWARE.
 
 ----
 
-### @opentelemetry:sql-common @0.40.1 - https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/packages/sql-common#readme
+### @opentelemetry:semantic-conventions @1.34.0 - https://github.com/open-telemetry/opentelemetry-js/tree/main/semantic-conventions
 
                                  Apache License
                            Version 2.0, January 2004
@@ -26260,7 +26505,216 @@ SOFTWARE.
    limitations under the License.
 
 
-[Source code](https://registry.npmjs.org/@opentelemetry/sql-common/-/sql-common-0.40.1.tgz)
+[Source code](https://registry.npmjs.org/@opentelemetry/semantic-conventions/-/semantic-conventions-1.34.0.tgz)
+
+----
+
+### @opentelemetry:sql-common @0.41.0 - https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/packages/sql-common#readme
+
+                                 Apache License
+                           Version 2.0, January 2004
+                        http://www.apache.org/licenses/
+
+   TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
+
+   1. Definitions.
+
+      "License" shall mean the terms and conditions for use, reproduction,
+      and distribution as defined by Sections 1 through 9 of this document.
+
+      "Licensor" shall mean the copyright owner or entity authorized by
+      the copyright owner that is granting the License.
+
+      "Legal Entity" shall mean the union of the acting entity and all
+      other entities that control, are controlled by, or are under common
+      control with that entity. For the purposes of this definition,
+      "control" means (i) the power, direct or indirect, to cause the
+      direction or management of such entity, whether by contract or
+      otherwise, or (ii) ownership of fifty percent (50%) or more of the
+      outstanding shares, or (iii) beneficial ownership of such entity.
+
+      "You" (or "Your") shall mean an individual or Legal Entity
+      exercising permissions granted by this License.
+
+      "Source" form shall mean the preferred form for making modifications,
+      including but not limited to software source code, documentation
+      source, and configuration files.
+
+      "Object" form shall mean any form resulting from mechanical
+      transformation or translation of a Source form, including but
+      not limited to compiled object code, generated documentation,
+      and conversions to other media types.
+
+      "Work" shall mean the work of authorship, whether in Source or
+      Object form, made available under the License, as indicated by a
+      copyright notice that is included in or attached to the work
+      (an example is provided in the Appendix below).
+
+      "Derivative Works" shall mean any work, whether in Source or Object
+      form, that is based on (or derived from) the Work and for which the
+      editorial revisions, annotations, elaborations, or other modifications
+      represent, as a whole, an original work of authorship. For the purposes
+      of this License, Derivative Works shall not include works that remain
+      separable from, or merely link (or bind by name) to the interfaces of,
+      the Work and Derivative Works thereof.
+
+      "Contribution" shall mean any work of authorship, including
+      the original version of the Work and any modifications or additions
+      to that Work or Derivative Works thereof, that is intentionally
+      submitted to Licensor for inclusion in the Work by the copyright owner
+      or by an individual or Legal Entity authorized to submit on behalf of
+      the copyright owner. For the purposes of this definition, "submitted"
+      means any form of electronic, verbal, or written communication sent
+      to the Licensor or its representatives, including but not limited to
+      communication on electronic mailing lists, source code control systems,
+      and issue tracking systems that are managed by, or on behalf of, the
+      Licensor for the purpose of discussing and improving the Work, but
+      excluding communication that is conspicuously marked or otherwise
+      designated in writing by the copyright owner as "Not a Contribution."
+
+      "Contributor" shall mean Licensor and any individual or Legal Entity
+      on behalf of whom a Contribution has been received by Licensor and
+      subsequently incorporated within the Work.
+
+   2. Grant of Copyright License. Subject to the terms and conditions of
+      this License, each Contributor hereby grants to You a perpetual,
+      worldwide, non-exclusive, no-charge, royalty-free, irrevocable
+      copyright license to reproduce, prepare Derivative Works of,
+      publicly display, publicly perform, sublicense, and distribute the
+      Work and such Derivative Works in Source or Object form.
+
+   3. Grant of Patent License. Subject to the terms and conditions of
+      this License, each Contributor hereby grants to You a perpetual,
+      worldwide, non-exclusive, no-charge, royalty-free, irrevocable
+      (except as stated in this section) patent license to make, have made,
+      use, offer to sell, sell, import, and otherwise transfer the Work,
+      where such license applies only to those patent claims licensable
+      by such Contributor that are necessarily infringed by their
+      Contribution(s) alone or by combination of their Contribution(s)
+      with the Work to which such Contribution(s) was submitted. If You
+      institute patent litigation against any entity (including a
+      cross-claim or counterclaim in a lawsuit) alleging that the Work
+      or a Contribution incorporated within the Work constitutes direct
+      or contributory patent infringement, then any patent licenses
+      granted to You under this License for that Work shall terminate
+      as of the date such litigation is filed.
+
+   4. Redistribution. You may reproduce and distribute copies of the
+      Work or Derivative Works thereof in any medium, with or without
+      modifications, and in Source or Object form, provided that You
+      meet the following conditions:
+
+      (a) You must give any other recipients of the Work or
+          Derivative Works a copy of this License; and
+
+      (b) You must cause any modified files to carry prominent notices
+          stating that You changed the files; and
+
+      (c) You must retain, in the Source form of any Derivative Works
+          that You distribute, all copyright, patent, trademark, and
+          attribution notices from the Source form of the Work,
+          excluding those notices that do not pertain to any part of
+          the Derivative Works; and
+
+      (d) If the Work includes a "NOTICE" text file as part of its
+          distribution, then any Derivative Works that You distribute must
+          include a readable copy of the attribution notices contained
+          within such NOTICE file, excluding those notices that do not
+          pertain to any part of the Derivative Works, in at least one
+          of the following places: within a NOTICE text file distributed
+          as part of the Derivative Works; within the Source form or
+          documentation, if provided along with the Derivative Works; or,
+          within a display generated by the Derivative Works, if and
+          wherever such third-party notices normally appear. The contents
+          of the NOTICE file are for informational purposes only and
+          do not modify the License. You may add Your own attribution
+          notices within Derivative Works that You distribute, alongside
+          or as an addendum to the NOTICE text from the Work, provided
+          that such additional attribution notices cannot be construed
+          as modifying the License.
+
+      You may add Your own copyright statement to Your modifications and
+      may provide additional or different license terms and conditions
+      for use, reproduction, or distribution of Your modifications, or
+      for any such Derivative Works as a whole, provided Your use,
+      reproduction, and distribution of the Work otherwise complies with
+      the conditions stated in this License.
+
+   5. Submission of Contributions. Unless You explicitly state otherwise,
+      any Contribution intentionally submitted for inclusion in the Work
+      by You to the Licensor shall be under the terms and conditions of
+      this License, without any additional terms or conditions.
+      Notwithstanding the above, nothing herein shall supersede or modify
+      the terms of any separate license agreement you may have executed
+      with Licensor regarding such Contributions.
+
+   6. Trademarks. This License does not grant permission to use the trade
+      names, trademarks, service marks, or product names of the Licensor,
+      except as required for reasonable and customary use in describing the
+      origin of the Work and reproducing the content of the NOTICE file.
+
+   7. Disclaimer of Warranty. Unless required by applicable law or
+      agreed to in writing, Licensor provides the Work (and each
+      Contributor provides its Contributions) on an "AS IS" BASIS,
+      WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or
+      implied, including, without limitation, any warranties or conditions
+      of TITLE, NON-INFRINGEMENT, MERCHANTABILITY, or FITNESS FOR A
+      PARTICULAR PURPOSE. You are solely responsible for determining the
+      appropriateness of using or redistributing the Work and assume any
+      risks associated with Your exercise of permissions under this License.
+
+   8. Limitation of Liability. In no event and under no legal theory,
+      whether in tort (including negligence), contract, or otherwise,
+      unless required by applicable law (such as deliberate and grossly
+      negligent acts) or agreed to in writing, shall any Contributor be
+      liable to You for damages, including any direct, indirect, special,
+      incidental, or consequential damages of any character arising as a
+      result of this License or out of the use or inability to use the
+      Work (including but not limited to damages for loss of goodwill,
+      work stoppage, computer failure or malfunction, or any and all
+      other commercial damages or losses), even if such Contributor
+      has been advised of the possibility of such damages.
+
+   9. Accepting Warranty or Additional Liability. While redistributing
+      the Work or Derivative Works thereof, You may choose to offer,
+      and charge a fee for, acceptance of support, warranty, indemnity,
+      or other liability obligations and/or rights consistent with this
+      License. However, in accepting such obligations, You may act only
+      on Your own behalf and on Your sole responsibility, not on behalf
+      of any other Contributor, and only if You agree to indemnify,
+      defend, and hold each Contributor harmless for any liability
+      incurred by, or claims asserted against, such Contributor by reason
+      of your accepting any such warranty or additional liability.
+
+   END OF TERMS AND CONDITIONS
+
+   APPENDIX: How to apply the Apache License to your work.
+
+      To apply the Apache License to your work, attach the following
+      boilerplate notice, with the fields enclosed by brackets "[]"
+      replaced with your own identifying information. (Don't include
+      the brackets!)  The text should be enclosed in the appropriate
+      comment syntax for the file format. We also recommend that a
+      file or class name and description of purpose be included on the
+      same "printed page" as the copyright notice for easier
+      identification within third-party archives.
+
+   Copyright [yyyy] [name of copyright owner]
+
+   Licensed under the Apache License, Version 2.0 (the "License");
+   you may not use this file except in compliance with the License.
+   You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+
+
+[Source code](https://registry.npmjs.org/@opentelemetry/sql-common/-/sql-common-0.41.0.tgz)
 
 ----
 
@@ -26721,7 +27175,383 @@ support library is itself covered by the above license.
 
 ----
 
-### @redis:bloom @1.2.0
+### @redis:bloom @5.5.6 - https://github.com/redis/node-redis/tree/master/packages/bloom
+
+MIT License
+
+Copyright (c) 2022-2023, Redis, inc.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+
+[Source code](https://registry.npmjs.org/@redis/bloom/-/bloom-5.5.6.tgz)
+
+----
+
+### @redis:client @5.5.6 - https://github.com/redis/node-redis/tree/master/packages/client
+
+MIT License
+
+Copyright (c) 2022-2023, Redis, inc.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+
+[Source code](https://registry.npmjs.org/@redis/client/-/client-5.5.6.tgz)
+
+----
+
+### @redis:json @5.5.6 - https://github.com/redis/node-redis/tree/master/packages/json
+
+MIT License
+
+Copyright (c) 2022-2023, Redis, inc.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+
+[Source code](https://registry.npmjs.org/@redis/json/-/json-5.5.6.tgz)
+
+----
+
+### @redis:search @5.5.6 - https://github.com/redis/node-redis/tree/master/packages/search
+
+MIT License
+
+Copyright (c) 2022-2023, Redis, inc.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+
+[Source code](https://registry.npmjs.org/@redis/search/-/search-5.5.6.tgz)
+
+----
+
+### @redis:time-series @5.5.6 - https://github.com/redis/node-redis/tree/master/packages/time-series
+
+MIT License
+
+Copyright (c) 2022-2023, Redis, inc.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+
+[Source code](https://registry.npmjs.org/@redis/time-series/-/time-series-5.5.6.tgz)
+
+----
+
+### @scarf:scarf @1.4.0 - https://github.com/scarf-sh/scarf-js
+
+                                 Apache License
+                           Version 2.0, January 2004
+                        http://www.apache.org/licenses/
+
+   TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
+
+   1. Definitions.
+
+      "License" shall mean the terms and conditions for use, reproduction,
+      and distribution as defined by Sections 1 through 9 of this document.
+
+      "Licensor" shall mean the copyright owner or entity authorized by
+      the copyright owner that is granting the License.
+
+      "Legal Entity" shall mean the union of the acting entity and all
+      other entities that control, are controlled by, or are under common
+      control with that entity. For the purposes of this definition,
+      "control" means (i) the power, direct or indirect, to cause the
+      direction or management of such entity, whether by contract or
+      otherwise, or (ii) ownership of fifty percent (50%) or more of the
+      outstanding shares, or (iii) beneficial ownership of such entity.
+
+      "You" (or "Your") shall mean an individual or Legal Entity
+      exercising permissions granted by this License.
+
+      "Source" form shall mean the preferred form for making modifications,
+      including but not limited to software source code, documentation
+      source, and configuration files.
+
+      "Object" form shall mean any form resulting from mechanical
+      transformation or translation of a Source form, including but
+      not limited to compiled object code, generated documentation,
+      and conversions to other media types.
+
+      "Work" shall mean the work of authorship, whether in Source or
+      Object form, made available under the License, as indicated by a
+      copyright notice that is included in or attached to the work
+      (an example is provided in the Appendix below).
+
+      "Derivative Works" shall mean any work, whether in Source or Object
+      form, that is based on (or derived from) the Work and for which the
+      editorial revisions, annotations, elaborations, or other modifications
+      represent, as a whole, an original work of authorship. For the purposes
+      of this License, Derivative Works shall not include works that remain
+      separable from, or merely link (or bind by name) to the interfaces of,
+      the Work and Derivative Works thereof.
+
+      "Contribution" shall mean any work of authorship, including
+      the original version of the Work and any modifications or additions
+      to that Work or Derivative Works thereof, that is intentionally
+      submitted to Licensor for inclusion in the Work by the copyright owner
+      or by an individual or Legal Entity authorized to submit on behalf of
+      the copyright owner. For the purposes of this definition, "submitted"
+      means any form of electronic, verbal, or written communication sent
+      to the Licensor or its representatives, including but not limited to
+      communication on electronic mailing lists, source code control systems,
+      and issue tracking systems that are managed by, or on behalf of, the
+      Licensor for the purpose of discussing and improving the Work, but
+      excluding communication that is conspicuously marked or otherwise
+      designated in writing by the copyright owner as "Not a Contribution."
+
+      "Contributor" shall mean Licensor and any individual or Legal Entity
+      on behalf of whom a Contribution has been received by Licensor and
+      subsequently incorporated within the Work.
+
+   2. Grant of Copyright License. Subject to the terms and conditions of
+      this License, each Contributor hereby grants to You a perpetual,
+      worldwide, non-exclusive, no-charge, royalty-free, irrevocable
+      copyright license to reproduce, prepare Derivative Works of,
+      publicly display, publicly perform, sublicense, and distribute the
+      Work and such Derivative Works in Source or Object form.
+
+   3. Grant of Patent License. Subject to the terms and conditions of
+      this License, each Contributor hereby grants to You a perpetual,
+      worldwide, non-exclusive, no-charge, royalty-free, irrevocable
+      (except as stated in this section) patent license to make, have made,
+      use, offer to sell, sell, import, and otherwise transfer the Work,
+      where such license applies only to those patent claims licensable
+      by such Contributor that are necessarily infringed by their
+      Contribution(s) alone or by combination of their Contribution(s)
+      with the Work to which such Contribution(s) was submitted. If You
+      institute patent litigation against any entity (including a
+      cross-claim or counterclaim in a lawsuit) alleging that the Work
+      or a Contribution incorporated within the Work constitutes direct
+      or contributory patent infringement, then any patent licenses
+      granted to You under this License for that Work shall terminate
+      as of the date such litigation is filed.
+
+   4. Redistribution. You may reproduce and distribute copies of the
+      Work or Derivative Works thereof in any medium, with or without
+      modifications, and in Source or Object form, provided that You
+      meet the following conditions:
+
+      (a) You must give any other recipients of the Work or
+          Derivative Works a copy of this License; and
+
+      (b) You must cause any modified files to carry prominent notices
+          stating that You changed the files; and
+
+      (c) You must retain, in the Source form of any Derivative Works
+          that You distribute, all copyright, patent, trademark, and
+          attribution notices from the Source form of the Work,
+          excluding those notices that do not pertain to any part of
+          the Derivative Works; and
+
+      (d) If the Work includes a "NOTICE" text file as part of its
+          distribution, then any Derivative Works that You distribute must
+          include a readable copy of the attribution notices contained
+          within such NOTICE file, excluding those notices that do not
+          pertain to any part of the Derivative Works, in at least one
+          of the following places: within a NOTICE text file distributed
+          as part of the Derivative Works; within the Source form or
+          documentation, if provided along with the Derivative Works; or,
+          within a display generated by the Derivative Works, if and
+          wherever such third-party notices normally appear. The contents
+          of the NOTICE file are for informational purposes only and
+          do not modify the License. You may add Your own attribution
+          notices within Derivative Works that You distribute, alongside
+          or as an addendum to the NOTICE text from the Work, provided
+          that such additional attribution notices cannot be construed
+          as modifying the License.
+
+      You may add Your own copyright statement to Your modifications and
+      may provide additional or different license terms and conditions
+      for use, reproduction, or distribution of Your modifications, or
+      for any such Derivative Works as a whole, provided Your use,
+      reproduction, and distribution of the Work otherwise complies with
+      the conditions stated in this License.
+
+   5. Submission of Contributions. Unless You explicitly state otherwise,
+      any Contribution intentionally submitted for inclusion in the Work
+      by You to the Licensor shall be under the terms and conditions of
+      this License, without any additional terms or conditions.
+      Notwithstanding the above, nothing herein shall supersede or modify
+      the terms of any separate license agreement you may have executed
+      with Licensor regarding such Contributions.
+
+   6. Trademarks. This License does not grant permission to use the trade
+      names, trademarks, service marks, or product names of the Licensor,
+      except as required for reasonable and customary use in describing the
+      origin of the Work and reproducing the content of the NOTICE file.
+
+   7. Disclaimer of Warranty. Unless required by applicable law or
+      agreed to in writing, Licensor provides the Work (and each
+      Contributor provides its Contributions) on an "AS IS" BASIS,
+      WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or
+      implied, including, without limitation, any warranties or conditions
+      of TITLE, NON-INFRINGEMENT, MERCHANTABILITY, or FITNESS FOR A
+      PARTICULAR PURPOSE. You are solely responsible for determining the
+      appropriateness of using or redistributing the Work and assume any
+      risks associated with Your exercise of permissions under this License.
+
+   8. Limitation of Liability. In no event and under no legal theory,
+      whether in tort (including negligence), contract, or otherwise,
+      unless required by applicable law (such as deliberate and grossly
+      negligent acts) or agreed to in writing, shall any Contributor be
+      liable to You for damages, including any direct, indirect, special,
+      incidental, or consequential damages of any character arising as a
+      result of this License or out of the use or inability to use the
+      Work (including but not limited to damages for loss of goodwill,
+      work stoppage, computer failure or malfunction, or any and all
+      other commercial damages or losses), even if such Contributor
+      has been advised of the possibility of such damages.
+
+   9. Accepting Warranty or Additional Liability. While redistributing
+      the Work or Derivative Works thereof, You may choose to offer,
+      and charge a fee for, acceptance of support, warranty, indemnity,
+      or other liability obligations and/or rights consistent with this
+      License. However, in accepting such obligations, You may act only
+      on Your own behalf and on Your sole responsibility, not on behalf
+      of any other Contributor, and only if You agree to indemnify,
+      defend, and hold each Contributor harmless for any liability
+      incurred by, or claims asserted against, such Contributor by reason
+      of your accepting any such warranty or additional liability.
+
+   END OF TERMS AND CONDITIONS
+
+   APPENDIX: How to apply the Apache License to your work.
+
+      To apply the Apache License to your work, attach the following
+      boilerplate notice, with the fields enclosed by brackets "[]"
+      replaced with your own identifying information. (Don't include
+      the brackets!)  The text should be enclosed in the appropriate
+      comment syntax for the file format. We also recommend that a
+      file or class name and description of purpose be included on the
+      same "printed page" as the copyright notice for easier
+      identification within third-party archives.
+
+   Copyright 2020 Scarf Systems, Inc.
+
+   Licensed under the Apache License, Version 2.0 (the "License");
+   you may not use this file except in compliance with the License.
+   You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+
+
+[Source code](https://registry.npmjs.org/@scarf/scarf/-/scarf-1.4.0.tgz)
+
+----
+
+### @tokenizer:inflate @0.2.7 - https://github.com/Borewit/tokenizer-inflate#readme
+
+Copyright (c) 2024, Borewit
+All rights reserved.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
+documentation files (the "Software"), to deal in the Software without restriction, including without limitation the
+rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit
+persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the
+Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE
+WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
+COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
+OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+[Source code](https://registry.npmjs.org/@tokenizer/inflate/-/inflate-0.2.7.tgz)
+
+----
+
+### @tokenizer:token @0.3.0 - https://github.com/Borewit/tokenizer-token#readme
 
 MIT License
 
@@ -26733,156 +27563,11 @@ The above copyright notice and this permission notice shall be included in all c
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-[Source code](https://registry.npmjs.org/@redis/bloom/-/bloom-1.2.0.tgz)
+[Source code](https://registry.npmjs.org/@tokenizer/token/-/token-0.3.0.tgz)
 
 ----
 
-### @redis:client @1.6.0 - https://github.com/redis/node-redis/tree/master/packages/client
-
-MIT License
-
-Copyright (c) 2022-2023, Redis, inc.
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
-
-
-[Source code](https://registry.npmjs.org/@redis/client/-/client-1.6.0.tgz)
-
-----
-
-### @redis:graph @1.1.1 - https://github.com/redis/node-redis/tree/master/packages/graph
-
-MIT License
-
-Copyright (c) 2022-2023, Redis, inc.
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
-
-
-[Source code](https://registry.npmjs.org/@redis/graph/-/graph-1.1.1.tgz)
-
-----
-
-### @redis:json @1.0.7 - https://github.com/redis/node-redis/tree/master/packages/json
-
-MIT License
-
-Copyright (c) 2022-2023, Redis, inc.
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
-
-
-[Source code](https://registry.npmjs.org/@redis/json/-/json-1.0.7.tgz)
-
-----
-
-### @redis:search @1.2.0 - https://github.com/redis/node-redis/tree/master/packages/search
-
-MIT License
-
-Copyright (c) 2022-2023, Redis, inc.
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
-
-
-[Source code](https://registry.npmjs.org/@redis/search/-/search-1.2.0.tgz)
-
-----
-
-### @redis:time-series @1.1.0 - https://github.com/redis/node-redis/tree/master/packages/time-series
-
-MIT License
-
-Copyright (c) 2022-2023, Redis, inc.
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
-
-
-[Source code](https://registry.npmjs.org/@redis/time-series/-/time-series-1.1.0.tgz)
-
-----
-
-### @types:aws-lambda @8.10.143 - https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/aws-lambda
+### @types:aws-lambda @8.10.147 - https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/aws-lambda
 
     MIT License
 
@@ -26907,11 +27592,11 @@ SOFTWARE.
     SOFTWARE
 
 
-[Source code](https://registry.npmjs.org/@types/aws-lambda/-/aws-lambda-8.10.143.tgz)
+[Source code](https://registry.npmjs.org/@types/aws-lambda/-/aws-lambda-8.10.147.tgz)
 
 ----
 
-### @types:bunyan @1.8.9 - https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/bunyan
+### @types:bunyan @1.8.11 - https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/bunyan
 
     MIT License
 
@@ -26936,11 +27621,11 @@ SOFTWARE.
     SOFTWARE
 
 
-[Source code](https://registry.npmjs.org/@types/bunyan/-/bunyan-1.8.9.tgz)
+[Source code](https://registry.npmjs.org/@types/bunyan/-/bunyan-1.8.11.tgz)
 
 ----
 
-### @types:connect @3.4.36 - https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/connect
+### @types:connect @3.4.38 - https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/connect
 
     MIT License
 
@@ -26965,7 +27650,7 @@ SOFTWARE.
     SOFTWARE
 
 
-[Source code](https://registry.npmjs.org/@types/connect/-/connect-3.4.36.tgz)
+[Source code](https://registry.npmjs.org/@types/connect/-/connect-3.4.38.tgz)
 
 ----
 
@@ -27085,7 +27770,7 @@ SOFTWARE.
 
 ----
 
-### @types:pg @8.6.1 - https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/pg
+### @types:oracledb @6.5.2 - https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/oracledb
 
     MIT License
 
@@ -27110,7 +27795,7 @@ SOFTWARE.
     SOFTWARE
 
 
-[Source code](https://registry.npmjs.org/@types/pg/-/pg-8.6.1.tgz)
+[Source code](https://registry.npmjs.org/@types/oracledb/-/oracledb-6.5.2.tgz)
 
 ----
 
@@ -27143,6 +27828,35 @@ SOFTWARE.
 
 ----
 
+### @types:pg @8.15.1 - https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/pg
+
+    MIT License
+
+    Copyright (c) Microsoft Corporation.
+
+    Permission is hereby granted, free of charge, to any person obtaining a copy
+    of this software and associated documentation files (the "Software"), to deal
+    in the Software without restriction, including without limitation the rights
+    to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+    copies of the Software, and to permit persons to whom the Software is
+    furnished to do so, subject to the following conditions:
+
+    The above copyright notice and this permission notice shall be included in all
+    copies or substantial portions of the Software.
+
+    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+    IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+    FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+    AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+    LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+    OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+    SOFTWARE
+
+
+[Source code](https://registry.npmjs.org/@types/pg/-/pg-8.15.1.tgz)
+
+----
+
 ### @types:pg-pool @2.0.6 - https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/pg-pool
 
     MIT License
@@ -27169,35 +27883,6 @@ SOFTWARE.
 
 
 [Source code](https://registry.npmjs.org/@types/pg-pool/-/pg-pool-2.0.6.tgz)
-
-----
-
-### @types:shimmer @1.2.0 - https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/shimmer
-
-    MIT License
-
-    Copyright (c) Microsoft Corporation.
-
-    Permission is hereby granted, free of charge, to any person obtaining a copy
-    of this software and associated documentation files (the "Software"), to deal
-    in the Software without restriction, including without limitation the rights
-    to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-    copies of the Software, and to permit persons to whom the Software is
-    furnished to do so, subject to the following conditions:
-
-    The above copyright notice and this permission notice shall be included in all
-    copies or substantial portions of the Software.
-
-    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-    IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-    FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-    AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-    LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-    OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-    SOFTWARE
-
-
-[Source code](https://registry.npmjs.org/@types/shimmer/-/shimmer-1.2.0.tgz)
 
 ----
 
@@ -27259,7 +27944,7 @@ SOFTWARE.
 
 ----
 
-### @willsoto:nestjs-prometheus @5.5.1 - https://github.com/willsoto/nestjs-prometheus#readme
+### @willsoto:nestjs-prometheus @6.0.2 - https://github.com/willsoto/nestjs-prometheus#readme
 
                                  Apache License
                            Version 2.0, January 2004
@@ -27464,5 +28149,5 @@ SOFTWARE.
    limitations under the License.
 
 
-[Source code](https://registry.npmjs.org/@willsoto/nestjs-prometheus/-/nestjs-prometheus-5.5.1.tgz)
+[Source code](https://registry.npmjs.org/@willsoto/nestjs-prometheus/-/nestjs-prometheus-6.0.2.tgz)
 
