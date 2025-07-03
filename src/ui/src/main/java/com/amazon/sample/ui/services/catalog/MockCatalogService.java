@@ -149,10 +149,12 @@ public class MockCatalogService implements CatalogService {
     int page,
     int size
   ) {
+    System.out.println("Tag is " + tag);
     List<Product> productList =
       this.products.values()
         .stream()
         .sorted(Comparator.comparing(Product::getName))
+        .filter(product -> tag.isBlank() || product.hasTag(tag))
         .collect(Collectors.toList());
 
     int end = page * size;

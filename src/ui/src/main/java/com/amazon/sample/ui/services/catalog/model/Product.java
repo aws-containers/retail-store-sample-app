@@ -35,4 +35,8 @@ public class Product {
   private int price;
 
   private List<ProductTag> tags;
+
+  public boolean hasTag(String tag) {
+    return tags.stream().anyMatch(t -> t.getName().equals(tag));
+  }
 }
