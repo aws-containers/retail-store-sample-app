@@ -819,6 +819,34 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 ----
 
+### github.com/cenkalti/backoff/v5 @5.0.2 - https://github.com/cenkalti/backoff.git
+
+The MIT License (MIT)
+
+Copyright (c) 2014 Cenk Altı
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of
+this software and associated documentation files (the "Software"), to deal in
+the Software without restriction, including without limitation the rights to
+use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of
+the Software, and to permit persons to whom the Software is furnished to do so,
+subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
+FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
+COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
+IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
+CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+
+[Source code](https://github.com/cenkalti/backoff.git)
+
+----
+
 ### github.com/cespare/xxhash/v2 @2.3.0 - https://github.com/cespare/xxhash.git
 
 Copyright (c) 2016 Caleb Spare
@@ -2598,7 +2626,7 @@ THE SOFTWARE.
 
 ----
 
-### github.com/gin-gonic/gin @1.10.0 - https://github.com/gin-gonic/gin.git
+### github.com/gin-gonic/gin @1.10.1 - https://github.com/gin-gonic/gin.git
 
 The MIT License (MIT)
 
@@ -2627,7 +2655,7 @@ THE SOFTWARE.
 
 ----
 
-### github.com/go-logr/logr @1.4.2 - https://github.com/go-logr/logr.git
+### github.com/go-logr/logr @1.4.3 - https://github.com/go-logr/logr.git
 
                                  Apache License
                            Version 2.0, January 2004
@@ -3649,7 +3677,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 ----
 
-### github.com/grpc-ecosystem/grpc-gateway/v2 @2.25.1 - https://github.com/grpc-ecosystem/grpc-gateway.git
+### github.com/grpc-ecosystem/grpc-gateway/v2 @2.27.1 - https://github.com/grpc-ecosystem/grpc-gateway.git
 
 Copyright (c) 2015, Gengo, Inc.
 All rights reserved.
@@ -9303,7 +9331,7 @@ SOFTWARE.
 
 ----
 
-### go.opentelemetry.io/otel @1.34.0 - https://github.com/open-telemetry/opentelemetry-go.git
+### go.opentelemetry.io/otel @1.37.0 - https://github.com/open-telemetry/opentelemetry-go.git
 
                                  Apache License
                            Version 2.0, January 2004
@@ -9512,7 +9540,7 @@ SOFTWARE.
 
 ----
 
-### go.opentelemetry.io/otel/exporters/otlp/otlptrace @1.34.0 - https://github.com/open-telemetry/opentelemetry-go.git
+### go.opentelemetry.io/otel/exporters/otlp/otlptrace @1.37.0 - https://github.com/open-telemetry/opentelemetry-go.git
 
                                  Apache License
                            Version 2.0, January 2004
@@ -9721,7 +9749,7 @@ SOFTWARE.
 
 ----
 
-### go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracehttp @1.34.0 - https://github.com/open-telemetry/opentelemetry-go.git
+### go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracehttp @1.37.0 - https://github.com/open-telemetry/opentelemetry-go.git
 
                                  Apache License
                            Version 2.0, January 2004
@@ -9930,7 +9958,7 @@ SOFTWARE.
 
 ----
 
-### go.opentelemetry.io/otel/metric @1.34.0 - https://github.com/open-telemetry/opentelemetry-go.git
+### go.opentelemetry.io/otel/metric @1.37.0 - https://github.com/open-telemetry/opentelemetry-go.git
 
                                  Apache License
                            Version 2.0, January 2004
@@ -10139,7 +10167,7 @@ SOFTWARE.
 
 ----
 
-### go.opentelemetry.io/otel/sdk @1.34.0 - https://github.com/open-telemetry/opentelemetry-go.git
+### go.opentelemetry.io/otel/sdk @1.37.0 - https://github.com/open-telemetry/opentelemetry-go.git
 
                                  Apache License
                            Version 2.0, January 2004
@@ -10348,7 +10376,7 @@ SOFTWARE.
 
 ----
 
-### go.opentelemetry.io/otel/trace @1.34.0 - https://github.com/open-telemetry/opentelemetry-go.git
+### go.opentelemetry.io/otel/trace @1.37.0 - https://github.com/open-telemetry/opentelemetry-go.git
 
                                  Apache License
                            Version 2.0, January 2004
@@ -10557,7 +10585,7 @@ SOFTWARE.
 
 ----
 
-### go.opentelemetry.io/proto/otlp @1.5.0 - https://github.com/open-telemetry/opentelemetry-proto-go.git
+### go.opentelemetry.io/proto/otlp @1.7.0 - https://github.com/open-telemetry/opentelemetry-proto-go.git
 
                                  Apache License
                            Version 2.0, January 2004
@@ -10801,7 +10829,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 ----
 
-### golang.org/x/crypto @0.32.0 - https://go.googlesource.com/crypto
+### golang.org/x/crypto @0.39.0 - https://go.googlesource.com/crypto
 
 Copyright 2009 The Go Authors.
 
@@ -10836,7 +10864,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 ----
 
-### golang.org/x/net @0.34.0 - https://go.googlesource.com/net
+### golang.org/x/net @0.41.0 - https://go.googlesource.com/net
 
 Copyright 2009 The Go Authors.
 
@@ -10871,7 +10899,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 ----
 
-### golang.org/x/sys @0.29.0 - https://go.googlesource.com/sys
+### golang.org/x/sys @0.33.0 - https://go.googlesource.com/sys
 
 Copyright 2009 The Go Authors.
 
@@ -10906,7 +10934,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 ----
 
-### golang.org/x/text @0.21.0 - https://go.googlesource.com/text
+### golang.org/x/text @0.26.0 - https://go.googlesource.com/text
 
 Copyright 2009 The Go Authors.
 
@@ -10941,7 +10969,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 ----
 
-### google.golang.org/genproto/googleapis/api @0.0.0-20250115164207-1a7da9e5054f - https://github.com/googleapis/go-genproto.git
+### google.golang.org/genproto/googleapis/api @0.0.0-20250603155806-513f23925822 - https://github.com/googleapis/go-genproto.git
 
 
                                  Apache License
@@ -11151,7 +11179,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 ----
 
-### google.golang.org/genproto/googleapis/rpc @0.0.0-20250115164207-1a7da9e5054f - https://github.com/googleapis/go-genproto.git
+### google.golang.org/genproto/googleapis/rpc @0.0.0-20250603155806-513f23925822 - https://github.com/googleapis/go-genproto.git
 
 
                                  Apache License
@@ -11361,7 +11389,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 ----
 
-### google.golang.org/grpc @1.69.4 - https://github.com/grpc/grpc-go.git
+### google.golang.org/grpc @1.73.0 - https://github.com/grpc/grpc-go.git
 
 
                                  Apache License
@@ -11571,7 +11599,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 ----
 
-### google.golang.org/protobuf @1.36.3 - https://go.googlesource.com/protobuf
+### google.golang.org/protobuf @1.36.6 - https://go.googlesource.com/protobuf
 
 Copyright (c) 2018 The Go Authors. All rights reserved.
 
