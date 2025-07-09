@@ -40,7 +40,9 @@ securityContext:
 service:
   type: ClusterIP
   port: 80
-  # annotations: {}
+  annotations:
+    service.beta.kubernetes.io/aws-load-balancer-type: "nlb"
+    service.beta.kubernetes.io/aws-load-balancer-scheme: internet-facing
   # loadBalancerClass: ""
   # nodePort: 30000
 
