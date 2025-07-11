@@ -79,3 +79,8 @@ variable "alb_target_group_arn" {
   default     = ""
   type        = string
 }
+
+variable "opentelemetry_enabled" {
+  description = "Boolean value that enables OpenTelemetry."
+  type        = bool
+}

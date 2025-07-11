@@ -29,12 +29,14 @@ module "dependencies" {
 module "retail_app_ecs" {
   source = "../../lib/ecs"
 
-  environment_name          = var.environment_name
-  vpc_id                    = module.vpc.inner.vpc_id
-  subnet_ids                = module.vpc.inner.private_subnets
-  public_subnet_ids         = module.vpc.inner.public_subnets
-  tags                      = module.tags.result
-  container_image_overrides = var.container_image_overrides
+  environment_name           = var.environment_name
+  vpc_id                     = module.vpc.inner.vpc_id
+  subnet_ids                 = module.vpc.inner.private_subnets
+  public_subnet_ids          = module.vpc.inner.public_subnets
+  tags                       = module.tags.result
+  container_image_overrides  = var.container_image_overrides
+  opentelemetry_enabled      = var.opentelemetry_enabled
+  container_insights_setting = var.container_insights_setting
 
   catalog_db_endpoint = module.dependencies.catalog_db_endpoint
   catalog_db_port     = module.dependencies.catalog_db_port

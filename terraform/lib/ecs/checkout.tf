@@ -10,6 +10,7 @@ module "checkout_service" {
   container_image                 = module.container_images.result.checkout.url
   service_discovery_namespace_arn = aws_service_discovery_private_dns_namespace.this.arn
   cloudwatch_logs_group_id        = aws_cloudwatch_log_group.ecs_tasks.id
+  opentelemetry_enabled           = var.opentelemetry_enabled
 
   environment_variables = {
     RETAIL_CHECKOUT_PERSISTENCE_PROVIDER  = "redis"
