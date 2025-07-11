@@ -45,12 +45,12 @@ This section documents the variables and outputs of the Terraform configuration.
 
 ### Inputs
 
-| Name               | Description                                                          | Type     | Default            | Required |
-| ------------------ | -------------------------------------------------------------------- | -------- | ------------------ | :------: |
-| `environment_name` | Name of the environment which will be used for all resources created | `string` | `retail-store-ecs` |   yes    |
-| `opentelemetry_enabled` | Flag to enable OpenTelemetry, which will install the AWS Distro for OpenTelemetry and configure trace collection | `bool` | `false` | no |
-| `container_insights_setting` | Container Insights setting for ECS cluster. Must be either 'enhanced' or 'disabled'. When OpenTelemetry is enabled, defaults to 'enhanced' | `string` | `disabled` | no |
-| `log_group_retention_days` | Number of days to retain logs in CloudWatch Log Groups | `number` | `30` | no |
+| Name                         | Description                                                                                                                                | Type     | Default            | Required |
+| ---------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------ | -------- | ------------------ | :------: |
+| `environment_name`           | Name of the environment which will be used for all resources created                                                                       | `string` | `retail-store-ecs` |   yes    |
+| `opentelemetry_enabled`      | Flag to enable OpenTelemetry, which will install the AWS Distro for OpenTelemetry and configure trace collection                           | `bool`   | `false`            |    no    |
+| `container_insights_setting` | Container Insights setting for ECS cluster. Must be either 'enhanced' or 'disabled'. When OpenTelemetry is enabled, defaults to 'enhanced' | `string` | `disabled`         |    no    |
+| `log_group_retention_days`   | Number of days to retain logs in CloudWatch Log Groups                                                                                     | `number` | `30`               |    no    |
 
 ### Outputs
 
