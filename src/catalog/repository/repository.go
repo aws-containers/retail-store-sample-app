@@ -3,16 +3,12 @@ package repository
 import (
 	"context"
 	"fmt"
-	"log"
-	"os"
-	"time"
 
 	"github.com/aws-containers/retail-store-sample-app/catalog/config"
 	"github.com/aws-containers/retail-store-sample-app/catalog/model"
 	"gorm.io/driver/mysql"
 	"gorm.io/driver/sqlite"
 	"gorm.io/gorm"
-	"gorm.io/gorm/logger"
 	"gorm.io/plugin/opentelemetry/tracing"
 )
 
@@ -41,7 +37,6 @@ func NewRepository(config config.DatabaseConfiguration) (CatalogRepository, erro
 		db, err = createMySQLDatabase(config)
 	} else {
 		fmt.Println("Using in-memory database")
-		
 		db, err = gorm.Open(sqlite.Open("file::memory:?cache=shared"), &gorm.Config{})
 	}
 
