@@ -55,6 +55,7 @@ resource "aws_iam_policy" "orders_policy" {
   name        = "${var.environment_name}-orders"
   path        = "/"
   description = "Policy for orders"
+  tags        = var.tags
 
   policy = data.aws_iam_policy_document.orders_db_secret.json
 }

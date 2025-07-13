@@ -14,6 +14,7 @@ data "aws_iam_policy_document" "assume_role_policy" {
 resource "aws_iam_role" "task_execution_role" {
   name               = "${var.environment_name}-${var.service_name}-te"
   assume_role_policy = data.aws_iam_policy_document.assume_role_policy.json
+  tags               = var.tags
 }
 
 resource "aws_iam_role_policy_attachment" "task_execution_role_policy" {
@@ -30,11 +31,13 @@ resource "aws_iam_role_policy_attachment" "task_execution_role_additional" {
 resource "aws_iam_role" "task_role" {
   name               = "${var.environment_name}-${var.service_name}-task"
   assume_role_policy = data.aws_iam_policy_document.assume_role_policy.json
+  tags               = var.tags
 }
 
 resource "aws_iam_policy" "cloudwatch_logs" {
   name        = "${var.environment_name}-${var.service_name}-cloudwatch-logs"
   description = "CloudWatch Logs policy for ${var.service_name}"
+  tags        = var.tags
 
   policy = jsonencode({
     Version = "2012-10-17"
@@ -67,6 +70,7 @@ resource "aws_iam_policy" "adot_collector" {
   count       = var.opentelemetry_enabled ? 1 : 0
   name        = "${var.environment_name}-${var.service_name}-adot-collector"
   description = "ADOT Collector policy for ${var.service_name}"
+  tags        = var.tags
 
   policy = jsonencode({
     Version = "2012-10-17"
@@ -130,6 +134,7 @@ resource "aws_iam_policy" "ecs_exec" {
   name        = "${var.environment_name}-${var.service_name}-exec"
   path        = "/"
   description = "ECS exec policy"
+  tags        = var.tags
 
   policy = jsonencode({
     Version = "2012-10-17"
