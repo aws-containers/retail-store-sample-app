@@ -83,7 +83,8 @@ Pre-requisites:
 Download the latest Docker Compose file and use `docker compose` to run the application containers:
 
 ```
-curl https://github.com/aws-containers/retail-store-sample-app/releases/latest/download/docker-compose.yaml
+wget https://github.com/aws-containers/retail-store-sample-app/releases/latest/download/docker-compose.yaml
+
 DB_PASSWORD='<some password>' docker compose --file docker-compose.yaml up
 ```
 
