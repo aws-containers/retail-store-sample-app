@@ -906,7 +906,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 ----
 
-### brace-expansion @2.0.1 - https://github.com/juliangruber/brace-expansion
+### brace-expansion @2.0.2 - https://github.com/juliangruber/brace-expansion
 
 MIT License
 
@@ -931,7 +931,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 
-[Source code](https://registry.npmjs.org/brace-expansion/-/brace-expansion-2.0.1.tgz)
+[Source code](https://registry.npmjs.org/brace-expansion/-/brace-expansion-2.0.2.tgz)
 
 ----
 
@@ -1021,7 +1021,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 ----
 
-### call-bind-apply-helpers @1.0.1 - https://github.com/ljharb/call-bind-apply-helpers#readme
+### call-bind-apply-helpers @1.0.2 - https://github.com/ljharb/call-bind-apply-helpers#readme
 
 MIT License
 
@@ -1046,11 +1046,11 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 
-[Source code](https://registry.npmjs.org/call-bind-apply-helpers/-/call-bind-apply-helpers-1.0.1.tgz)
+[Source code](https://registry.npmjs.org/call-bind-apply-helpers/-/call-bind-apply-helpers-1.0.2.tgz)
 
 ----
 
-### call-bound @1.0.3 - https://github.com/ljharb/call-bound#readme
+### call-bound @1.0.4 - https://github.com/ljharb/call-bound#readme
 
 MIT License
 
@@ -1075,7 +1075,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 
-[Source code](https://registry.npmjs.org/call-bound/-/call-bound-1.0.3.tgz)
+[Source code](https://registry.npmjs.org/call-bound/-/call-bound-1.0.4.tgz)
 
 ----
 
@@ -3214,7 +3214,7 @@ THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH RE
 
 ----
 
-### get-intrinsic @1.2.7 - https://github.com/ljharb/get-intrinsic#readme
+### get-intrinsic @1.3.0 - https://github.com/ljharb/get-intrinsic#readme
 
 MIT License
 
@@ -3239,7 +3239,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 
-[Source code](https://registry.npmjs.org/get-intrinsic/-/get-intrinsic-1.2.7.tgz)
+[Source code](https://registry.npmjs.org/get-intrinsic/-/get-intrinsic-1.3.0.tgz)
 
 ----
 
@@ -5614,7 +5614,7 @@ THE SOFTWARE.
 
 ----
 
-### object-inspect @1.13.3 - https://github.com/inspect-js/object-inspect
+### object-inspect @1.13.4 - https://github.com/inspect-js/object-inspect
 
 MIT License
 
@@ -5639,7 +5639,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 
-[Source code](https://registry.npmjs.org/object-inspect/-/object-inspect-1.13.3.tgz)
+[Source code](https://registry.npmjs.org/object-inspect/-/object-inspect-1.13.4.tgz)
 
 ----
 
