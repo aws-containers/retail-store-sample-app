@@ -1,8 +1,8 @@
 pipeline{
     agent any
-    tools {
-    nodejs 'NodeJS 18' // Define this in Jenkins: Manage Jenkins → Global Tool Configuration
-    }
+    // tools {
+    // nodejs 'NodeJS 18' // Define this in Jenkins: Manage Jenkins → Global Tool Configuration
+    // }
 
     environment {
         IMAGE_NAME = "ssiraparapu/Retail-store-sample-app"
