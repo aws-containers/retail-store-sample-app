@@ -12,7 +12,7 @@ pipeline{
     stages {
         stage('Checkout') {
             steps {
-                git 'https://github.com/aws-containers/retail-store-sample-app.git'
+                git 'https://github.com/SIRAPARAPUSIVASAI/retail-store-sample-app.git'
             }
         }
     }
