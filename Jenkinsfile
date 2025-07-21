@@ -10,16 +10,18 @@ pipeline{
         KUBE_NAMESPACE = 'Kube_store'
     }
     stages {
-        // stage('Checkout') {
-        //     steps {
-        //         git 'https://github.com/aws-containers/retail-store-sample-app.git'
-        //     }
-        // }
-        
-        stage('Install Dependencies') {
+        stage('Checkout') {
             steps {
-                 dir('src/ui') {
-                    sh 'npm install'}
+                git 'https://github.com/aws-containers/retail-store-sample-app.git'
+            }
+        }
+    }
+}
+        
+        // stage('Install Dependencies') {
+        //     steps {
+        //          dir('src/ui') {
+        //             sh 'npm install'}
             }
         }
     }
