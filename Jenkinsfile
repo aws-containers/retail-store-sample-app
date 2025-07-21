@@ -6,24 +6,19 @@ pipeline{
         TAG = "${params.DOCKER_TAG}"
         KUBE_NAMESPACE = 'Kube_store'
     }
-     stages {
-       
-        stage('Compile') {
+    stages {
+        stage('Checkout') {
             steps {
-                sh "mvn compile"
+                git 'https://github.com/aws-containers/retail-store-sample-app.git'
             }
         }
         
-        stage('Tests') {
+        stage('Install Dependencies') {
             steps {
-                sh "mvn clean test -X -DskipTests=true"
+                 dir('src/ui') {
+                    sh 'npm install'}
             }
         }
-        
-        stage('Build') {
-            steps {
-                sh "mvn package -DskipTests=true"
-            }
-        }
-     }
+    }
 }
+
