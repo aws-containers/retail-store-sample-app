@@ -1,7 +1,7 @@
 pipeline {
     agent {
 
-        docker {
+        docker any {
             image 'golang:1.21'  // Or any Go version you need
             args '-v $HOME/.cache/go-build:/go/pkg/mod' // Optional caching
         }
