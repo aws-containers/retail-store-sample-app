@@ -1,5 +1,5 @@
 pipeline {
-    agent any {
+    agent {
 
         docker {
             image 'golang:1.21'  // Or any Go version you need
