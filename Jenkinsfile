@@ -20,10 +20,17 @@ pipeline {
                 }
             }
         }
+        stage('Build & Test Cart (Java)') {
+            steps {
+                dir('src/cart') {
+                    sh 'mvn clean install'
+                    sh 'docker build -t cart-service .'
+                }
+            }
+        }
     }
 }
-
-        // stage('Build & Test Catalog (Go)') {
+       // stage('Build & Test Catalog (Go)') {
         //     steps {
         //         dir('src/catalog') {
         //             sh 'go mod tidy'
