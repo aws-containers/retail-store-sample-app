@@ -2,8 +2,6 @@ module github.com/aws-containers/retail-store-sample-app/catalog
 
 go 1.21
 
-toolchain go1.24.4
-
 require (
 	github.com/gin-gonic/gin v1.10.1
 	github.com/go-sql-driver/mysql v1.8.1
