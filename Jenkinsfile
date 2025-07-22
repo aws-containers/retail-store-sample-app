@@ -11,19 +11,20 @@ pipeline {
                 }
             }
         }
-    }
-    stages {
-        stage('Build & Test Catalog') {
+        stages {
+         stage('Build & Test Catalog') {
             steps {
                 script {
-                    docker.image('golang:1.21').inside {
-                        dir('src/catalog') {
-                            sh 'go mod tidy'
-                            sh 'go test ./...'
-                         }
+                 docker.image('golang:1.21').inside {
+                    dir('src/catalog') {
+                         sh 'go mod tidy'
+                        sh 'go test ./...'
                     }
                  }
+                }
             }
          }
-     }
+        }
+    }
 }
+    
