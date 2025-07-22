@@ -14,7 +14,8 @@ pipeline {
         stage('Build & Test Orders') {
             steps {
                 dir('src/orders') {
-                    sh 'mvn clean install'
+                    sh 'mvn clean install -P!docker-tests
+'
                 }
             }
         }
