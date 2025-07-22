@@ -14,11 +14,9 @@ pipeline {
         stage('Build & Test Orders') {
             steps {
                 dir('src/orders') {
-                     sh 'mvn clean install' //-P!docker-tests
-                    // sh '''
-                    //     echo "Starting Maven build"
-                    //      mvn clean install -P!docker-tests
-                    // '''
+                     sh 'mvn clean install'
+                     sh 'docker build -t orders-service .'
+
                 }
             }
         }
