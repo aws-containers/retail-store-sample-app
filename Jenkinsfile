@@ -11,5 +11,13 @@ pipeline {
                 }
             }
         }
+         stage('Build & Test Catalog') {
+            steps {
+                dir('src/catalog') {
+                    sh 'go mod tidy'
+                    sh 'go test ./...'
+                }
+            }
+         }
     }
 }
