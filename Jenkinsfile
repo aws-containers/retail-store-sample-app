@@ -1,29 +1,15 @@
-pipeline{
+pipeline {
     agent any
-    // tools {
-    // nodejs 'NodeJS 18' // Define this in Jenkins: Manage Jenkins → Global Tool Configuration
-    // }
 
-    environment {
-        IMAGE_NAME = "ssiraparapu/Retail-store-sample-app"
-        TAG = "${params.DOCKER_TAG}"
-        KUBE_NAMESPACE = 'Kube_store'
-    }
     stages {
-        stage('Checkout') {
-            steps {
-                git 'https://github.com/SIRAPARAPUSIVASAI/retail-store-sample-app.git'
-            }
-        }
-    }
-}
         
-        // stage('Install Dependencies') {
-        //     steps {
-        //          dir('src/ui') {
-        //             sh 'npm install'}
+        stage('Build & Test UI' ) {
+            steps {
+                dir('src/ui') {
+                    sh 'mvn clean install'
+                    
+                }
             }
         }
     }
 }
-
