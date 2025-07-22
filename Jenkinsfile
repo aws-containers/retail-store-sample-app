@@ -1,12 +1,5 @@
 pipeline {
-    agent {
-
-        docker any {
-            image 'golang:1.21'  // Or any Go version you need
-            args '-v $HOME/.cache/go-build:/go/pkg/mod' // Optional caching
-        }
-
-    }
+    agent any
 
     stages {
         
@@ -18,13 +11,19 @@ pipeline {
                 }
             }
         }
-         stage('Build & Test Catalog') {
+    }
+    stages {
+        stage('Build & Test Catalog') {
             steps {
-                dir('src/catalog') {
-                    sh 'go mod tidy'
-                    sh 'go test ./...'
-                }
+                script {
+                    docker.image('golang:1.21').inside {
+                        dir('src/catalog') {
+                            sh 'go mod tidy'
+                            sh 'go test ./...'
+                         }
+                    }
+                 }
             }
          }
-    }
+     }
 }
