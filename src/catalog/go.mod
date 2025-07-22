@@ -1,6 +1,6 @@
 module github.com/aws-containers/retail-store-sample-app/catalog
 
-go 
+go 1.21
 
 toolchain go1.24.4
 
