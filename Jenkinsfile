@@ -20,11 +20,11 @@ pipeline {
                 }
             }
         }
-        stage('Build & Test Cart (Java)') {
+        stage('Build & Test Cart') {
             steps {
                 dir('src/cart') {
                     sh 'mvn clean install'
-                    sh 'docker build -t cart-service .'
+                    // sh 'docker build -t cart-service .'
                 }
             }
         }
