@@ -11,13 +11,18 @@ pipeline {
                 }
             }
         }
-        stage('Build & Test Catalog (Go)') {
+        stage('Build & Test Orders') {
             steps {
-                dir('src/catalog') {
-                    sh 'go mod tidy'
-                    sh 'go test ./...'
+                dir('src/orders') {
+                    sh 'mvn clean install'
                 }
             }
         }
     }
-}    
+}
+
+        // stage('Build & Test Catalog (Go)') {
+        //     steps {
+        //         dir('src/catalog') {
+        //             sh 'go mod tidy'
+        //             sh 'go test ./...'    
