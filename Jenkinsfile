@@ -27,7 +27,7 @@ pipeline {
                 sh 'which go && go version'
             }
         }
-        stage('Build & Test Catalog (Go)') {
+        stage('Build & Test Catalog') {
             steps {
                 dir('src/catalog') {
                     sh 'go mod tidy'
