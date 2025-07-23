@@ -20,20 +20,26 @@ pipeline {
                 }
             }
         }
-         stage('Build & Test Catalog') {
-    steps {
-        script {
-            docker.image('golang:1.22').inside {
-                dir('src/catalog') { 
-                    sh 'go version'                // Verifies Go 1.22
-                    sh 'go mod tidy'              // Resolves dependencies
-                    sh 'go test ./...'            // Runs Go tests
-                    sh 'docker build -t catalog-service .' // Builds Docker image (⚠️ see note below)
+        stage('Build & Test Catalog') {
+            steps {
+                script {
+                    docker.image('golang:1.22').inside {
+                        dir('src/catalog') {
+                            sh 'go version'
+                            sh 'go mod tidy'
+                            sh 'go test ./...'
+                        }
+                    }
                 }
             }
         }
-    }
-         }
+        stage('Build Docker Image') {
+            steps {
+                dir('src/catalog') {
+                    sh 'docker build -t catalog-service .'
+                }
+            }
+        }
     }
 }
                 
