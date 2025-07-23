@@ -20,7 +20,7 @@ pipeline {
                 }
             }
         }
-         stage('Build & Test Catalog (Go)') {
+         stage('Build & Test Catalog') {
             steps {
                 dir('src/catalog') {
                     sh 'go mod tidy'
