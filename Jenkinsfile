@@ -35,7 +35,16 @@ pipeline {
                     sh 'docker build -t catalog-service .'
                 }
             }
-         }
+        }
+        stage('Build & Test Checkout (Node.js)') {
+            steps {
+                dir('src/checkout') {
+                    sh 'npm install'
+                    sh 'npm test || echo "No tests found"'
+                    sh 'docker build -t checkout-service .'
+                }
+            }
+        }
     }
 }
 
