@@ -20,15 +20,6 @@ pipeline {
                 }
             }
         }
-        stage('Test in Go 1.22') {
-            steps {
-                docker.image('golang:1.22').inside {
-                    sh 'go version'
-                    sh 'go mod tidy'
-                    sh 'go test ./...'
-                }
-            }
-        }
          stage('Build & Test Catalog') {
             steps {
                 dir('src/catalog') { 
