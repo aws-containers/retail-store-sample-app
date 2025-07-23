@@ -1,6 +1,8 @@
 pipeline {
     agent any
-
+     environment {
+    PATH = "/usr/local/go/bin:${env.PATH}"
+  }
     stages {
         
         stage('Build & Test UI' ) {
@@ -20,7 +22,12 @@ pipeline {
                 }
             }
         }
-         stage('Build & Test Catalog (Go)') {
+        stage('Check Go') {
+            steps {
+                sh 'which go && go version'
+            }
+        }
+        stage('Build & Test Catalog (Go)') {
             steps {
                 dir('src/catalog') {
                     sh 'go mod tidy'
