@@ -36,7 +36,7 @@ pipeline {
                 }
             }
         }
-        stage('Build & Test Checkout (Node.js)') {
+        stage('Build & Test Checkout') {
             steps {
                 dir('src/checkout') {
                     sh 'npm install'
