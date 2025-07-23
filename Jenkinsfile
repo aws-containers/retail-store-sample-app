@@ -32,13 +32,15 @@ pipeline {
          stage('Build & Test Catalog') {
             steps {
                 dir('src/catalog') {
+                    docker.image('golang:1.22').inside {
+                    sh 'go version' 
                     sh 'go mod tidy'
                     sh 'go test ./...'
                     sh 'docker build -t catalog-service .'
+                    }
                 }
             }
          }
     }
 }
-
   
