@@ -1,18 +1,27 @@
 pipeline {
     agent any
      environment {
-    PATH = "/usr/local/go/bin:${env.PATH}"
+         PATH = "/usr/local/go/bin:${env.PATH}"
+    }
+     environment {
+        NODE_ENV = 'production'
+    }
+    
         docker {
             image 'node:20-alpine'
             args '-u root'
         }
-     }
        
     stages {
-        stage('Build') {
+        stage('Install dependencies') {
             steps {
                 sh 'node -v'
-                sh 'yarn install'
+                sh 'yarn install --frozen-lockfile'
+            }
+        }
+        stage('Build') {
+            steps {
+                sh 'yarn build'
             }
         }
         
