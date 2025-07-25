@@ -2,8 +2,19 @@ pipeline {
     agent any
      environment {
     PATH = "/usr/local/go/bin:${env.PATH}"
-  }
+        docker {
+            image 'node:20-alpine'
+            args '-u root'
+        }
+     }
+       
     stages {
+        stage('Build') {
+            steps {
+                sh 'node -v'
+                sh 'yarn install'
+            }
+        }
         
         stage('Build & Test UI' ) {
             steps {
