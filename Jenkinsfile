@@ -1,5 +1,10 @@
 pipeline {
     agent any
+     docker {
+            image 'node:20-alpine'
+            args '-u root'
+     }
+    
      environment {
          PATH = "/usr/local/go/bin:${env.PATH}"
     }
@@ -7,11 +12,6 @@ pipeline {
         NODE_ENV = 'production'
     }
     
-        docker {
-            image 'node:20-alpine'
-            args '-u root'
-        }
-       
     stages {
         stage('Install dependencies') {
             steps {
