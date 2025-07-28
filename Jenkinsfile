@@ -7,16 +7,22 @@ pipeline {
     environment {
       JAVA_HOME = tool('jdk-21')
       PATH = "${env.JAVA_HOME}/bin:${env.PATH}"
+      MAVEN_OPTS = "-Xmx1024m"
     }
-
     stages {
-        stage('Build') {
+        stage('Verify Java') {
             steps {
-              sh 'java -version'    // Confirm it prints Java 21
-              sh 'mvn clean install'
+                sh 'java -version'
+                sh 'echo $JAVA_HOME'
             }
         }
 
+        stage('Build') {
+            steps {
+                sh 'mvn clean install'
+            }
+        }
+        
         stage('Build & Test UI' ) {
             steps {
                 dir('src/ui') {
