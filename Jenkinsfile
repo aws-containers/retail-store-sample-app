@@ -25,10 +25,7 @@ pipeline {
         stage('Build & Test UI') {
             steps {
                 dir('src/ui') {
-                    sh '''
-                        echo "Building UI with Java 21"
-                        ${JAVA_HOME}/bin/mvn clean install
-                    '''
+                  sh 'mvn clean install'
                 }
             }
         }
