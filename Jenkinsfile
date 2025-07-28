@@ -11,7 +11,7 @@ pipeline {
     //     PATH = "/usr/local/go/bin:${env.PATH}"
     // }
 
-    // stages {
+    stages {
     //     stage('Install Dependencies') {
     //         steps {
     //             sh 'node -v'
