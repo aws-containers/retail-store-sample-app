@@ -1,29 +1,22 @@
 pipeline {
     agent any
-    //     docker {
-    //         image 'node:20-alpine'
-    //         args '-u root'
-    //     }
-    // }
+    tools {
+      jdk 'jdk-21' // Must match the name you set in Global Tool Config
+    }
 
-    // environment {
-    //     NODE_ENV = 'production'
-    //     PATH = "/usr/local/go/bin:${env.PATH}"
-    // }
+    environment {
+      JAVA_HOME = tool('jdk-21')
+      PATH = "${env.JAVA_HOME}/bin:${env.PATH}"
+    }
 
     stages {
-    //     stage('Install Dependencies') {
-    //         steps {
-    //             sh 'node -v'
-    //             sh 'yarn install --frozen-lockfile'
-    //         }
-    //     }
+        stage('Build') {
+            steps {
+              sh 'java -version'    // Confirm it prints Java 21
+              sh 'mvn clean install'
+            }
+        }
 
-    //     stage('Build') {
-    //         steps {
-    //             sh 'yarn build'
-    //         }
-    //     }
         stage('Build & Test UI' ) {
             steps {
                 dir('src/ui') {
@@ -34,42 +27,3 @@ pipeline {
         }
     }
 }
-//         stage('Build & Test Orders') {
-//             steps {
-//                 dir('src/orders') {
-//                      sh 'mvn clean install'
-//                      sh 'docker build -t orders-service .'
-
-//                 }
-//             }
-//         }
-//         stage('Check Go') {
-//             steps {
-//                 sh 'which go && go version'
-//             }
-//         }
-//         stage('Build & Test Catalog') {
-//             steps {
-//                 dir('src/catalog') {
-//                     sh 'go mod tidy'
-//                     sh 'go test ./...'
-//                     sh 'docker build -t catalog-service .'
-//                 }
-//             }
-//         }
-//         stage('Build & Test Checkout') {
-//             steps {
-//                 dir('src/checkout') {
-//                     sh 'npm install'
-//                     sh 'npm test || echo "No tests found"'
-//                     sh 'docker build -t checkout-service .'
-//                 }
-//             }
-//         }
-//     }
-// }
-
-       
-                
-
-  
