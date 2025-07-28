@@ -1,8 +1,6 @@
 module github.com/aws-containers/retail-store-sample-app/catalog
 
-go 1.23.0
-
-toolchain go1.24.4
+go 1.18
 
 require (
 	github.com/gin-gonic/gin v1.10.1
