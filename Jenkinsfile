@@ -1,36 +1,37 @@
 pipeline {
     agent any
     tools {
-      jdk 'jdk-21'
-      maven 'maven-3.9.6' 
+        jdk 'jdk-21'
+        maven 'maven-3.9.6' // or whatever your Maven version is called
     }
 
     environment {
-      JAVA_HOME = tool('jdk-21')
-      PATH = "${env.JAVA_HOME}/bin:${env.PATH}"
-      MAVEN_OPTS = "-Xmx1024m"
+        JAVA_HOME = tool('jdk-21')
+        PATH = "${env.JAVA_HOME}/bin:${env.PATH}"
+        MAVEN_OPTS = "-Xmx1024m"
     }
+
     stages {
         stage('Verify Java') {
             steps {
-                sh 'java -version'
-                sh 'echo $JAVA_HOME'
+                sh '''
+                    echo "JAVA_HOME=$JAVA_HOME"
+                    java -version
+                    mvn -version
+                '''
             }
         }
 
-        // stage('Build') {
-        //     steps {
-        //         sh 'mvn clean install'
-        //     }
-        // }
-
-        stage('Build & Test UI' ) {
+        stage('Build & Test UI') {
             steps {
                 dir('src/ui') {
-                    sh 'mvn clean install'
-                    
+                    sh '''
+                        echo "Building UI with Java 21"
+                        ${JAVA_HOME}/bin/mvn clean install
+                    '''
                 }
             }
         }
     }
 }
+
