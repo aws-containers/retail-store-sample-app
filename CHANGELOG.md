@@ -1,5 +1,15 @@
 # Changelog
 
+## [1.2.3](https://github.com/aws-containers/retail-store-sample-app/compare/v1.2.2...v1.2.3) (2025-08-01)
+
+
+### Bug Fixes
+
+* Consistent OpenTelemetry versions in Java components ([5ea06b9](https://github.com/aws-containers/retail-store-sample-app/commit/5ea06b9900d2d4878f560673c3664cb1386d7fb9))
+* **deps:** update dependency software.amazon.awssdk:bom to v2.32.13 ([#884](https://github.com/aws-containers/retail-store-sample-app/issues/884)) ([ebe9760](https://github.com/aws-containers/retail-store-sample-app/commit/ebe9760c6bda84e83dd38544384d30bc6d3ea9c9))
+* **deps:** update kiota to v1.8.8 ([#885](https://github.com/aws-containers/retail-store-sample-app/issues/885)) ([393fb36](https://github.com/aws-containers/retail-store-sample-app/commit/393fb3697e3ca9dc67bb3d95b72e3e38b41f95b7))
+* Use correct RabbitMQ credential field names ([#911](https://github.com/aws-containers/retail-store-sample-app/issues/911)) ([2bbedc1](https://github.com/aws-containers/retail-store-sample-app/commit/2bbedc12863ec36bec65598d6f64b259530517f9))
+
 ## [1.2.2](https://github.com/aws-containers/retail-store-sample-app/compare/v1.2.1...v1.2.2) (2025-07-14)
 
 
