@@ -8944,7 +8944,7 @@ support library is itself covered by the above license.
 
 ----
 
-### io.opentelemetry.contrib:opentelemetry-aws-xray-propagator @1.42.0-alpha - https://github.com/open-telemetry/opentelemetry-java-contrib
+### io.opentelemetry.contrib:opentelemetry-aws-xray-propagator @1.46.0-alpha - https://github.com/open-telemetry/opentelemetry-java-contrib
 
 
                                  Apache License
@@ -9150,7 +9150,7 @@ support library is itself covered by the above license.
    limitations under the License.
 
 
-[Source code](https://repo.maven.apache.org/maven2/io/opentelemetry/contrib/opentelemetry-aws-xray-propagator/1.42.0-alpha/opentelemetry-aws-xray-propagator-1.42.0-alpha-sources.jar)
+[Source code](https://repo.maven.apache.org/maven2/io/opentelemetry/contrib/opentelemetry-aws-xray-propagator/1.46.0-alpha/opentelemetry-aws-xray-propagator-1.46.0-alpha-sources.jar)
 
 ----
 
@@ -9994,7 +9994,7 @@ support library is itself covered by the above license.
 
 ----
 
-### io.opentelemetry.instrumentation:opentelemetry-aws-sdk-2.2 @2.12.0-alpha - https://github.com/open-telemetry/opentelemetry-java-instrumentation
+### io.opentelemetry.instrumentation:opentelemetry-aws-sdk-2.2 @2.17.1-alpha - https://github.com/open-telemetry/opentelemetry-java-instrumentation
 
 
                                  Apache License
@@ -10200,11 +10200,11 @@ support library is itself covered by the above license.
    limitations under the License.
 
 
-[Source code](https://repo.maven.apache.org/maven2/io/opentelemetry/instrumentation/opentelemetry-aws-sdk-2.2/2.12.0-alpha/opentelemetry-aws-sdk-2.2-2.12.0-alpha-sources.jar)
+[Source code](https://repo.maven.apache.org/maven2/io/opentelemetry/instrumentation/opentelemetry-aws-sdk-2.2/2.17.1-alpha/opentelemetry-aws-sdk-2.2-2.17.1-alpha-sources.jar)
 
 ----
 
-### io.opentelemetry.instrumentation:opentelemetry-aws-sdk-2.2-autoconfigure @2.12.0-alpha - https://github.com/open-telemetry/opentelemetry-java-instrumentation
+### io.opentelemetry.instrumentation:opentelemetry-aws-sdk-2.2-autoconfigure @2.17.1-alpha - https://github.com/open-telemetry/opentelemetry-java-instrumentation
 
 
                                  Apache License
@@ -10410,7 +10410,7 @@ support library is itself covered by the above license.
    limitations under the License.
 
 
-[Source code](https://repo.maven.apache.org/maven2/io/opentelemetry/instrumentation/opentelemetry-aws-sdk-2.2-autoconfigure/2.12.0-alpha/opentelemetry-aws-sdk-2.2-autoconfigure-2.12.0-alpha-sources.jar)
+[Source code](https://repo.maven.apache.org/maven2/io/opentelemetry/instrumentation/opentelemetry-aws-sdk-2.2-autoconfigure/2.17.1-alpha/opentelemetry-aws-sdk-2.2-autoconfigure-2.17.1-alpha-sources.jar)
 
 ----
 
@@ -11044,7 +11044,7 @@ support library is itself covered by the above license.
 
 ----
 
-### io.opentelemetry.instrumentation:opentelemetry-instrumentation-api-incubator @2.12.0-alpha - https://github.com/open-telemetry/opentelemetry-java-instrumentation
+### io.opentelemetry.instrumentation:opentelemetry-instrumentation-api-incubator @2.17.1-alpha - https://github.com/open-telemetry/opentelemetry-java-instrumentation
 
 
                                  Apache License
@@ -11250,7 +11250,7 @@ support library is itself covered by the above license.
    limitations under the License.
 
 
-[Source code](https://repo.maven.apache.org/maven2/io/opentelemetry/instrumentation/opentelemetry-instrumentation-api-incubator/2.12.0-alpha/opentelemetry-instrumentation-api-incubator-2.12.0-alpha-sources.jar)
+[Source code](https://repo.maven.apache.org/maven2/io/opentelemetry/instrumentation/opentelemetry-instrumentation-api-incubator/2.17.1-alpha/opentelemetry-instrumentation-api-incubator-2.17.1-alpha-sources.jar)
 
 ----
 
@@ -28812,7 +28812,7 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 ----
 
-### software.amazon.awssdk:annotations @2.31.76 - https://aws.amazon.com/sdkforjava/core/annotations
+### software.amazon.awssdk:annotations @2.32.13 - https://aws.amazon.com/sdkforjava/core/annotations
 
 
                                  Apache License
@@ -29021,11 +29021,11 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
    with the accompanying software if such terms are included in the directory containing the accompanying software.
    Such other license terms will then apply in lieu of the terms of the software license above.
 
-[Source code](https://repo.maven.apache.org/maven2/software/amazon/awssdk/annotations/2.31.76/annotations-2.31.76-sources.jar)
+[Source code](https://repo.maven.apache.org/maven2/software/amazon/awssdk/annotations/2.32.13/annotations-2.32.13-sources.jar)
 
 ----
 
-### software.amazon.awssdk:apache-client @2.31.76 - https://aws.amazon.com/sdkforjava/http-clients/apache-client
+### software.amazon.awssdk:apache-client @2.32.13 - https://aws.amazon.com/sdkforjava/http-clients/apache-client
 
 
                                  Apache License
@@ -29234,11 +29234,11 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
    with the accompanying software if such terms are included in the directory containing the accompanying software.
    Such other license terms will then apply in lieu of the terms of the software license above.
 
-[Source code](https://repo.maven.apache.org/maven2/software/amazon/awssdk/apache-client/2.31.76/apache-client-2.31.76-sources.jar)
+[Source code](https://repo.maven.apache.org/maven2/software/amazon/awssdk/apache-client/2.32.13/apache-client-2.32.13-sources.jar)
 
 ----
 
-### software.amazon.awssdk:auth @2.31.76 - https://aws.amazon.com/sdkforjava
+### software.amazon.awssdk:auth @2.32.13 - https://aws.amazon.com/sdkforjava
 
 
                                  Apache License
@@ -29447,11 +29447,11 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
    with the accompanying software if such terms are included in the directory containing the accompanying software.
    Such other license terms will then apply in lieu of the terms of the software license above.
 
-[Source code](https://repo.maven.apache.org/maven2/software/amazon/awssdk/auth/2.31.76/auth-2.31.76-sources.jar)
+[Source code](https://repo.maven.apache.org/maven2/software/amazon/awssdk/auth/2.32.13/auth-2.32.13-sources.jar)
 
 ----
 
-### software.amazon.awssdk:aws-core @2.31.76 - https://aws.amazon.com/sdkforjava
+### software.amazon.awssdk:aws-core @2.32.13 - https://aws.amazon.com/sdkforjava
 
 
                                  Apache License
@@ -29660,11 +29660,11 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
    with the accompanying software if such terms are included in the directory containing the accompanying software.
    Such other license terms will then apply in lieu of the terms of the software license above.
 
-[Source code](https://repo.maven.apache.org/maven2/software/amazon/awssdk/aws-core/2.31.76/aws-core-2.31.76-sources.jar)
+[Source code](https://repo.maven.apache.org/maven2/software/amazon/awssdk/aws-core/2.32.13/aws-core-2.32.13-sources.jar)
 
 ----
 
-### software.amazon.awssdk:aws-json-protocol @2.31.76 - https://aws.amazon.com/sdkforjava
+### software.amazon.awssdk:aws-json-protocol @2.32.13 - https://aws.amazon.com/sdkforjava
 
 
                                  Apache License
@@ -29873,11 +29873,11 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
    with the accompanying software if such terms are included in the directory containing the accompanying software.
    Such other license terms will then apply in lieu of the terms of the software license above.
 
-[Source code](https://repo.maven.apache.org/maven2/software/amazon/awssdk/aws-json-protocol/2.31.76/aws-json-protocol-2.31.76-sources.jar)
+[Source code](https://repo.maven.apache.org/maven2/software/amazon/awssdk/aws-json-protocol/2.32.13/aws-json-protocol-2.32.13-sources.jar)
 
 ----
 
-### software.amazon.awssdk:aws-query-protocol @2.31.76 - https://aws.amazon.com/sdkforjava
+### software.amazon.awssdk:aws-query-protocol @2.32.13 - https://aws.amazon.com/sdkforjava
 
 
                                  Apache License
@@ -30086,11 +30086,11 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
    with the accompanying software if such terms are included in the directory containing the accompanying software.
    Such other license terms will then apply in lieu of the terms of the software license above.
 
-[Source code](https://repo.maven.apache.org/maven2/software/amazon/awssdk/aws-query-protocol/2.31.76/aws-query-protocol-2.31.76-sources.jar)
+[Source code](https://repo.maven.apache.org/maven2/software/amazon/awssdk/aws-query-protocol/2.32.13/aws-query-protocol-2.32.13-sources.jar)
 
 ----
 
-### software.amazon.awssdk:checksums @2.31.76 - https://aws.amazon.com/sdkforjava
+### software.amazon.awssdk:checksums @2.32.13 - https://aws.amazon.com/sdkforjava
 
 
                                  Apache License
@@ -30299,11 +30299,11 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
    with the accompanying software if such terms are included in the directory containing the accompanying software.
    Such other license terms will then apply in lieu of the terms of the software license above.
 
-[Source code](https://repo.maven.apache.org/maven2/software/amazon/awssdk/checksums/2.31.76/checksums-2.31.76-sources.jar)
+[Source code](https://repo.maven.apache.org/maven2/software/amazon/awssdk/checksums/2.32.13/checksums-2.32.13-sources.jar)
 
 ----
 
-### software.amazon.awssdk:checksums-spi @2.31.76 - https://aws.amazon.com/sdkforjava
+### software.amazon.awssdk:checksums-spi @2.32.13 - https://aws.amazon.com/sdkforjava
 
 
                                  Apache License
@@ -30512,11 +30512,11 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
    with the accompanying software if such terms are included in the directory containing the accompanying software.
    Such other license terms will then apply in lieu of the terms of the software license above.
 
-[Source code](https://repo.maven.apache.org/maven2/software/amazon/awssdk/checksums-spi/2.31.76/checksums-spi-2.31.76-sources.jar)
+[Source code](https://repo.maven.apache.org/maven2/software/amazon/awssdk/checksums-spi/2.32.13/checksums-spi-2.32.13-sources.jar)
 
 ----
 
-### software.amazon.awssdk:dynamodb @2.31.76 - https://aws.amazon.com/sdkforjava
+### software.amazon.awssdk:dynamodb @2.32.13 - https://aws.amazon.com/sdkforjava
 
 
                                  Apache License
@@ -30725,11 +30725,11 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
    with the accompanying software if such terms are included in the directory containing the accompanying software.
    Such other license terms will then apply in lieu of the terms of the software license above.
 
-[Source code](https://repo.maven.apache.org/maven2/software/amazon/awssdk/dynamodb/2.31.76/dynamodb-2.31.76-sources.jar)
+[Source code](https://repo.maven.apache.org/maven2/software/amazon/awssdk/dynamodb/2.32.13/dynamodb-2.32.13-sources.jar)
 
 ----
 
-### software.amazon.awssdk:dynamodb-enhanced @2.31.76 - https://aws.amazon.com/sdkforjava
+### software.amazon.awssdk:dynamodb-enhanced @2.32.13 - https://aws.amazon.com/sdkforjava
 
 
                                  Apache License
@@ -30938,11 +30938,11 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
    with the accompanying software if such terms are included in the directory containing the accompanying software.
    Such other license terms will then apply in lieu of the terms of the software license above.
 
-[Source code](https://repo.maven.apache.org/maven2/software/amazon/awssdk/dynamodb-enhanced/2.31.76/dynamodb-enhanced-2.31.76-sources.jar)
+[Source code](https://repo.maven.apache.org/maven2/software/amazon/awssdk/dynamodb-enhanced/2.32.13/dynamodb-enhanced-2.32.13-sources.jar)
 
 ----
 
-### software.amazon.awssdk:endpoints-spi @2.31.76 - https://aws.amazon.com/sdkforjava/core/endpoints-spi
+### software.amazon.awssdk:endpoints-spi @2.32.13 - https://aws.amazon.com/sdkforjava/core/endpoints-spi
 
 
                                  Apache License
@@ -31151,11 +31151,11 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
    with the accompanying software if such terms are included in the directory containing the accompanying software.
    Such other license terms will then apply in lieu of the terms of the software license above.
 
-[Source code](https://repo.maven.apache.org/maven2/software/amazon/awssdk/endpoints-spi/2.31.76/endpoints-spi-2.31.76-sources.jar)
+[Source code](https://repo.maven.apache.org/maven2/software/amazon/awssdk/endpoints-spi/2.32.13/endpoints-spi-2.32.13-sources.jar)
 
 ----
 
-### software.amazon.awssdk:http-auth @2.31.76 - https://aws.amazon.com/sdkforjava
+### software.amazon.awssdk:http-auth @2.32.13 - https://aws.amazon.com/sdkforjava
 
 
                                  Apache License
@@ -31364,11 +31364,11 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
    with the accompanying software if such terms are included in the directory containing the accompanying software.
    Such other license terms will then apply in lieu of the terms of the software license above.
 
-[Source code](https://repo.maven.apache.org/maven2/software/amazon/awssdk/http-auth/2.31.76/http-auth-2.31.76-sources.jar)
+[Source code](https://repo.maven.apache.org/maven2/software/amazon/awssdk/http-auth/2.32.13/http-auth-2.32.13-sources.jar)
 
 ----
 
-### software.amazon.awssdk:http-auth-aws @2.31.76 - https://aws.amazon.com/sdkforjava
+### software.amazon.awssdk:http-auth-aws @2.32.13 - https://aws.amazon.com/sdkforjava
 
 
                                  Apache License
@@ -31577,11 +31577,11 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
    with the accompanying software if such terms are included in the directory containing the accompanying software.
    Such other license terms will then apply in lieu of the terms of the software license above.
 
-[Source code](https://repo.maven.apache.org/maven2/software/amazon/awssdk/http-auth-aws/2.31.76/http-auth-aws-2.31.76-sources.jar)
+[Source code](https://repo.maven.apache.org/maven2/software/amazon/awssdk/http-auth-aws/2.32.13/http-auth-aws-2.32.13-sources.jar)
 
 ----
 
-### software.amazon.awssdk:http-auth-aws-eventstream @2.31.76 - https://aws.amazon.com/sdkforjava
+### software.amazon.awssdk:http-auth-aws-eventstream @2.32.13 - https://aws.amazon.com/sdkforjava
 
 
                                  Apache License
@@ -31790,11 +31790,11 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
    with the accompanying software if such terms are included in the directory containing the accompanying software.
    Such other license terms will then apply in lieu of the terms of the software license above.
 
-[Source code](https://repo.maven.apache.org/maven2/software/amazon/awssdk/http-auth-aws-eventstream/2.31.76/http-auth-aws-eventstream-2.31.76-sources.jar)
+[Source code](https://repo.maven.apache.org/maven2/software/amazon/awssdk/http-auth-aws-eventstream/2.32.13/http-auth-aws-eventstream-2.32.13-sources.jar)
 
 ----
 
-### software.amazon.awssdk:http-auth-spi @2.31.76 - https://aws.amazon.com/sdkforjava
+### software.amazon.awssdk:http-auth-spi @2.32.13 - https://aws.amazon.com/sdkforjava
 
 
                                  Apache License
@@ -32003,11 +32003,11 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
    with the accompanying software if such terms are included in the directory containing the accompanying software.
    Such other license terms will then apply in lieu of the terms of the software license above.
 
-[Source code](https://repo.maven.apache.org/maven2/software/amazon/awssdk/http-auth-spi/2.31.76/http-auth-spi-2.31.76-sources.jar)
+[Source code](https://repo.maven.apache.org/maven2/software/amazon/awssdk/http-auth-spi/2.32.13/http-auth-spi-2.32.13-sources.jar)
 
 ----
 
-### software.amazon.awssdk:http-client-spi @2.31.76 - https://aws.amazon.com/sdkforjava/http-client-spi
+### software.amazon.awssdk:http-client-spi @2.32.13 - https://aws.amazon.com/sdkforjava/http-client-spi
 
 
                                  Apache License
@@ -32216,11 +32216,11 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
    with the accompanying software if such terms are included in the directory containing the accompanying software.
    Such other license terms will then apply in lieu of the terms of the software license above.
 
-[Source code](https://repo.maven.apache.org/maven2/software/amazon/awssdk/http-client-spi/2.31.76/http-client-spi-2.31.76-sources.jar)
+[Source code](https://repo.maven.apache.org/maven2/software/amazon/awssdk/http-client-spi/2.32.13/http-client-spi-2.32.13-sources.jar)
 
 ----
 
-### software.amazon.awssdk:identity-spi @2.31.76 - https://aws.amazon.com/sdkforjava
+### software.amazon.awssdk:identity-spi @2.32.13 - https://aws.amazon.com/sdkforjava
 
 
                                  Apache License
@@ -32429,11 +32429,11 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
    with the accompanying software if such terms are included in the directory containing the accompanying software.
    Such other license terms will then apply in lieu of the terms of the software license above.
 
-[Source code](https://repo.maven.apache.org/maven2/software/amazon/awssdk/identity-spi/2.31.76/identity-spi-2.31.76-sources.jar)
+[Source code](https://repo.maven.apache.org/maven2/software/amazon/awssdk/identity-spi/2.32.13/identity-spi-2.32.13-sources.jar)
 
 ----
 
-### software.amazon.awssdk:json-utils @2.31.76 - https://aws.amazon.com/sdkforjava
+### software.amazon.awssdk:json-utils @2.32.13 - https://aws.amazon.com/sdkforjava
 
 
                                  Apache License
@@ -32642,11 +32642,11 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
    with the accompanying software if such terms are included in the directory containing the accompanying software.
    Such other license terms will then apply in lieu of the terms of the software license above.
 
-[Source code](https://repo.maven.apache.org/maven2/software/amazon/awssdk/json-utils/2.31.76/json-utils-2.31.76-sources.jar)
+[Source code](https://repo.maven.apache.org/maven2/software/amazon/awssdk/json-utils/2.32.13/json-utils-2.32.13-sources.jar)
 
 ----
 
-### software.amazon.awssdk:metrics-spi @2.31.76 - https://aws.amazon.com/sdkforjava/core/metrics-spi
+### software.amazon.awssdk:metrics-spi @2.32.13 - https://aws.amazon.com/sdkforjava/core/metrics-spi
 
 
                                  Apache License
@@ -32855,11 +32855,11 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
    with the accompanying software if such terms are included in the directory containing the accompanying software.
    Such other license terms will then apply in lieu of the terms of the software license above.
 
-[Source code](https://repo.maven.apache.org/maven2/software/amazon/awssdk/metrics-spi/2.31.76/metrics-spi-2.31.76-sources.jar)
+[Source code](https://repo.maven.apache.org/maven2/software/amazon/awssdk/metrics-spi/2.32.13/metrics-spi-2.32.13-sources.jar)
 
 ----
 
-### software.amazon.awssdk:netty-nio-client @2.31.76 - https://aws.amazon.com/sdkforjava/http-clients/netty-nio-client
+### software.amazon.awssdk:netty-nio-client @2.32.13 - https://aws.amazon.com/sdkforjava/http-clients/netty-nio-client
 
 
                                  Apache License
@@ -33068,11 +33068,11 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
    with the accompanying software if such terms are included in the directory containing the accompanying software.
    Such other license terms will then apply in lieu of the terms of the software license above.
 
-[Source code](https://repo.maven.apache.org/maven2/software/amazon/awssdk/netty-nio-client/2.31.76/netty-nio-client-2.31.76-sources.jar)
+[Source code](https://repo.maven.apache.org/maven2/software/amazon/awssdk/netty-nio-client/2.32.13/netty-nio-client-2.32.13-sources.jar)
 
 ----
 
-### software.amazon.awssdk:profiles @2.31.76 - https://aws.amazon.com/sdkforjava
+### software.amazon.awssdk:profiles @2.32.13 - https://aws.amazon.com/sdkforjava
 
 
                                  Apache License
@@ -33281,11 +33281,11 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
    with the accompanying software if such terms are included in the directory containing the accompanying software.
    Such other license terms will then apply in lieu of the terms of the software license above.
 
-[Source code](https://repo.maven.apache.org/maven2/software/amazon/awssdk/profiles/2.31.76/profiles-2.31.76-sources.jar)
+[Source code](https://repo.maven.apache.org/maven2/software/amazon/awssdk/profiles/2.32.13/profiles-2.32.13-sources.jar)
 
 ----
 
-### software.amazon.awssdk:protocol-core @2.31.76 - https://aws.amazon.com/sdkforjava
+### software.amazon.awssdk:protocol-core @2.32.13 - https://aws.amazon.com/sdkforjava
 
 
                                  Apache License
@@ -33494,11 +33494,11 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
    with the accompanying software if such terms are included in the directory containing the accompanying software.
    Such other license terms will then apply in lieu of the terms of the software license above.
 
-[Source code](https://repo.maven.apache.org/maven2/software/amazon/awssdk/protocol-core/2.31.76/protocol-core-2.31.76-sources.jar)
+[Source code](https://repo.maven.apache.org/maven2/software/amazon/awssdk/protocol-core/2.32.13/protocol-core-2.32.13-sources.jar)
 
 ----
 
-### software.amazon.awssdk:regions @2.31.76 - https://aws.amazon.com/sdkforjava/core/regions
+### software.amazon.awssdk:regions @2.32.13 - https://aws.amazon.com/sdkforjava/core/regions
 
 
                                  Apache License
@@ -33707,11 +33707,11 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
    with the accompanying software if such terms are included in the directory containing the accompanying software.
    Such other license terms will then apply in lieu of the terms of the software license above.
 
-[Source code](https://repo.maven.apache.org/maven2/software/amazon/awssdk/regions/2.31.76/regions-2.31.76-sources.jar)
+[Source code](https://repo.maven.apache.org/maven2/software/amazon/awssdk/regions/2.32.13/regions-2.32.13-sources.jar)
 
 ----
 
-### software.amazon.awssdk:retries @2.31.76 - https://aws.amazon.com/sdkforjava/core/retries
+### software.amazon.awssdk:retries @2.32.13 - https://aws.amazon.com/sdkforjava/core/retries
 
 
                                  Apache License
@@ -33920,11 +33920,11 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
    with the accompanying software if such terms are included in the directory containing the accompanying software.
    Such other license terms will then apply in lieu of the terms of the software license above.
 
-[Source code](https://repo.maven.apache.org/maven2/software/amazon/awssdk/retries/2.31.76/retries-2.31.76-sources.jar)
+[Source code](https://repo.maven.apache.org/maven2/software/amazon/awssdk/retries/2.32.13/retries-2.32.13-sources.jar)
 
 ----
 
-### software.amazon.awssdk:retries-spi @2.31.76 - https://aws.amazon.com/sdkforjava/core/retries-spi
+### software.amazon.awssdk:retries-spi @2.32.13 - https://aws.amazon.com/sdkforjava/core/retries-spi
 
 
                                  Apache License
@@ -34133,11 +34133,11 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
    with the accompanying software if such terms are included in the directory containing the accompanying software.
    Such other license terms will then apply in lieu of the terms of the software license above.
 
-[Source code](https://repo.maven.apache.org/maven2/software/amazon/awssdk/retries-spi/2.31.76/retries-spi-2.31.76-sources.jar)
+[Source code](https://repo.maven.apache.org/maven2/software/amazon/awssdk/retries-spi/2.32.13/retries-spi-2.32.13-sources.jar)
 
 ----
 
-### software.amazon.awssdk:sdk-core @2.31.76 - https://aws.amazon.com/sdkforjava
+### software.amazon.awssdk:sdk-core @2.32.13 - https://aws.amazon.com/sdkforjava
 
 
                                  Apache License
@@ -34346,11 +34346,11 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
    with the accompanying software if such terms are included in the directory containing the accompanying software.
    Such other license terms will then apply in lieu of the terms of the software license above.
 
-[Source code](https://repo.maven.apache.org/maven2/software/amazon/awssdk/sdk-core/2.31.76/sdk-core-2.31.76-sources.jar)
+[Source code](https://repo.maven.apache.org/maven2/software/amazon/awssdk/sdk-core/2.32.13/sdk-core-2.32.13-sources.jar)
 
 ----
 
-### software.amazon.awssdk:sts @2.31.76 - https://aws.amazon.com/sdkforjava
+### software.amazon.awssdk:sts @2.32.13 - https://aws.amazon.com/sdkforjava
 
 
                                  Apache License
@@ -34559,11 +34559,11 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
    with the accompanying software if such terms are included in the directory containing the accompanying software.
    Such other license terms will then apply in lieu of the terms of the software license above.
 
-[Source code](https://repo.maven.apache.org/maven2/software/amazon/awssdk/sts/2.31.76/sts-2.31.76-sources.jar)
+[Source code](https://repo.maven.apache.org/maven2/software/amazon/awssdk/sts/2.32.13/sts-2.32.13-sources.jar)
 
 ----
 
-### software.amazon.awssdk:third-party-jackson-core @2.31.76 - https://aws.amazon.com/sdkforjava
+### software.amazon.awssdk:third-party-jackson-core @2.32.13 - https://aws.amazon.com/sdkforjava
 
 
                                  Apache License
@@ -34772,11 +34772,11 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
    with the accompanying software if such terms are included in the directory containing the accompanying software.
    Such other license terms will then apply in lieu of the terms of the software license above.
 
-[Source code](https://repo.maven.apache.org/maven2/software/amazon/awssdk/third-party-jackson-core/2.31.76/third-party-jackson-core-2.31.76-sources.jar)
+[Source code](https://repo.maven.apache.org/maven2/software/amazon/awssdk/third-party-jackson-core/2.32.13/third-party-jackson-core-2.32.13-sources.jar)
 
 ----
 
-### software.amazon.awssdk:utils @2.31.76 - https://aws.amazon.com/sdkforjava/utils
+### software.amazon.awssdk:utils @2.32.13 - https://aws.amazon.com/sdkforjava/utils
 
 
                                  Apache License
@@ -34985,7 +34985,7 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
    with the accompanying software if such terms are included in the directory containing the accompanying software.
    Such other license terms will then apply in lieu of the terms of the software license above.
 
-[Source code](https://repo.maven.apache.org/maven2/software/amazon/awssdk/utils/2.31.76/utils-2.31.76-sources.jar)
+[Source code](https://repo.maven.apache.org/maven2/software/amazon/awssdk/utils/2.32.13/utils-2.32.13-sources.jar)
 
 ----
 
