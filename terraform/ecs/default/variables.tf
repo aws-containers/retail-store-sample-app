@@ -27,7 +27,7 @@ variable "opentelemetry_enabled" {
 
 variable "container_insights_setting" {
   type        = string
-  default     = "disabled"
+  default     = "enhanced"
   description = "Container Insights setting for ECS cluster (enhanced or disabled)"
 
   validation {
