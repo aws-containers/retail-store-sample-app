@@ -10369,7 +10369,7 @@ third-party archives.
 
 ----
 
-### io.opentelemetry.contrib:opentelemetry-aws-xray-propagator @1.42.0-alpha - https://github.com/open-telemetry/opentelemetry-java-contrib
+### io.opentelemetry.contrib:opentelemetry-aws-xray-propagator @1.46.0-alpha - https://github.com/open-telemetry/opentelemetry-java-contrib
 
 
                                  Apache License
@@ -10575,7 +10575,7 @@ third-party archives.
    limitations under the License.
 
 
-[Source code](https://repo.maven.apache.org/maven2/io/opentelemetry/contrib/opentelemetry-aws-xray-propagator/1.42.0-alpha/opentelemetry-aws-xray-propagator-1.42.0-alpha-sources.jar)
+[Source code](https://repo.maven.apache.org/maven2/io/opentelemetry/contrib/opentelemetry-aws-xray-propagator/1.46.0-alpha/opentelemetry-aws-xray-propagator-1.46.0-alpha-sources.jar)
 
 ----
 
@@ -11419,7 +11419,7 @@ third-party archives.
 
 ----
 
-### io.opentelemetry.instrumentation:opentelemetry-aws-sdk-2.2 @2.12.0-alpha - https://github.com/open-telemetry/opentelemetry-java-instrumentation
+### io.opentelemetry.instrumentation:opentelemetry-aws-sdk-2.2 @2.17.1-alpha - https://github.com/open-telemetry/opentelemetry-java-instrumentation
 
 
                                  Apache License
@@ -11625,11 +11625,11 @@ third-party archives.
    limitations under the License.
 
 
-[Source code](https://repo.maven.apache.org/maven2/io/opentelemetry/instrumentation/opentelemetry-aws-sdk-2.2/2.12.0-alpha/opentelemetry-aws-sdk-2.2-2.12.0-alpha-sources.jar)
+[Source code](https://repo.maven.apache.org/maven2/io/opentelemetry/instrumentation/opentelemetry-aws-sdk-2.2/2.17.1-alpha/opentelemetry-aws-sdk-2.2-2.17.1-alpha-sources.jar)
 
 ----
 
-### io.opentelemetry.instrumentation:opentelemetry-aws-sdk-2.2-autoconfigure @2.12.0-alpha - https://github.com/open-telemetry/opentelemetry-java-instrumentation
+### io.opentelemetry.instrumentation:opentelemetry-aws-sdk-2.2-autoconfigure @2.17.1-alpha - https://github.com/open-telemetry/opentelemetry-java-instrumentation
 
 
                                  Apache License
@@ -11835,7 +11835,7 @@ third-party archives.
    limitations under the License.
 
 
-[Source code](https://repo.maven.apache.org/maven2/io/opentelemetry/instrumentation/opentelemetry-aws-sdk-2.2-autoconfigure/2.12.0-alpha/opentelemetry-aws-sdk-2.2-autoconfigure-2.12.0-alpha-sources.jar)
+[Source code](https://repo.maven.apache.org/maven2/io/opentelemetry/instrumentation/opentelemetry-aws-sdk-2.2-autoconfigure/2.17.1-alpha/opentelemetry-aws-sdk-2.2-autoconfigure-2.17.1-alpha-sources.jar)
 
 ----
 
@@ -12469,7 +12469,7 @@ third-party archives.
 
 ----
 
-### io.opentelemetry.instrumentation:opentelemetry-instrumentation-api-incubator @2.12.0-alpha - https://github.com/open-telemetry/opentelemetry-java-instrumentation
+### io.opentelemetry.instrumentation:opentelemetry-instrumentation-api-incubator @2.17.1-alpha - https://github.com/open-telemetry/opentelemetry-java-instrumentation
 
 
                                  Apache License
@@ -12675,7 +12675,7 @@ third-party archives.
    limitations under the License.
 
 
-[Source code](https://repo.maven.apache.org/maven2/io/opentelemetry/instrumentation/opentelemetry-instrumentation-api-incubator/2.12.0-alpha/opentelemetry-instrumentation-api-incubator-2.12.0-alpha-sources.jar)
+[Source code](https://repo.maven.apache.org/maven2/io/opentelemetry/instrumentation/opentelemetry-instrumentation-api-incubator/2.17.1-alpha/opentelemetry-instrumentation-api-incubator-2.17.1-alpha-sources.jar)
 
 ----
 
