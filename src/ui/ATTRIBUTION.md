@@ -2266,7 +2266,7 @@ SOFTWARE.
 
 ----
 
-### com.microsoft.kiota:microsoft-kiota-abstractions @1.8.7 - https://github.com/microsoft/kiota-java
+### com.microsoft.kiota:microsoft-kiota-abstractions @1.8.8 - https://github.com/microsoft/kiota-java
 
     MIT License
 
@@ -2291,11 +2291,11 @@ SOFTWARE.
     SOFTWARE
 
 
-[Source code](https://repo.maven.apache.org/maven2/com/microsoft/kiota/microsoft-kiota-abstractions/1.8.7/microsoft-kiota-abstractions-1.8.7-sources.jar)
+[Source code](https://repo.maven.apache.org/maven2/com/microsoft/kiota/microsoft-kiota-abstractions/1.8.8/microsoft-kiota-abstractions-1.8.8-sources.jar)
 
 ----
 
-### com.microsoft.kiota:microsoft-kiota-bundle @1.8.7 - https://github.com/microsoft/kiota-java
+### com.microsoft.kiota:microsoft-kiota-bundle @1.8.8 - https://github.com/microsoft/kiota-java
 
     MIT License
 
@@ -2320,11 +2320,11 @@ SOFTWARE.
     SOFTWARE
 
 
-[Source code](https://repo.maven.apache.org/maven2/com/microsoft/kiota/microsoft-kiota-bundle/1.8.7/microsoft-kiota-bundle-1.8.7-sources.jar)
+[Source code](https://repo.maven.apache.org/maven2/com/microsoft/kiota/microsoft-kiota-bundle/1.8.8/microsoft-kiota-bundle-1.8.8-sources.jar)
 
 ----
 
-### com.microsoft.kiota:microsoft-kiota-http-okHttp @1.8.7 - https://github.com/microsoft/kiota-java
+### com.microsoft.kiota:microsoft-kiota-http-okHttp @1.8.8 - https://github.com/microsoft/kiota-java
 
     MIT License
 
@@ -2349,11 +2349,11 @@ SOFTWARE.
     SOFTWARE
 
 
-[Source code](https://repo.maven.apache.org/maven2/com/microsoft/kiota/microsoft-kiota-http-okHttp/1.8.7/microsoft-kiota-http-okHttp-1.8.7-sources.jar)
+[Source code](https://repo.maven.apache.org/maven2/com/microsoft/kiota/microsoft-kiota-http-okHttp/1.8.8/microsoft-kiota-http-okHttp-1.8.8-sources.jar)
 
 ----
 
-### com.microsoft.kiota:microsoft-kiota-serialization-form @1.8.7 - https://github.com/microsoft/kiota-java
+### com.microsoft.kiota:microsoft-kiota-serialization-form @1.8.8 - https://github.com/microsoft/kiota-java
 
     MIT License
 
@@ -2378,11 +2378,11 @@ SOFTWARE.
     SOFTWARE
 
 
-[Source code](https://repo.maven.apache.org/maven2/com/microsoft/kiota/microsoft-kiota-serialization-form/1.8.7/microsoft-kiota-serialization-form-1.8.7-sources.jar)
+[Source code](https://repo.maven.apache.org/maven2/com/microsoft/kiota/microsoft-kiota-serialization-form/1.8.8/microsoft-kiota-serialization-form-1.8.8-sources.jar)
 
 ----
 
-### com.microsoft.kiota:microsoft-kiota-serialization-json @1.8.7 - https://github.com/microsoft/kiota-java
+### com.microsoft.kiota:microsoft-kiota-serialization-json @1.8.8 - https://github.com/microsoft/kiota-java
 
     MIT License
 
@@ -2407,11 +2407,11 @@ SOFTWARE.
     SOFTWARE
 
 
-[Source code](https://repo.maven.apache.org/maven2/com/microsoft/kiota/microsoft-kiota-serialization-json/1.8.7/microsoft-kiota-serialization-json-1.8.7-sources.jar)
+[Source code](https://repo.maven.apache.org/maven2/com/microsoft/kiota/microsoft-kiota-serialization-json/1.8.8/microsoft-kiota-serialization-json-1.8.8-sources.jar)
 
 ----
 
-### com.microsoft.kiota:microsoft-kiota-serialization-multipart @1.8.7 - https://github.com/microsoft/kiota-java
+### com.microsoft.kiota:microsoft-kiota-serialization-multipart @1.8.8 - https://github.com/microsoft/kiota-java
 
     MIT License
 
@@ -2436,11 +2436,11 @@ SOFTWARE.
     SOFTWARE
 
 
-[Source code](https://repo.maven.apache.org/maven2/com/microsoft/kiota/microsoft-kiota-serialization-multipart/1.8.7/microsoft-kiota-serialization-multipart-1.8.7-sources.jar)
+[Source code](https://repo.maven.apache.org/maven2/com/microsoft/kiota/microsoft-kiota-serialization-multipart/1.8.8/microsoft-kiota-serialization-multipart-1.8.8-sources.jar)
 
 ----
 
-### com.microsoft.kiota:microsoft-kiota-serialization-text @1.8.7 - https://github.com/microsoft/kiota-java
+### com.microsoft.kiota:microsoft-kiota-serialization-text @1.8.8 - https://github.com/microsoft/kiota-java
 
     MIT License
 
@@ -2465,7 +2465,7 @@ SOFTWARE.
     SOFTWARE
 
 
-[Source code](https://repo.maven.apache.org/maven2/com/microsoft/kiota/microsoft-kiota-serialization-text/1.8.7/microsoft-kiota-serialization-text-1.8.7-sources.jar)
+[Source code](https://repo.maven.apache.org/maven2/com/microsoft/kiota/microsoft-kiota-serialization-text/1.8.8/microsoft-kiota-serialization-text-1.8.8-sources.jar)
 
 ----
 
@@ -13599,7 +13599,7 @@ SOFTWARE.
 
 ----
 
-### io.opentelemetry.instrumentation:opentelemetry-instrumentation-api-incubator @2.12.0-alpha - https://github.com/open-telemetry/opentelemetry-java-instrumentation
+### io.opentelemetry.instrumentation:opentelemetry-instrumentation-api-incubator @2.17.1-alpha - https://github.com/open-telemetry/opentelemetry-java-instrumentation
 
 
                                  Apache License
@@ -13805,7 +13805,7 @@ SOFTWARE.
    limitations under the License.
 
 
-[Source code](https://repo.maven.apache.org/maven2/io/opentelemetry/instrumentation/opentelemetry-instrumentation-api-incubator/2.12.0-alpha/opentelemetry-instrumentation-api-incubator-2.12.0-alpha-sources.jar)
+[Source code](https://repo.maven.apache.org/maven2/io/opentelemetry/instrumentation/opentelemetry-instrumentation-api-incubator/2.17.1-alpha/opentelemetry-instrumentation-api-incubator-2.17.1-alpha-sources.jar)
 
 ----
 
@@ -15699,7 +15699,7 @@ SOFTWARE.
 
 ----
 
-### io.opentelemetry.instrumentation:opentelemetry-okhttp-3.0 @2.12.0-alpha - https://github.com/open-telemetry/opentelemetry-java-instrumentation
+### io.opentelemetry.instrumentation:opentelemetry-okhttp-3.0 @2.17.1-alpha - https://github.com/open-telemetry/opentelemetry-java-instrumentation
 
 
                                  Apache License
@@ -15905,7 +15905,7 @@ SOFTWARE.
    limitations under the License.
 
 
-[Source code](https://repo.maven.apache.org/maven2/io/opentelemetry/instrumentation/opentelemetry-okhttp-3.0/2.12.0-alpha/opentelemetry-okhttp-3.0-2.12.0-alpha-sources.jar)
+[Source code](https://repo.maven.apache.org/maven2/io/opentelemetry/instrumentation/opentelemetry-okhttp-3.0/2.17.1-alpha/opentelemetry-okhttp-3.0-2.17.1-alpha-sources.jar)
 
 ----
 
