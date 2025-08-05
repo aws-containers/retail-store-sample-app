@@ -27,7 +27,7 @@ locals {
       },
       {
         "name" : "OTEL_EXPORTER_OTLP_ENDPOINT",
-        "value" : "http://localhost:4318"
+        "value" : "http://localhost:4317"
       },
       {
         "name" : "OTEL_PROPAGATORS",
@@ -81,14 +81,19 @@ locals {
     }
   }
 
-  otel_container = {
-    name      = "aws-otel-collector"
-    image     = "public.ecr.aws/aws-observability/aws-otel-collector:latest"
+  cloudwatch_agent_container = {
+    name      = "cloudwatch-agent"
+    image     = "public.ecr.aws/cloudwatch-agent/cloudwatch-agent:latest"
     essential = true
-    command   = ["--config=/etc/ecs/container-insights/otel-task-metrics-config.yaml"]
+    environment = [
+      {
+        name  = "CW_CONFIG_CONTENT"
+        value = "{\"traces\":{\"traces_collected\":{\"otlp\":{\"grpc_endpoint\":\"0.0.0.0:4317\"}}}}"
+      }
+    ]
     portMappings = [
       {
-        containerPort = 4318
+        containerPort = 4317
         protocol      = "tcp"
       }
     ]
@@ -97,14 +102,14 @@ locals {
       options = {
         "awslogs-group"         = var.cloudwatch_logs_group_id
         "awslogs-region"        = data.aws_region.current.name
-        "awslogs-stream-prefix" = "otel-collector"
+        "awslogs-stream-prefix" = "cloudwatch-agent"
       }
     }
   }
 
   containers = concat(
     [local.base_container],
-    var.opentelemetry_enabled ? [local.otel_container] : []
+    var.opentelemetry_enabled ? [local.cloudwatch_agent_container] : []
   )
 }
 
