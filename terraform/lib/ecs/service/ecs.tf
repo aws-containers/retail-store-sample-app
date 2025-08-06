@@ -36,10 +36,6 @@ locals {
       {
         "name" : "OTEL_SERVICE_NAME",
         "value" : var.service_name
-      },
-      {
-        "name" : "OTEL_TRACES_EXPORTER",
-        "value" : "otlp"
       }
     ] : []
   ))
@@ -85,19 +81,28 @@ locals {
     }
   }
 
-  cloudwatch_agent_container = {
+  otel_container = {
     name      = "cloudwatch-agent"
     image     = "public.ecr.aws/cloudwatch-agent/cloudwatch-agent:latest"
     essential = true
     environment = [
       {
-        name  = "CW_CONFIG_CONTENT"
-        value = "{\"agent\":{\"debug\":true},\"traces\":{\"traces_collected\":{\"xray\":{},\"otlp\":{\"grpc_endpoint\":\"0.0.0.0:4317\",\"http_endpoint\":\"0.0.0.0:4318\"}}}}"
+        name = "CW_CONFIG_CONTENT"
+        value = jsonencode({
+          agent = {
+            debug = true
+          }
+          traces = {
+            traces_collected = {
+              otlp = {}
+            }
+          }
+        })
       }
     ]
     portMappings = [
       {
-        containerPort = 4317
+        containerPort = 4318
         protocol      = "tcp"
       }
     ]
@@ -113,7 +118,7 @@ locals {
 
   containers = concat(
     [local.base_container],
-    var.opentelemetry_enabled ? [local.cloudwatch_agent_container] : []
+    var.opentelemetry_enabled ? [local.otel_container] : []
   )
 }
 
