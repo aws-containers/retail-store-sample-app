@@ -27,7 +27,7 @@ locals {
       },
       {
         "name" : "OTEL_EXPORTER_OTLP_ENDPOINT",
-        "value" : "http://localhost:4317"
+        "value" : "http://localhost:4318"
       },
       {
         "name" : "OTEL_PROPAGATORS",
@@ -36,6 +36,10 @@ locals {
       {
         "name" : "OTEL_SERVICE_NAME",
         "value" : var.service_name
+      },
+      {
+        "name" : "OTEL_TRACES_EXPORTER",
+        "value" : "otlp"
       }
     ] : []
   ))
@@ -88,7 +92,7 @@ locals {
     environment = [
       {
         name  = "CW_CONFIG_CONTENT"
-        value = "{\"traces\":{\"traces_collected\":{\"otlp\":{\"grpc_endpoint\":\"0.0.0.0:4317\"}}}}"
+        value = "{\"agent\":{\"debug\":true},\"traces\":{\"traces_collected\":{\"xray\":{},\"otlp\":{\"grpc_endpoint\":\"0.0.0.0:4317\",\"http_endpoint\":\"0.0.0.0:4318\"}}}}"
       }
     ]
     portMappings = [

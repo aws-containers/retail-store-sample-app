@@ -37,6 +37,8 @@ module "retail_app_ecs" {
   container_image_overrides  = var.container_image_overrides
   opentelemetry_enabled      = var.opentelemetry_enabled
   container_insights_setting = var.container_insights_setting
+  lifecycle_events_enabled   = var.lifecycle_events_enabled
+
 
   catalog_db_endpoint = module.dependencies.catalog_db_endpoint
   catalog_db_port     = module.dependencies.catalog_db_port

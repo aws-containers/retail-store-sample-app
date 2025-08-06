@@ -141,3 +141,9 @@ variable "container_insights_setting" {
     error_message = "container_insights_setting must be either 'enhanced' or 'disabled'"
   }
 }
+
+variable "lifecycle_events_enabled" {
+  type        = bool
+  default     = false
+  description = "Enable ECS lifecycle events to CloudWatch Logs"
+}
