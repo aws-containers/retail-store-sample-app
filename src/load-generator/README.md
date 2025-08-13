@@ -11,7 +11,7 @@ A convenience script is provided to make it easier to run the load generator on 
 Run the following command for usage instructions:
 
 ```bash
-bash scripts/run.sh --help
+bash scripts/run-docker.sh --help
 ```
 
 ### Kubernetes
@@ -40,7 +40,7 @@ spec:
       mountPath: /scripts
   initContainers:
   - name: setup
-    image: public.ecr.aws/aws-containers/retail-store-sample-utils:load-gen.0.3.0
+    image: public.ecr.aws/aws-containers/retail-store-sample-utils:load-gen.1.2.1 <!-- x-release-please-version -->
     command:
     - bash
     args:
