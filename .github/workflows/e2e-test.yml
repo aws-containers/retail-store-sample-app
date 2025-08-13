@@ -53,18 +53,11 @@ jobs:
         shell: devenv shell bash -- -e {0}
         run: |
           cd src/load-generator
-          bash scripts/run-docker.sh -n app_default -t 'http://ui:8080' -d 30 -o /tmp/test.json
-
-          result=$(jq '.aggregate.counters."vusers.failed" == 0' /tmp/test.json)
-
-          if [ "$result" = "false" ]; then
-            echo "Check failed: vusers.failed is not 0"
-            exit 1
-          fi
+          bash scripts/run-test.sh
       - name: Compose down
         shell: devenv shell bash -- -e {0}
         run: |
-          DB_PASSWORD='test123' yarn nx compose:up
+          DB_PASSWORD='test123' yarn nx compose:down
 
   kubernetes:
     name: Kubernetes E2E Tests
