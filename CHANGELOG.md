@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.4](https://github.com/aws-containers/retail-store-sample-app/compare/v1.2.3...v1.2.4) (2025-08-13)
+
+
+### Bug Fixes
+
+* Fix load generator not completing orders ([#915](https://github.com/aws-containers/retail-store-sample-app/issues/915)) ([c43a8bb](https://github.com/aws-containers/retail-store-sample-app/commit/c43a8bb753008b860b59c795622e3e327233c398))
+
 ## [1.2.3](https://github.com/aws-containers/retail-store-sample-app/compare/v1.2.2...v1.2.3) (2025-08-01)
 
 
