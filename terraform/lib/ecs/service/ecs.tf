@@ -89,9 +89,7 @@ locals {
       {
         name = "CW_CONFIG_CONTENT"
         value = jsonencode({
-          agent = {
-            debug = true
-          }
+          agent = {}
           traces = {
             traces_collected = {
               otlp = {}
