@@ -66,10 +66,10 @@ resource "aws_iam_role_policy_attachment" "cloudwatch_logs" {
   policy_arn = aws_iam_policy.cloudwatch_logs.arn
 }
 
-resource "aws_iam_policy" "adot_collector" {
+resource "aws_iam_policy" "cloudwatch_agent" {
   count       = var.opentelemetry_enabled ? 1 : 0
-  name        = "${var.environment_name}-${var.service_name}-adot-collector"
-  description = "ADOT Collector policy for ${var.service_name}"
+  name        = "${var.environment_name}-${var.service_name}-cloudwatch-agent"
+  description = "CloudWatch Agent policy for ${var.service_name}"
   tags        = var.tags
 
   policy = jsonencode({
@@ -79,10 +79,7 @@ resource "aws_iam_policy" "adot_collector" {
         Effect = "Allow"
         Action = [
           "xray:PutTraceSegments",
-          "xray:PutTelemetryRecords",
-          "xray:GetSamplingRules",
-          "xray:GetSamplingTargets",
-          "xray:GetSamplingStatisticSummaries"
+          "xray:PutTelemetryRecords"
         ]
         Resource = "*"
       },
@@ -93,35 +90,21 @@ resource "aws_iam_policy" "adot_collector" {
           "logs:CreateLogStream",
           "logs:CreateLogGroup",
           "logs:DescribeLogStreams",
-          "logs:DescribeLogGroups",
-          "logs:PutRetentionPolicy"
+          "logs:DescribeLogGroups"
         ]
         Resource = [
           "arn:aws:logs:${data.aws_region.current.name}:${data.aws_caller_identity.current.account_id}:log-group:${var.cloudwatch_logs_group_id}:*",
-          "arn:aws:logs:${data.aws_region.current.name}:${data.aws_caller_identity.current.account_id}:log-group:${var.cloudwatch_logs_group_id}:log-stream:*",
-          "arn:aws:logs:${data.aws_region.current.name}:${data.aws_caller_identity.current.account_id}:log-group:/aws/ecs/containerinsights/${var.environment_name}*:*"
+          "arn:aws:logs:${data.aws_region.current.name}:${data.aws_caller_identity.current.account_id}:log-group:${var.cloudwatch_logs_group_id}:log-stream:*"
         ]
-      },
-      {
-        Effect = "Allow"
-        Action = [
-          "cloudwatch:PutMetricData",
-          "ec2:DescribeVolumes",
-          "ec2:DescribeTags",
-          "ecs:ListClusters",
-          "ecs:ListContainerInstances",
-          "ecs:DescribeContainerInstances"
-        ]
-        Resource = "*"
       }
     ]
   })
 }
 
-resource "aws_iam_role_policy_attachment" "adot_collector" {
+resource "aws_iam_role_policy_attachment" "cloudwatch_agent" {
   count      = var.opentelemetry_enabled ? 1 : 0
   role       = aws_iam_role.task_role.name
-  policy_arn = aws_iam_policy.adot_collector[0].arn
+  policy_arn = aws_iam_policy.cloudwatch_agent[0].arn
 }
 
 resource "aws_iam_role_policy_attachment" "task_role_additional" {
