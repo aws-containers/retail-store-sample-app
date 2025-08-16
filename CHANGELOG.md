@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.3.0](https://github.com/aws-containers/retail-store-sample-app/compare/v1.2.4...v1.3.0) (2025-08-16)
+
+
+### Features
+
+* Add EventBridge lifecycle events for ECS Container Insights and update ADOT to CloudWatch Agent ([#913](https://github.com/aws-containers/retail-store-sample-app/issues/913)) ([549594b](https://github.com/aws-containers/retail-store-sample-app/commit/549594bf1f47d16f19a02ce040b55e4353dd8be6))
+
 ## [1.2.4](https://github.com/aws-containers/retail-store-sample-app/compare/v1.2.3...v1.2.4) (2025-08-13)
 
 
