@@ -57,9 +57,20 @@ resource "time_sleep" "workloads" {
   ]
 }
 
+# Wait for VPC Resource Controller to attach trunk ENIs to nodes
+data "kubernetes_nodes" "vpc_ready_nodes" {
+  depends_on = [time_sleep.workloads]
+  
+  metadata {
+    labels = {
+      "vpc.amazonaws.com/has-trunk-attached" = "true"
+    }
+  }
+}
+
 resource "kubernetes_namespace_v1" "catalog" {
   depends_on = [
-    time_sleep.workloads
+    data.kubernetes_nodes.vpc_ready_nodes
   ]
 
   metadata {
@@ -91,7 +102,7 @@ resource "helm_release" "catalog" {
 
 resource "kubernetes_namespace_v1" "carts" {
   depends_on = [
-    time_sleep.workloads
+    data.kubernetes_nodes.vpc_ready_nodes
   ]
 
   metadata {
@@ -121,7 +132,7 @@ resource "helm_release" "carts" {
 
 resource "kubernetes_namespace_v1" "checkout" {
   depends_on = [
-    time_sleep.workloads
+    data.kubernetes_nodes.vpc_ready_nodes
   ]
 
   metadata {
@@ -152,7 +163,7 @@ resource "helm_release" "checkout" {
 
 resource "kubernetes_namespace_v1" "orders" {
   depends_on = [
-    time_sleep.workloads
+    data.kubernetes_nodes.vpc_ready_nodes
   ]
 
   metadata {
@@ -189,7 +200,7 @@ resource "helm_release" "orders" {
 
 resource "kubernetes_namespace_v1" "ui" {
   depends_on = [
-    time_sleep.workloads
+    data.kubernetes_nodes.vpc_ready_nodes
   ]
 
   metadata {
@@ -249,7 +260,7 @@ resource "null_resource" "restart_pods" {
     }
 
     command = <<-EOT
-      kubectl delete pod -A -l app.kuberneres.io/owner=retail-store-sample --kubeconfig <(echo $KUBECONFIG | base64 -d)
+      kubectl delete pod -A -l app.kubernetes.io/owner=retail-store-sample --kubeconfig <(echo $KUBECONFIG | base64 -d)
     EOT
   }
 }
