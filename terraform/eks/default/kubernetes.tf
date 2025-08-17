@@ -60,7 +60,7 @@ resource "time_sleep" "workloads" {
 # Wait for VPC Resource Controller to attach trunk ENIs to nodes
 data "kubernetes_nodes" "vpc_ready_nodes" {
   depends_on = [time_sleep.workloads]
-  
+
   metadata {
     labels = {
       "vpc.amazonaws.com/has-trunk-attached" = "true"

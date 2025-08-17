@@ -12,7 +12,7 @@ data "aws_eks_cluster_auth" "cluster" {
 
 data "kubernetes_service" "ui_service" {
   depends_on = [helm_release.ui]
-  
+
   metadata {
     name      = "ui"
     namespace = "ui"
