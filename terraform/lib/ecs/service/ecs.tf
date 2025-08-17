@@ -46,13 +46,13 @@ locals {
   }])
 
   base_container = {
-    name  = "application"
+    name  = "${var.service_name}-service"
     image = var.container_image
     portMappings = [
       {
         containerPort = 8080
         hostPort      = 8080
-        name          = "application"
+        name          = "${var.service_name}-service"
         protocol      = "tcp"
       }
     ]
@@ -157,7 +157,7 @@ resource "aws_ecs_service" "this" {
         port     = "80"
       }
       discovery_name = var.service_name
-      port_name      = "application"
+      port_name      = "${var.service_name}-service"
     }
   }
 
@@ -166,7 +166,7 @@ resource "aws_ecs_service" "this" {
 
     content {
       target_group_arn = var.alb_target_group_arn
-      container_name   = "application"
+      container_name   = "${var.service_name}-service"
       container_port   = 8080
     }
   }

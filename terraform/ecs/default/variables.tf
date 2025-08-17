@@ -21,7 +21,7 @@ variable "container_image_overrides" {
 
 variable "opentelemetry_enabled" {
   type        = bool
-  default     = false
+  default     = true
   description = "Boolean value that enables OpenTelemetry."
 }
 
