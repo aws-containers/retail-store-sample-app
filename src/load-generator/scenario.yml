@@ -1,0 +1,49 @@
+config:
+  target: "http://localhost:8888"
+  phases:
+    - duration: 0
+      arrivalRate: 1
+  processor: "./helpers.js"
+
+scenarios:
+  - name: "Test"
+    beforeScenario: getAllProducts
+    flow:
+      - get:
+          url: "/home"
+      - get:
+          url: "/catalog"
+      - loop:
+          - get:
+              url: "/catalog/{{ $loopElement }}"
+        over: allProducts
+      - post:
+          url: "/cart"
+          beforeRequest: setRandomProductId
+          form:
+            productId: "dummy"
+      - get:
+          url: "/cart"
+      - get:
+          url: "/checkout"
+      - post:
+          url: "/checkout"
+          form:
+            firstName: John
+            lastName: Doe
+            email: john_doe@example.com
+            streetAddress: 100 Main Street
+            city: Anytown
+            state: CA
+            zip: 11111
+      - post:
+          url: "/checkout/delivery"
+          form:
+            token: priority-mail
+      - post:
+          url: "/checkout/confirm"
+          form:
+            cardHolder: John Doe
+            cardNumber: "1234567890123456"
+            expiryDate: 01/35
+            cvc: 123
