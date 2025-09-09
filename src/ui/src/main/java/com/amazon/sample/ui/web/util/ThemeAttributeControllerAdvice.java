@@ -36,7 +36,8 @@ public class ThemeAttributeControllerAdvice {
   private static final List<String> THEMES = List.of(
     "default",
     "orange",
-    "green"
+    "green",
+    "teal"
   );
 
   @Value("${retail.ui.theme}")
