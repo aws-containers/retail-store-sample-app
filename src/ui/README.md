@@ -13,7 +13,7 @@ The following environment variables are available for configuring the service:
 | Name                              | Description                                                                                            | Default                 |
 | --------------------------------- | ------------------------------------------------------------------------------------------------------ | ----------------------- |
 | `PORT`                            | The port which the server will listen on                                                               | `8080`                  |
-| `RETAIL_UI_THEME`                 | Name of the theme for the UI, valid values are `default`, `green`, `orange`                            | `"default"`             |
+| `RETAIL_UI_THEME`                 | Name of the theme for the UI, valid values are `default`, `green`, `orange`, `teal`                    | `"default"`             |
 | `RETAIL_UI_DISABLE_DEMO_WARNINGS` | Disable the UI messages warning about demonstration content                                            | `false`                 |
 | `RETAIL_UI_PRODUCT_IMAGES_PATH`   | Overrides the location where the sample product images are sourced from to use the specified file path | ``                      |
 | `RETAIL_UI_ENDPOINTS_CATALOG`     | The endpoint of the catalog API. If set to `false` uses a mock implementation                          | `false`                 |
