@@ -2,9 +2,9 @@
 
 | Language | Persistence |
 | -------- | ----------- |
-| Java     | MySQL       |
+| Java     | PostgreSQL       |
 
-This service provides an API for storing orders. Data is stored in MySQL.
+This service provides an API for storing orders. Data is stored in PostgreSQL.
 
 ## Configuration
 
