@@ -2,7 +2,7 @@
 
 | Language | Persistence |
 | -------- | ----------- |
-| Java     | PostgreSQL       |
+| Java     | PostgreSQL  |
 
 This service provides an API for storing orders. Data is stored in PostgreSQL.
 
