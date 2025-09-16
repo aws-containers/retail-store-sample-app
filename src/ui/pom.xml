@@ -108,7 +108,7 @@
 		<dependency>
 			<groupId>org.openapitools</groupId>
 			<artifactId>jackson-databind-nullable</artifactId>
-			<version>0.2.6</version>
+			<version>0.2.7</version>
       <exclusions>
         <exclusion>
           <artifactId>jackson-databind</artifactId>
