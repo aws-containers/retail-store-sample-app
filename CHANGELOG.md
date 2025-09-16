@@ -1,5 +1,24 @@
 # Changelog
 
+## [1.3.0](https://github.com/aws-containers/retail-store-sample-app/compare/v1.2.4...v1.3.0) (2025-09-16)
+
+
+### Features
+
+* Add EventBridge lifecycle events for ECS Container Insights and update ADOT to CloudWatch Agent ([#913](https://github.com/aws-containers/retail-store-sample-app/issues/913)) ([549594b](https://github.com/aws-containers/retail-store-sample-app/commit/549594bf1f47d16f19a02ce040b55e4353dd8be6))
+
+
+### Bug Fixes
+
+* Add UI teal theme color ([#923](https://github.com/aws-containers/retail-store-sample-app/issues/923)) ([b382620](https://github.com/aws-containers/retail-store-sample-app/commit/b382620fcc7753b0e9c5256e972bc0844e8d9039))
+* **deps:** update dependency org.projectlombok:lombok to v1.18.40 ([#927](https://github.com/aws-containers/retail-store-sample-app/issues/927)) ([4544834](https://github.com/aws-containers/retail-store-sample-app/commit/454483476947cc4e911f707969fdb898b4e9ae62))
+* **deps:** update dependency org.springframework.ai:spring-ai-bom to v1.0.2 ([#928](https://github.com/aws-containers/retail-store-sample-app/issues/928)) ([948ce82](https://github.com/aws-containers/retail-store-sample-app/commit/948ce82b2192135ca5c69bb4582011f176dbda1b))
+* **deps:** update dependency org.springframework.boot:spring-boot-starter-parent to v3.5.5 ([#929](https://github.com/aws-containers/retail-store-sample-app/issues/929)) ([72fa4e8](https://github.com/aws-containers/retail-store-sample-app/commit/72fa4e8f15253cce61c15657d0a396d3c95d5b50))
+* **deps:** update kiota to v1.8.10 ([#930](https://github.com/aws-containers/retail-store-sample-app/issues/930)) ([a1012bf](https://github.com/aws-containers/retail-store-sample-app/commit/a1012bf29c862c4e91acf4fbd2547e62af95132a))
+* Improved CW Logging for ECS default deployment ([#921](https://github.com/aws-containers/retail-store-sample-app/issues/921)) ([eff0668](https://github.com/aws-containers/retail-store-sample-app/commit/eff06680c3639acda4d878a2f01d68216955be95))
+* Revert Spring AI to 1.0.0 ([0a9994b](https://github.com/aws-containers/retail-store-sample-app/commit/0a9994b447e0e5e44c092eb0d5b4940bbe829e62))
+* wait for VPC resource controller before deploying workloads ([#914](https://github.com/aws-containers/retail-store-sample-app/issues/914)) ([902302a](https://github.com/aws-containers/retail-store-sample-app/commit/902302a84aa52f9a0a84f8b807d7918deccee6d4))
+
 ## [1.2.4](https://github.com/aws-containers/retail-store-sample-app/compare/v1.2.3...v1.2.4) (2025-08-13)
 
 
