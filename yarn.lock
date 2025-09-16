@@ -2308,10 +2308,10 @@ jake@^10.8.5:
     filelist "^1.0.4"
     minimatch "^3.1.2"
 
-java-parser@2.3.3:
-  version "2.3.3"
-  resolved "https://registry.yarnpkg.com/java-parser/-/java-parser-2.3.3.tgz#18b314a13c652fddf19512ae7fcac95e17474f2b"
-  integrity sha512-9YY8OGlNGfq5TDDq2SBjtIEHMVLeV8vSSZrXDaQBhQ84hi1zc3/+5l3DF3wW8JGqQT2kNVha05dziSamvN8M/g==
+java-parser@3.0.1:
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/java-parser/-/java-parser-3.0.1.tgz#f024163a3db8e6b36017a85f3ad5a03b46797df4"
+  integrity sha512-sDIR7u9b7O2JViNUxiZRhnRz7URII/eE7g2B+BmGxDeS6Ex3OYAcCyz5oh0H4LQ+hL/BS8OJTz8apMy9xtGmrQ==
   dependencies:
     chevrotain "11.0.3"
     chevrotain-allstar "0.3.1"
@@ -2688,13 +2688,12 @@ picomatch@^2.3.1:
   resolved "https://registry.yarnpkg.com/picomatch/-/picomatch-2.3.1.tgz#3ba3833733646d9d3e4995946c1365a67fb07a42"
   integrity sha512-JU3teHTNjmE2VCGFzuY8EXzCDVwEqB2a8fsIvwaStHhAWJEeVd1o1QD80CU6+ZdEXXSLbSsuLwJjkCBWqRQUVA==
 
-prettier-plugin-java@2.6.7:
-  version "2.6.7"
-  resolved "https://registry.yarnpkg.com/prettier-plugin-java/-/prettier-plugin-java-2.6.7.tgz#85fd626ca733dbaa3da4129c30d03fa9b86f68e6"
-  integrity sha512-AVm+X7fhAZpYKiUCdUIGZ8HJbkGkTUgYQIKVuCQEplcqpGw2ewVnNGcPb1Kc3+MYMfiEqzhd8ZYhMGVHw6tZdQ==
+prettier-plugin-java@2.7.5:
+  version "2.7.5"
+  resolved "https://registry.yarnpkg.com/prettier-plugin-java/-/prettier-plugin-java-2.7.5.tgz#2b42295a91da53e21f781725b44ed01216ea3eb3"
+  integrity sha512-LH5PKX+cjKOcjnnLXn3/cT8u7vxXxm68r5zsBPI3QQfkfyA/Sx8TTnhbwZdqwQXca431RquBG2ZtmyqmBwBKEw==
   dependencies:
-    java-parser "2.3.3"
-    lodash "4.17.21"
+    java-parser "3.0.1"
 
 prettier@^3.0.0, prettier@^3.3.2:
   version "3.6.2"
