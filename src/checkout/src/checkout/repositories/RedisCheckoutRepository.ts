@@ -34,7 +34,11 @@ export class RedisCheckoutRepository
 
   async client() {
     if (!this._client) {
-      this._client = createClient({ url: this.url });
+      const config: any = { url: this.url };
+      if (this.url.startsWith('rediss://')) {
+        config.socket = { tls: true, rejectUnauthorized: false };
+      }
+      this._client = createClient(config);
       await this._client.connect();
     }
     return this._client;
@@ -42,7 +46,11 @@ export class RedisCheckoutRepository
 
   async readClient() {
     if (!this._readClient) {
-      this._readClient = createClient({ url: this.readerUrl });
+      const config: any = { url: this.readerUrl };
+      if (this.readerUrl.startsWith('rediss://')) {
+        config.socket = { tls: true, rejectUnauthorized: false };
+      }
+      this._readClient = createClient(config);
       await this._readClient.connect();
     }
     return this._readClient;
