@@ -1,0 +1,59 @@
+name: EKS Terraform CI/CD
+
+on:
+  pull_request:
+    branches: [ main ]
+  push:
+    branches: [ main ]
+
+env:
+  TF_VERSION: '1.9.5'
+  AWS_REGION: 'us-west-2'
+  TERRAFORM_DIR: 'terraform/eks/minimal'
+
+jobs:
+  terraform:
+    name: 'Terraform'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write  # For OIDC
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+
+    - name: Configure AWS Credentials
+      uses: aws-actions/configure-aws-credentials@v4
+      with:
+        aws-region: ${{ env.AWS_REGION }}
+        role-to-assume: arn:aws:iam::659041207523:role/GitHubActionsRole
+
+    - name: Setup Terraform
+      uses: hashicorp/setup-terraform@v3
+      with:
+        terraform_version: ${{ env.TF_VERSION }}
+
+    - name: Terraform Init
+      run: cd ${{ env.TERRAFORM_DIR }} && terraform init
+
+    - name: Terraform Format & Validate
+      run: cd ${{ env.TERRAFORM_DIR }} && terraform fmt -check && terraform validate
+
+    - name: Terraform Plan (PR)
+      if: github.event_name == 'pull_request'
+      run: cd ${{ env.TERRAFORM_DIR }} && terraform plan -var-file="terraform.tfvars" -no-color
+
+    - name: Terraform Plan & Apply (Push to Main)
+      if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+      run: |
+        cd ${{ env.TERRAFORM_DIR }}
+        terraform plan -var-file="terraform.tfvars" -no-color
+        terraform apply -var-file="terraform.tfvars" -auto-approve
+
+    - name: Deploy App (Post-Apply)
+      if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+      run: |
+        aws eks update-kubeconfig --region ${{ env.AWS_REGION }} --name retail-store
+        kubectl apply -f kubernetes.yaml
+
