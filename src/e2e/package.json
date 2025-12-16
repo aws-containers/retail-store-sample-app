@@ -1,7 +1,7 @@
 {
   "name": "e2e",
   "version": "1.0.0",
-  "description": "TODO",
+  "description": "End-to-end tests for the retail store sample application",
   "main": "conf.js",
   "scripts": {
     "execute": "cypress run"
