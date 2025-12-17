@@ -1,0 +1,246 @@
+<!doctype html>
+<html
+  xmlns:th="http://www.thymeleaf.org"
+  th:replace="~{fragments/layout :: layout (~{::body})}"
+>
+  <body>
+    <div class="max-w-6xl mx-auto px-4 py-8">
+      <!-- Header -->
+      <div class="mb-8">
+        <h1 class="text-4xl font-bold text-gray-800 mb-2">
+          <i class="fas fa-music text-primary-500"></i> AI Music Generator
+        </h1>
+        <p class="text-gray-600">
+          Transform your lyrics into music using AI technology
+        </p>
+      </div>
+
+      <!-- Main Content Grid -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <!-- Lyrics Input Section -->
+        <div class="bg-white rounded-lg shadow-lg p-6">
+          <h2 class="text-2xl font-semibold text-gray-800 mb-4">
+            <i class="fas fa-pencil-alt text-primary-500"></i> Your Lyrics
+          </h2>
+
+          <div class="mb-4">
+            <label
+              for="lyrics-input"
+              class="block text-sm font-medium text-gray-700 mb-2"
+            >
+              Enter or edit your song lyrics
+            </label>
+            <textarea
+              id="lyrics-input"
+              rows="20"
+              class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent font-mono text-sm"
+              placeholder="Enter your lyrics here..."
+              th:text="${defaultLyrics}"
+            ></textarea>
+          </div>
+
+          <!-- Music Style Options -->
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+            <div>
+              <label
+                for="music-style"
+                class="block text-sm font-medium text-gray-700 mb-2"
+              >
+                Music Style
+              </label>
+              <select
+                id="music-style"
+                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+              >
+                <option value="hip-hop" selected>Hip Hop</option>
+                <option value="pop">Pop</option>
+                <option value="rock">Rock</option>
+                <option value="rnb">R&B</option>
+                <option value="electronic">Electronic</option>
+                <option value="jazz">Jazz</option>
+                <option value="acoustic">Acoustic</option>
+                <option value="country">Country</option>
+              </select>
+            </div>
+
+            <div>
+              <label
+                for="tempo"
+                class="block text-sm font-medium text-gray-700 mb-2"
+              >
+                Tempo
+              </label>
+              <select
+                id="tempo"
+                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+              >
+                <option value="slow">Slow (60-80 BPM)</option>
+                <option value="medium" selected>Medium (80-120 BPM)</option>
+                <option value="fast">Fast (120-160 BPM)</option>
+                <option value="very-fast">Very Fast (160+ BPM)</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Generate Button -->
+          <button
+            id="generate-music-btn"
+            class="w-full bg-primary-500 text-white py-3 px-6 rounded-lg hover:bg-primary-600 transition-colors font-semibold text-lg shadow-md hover:shadow-lg"
+          >
+            <i class="fas fa-wand-magic-sparkles mr-2"></i>
+            Generate Music
+          </button>
+        </div>
+
+        <!-- Output/Preview Section -->
+        <div class="bg-white rounded-lg shadow-lg p-6">
+          <h2 class="text-2xl font-semibold text-gray-800 mb-4">
+            <i class="fas fa-headphones text-primary-500"></i> Generated Music
+          </h2>
+
+          <!-- Status Display -->
+          <div id="status-container" class="mb-6">
+            <div
+              class="bg-gray-50 border border-gray-200 rounded-lg p-6 text-center"
+            >
+              <i class="fas fa-info-circle text-4xl text-gray-400 mb-3"></i>
+              <p class="text-gray-600">
+                Configure your settings and click "Generate Music" to create
+                your AI-generated song
+              </p>
+            </div>
+          </div>
+
+          <!-- Loading State (hidden by default) -->
+          <div id="loading-container" class="hidden mb-6">
+            <div
+              class="bg-primary-50 border border-primary-200 rounded-lg p-6 text-center"
+            >
+              <div
+                class="animate-spin rounded-full h-16 w-16 border-4 border-gray-200 border-t-primary-500 mx-auto mb-4"
+              ></div>
+              <p class="text-primary-700 font-semibold">
+                Generating your music...
+              </p>
+              <p class="text-sm text-gray-600 mt-2">
+                This may take a few moments
+              </p>
+            </div>
+          </div>
+
+          <!-- Success State (hidden by default) -->
+          <div id="success-container" class="hidden">
+            <div
+              class="bg-green-50 border border-green-200 rounded-lg p-6 mb-4"
+            >
+              <div class="flex items-start">
+                <i class="fas fa-check-circle text-2xl text-green-500 mt-1"></i>
+                <div class="ml-3 flex-1">
+                  <h3 class="text-lg font-semibold text-green-800 mb-2">
+                    Music Generated Successfully!
+                  </h3>
+                  <p id="generation-message" class="text-sm text-gray-700"></p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Demo Note -->
+            <div
+              class="bg-blue-50 border border-blue-200 rounded-lg p-6 mb-4"
+            >
+              <div class="flex items-start">
+                <i
+                  class="fas fa-lightbulb text-2xl text-blue-500 mt-1"
+                ></i>
+                <div class="ml-3">
+                  <h4 class="text-lg font-semibold text-blue-800 mb-2">
+                    Integration Note
+                  </h4>
+                  <p class="text-sm text-gray-700 mb-2">
+                    This is a demo implementation. To enable actual AI music
+                    generation, integrate with:
+                  </p>
+                  <ul class="text-sm text-gray-700 list-disc list-inside ml-2">
+                    <li>Suno AI API for full song generation</li>
+                    <li>MusicGen (Meta) for open-source generation</li>
+                    <li>Stable Audio for commercial use</li>
+                    <li>OpenAI Jukebox for experimental features</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <!-- Lyrics Preview -->
+            <div class="bg-gray-50 border border-gray-200 rounded-lg p-4">
+              <h4 class="text-sm font-semibold text-gray-700 mb-2">
+                Your Lyrics:
+              </h4>
+              <div
+                id="lyrics-preview"
+                class="text-sm text-gray-600 font-mono whitespace-pre-wrap max-h-64 overflow-y-auto"
+              ></div>
+            </div>
+          </div>
+
+          <!-- Error State (hidden by default) -->
+          <div id="error-container" class="hidden">
+            <div class="bg-red-50 border border-red-200 rounded-lg p-6">
+              <div class="flex items-start">
+                <i
+                  class="fas fa-exclamation-triangle text-2xl text-red-500 mt-1"
+                ></i>
+                <div class="ml-3">
+                  <h3 class="text-lg font-semibold text-red-800 mb-2">
+                    Generation Failed
+                  </h3>
+                  <p id="error-message" class="text-sm text-gray-700"></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Info Section -->
+      <div class="mt-8 bg-gradient-to-r from-primary-50 to-purple-50 rounded-lg p-6">
+        <h3 class="text-xl font-semibold text-gray-800 mb-3">
+          <i class="fas fa-sparkles text-primary-500"></i> About AI Music Generation
+        </h3>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm text-gray-700">
+          <div>
+            <h4 class="font-semibold mb-2">
+              <i class="fas fa-robot text-primary-500"></i> How It Works
+            </h4>
+            <p>
+              AI music generation uses machine learning models trained on
+              millions of songs to create original music based on your lyrics
+              and style preferences.
+            </p>
+          </div>
+          <div>
+            <h4 class="font-semibold mb-2">
+              <i class="fas fa-palette text-primary-500"></i> Customization
+            </h4>
+            <p>
+              Choose from various music styles and tempos to match the mood and
+              feel you want for your song. The AI adapts to your preferences.
+            </p>
+          </div>
+          <div>
+            <h4 class="font-semibold mb-2">
+              <i class="fas fa-copyright text-primary-500"></i> Usage Rights
+            </h4>
+            <p>
+              Generated music is typically royalty-free for personal use.
+              Commercial usage rights depend on the specific AI service
+              provider's terms.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Include custom JavaScript -->
+    <script th:src="@{/assets/js/music.js}"></script>
+  </body>
+</html>
