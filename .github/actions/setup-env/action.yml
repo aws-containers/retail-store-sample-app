@@ -4,3 +4,6 @@ runs:
   using: "composite"
   steps:
     - uses: jdx/mise-action@v3
+    - name: yarn install
+      run: |
+        yarn install
