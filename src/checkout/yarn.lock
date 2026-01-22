@@ -4797,7 +4797,7 @@ __metadata:
     tsconfig-paths: "npm:4.2.0"
     typescript: "npm:^5.8.3"
     typescript-eslint: "npm:^8.35.1"
-    uuid: "npm:^13.0.0"
+    uuid: "npm:^9.0.0"
   languageName: unknown
   linkType: soft
 
@@ -10301,15 +10301,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"uuid@npm:^13.0.0":
-  version: 13.0.0
-  resolution: "uuid@npm:13.0.0"
-  bin:
-    uuid: dist-node/bin/uuid
-  checksum: 10c0/950e4c18d57fef6c69675344f5700a08af21e26b9eff2bf2180427564297368c538ea11ac9fb2e6528b17fc3966a9fd2c5049361b0b63c7d654f3c550c9b3d67
-  languageName: node
-  linkType: hard
-
 "uuid@npm:^3.3.2":
   version: 3.4.0
   resolution: "uuid@npm:3.4.0"
@@ -10319,7 +10310,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"uuid@npm:^9.0.1":
+"uuid@npm:^9.0.0, uuid@npm:^9.0.1":
   version: 9.0.1
   resolution: "uuid@npm:9.0.1"
   bin:
