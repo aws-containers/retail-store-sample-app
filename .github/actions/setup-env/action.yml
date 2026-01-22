@@ -7,4 +7,5 @@ runs:
     - name: yarn install
       shell: bash
       run: |
+        corepack enable
         yarn install
