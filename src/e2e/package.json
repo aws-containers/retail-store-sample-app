@@ -10,5 +10,6 @@
   "author": "",
   "devDependencies": {
     "cypress": "^13.17.0"
-  }
+  },
+  "packageManager": "yarn@4.11.0"
 }

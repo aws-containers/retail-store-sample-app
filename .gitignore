@@ -34,4 +34,9 @@ screenshots
 .mise.local.toml
 
 # yarn
-.yarn/install-state.gz
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
