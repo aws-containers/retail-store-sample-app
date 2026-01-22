@@ -23,11 +23,15 @@ Chart.lock
 .nx/workspace-data
 
 screenshots
-# Devenv
-.devenv*
-devenv.local.nix
 
-# direnv
+.env
 .direnv
 
 .pre-commit-config.yaml
+
+# mise
+.mise.lock
+.mise.local.toml
+
+# yarn
+.yarn/install-state.gz

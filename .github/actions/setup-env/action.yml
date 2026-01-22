@@ -1,15 +1,6 @@
 name: "Setup env"
-description: "Install component for devenv and nx to work"
+description: "Install required environment components"
 runs:
   using: "composite"
   steps:
-    - uses: cachix/install-nix-action@v26
-    - name: Install devenv.sh
-      shell: bash
-      run: nix profile install nixpkgs#devenv
-    #- name: Yarn install
-    #  uses: nick-fields/retry@v3
-    #  with:
-    #    timeout_minutes: 10
-    #    max_attempts: 3
-    #    command: devenv shell yarn install
+    - uses: jdx/mise-action@v3
