@@ -27,6 +27,8 @@ jobs:
     steps:
       - name: Check out code
         uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
       - name: Setup Env
         uses: ./.github/actions/setup-env
       - name: Test

@@ -10,7 +10,7 @@
     "compose:up": "docker compose --project-directory src/app up --build --detach --wait --wait-timeout 120",
     "compose:down": "docker compose --project-directory src/app down",
     "prepare": "husky",
-    "lint:pr": "lint-staged --diff"
+    "lint:pr": "lint-staged --diff=origin/main"
   },
   "workspaces": [
     "oss/attribution"
