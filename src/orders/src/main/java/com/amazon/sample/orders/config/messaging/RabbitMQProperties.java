@@ -37,4 +37,6 @@ public class RabbitMQProperties {
   private String username = "guest";
 
   private String password = "guest";
+
+  private boolean sslEnabled = false;
 }
