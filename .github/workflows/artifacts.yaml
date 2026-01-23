@@ -45,7 +45,6 @@ jobs:
           registry-type: public
 
       - name: Build
-        shell: devenv shell bash -- -e {0}
         env:
           TAG_NAME: ${{ inputs.version }}
           TARGET_ARCH: ${{ matrix.arch }}
@@ -85,7 +84,6 @@ jobs:
           registry-type: public
 
       - name: Push manifests
-        shell: devenv shell bash -- -e {0}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           TAG_NAME: ${{ inputs.version }}

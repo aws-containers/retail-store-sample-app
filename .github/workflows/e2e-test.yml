@@ -20,16 +20,13 @@ jobs:
       - name: "Setup Env"
         uses: ./.github/actions/setup-env
       - name: Compose up
-        shell: devenv shell bash -- -e {0}
         run: |
           yarn nx compose:up ui
           sleep 60
       - name: Test
-        shell: devenv shell bash -- -e {0}
         run: |
           CYPRESS_BASE_URL='http://localhost:8888' yarn nx execute e2e
       - name: Compose down
-        shell: devenv shell bash -- -e {0}
         run: |
           yarn nx compose:down ui
 
@@ -41,21 +38,17 @@ jobs:
       - name: "Setup Env"
         uses: ./.github/actions/setup-env
       - name: Compose up
-        shell: devenv shell bash -- -e {0}
         run: |
           DB_PASSWORD='test123' yarn nx compose:up
           sleep 60
       - name: Test
-        shell: devenv shell bash -- -e {0}
         run: |
           CYPRESS_BASE_URL='http://localhost:8888' yarn nx execute e2e
       - name: Load Generator
-        shell: devenv shell bash -- -e {0}
         run: |
           cd src/load-generator
           bash scripts/run-test.sh
       - name: Compose down
-        shell: devenv shell bash -- -e {0}
         run: |
           DB_PASSWORD='test123' yarn nx compose:down
 
@@ -68,7 +61,6 @@ jobs:
         uses: ./.github/actions/setup-env
 
       - name: Build images
-        shell: devenv shell bash -- -e {0}
         run: |
           yarn nx run-many -t build --projects=tag:service --parallel=1
 
@@ -94,7 +86,6 @@ jobs:
           docker system prune --all --force
 
       - name: Deploy
-        shell: devenv shell bash -- -e {0}
         env:
           IMAGE_TAG: e2e
         run: |
@@ -103,6 +94,5 @@ jobs:
           kubectl wait --for=condition=Ready pod -l app.kubernetes.io/owner=retail-store-sample --timeout 180s || exit_code=$?
 
       - name: Test
-        shell: devenv shell bash -- -e {0}
         run: |
           bash scripts/e2e-kind.sh

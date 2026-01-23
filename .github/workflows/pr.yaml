@@ -27,11 +27,13 @@ jobs:
     steps:
       - name: Check out code
         uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
       - name: Setup Env
         uses: ./.github/actions/setup-env
       - name: Test
         run: |
-          devenv test
+          yarn lint:pr
 
   test:
     name: "Project tests"
@@ -44,14 +46,11 @@ jobs:
       - name: "Setup Env"
         uses: ./.github/actions/setup-env
       - name: Build
-        shell: devenv shell bash -- -e {0}
         run: |
           yarn nx affected --targets=build --base origin/main --parallel 1
       - name: Other tasks
-        shell: devenv shell bash -- -e {0}
         run: |
           yarn nx affected --targets=lint,test:integration,test --base origin/main
       - name: Containers
-        shell: devenv shell bash -- -e {0}
         run: |
           yarn nx affected --targets=container --exclude='*,!tag:container' --base origin/main

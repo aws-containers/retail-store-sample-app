@@ -8,7 +8,9 @@
   "nx": {},
   "scripts": {
     "compose:up": "docker compose --project-directory src/app up --build --detach --wait --wait-timeout 120",
-    "compose:down": "docker compose --project-directory src/app down"
+    "compose:down": "docker compose --project-directory src/app down",
+    "prepare": "husky",
+    "lint:pr": "lint-staged --diff=origin/main"
   },
   "workspaces": [
     "oss/attribution"
@@ -22,10 +24,13 @@
     "@prettier/plugin-xml": "^3.4.1",
     "@swc/helpers": "^0.5.15",
     "dotenv": "^16.4.7",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.2.7",
     "nx": "20.8.2",
     "prettier": "^3.3.2",
     "prettier-plugin-java": "2.6.7",
     "tslib": "^2.8.1",
     "typescript-eslint": "^8.20.0"
-  }
+  },
+  "packageManager": "yarn@4.11.0"
 }

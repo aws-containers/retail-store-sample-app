@@ -1,0 +1,8 @@
+{
+  "*.{js,jsx,ts,tsx,json,md,yaml,yml}": "prettier --write",
+  "*.java": "prettier --write",
+  "*.xml": "prettier --write",
+  "*.go": "gofmt -w",
+  "*.tf": ["terraform fmt", "tflint"],
+  "samples/**/*": "yarn nx run-many -t update-samples --projects=tag:sample"
+}
