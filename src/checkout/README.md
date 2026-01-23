@@ -10,13 +10,13 @@ This service provides an API for storing customer data during the checkout proce
 
 The following environment variables are available for configuring the service:
 
-| Name                                    | Description                                                                                     | Default     |
-| --------------------------------------- | ----------------------------------------------------------------------------------------------- | ----------- |
-| `PORT`                                  | The port which the server will listen on                                                        | `8080`      |
-| `RETAIL_CHECKOUT_PERSISTENCE_PROVIDER`  | The persistence provider to use, can be `in-memory` or `redis`.                                 | `in-memory` |
-| `RETAIL_CHECKOUT_PERSISTENCE_REDIS_URL` | The endpoint of the Redis server used to store state, can start with `redis://` or `rediss://`. | `""`        |
-| `RETAIL_CHECKOUT_ENDPOINTS_ORDERS`      | The endpoint of the orders API. If empty uses a mock implementation                             | `""`        |
-| `RETAIL_CHECKOUT_SHIPPING_NAME_PREFIX`  | A string prefix that can be applied to the names of the shipping options                        | `""`        |
+| Name                                    | Description                                                              | Default     |
+| --------------------------------------- | ------------------------------------------------------------------------ | ----------- |
+| `PORT`                                  | The port which the server will listen on                                 | `8080`      |
+| `RETAIL_CHECKOUT_PERSISTENCE_PROVIDER`  | The persistence provider to use, can be `in-memory` or `redis`.          | `in-memory` |
+| `RETAIL_CHECKOUT_PERSISTENCE_REDIS_URL` | The endpoint of the Redis server used to store state.                    | `""`        |
+| `RETAIL_CHECKOUT_ENDPOINTS_ORDERS`      | The endpoint of the orders API. If empty uses a mock implementation      | `""`        |
+| `RETAIL_CHECKOUT_SHIPPING_NAME_PREFIX`  | A string prefix that can be applied to the names of the shipping options | `""`        |
 
 ## Endpoints
 

@@ -63,7 +63,11 @@ const repositoryProvider = {
     const logger = new Logger();
 
     if (persistenceProvider === 'redis') {
-      logger.log('Using redis persistence');
+      let tls = "";
+      if (redisReaderUrl.startsWith('rediss://')) {
+         tls = " with TLS"
+      }
+      logger.log('Using redis persistence' + tls);
       repository = new RedisCheckoutRepository(redisUrl, redisReaderUrl);
     } else {
       logger.log('Using in-memory persistence');
