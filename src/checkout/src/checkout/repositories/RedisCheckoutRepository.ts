@@ -18,40 +18,34 @@
 
 import { Injectable, OnModuleDestroy } from '@nestjs/common';
 import { ICheckoutRepository } from './ICheckoutRepository';
-import { createClient, RedisClientType } from 'redis';
+import { Redis } from 'ioredis';
 
 @Injectable()
 export class RedisCheckoutRepository
   implements ICheckoutRepository, OnModuleDestroy
 {
-  private _client: RedisClientType;
-  private _readClient: RedisClientType;
+  private _client: Redis;
+  private _readClient: Redis;
 
   constructor(
     private url: string,
     private readerUrl: string,
   ) {}
 
+  private async buildClient(url: string) {
+    return new Redis(url);
+  }
+
   async client() {
     if (!this._client) {
-      const config: any = { url: this.url };
-      if (this.url.startsWith('rediss://')) {
-        config.socket = { tls: true, rejectUnauthorized: false };
-      }
-      this._client = createClient(config);
-      await this._client.connect();
+      this._client = await this.buildClient(this.url);
     }
     return this._client;
   }
 
   async readClient() {
     if (!this._readClient) {
-      const config: any = { url: this.readerUrl };
-      if (this.readerUrl.startsWith('rediss://')) {
-        config.socket = { tls: true, rejectUnauthorized: false };
-      }
-      this._readClient = createClient(config);
-      await this._readClient.connect();
+      this._readClient = await this.buildClient(this.readerUrl);
     }
     return this._readClient;
   }
@@ -77,14 +71,12 @@ export class RedisCheckoutRepository
   async get(key: string): Promise<string> {
     const client = await this.readClient();
 
-    //@ts-expect-error TODO: Change from redis client upgrade
     return client.get(key);
   }
 
   async set(key: string, value: string): Promise<string> {
     const client = await this.client();
 
-    //@ts-expect-error TODO: Change from redis client upgrade
     return client.set(key, value);
   }
 
