@@ -3276,14 +3276,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"java-parser@npm:2.3.3":
-  version: 2.3.3
-  resolution: "java-parser@npm:2.3.3"
+"java-parser@npm:3.0.1":
+  version: 3.0.1
+  resolution: "java-parser@npm:3.0.1"
   dependencies:
     chevrotain: "npm:11.0.3"
     chevrotain-allstar: "npm:0.3.1"
     lodash: "npm:4.17.21"
-  checksum: 10c0/524ca238d3349c07923ef837a1c68c7d13d347054dfb8f90f28f676af8a7a2777eeac5fb36e3c3a90fe7f19a1be33289c94abcd9d22959e61f19a38024a9e016
+  checksum: 10c0/9b60f1132b65785fe4f4c10785fc1638a4092aecf222f63706c119425d0ffb676b7229390abe289082cf837cd470df63f9b9383743d470816fa170240f8b1e22
   languageName: node
   linkType: hard
 
@@ -3881,15 +3881,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"prettier-plugin-java@npm:2.6.7":
-  version: 2.6.7
-  resolution: "prettier-plugin-java@npm:2.6.7"
+"prettier-plugin-java@npm:2.8.1":
+  version: 2.8.1
+  resolution: "prettier-plugin-java@npm:2.8.1"
   dependencies:
-    java-parser: "npm:2.3.3"
-    lodash: "npm:4.17.21"
+    java-parser: "npm:3.0.1"
   peerDependencies:
     prettier: ^3.0.0
-  checksum: 10c0/d102ab6f7c0dbfb4630458fdc0547bf22ef1900c3be99b537ddec9f505693a5fbab0f083e576dc124032edd75c2d0a1ab219aae95839905e5f295fa0d1ec93ff
+  checksum: 10c0/85c8ded14a0aaf1df1d5367ebe0f18c9d7d7284780a13bd1e037ca0190ebc4d42e69a849ddd3a2440c4c14cc19fbeb3b57acec1a3cd61076e917a1432dd72c75
   languageName: node
   linkType: hard
 
@@ -4193,7 +4192,7 @@ __metadata:
     lint-staged: "npm:^16.2.7"
     nx: "npm:20.8.2"
     prettier: "npm:^3.3.2"
-    prettier-plugin-java: "npm:2.6.7"
+    prettier-plugin-java: "npm:2.8.1"
     tslib: "npm:^2.8.1"
     typescript-eslint: "npm:^8.20.0"
   languageName: unknown
