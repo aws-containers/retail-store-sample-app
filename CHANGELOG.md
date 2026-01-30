@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.4.0](https://github.com/aws-containers/retail-store-sample-app/compare/v1.3.0...v1.4.0) (2026-01-30)
+
+
+### Features
+
+* Support redis TLS for checkout service ([#943](https://github.com/aws-containers/retail-store-sample-app/issues/943)) ([d587fb8](https://github.com/aws-containers/retail-store-sample-app/commit/d587fb80954b5666dd0f9b0b7b48199df7a33dd0))
+
+
+### Bug Fixes
+
+* Set shipping informations in checkout ([#951](https://github.com/aws-containers/retail-store-sample-app/issues/951)) ([457407b](https://github.com/aws-containers/retail-store-sample-app/commit/457407bf585578051d5959a1928d86fc7dc32f07))
+
 ## [1.3.0](https://github.com/aws-containers/retail-store-sample-app/compare/v1.2.4...v1.3.0) (2025-09-16)
 
 
