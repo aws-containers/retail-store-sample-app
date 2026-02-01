@@ -41,7 +41,18 @@
 		</dependencies>
 	</dependencyManagement>
 
-    <dependencies>
+<dependencies>
+	<dependency>
+    		<groupId>software.amazon.awssdk</groupId>
+    		<artifactId>sqs</artifactId>
+	</dependency>
+
+	<dependency>
+    		<groupId>software.amazon.awssdk</groupId>
+    		<artifactId>sts</artifactId>
+	</dependency>
+
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>
