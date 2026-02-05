@@ -2771,9 +2771,7 @@ artillery-plugin-slack@1.12.0:
     got "^11.8.5"
 
 artillery@^2.0.0-31:
-  version "2.0.23"
-  resolved "https://registry.yarnpkg.com/artillery/-/artillery-2.0.23.tgz#9e6fea65e356c86e3e596543c9815c6d1fec8ecd"
-  integrity sha512-j1v7u8pwPrMDVDB55m5MB2moPR61IMGX2+Nos1ZkWyBOlDXUL2XkWH5t7y2ZxBP254rLqR2+nQchH6GMhxxkHw==
+  version "2.0.30"
   dependencies:
     "@artilleryio/int-commons" "2.14.0"
     "@artilleryio/int-core" "2.18.0"
