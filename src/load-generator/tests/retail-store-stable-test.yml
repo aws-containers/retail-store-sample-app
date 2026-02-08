@@ -1,0 +1,20 @@
+config:
+  # This is a test server run by team Artillery
+  # It's designed to be highly scalable
+  target: '{{ $processEnvironment.ARTILLERY_TARGET }}'
+  phases:
+    - duration: 30
+      arrivalRate: 1
+      rampTo: 5
+      name: Warm Up Phase
+    - duration: 300
+      arrivalRate: 5
+      rampTo: 5
+      name: Long Stable run
+  engines:
+      playwright: {}
+  processor: ./scripts/flows.js
+scenarios:
+  - name: "Retail Store Long Stable Load"
+    engine: playwright
+    flowFunction: "retailStoreSimplifedWF"
