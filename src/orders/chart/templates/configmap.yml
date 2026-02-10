@@ -7,6 +7,7 @@ data:
   RETAIL_ORDERS_MESSAGING_PROVIDER: {{ .Values.app.messaging.provider }}
   {{- if (eq "rabbitmq" .Values.app.messaging.provider) }}
   RETAIL_ORDERS_MESSAGING_RABBITMQ_ADDRESSES: {{ include "orders.rabbitmq.addresses" . }}
+  RETAIL_ORDERS_MESSAGING_RABBITMQ_SSL_ENABLED: {{ .Values.app.messaging.rabbitmq.ssl }}
   {{- end }}
   RETAIL_ORDERS_PERSISTENCE_PROVIDER: {{ .Values.app.persistence.provider }}
   {{- if (eq "postgres" .Values.app.persistence.provider) }}
