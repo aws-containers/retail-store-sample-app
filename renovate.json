@@ -3,6 +3,9 @@
   "extends": ["config:recommended", ":automergeStableNonMajor"],
   "enabledManagers": ["github-actions", "terraform", "npm", "maven", "gomod"],
   "rebaseWhen": "conflicted",
+  "minimumReleaseAge": "14 days",
+  "internalChecksFilter": "strict",
+  "prCreation": "not-pending",
   "packageRules": [
     {
       "matchManagers": ["github-actions"],
