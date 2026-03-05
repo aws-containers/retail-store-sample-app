@@ -20,12 +20,12 @@ The following environment variables are available for configuring the service:
 | RETAIL_CATALOG_PERSISTENCE_USER            | Database user                                                        | `catalog_user` |
 | RETAIL_CATALOG_PERSISTENCE_PASSWORD        | Database password                                                    | `""`           |
 | RETAIL_CATALOG_PERSISTENCE_CONNECT_TIMEOUT | Database connection timeout in seconds                               | `5`            |
-| RETAIL_CATALOG_OPENSEARCH_ENABLED          | Enable or disable search                                             | `false`        |
-| RETAIL_CATALOG_SEARCH_ENDPOINT             | Database endpoint URL                                                | `""`           |
-| RETAIL_CATALOG_SEARCH_DB_NAME              | Index name                                                           | `products`     |
-| RETAIL_CATALOG_SEARCH_USER                 | Opensearch user                                                      | `catalog`      |
-| RETAIL_CATALOG_SEARCH_PASSWORD             | Opensearch password                                                  | `""`           |
-| RETAIL_CATALOG_SEARCH_CONNECT_TIMEOUT      | Opensearch connection timeout in seconds                             | `5`            |
+| RETAIL_CATALOG_SEARCH_ENABLED.             | Enable or disable search                                             | `false`        |
+| RETAIL_CATALOG_SEARCH_OS_ENDPOINT          | Database endpoint URL                                                | `""`           |
+| RETAIL_CATALOG_SEARCH_OS_INDEX             | Index name                                                           | `products`     |
+| RETAIL_CATALOG_SEARCH_OS_USERNAME          | Opensearch user                                                      | `admin`        |
+| RETAIL_CATALOG_SEARCH_OS_PASSWORD          | Opensearch password                                                  | `""`           |
+| RETAIL_CATALOG_SEARCH_PROVIDER             | Search provider (aws or self-hosted)                                 | `self-hosted`  |
 
 ## Endpoints
 
