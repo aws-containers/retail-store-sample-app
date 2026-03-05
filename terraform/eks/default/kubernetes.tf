@@ -97,7 +97,9 @@ resource "helm_release" "catalog" {
       database_password             = module.dependencies.catalog_db_master_password
       security_group_id             = aws_security_group.catalog.id
       search_enabled                = var.search_enabled
-      opensearch_endpoint           = var.search_enabled ? "https://${module.dependencies.catalog_opensearch_endpoint}" : ""
+      search_provider               = var.search_provider
+      opensearch_endpoint           = (var.search_enabled && var.search_provider == "aws") ? "https://${module.dependencies.catalog_opensearch_endpoint}" : "http://catalog-opensearch.catalog.svc:9200"
+      opensearch_username           = var.search_username
       opensearch_password           = var.search_enabled ? "${module.dependencies.catalog_opensearch_master_password}" : ""
     })
   ]

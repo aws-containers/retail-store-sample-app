@@ -69,7 +69,7 @@ services:
 
   # OpenSearch for product search
   opensearch:
-    image: opensearchproject/opensearch:2.11.1
+    image: opensearchproject/opensearch:3.5.0
     hostname: opensearch
     restart: always
     environment:

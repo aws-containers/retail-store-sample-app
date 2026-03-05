@@ -50,3 +50,16 @@ variable "catalog_search_enabled" {
   description = "Boolean value that enables catalog OpenSearch functionality"
   default     = false
 }
+
+variable "catalog_search_provider" {
+  type        = string
+  description = "Catalog search provider"
+  default     = "self-hosted"
+}
+
+variable "catalog_search_username" {
+  type        = string
+  description = "Catalog search usename"
+  default     = "admin"
+}
+

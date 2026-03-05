@@ -78,6 +78,7 @@ func NewOpenSearchRepository(config config.OpenSearchConfiguration) (*OpenSearch
 		cfg.Password = config.Password
 	}
 
+	fmt.Println("Connecting to OpenSearch as %s", config.Username)
 	client, err := opensearch.NewClient(cfg)
 	if err != nil {
 		return nil, fmt.Errorf("failed to create OpenSearch client: %w", err)

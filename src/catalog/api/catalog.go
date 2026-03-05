@@ -49,6 +49,10 @@ func (a *CatalogAPI) GetSize(tags []string, ctx context.Context) (int, error) {
 	return a.repository.CountProducts(tags, ctx)
 }
 
+func (a *CatalogAPI) IsSearchEnabled() bool {
+	return a.searchRepository != nil
+}
+
 func (a *CatalogAPI) SearchProducts(keyword string, page, size int, ctx context.Context) ([]model.Product, error) {
 	if a.searchRepository == nil {
 		return nil, nil

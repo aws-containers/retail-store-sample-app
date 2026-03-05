@@ -40,7 +40,10 @@ module "dependencies" {
   checkout_security_group_id           = local.security_groups_active ? aws_security_group.checkout.id : module.retail_app_eks.node_security_group_id
   catalog_opensearch_security_group_id = local.security_groups_active ? aws_security_group.catalog.id : module.retail_app_eks.node_security_group_id
   catalog_search_enabled               = var.search_enabled
+  catalog_search_provider              = var.search_provider
+  catalog_search_username              = var.search_username
 }
+
 
 module "retail_app_eks" {
   source = "../../lib/eks"

@@ -35,9 +35,10 @@ type DatabaseConfiguration struct {
 
 // OpenSearchConfiguration exported
 type OpenSearchConfiguration struct {
-	Enabled   bool   `env:"RETAIL_CATALOG_OPENSEARCH_ENABLED,default=false"`
-	Endpoint  string `env:"RETAIL_CATALOG_OPENSEARCH_ENDPOINT,default=http://localhost:9200"`
-	IndexName string `env:"RETAIL_CATALOG_OPENSEARCH_INDEX,default=products"`
-	Username  string `env:"RETAIL_CATALOG_OPENSEARCH_USERNAME,default=catalog"`
-	Password  string `env:"RETAIL_CATALOG_OPENSEARCH_PASSWORD"`
+	Enabled   bool   `env:"RETAIL_CATALOG_SEARCH_ENABLED,default=false"`
+	Type   	  string `env:"RETAIL_CATALOG_SEARCH_PROVIDER,default=self-hosted"`
+	Endpoint  string `env:"RETAIL_CATALOG_SEARCH_OS_ENDPOINT,default=http://localhost:9200"`
+	IndexName string `env:"RETAIL_CATALOG_SEARCH_OS_INDEX,default=products"`
+	Username  string `env:"RETAIL_CATALOG_SEARCH_OS_USERNAME,default=admin"`
+	Password  string `env:"RETAIL_CATALOG_SEARCH_OS_PASSWORD"`
 }

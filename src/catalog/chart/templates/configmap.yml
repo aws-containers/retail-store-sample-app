@@ -9,4 +9,9 @@ data:
   RETAIL_CATALOG_PERSISTENCE_ENDPOINT: {{ include "catalog.mysql.endpoint" . }}
   RETAIL_CATALOG_PERSISTENCE_DB_NAME: {{ .Values.app.persistence.database }}
   {{- end }}
+  RETAIL_CATALOG_SEARCH_ENABLED: "{{ .Values.app.search.enabled }}"
+  {{- if .Values.app.search.enabled }}
+  RETAIL_CATALOG_SEARCH_OS_ENDPOINT: {{ .Values.app.search.endpoint }}
+  RETAIL_CATALOG_SEARCH_OS_INDEX: {{ .Values.app.search.index }}
+  {{- end }}
 {{- end }}

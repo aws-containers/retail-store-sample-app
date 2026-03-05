@@ -86,15 +86,11 @@ app:
   
   search:
     enabled: false
+    provider: self-hosted
     endpoint: ""
     index: products
-    username: catalog
+    username: admin
     password: ""
-    configMap:
-      name: catalog-os
-    
-    secret:
-      name: catalog-os
 
 mysql:
   create: false
@@ -107,6 +103,34 @@ mysql:
   service:
     type: ClusterIP
     port: 3306
+
+  podAnnotations: {}
+
+  nodeSelector: {}
+
+  tolerations: []
+
+  affinity: {}
+
+  persistentVolume:
+    enabled: false
+    annotations: {}
+    labels: {}
+    accessModes:
+      - ReadWriteOnce
+    size: 10Gi
+    storageClass: ""
+
+opensearch:
+  
+  image:
+    repository: opensearchproject/opensearch
+    pullPolicy: IfNotPresent
+    tag: "3.5.0"
+
+  service:
+    type: ClusterIP
+    port: 9200
 
   podAnnotations: {}
 

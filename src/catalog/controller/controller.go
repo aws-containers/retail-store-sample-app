@@ -177,6 +177,11 @@ func (c *Controller) ListTags(ctx *gin.Context) {
 // @Failure 500 {object} httputil.HTTPError
 // @Router /catalog/search [get]
 func (c *Controller) SearchProducts(ctx *gin.Context) {
+	if !c.api.IsSearchEnabled() {
+		httputil.NewError(ctx, http.StatusServiceUnavailable, fmt.Errorf("Search is not enabled"))
+		return
+	}
+
 	keyword := ctx.Query("keyword")
 
 	if keyword == "" {
