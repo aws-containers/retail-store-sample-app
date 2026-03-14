@@ -202,12 +202,17 @@ jobs:
           name: Install Snyk CLI
           command: |
             set -euo pipefail
-            sudo npm install -g snyk
+            export NPM_CONFIG_PREFIX="${HOME}/.npm-global"
+            export PATH="${NPM_CONFIG_PREFIX}/bin:${PATH}"
+            mkdir -p "${NPM_CONFIG_PREFIX}"
+            npm install -g snyk
             snyk --version
       - run:
           name: Run Snyk Code scan
           command: |
             set -euo pipefail
+            export NPM_CONFIG_PREFIX="${HOME}/.npm-global"
+            export PATH="${NPM_CONFIG_PREFIX}/bin:${PATH}"
 
             test -n "${SNYK_TOKEN:-}"
 
