@@ -126,7 +126,9 @@ public class UtilityController {
   @PostMapping("/echo")
   @ResponseBody
   public ResponseEntity<String> echo(@RequestBody String body) {
-    return ResponseEntity.ok().body(body);
+    return ResponseEntity.ok()
+      .contentType(MediaType.TEXT_PLAIN)
+      .body(body);
   }
 
   // function /store what take a POST hash to write to a locally created file

@@ -5,8 +5,13 @@ import Handlebars from "handlebars";
 
 // Regular expressions for finding license files
 const licenseRegex = /^(LICENSE|LICENCE)($|\.md|\.txt)/i;
+const escapeRegExp = (value: string) =>
+  value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 const licenseSpecificRegex = (licenseName: string) =>
-  new RegExp(`^(LICENSE|LICENCE)([\\.-]${licenseName})(\\.md|\\.txt)?`, "i");
+  new RegExp(
+    `^(LICENSE|LICENCE)([\\.-]${escapeRegExp(licenseName)})(\\.md|\\.txt)?`,
+    "i",
+  );
 const notice = "NOTICE";
 
 // Dictionary of generic licenses with their URLs
