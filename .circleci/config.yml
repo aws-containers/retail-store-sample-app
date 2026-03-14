@@ -310,9 +310,6 @@ jobs:
               --cache-from "type=registry,ref=${shared_registry}/${qa_repository}:buildcache" \
               --cache-from "type=registry,ref=${shared_registry}/${staging_repository}:buildcache" \
               --cache-from "type=registry,ref=${production_registry}/${production_repository}:buildcache" \
-              --cache-to "type=registry,ref=${shared_registry}/${qa_repository}:buildcache,mode=max" \
-              --cache-to "type=registry,ref=${shared_registry}/${staging_repository}:buildcache,mode=max" \
-              --cache-to "type=registry,ref=${production_registry}/${production_repository}:buildcache,mode=max" \
               --push \
               "src/${service}"
 
