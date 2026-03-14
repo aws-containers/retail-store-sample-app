@@ -45,15 +45,8 @@ commands:
                 sudo apt-get install -y nodejs
               fi
 
-              if ! command -v corepack >/dev/null 2>&1; then
-                sudo npm install -g corepack
-              fi
-
-              sudo corepack enable
               node --version
               npm --version
-              corepack --version
-              yarn --version
             fi
 
   configure_release_metadata:
@@ -179,9 +172,11 @@ jobs:
           command: |
             set -euo pipefail
             cd src/checkout
-            yarn install --immutable
-            yarn build
-            yarn test:integration
+            yarn_bin=".yarn/releases/yarn-4.11.0.cjs"
+            test -f "${yarn_bin}"
+            node "${yarn_bin}" install --immutable
+            node "${yarn_bin}" build
+            node "${yarn_bin}" test:integration
       - save_cache:
           key: v1-go-{{ checksum "src/catalog/go.sum" }}
           paths:
