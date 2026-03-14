@@ -326,13 +326,14 @@ jobs:
           command: |
             set -euo pipefail
 
-            push_url="${INFRA_REPO_PUSH_URL:-git@github.com:CodeX-hakaton/retail-store-infra.git}"
             repo_slug="${INFRA_REPO_SLUG:-CodeX-hakaton/retail-store-infra}"
             clone_dir=$(mktemp -d)
             pr_api="https://api.github.com/repos/${repo_slug}/pulls"
-
-            mkdir -p "${HOME}/.ssh"
-            ssh-keyscan github.com >> "${HOME}/.ssh/known_hosts" 2>/dev/null || true
+            if [ -z "${GH_TOKEN:-}" ]; then
+              echo "GH_TOKEN is required to clone, push, and create or update the infra PR."
+              exit 1
+            fi
+            push_url="${INFRA_REPO_PUSH_URL:-https://x-access-token:${GH_TOKEN}@github.com/${repo_slug}.git}"
 
             git clone --branch main --single-branch "${push_url}" "${clone_dir}"
             cd "${clone_dir}"
@@ -354,11 +355,6 @@ jobs:
               git add terraform/environments/qa.tfvars terraform/environments/staging.tfvars terraform/environments/production.tfvars
               git commit -m "chore: update environment image tags to ${IMAGE_TAG}"
               git push origin HEAD:main
-            fi
-
-            if [ -z "${GH_TOKEN:-}" ]; then
-              echo "GH_TOKEN is required to create or update the infra PR."
-              exit 1
             fi
 
             existing_pr=$(curl -fsSL \
