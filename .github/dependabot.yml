@@ -1,0 +1,33 @@
+version: 2
+updates:
+  # Перевірка оновлень для Go (сервіс Catalog)
+  - package-ecosystem: "gomod"
+    directory: "/src/catalog"
+    schedule:
+      interval: "weekly"
+
+  # Перевірка оновлень для Node.js (сервіс Checkout)
+  - package-ecosystem: "npm"
+    directory: "/src/checkout"
+    schedule:
+      interval: "weekly"
+
+  # Перевірка оновлень для Java/Maven (сервіси UI, Cart, Orders)
+  - package-ecosystem: "maven"
+    directory: "/src/ui"
+    schedule:
+      interval: "weekly"
+  - package-ecosystem: "maven"
+    directory: "/src/cart"
+    schedule:
+      interval: "weekly"
+  - package-ecosystem: "maven"
+    directory: "/src/orders"
+    schedule:
+      interval: "weekly"
+
+  # Оновлення для GitHub Actions (якщо ви їх використовуєте)
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "dayly"
