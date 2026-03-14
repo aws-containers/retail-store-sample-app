@@ -57,19 +57,12 @@ commands:
             set -euo pipefail
 
             project_name="${PROJECT_NAME:-codex}"
-            branch_tag=$(echo "${CIRCLE_BRANCH}" | tr '/_' '-' | tr -cd '[:alnum:]-')
-
-            if [ -z "${branch_tag}" ]; then
-              branch_tag="unknown"
-            fi
-
-            image_tag="${branch_tag}-${CIRCLE_SHA1:0:12}"
+            image_tag="0.0.<< pipeline.number >>"
             shared_role_arn="arn:aws:iam::${AWS_ACCOUNT_ID_SHARED}:role/cicd-${project_name}-image-push"
             production_role_arn="arn:aws:iam::${AWS_ACCOUNT_ID_PRODUCTION}:role/cicd-${project_name}-image-push"
 
             {
               echo "export PROJECT_NAME=${project_name}"
-              echo "export SANITIZED_BRANCH=${branch_tag}"
               echo "export IMAGE_TAG=${image_tag}"
               echo "export SHARED_IMAGE_PUSH_ROLE_ARN=${shared_role_arn}"
               echo "export PRODUCTION_IMAGE_PUSH_ROLE_ARN=${production_role_arn}"
@@ -312,11 +305,8 @@ jobs:
               --file "src/${service}/Dockerfile" \
               --platform linux/amd64 \
               --tag "${shared_registry}/${qa_repository}:${IMAGE_TAG}" \
-              --tag "${shared_registry}/${qa_repository}:main-latest" \
               --tag "${shared_registry}/${staging_repository}:${IMAGE_TAG}" \
-              --tag "${shared_registry}/${staging_repository}:main-latest" \
               --tag "${production_registry}/${production_repository}:${IMAGE_TAG}" \
-              --tag "${production_registry}/${production_repository}:main-latest" \
               --cache-from "type=registry,ref=${shared_registry}/${qa_repository}:buildcache" \
               --cache-from "type=registry,ref=${shared_registry}/${staging_repository}:buildcache" \
               --cache-from "type=registry,ref=${production_registry}/${production_repository}:buildcache" \
