@@ -45,8 +45,14 @@ commands:
                 sudo apt-get install -y nodejs
               fi
 
+              if ! command -v corepack >/dev/null 2>&1; then
+                sudo npm install -g corepack
+              fi
+
               sudo corepack enable
               node --version
+              npm --version
+              corepack --version
               yarn --version
             fi
 
