@@ -40,6 +40,7 @@ import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.util.HtmlUtils;
 
 @Controller
 @RequestMapping("/utility")
@@ -126,9 +127,10 @@ public class UtilityController {
   @PostMapping("/echo")
   @ResponseBody
   public ResponseEntity<String> echo(@RequestBody String body) {
+    String escapedBody = HtmlUtils.htmlEscape(body);
     return ResponseEntity.ok()
       .contentType(MediaType.TEXT_PLAIN)
-      .body(body);
+      .body(escapedBody);
   }
 
   // function /store what take a POST hash to write to a locally created file
