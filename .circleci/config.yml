@@ -1,19 +1,47 @@
 version: 2.1
 
-jobs:
-  build_and_test: # Назва має збігатися з тим, що ви вказали в GitHub Ruleset
+# Використовуємо Docker як середовище для виконання
+executors:
+  docker-executor:
     docker:
-      - image: cimg/base:stable
+      - image: cimg/go:1.21 # Офіційний образ для Go
+
+jobs:
+  # 1. Етап збірки
+  build:
+    executor: docker-executor
+    steps:
+      - checkout # Завантажуємо код з репозиторію
+      - setup_remote_docker # Дозволяє запускати команди docker всередині контейнера
+      
+      - run:
+          name: "Збірка Docker образу"
+          command: |
+            # Будуємо образ просто для перевірки, що Dockerfile робочий
+            docker build -t retail-app-test .
+            
+      - run:
+          name: "Компіляція Go коду"
+          command: |
+            go mod download
+            go build -v ./...
+
+  # 2. Етап тестування
+  test:
+    executor: docker-executor
     steps:
       - checkout
       - run:
-          name: "Фінальна перевірка зв'язку"
+          name: "Запуск Unit тестів"
           command: |
-            echo "Привіт! Це CircleCI."
-            echo "Якщо ти бачиш це повідомлення, значить інтеграція працює."
-            echo "Зараз я просто перевіряю, що можу прочитати твій репозиторій."
+            go test -v ./...
 
+# Описуємо черговість
 workflows:
-  main_workflow:
+  version: 2
+  check_project:
     jobs:
-      - build_and_test
+      - build
+      - test:
+          requires:
+            - build
