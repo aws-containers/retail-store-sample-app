@@ -326,7 +326,7 @@ jobs:
           command: |
             set -euo pipefail
 
-            repo_slug="${INFRA_REPO_SLUG:-CodeX-hakaton/retail-store-infra}"
+            repo_slug="${INFRA_REPO_SLUG:-CodeX-hakaton/retail-store-sample-infra}"
             clone_dir=$(mktemp -d)
             pr_api="https://api.github.com/repos/${repo_slug}/pulls"
             if [ -z "${GH_TOKEN:-}" ]; then
