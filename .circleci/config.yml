@@ -39,7 +39,7 @@ jobs:
       - run:
           name: Enable corepack and install dependencies
           command: |
-            corepack enable
+            sudo corepack enable
             yarn install --immutable
       - save_cache:
           key: yarn-packages-{{ checksum "yarn.lock" }}
@@ -65,7 +65,7 @@ jobs:
       - run:
           name: Enable corepack and install dependencies
           command: |
-            corepack enable
+            sudo corepack enable
             yarn install --immutable
       - save_cache:
           key: yarn-packages-{{ checksum "yarn.lock" }}
@@ -96,7 +96,7 @@ jobs:
       - run:
           name: Install dependencies
           command: |
-            corepack enable
+            sudo corepack enable
             yarn install --immutable
       - run:
           name: Build affected container images
