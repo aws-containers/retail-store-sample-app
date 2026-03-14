@@ -2,12 +2,6 @@ version: 2
 updates:
 
 
-  # Перевірка оновлень для Node.js (сервіс Checkout)
-  - package-ecosystem: "npm"
-    directory: "/src/checkout"
-    schedule:
-      interval: "weekly"
-    open-pull-requests-limit: 10
 
   # Перевірка оновлень для Java/Maven (сервіси UI, Cart, Orders)
   - package-ecosystem: "maven"
