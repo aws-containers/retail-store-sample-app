@@ -1,116 +1,355 @@
 version: 2.1
 
+orbs:
+  aws-cli: circleci/aws-cli@5.4.1
+
 executors:
-  main:
-    docker:
-      - image: cimg/node:22.0
-    resource_class: medium
+  ubuntu:
+    machine:
+      image: ubuntu-2404:2025.09.1
 
 commands:
-  install-toolchain:
+  install_packages:
+    parameters:
+      java:
+        type: boolean
+        default: false
+      go:
+        type: boolean
+        default: false
+      node:
+        type: boolean
+        default: false
     steps:
       - run:
-          name: Install Java 21 and Maven
+          name: Install toolchain
           command: |
-            sudo apt-get update -y
-            sudo apt-get install -y openjdk-21-jdk maven
-            java -version
-            mvn -version
+            set -euo pipefail
+
+            packages=(curl jq)
+
+            if [ "<< parameters.java >>" = "true" ]; then
+              packages+=(openjdk-21-jdk)
+            fi
+
+            if [ "<< parameters.go >>" = "true" ]; then
+              packages+=(golang-go)
+            fi
+
+            sudo apt-get update
+            sudo apt-get install -y "${packages[@]}"
+
+            if [ "<< parameters.node >>" = "true" ]; then
+              if ! command -v node >/dev/null 2>&1 || ! node -e 'process.exit(Number(process.versions.node.split(".")[0]) >= 20 ? 0 : 1)'; then
+                curl -fsSL https://deb.nodesource.com/setup_20.x | sudo bash -
+                sudo apt-get install -y nodejs
+              fi
+
+              sudo corepack enable
+              node --version
+              yarn --version
+            fi
+
+  configure_release_metadata:
+    steps:
       - run:
-          name: Install Go
+          name: Set release metadata
           command: |
-            GO_VERSION=1.22.4
-            curl -sL "https://go.dev/dl/go${GO_VERSION}.linux-amd64.tar.gz" -o /tmp/go.tar.gz
-            sudo tar -C /usr/local -xzf /tmp/go.tar.gz
-            echo 'export PATH=$PATH:/usr/local/go/bin' >> $BASH_ENV
-            source $BASH_ENV
-            go version
+            set -euo pipefail
+
+            project_name="${PROJECT_NAME:-codex}"
+            branch_tag=$(echo "${CIRCLE_BRANCH}" | tr '/_' '-' | tr -cd '[:alnum:]-')
+
+            if [ -z "${branch_tag}" ]; then
+              branch_tag="unknown"
+            fi
+
+            image_tag="${branch_tag}-${CIRCLE_SHA1:0:12}"
+            shared_role_arn="arn:aws:iam::${AWS_ACCOUNT_ID_SHARED}:role/cicd-${project_name}-image-push"
+            production_role_arn="arn:aws:iam::${AWS_ACCOUNT_ID_PRODUCTION}:role/cicd-${project_name}-image-push"
+
+            {
+              echo "export PROJECT_NAME=${project_name}"
+              echo "export SANITIZED_BRANCH=${branch_tag}"
+              echo "export IMAGE_TAG=${image_tag}"
+              echo "export SHARED_IMAGE_PUSH_ROLE_ARN=${shared_role_arn}"
+              echo "export PRODUCTION_IMAGE_PUSH_ROLE_ARN=${production_role_arn}"
+            } >> "${BASH_ENV}"
+
+            echo "Project name: ${project_name}"
+            echo "Image tag: ${image_tag}"
+            echo "Shared role ARN: ${shared_role_arn}"
+            echo "Production role ARN: ${production_role_arn}"
+
+  docker_login_ecr:
+    parameters:
+      profile_name:
+        type: string
+      account_id:
+        type: string
+    steps:
+      - run:
+          name: Login to ECR (<< parameters.profile_name >>)
+          command: |
+            set -euo pipefail
+            registry="<< parameters.account_id >>.dkr.ecr.${AWS_REGION}.amazonaws.com"
+            aws ecr get-login-password --profile "<< parameters.profile_name >>" --region "${AWS_REGION}" | docker login --username AWS --password-stdin "${registry}"
 
 jobs:
-  lint:
-    executor: main
+  validate_jvm_services:
+    executor: ubuntu
+    resource_class: medium
+    environment:
+      HUSKY: "0"
     steps:
-      - checkout
-      - run: git fetch origin main --depth=1 || true
+      - checkout:
+          method: blobless
+      - install_packages:
+          java: true
       - restore_cache:
           keys:
-            - yarn-packages-{{ checksum "yarn.lock" }}
-            - yarn-packages-
+            - v1-m2-{{ checksum "src/cart/pom.xml" }}-{{ checksum "src/orders/pom.xml" }}-{{ checksum "src/ui/pom.xml" }}
+            - v1-m2-
       - run:
-          name: Enable corepack and install dependencies
+          name: Build and test cart
           command: |
-            sudo corepack enable
-            yarn install --immutable
+            set -euo pipefail
+            cd src/cart
+            ./mvnw --batch-mode --no-transfer-progress clean verify -DexcludedGroups=integration
+      - run:
+          name: Build and test orders
+          command: |
+            set -euo pipefail
+            cd src/orders
+            ./mvnw --batch-mode --no-transfer-progress clean verify -DexcludedGroups=integration
+      - run:
+          name: Build and test ui
+          command: |
+            set -euo pipefail
+            cd src/ui
+            ./mvnw --batch-mode --no-transfer-progress clean verify -DexcludedGroups=integration
       - save_cache:
-          key: yarn-packages-{{ checksum "yarn.lock" }}
+          key: v1-m2-{{ checksum "src/cart/pom.xml" }}-{{ checksum "src/orders/pom.xml" }}-{{ checksum "src/ui/pom.xml" }}
           paths:
-            - node_modules
-            - .yarn/cache
-            - .yarn/install-state.gz
-            - src/*/node_modules
-      - run:
-          name: Lint (lint-staged)
-          command: yarn lint:pr
+            - ~/.m2
+      - store_test_results:
+          path: /home/circleci/project/src/cart/target/surefire-reports
+      - store_test_results:
+          path: /home/circleci/project/src/orders/target/surefire-reports
+      - store_test_results:
+          path: /home/circleci/project/src/ui/target/surefire-reports
 
-  build-and-test:
-    executor: main
+  validate_polyglot_services:
+    executor: ubuntu
+    resource_class: medium
+    environment:
+      HUSKY: "0"
+      GOFLAGS: -buildvcs=false
     steps:
-      - checkout
-      - run: git fetch origin main --depth=1 || true
-      - install-toolchain
+      - checkout:
+          method: blobless
+      - install_packages:
+          go: true
+          node: true
       - restore_cache:
           keys:
-            - yarn-packages-{{ checksum "yarn.lock" }}
-            - yarn-packages-
+            - v1-go-{{ checksum "src/catalog/go.sum" }}
+            - v1-go-
+      - restore_cache:
+          keys:
+            - v1-checkout-yarn-{{ checksum "src/checkout/package.json" }}-{{ checksum "src/checkout/yarn.lock" }}
+            - v1-checkout-yarn-
       - run:
-          name: Enable corepack and install dependencies
+          name: Build and test catalog
           command: |
-            sudo corepack enable
+            set -euo pipefail
+            cd src/catalog
+            go mod download
+            mkdir -p dist
+            go build -o dist/main main.go
+            go test -v ./test/...
+      - run:
+          name: Build and test checkout
+          command: |
+            set -euo pipefail
+            cd src/checkout
             yarn install --immutable
+            yarn build
+            yarn test:integration
       - save_cache:
-          key: yarn-packages-{{ checksum "yarn.lock" }}
+          key: v1-go-{{ checksum "src/catalog/go.sum" }}
           paths:
-            - node_modules
-            - .yarn/cache
-            - .yarn/install-state.gz
-            - src/*/node_modules
-      - run:
-          name: Build affected projects
-          command: yarn nx affected --targets=build --base=origin/main --parallel=1
-      - run:
-          name: Lint, test, and integration test
-          command: yarn nx affected --targets=lint,test:integration,test --base=origin/main
+            - /home/circleci/go/pkg/mod
+            - /home/circleci/.cache/go-build
+      - save_cache:
+          key: v1-checkout-yarn-{{ checksum "src/checkout/package.json" }}-{{ checksum "src/checkout/yarn.lock" }}
+          paths:
+            - /home/circleci/project/src/checkout/node_modules
+            - /home/circleci/project/src/checkout/.yarn/install-state.gz
 
-  containers:
-    executor: main
+  build_and_push_image:
+    executor: ubuntu
+    resource_class: medium
+    parameters:
+      service:
+        type: enum
+        enum: ["ui", "catalog", "cart", "orders", "checkout"]
+    environment:
+      DOCKER_BUILDKIT: "1"
     steps:
-      - checkout
-      - run: git fetch origin main --depth=1 || true
-      - setup_remote_docker:
-          docker_layer_caching: true
-      - install-toolchain
-      - restore_cache:
-          keys:
-            - yarn-packages-{{ checksum "yarn.lock" }}
-            - yarn-packages-
+      - checkout:
+          method: blobless
+      - configure_release_metadata
+      - aws-cli/setup:
+          profile_name: shared
+          role_arn: ${SHARED_IMAGE_PUSH_ROLE_ARN}
+          region: ${AWS_REGION}
+      - aws-cli/setup:
+          profile_name: production
+          role_arn: ${PRODUCTION_IMAGE_PUSH_ROLE_ARN}
+          region: ${AWS_REGION}
       - run:
-          name: Install dependencies
+          name: Verify AWS identities
           command: |
-            sudo corepack enable
-            yarn install --immutable
+            set -euo pipefail
+
+            shared_account=$(aws sts get-caller-identity --profile shared --query Account --output text)
+            production_account=$(aws sts get-caller-identity --profile production --query Account --output text)
+
+            test "${shared_account}" = "${AWS_ACCOUNT_ID_SHARED}"
+            test "${production_account}" = "${AWS_ACCOUNT_ID_PRODUCTION}"
+
+            aws sts get-caller-identity --profile shared
+            aws sts get-caller-identity --profile production
+      - docker_login_ecr:
+          profile_name: shared
+          account_id: ${AWS_ACCOUNT_ID_SHARED}
+      - docker_login_ecr:
+          profile_name: production
+          account_id: ${AWS_ACCOUNT_ID_PRODUCTION}
       - run:
-          name: Build affected container images
+          name: Build and push << parameters.service >>
           command: |
-            yarn nx affected --targets=container --exclude='*,!tag:container' --base=origin/main
+            set -euo pipefail
+
+            service="<< parameters.service >>"
+            shared_registry="${AWS_ACCOUNT_ID_SHARED}.dkr.ecr.${AWS_REGION}.amazonaws.com"
+            production_registry="${AWS_ACCOUNT_ID_PRODUCTION}.dkr.ecr.${AWS_REGION}.amazonaws.com"
+
+            qa_repository="${PROJECT_NAME}-qa-${service}"
+            staging_repository="${PROJECT_NAME}-staging-${service}"
+            production_repository="${PROJECT_NAME}-production-${service}"
+
+            aws ecr describe-repositories --profile shared --repository-names "${qa_repository}" "${staging_repository}" --region "${AWS_REGION}" >/dev/null
+            aws ecr describe-repositories --profile production --repository-names "${production_repository}" --region "${AWS_REGION}" >/dev/null
+
+            docker buildx create --name circleci-builder --use >/dev/null 2>&1 || docker buildx use circleci-builder
+            docker buildx inspect --bootstrap
+
+            docker buildx build \
+              --file "src/${service}/Dockerfile" \
+              --platform linux/amd64 \
+              --tag "${shared_registry}/${qa_repository}:${IMAGE_TAG}" \
+              --tag "${shared_registry}/${qa_repository}:main-latest" \
+              --tag "${shared_registry}/${staging_repository}:${IMAGE_TAG}" \
+              --tag "${shared_registry}/${staging_repository}:main-latest" \
+              --tag "${production_registry}/${production_repository}:${IMAGE_TAG}" \
+              --tag "${production_registry}/${production_repository}:main-latest" \
+              --cache-from "type=registry,ref=${shared_registry}/${qa_repository}:buildcache" \
+              --cache-to "type=registry,ref=${shared_registry}/${qa_repository}:buildcache,mode=max" \
+              --push \
+              "src/${service}"
+
+  sync_infra_image_tags:
+    executor: ubuntu
+    resource_class: medium
+    steps:
+      - checkout:
+          method: blobless
+      - install_packages
+      - configure_release_metadata
+      - run:
+          name: Update infra repo and open PR to qa
+          command: |
+            set -euo pipefail
+
+            push_url="${INFRA_REPO_PUSH_URL:-git@github.com:CodeX-hakaton/retail-store-infra.git}"
+            repo_slug="${INFRA_REPO_SLUG:-CodeX-hakaton/retail-store-infra}"
+            clone_dir=$(mktemp -d)
+            pr_api="https://api.github.com/repos/${repo_slug}/pulls"
+
+            mkdir -p "${HOME}/.ssh"
+            ssh-keyscan github.com >> "${HOME}/.ssh/known_hosts" 2>/dev/null || true
+
+            git clone --branch main --single-branch "${push_url}" "${clone_dir}"
+            cd "${clone_dir}"
+
+            git ls-remote --exit-code --heads origin qa >/dev/null
+
+            for deploy_env in qa staging production; do
+              tfvars_path="terraform/environments/${deploy_env}.tfvars"
+              perl -0pi -e 's/\ncontainer_image_overrides\s*=\s*\{.*?\n\}//sm' "${tfvars_path}"
+              printf '\ncontainer_image_overrides = {\n  default_tag = "%s"\n}\n' "${IMAGE_TAG}" >> "${tfvars_path}"
+            done
+
+            git config user.name "${INFRA_GIT_USER_NAME:-circleci}"
+            git config user.email "${INFRA_GIT_USER_EMAIL:-circleci@users.noreply.github.com}"
+
+            if git diff --quiet -- terraform/environments/qa.tfvars terraform/environments/staging.tfvars terraform/environments/production.tfvars; then
+              echo "Infra repo already points all environments to ${IMAGE_TAG}."
+            else
+              git add terraform/environments/qa.tfvars terraform/environments/staging.tfvars terraform/environments/production.tfvars
+              git commit -m "chore: update environment image tags to ${IMAGE_TAG}"
+              git push origin HEAD:main
+            fi
+
+            if [ -z "${GH_TOKEN:-}" ]; then
+              echo "GH_TOKEN is required to create or update the infra PR."
+              exit 1
+            fi
+
+            existing_pr=$(curl -fsSL \
+              -H "Authorization: Bearer ${GH_TOKEN}" \
+              -H "Accept: application/vnd.github+json" \
+              "${pr_api}?state=open&base=qa&head=${repo_slug%%/*}:main" | jq -r '.[0].html_url // empty')
+
+            if [ -n "${existing_pr}" ]; then
+              echo "PR already open: ${existing_pr}"
+              exit 0
+            fi
+
+            curl -fsSL -X POST \
+              -H "Authorization: Bearer ${GH_TOKEN}" \
+              -H "Accept: application/vnd.github+json" \
+              "${pr_api}" \
+              -d "$(jq -n \
+                --arg title "Promote main images to qa (${IMAGE_TAG})" \
+                --arg head "main" \
+                --arg base "qa" \
+                --arg body "Automated promotion PR after publishing image tag \`${IMAGE_TAG}\` to qa, staging, and production ECR repositories." \
+                '{title: $title, head: $head, base: $base, body: $body}')" >/dev/null
 
 workflows:
-  version: 2
   ci:
     jobs:
-      - lint
-      - build-and-test:
+      - validate_jvm_services
+      - validate_polyglot_services
+      - build_and_push_image:
+          matrix:
+            alias: publish_main_images
+            parameters:
+              service: ["ui", "catalog", "cart", "orders", "checkout"]
           requires:
-            - lint
-      - containers:
+            - validate_jvm_services
+            - validate_polyglot_services
+          filters:
+            branches:
+              only:
+                - main
+      - sync_infra_image_tags:
           requires:
-            - build-and-test
+            - publish_main_images
+          filters:
+            branches:
+              only:
+                - main
