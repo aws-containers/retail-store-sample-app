@@ -1,47 +1,116 @@
 version: 2.1
 
-# Використовуємо Docker як середовище для виконання
 executors:
-  docker-executor:
+  main:
     docker:
-      - image: cimg/go:1.21 # Офіційний образ для Go
+      - image: cimg/node:22.0
+    resource_class: medium
+
+commands:
+  install-toolchain:
+    steps:
+      - run:
+          name: Install Java 21 and Maven
+          command: |
+            sudo apt-get update -y
+            sudo apt-get install -y openjdk-21-jdk maven
+            java -version
+            mvn -version
+      - run:
+          name: Install Go
+          command: |
+            GO_VERSION=1.22.4
+            curl -sL "https://go.dev/dl/go${GO_VERSION}.linux-amd64.tar.gz" -o /tmp/go.tar.gz
+            sudo tar -C /usr/local -xzf /tmp/go.tar.gz
+            echo 'export PATH=$PATH:/usr/local/go/bin' >> $BASH_ENV
+            source $BASH_ENV
+            go version
 
 jobs:
-  # 1. Етап збірки
-  build:
-    executor: docker-executor
-    steps:
-      - checkout # Завантажуємо код з репозиторію
-      - setup_remote_docker # Дозволяє запускати команди docker всередині контейнера
-      
-      - run:
-          name: "Збірка Docker образу"
-          command: |
-            # Будуємо образ просто для перевірки, що Dockerfile робочий
-            docker build -t retail-app-test .
-            
-      - run:
-          name: "Компіляція Go коду"
-          command: |
-            go mod download
-            go build -v ./...
-
-  # 2. Етап тестування
-  test:
-    executor: docker-executor
+  lint:
+    executor: main
     steps:
       - checkout
+      - run: git fetch origin main --depth=1 || true
+      - restore_cache:
+          keys:
+            - yarn-packages-{{ checksum "yarn.lock" }}
+            - yarn-packages-
       - run:
-          name: "Запуск Unit тестів"
+          name: Enable corepack and install dependencies
           command: |
-            go test -v ./...
+            corepack enable
+            yarn install --immutable
+      - save_cache:
+          key: yarn-packages-{{ checksum "yarn.lock" }}
+          paths:
+            - node_modules
+            - .yarn/cache
+            - .yarn/install-state.gz
+            - src/*/node_modules
+      - run:
+          name: Lint (lint-staged)
+          command: yarn lint:pr
 
-# Описуємо черговість
+  build-and-test:
+    executor: main
+    steps:
+      - checkout
+      - run: git fetch origin main --depth=1 || true
+      - install-toolchain
+      - restore_cache:
+          keys:
+            - yarn-packages-{{ checksum "yarn.lock" }}
+            - yarn-packages-
+      - run:
+          name: Enable corepack and install dependencies
+          command: |
+            corepack enable
+            yarn install --immutable
+      - save_cache:
+          key: yarn-packages-{{ checksum "yarn.lock" }}
+          paths:
+            - node_modules
+            - .yarn/cache
+            - .yarn/install-state.gz
+            - src/*/node_modules
+      - run:
+          name: Build affected projects
+          command: yarn nx affected --targets=build --base=origin/main --parallel=1
+      - run:
+          name: Lint, test, and integration test
+          command: yarn nx affected --targets=lint,test:integration,test --base=origin/main
+
+  containers:
+    executor: main
+    steps:
+      - checkout
+      - run: git fetch origin main --depth=1 || true
+      - setup_remote_docker:
+          docker_layer_caching: true
+      - install-toolchain
+      - restore_cache:
+          keys:
+            - yarn-packages-{{ checksum "yarn.lock" }}
+            - yarn-packages-
+      - run:
+          name: Install dependencies
+          command: |
+            corepack enable
+            yarn install --immutable
+      - run:
+          name: Build affected container images
+          command: |
+            yarn nx affected --targets=container --exclude='*,!tag:container' --base=origin/main
+
 workflows:
   version: 2
-  check_project:
+  ci:
     jobs:
-      - build
-      - test:
+      - lint
+      - build-and-test:
           requires:
-            - build
+            - lint
+      - containers:
+          requires:
+            - build-and-test
