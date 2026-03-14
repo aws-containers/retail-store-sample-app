@@ -42,7 +42,6 @@
       }
     },
     "manifest": {},
-    "helm": {},
     "update-samples": {
       "executor": "nx:run-commands",
       "options": {
@@ -51,5 +50,5 @@
       }
     }
   },
-  "tags": ["service", "chart", "sample"]
+  "tags": ["service", "sample"]
 }

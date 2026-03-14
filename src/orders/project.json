@@ -46,8 +46,7 @@
         "command": "./mvnw spring-boot:run"
       }
     },
-    "manifest": {},
-    "helm": {}
+    "manifest": {}
   },
-  "tags": ["service", "chart"]
+  "tags": ["service"]
 }

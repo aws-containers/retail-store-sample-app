@@ -40,13 +40,13 @@ The application has been deliberately over-engineered to generate multiple de-co
 
 ![Architecture](/docs/images/architecture.png)
 
-| Component                  | Language | Container Image                                                             | Helm Chart                                                                        | Description                             |
-| -------------------------- | -------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------- |
-| [UI](./src/ui/)            | Java     | [Link](https://gallery.ecr.aws/aws-containers/retail-store-sample-ui)       | [Link](https://gallery.ecr.aws/aws-containers/retail-store-sample-ui-chart)       | Store user interface                    |
-| [Catalog](./src/catalog/)  | Go       | [Link](https://gallery.ecr.aws/aws-containers/retail-store-sample-catalog)  | [Link](https://gallery.ecr.aws/aws-containers/retail-store-sample-catalog-chart)  | Product catalog API                     |
-| [Cart](./src/cart/)        | Java     | [Link](https://gallery.ecr.aws/aws-containers/retail-store-sample-cart)     | [Link](https://gallery.ecr.aws/aws-containers/retail-store-sample-cart-chart)     | User shopping carts API                 |
-| [Orders](./src/orders)     | Java     | [Link](https://gallery.ecr.aws/aws-containers/retail-store-sample-orders)   | [Link](https://gallery.ecr.aws/aws-containers/retail-store-sample-orders-chart)   | User orders API                         |
-| [Checkout](./src/checkout) | Node     | [Link](https://gallery.ecr.aws/aws-containers/retail-store-sample-checkout) | [Link](https://gallery.ecr.aws/aws-containers/retail-store-sample-checkout-chart) | API to orchestrate the checkout process |
+| Component                  | Language | Container Image                                                             | Description                             |
+| -------------------------- | -------- | --------------------------------------------------------------------------- | --------------------------------------- |
+| [UI](./src/ui/)            | Java     | [Link](https://gallery.ecr.aws/aws-containers/retail-store-sample-ui)       | Store user interface                    |
+| [Catalog](./src/catalog/)  | Go       | [Link](https://gallery.ecr.aws/aws-containers/retail-store-sample-catalog)  | Product catalog API                     |
+| [Cart](./src/cart/)        | Java     | [Link](https://gallery.ecr.aws/aws-containers/retail-store-sample-cart)     | User shopping carts API                 |
+| [Orders](./src/orders)     | Java     | [Link](https://gallery.ecr.aws/aws-containers/retail-store-sample-orders)   | User orders API                         |
+| [Checkout](./src/checkout) | Node     | [Link](https://gallery.ecr.aws/aws-containers/retail-store-sample-checkout) | API to orchestrate the checkout process |
 
 ## Quickstart
 
@@ -102,44 +102,9 @@ To stop the containers in `docker compose` use Ctrl+C. To delete all the contain
 docker compose -f docker-compose.yaml down
 ```
 
-### Kubernetes
+## Infrastructure
 
-This deployment method will run the application in an existing Kubernetes cluster.
-
-Pre-requisites:
-
-- Kubernetes cluster
-- `kubectl` installed locally
-
-Use `kubectl` to run the application:
-
-```
-kubectl apply -f https://github.com/aws-containers/retail-store-sample-app/releases/latest/download/kubernetes.yaml
-kubectl wait --for=condition=available deployments --all
-```
-
-Get the URL for the frontend load balancer like so:
-
-```
-kubectl get svc ui
-```
-
-To remove the application use `kubectl` again:
-
-```
-kubectl delete -f https://github.com/aws-containers/retail-store-sample-app/releases/latest/download/kubernetes.yaml
-```
-
-### Terraform
-
-The following options are available to deploy the application using Terraform:
-
-| Name                                             | Description                                                                                                     |
-| ------------------------------------------------ | --------------------------------------------------------------------------------------------------------------- |
-| [Amazon EKS](./terraform/eks/default/)           | Deploys the application to Amazon EKS using other AWS services for dependencies, such as RDS, DynamoDB etc.     |
-| [Amazon EKS (Minimal)](./terraform/eks/minimal/) | Deploys the application to Amazon EKS using in-cluster dependencies instead of RDS, DynamoDB etc.               |
-| [Amazon ECS](./terraform/ecs/default/)           | Deploys the application to Amazon ECS using other AWS services for dependencies, such as RDS, DynamoDB etc.     |
-| [AWS App Runner](./terraform/apprunner/)         | Deploys the application to AWS App Runner using other AWS services for dependencies, such as RDS, DynamoDB etc. |
+Kubernetes manifests, Helm charts, and Terraform modules have been moved out of this repository as part of the infrastructure split. Use the sibling infra repository for cluster and cloud deployment assets.
 
 ## Security
 

@@ -62,20 +62,6 @@
       "options": {
         "command": "bash scripts/create-manifest.sh {args.repository} {args.tag}"
       }
-    },
-    "helm": {
-      "executor": "@nx-extensions/helm:package",
-      "outputs": ["{options.outputFolder}"],
-      "options": {
-        "chartFolder": "{projectRoot}/chart",
-        "outputFolder": "{workspaceRoot}/dist/charts/{projectName}",
-        "push": false,
-        "dependencies": {
-          "update": true,
-          "build": true,
-          "repositories": []
-        }
-      }
     }
   },
   "namedInputs": {
