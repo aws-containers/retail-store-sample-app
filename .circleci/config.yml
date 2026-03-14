@@ -217,10 +217,13 @@ jobs:
             test -n "${SNYK_TOKEN:-}"
 
             mkdir -p reports
+            project_name="${SNYK_PROJECT_NAME:-${CIRCLE_PROJECT_REPONAME:-retail-store-sample-app}-${CIRCLE_BRANCH}}"
 
             snyk_args=(
               code
               test
+              --report
+              --project-name="${project_name}"
               --severity-threshold="${SNYK_CODE_SEVERITY_THRESHOLD:-high}"
               --sarif-file-output=reports/snyk-code.sarif
             )
@@ -229,7 +232,19 @@ jobs:
               snyk_args+=(--org="${SNYK_ORG}")
             fi
 
-            snyk "${snyk_args[@]}"
+            set +e
+            snyk "${snyk_args[@]}" 2>&1 | tee reports/snyk-code.log
+            snyk_status=${PIPESTATUS[0]}
+            set -e
+
+            if [ "${snyk_status}" -ne 0 ]; then
+              if grep -q 'SNYK-CODE-0005' reports/snyk-code.log; then
+                echo "Snyk Code is not enabled for this organization. Skipping the Code scan."
+                exit 0
+              fi
+
+              exit "${snyk_status}"
+            fi
       - store_artifacts:
           path: /home/circleci/project/reports
           destination: snyk
