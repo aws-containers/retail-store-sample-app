@@ -1438,31 +1438,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@nx-extensions/core@npm:1.0.0":
-  version: 1.0.0
-  resolution: "@nx-extensions/core@npm:1.0.0"
-  dependencies:
-    "@actions/exec": "npm:^1.1.1"
-    "@nx/devkit": "npm:^20.0.0"
-    prettier: "npm:^3.0.0"
-    tslib: "npm:^2.3.0"
-  checksum: 10c0/b78eeb8d89759e71edba637148faa01215d202d7af54530fd338522294bf9d797be60cbe299b2587b98fde11b0d7242a9203f5fc05d293578c61fb640f64ff1f
-  languageName: node
-  linkType: hard
-
-"@nx-extensions/helm@npm:^1.0.0":
-  version: 1.0.0
-  resolution: "@nx-extensions/helm@npm:1.0.0"
-  dependencies:
-    "@nx-extensions/core": "npm:1.0.0"
-    js-yaml: "npm:^4.1.0"
-    tslib: "npm:^2.3.0"
-  peerDependencies:
-    "@nx/devkit": ^19.6.4 || ^20.0.0
-  checksum: 10c0/e34071b0b2d0578869d32a6b92fa85873d8335af8a311b33e448aff00714cfe362f30f4c2811d4fb97829d9abd3ceb3e42c6f8b82b6c274f227a9134cc91ffd2
-  languageName: node
-  linkType: hard
-
 "@nx-go/nx-go@npm:^3.3.1":
   version: 3.3.1
   resolution: "@nx-go/nx-go@npm:3.3.1"
@@ -4180,7 +4155,6 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "store@workspace:."
   dependencies:
-    "@nx-extensions/helm": "npm:^1.0.0"
     "@nx-go/nx-go": "npm:^3.3.1"
     "@nx-tools/nx-container": "npm:^6.2.0"
     "@nx/devkit": "npm:20.8.2"

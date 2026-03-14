@@ -94,15 +94,9 @@ jobs:
           yarn nx run-many -t manifest --projects=tag:service --args="--repository=${AWS_ECR_REPOSITORY}/retail-store-sample-{projectName},--tag=${IMAGE_TAG}"
           yarn nx manifest load-generator --args="--repository=${AWS_ECR_REPOSITORY}/retail-store-sample-utils,--tag=load-gen.${IMAGE_TAG}"
 
-          yarn nx run-many -t helm --projects=tag:service --remote oci://${AWS_ECR_REPOSITORY} --push
-
           bash scripts/compose-dist.sh
 
           gh release upload ${TAG_NAME} ./dist/docker-compose/docker-compose.yaml --clobber
-
-          bash scripts/kubernetes-dist.sh
-
-          gh release upload ${TAG_NAME} ./dist/kubernetes/kubernetes.yaml --clobber
 
           zip -j /tmp/sample-images.zip samples/images/*
 
