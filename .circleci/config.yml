@@ -187,6 +187,47 @@ jobs:
             - /home/circleci/project/src/checkout/node_modules
             - /home/circleci/project/src/checkout/.yarn/install-state.gz
 
+  snyk_code_scan:
+    executor: ubuntu
+    resource_class: medium
+    environment:
+      HUSKY: "0"
+    steps:
+      - checkout:
+          method: blobless
+      - install_packages:
+          node: true
+      - run:
+          name: Install Snyk CLI
+          command: |
+            set -euo pipefail
+            sudo npm install -g snyk
+            snyk --version
+      - run:
+          name: Run Snyk Code scan
+          command: |
+            set -euo pipefail
+
+            test -n "${SNYK_TOKEN:-}"
+
+            mkdir -p reports
+
+            snyk_args=(
+              code
+              test
+              --severity-threshold="${SNYK_CODE_SEVERITY_THRESHOLD:-high}"
+              --sarif-file-output=reports/snyk-code.sarif
+            )
+
+            if [ -n "${SNYK_ORG:-}" ]; then
+              snyk_args+=(--org="${SNYK_ORG}")
+            fi
+
+            snyk "${snyk_args[@]}"
+      - store_artifacts:
+          path: /home/circleci/project/reports
+          destination: snyk
+
   build_and_push_image:
     executor: ubuntu
     resource_class: medium
@@ -256,7 +297,11 @@ jobs:
               --tag "${production_registry}/${production_repository}:${IMAGE_TAG}" \
               --tag "${production_registry}/${production_repository}:main-latest" \
               --cache-from "type=registry,ref=${shared_registry}/${qa_repository}:buildcache" \
+              --cache-from "type=registry,ref=${shared_registry}/${staging_repository}:buildcache" \
+              --cache-from "type=registry,ref=${production_registry}/${production_repository}:buildcache" \
               --cache-to "type=registry,ref=${shared_registry}/${qa_repository}:buildcache,mode=max" \
+              --cache-to "type=registry,ref=${shared_registry}/${staging_repository}:buildcache,mode=max" \
+              --cache-to "type=registry,ref=${production_registry}/${production_repository}:buildcache,mode=max" \
               --push \
               "src/${service}"
 
@@ -339,6 +384,15 @@ workflows:
             alias: publish_main_images
             parameters:
               service: ["ui", "catalog", "cart", "orders", "checkout"]
+          requires:
+            - validate_jvm_services
+            - validate_polyglot_services
+            - snyk_code_scan
+          filters:
+            branches:
+              only:
+                - main
+      - snyk_code_scan:
           requires:
             - validate_jvm_services
             - validate_polyglot_services
