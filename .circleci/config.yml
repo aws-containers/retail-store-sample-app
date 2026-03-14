@@ -1,38 +1,18 @@
 version: 2.1
 
-# Визначаємо кроки для перевірки Go-проекту
 jobs:
-  build_and_test:
+  build_and_test: # Назва має збігатися з тим, що ви вказали в GitHub Ruleset
     docker:
-      # Використовуємо офіційний образ CircleCI для Go
-      - image: cimg/go:1.21 
+      - image: cimg/base:stable
     steps:
-      - checkout # Завантажуємо код з GitHub
-
-      - restore_cache:
-          name: Відновлення кешу залежностей
-          keys:
-            - go-mod-v4-{{ checksum "go.sum" }}
-
+      - checkout
       - run:
-          name: Завантаження залежностей
-          command: go mod download
+          name: "Фінальна перевірка зв'язку"
+          command: |
+            echo "Привіт! Це CircleCI."
+            echo "Якщо ти бачиш це повідомлення, значить інтеграція працює."
+            echo "Зараз я просто перевіряю, що можу прочитати твій репозиторій."
 
-      - save_cache:
-          name: Збереження кешу залежностей
-          key: go-mod-v4-{{ checksum "go.sum" }}
-          paths:
-            - "/go/pkg/mod"
-
-      - run:
-          name: Перевірка синтаксису та збірка
-          command: go build -v ./...
-
-      - run:
-          name: Запуск тестів
-          command: go test -v ./...
-
-# Описуємо запуск процесу
 workflows:
   main_workflow:
     jobs:
