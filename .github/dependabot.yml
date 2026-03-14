@@ -24,7 +24,7 @@ updates:
   - package-ecosystem: "maven"
     directory: "/src/orders"
     schedule:
-      interval: "weekly"
+      interval: "daily"
 
   # Оновлення для GitHub Actions (якщо ви їх використовуєте)
   - package-ecosystem: "github-actions"
