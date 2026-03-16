@@ -26,6 +26,7 @@ import org.springframework.amqp.core.BindingBuilder;
 import org.springframework.amqp.core.FanoutExchange;
 import org.springframework.amqp.core.Queue;
 import org.springframework.amqp.rabbit.annotation.RabbitListenerConfigurer;
+import org.springframework.amqp.rabbit.connection.CachingConnectionFactory;
 import org.springframework.amqp.rabbit.connection.ConnectionFactory;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.amqp.rabbit.listener.RabbitListenerEndpointRegistrar;
@@ -93,6 +94,16 @@ public class RabbitMQMessagingConfig
   ) {
     final RabbitTemplate rabbitTemplate = new RabbitTemplate(connectionFactory);
     rabbitTemplate.setMessageConverter(producerJackson2MessageConverter());
+
+    if (properties.isSslEnabled()) {
+      try {
+        ((CachingConnectionFactory) connectionFactory).getRabbitConnectionFactory().useSslProtocol();
+        log.info("Using RabbitMQ SSL protocol");
+      } catch (Exception e) {
+        throw new RuntimeException("Failed to enable SSL protocol", e);
+      }
+    }
+
     return rabbitTemplate;
   }
 

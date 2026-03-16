@@ -89,6 +89,7 @@ app:
 
     rabbitmq:
       addresses: []
+      ssl: false
 
       secret:
         create: true
