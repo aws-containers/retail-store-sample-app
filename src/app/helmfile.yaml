@@ -10,7 +10,7 @@ releases:
           persistence:
             provider: mysql
         mysql:
-          create: true
+          create: false
 
   - name: "carts"
     namespace: "default"
@@ -23,7 +23,7 @@ releases:
           persistence:
             provider: dynamodb
         dynamodb:
-          create: true
+          create: false
 
   - name: "orders"
     namespace: "default"
@@ -38,9 +38,9 @@ releases:
           messaging:
             provider: rabbitmq
         postgresql:
-          create: true
+          create: false
         rabbitmq:
-          create: true
+          create: false
 
   - name: "checkout"
     namespace: "default"
@@ -55,7 +55,7 @@ releases:
           endpoints:
             orders: http://orders:80
         redis:
-          create: true
+          create: false
 
   - name: "ui"
     namespace: "default"

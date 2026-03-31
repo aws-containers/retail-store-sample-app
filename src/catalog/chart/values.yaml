@@ -7,7 +7,7 @@ replicaCount: 1
 image:
   repository: public.ecr.aws/aws-containers/retail-store-sample-catalog
   pullPolicy: IfNotPresent
-  tag: 
+  tag:
 
 imagePullSecrets: []
 nameOverride: ""
@@ -74,14 +74,14 @@ configMap:
 
 app:
   persistence:
-    provider: in-memory
-    endpoint: ""
+    provider: mysql
+    endpoint: "" # rds mysql from terraform output
     database: "catalog"
 
     secret:
       create: true
       name: catalog-db
-      username: catalog
+      username: catalog # fill it later
       password: ""
 
 mysql:
