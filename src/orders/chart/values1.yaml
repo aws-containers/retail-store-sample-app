@@ -74,14 +74,14 @@ configMap:
 
 app:
   persistence:
-    provider: 'in-memory'
-    endpoint: ''
+    provider: 'postgres'
+    endpoint: '' # endpoint rds
     database: 'orders'
 
     secret:
       create: true
       name: orders-db
-      username: orders
+      username: admin
       password: ""
 
   messaging:
