@@ -1,6 +1,0 @@
-{
-  "locals": {
-    "published_tag": "1.4.0",
-    "published_repository": "public.ecr.aws/aws-containers"
-  }
-}
