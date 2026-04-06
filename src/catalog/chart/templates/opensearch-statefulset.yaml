@@ -1,4 +1,4 @@
-{{- if eq .Values.app.search.provider "self-hosted" }}
+{{- if and .Values.app.search.enabled (eq .Values.app.search.provider "self-hosted") }}
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
@@ -38,7 +38,10 @@ spec:
             - name: DISABLE_INSTALL_DEMO_CONFIG
               value: "true"
             - name: OPENSEARCH_INITIAL_ADMIN_PASSWORD
-              value: {{ .Values.app.search.password }}
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .Values.app.persistence.secret.name }}
+                  key: RETAIL_CATALOG_SEARCH_OS_PASSWORD
           volumeMounts:
             - name: data
               mountPath: /usr/share/opensearch/data

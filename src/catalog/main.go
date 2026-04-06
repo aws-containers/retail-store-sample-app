@@ -133,6 +133,7 @@ func main() {
 	catalog.GET("/tags", c.ListTags)
 	catalog.GET("/products/:id", c.GetProduct)
 	catalog.GET("/search", c.SearchProducts)
+	catalog.POST("/reindex", c.ReindexProducts)
 
 	r.GET("/health", func(c *gin.Context) {
 		if !chaosController.IsHealthy() {

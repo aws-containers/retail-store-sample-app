@@ -34,6 +34,7 @@ import (
 // SearchRepository interface for search operations
 type SearchRepository interface {
 	SearchProducts(keyword string, page, size int, ctx context.Context) ([]model.Product, error)
+	Reindex() error
 }
 
 // OpenSearchRepository implements SearchRepository
@@ -68,7 +69,7 @@ func NewOpenSearchRepository(config config.OpenSearchConfiguration) (*OpenSearch
 	cfg := opensearch.Config{
 		Addresses: []string{config.Endpoint},
 		Transport: &http.Transport{
-			TLSClientConfig: &tls.Config{InsecureSkipVerify: true},
+			TLSClientConfig: &tls.Config{InsecureSkipVerify: config.TLSSkipVerify},
 		},
 	}
 
@@ -76,9 +77,10 @@ func NewOpenSearchRepository(config config.OpenSearchConfiguration) (*OpenSearch
 	if config.Username != "" && config.Password != "" {
 		cfg.Username = config.Username
 		cfg.Password = config.Password
+
+		fmt.Printf("Connecting to OpenSearch as %s\n", config.Username)
 	}
 
-	fmt.Println("Connecting to OpenSearch as %s", config.Username)
 	client, err := opensearch.NewClient(cfg)
 	if err != nil {
 		return nil, fmt.Errorf("failed to create OpenSearch client: %w", err)
@@ -104,6 +106,7 @@ func NewOpenSearchRepository(config config.OpenSearchConfiguration) (*OpenSearch
 }
 
 // InitializeData creates the index and loads product data into OpenSearch
+// If the index already exists and contains documents, indexing is skipped.
 func (r *OpenSearchRepository) InitializeData() error {
 	ctx := context.Background()
 
@@ -114,16 +117,44 @@ func (r *OpenSearchRepository) InitializeData() error {
 	}
 	defer existsRes.Body.Close()
 
-	// Delete existing index if it exists
+	// If index exists, check if it has documents
 	if !existsRes.IsError() {
+		countReq := opensearchapi.CatCountRequest{
+			Index:  []string{r.indexName},
+			Format: "json",
+		}
+		countRes, err := countReq.Do(ctx, r.client)
+		if err != nil {
+			return fmt.Errorf("failed to check index document count: %w", err)
+		}
+		defer countRes.Body.Close()
+
+		if !countRes.IsError() {
+			var countResponse []struct {
+				Count string `json:"count"`
+			}
+			if err := json.NewDecoder(countRes.Body).Decode(&countResponse); err == nil {
+				if len(countResponse) > 0 && countResponse[0].Count != "0" {
+					fmt.Printf("OpenSearch index '%s' already exists with %s documents, skipping re-index\n", r.indexName, countResponse[0].Count)
+					return nil
+				}
+			}
+		}
+
+		// Index exists but is empty, delete and recreate
 		deleteRes, err := r.client.Indices.Delete([]string{r.indexName})
 		if err != nil {
 			return fmt.Errorf("failed to delete existing index: %w", err)
 		}
 		defer deleteRes.Body.Close()
-		fmt.Println("Deleted existing OpenSearch index")
+		fmt.Println("Deleted empty OpenSearch index, will recreate")
 	}
 
+	return r.createAndPopulateIndex(ctx)
+}
+
+// createAndPopulateIndex creates the index with mappings and loads product data.
+func (r *OpenSearchRepository) createAndPopulateIndex(ctx context.Context) error {
 	// Create index with mappings
 	mapping := `{
 		"settings": {
@@ -222,6 +253,29 @@ func (r *OpenSearchRepository) InitializeData() error {
 
 	fmt.Printf("Successfully indexed %d products into OpenSearch\n", len(products))
 	return nil
+}
+
+// Reindex drops the existing index and recreates it with fresh data.
+func (r *OpenSearchRepository) Reindex() error {
+	ctx := context.Background()
+
+	// Delete existing index if it exists
+	existsRes, err := r.client.Indices.Exists([]string{r.indexName})
+	if err != nil {
+		return fmt.Errorf("failed to check index existence: %w", err)
+	}
+	defer existsRes.Body.Close()
+
+	if !existsRes.IsError() {
+		deleteRes, err := r.client.Indices.Delete([]string{r.indexName})
+		if err != nil {
+			return fmt.Errorf("failed to delete existing index: %w", err)
+		}
+		defer deleteRes.Body.Close()
+		fmt.Println("Deleted existing OpenSearch index for reindex")
+	}
+
+	return r.createAndPopulateIndex(ctx)
 }
 
 // SearchProducts searches for products matching the keyword with pagination
