@@ -2,6 +2,9 @@
 image:
   repository: retail-store-sample-orders
   tag: dev
+{{else if env "ORDERS_IMAGE_TAG" }}
+image:
+  tag: {{ env "ORDERS_IMAGE_TAG" }}
 {{end}}
 
 {{if env "RANDOM_PASSWORD" }}

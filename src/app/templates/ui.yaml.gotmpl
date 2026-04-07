@@ -2,4 +2,7 @@
 image:
   repository: retail-store-sample-ui
   tag: dev
+{{else if env "UI_IMAGE_TAG" }}
+image:
+  tag: {{ env "UI_IMAGE_TAG" }}
 {{end}}
