@@ -3,3 +3,11 @@ Dockerfile
 docker-compose.yml
 .gitignore
 scripts
+.vscode
+.idea
+chart
+README.md
+*.log
+tmp
+coverage
+test

@@ -1,0 +1,84 @@
+name: PR Validation
+
+on:
+  push:
+    branches-ignore:
+      - main
+  pull_request:
+    branches:
+      - main
+    types:
+      - opened
+      - edited
+      - synchronize
+      - reopened
+  workflow_dispatch:
+
+concurrency:
+  group: pr-validation-${{ github.head_ref || github.ref_name }}
+  cancel-in-progress: true
+
+permissions:
+  pull-requests: read
+
+jobs:
+  semanticpr:
+    name: Semantic Pull Request
+    runs-on: ubuntu-latest
+    steps:
+      - name: Semantic PR title check
+        if: github.event_name == 'pull_request'
+        uses: amannn/action-semantic-pull-request@v5
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Skip semantic PR check for non-PR events
+        if: github.event_name != 'pull_request'
+        run: echo "Skipping semantic PR check for event '${{ github.event_name }}'."
+
+  validate:
+    name: Validate
+    uses: ./.github/workflows/validate.yml
+
+  dry-run-build:
+    name: Dry run container build
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    needs:
+      - semanticpr
+      - validate
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Setup Env
+        uses: ./.github/actions/setup-env
+      - name: Build containers (no push)
+        run: |
+          yarn nx affected --targets=container --exclude='*,!tag:container' --base origin/main
+
+  e2e:
+    name: E2E tests
+    runs-on: ubuntu-latest
+    if: github.event_name == 'pull_request'
+    needs:
+      - dry-run-build
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup Env
+        uses: ./.github/actions/setup-env
+      - name: Compose up
+        run: |
+          set -euo pipefail
+          DB_PASSWORD='test123' yarn nx compose:up ui
+      - name: Debug docker on failure
+        if: failure()
+        run: |
+          DB_PASSWORD='test123' docker compose -f src/app/docker-compose.yml ps
+          DB_PASSWORD='test123' docker compose -f src/app/docker-compose.yml logs --no-color --tail=300 checkout 2>&1 || true
+      - name: Test
+        run: |
+          CYPRESS_BASE_URL='http://localhost:8888' yarn nx execute e2e
+      - name: Compose down
+        run: |
+          DB_PASSWORD='test123' yarn nx compose:down ui

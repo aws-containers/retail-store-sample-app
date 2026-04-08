@@ -12,6 +12,11 @@ services:
     mem_limit: 512m
     cap_drop:
       - ALL
+    security_opt:
+      - no-new-privileges:true
+    read_only: true
+    tmpfs:
+      - /tmp:rw,noexec,nosuid
     healthcheck:
       test:
         [

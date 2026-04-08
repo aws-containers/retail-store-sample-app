@@ -12,6 +12,9 @@ services:
       - all
     security_opt:
       - no-new-privileges:true
+    read_only: true
+    tmpfs:
+      - /tmp:rw,noexec,nosuid
     environment:
       - GIN_MODE=release
       - reschedule=on-node-failure
@@ -25,6 +28,7 @@ services:
       interval: 10s
       timeout: 10s
       retries: 3
+      start_period: 10s
     develop:
       watch:
         - action: rebuild

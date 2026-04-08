@@ -10,11 +10,9 @@ RUN dnf --setopt=install_weak_deps=False install -q -y \
     tar \
     gzip \
     && \
-    dnf clean all
+    dnf clean all && \
+    rm -rf /var/cache/dnf
 
-ARG JAR_PATH
-
-VOLUME /tmp
 WORKDIR /
 
 COPY .mvn .mvn
@@ -34,29 +32,32 @@ FROM public.ecr.aws/amazonlinux/amazonlinux:2023
 # We tell DNF not to install Recommends and Suggests packages, which are
 # weak dependencies in DNF terminology, thus keeping our installed set of
 # packages as minimal as possible.
-RUN dnf --setopt=install_weak_deps=False install -q -y \
+RUN dnf --setopt=install_weak_deps=False --setopt=tsflags=nodocs install -q -y \
     java-21-amazon-corretto-headless \
     shadow-utils \
     && \
-    dnf clean all
+    useradd \
+    --home "/app" \
+    --create-home \
+    --user-group \
+    --uid "1000" \
+    "appuser" \
+    && \
+    dnf remove -q -y shadow-utils \
+    && \
+    dnf clean all && \
+    rm -rf /var/cache/dnf
 
 # use curl-full to use "telnet://" scheme
 # https://docs.aws.amazon.com/linux/al2023/ug/curl-minimal.html
 RUN dnf -q -y swap libcurl-minimal libcurl-full \
-    && dnf -q -y swap curl-minimal curl-full
+    && dnf -q -y swap curl-minimal curl-full \
+    && dnf clean all \
+    && rm -rf /var/cache/dnf
 
 ENV APPUSER=appuser
 ENV APPUID=1000
 ENV APPGID=1000
-
-RUN useradd \
-    --home "/app" \
-    --create-home \
-    --user-group \
-    --uid "$APPUID" \
-    "$APPUSER"
-
-ENV JAVA_TOOL_OPTIONS=
 ENV SPRING_PROFILES_ACTIVE=prod
 
 WORKDIR /app
@@ -67,4 +68,4 @@ COPY --chown=appuser:appuser --from=build-env /app.jar .
 
 EXPOSE 8080
 
-ENTRYPOINT ["sh", "-c", "java $JAVA_OPTS -jar /app/app.jar"]
+ENTRYPOINT ["sh", "-c", "exec java $JAVA_OPTS -jar /app/app.jar"]

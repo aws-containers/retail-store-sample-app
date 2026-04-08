@@ -1,0 +1,33 @@
+name: Validate
+
+on:
+  workflow_call:
+
+jobs:
+  hooks:
+    name: Lint
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Setup Env
+        uses: ./.github/actions/setup-env
+      - name: Lint
+        run: |
+          yarn nx affected --targets=lint --base origin/main
+
+  test:
+    name: Unit tests
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Setup Env
+        uses: ./.github/actions/setup-env
+      - name: Unit tests
+        run: |
+          yarn nx affected --targets=test --base origin/main

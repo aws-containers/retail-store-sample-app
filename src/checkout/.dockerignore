@@ -6,3 +6,11 @@ chart
 scripts
 dist
 node_modules
+.vscode
+.idea
+test
+coverage
+README.md
+.env
+*.log
+tmp

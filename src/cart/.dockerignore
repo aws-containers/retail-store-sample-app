@@ -6,3 +6,9 @@ chart
 scripts
 target
 .idea
+.vscode
+.env
+README.md
+*.log
+tmp
+coverage

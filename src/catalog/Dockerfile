@@ -8,7 +8,8 @@ RUN dnf --setopt=install_weak_deps=False install -q -y \
     git \
     golang \
     && \
-    dnf clean all
+    dnf clean all && \
+    rm -rf /var/cache/dnf
 
 RUN mkdir -p "${GOPATH}/src" "${GOPATH}/bin" /appsrc
 
@@ -21,37 +22,23 @@ RUN go mod download
 
 COPY . .
 
-RUN go build -o main main.go
+RUN CGO_ENABLED=0 GOOS=linux go build -ldflags="-s -w" -o main main.go
 
 # Final stage
-FROM public.ecr.aws/amazonlinux/amazonlinux:2023
+FROM public.ecr.aws/amazonlinux/amazonlinux:2023-minimal
 
 ENV APPUSER=appuser
 ENV APPUID=1000
 ENV APPGID=1000
 
-# We tell DNF not to install Recommends and Suggests packages, which are
-# weak dependencies in DNF terminology, thus keeping our installed set of
-# packages as minimal as possible.
-RUN dnf --setopt=install_weak_deps=False install -q -y \
-    shadow-utils \
-    && \
-    dnf clean all
-
-RUN useradd \
-    --home "/app" \
-    --create-home \
-    --user-group \
-    --uid "$APPUID" \
-    "$APPUSER"
-
 WORKDIR /app
-USER appuser
 
-COPY --chown=appuser:appuser --from=build-env /appsrc/main /app/
+COPY --chown=1000:1000 --from=build-env /appsrc/main /app/
 
 COPY ./ATTRIBUTION.md ./LICENSES.md
 
 ENV GIN_MODE=release
+EXPOSE 8080
+USER 1000:1000
 
 ENTRYPOINT ["/app/main"]

@@ -52,7 +52,7 @@
       "executor": "nx:run-commands",
       "options": {
         "cwd": "src/ui",
-        "command": "docker compose up --build --detach --wait"
+        "command": "docker compose up --build --detach --wait --wait-timeout 300"
       }
     },
     "compose:down": {
