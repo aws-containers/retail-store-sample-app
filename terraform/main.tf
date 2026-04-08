@@ -35,7 +35,7 @@ module "vpc" {
   public_subnets  = [cidrsubnet(var.vpc_cidr, 4, 2), cidrsubnet(var.vpc_cidr, 4, 3)]
 
   enable_nat_gateway   = true
-  single_nat_gateway   = true  # Switch to false in production for HA
+  single_nat_gateway   = false # Switch to false in production for HA
   enable_dns_hostnames = true
   enable_dns_support   = true
 
@@ -83,6 +83,18 @@ module "eks" {
   node_min_size      = var.node_min_size
   node_max_size      = var.node_max_size
   node_desired_size  = var.node_desired_size
+
+  tags = local.common_tags
+}
+
+# Optional root-level OIDC IAM role (IRSA) for app workloads.
+module "root_oidc_iam_role" {
+  count  = var.create_root_oidc_iam_role ? 1 : 0
+  source = "./modules/oidc_iam_role"
+
+  role_name                  = var.root_oidc_iam_role_name
+  oidc_provider_arn          = module.eks.oidc_provider_arn
+  namespace_service_accounts = var.root_oidc_namespace_service_accounts
 
   tags = local.common_tags
 }
