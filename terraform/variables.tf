@@ -67,3 +67,22 @@ variable "tags" {
   type        = map(string)
   default     = {}
 }
+
+# Root IRSA (optional)
+variable "create_root_oidc_iam_role" {
+  description = "Whether to create an OIDC IAM role from the root module."
+  type        = bool
+  default     = false
+}
+
+variable "root_oidc_iam_role_name" {
+  description = "IAM role name for the optional root-level IRSA role."
+  type        = string
+  default     = ""
+}
+
+variable "root_oidc_namespace_service_accounts" {
+  description = "List of namespace:serviceaccount values allowed for the optional root-level IRSA role."
+  type        = list(string)
+  default     = []
+}

@@ -51,3 +51,13 @@ output "cluster_autoscaler_role_arn" {
   description = "IAM role ARN for Cluster Autoscaler"
   value       = module.eks.cluster_autoscaler_role_arn
 }
+
+output "root_oidc_iam_role_arn" {
+  description = "IAM role ARN for the optional root-level OIDC IAM role"
+  value       = try(module.root_oidc_iam_role[0].iam_role_arn, null)
+}
+
+output "root_oidc_iam_role_name" {
+  description = "IAM role name for the optional root-level OIDC IAM role"
+  value       = try(module.root_oidc_iam_role[0].iam_role_name, null)
+}
