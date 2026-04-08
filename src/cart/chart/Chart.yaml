@@ -4,4 +4,4 @@ description: >-
   A Helm chart for the AWS retail store containers sample application carts
   service
 type: application
-version: 1.3.0
+version: 1.4.0
