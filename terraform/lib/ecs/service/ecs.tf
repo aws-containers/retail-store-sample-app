@@ -88,7 +88,19 @@ locals {
     environment = [
       {
         name = "CW_CONFIG_CONTENT"
-        value = jsonencode({
+        value = jsonencode(var.application_signals_enabled ? {
+          agent = {}
+          traces = {
+            traces_collected = {
+              otlp = {}
+            }
+          }
+          logs = {
+            metrics_collected = {
+              application_signals = {}
+            }
+          }
+          } : {
           agent = {}
           traces = {
             traces_collected = {
@@ -141,6 +153,11 @@ resource "aws_ecs_service" "this" {
   launch_type            = "FARGATE"
   enable_execute_command = true
   wait_for_steady_state  = true
+
+  deployment_circuit_breaker {
+    enable   = var.deployment_circuit_breaker_enabled
+    rollback = var.deployment_circuit_breaker_enabled
+  }
 
   network_configuration {
     security_groups  = [aws_security_group.this.id]

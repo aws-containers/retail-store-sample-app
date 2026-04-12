@@ -58,3 +58,27 @@ variable "allowed_ips" {
     error_message = "At least one IP address must be specified in allowed_ips"
   }
 }
+
+variable "monitoring_enabled" {
+  type        = bool
+  default     = false
+  description = "Enable monitoring module"
+}
+
+variable "alert_email" {
+  type        = string
+  default     = ""
+  description = "Email address for alarm notifications"
+}
+
+variable "deployment_circuit_breaker_enabled" {
+  type        = bool
+  default     = true
+  description = "Enable ECS deployment circuit breaker with rollback"
+}
+
+variable "application_signals_enabled" {
+  type        = bool
+  default     = true
+  description = "Enable CloudWatch Application Signals"
+}

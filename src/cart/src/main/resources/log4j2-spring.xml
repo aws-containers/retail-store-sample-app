@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN">
+  <Appenders>
+    <Console name="Console" target="SYSTEM_OUT">
+      <JsonTemplateLayout eventTemplateUri="classpath:log4j2-json-template.json"/>
+    </Console>
+  </Appenders>
+  <Loggers>
+    <Logger name="org.springframework" level="WARN"/>
+    <Logger name="org.apache" level="WARN"/>
+    <Logger name="io.opentelemetry" level="WARN"/>
+    <Root level="INFO">
+      <AppenderRef ref="Console"/>
+    </Root>
+  </Loggers>
+</Configuration>

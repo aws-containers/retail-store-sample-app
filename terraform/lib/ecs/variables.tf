@@ -147,3 +147,27 @@ variable "lifecycle_events_enabled" {
   default     = false
   description = "Enable ECS lifecycle events to CloudWatch Logs"
 }
+
+variable "monitoring_enabled" {
+  type        = bool
+  default     = false
+  description = "Enable monitoring module (alarms, dashboards, anomaly detection, etc.)"
+}
+
+variable "alert_email" {
+  type        = string
+  default     = ""
+  description = "Email address for alarm notifications"
+}
+
+variable "deployment_circuit_breaker_enabled" {
+  type        = bool
+  default     = false
+  description = "Enable ECS deployment circuit breaker with rollback"
+}
+
+variable "application_signals_enabled" {
+  type        = bool
+  default     = false
+  description = "Enable CloudWatch Application Signals"
+}

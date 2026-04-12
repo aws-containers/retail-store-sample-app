@@ -39,6 +39,11 @@ module "retail_app_ecs" {
   container_insights_setting = var.container_insights_setting
   lifecycle_events_enabled   = var.lifecycle_events_enabled
 
+  monitoring_enabled                = var.monitoring_enabled
+  alert_email                       = var.alert_email
+  deployment_circuit_breaker_enabled = var.deployment_circuit_breaker_enabled
+  application_signals_enabled       = var.application_signals_enabled
+
 
   catalog_db_endpoint = module.dependencies.catalog_db_endpoint
   catalog_db_port     = module.dependencies.catalog_db_port

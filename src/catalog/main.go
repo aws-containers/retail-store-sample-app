@@ -19,7 +19,7 @@ package main
 import (
 	"context"
 	"fmt"
-	"log"
+	"log/slog"
 	"net/http"
 	"os"
 	"os/signal"
@@ -61,41 +61,50 @@ import (
 func main() {
 	ctx := context.Background()
 
+	logger := slog.New(slog.NewJSONHandler(os.Stdout, &slog.HandlerOptions{
+		Level: slog.LevelInfo,
+	}))
+	slog.SetDefault(logger)
+
 	_, otelPresent := os.LookupEnv("OTEL_SERVICE_NAME")
 
 	if otelPresent {
 		_, err := initTracer(ctx)
 		if err != nil {
-			log.Fatal(err)
+			slog.Error("Failed to initialize tracer", "error", err)
+			os.Exit(1)
 		}
 	}
 
 	var config config.AppConfiguration
 	if err := envconfig.Process(ctx, &config); err != nil {
-		log.Fatal(err)
+		slog.Error("Failed to process config", "error", err)
+		os.Exit(1)
 	}
 
 	db, err := repository.NewRepository(config.Database)
 	if err != nil {
-		log.Fatal(err)
+		slog.Error("Failed to create repository", "error", err)
+		os.Exit(1)
 	}
 
 	api, err := api.NewCatalogAPI(db)
 	if err != nil {
-		log.Fatal(err)
+		slog.Error("Failed to create API", "error", err)
+		os.Exit(1)
 	}
 
 	r := gin.New()
-	r.Use(gin.LoggerWithConfig(gin.LoggerConfig{
-		SkipPaths: []string{"/health"},
-	}))
+	r.Use(slogGinMiddleware(logger))
+	r.Use(gin.Recovery())
 
 	p := ginprometheus.NewPrometheus("gin")
 	p.Use(r)
 
 	c, err := controller.NewController(api)
 	if err != nil {
-		log.Fatalln("Error creating controller", err)
+		slog.Error("Error creating controller", "error", err)
+		os.Exit(1)
 	}
 
 	chaosController := middleware.NewChaosController()
@@ -144,7 +153,8 @@ func main() {
 	// it won't block the graceful shutdown handling below
 	go func() {
 		if err := srv.ListenAndServe(); err != nil && err != http.ErrServerClosed {
-			log.Fatalf("listen: %s\n", err)
+			slog.Error("Server listen failed", "error", err)
+			os.Exit(1)
 		}
 	}()
 
@@ -156,17 +166,53 @@ func main() {
 	// kill -9 is syscall.SIGKILL but can't be catch, so don't need add it
 	signal.Notify(quit, syscall.SIGINT, syscall.SIGTERM)
 	<-quit
-	log.Println("Shutting down server...")
+	slog.Info("Shutting down server...")
 
 	// The context is used to inform the server it has 5 seconds to finish
 	// the request it is currently handling
 	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
 	defer cancel()
 	if err := srv.Shutdown(ctx); err != nil {
-		log.Fatal("Server forced to shutdown:", err)
+		slog.Error("Server forced to shutdown", "error", err)
+		os.Exit(1)
 	}
 
-	log.Println("Server exiting")
+	slog.Info("Server exiting")
+}
+
+func slogGinMiddleware(logger *slog.Logger) gin.HandlerFunc {
+	return func(c *gin.Context) {
+		start := time.Now()
+		path := c.Request.URL.Path
+
+		c.Next()
+
+		if path == "/health" {
+			return
+		}
+
+		latency := time.Since(start)
+		status := c.Writer.Status()
+
+		attrs := []slog.Attr{
+			slog.String("http.method", c.Request.Method),
+			slog.String("http.url", path),
+			slog.Int("http.status_code", status),
+			slog.String("http.client_ip", c.ClientIP()),
+			slog.String("http.user_agent", c.Request.UserAgent()),
+			slog.Duration("latency", latency),
+			slog.String("service.name", "catalog"),
+		}
+
+		level := slog.LevelInfo
+		if status >= 500 {
+			level = slog.LevelError
+		} else if status >= 400 {
+			level = slog.LevelWarn
+		}
+
+		logger.LogAttrs(c.Request.Context(), level, "HTTP request", attrs...)
+	}
 }
 
 func initTracer(ctx context.Context) (*sdktrace.TracerProvider, error) {

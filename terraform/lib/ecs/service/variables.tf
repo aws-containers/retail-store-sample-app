@@ -84,3 +84,15 @@ variable "opentelemetry_enabled" {
   description = "Boolean value that enables OpenTelemetry."
   type        = bool
 }
+
+variable "deployment_circuit_breaker_enabled" {
+  description = "Enable ECS deployment circuit breaker with rollback"
+  type        = bool
+  default     = false
+}
+
+variable "application_signals_enabled" {
+  description = "Enable CloudWatch Application Signals in the CW agent sidecar"
+  type        = bool
+  default     = false
+}

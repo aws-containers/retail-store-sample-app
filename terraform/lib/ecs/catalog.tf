@@ -11,6 +11,8 @@ module "catalog_service" {
   service_discovery_namespace_arn = aws_service_discovery_private_dns_namespace.this.arn
   cloudwatch_logs_group_id        = aws_cloudwatch_log_group.ecs_tasks.id
   opentelemetry_enabled           = var.opentelemetry_enabled
+  deployment_circuit_breaker_enabled = var.deployment_circuit_breaker_enabled
+  application_signals_enabled       = var.application_signals_enabled
 
   environment_variables = {
     RETAIL_CATALOG_PERSISTENCE_PROVIDER = "mysql"

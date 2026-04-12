@@ -1,0 +1,42 @@
+{
+  "timestamp": {
+    "$resolver": "timestamp",
+    "pattern": {
+      "format": "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'",
+      "timeZone": "UTC"
+    }
+  },
+  "level": {
+    "$resolver": "level",
+    "field": "name"
+  },
+  "service.name": "orders",
+  "message": {
+    "$resolver": "message",
+    "stringified": true
+  },
+  "error.type": {
+    "$resolver": "exception",
+    "field": "className"
+  },
+  "error.message": {
+    "$resolver": "exception",
+    "field": "message"
+  },
+  "logger": {
+    "$resolver": "logger",
+    "field": "name"
+  },
+  "thread": {
+    "$resolver": "thread",
+    "field": "name"
+  },
+  "trace_id": {
+    "$resolver": "mdc",
+    "key": "trace_id"
+  },
+  "span_id": {
+    "$resolver": "mdc",
+    "key": "span_id"
+  }
+}

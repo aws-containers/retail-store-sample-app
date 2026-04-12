@@ -22,12 +22,27 @@ import { NestFactory } from '@nestjs/core';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 import { AppModule } from './app.module';
 import { CheckoutModule } from './checkout/checkout.module';
+import { WinstonModule } from 'nest-winston';
+import * as winston from 'winston';
 
 async function bootstrap() {
   // Start SDK before nestjs factory create
   await otelSDK.start();
 
-  const app = await NestFactory.create(AppModule);
+  const app = await NestFactory.create(AppModule, {
+    logger: WinstonModule.createLogger({
+      transports: [
+        new winston.transports.Console({
+          format: winston.format.combine(
+            winston.format.timestamp({ format: 'YYYY-MM-DDTHH:mm:ss.SSS[Z]' }),
+            winston.format.errors({ stack: true }),
+            winston.format.json(),
+          ),
+        }),
+      ],
+      defaultMeta: { 'service.name': 'checkout' },
+    }),
+  });
   app.useGlobalPipes(new ValidationPipe());
 
   const config = new DocumentBuilder()
