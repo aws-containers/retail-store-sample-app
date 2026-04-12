@@ -4,7 +4,7 @@ locals {
       "name" : k,
       "value" : v
     }],
-    var.opentelemetry_enabled ? [
+    var.opentelemetry_enabled && !var.application_signals_enabled ? [
       {
         "name" : "OTEL_SDK_DISABLED",
         "value" : "false"
@@ -37,6 +37,48 @@ locals {
         "name" : "OTEL_SERVICE_NAME",
         "value" : var.service_name
       }
+    ] : [],
+    var.application_signals_enabled ? [
+      {
+        "name" : "OTEL_RESOURCE_ATTRIBUTES",
+        "value" : "service.name=${var.service_name}"
+      },
+      {
+        "name" : "OTEL_METRICS_EXPORTER",
+        "value" : "none"
+      },
+      {
+        "name" : "OTEL_LOGS_EXPORTER",
+        "value" : "none"
+      },
+      {
+        "name" : "OTEL_EXPORTER_OTLP_PROTOCOL",
+        "value" : "http/protobuf"
+      },
+      {
+        "name" : "OTEL_AWS_APPLICATION_SIGNALS_ENABLED",
+        "value" : "true"
+      },
+      {
+        "name" : "OTEL_AWS_APPLICATION_SIGNALS_EXPORTER_ENDPOINT",
+        "value" : "http://localhost:4316/v1/metrics"
+      },
+      {
+        "name" : "OTEL_EXPORTER_OTLP_TRACES_ENDPOINT",
+        "value" : "http://localhost:4316/v1/traces"
+      },
+      {
+        "name" : "OTEL_TRACES_SAMPLER",
+        "value" : "xray"
+      },
+      {
+        "name" : "OTEL_PROPAGATORS",
+        "value" : "tracecontext,baggage,b3,xray"
+      },
+      {
+        "name" : "JAVA_TOOL_OPTIONS",
+        "value" : " -javaagent:/otel-auto-instrumentation/javaagent.jar"
+      }
     ] : []
   ))
 
@@ -62,8 +104,24 @@ locals {
     environment            = jsondecode(local.environment)
     secrets                = jsondecode(local.secrets)
     cpu                    = 0
-    mountPoints            = []
     volumesFrom            = []
+    mountPoints = var.application_signals_enabled ? [
+      {
+        sourceVolume  = "opentelemetry-auto-instrumentation"
+        containerPath = "/otel-auto-instrumentation"
+        readOnly      = false
+      }
+    ] : []
+    dependsOn = var.application_signals_enabled ? [
+      {
+        containerName = "init"
+        condition     = "SUCCESS"
+      },
+      {
+        containerName = "cloudwatch-agent"
+        condition     = "START"
+      }
+    ] : null
     healthCheck = {
       command     = ["CMD-SHELL", "curl -f http://localhost:8080${var.healthcheck_path} || exit 1"]
       interval    = 10
@@ -81,6 +139,30 @@ locals {
     }
   }
 
+  init_container = {
+    name      = "init"
+    image     = "public.ecr.aws/aws-observability/adot-autoinstrumentation-java:v2.20.0"
+    essential = false
+    cpu       = 0
+    command   = ["cp", "/javaagent.jar", "/otel-auto-instrumentation/javaagent.jar"]
+    mountPoints = [
+      {
+        sourceVolume  = "opentelemetry-auto-instrumentation"
+        containerPath = "/otel-auto-instrumentation"
+        readOnly      = false
+      }
+    ]
+    volumesFrom = []
+    logConfiguration = {
+      logDriver = "awslogs"
+      options = {
+        "awslogs-group"         = var.cloudwatch_logs_group_id
+        "awslogs-region"        = data.aws_region.current.id
+        "awslogs-stream-prefix" = "init-${var.service_name}"
+      }
+    }
+  }
+
   otel_container = {
     name      = "cloudwatch-agent"
     image     = "public.ecr.aws/cloudwatch-agent/cloudwatch-agent:latest"
@@ -92,7 +174,7 @@ locals {
           agent = {}
           traces = {
             traces_collected = {
-              otlp = {}
+              application_signals = {}
             }
           }
           logs = {
@@ -110,7 +192,12 @@ locals {
         })
       }
     ]
-    portMappings = [
+    portMappings = var.application_signals_enabled ? [
+      {
+        containerPort = 4316
+        protocol      = "tcp"
+      }
+      ] : [
       {
         containerPort = 4318
         protocol      = "tcp"
@@ -128,7 +215,8 @@ locals {
 
   containers = concat(
     [local.base_container],
-    var.opentelemetry_enabled ? [local.otel_container] : []
+    var.opentelemetry_enabled || var.application_signals_enabled ? [local.otel_container] : [],
+    var.application_signals_enabled ? [local.init_container] : []
   )
 }
 
@@ -143,6 +231,13 @@ resource "aws_ecs_task_definition" "this" {
   memory                   = "2048"
   execution_role_arn       = aws_iam_role.task_execution_role.arn
   task_role_arn            = aws_iam_role.task_role.arn
+
+  dynamic "volume" {
+    for_each = var.application_signals_enabled ? [1] : []
+    content {
+      name = "opentelemetry-auto-instrumentation"
+    }
+  }
 }
 
 resource "aws_ecs_service" "this" {

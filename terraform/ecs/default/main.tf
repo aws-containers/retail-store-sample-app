@@ -43,6 +43,7 @@ module "retail_app_ecs" {
   alert_email                       = var.alert_email
   deployment_circuit_breaker_enabled = var.deployment_circuit_breaker_enabled
   application_signals_enabled       = var.application_signals_enabled
+  application_signals_slos_enabled  = var.application_signals_slos_enabled
 
 
   catalog_db_endpoint = module.dependencies.catalog_db_endpoint

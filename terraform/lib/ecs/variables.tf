@@ -171,3 +171,9 @@ variable "application_signals_enabled" {
   default     = false
   description = "Enable CloudWatch Application Signals"
 }
+
+variable "application_signals_slos_enabled" {
+  type        = bool
+  default     = false
+  description = "Enable Application Signals SLOs (requires services to be discovered first)"
+}

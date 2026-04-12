@@ -107,6 +107,18 @@ resource "aws_iam_role_policy_attachment" "cloudwatch_agent" {
   policy_arn = aws_iam_policy.cloudwatch_agent[0].arn
 }
 
+resource "aws_iam_role_policy_attachment" "cloudwatch_agent_server_policy" {
+  count      = var.application_signals_enabled ? 1 : 0
+  role       = aws_iam_role.task_role.name
+  policy_arn = "arn:aws:iam::aws:policy/CloudWatchAgentServerPolicy"
+}
+
+resource "aws_iam_role_policy_attachment" "xray_daemon_write" {
+  count      = var.application_signals_enabled ? 1 : 0
+  role       = aws_iam_role.task_role.name
+  policy_arn = "arn:aws:iam::aws:policy/AWSXRayDaemonWriteAccess"
+}
+
 resource "aws_iam_role_policy_attachment" "task_role_additional" {
   count      = length(var.additional_task_role_iam_policy_arns)
   role       = aws_iam_role.task_role.name

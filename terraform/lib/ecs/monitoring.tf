@@ -22,4 +22,6 @@ module "monitoring" {
 
   alert_email = var.alert_email
   tags        = var.tags
+
+  application_signals_slos_enabled = var.application_signals_slos_enabled
 }

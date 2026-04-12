@@ -32,7 +32,7 @@ resource "awscc_applicationsignals_service_level_objective" "this" {
       key_attributes = {
         "Type"        = "Service"
         "Name"        = each.value.service
-        "Environment" = var.cluster_name
+        "Environment" = "ecs:${var.cluster_name}"
       }
       metric_type    = each.value.metric_type
       period_seconds = 300
