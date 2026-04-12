@@ -34,6 +34,15 @@ temp/
 # Memory Bank
 memory-bank/
 
+# Kiro
+.kiro/
+
+# AIDLC
+aidlc-docs/
+
+# Specs
+specs/
+
 # mise
 .mise.lock
 .mise.local.toml

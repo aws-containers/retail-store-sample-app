@@ -26,6 +26,11 @@ on:
         required: false
         default: true
         type: boolean
+      monitoring_enabled:
+        description: 'Enable monitoring module (alarms, dashboard, anomaly detection)'
+        required: false
+        default: true
+        type: boolean
 
 permissions:
   id-token: write
@@ -81,6 +86,8 @@ jobs:
         env:
           TF_VAR_container_image_overrides: '{"ui":"${{ steps.ecr.outputs.ui }}","catalog":"${{ steps.ecr.outputs.catalog }}","cart":"${{ steps.ecr.outputs.cart }}","orders":"${{ steps.ecr.outputs.orders }}","checkout":"${{ steps.ecr.outputs.checkout }}"}'
           TF_VAR_opentelemetry_enabled: ${{ github.event.inputs.opentelemetry_enabled }}
+          TF_VAR_monitoring_enabled: ${{ github.event.inputs.monitoring_enabled }}
+          TF_VAR_alert_email: 'dnmll@amazon.com'
           TF_VAR_allowed_ips: '["${{ secrets.ALLOWED_IP_ADDRESS }}"]'
         run: |
           set +e
@@ -160,6 +167,8 @@ jobs:
         env:
           TF_VAR_container_image_overrides: '{"ui":"${{ steps.ecr.outputs.ui }}","catalog":"${{ steps.ecr.outputs.catalog }}","cart":"${{ steps.ecr.outputs.cart }}","orders":"${{ steps.ecr.outputs.orders }}","checkout":"${{ steps.ecr.outputs.checkout }}"}'
           TF_VAR_opentelemetry_enabled: ${{ github.event.inputs.opentelemetry_enabled }}
+          TF_VAR_monitoring_enabled: ${{ github.event.inputs.monitoring_enabled }}
+          TF_VAR_alert_email: 'dnmll@amazon.com'
           TF_VAR_allowed_ips: '["${{ secrets.ALLOWED_IP_ADDRESS }}"]'
         run: terraform apply -input=false tfplan
 
