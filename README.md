@@ -25,6 +25,10 @@ It provides:
 - The ability to run in different container orchestration technologies like Docker Compose, Kubernetes etc.
 - Pre-built container images for both x86-64 and ARM64 CPU architectures
 - All components instrumented for Prometheus metrics and OpenTelemetry OTLP tracing
+- Structured JSON logging across all services (Log4j2 JsonTemplateLayout, Go slog, winston)
+- Comprehensive CloudWatch monitoring with alarms, anomaly detection, and operational dashboard
+- CloudWatch Application Signals for SLO tracking and Application Map topology visualization
+- ECS deployment circuit breakers with automatic rollback
 - Support for Istio on Kubernetes
 - Load generator which exercises all of the infrastructure
 
@@ -140,6 +144,47 @@ The following options are available to deploy the application using Terraform:
 | [Amazon EKS (Minimal)](./terraform/eks/minimal/) | Deploys the application to Amazon EKS using in-cluster dependencies instead of RDS, DynamoDB etc.               |
 | [Amazon ECS](./terraform/ecs/default/)           | Deploys the application to Amazon ECS using other AWS services for dependencies, such as RDS, DynamoDB etc.     |
 | [AWS App Runner](./terraform/apprunner/)         | Deploys the application to AWS App Runner using other AWS services for dependencies, such as RDS, DynamoDB etc. |
+
+## Monitoring & Observability
+
+The ECS deployment includes a comprehensive monitoring module (`terraform/lib/ecs/monitoring/`) that can be enabled with `monitoring_enabled = true`. It provides:
+
+| Capability | Resources | Description |
+|---|---|---|
+| CloudWatch Alarms | ~40 alarms | ALB errors/latency, ECS CPU/memory/health per service, Aurora, DynamoDB, ElastiCache |
+| Anomaly Detection | 12 detectors | ANOMALY_DETECTION_BAND alarms for ALB and per-service ECS metrics |
+| Log Metric Filters | 6 filters + 3 alarms | Error count, exceptions, payment failures, database errors, auth failures |
+| Contributor Insights | 2 rules | Top error endpoints, top request sources |
+| X-Ray Insights | Group + 3 sampling rules | 100% error sampling, 100% slow request sampling, 25% baseline |
+| Application Signals | Discovery + 10 SLOs | Availability and latency SLOs per service with burn rate alerts |
+| Log Anomaly Detection | 1 detector | ML-based pattern anomaly detection on application logs |
+| Log Field Indexes | 1 policy | Indexed fields for faster Logs Insights queries |
+| Operational Dashboard | 1 dashboard | Service health, traffic, ECS compute, data stores |
+| Circuit Breaker | All 5 services | Automatic rollback on deployment failures |
+| Log Retention | 90 days | Compliance-ready log retention |
+| SNS Alerting | 2 topics | Critical and warning alert channels with email subscription |
+
+### Structured JSON Logging
+
+All services emit structured JSON logs for CloudWatch Logs Insights, Contributor Insights, and field index compatibility:
+
+| Service | Framework | Logging Implementation |
+|---|---|---|
+| UI, Cart, Orders | Java/Spring Boot | Log4j2 with `JsonTemplateLayout` (`log4j2-spring.xml`) |
+| Catalog | Go/Gin | `log/slog` with `slog.NewJSONHandler` + custom Gin middleware |
+| Checkout | Node.js/NestJS | `winston` with JSON transport via `nest-winston` |
+
+### Enabling Monitoring
+
+Via Terraform variables:
+```hcl
+monitoring_enabled                = true
+alert_email                       = "your-email@example.com"
+deployment_circuit_breaker_enabled = true
+application_signals_enabled       = true
+```
+
+Via the "Deploy to ECS Fargate" GitHub Actions workflow, select `monitoring_enabled: true` when triggering the workflow.
 
 ## Security
 
