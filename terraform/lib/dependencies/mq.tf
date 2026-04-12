@@ -27,6 +27,10 @@ resource "aws_mq_broker" "mq" {
     password = random_password.mq_password.result
   }
 
+  lifecycle {
+    ignore_changes = [user]
+  }
+
   tags = var.tags
 }
 
