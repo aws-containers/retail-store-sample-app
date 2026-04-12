@@ -29,10 +29,6 @@ resource "aws_s3_bucket" "terraform_state" {
   tags = {
     Name = "${var.project_name}-terraform-state"
   }
-
-  lifecycle {
-    prevent_destroy = true
-  }
 }
 
 resource "aws_s3_bucket_versioning" "terraform_state" {
@@ -75,10 +71,6 @@ resource "aws_dynamodb_table" "terraform_locks" {
 
   tags = {
     Name = "${var.project_name}-terraform-locks"
-  }
-
-  lifecycle {
-    prevent_destroy = true
   }
 }
 

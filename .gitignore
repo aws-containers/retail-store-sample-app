@@ -32,3 +32,6 @@ devenv.local.nix
 
 .pre-commit-config.yamltemp/
 temp/
+
+# Memory Bank
+memory-bank/
