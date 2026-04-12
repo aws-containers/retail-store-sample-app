@@ -19,7 +19,7 @@ locals {
 }
 
 resource "awscc_applicationsignals_service_level_objective" "this" {
-  for_each = local.slo_definitions
+  for_each = var.application_signals_slos_enabled ? local.slo_definitions : {}
 
   name        = "${var.environment_name}-${each.key}"
   description = "SLO for ${each.value.service} ${lower(each.value.metric_type)}"
@@ -30,11 +30,13 @@ resource "awscc_applicationsignals_service_level_objective" "this" {
 
     sli_metric = {
       key_attributes = {
-        "Type"    = "Service"
-        "Name"    = each.value.service
+        "Type"        = "Service"
+        "Name"        = each.value.service
         "Environment" = var.cluster_name
       }
-      metric_type = each.value.metric_type
+      metric_type    = each.value.metric_type
+      period_seconds = 300
+      statistic      = each.value.metric_type == "LATENCY" ? "p99" : null
     }
   }
 

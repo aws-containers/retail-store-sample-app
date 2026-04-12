@@ -8,7 +8,12 @@ resource "aws_cloudwatch_contributor_insight_rule" "top_error_endpoints" {
     LogFormat    = "JSON"
     Contribution = {
       Keys = ["$.\"service.name\"", "$.\"http.url\"", "$.\"error.type\""]
-      Filters = [{ Match = "$.level", EqualTo = "ERROR" }]
+      Filters = [
+        {
+          Match = "$.level"
+          In    = ["ERROR"]
+        }
+      ]
     }
     AggregateOn = "Count"
   })
@@ -25,7 +30,12 @@ resource "aws_cloudwatch_contributor_insight_rule" "top_slow_requests" {
     LogFormat    = "JSON"
     Contribution = {
       Keys = ["$.TaskId", "$.ServiceName"]
-      Filters = [{ Match = "$.Duration", GreaterThan = 2000 }]
+      Filters = [
+        {
+          Match     = "$.Duration"
+          GreaterThan = 2000
+        }
+      ]
     }
     AggregateOn = "Count"
   })
@@ -41,6 +51,12 @@ resource "aws_cloudwatch_contributor_insight_rule" "top_request_sources" {
     LogFormat    = "JSON"
     Contribution = {
       Keys = ["$.\"http.client_ip\"", "$.\"http.user_agent\""]
+      Filters = [
+        {
+          Match = "$.\"http.client_ip\""
+          IsPresent = true
+        }
+      ]
     }
     AggregateOn = "Count"
   })

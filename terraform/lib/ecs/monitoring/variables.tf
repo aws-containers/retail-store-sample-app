@@ -77,3 +77,9 @@ variable "tags" {
   type        = map(string)
   default     = {}
 }
+
+variable "application_signals_slos_enabled" {
+  type        = bool
+  description = "Enable Application Signals SLOs (requires services to be discovered by Application Signals first)"
+  default     = false
+}
