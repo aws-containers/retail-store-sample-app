@@ -41,7 +41,7 @@ locals {
     var.application_signals_enabled ? [
       {
         "name" : "OTEL_RESOURCE_ATTRIBUTES",
-        "value" : "service.name=${var.service_name}"
+        "value" : "service.name=${var.service_name},deployment.environment=ecs:${var.environment_name}-cluster"
       },
       {
         "name" : "OTEL_METRICS_EXPORTER",
