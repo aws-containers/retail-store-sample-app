@@ -12,12 +12,12 @@ The repository structure is as follows:
 
 TODO
 
-## Using devenv
+## Using mise
 
-Configuration files for [`devenv`](https://devenv.sh/) are provided. If you install it you can set up a development environment with all dependencies like so:
+Configuration files for [`mise`](https://mise.jdx.dev/) are provided. If you install it you can set up a development environment with all dependencies like so:
 
 ```
-devenv shell
+mise install
 ```
 
 The alternative is to install all the dependencies manually.

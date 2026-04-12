@@ -11,7 +11,9 @@ on:
 
 permissions: {}
 
-# Docker E2E tests commented out - focusing on ECS deployment
+# E2E tests commented out - focusing on ECS deployment via GitHub Actions
+# Uncomment jobs below to enable full e2e test suite
+#
 # jobs:
 #   docker:
 #     name: Docker E2E Tests
@@ -21,16 +23,13 @@ permissions: {}
 #       - name: "Setup Env"
 #         uses: ./.github/actions/setup-env
 #       - name: Compose up
-#         shell: devenv shell bash -- -e {0}
 #         run: |
 #           yarn nx compose:up ui
 #           sleep 60
 #       - name: Test
-#         shell: devenv shell bash -- -e {0}
 #         run: |
 #           CYPRESS_BASE_URL='http://localhost:8888' yarn nx execute e2e
 #       - name: Compose down
-#         shell: devenv shell bash -- -e {0}
 #         run: |
 #           yarn nx compose:down ui
 #
@@ -42,71 +41,69 @@ permissions: {}
 #       - name: "Setup Env"
 #         uses: ./.github/actions/setup-env
 #       - name: Compose up
-#         shell: devenv shell bash -- -e {0}
 #         run: |
 #           DB_PASSWORD='test123' yarn nx compose:up
 #           sleep 60
 #       - name: Test
-#         shell: devenv shell bash -- -e {0}
 #         run: |
 #           CYPRESS_BASE_URL='http://localhost:8888' yarn nx execute e2e
 #       - name: Load Generator
-#         shell: devenv shell bash -- -e {0}
 #         run: |
 #           cd src/load-generator
 #           bash scripts/run-test.sh
 #       - name: Compose down
-#         shell: devenv shell bash -- -e {0}
 #         run: |
 #           DB_PASSWORD='test123' yarn nx compose:down
+#
+#   kubernetes:
+#     name: Kubernetes E2E Tests
+#     runs-on: ubuntu-latest
+#     steps:
+#       - uses: actions/checkout@v4
+#       - name: "Setup Env"
+#         uses: ./.github/actions/setup-env
+#
+#       - name: Build images
+#         run: |
+#           yarn nx run-many -t build --projects=tag:service --parallel=1
+#
+#           yarn nx run-many -t container --projects=tag:service \
+#             --tags public.ecr.aws/aws-containers/retail-store-sample-{projectName}:e2e --parallel=5
+#
+#       - name: Kind cluster
+#         uses: helm/kind-action@v1.12.0
+#         with:
+#           cluster_name: kind
+#           version: v0.17.0
+#
+#       - name: Load images
+#         env:
+#           IMAGE_TAG: e2e
+#         run: |
+#           kind load docker-image public.ecr.aws/aws-containers/retail-store-sample-catalog:$IMAGE_TAG
+#           kind load docker-image public.ecr.aws/aws-containers/retail-store-sample-cart:$IMAGE_TAG
+#           kind load docker-image public.ecr.aws/aws-containers/retail-store-sample-checkout:$IMAGE_TAG
+#           kind load docker-image public.ecr.aws/aws-containers/retail-store-sample-orders:$IMAGE_TAG
+#           kind load docker-image public.ecr.aws/aws-containers/retail-store-sample-ui:$IMAGE_TAG
+#
+#           docker system prune --all --force
+#
+#       - name: Deploy
+#         env:
+#           IMAGE_TAG: e2e
+#         run: |
+#           NODE_PORT=30000 helmfile apply -f src/app/helmfile.yaml --wait --skip-diff-on-install
+#
+#           kubectl wait --for=condition=Ready pod -l app.kubernetes.io/owner=retail-store-sample --timeout 180s || exit_code=$?
+#
+#       - name: Test
+#         run: |
+#           bash scripts/e2e-kind.sh
 
 jobs:
-
-  # Kubernetes E2E tests commented out - not using Kubernetes for ECS deployment
-  # kubernetes:
-  #   name: Kubernetes E2E Tests
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - uses: actions/checkout@v4
-  #     - name: "Setup Env"
-  #       uses: ./.github/actions/setup-env
-  #
-  #     - name: Build images
-  #       shell: devenv shell bash -- -e {0}
-  #       run: |
-  #         yarn nx run-many -t build --projects=tag:service --parallel=1
-  #
-  #         yarn nx run-many -t container --projects=tag:service \
-  #           --tags public.ecr.aws/aws-containers/retail-store-sample-{projectName}:e2e --parallel=5
-  #
-  #     - name: Kind cluster
-  #       uses: helm/kind-action@v1.12.0
-  #       with:
-  #         cluster_name: kind
-  #         version: v0.17.0
-  #
-  #     - name: Load images
-  #       env:
-  #         IMAGE_TAG: e2e
-  #       run: |
-  #         kind load docker-image public.ecr.aws/aws-containers/retail-store-sample-catalog:$IMAGE_TAG
-  #         kind load docker-image public.ecr.aws/aws-containers/retail-store-sample-cart:$IMAGE_TAG
-  #         kind load docker-image public.ecr.aws/aws-containers/retail-store-sample-checkout:$IMAGE_TAG
-  #         kind load docker-image public.ecr.aws/aws-containers/retail-store-sample-orders:$IMAGE_TAG
-  #         kind load docker-image public.ecr.aws/aws-containers/retail-store-sample-ui:$IMAGE_TAG
-  #
-  #         docker system prune --all --force
-  #
-  #     - name: Deploy
-  #       shell: devenv shell bash -- -e {0}
-  #       env:
-  #         IMAGE_TAG: e2e
-  #       run: |
-  #         NODE_PORT=30000 helmfile apply -f src/app/helmfile.yaml --wait --skip-diff-on-install
-  #
-  #         kubectl wait --for=condition=Ready pod -l app.kubernetes.io/owner=retail-store-sample --timeout 180s || exit_code=$?
-  #
-  #     - name: Test
-  #       shell: devenv shell bash -- -e {0}
-  #       run: |
-  #         bash scripts/e2e-kind.sh
+  placeholder:
+    name: E2E Placeholder
+    runs-on: ubuntu-latest
+    steps:
+      - name: Skip
+        run: echo "E2E tests disabled - enable by uncommenting jobs above"

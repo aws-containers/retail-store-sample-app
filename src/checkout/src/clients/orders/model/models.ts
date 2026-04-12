@@ -19,12 +19,14 @@
 export * from './existingOrder';
 export * from './order';
 export * from './orderItem';
+export * from './shippingAddress';
 
 import localVarRequest = require('request');
 
 import { ExistingOrder } from './existingOrder';
 import { Order } from './order';
 import { OrderItem } from './orderItem';
+import { ShippingAddress } from './shippingAddress';
 
 /* tslint:disable:no-unused-variable */
 const primitives = [
@@ -44,6 +46,7 @@ const typeMap: { [index: string]: any } = {
   ExistingOrder: ExistingOrder,
   Order: Order,
   OrderItem: OrderItem,
+  ShippingAddress: ShippingAddress,
 };
 
 export class ObjectSerializer {

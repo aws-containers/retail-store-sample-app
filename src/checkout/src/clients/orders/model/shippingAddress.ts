@@ -29,14 +29,16 @@
  */
 
 import { RequestFile } from '../api';
-import { OrderItem } from './orderItem';
-import { ShippingAddress } from './shippingAddress';
 
-export class ExistingOrder {
-  'id'?: string;
-  'shippingAddress'?: ShippingAddress;
-  'items'?: Array<OrderItem>;
-  'createdDate'?: Date;
+export class ShippingAddress {
+  'firstName'?: string;
+  'lastName'?: string;
+  'email'?: string;
+  'address1'?: string;
+  'address2'?: string;
+  'city'?: string;
+  'zipCode'?: string;
+  'state'?: string;
 
   static discriminator: string | undefined = undefined;
 
@@ -46,29 +48,49 @@ export class ExistingOrder {
     type: string;
   }> = [
     {
-      name: 'id',
-      baseName: 'id',
-      type: 'string',
+      name: 'firstName',
+      baseName: 'firstName',
+      type: 'string'
     },
     {
-      name: 'items',
-      baseName: 'items',
-      type: 'Array<OrderItem>',
+      name: 'lastName',
+      baseName: 'lastName',
+      type: 'string'
     },
     {
-      name: 'shippingAddress',
-      baseName: 'shippingAddress',
-      type: 'ShippingAddress',
+      name: 'email',
+      baseName: 'email',
+      type: 'string'
     },
     {
-      name: 'createdDate',
-      baseName: 'createdDate',
-      type: 'Date',
+      name: 'address1',
+      baseName: 'address1',
+      type: 'string'
+    },
+    {
+      name: 'address2',
+      baseName: 'address2',
+      type: 'string'
+    },
+    {
+      name: 'city',
+      baseName: 'city',
+      type: 'string'
+    },
+    {
+      name: 'zipCode',
+      baseName: 'zipCode',
+      type: 'string'
+    },
+    {
+      name: 'state',
+      baseName: 'state',
+      type: 'string'
     }
   ];
 
   static getAttributeTypeMap() {
-    return ExistingOrder.attributeTypeMap;
+    return ShippingAddress.attributeTypeMap;
   }
 }
 

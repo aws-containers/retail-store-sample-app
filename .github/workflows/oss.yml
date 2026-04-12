@@ -3,6 +3,10 @@ name: OSS
 on:
   workflow_dispatch:
 
+permissions:
+  contents: write
+  pull-requests: write
+
 jobs:
   attribution:
     strategy:
@@ -15,7 +19,6 @@ jobs:
       - name: "Setup Env"
         uses: ./.github/actions/setup-env
       - name: Run
-        shell: devenv shell bash -- -e {0}
         env:
           COMPONENT_NAME: ${{ matrix.component }}
         run: |

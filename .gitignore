@@ -23,15 +23,25 @@ Chart.lock
 .nx/workspace-data
 
 screenshots
-# Devenv
-.devenv*
-devenv.local.nix
 
-# direnv
+.env
 .direnv
 
-.pre-commit-config.yamltemp/
+.pre-commit-config.yaml
+
 temp/
 
 # Memory Bank
 memory-bank/
+
+# mise
+.mise.lock
+.mise.local.toml
+
+# yarn
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
