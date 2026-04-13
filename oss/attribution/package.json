@@ -9,7 +9,7 @@
     "start": "node dist/main.js"
   },
   "dependencies": {
-    "axios": "^1.6.0",
+    "axios": "^1.15.0",
     "fs-extra": "^11.1.1",
     "handlebars": "^4.7.9"
   },
