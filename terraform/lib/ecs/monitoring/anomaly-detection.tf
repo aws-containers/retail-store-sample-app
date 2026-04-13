@@ -99,7 +99,7 @@ resource "aws_cloudwatch_metric_alarm" "ecs_memory_anomaly" {
 
   alarm_name          = "${var.environment_name}-${each.value}-memory-anomaly"
   comparison_operator = "GreaterThanUpperThreshold"
-  evaluation_periods  = 3
+  evaluation_periods  = 5
   threshold_metric_id = "ad1"
   alarm_description   = "ECS ${each.value} memory anomaly detected"
   treat_missing_data  = "notBreaching"
@@ -107,7 +107,7 @@ resource "aws_cloudwatch_metric_alarm" "ecs_memory_anomaly" {
   metric_query {
     id          = "ad1"
     return_data = true
-    expression  = "ANOMALY_DETECTION_BAND(m1, 2)"
+    expression  = "ANOMALY_DETECTION_BAND(m1, 4)"
   }
   metric_query {
     id          = "m1"
