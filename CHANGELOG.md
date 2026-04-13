@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.4.1](https://github.com/aws-containers/retail-store-sample-app/compare/v1.4.0...v1.4.1) (2026-04-06)
+
+
+### Bug Fixes
+
+* **orders:** Align field for address between checkout & orders ([#969](https://github.com/aws-containers/retail-store-sample-app/issues/969)) ([4881987](https://github.com/aws-containers/retail-store-sample-app/commit/4881987baef829774c6dc56dd8d8d03a0f279e1a))
+
 ## [1.4.0](https://github.com/aws-containers/retail-store-sample-app/compare/v1.3.0...v1.4.0) (2026-01-30)
 
 
