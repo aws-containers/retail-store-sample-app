@@ -51,6 +51,7 @@ jobs:
           AWS_ECR_REPOSITORY: ${{ secrets.AWS_ECR_REPOSITORY }}
         run: |
           export IMAGE_TAG=${TAG_NAME#v}
+          export GOPROXY="direct"
 
           # Build first to prevent partial container set push
           yarn nx run-many -t container --projects=tag:service --tags ${AWS_ECR_REPOSITORY}/retail-store-sample-{projectName}:${IMAGE_TAG}-${TARGET_ARCH}
