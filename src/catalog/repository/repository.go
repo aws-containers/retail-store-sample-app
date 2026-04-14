@@ -3,6 +3,7 @@ package repository
 import (
 	"context"
 	"fmt"
+	"time"
 
 	"github.com/aws-containers/retail-store-sample-app/catalog/config"
 	"github.com/aws-containers/retail-store-sample-app/catalog/model"
@@ -25,7 +26,20 @@ type CatalogRepository interface {
 
 func createMySQLDatabase(config config.DatabaseConfiguration) (*gorm.DB, error) {
 	connectionString := fmt.Sprintf("%s:%s@tcp(%s)/%s?timeout=%ds&charset=utf8mb4&parseTime=True&loc=Local", config.User, config.Password, config.Endpoint, config.Name, config.ConnectTimeout)
-	return gorm.Open(mysql.Open(connectionString), &gorm.Config{})
+
+	var db *gorm.DB
+	var err error
+
+	for i := 0; i < 6; i++ {
+		db, err = gorm.Open(mysql.Open(connectionString), &gorm.Config{})
+		if err == nil {
+			return db, nil
+		}
+		fmt.Printf("Waiting for MySQL to be ready... (%v)\n", err)
+		time.Sleep(5 * time.Second)
+	}
+
+	return nil, err
 }
 
 func NewRepository(config config.DatabaseConfiguration) (CatalogRepository, error) {
@@ -41,7 +55,7 @@ func NewRepository(config config.DatabaseConfiguration) (CatalogRepository, erro
 	}
 
 	if err != nil {
-		panic("failed to connect database")
+		return nil, fmt.Errorf("failed to connect database: %w", err)
 	}
 
 	if err := db.Use(tracing.NewPlugin(tracing.WithoutMetrics())); err != nil {
