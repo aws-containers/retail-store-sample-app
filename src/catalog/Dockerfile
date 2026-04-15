@@ -11,10 +11,9 @@ WORKDIR /app
 COPY go.mod go.sum ./
 RUN go mod download -x
 
-COPY cmd ./cmd
-# COPY internal ./internal (nếu có)
+COPY . .
 
-RUN go build -ldflags="-s -w" -o /app/catalog ./cmd/catalog
+RUN go build -ldflags="-s -w" -o /app/catalog .
 
 # Final stage
 FROM alpine:3.20
