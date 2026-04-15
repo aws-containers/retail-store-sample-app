@@ -1,7 +1,7 @@
 # src/catalog/Dockerfile
 FROM golang:1.23-alpine AS builder
 
-ENV GOPROXY=https://proxy.golang.org,direct
+ENV GOPROXY=https://proxy.golang.org,https://goproxy.io,direct
 ENV GO111MODULE=on
 ENV CGO_ENABLED=0
 ENV GOOS=linux
@@ -9,7 +9,7 @@ ENV GOOS=linux
 WORKDIR /app
 
 COPY go.mod go.sum ./
-RUN go mod download -x
+RUN go mod download || go mod download -x
 
 COPY . .
 
