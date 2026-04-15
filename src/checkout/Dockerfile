@@ -27,6 +27,6 @@ USER node
 
 EXPOSE 8080
 
-HEALTHCHECK --interval=30s --timeout=5s --start-period=20s CMD wget -qO- http://localhost:8080/api || exit 1
+HEALTHCHECK --interval=30s --timeout=5s --start-period=50s CMD wget -qO- http://localhost:8080/api || exit 1
 
 CMD ["node", "dist/main.js"]
