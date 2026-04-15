@@ -1,5 +1,5 @@
 # src/catalog/Dockerfile
-FROM golang:1.23-alpine AS builder
+FROM golang:1.24-alpine AS builder
 
 ENV GOPROXY=https://proxy.golang.org,https://goproxy.io,direct
 ENV GO111MODULE=on
