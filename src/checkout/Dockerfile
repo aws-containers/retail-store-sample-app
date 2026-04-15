@@ -17,13 +17,13 @@ RUN yarn build
 # Final stage
 FROM node:20-alpine
 
-RUN apk update && apk add --no-cache wget && adduser -D -u 1000 appuser
+RUN apk update && apk add --no-cache wget 
 
 WORKDIR /app
 
-COPY --from=builder --chown=1000:1000 /app ./
+COPY --from=builder /app ./
 
-USER 1000
+USER node
 
 EXPOSE 8080
 
