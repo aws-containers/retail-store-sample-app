@@ -2,26 +2,26 @@
 FROM node:20-alpine AS builder
 WORKDIR /app
 
-# copy root workspace
-COPY package.json yarn.lock nx.json ./
-COPY tsconfig.base.json ./
+# enable corepack để dùng yarn v4
+RUN corepack enable
 
-RUN yarn install --frozen-lockfile
+COPY package.json yarn.lock .yarnrc.yml ./
+COPY .yarn .yarn
+
+RUN yarn install
 
 COPY . .
-RUN yarn nx build checkout
 
-RUN yarn workspaces focus --production checkout
+RUN yarn build
 
-# Final
+# Final stage
 FROM node:20-alpine
 
 RUN apk update && apk add --no-cache wget && adduser -D -u 1000 appuser
 
 WORKDIR /app
 
-COPY --from=builder --chown=1000:1000 /app/dist/apps/checkout ./dist
-COPY --from=builder --chown=1000:1000 /app/node_modules ./node_modules
+COPY --from=builder --chown=1000:1000 /app ./
 
 USER 1000
 
