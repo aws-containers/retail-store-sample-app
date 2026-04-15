@@ -27,6 +27,6 @@ USER node
 
 EXPOSE 8080
 
-HEALTHCHECK CMD wget -qO- http://localhost:8080/health || exit 1
+HEALTHCHECK CMD wget -qO- http://localhost:8080 || exit 1
 
 CMD ["node", "dist/main.js"]
