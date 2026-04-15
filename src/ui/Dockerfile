@@ -18,14 +18,14 @@ RUN ./mvnw clean package -DskipTests --no-transfer-progress
 # Final stage
 FROM eclipse-temurin:21-jre-alpine
 
-RUN apk --no-cache add curl && adduser -D -u 1000 appuser
+RUN apk --no-cache add curl 
 
 WORKDIR /app
 
 # Copy JAR từ builder stage
 COPY --from=builder /app/target/*.jar app.jar
 
-USER 1000
+USER node
 
 EXPOSE 8080
 

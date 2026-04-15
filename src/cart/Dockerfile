@@ -14,16 +14,16 @@ RUN ./mvnw clean package -DskipTests --no-transfer-progress
 # Final stage
 FROM eclipse-temurin:21-jre-alpine
 
-RUN apk update && apk add --no-cache wget && adduser -D -u 1000 appuser
+RUN apk update && apk add --no-cache wget 
 
 WORKDIR /app
 
-COPY --from=builder --chown=1000:1000 /app/target/*.jar app.jar
+COPY --from=builder /app/target/*.jar app.jar
 
 ENV SPRING_PROFILES_ACTIVE=prod
 ENV JAVA_TOOL_OPTIONS=""
 
-USER 1000
+USER node
 
 EXPOSE 8080
 
