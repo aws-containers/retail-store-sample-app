@@ -7,12 +7,14 @@ ENV GOOS=linux
 
 WORKDIR /app
 
-COPY src/catalog/go.mod src/catalog/go.sum ./
+# Copy go mod trước
+COPY go.mod go.sum ./
 RUN go mod download
 
-COPY src/catalog/ ./
-RUN CGO_ENABLED=0 GOOS=linux go build -ldflags="-s -w" -o /catalog ./cmd/catalog
+COPY . .
+RUN go build -ldflags="-s -w" -o /catalog ./cmd/catalog
 
+# Final stage
 FROM alpine:3.20
 RUN apk --no-cache add ca-certificates && adduser -D -u 1000 appuser
 
