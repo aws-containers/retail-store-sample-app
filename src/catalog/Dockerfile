@@ -18,13 +18,13 @@ RUN go build -ldflags="-s -w" -o /app/catalog .
 # Final stage
 FROM alpine:3.20
 
-RUN apk update && apk add --no-cache ca-certificates wget 
+RUN apk update && apk add --no-cache ca-certificates wget && adduser -D -u 1000 appuser
 
 WORKDIR /app
 
-COPY --from=builder /app/catalog ./catalog
+COPY --from=builder --chown=1000:1000 /app/catalog ./catalog
 
-USER node
+USER 1000
 
 EXPOSE 8080
 
