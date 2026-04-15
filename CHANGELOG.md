@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.4.2](https://github.com/aws-containers/retail-store-sample-app/compare/v1.4.1...v1.4.2) (2026-04-15)
+
+
+### Bug Fixes
+
+* retry MySQL connection on startup ([#1005](https://github.com/aws-containers/retail-store-sample-app/issues/1005)) ([014320e](https://github.com/aws-containers/retail-store-sample-app/commit/014320e36eabc49607d03f7c1291c49e0684999f))
+* Update catalog goproxy ([#1009](https://github.com/aws-containers/retail-store-sample-app/issues/1009)) ([44244b0](https://github.com/aws-containers/retail-store-sample-app/commit/44244b07eb2e132dbb6caeaeaec43b0119f0db8c))
+
 ## [1.4.1](https://github.com/aws-containers/retail-store-sample-app/compare/v1.4.0...v1.4.1) (2026-04-06)
 
 
