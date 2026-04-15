@@ -156,7 +156,7 @@ The ECS deployment includes a comprehensive monitoring module (`terraform/lib/ec
 | Log Metric Filters | 6 filters + 3 alarms | Error count, exceptions, payment failures, database errors, auth failures |
 | Contributor Insights | 2 rules | Top error endpoints, top request sources |
 | X-Ray Insights | Group + 3 sampling rules | 100% error sampling, 100% slow request sampling, 25% baseline |
-| Application Signals | Discovery + 10 SLOs | Availability and latency SLOs per service with burn rate alerts |
+| Application Signals | Discovery + 8 SLOs | Availability and latency SLOs per service with burn rate alerts |
 | Log Anomaly Detection | 1 detector | ML-based pattern anomaly detection on application logs |
 | Log Field Indexes | 1 policy | Indexed fields for faster Logs Insights queries |
 | Operational Dashboard | 1 dashboard | Service health, traffic, ECS compute, data stores |
