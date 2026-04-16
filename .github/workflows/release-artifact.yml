@@ -26,6 +26,7 @@ permissions:
   contents: read
 
 env:
+  AWS_REGION: ${{ vars.AWS_REGION }}
   AWS_REGIONS_JSON: ${{ vars.AWS_REGIONS_JSON || '["ap-southeast-1","ap-northeast-1"]' }}
   ECR_REGISTRY: ${{ secrets.AWS_ECR_REGISTRY }}
   INFRA_VERSION_FILE_MAP_JSON: ${{ vars.INFRA_VERSION_FILE_MAP_JSON || '{"test":"environments/test/app-release.yaml","staging":"environments/staging/app-release.yaml","prod":"environments/prod/app-release.yaml"}' }}
