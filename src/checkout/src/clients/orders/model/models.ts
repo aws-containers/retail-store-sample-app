@@ -21,12 +21,28 @@ export * from './order';
 export * from './orderItem';
 export * from './shippingAddress';
 
-import localVarRequest = require('request');
-
 import { ExistingOrder } from './existingOrder';
 import { Order } from './order';
 import { OrderItem } from './orderItem';
 import { ShippingAddress } from './shippingAddress';
+
+export interface RequestAuth {
+  username: string;
+  password: string;
+}
+
+export interface RequestOptions {
+  method?: string;
+  qs?: Record<string, unknown>;
+  headers?: Record<string, string>;
+  uri?: string;
+  useQuerystring?: boolean;
+  json?: boolean;
+  body?: unknown;
+  form?: Record<string, unknown>;
+  formData?: Record<string, unknown>;
+  auth?: RequestAuth;
+}
 
 /* tslint:disable:no-unused-variable */
 const primitives = [
@@ -175,14 +191,14 @@ export interface Authentication {
   /**
    * Apply authentication settings to header and query params.
    */
-  applyToRequest(requestOptions: localVarRequest.Options): Promise<void> | void;
+  applyToRequest(requestOptions: RequestOptions): Promise<void> | void;
 }
 
 export class HttpBasicAuth implements Authentication {
   public username = '';
   public password = '';
 
-  applyToRequest(requestOptions: localVarRequest.Options): void {
+  applyToRequest(requestOptions: RequestOptions): void {
     requestOptions.auth = {
       username: this.username,
       password: this.password,
@@ -193,7 +209,7 @@ export class HttpBasicAuth implements Authentication {
 export class HttpBearerAuth implements Authentication {
   public accessToken: string | (() => string) = '';
 
-  applyToRequest(requestOptions: localVarRequest.Options): void {
+  applyToRequest(requestOptions: RequestOptions): void {
     if (requestOptions && requestOptions.headers) {
       const accessToken =
         typeof this.accessToken === 'function'
@@ -210,9 +226,9 @@ export class ApiKeyAuth implements Authentication {
   constructor(
     private location: string,
     private paramName: string,
-  ) {}
+  ) { }
 
-  applyToRequest(requestOptions: localVarRequest.Options): void {
+  applyToRequest(requestOptions: RequestOptions): void {
     if (this.location == 'query') {
       (<any>requestOptions.qs)[this.paramName] = this.apiKey;
     } else if (
@@ -240,7 +256,7 @@ export class ApiKeyAuth implements Authentication {
 export class OAuth implements Authentication {
   public accessToken = '';
 
-  applyToRequest(requestOptions: localVarRequest.Options): void {
+  applyToRequest(requestOptions: RequestOptions): void {
     if (requestOptions && requestOptions.headers) {
       requestOptions.headers['Authorization'] = 'Bearer ' + this.accessToken;
     }
@@ -251,11 +267,11 @@ export class VoidAuth implements Authentication {
   public username = '';
   public password = '';
 
-  applyToRequest(_: localVarRequest.Options): void {
+  applyToRequest(_: RequestOptions): void {
     // Do nothing
   }
 }
 
 export type Interceptor = (
-  requestOptions: localVarRequest.Options,
+  requestOptions: RequestOptions,
 ) => Promise<void> | void;
