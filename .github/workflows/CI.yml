@@ -14,111 +14,202 @@ on:
 
 concurrency:
   group: ci-${{ github.ref }}
-  cancel-in-progress: false
+  cancel-in-progress: true
 
 permissions:
   contents: read
   id-token: write
 
 jobs:
-  validate:
-    name: Validate
-    uses: ./.github/workflows/validate.yml
+  resolve-version:
+    name: Resolve Version
+    runs-on: ubuntu-latest
+    outputs:
+      version: ${{ steps.vars.outputs.version }}
+    steps:
+      - name: Resolve version
+        id: vars
+        env:
+          INPUT_VERSION: ${{ github.event.inputs.version || '' }}
+        run: |
+          if [ -n "$INPUT_VERSION" ]; then
+            echo "version=$INPUT_VERSION" >> "$GITHUB_OUTPUT"
+          else
+            echo "version=${GITHUB_SHA}" >> "$GITHUB_OUTPUT"
+          fi
+
+  detect-changes:
+    name: Detect Changed Services
+    runs-on: ubuntu-latest
+    outputs:
+      changed_services_matrix: ${{ steps.set-matrix.outputs.changed_services_matrix }}
+      any_service_changed: ${{ steps.set-matrix.outputs.any_service_changed }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Filter changed paths
+        id: changes
+        uses: dorny/paths-filter@v3
+        with:
+          filters: |
+            cart:
+              - 'src/cart/**'
+            catalog:
+              - 'src/catalog/**'
+            checkout:
+              - 'src/checkout/**'
+            orders:
+              - 'src/orders/**'
+            ui:
+              - 'src/ui/**'
+            load-generator:
+              - 'src/load-generator/**'
+            shared:
+              - '.github/workflows/**'
+              - '.github/actions/**'
+              - 'nx.json'
+              - 'package.json'
+              - 'yarn.lock'
+              - 'src/app/**'
+      - name: Build changed-service matrix
+        id: set-matrix
+        run: |
+          set -euo pipefail
+
+          full_services=(
+            cart
+            catalog
+            checkout
+            orders
+            ui
+            load-generator
+          )
+
+          changed_services=()
+
+          if [[ "${{ steps.changes.outputs.shared }}" == "true" ]]; then
+            changed_services=("${full_services[@]}")
+          else
+            [[ "${{ steps.changes.outputs.cart }}" == "true" ]] && changed_services+=("cart")
+            [[ "${{ steps.changes.outputs.catalog }}" == "true" ]] && changed_services+=("catalog")
+            [[ "${{ steps.changes.outputs.checkout }}" == "true" ]] && changed_services+=("checkout")
+            [[ "${{ steps.changes.outputs.orders }}" == "true" ]] && changed_services+=("orders")
+            [[ "${{ steps.changes.outputs.ui }}" == "true" ]] && changed_services+=("ui")
+            [[ "${{ steps.changes.outputs.load-generator }}" == "true" ]] && changed_services+=("load-generator")
+          fi
+
+          if [[ ${#changed_services[@]} -eq 0 ]]; then
+            echo "changed_services_matrix=[]" >> "$GITHUB_OUTPUT"
+            echo "any_service_changed=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          matrix_json="$(printf '%s\n' "${changed_services[@]}" | jq -R . | jq -sc .)"
+          echo "changed_services_matrix=$matrix_json" >> "$GITHUB_OUTPUT"
+          echo "any_service_changed=true" >> "$GITHUB_OUTPUT"
 
   build:
     name: Build Images
-    needs: validate
-    runs-on: ${{ matrix.os }}
-    strategy:
-      fail-fast: false
-      matrix:
-        include:
-          - os: ubuntu-22.04
-            arch: amd64
-    steps:
-      - name: Resolve version
-        id: vars
-        env:
-          INPUT_VERSION: ${{ github.event.inputs.version || '' }}
-        run: |
-          if [ -n "$INPUT_VERSION" ]; then
-            echo "version=$INPUT_VERSION" >> "$GITHUB_OUTPUT"
-          else
-            echo "version=${GITHUB_SHA}" >> "$GITHUB_OUTPUT"
-          fi
-      - uses: actions/checkout@v4
-        with:
-          ref: ${{ steps.vars.outputs.version }}
-      - name: "Setup Docker"
-        uses: ./.github/actions/setup-docker
-      - name: "Setup Env"
-        uses: ./.github/actions/setup-env
-      - name: "Get AWS credentials"
-        uses: aws-actions/configure-aws-credentials@v4
-        with:
-          role-to-assume: ${{ secrets.AWS_ROLE_ARN }}
-          aws-region: ap-southeast-1
-          role-session-name: GithubActionsSession
+    needs:
+      - resolve-version
+      - detect-changes
+    if: needs.detect-changes.outputs.any_service_changed == 'true'
+    uses: ./.github/workflows/r-build-scan-push.yml
+    with:
+      services_matrix: ${{ needs.detect-changes.outputs.changed_services_matrix }}
+      version: ${{ needs.resolve-version.outputs.version }}
+      target_arch: amd64
+      aws_region: ${{ vars.AWS_REGION || 'ap-southeast-1' }}
+      aws_ecr_repository: ${{ vars.AWS_ECR_REPOSITORY }}
+    secrets: inherit
 
-      - name: "Login to Amazon ECR Private"
-        id: login-ecr
-        uses: aws-actions/amazon-ecr-login@v2
-
-      - name: Build
-        env:
-          TAG_NAME: ${{ steps.vars.outputs.version }}
-          TARGET_ARCH: ${{ matrix.arch }}
-          AWS_ECR_REPOSITORY: ${{ vars.AWS_ECR_REPOSITORY }}
-        run: |
-          export IMAGE_TAG=${TAG_NAME#v}
-
-          # Build first to prevent partial container set push
-          yarn nx run-many -t container --projects=tag:service --tags ${AWS_ECR_REPOSITORY}/retail-store-sample-{projectName}:${IMAGE_TAG}-${TARGET_ARCH}
-          yarn nx container load-generator --tags ${AWS_ECR_REPOSITORY}/retail-store-sample-utils:load-gen.${IMAGE_TAG}-${TARGET_ARCH}
-
-          # Then push
-          yarn nx run-many -t container --push true --projects=tag:service --tags ${AWS_ECR_REPOSITORY}/retail-store-sample-{projectName}:${IMAGE_TAG}-${TARGET_ARCH}
-          yarn nx container load-generator --push true --tags ${AWS_ECR_REPOSITORY}/retail-store-sample-utils:load-gen.${IMAGE_TAG}-${TARGET_ARCH}
-
-  publish:
-    name: Publish
-    needs: build
+  handoff-gitops:
+    name: Handoff To GitOps Main
+    needs:
+      - build
+      - resolve-version
+      - detect-changes
+    if: needs.detect-changes.outputs.any_service_changed == 'true'
     runs-on: ubuntu-latest
+    env:
+      GITOPS_REPO: ${{ github.repository_owner }}/ecommerce-gitops
+      GITOPS_VALUES_BASE: services
     steps:
-      - name: Resolve version
-        id: vars
-        env:
-          INPUT_VERSION: ${{ github.event.inputs.version || '' }}
-        run: |
-          if [ -n "$INPUT_VERSION" ]; then
-            echo "version=$INPUT_VERSION" >> "$GITHUB_OUTPUT"
-          else
-            echo "version=${GITHUB_SHA}" >> "$GITHUB_OUTPUT"
-          fi
       - uses: actions/checkout@v4
         with:
-          ref: ${{ steps.vars.outputs.version }}
-      - name: "Setup Env"
-        uses: ./.github/actions/setup-env
-      - name: "Get AWS credentials"
-        uses: aws-actions/configure-aws-credentials@v4
+          ref: ${{ needs.resolve-version.outputs.version }}
+
+      - name: Checkout GitOps repository
+        uses: actions/checkout@v4
         with:
-          role-to-assume: ${{ secrets.AWS_ROLE_ARN }}
-          aws-region: ap-southeast-1
-          role-session-name: GithubActionsSession
+          repository: ${{ env.GITOPS_REPO }}
+          ref: main
+          token: ${{ secrets.GITOPS_PAT }}
+          path: gitops
 
-      - name: "Login to Amazon ECR Private"
-        id: login-ecr
-        uses: aws-actions/amazon-ecr-login@v2
-
-      - name: Push manifests and helm charts
-        env:
-          TAG_NAME: ${{ steps.vars.outputs.version }}
-          AWS_ECR_REPOSITORY: ${{ vars.AWS_ECR_REPOSITORY }}
+      - name: Install yq
         run: |
-          export IMAGE_TAG=${TAG_NAME#v}
+          sudo wget -qO /usr/local/bin/yq https://github.com/mikefarah/yq/releases/download/v4.44.3/yq_linux_amd64
+          sudo chmod +x /usr/local/bin/yq
+          yq --version
 
-          yarn nx run-many -t manifest --projects=tag:service --args="--repository=${AWS_ECR_REPOSITORY}/retail-store-sample-{projectName},--tag=${IMAGE_TAG}"
-          yarn nx manifest load-generator --args="--repository=${AWS_ECR_REPOSITORY}/retail-store-sample-utils,--tag=load-gen.${IMAGE_TAG}"
+      - name: Update image tags in GitOps repo
+        env:
+          SERVICES_JSON: ${{ needs.detect-changes.outputs.changed_services_matrix }}
+          TAG_NAME: ${{ needs.resolve-version.outputs.version }}
+        run: |
+          set -euo pipefail
 
-          yarn nx run-many -t helm --projects=tag:service --remote oci://${AWS_ECR_REPOSITORY} --push
+          IMAGE_TAG="${TAG_NAME#v}"
+          changed_any=false
+
+          while IFS= read -r service; do
+            [ -z "$service" ] && continue
+            values_file="gitops/${GITOPS_VALUES_BASE}/${service}/values.yaml"
+
+            if [ ! -f "$values_file" ]; then
+              echo "Skip missing values file: $values_file"
+              continue
+            fi
+
+            export IMAGE_TAG
+            yq -i '.image.tag = strenv(IMAGE_TAG)' "$values_file"
+
+            changed_any=true
+            echo "Updated $values_file"
+          done < <(echo "$SERVICES_JSON" | jq -r '.[]')
+
+          if [ "$changed_any" = "false" ]; then
+            echo "No services to update"
+            exit 0
+          fi
+
+          echo "### GitOps handoff candidates" >> "$GITHUB_STEP_SUMMARY"
+          echo "Tag: ${IMAGE_TAG}" >> "$GITHUB_STEP_SUMMARY"
+          echo "- values base: ${GITOPS_VALUES_BASE}" >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Commit and push GitOps changes
+        env:
+          TAG_NAME: ${{ needs.resolve-version.outputs.version }}
+        run: |
+          set -euo pipefail
+
+          cd gitops
+          git config user.name "ecommerce-cd-bot"
+          git config user.email "ecommerce-cd-bot@users.noreply.github.com"
+
+          mapfile -t changed_files < <(git diff --name-only -- 'services/*/values.yaml')
+
+          if [ ${#changed_files[@]} -eq 0 ]; then
+            echo "No GitOps changes detected"
+            exit 0
+          fi
+
+          echo "### GitOps files updated" >> "$GITHUB_STEP_SUMMARY"
+          for file in "${changed_files[@]}"; do
+            echo "- ${file}" >> "$GITHUB_STEP_SUMMARY"
+          done
+
+          git add -- "${changed_files[@]}"
+          git commit -m "chore(cd): sync image tags from ${TAG_NAME}"
+          git push origin main

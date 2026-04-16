@@ -1,0 +1,105 @@
+name: Reusable Build and Push
+
+on:
+  workflow_call:
+    inputs:
+      services_matrix:
+        description: "JSON array of changed services"
+        required: true
+        type: string
+      version:
+        description: "Version, tag, or SHA used for image tagging"
+        required: true
+        type: string
+      target_arch:
+        description: "Target architecture suffix in image tag"
+        required: false
+        default: "amd64"
+        type: string
+      aws_region:
+        description: "AWS region for ECR operations"
+        required: false
+        default: "ap-southeast-1"
+        type: string
+      aws_ecr_repository:
+        description: "Base ECR repository endpoint"
+        required: true
+        type: string
+    secrets:
+      AWS_ROLE_ARN:
+        required: true
+
+jobs:
+  build-and-push:
+    name: Build and Push Images
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.version }}
+
+      - name: Setup Docker
+        uses: ./.github/actions/setup-docker
+
+      - name: Setup Env
+        uses: ./.github/actions/setup-env
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ secrets.AWS_ROLE_ARN }}
+          aws-region: ${{ inputs.aws_region }}
+          role-session-name: GithubActionsSession
+
+      - name: Login to Amazon ECR Private
+        id: login-ecr
+        uses: aws-actions/amazon-ecr-login@v2
+
+      - name: Ensure ECR repositories exist
+        env:
+          SERVICES_JSON: ${{ inputs.services_matrix }}
+        run: |
+          set -euo pipefail
+
+          while IFS= read -r service; do
+            [ -z "$service" ] && continue
+            repository_name="ecommerce/${service}"
+
+            if aws ecr describe-repositories --repository-names "$repository_name" >/dev/null 2>&1; then
+              echo "ECR repository exists: $repository_name"
+            else
+              echo "Creating ECR repository: $repository_name"
+              aws ecr create-repository --repository-name "$repository_name" >/dev/null
+            fi
+          done < <(echo "$SERVICES_JSON" | jq -r '.[]')
+
+      - name: Build and push changed images
+        env:
+          SERVICES_JSON: ${{ inputs.services_matrix }}
+          TAG_NAME: ${{ inputs.version }}
+          TARGET_ARCH: ${{ inputs.target_arch }}
+          AWS_ECR_REPOSITORY: ${{ inputs.aws_ecr_repository }}
+        run: |
+          set -euo pipefail
+
+          IMAGE_TAG=${TAG_NAME#v}
+
+          # Keep existing tag conventions while building only changed projects.
+          service_projects=$(echo "$SERVICES_JSON" | jq -r '.[] | select(. != "load-generator")' | paste -sd, -)
+          load_generator_changed=$(echo "$SERVICES_JSON" | jq -e 'index("load-generator") != null' >/dev/null && echo true || echo false)
+
+          if [ -n "$service_projects" ]; then
+            yarn nx run-many -t container --projects "$service_projects" --tags ${AWS_ECR_REPOSITORY}/ecommerce/{projectName}:${IMAGE_TAG}-${TARGET_ARCH}
+          fi
+
+          if [ "$load_generator_changed" = "true" ]; then
+            yarn nx container load-generator --tags ${AWS_ECR_REPOSITORY}/ecommerce/load-generator:load-gen.${IMAGE_TAG}-${TARGET_ARCH}
+          fi
+
+          if [ -n "$service_projects" ]; then
+            yarn nx run-many -t container --push true --projects "$service_projects" --tags ${AWS_ECR_REPOSITORY}/ecommerce/{projectName}:${IMAGE_TAG}-${TARGET_ARCH}
+          fi
+
+          if [ "$load_generator_changed" = "true" ]; then
+            yarn nx container load-generator --push true --tags ${AWS_ECR_REPOSITORY}/ecommerce/load-generator:load-gen.${IMAGE_TAG}-${TARGET_ARCH}
+          fi

@@ -57,12 +57,6 @@
         }
       }
     },
-    "manifest": {
-      "executor": "nx:run-commands",
-      "options": {
-        "command": "bash scripts/create-manifest.sh {args.repository} {args.tag}"
-      }
-    },
     "helm": {
       "executor": "@nx-extensions/helm:package",
       "outputs": ["{options.outputFolder}"],
