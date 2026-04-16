@@ -215,6 +215,29 @@ func (c *Controller) SearchProducts(ctx *gin.Context) {
 	ctx.JSON(http.StatusOK, products)
 }
 
+// ReindexProducts godoc
+// @Summary Reindex products
+// @Description Drop and recreate the search index with fresh product data
+// @Tags catalog
+// @Produce  json
+// @Success 200 {object} map[string]string
+// @Failure 503 {object} httputil.HTTPError
+// @Failure 500 {object} httputil.HTTPError
+// @Router /catalog/reindex [post]
+func (c *Controller) ReindexProducts(ctx *gin.Context) {
+	if !c.api.IsSearchEnabled() {
+		httputil.NewError(ctx, http.StatusServiceUnavailable, fmt.Errorf("search is not enabled"))
+		return
+	}
+
+	if err := c.api.Reindex(); err != nil {
+		httputil.NewError(ctx, http.StatusInternalServerError, err)
+		return
+	}
+
+	ctx.JSON(http.StatusOK, gin.H{"message": "reindex completed successfully"})
+}
+
 func getQueryInt(name string, defaultValue int, ctx *gin.Context) (int, error) {
 	str := ctx.Query(name)
 

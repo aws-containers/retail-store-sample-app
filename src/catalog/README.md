@@ -1,9 +1,8 @@
 # AWS Containers Retail Sample - Catalog Service
 
 | Language | Persistence | Search     |
-| -------- | ----------- |------------|
+| -------- | ----------- | ---------- |
 | Go       | MySQL       | OpenSearch |
-
 
 This service provides an API for retrieving product catalog information. Data is stored in a MySQL database.
 
@@ -11,21 +10,22 @@ This service provides an API for retrieving product catalog information. Data is
 
 The following environment variables are available for configuring the service:
 
-| Name                                       | Description                                                          | Default        |
-| ------------------------------------------ | -------------------------------------------------------------------- | -------------- |
-| PORT                                       | The port which the server will listen on                             | `8080`         |
-| RETAIL_CATALOG_PERSISTENCE_PROVIDER        | The persistence provider to use, can be `in-memory` or `mysql`.      | `in-memory`    |
-| RETAIL_CATALOG_PERSISTENCE_ENDPOINT        | Database endpoint URL                                                | `""`           |
-| RETAIL_CATALOG_PERSISTENCE_DB_NAME         | Database name                                                        | `catalogdb`    |
-| RETAIL_CATALOG_PERSISTENCE_USER            | Database user                                                        | `catalog_user` |
-| RETAIL_CATALOG_PERSISTENCE_PASSWORD        | Database password                                                    | `""`           |
-| RETAIL_CATALOG_PERSISTENCE_CONNECT_TIMEOUT | Database connection timeout in seconds                               | `5`            |
-| RETAIL_CATALOG_SEARCH_ENABLED.             | Enable or disable search                                             | `false`        |
-| RETAIL_CATALOG_SEARCH_OS_ENDPOINT          | Database endpoint URL                                                | `""`           |
-| RETAIL_CATALOG_SEARCH_OS_INDEX             | Index name                                                           | `products`     |
-| RETAIL_CATALOG_SEARCH_OS_USERNAME          | Opensearch user                                                      | `admin`        |
-| RETAIL_CATALOG_SEARCH_OS_PASSWORD          | Opensearch password                                                  | `""`           |
-| RETAIL_CATALOG_SEARCH_PROVIDER             | Search provider (aws or self-hosted)                                 | `self-hosted`  |
+| Name                                       | Description                                                     | Default                 |
+| ------------------------------------------ | --------------------------------------------------------------- | ----------------------- |
+| PORT                                       | The port which the server will listen on                        | `8080`                  |
+| RETAIL_CATALOG_PERSISTENCE_PROVIDER        | The persistence provider to use, can be `in-memory` or `mysql`. | `in-memory`             |
+| RETAIL_CATALOG_PERSISTENCE_ENDPOINT        | Database endpoint URL                                           | `""`                    |
+| RETAIL_CATALOG_PERSISTENCE_DB_NAME         | Database name                                                   | `catalogdb`             |
+| RETAIL_CATALOG_PERSISTENCE_USER            | Database user                                                   | `catalog_user`          |
+| RETAIL_CATALOG_PERSISTENCE_PASSWORD        | Database password                                               | `""`                    |
+| RETAIL_CATALOG_PERSISTENCE_CONNECT_TIMEOUT | Database connection timeout in seconds                          | `5`                     |
+| RETAIL_CATALOG_SEARCH_ENABLED              | Enable or disable search                                        | `false`                 |
+| RETAIL_CATALOG_SEARCH_OS_ENDPOINT          | OpenSearch endpoint URL                                         | `http://localhost:9200` |
+| RETAIL_CATALOG_SEARCH_OS_INDEX             | Index name                                                      | `products`              |
+| RETAIL_CATALOG_SEARCH_OS_USERNAME          | OpenSearch user                                                 | `admin`                 |
+| RETAIL_CATALOG_SEARCH_OS_PASSWORD          | OpenSearch password                                             | `""`                    |
+| RETAIL_CATALOG_SEARCH_OS_TLS_SKIP_VERIFY   | Skip TLS certificate verification for OpenSearch                | `false`                 |
+| RETAIL_CATALOG_SEARCH_PROVIDER             | Search provider (aws or self-hosted)                            | `self-hosted`           |
 
 ## Endpoints
 

@@ -5,6 +5,7 @@ services:
     environment:
       - JAVA_OPTS=-XX:MaxRAMPercentage=75.0 -Djava.security.egd=file:/dev/urandom
       - SERVER_TOMCAT_ACCESSLOG_ENABLED=true
+      - RETAIL_UI_SEARCH_ENABLED=${SEARCH_ENABLED:-false}
     hostname: ui
     build:
       context: .

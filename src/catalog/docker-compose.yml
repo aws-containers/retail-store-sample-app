@@ -21,9 +21,10 @@ services:
       - RETAIL_CATALOG_PERSISTENCE_PROVIDER=mysql
       - RETAIL_CATALOG_PERSISTENCE_PASSWORD=${DB_PASSWORD}
       - RETAIL_CATALOG_PERSISTENCE_ENDPOINT=catalog-db:3306
-      - RETAIL_CATALOG_OPENSEARCH_ENABLED=true
-      - RETAIL_CATALOG_OPENSEARCH_ENDPOINT=http://opensearch:9200
-      - RETAIL_CATALOG_OPENSEARCH_INDEX=products
+      - RETAIL_CATALOG_SEARCH_ENABLED=${SEARCH_ENABLED:-false}
+      - RETAIL_CATALOG_SEARCH_OS_ENDPOINT=http://opensearch:9200
+      - RETAIL_CATALOG_SEARCH_OS_INDEX=products
+      - RETAIL_CATALOG_SEARCH_OS_TLS_SKIP_VERIFY=true
     ports:
       - "8081:8080"
     healthcheck:
@@ -81,7 +82,8 @@ services:
       - "9200:9200"
       - "9600:9600"
     healthcheck:
-      test: ["CMD-SHELL", "curl -f http://localhost:9200/_cluster/health || exit 1"]
+      test:
+        ["CMD-SHELL", "curl -f http://localhost:9200/_cluster/health || exit 1"]
       interval: 10s
       timeout: 10s
       retries: 5

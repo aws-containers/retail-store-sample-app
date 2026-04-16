@@ -7,7 +7,7 @@
 <section class="max-w-4xl mx-auto px-4 py-8">
   <div class="flex flex-col md:flex-row gap-8">
     <!-- Sidebar Filter -->
-    <div class="w-full md:w-36 h-fit">
+    <div class="w-full md:w-36 h-fit" th:if="${keyword == null || keyword.isEmpty()}">
       <h3 class="font-semibold text-gray-800 mb-4 uppercase text-xs">
         Categories
       </h3>
@@ -36,8 +36,8 @@
     <div class="flex-1">
       <!-- Search Bar -->
       <div class="mb-6" th:if="${searchEnabled}">
-        <form method="GET" th:action="@{/catalog/search}" class="flex flex-col sm:flex-row gap-4 items-start sm:items-center">
-          <div class="relative flex-1 max-w-md">
+        <form method="GET" th:action="@{/catalog/search}" class="flex flex-col gap-3">
+          <div class="relative w-full">
             <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
               <i class="fas fa-search text-gray-400"></i>
             </div>
@@ -50,19 +50,21 @@
                     class="block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-md leading-5 bg-white placeholder-gray-500 focus:outline-none focus:placeholder-gray-400 focus:ring-1 focus:ring-primary-500 focus:border-primary-500 sm:text-sm"
             />
           </div>
-          <button
-                  type="submit"
-                  class="px-4 py-2 bg-primary-600 text-white rounded-md hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 transition-colors"
-          >
-            Search
-          </button>
-          <a
-                  th:if="${keyword != null && !keyword.isEmpty()}"
-                  th:href="@{/catalog(tag=${selectedTag})}"
-                  class="px-4 py-2 bg-gray-100 text-gray-700 rounded-md hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 transition-colors"
-          >
-            Clear
-          </a>
+          <div class="flex flex-row gap-2">
+            <button
+                    type="submit"
+                    class="px-4 py-2 bg-primary-600 text-white rounded-md hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 transition-colors"
+            >
+              Search
+            </button>
+            <a
+                    th:if="${keyword != null && !keyword.isEmpty()}"
+                    th:href="@{/catalog(tag=${selectedTag})}"
+                    class="px-4 py-2 bg-gray-100 text-gray-700 rounded-md hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 transition-colors"
+            >
+              Clear
+            </a>
+          </div>
         </form>
 
         <!-- Search Results Info -->
@@ -78,7 +80,7 @@
         >
           These products are for demonstration purposes only
         </div>
-        <div th:if="${catalog.size == 0}" class="mt-3 text-md ">
+        <div th:if="${#lists.isEmpty(catalog.products)}" class="mt-3 text-md text-center">
           <p> No gadgets found in the catalog </p>
         </div>
         <div class="grid grid-cols-2 lg:grid-cols-3 gap-6">
@@ -91,7 +93,7 @@
         </div>
       </div>
       <!-- Pagination -->
-      <div class="flex justify-center mt-8" th:if="${catalog.size > 0}">
+      <div class="flex justify-center mt-8" th:if="${!#lists.isEmpty(catalog.products)}">
         <nav
                 class="inline-flex items-center rounded-lg bg-white border border-gray-200 pagination"
                 aria-label="Pagination"

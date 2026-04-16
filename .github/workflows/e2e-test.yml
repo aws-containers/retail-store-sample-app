@@ -52,6 +52,28 @@ jobs:
         run: |
           DB_PASSWORD='test123' yarn nx compose:down
 
+  docker-multi-search:
+    name: Docker E2E Tests (Multi/Search)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: "Setup Env"
+        uses: ./.github/actions/setup-env
+      - name: Compose up
+        run: |
+          DB_PASSWORD='test123' SEARCH_ENABLED=true yarn nx compose:up
+          sleep 60
+      - name: Test
+        run: |
+          CYPRESS_BASE_URL='http://localhost:8888' CYPRESS_SEARCH_ENABLED=true yarn nx execute e2e
+      - name: Load Generator
+        run: |
+          cd src/load-generator
+          bash scripts/run-test.sh
+      - name: Compose down
+        run: |
+          DB_PASSWORD='test123' SEARCH_ENABLED=true yarn nx compose:down
+
   kubernetes:
     name: Kubernetes E2E Tests
     runs-on: ubuntu-latest
