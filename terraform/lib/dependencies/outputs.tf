@@ -140,7 +140,7 @@ output "catalog_opensearch_endpoint" {
 
 output "catalog_opensearch_master_username" {
   description = "Master username for the catalog OpenSearch domain"
-  value       = "catalog"
+  value       = var.catalog_search_username
   sensitive   = true
 }
 

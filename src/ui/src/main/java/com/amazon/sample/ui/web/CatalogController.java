@@ -99,6 +99,10 @@ public class CatalogController {
           ServerHttpRequest request,
           Model model
   ) {
+    if (keyword == null || keyword.trim().isEmpty()) {
+      return "redirect:/catalog";
+    }
+
     model.addAttribute("keyword", keyword);
     model.addAttribute("searchEnabled", searchEnabled);
     model.addAttribute(
