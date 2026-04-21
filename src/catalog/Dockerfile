@@ -1,57 +1,34 @@
-# Build Stage
-FROM public.ecr.aws/amazonlinux/amazonlinux:2023 AS build-env
+# src/catalog/Dockerfile
+FROM golang:1.24-alpine AS builder
 
-# We tell DNF not to install Recommends and Suggests packages, which are
-# weak dependencies in DNF terminology, thus keeping our installed set of
-# packages as minimal as possible.
-RUN dnf --setopt=install_weak_deps=False install -q -y \
-    git \
-    golang \
-    && \
-    dnf clean all
+ENV GOPROXY=https://proxy.golang.org,https://goproxy.io,direct
+ENV GO111MODULE=on
+ENV CGO_ENABLED=0
+ENV GOOS=linux
 
-RUN mkdir -p "${GOPATH}/src" "${GOPATH}/bin" /appsrc
-
-WORKDIR /appsrc
-
-ENV GOPROXY=https://goproxy.io,direct
+WORKDIR /app
 
 COPY go.mod go.sum ./
-RUN go mod download
+RUN go mod download || go mod download -x
 
 COPY . .
 
-RUN go build -o main main.go
+RUN go build -ldflags="-s -w" -o /app/catalog .
 
 # Final stage
-FROM public.ecr.aws/amazonlinux/amazonlinux:2023
+FROM alpine:3.20
 
-ENV APPUSER=appuser
-ENV APPUID=1000
-ENV APPGID=1000
-
-# We tell DNF not to install Recommends and Suggests packages, which are
-# weak dependencies in DNF terminology, thus keeping our installed set of
-# packages as minimal as possible.
-RUN dnf --setopt=install_weak_deps=False install -q -y \
-    shadow-utils \
-    && \
-    dnf clean all
-
-RUN useradd \
-    --home "/app" \
-    --create-home \
-    --user-group \
-    --uid "$APPUID" \
-    "$APPUSER"
+RUN apk update && apk add --no-cache ca-certificates wget && adduser -D -u 1000 appuser
 
 WORKDIR /app
-USER appuser
 
-COPY --chown=appuser:appuser --from=build-env /appsrc/main /app/
+COPY --from=builder --chown=1000:1000 /app/catalog ./catalog
 
-COPY ./ATTRIBUTION.md ./LICENSES.md
+USER 1000
 
-ENV GIN_MODE=release
+EXPOSE 8080
 
-ENTRYPOINT ["/app/main"]
+HEALTHCHECK --interval=30s --timeout=5s \
+  CMD wget -qO- http://localhost:8080/health || exit 1
+
+ENTRYPOINT ["./catalog"]

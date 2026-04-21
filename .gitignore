@@ -25,9 +25,8 @@ Chart.lock
 screenshots
 
 .env
+.env.*
 .direnv
-
-.pre-commit-config.yaml
 
 # mise
 .mise.lock
@@ -40,3 +39,8 @@ screenshots
 !.yarn/releases
 !.yarn/sdks
 !.yarn/versions
+
+.eslintcache
+.cache/
+coverage/
+!.env.example
