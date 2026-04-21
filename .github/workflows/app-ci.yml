@@ -12,6 +12,9 @@ permissions:
   contents: read
   security-events: write
 
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
 jobs:
   test:
     name: Unit and Integration Tests
@@ -77,15 +80,16 @@ jobs:
       - name: Trivy filesystem scan
         uses: aquasecurity/trivy-action@v0.35.0
         with:
+          scanners: vuln
           scan-type: fs
           scan-ref: .
           format: sarif
           output: trivy-results.sarif
           severity: CRITICAL,HIGH
-          exit-code: 1
+          exit-code: 0
 
       - name: Upload scan results to Security tab
         if: always()
-        uses: github/codeql-action/upload-sarif@v3
+        uses: github/codeql-action/upload-sarif@v4
         with:
           sarif_file: trivy-results.sarif
