@@ -1,0 +1,313 @@
+name: Release Artifact
+
+on:
+  push:
+    tags:
+      - "v*"
+  workflow_dispatch:
+    inputs:
+      release_id:
+        description: "Release id (e.g. 2026.04.07-rc1)"
+        required: false
+      image_tag:
+        description: "Image tag override"
+        required: false
+      target_environment:
+        description: "Target environment in infra repo"
+        type: choice
+        options:
+          - test
+          - staging
+          - prod
+        default: test
+
+permissions:
+  id-token: write
+  contents: read
+
+env:
+  AWS_REGION: ${{ vars.AWS_REGION }}
+  AWS_REGIONS_JSON: ${{ vars.AWS_REGIONS_JSON }}
+  AWS_ROLE_ARN_MAP_JSON: ${{ vars.AWS_ROLE_ARN_MAP_JSON }}
+  INFRA_VERSION_FILE_MAP_JSON: ${{ vars.INFRA_VERSION_FILE_MAP_JSON ||
+    '{"test":"environments/test/app-release.yaml","staging":"environments/staging/app-release.yaml","prod":"environments/prod/app-release.yaml"}'
+    }}
+
+jobs:
+  release:
+    name: Build, Push, and Publish Release Artifact
+    runs-on: ubuntu-latest
+    outputs:
+      release_id: ${{ steps.meta.outputs.release_id }}
+      manifest_file: ${{ steps.meta.outputs.manifest_file }}
+      run_url: ${{ steps.meta.outputs.run_url }}
+      target_environment: ${{ steps.meta.outputs.target_environment }}
+      infra_version_file: ${{ steps.meta.outputs.infra_version_file }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Docker
+        uses: ./.github/actions/setup-docker
+
+      - name: Setup Env
+        uses: ./.github/actions/setup-env
+
+      - name: Resolve release metadata
+        id: meta
+        shell: bash
+        env:
+          VERSION_FILE_MAP_JSON: ${{ env.INFRA_VERSION_FILE_MAP_JSON }}
+          ROLE_ARN_MAP_JSON: ${{ env.AWS_ROLE_ARN_MAP_JSON }}
+        run: |
+          set -euo pipefail
+
+          mkdir -p dist/release
+
+          if [ "${{ github.event_name }}" = "push" ]; then
+            RELEASE_ID="${GITHUB_REF_NAME#v}"
+            IMAGE_TAG="${GITHUB_REF_NAME#v}"
+            TARGET_ENV="test"
+          else
+            RELEASE_ID="${{ inputs.release_id }}"
+            IMAGE_TAG="${{ inputs.image_tag }}"
+            TARGET_ENV="${{ inputs.target_environment }}"
+          fi
+
+          if ! echo "${VERSION_FILE_MAP_JSON}" | jq -e . >/dev/null 2>&1; then
+            echo "Repository variable INFRA_VERSION_FILE_MAP_JSON must be valid JSON"
+            exit 1
+          fi
+
+          if [ -z "${ROLE_ARN_MAP_JSON}" ] || ! echo "${ROLE_ARN_MAP_JSON}" | jq -e . >/dev/null 2>&1; then
+            echo "Repository variable AWS_ROLE_ARN_MAP_JSON must be valid JSON"
+            exit 1
+          fi
+
+          INFRA_FILE="$(echo "${VERSION_FILE_MAP_JSON}" | jq -r --arg env "${TARGET_ENV}" '.[$env] // empty')"
+          if [ -z "${INFRA_FILE}" ]; then
+            echo "No infra version file mapping found for environment '${TARGET_ENV}'"
+            echo "Current map: ${VERSION_FILE_MAP_JSON}"
+            exit 1
+          fi
+
+          ROLE_ARN="$(echo "${ROLE_ARN_MAP_JSON}" | jq -r --arg env "${TARGET_ENV}" '.[$env] // empty')"
+          if [ -z "${ROLE_ARN}" ]; then
+            echo "No AWS role mapping found for environment '${TARGET_ENV}'"
+            echo "Current map: ${ROLE_ARN_MAP_JSON}"
+            exit 1
+          fi
+
+          if [ -z "${RELEASE_ID}" ]; then
+            RELEASE_ID="manual-${GITHUB_RUN_NUMBER}"
+          fi
+
+          if [ -z "${IMAGE_TAG}" ]; then
+            IMAGE_TAG="${RELEASE_ID}"
+          fi
+
+          CREATED_AT="$(date -u +%Y-%m-%dT%H:%M:%SZ)"
+          MANIFEST_FILE="dist/release/release-manifest-${RELEASE_ID}.yaml"
+          RUN_URL="${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}"
+
+          echo "release_id=${RELEASE_ID}" >> "$GITHUB_OUTPUT"
+          echo "image_tag=${IMAGE_TAG}" >> "$GITHUB_OUTPUT"
+          echo "created_at=${CREATED_AT}" >> "$GITHUB_OUTPUT"
+          echo "manifest_file=${MANIFEST_FILE}" >> "$GITHUB_OUTPUT"
+          echo "run_url=${RUN_URL}" >> "$GITHUB_OUTPUT"
+          echo "target_environment=${TARGET_ENV}" >> "$GITHUB_OUTPUT"
+          echo "infra_version_file=${INFRA_FILE}" >> "$GITHUB_OUTPUT"
+          echo "aws_role_arn=${ROLE_ARN}" >> "$GITHUB_OUTPUT"
+
+      - name: Configure AWS credentials (OIDC)
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ steps.meta.outputs.aws_role_arn }}
+          aws-region: ${{ env.AWS_REGION }}
+          role-session-name: AppRepoReleaseArtifact
+
+      - name: Resolve ECR registries for regions
+        id: ecr
+        shell: bash
+        env:
+          AWS_REGIONS_JSON: ${{ env.AWS_REGIONS_JSON }}
+        run: |
+          set -euo pipefail
+
+          if ! echo "${AWS_REGIONS_JSON}" | jq -e 'type == "array" and length > 0 and all(.[]; type == "string" and length > 0)' >/dev/null 2>&1; then
+            echo "Repository variable AWS_REGIONS_JSON must be a non-empty JSON array of regions"
+            exit 1
+          fi
+
+          ACCOUNT_ID="$(aws sts get-caller-identity --query Account --output text)"
+
+          ECR_REGISTRIES_JSON="$(echo "${AWS_REGIONS_JSON}" | jq -c --arg account "${ACCOUNT_ID}" 'map({key: ., value: ($account + ".dkr.ecr." + . + ".amazonaws.com")}) | from_entries')"
+
+          echo "ecr_registries_json=${ECR_REGISTRIES_JSON}" >> "$GITHUB_OUTPUT"
+
+      - name: Build and push service images
+        env:
+          IMAGE_TAG: ${{ steps.meta.outputs.image_tag }}
+          AWS_REGIONS_JSON: ${{ env.AWS_REGIONS_JSON }}
+          ECR_REGISTRIES_JSON: ${{ steps.ecr.outputs.ecr_registries_json }}
+        run: |
+          set -euo pipefail
+
+          for region in $(echo "${AWS_REGIONS_JSON}" | jq -r '.[]'); do
+            registry="$(echo "${ECR_REGISTRIES_JSON}" | jq -r --arg r "${region}" '.[$r] // empty')"
+            if [ -z "${registry}" ]; then
+              echo "No registry resolved for region '${region}'"
+              exit 1
+            fi
+
+            echo "Logging in and pushing images to ${registry}"
+            aws ecr get-login-password --region "${region}" | docker login --username AWS --password-stdin "${registry}"
+
+            yarn nx run-many -t container --projects=catalog,cart,orders,checkout,ui --tags ${registry}/retail-store-sample-{projectName}:${IMAGE_TAG} --push true
+          done
+
+      - name: Generate release manifest with digests
+        env:
+          RELEASE_ID: ${{ steps.meta.outputs.release_id }}
+          IMAGE_TAG: ${{ steps.meta.outputs.image_tag }}
+          CREATED_AT: ${{ steps.meta.outputs.created_at }}
+          MANIFEST_FILE: ${{ steps.meta.outputs.manifest_file }}
+          AWS_REGIONS_JSON: ${{ env.AWS_REGIONS_JSON }}
+          ECR_REGISTRIES_JSON: ${{ steps.ecr.outputs.ecr_registries_json }}
+        run: |
+          bash scripts/generate-release-manifest.sh "${MANIFEST_FILE}" "${RELEASE_ID}" "${GITHUB_SHA}" "${CREATED_AT}" "${IMAGE_TAG}" "${ECR_REGISTRIES_JSON}" "${AWS_REGIONS_JSON}"
+
+      - name: Install Cosign
+        if: ${{ env.COSIGN_PRIVATE_KEY != '' }}
+        env:
+          COSIGN_PRIVATE_KEY: ${{ secrets.COSIGN_PRIVATE_KEY }}
+        uses: sigstore/cosign-installer@v3
+
+      - name: Sign manifest artifact (optional)
+        if: ${{ env.COSIGN_PRIVATE_KEY != '' }}
+        env:
+          COSIGN_PASSWORD: ${{ secrets.COSIGN_PASSWORD }}
+          COSIGN_PRIVATE_KEY: ${{ secrets.COSIGN_PRIVATE_KEY }}
+          MANIFEST_FILE: ${{ steps.meta.outputs.manifest_file }}
+        shell: bash
+        run: |
+          cosign sign-blob --key env://COSIGN_PRIVATE_KEY --output-signature "${MANIFEST_FILE}.sig" "${MANIFEST_FILE}"
+
+      - name: Upload release manifest artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: release-manifest-${{ steps.meta.outputs.release_id }}
+          path: |
+            ${{ steps.meta.outputs.manifest_file }}
+            ${{ steps.meta.outputs.manifest_file }}.sig
+          if-no-files-found: ignore
+
+  open-infra-pr:
+    name: Open PR to Infra Repo
+    needs: release
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+    env:
+      INFRA_REPO: ${{ secrets.INFRA_REPO }}
+      INFRA_REPO_TOKEN: ${{ secrets.INFRA_REPO_TOKEN }}
+      ENABLE_INFRA_AUTOMERGE: ${{ 'false' }}
+    steps:
+      - name: Check infra integration configuration
+        id: infra-check
+        shell: bash
+        run: |
+          if [ -n "${INFRA_REPO}" ] && [ -n "${INFRA_REPO_TOKEN}" ]; then
+            echo "enabled=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "enabled=false" >> "$GITHUB_OUTPUT"
+            echo "Skipping infra PR because INFRA_REPO or INFRA_REPO_TOKEN is not configured"
+          fi
+
+      - name: Check out infra repo
+        if: ${{ steps.infra-check.outputs.enabled == 'true' }}
+        uses: actions/checkout@v4
+        with:
+          repository: ${{ env.INFRA_REPO }}
+          token: ${{ env.INFRA_REPO_TOKEN }}
+          path: infra
+          fetch-depth: 0
+
+      - name: Download manifest artifact
+        if: ${{ steps.infra-check.outputs.enabled == 'true' }}
+        uses: actions/download-artifact@v4
+        with:
+          name: release-manifest-${{ needs.release.outputs.release_id }}
+          path: downloaded
+
+      - name: Update target environment version file
+        if: ${{ steps.infra-check.outputs.enabled == 'true' }}
+        shell: bash
+        env:
+          RELEASE_ID: ${{ needs.release.outputs.release_id }}
+          GIT_SHA: ${{ github.sha }}
+          RUN_URL: ${{ needs.release.outputs.run_url }}
+          TARGET_ENV: ${{ needs.release.outputs.target_environment }}
+          VERSION_FILE: ${{ needs.release.outputs.infra_version_file }}
+        run: |
+          set -euo pipefail
+
+          mkdir -p "infra/$(dirname "${VERSION_FILE}")"
+
+          cat > "infra/${VERSION_FILE}" <<EOF
+          release_id: ${RELEASE_ID}
+          git_sha: ${GIT_SHA}
+          target_environment: ${TARGET_ENV}
+          run_url: ${RUN_URL}
+          manifest_artifact: release-manifest-${RELEASE_ID}
+          EOF
+
+      - name: Copy manifest into infra repo
+        if: ${{ steps.infra-check.outputs.enabled == 'true' }}
+        shell: bash
+        env:
+          RELEASE_ID: ${{ needs.release.outputs.release_id }}
+        run: |
+          mkdir -p "infra/releases"
+          cp "downloaded/release-manifest-${RELEASE_ID}.yaml" "infra/releases/release-manifest-${RELEASE_ID}.yaml"
+          if [ -f "downloaded/release-manifest-${RELEASE_ID}.yaml.sig" ]; then
+            cp "downloaded/release-manifest-${RELEASE_ID}.yaml.sig" "infra/releases/release-manifest-${RELEASE_ID}.yaml.sig"
+          fi
+
+      - name: Create pull request
+        if: ${{ steps.infra-check.outputs.enabled == 'true' }}
+        id: cpr
+        uses: peter-evans/create-pull-request@v7
+        with:
+          token: ${{ env.INFRA_REPO_TOKEN }}
+          path: infra
+          commit-message: "chore(release): bump app release ${{
+            needs.release.outputs.release_id }}"
+          branch: "chore/release-${{ needs.release.outputs.release_id }}"
+          base: ${{ vars.INFRA_BASE_BRANCH || 'main' }}
+          title: "chore(release): app ${{ needs.release.outputs.release_id }} to ${{
+            needs.release.outputs.target_environment }}"
+          body: |
+            Release artifact update from app repository.
+
+            - release_id: ${{ needs.release.outputs.release_id }}
+            - git_sha: ${{ github.sha }}
+            - run_url: ${{ needs.release.outputs.run_url }}
+            - target_environment: ${{ needs.release.outputs.target_environment }}
+
+            Policy:
+            - prod must be reviewed and merged manually.
+            - test/staging may be auto-merged by infra policy.
+          labels: |
+            release
+            app-repo
+
+      - name: Enable auto-merge for test/staging (optional)
+        if: ${{ steps.infra-check.outputs.enabled == 'true' &&
+          needs.release.outputs.target_environment != 'prod' &&
+          env.ENABLE_INFRA_AUTOMERGE == 'true' &&
+          steps.cpr.outputs.pull-request-number != '' }}
+        env:
+          GH_TOKEN: ${{ env.INFRA_REPO_TOKEN }}
+        run: |
+          gh pr merge "${{ steps.cpr.outputs.pull-request-number }}" --repo "${{ env.INFRA_REPO }}" --auto --squash
