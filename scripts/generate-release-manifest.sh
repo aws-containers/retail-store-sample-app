@@ -1,76 +1,78 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 set -euo pipefail
 
-manifest_file="${1:-}"
-release_id="${2:-}"
-git_sha="${3:-}"
-created_at="${4:-}"
-image_tag="${5:-}"
-ecr_account_id="${6:-}"
-regions_json="${7:-}"
+MANIFEST_FILE="${1:-}"
+RELEASE_ID="${2:-}"
+GIT_SHA="${3:-}"
+CREATED_AT="${4:-}"
+IMAGE_TAG="${5:-}"
+ECR_REGISTRIES_JSON="${6:-}"
+AWS_REGIONS_JSON="${7:-}"
 
-if [ -z "${manifest_file}" ] || [ -z "${release_id}" ] || [ -z "${git_sha}" ] || [ -z "${created_at}" ] || [ -z "${image_tag}" ] || [ -z "${ecr_account_id}" ] || [ -z "${regions_json}" ]; then
-  echo "Usage: $0 <manifest_file> <release_id> <git_sha> <created_at> <image_tag> <ecr_account_id> <regions_json>"
+if [ -z "${MANIFEST_FILE}" ] || [ -z "${RELEASE_ID}" ] || [ -z "${GIT_SHA}" ] || [ -z "${CREATED_AT}" ] || [ -z "${IMAGE_TAG}" ] || [ -z "${ECR_REGISTRIES_JSON}" ] || [ -z "${AWS_REGIONS_JSON}" ]; then
+  echo "Usage: generate-release-manifest.sh <manifest_file> <release_id> <git_sha> <created_at> <image_tag> <ecr_registries_json> <aws_regions_json>"
   exit 1
 fi
 
-if ! echo "${regions_json}" | jq -e 'type == "array" and length > 0' >/dev/null 2>&1; then
-  echo "regions_json must be a non-empty JSON array"
+if ! echo "${AWS_REGIONS_JSON}" | jq -e 'type == "array" and length > 0 and all(.[]; type == "string" and length > 0)' >/dev/null 2>&1; then
+  echo "AWS_REGIONS_JSON must be a non-empty JSON array"
+  exit 1
+fi
+
+if ! echo "${ECR_REGISTRIES_JSON}" | jq -e 'type == "object"' >/dev/null 2>&1; then
+  echo "ECR_REGISTRIES_JSON must be a JSON object"
   exit 1
 fi
 
 services=(catalog cart orders checkout ui)
 
-mkdir -p "$(dirname "${manifest_file}")"
+mkdir -p "$(dirname "${MANIFEST_FILE}")"
 
-cat > "${manifest_file}" <<EOF
-release:
-  id: ${release_id}
-  git_sha: ${git_sha}
-  created_at: ${created_at}
-  regions:
-EOF
+{
+  echo "apiVersion: retailstore.aws/v1alpha1"
+  echo "kind: ReleaseManifest"
+  echo "metadata:"
+  echo "  release_id: ${RELEASE_ID}"
+  echo "  created_at: ${CREATED_AT}"
+  echo "  git_sha: ${GIT_SHA}"
+  echo "spec:"
+  echo "  image_tag: ${IMAGE_TAG}"
+  echo "  regions:"
+  for region in $(echo "${AWS_REGIONS_JSON}" | jq -r '.[]'); do
+    echo "    - ${region}"
+  done
+  echo "  services:"
 
-while IFS= read -r region; do
-  cat >> "${manifest_file}" <<EOF
-    - ${region}
-EOF
-done < <(echo "${regions_json}" | jq -r '.[]')
-
-cat >> "${manifest_file}" <<EOF
-services:
-EOF
-
-for service in "${services[@]}"; do
-  cat >> "${manifest_file}" <<EOF
-  ${service}:
-    regions:
-EOF
-
-  while IFS= read -r region; do
+  for service in "${services[@]}"; do
     repository_name="retail-store-sample-${service}"
-    repository_uri="${ecr_account_id}.dkr.ecr.${region}.amazonaws.com/${repository_name}"
+    echo "    - name: ${service}"
+    echo "      images:"
 
-    digest=$(aws ecr describe-images \
-      --region "${region}" \
-      --repository-name "${repository_name}" \
-      --image-ids imageTag="${image_tag}" \
-      --query 'imageDetails[0].imageDigest' \
-      --output text)
+    for region in $(echo "${AWS_REGIONS_JSON}" | jq -r '.[]'); do
+      registry="$(echo "${ECR_REGISTRIES_JSON}" | jq -r --arg r "${region}" '.[$r] // empty')"
+      if [ -z "${registry}" ]; then
+        echo "Missing registry for region '${region}' in ECR_REGISTRIES_JSON"
+        exit 1
+      fi
 
-    if [ -z "${digest}" ] || [ "${digest}" = "None" ]; then
-      echo "Could not resolve digest for ${repository_uri}:${image_tag}"
-      exit 1
-    fi
+      digest="$(aws ecr describe-images \
+        --region "${region}" \
+        --repository-name "${repository_name}" \
+        --image-ids imageTag="${IMAGE_TAG}" \
+        --query 'imageDetails[0].imageDigest' \
+        --output text)"
 
-    cat >> "${manifest_file}" <<EOF
-      ${region}:
-        repository: ${repository_uri}
-        tag: ${image_tag}
-        digest: ${digest}
-EOF
-  done < <(echo "${regions_json}" | jq -r '.[]')
-done
+      if [ -z "${digest}" ] || [ "${digest}" = "None" ]; then
+        echo "Missing digest for ${repository_name}:${IMAGE_TAG} in region ${region}"
+        exit 1
+      fi
 
-echo "Release manifest created at ${manifest_file}"
+      echo "        - region: ${region}"
+      echo "          image: ${registry}/${repository_name}:${IMAGE_TAG}"
+      echo "          digest: ${digest}"
+    done
+  done
+} > "${MANIFEST_FILE}"
+
+echo "Generated ${MANIFEST_FILE}"

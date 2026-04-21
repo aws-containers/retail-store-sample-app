@@ -27,9 +27,10 @@ permissions:
 
 env:
   AWS_REGION: ${{ vars.AWS_REGION }}
-  AWS_REGIONS_JSON: ${{ vars.AWS_REGIONS_JSON || '["ap-southeast-1","ap-northeast-1"]' }}
-  ECR_REGISTRY: ${{ secrets.AWS_ECR_REGISTRY }}
-  INFRA_VERSION_FILE_MAP_JSON: ${{ vars.INFRA_VERSION_FILE_MAP_JSON || '{"test":"environments/test/app-release.yaml","staging":"environments/staging/app-release.yaml","prod":"environments/prod/app-release.yaml"}' }}
+  AWS_REGIONS_JSON: ${{ vars.AWS_REGIONS_JSON }}
+  AWS_ROLE_ARN_MAP_JSON: ${{ vars.AWS_ROLE_ARN_MAP_JSON }}
+  INFRA_VERSION_FILE_MAP_JSON: ${{ vars.INFRA_VERSION_FILE_MAP_JSON || '{"test":"environments/test/app-release.yaml","staging":"environments/staging/app-release.yaml","prod":"environments/prod/app-release.yaml"}'}}
+
 
 jobs:
   release:
@@ -55,6 +56,7 @@ jobs:
         shell: bash
         env:
           VERSION_FILE_MAP_JSON: ${{ env.INFRA_VERSION_FILE_MAP_JSON }}
+          ROLE_ARN_MAP_JSON: ${{ env.AWS_ROLE_ARN_MAP_JSON }}
         run: |
           set -euo pipefail
 
@@ -75,10 +77,22 @@ jobs:
             exit 1
           fi
 
+          if [ -z "${ROLE_ARN_MAP_JSON}" ] || ! echo "${ROLE_ARN_MAP_JSON}" | jq -e . >/dev/null 2>&1; then
+            echo "Repository variable AWS_ROLE_ARN_MAP_JSON must be valid JSON"
+            exit 1
+          fi
+
           INFRA_FILE="$(echo "${VERSION_FILE_MAP_JSON}" | jq -r --arg env "${TARGET_ENV}" '.[$env] // empty')"
           if [ -z "${INFRA_FILE}" ]; then
             echo "No infra version file mapping found for environment '${TARGET_ENV}'"
             echo "Current map: ${VERSION_FILE_MAP_JSON}"
+            exit 1
+          fi
+
+          ROLE_ARN="$(echo "${ROLE_ARN_MAP_JSON}" | jq -r --arg env "${TARGET_ENV}" '.[$env] // empty')"
+          if [ -z "${ROLE_ARN}" ]; then
+            echo "No AWS role mapping found for environment '${TARGET_ENV}'"
+            echo "Current map: ${ROLE_ARN_MAP_JSON}"
             exit 1
           fi
 
@@ -101,23 +115,54 @@ jobs:
           echo "run_url=${RUN_URL}" >> "$GITHUB_OUTPUT"
           echo "target_environment=${TARGET_ENV}" >> "$GITHUB_OUTPUT"
           echo "infra_version_file=${INFRA_FILE}" >> "$GITHUB_OUTPUT"
+          echo "aws_role_arn=${ROLE_ARN}" >> "$GITHUB_OUTPUT"
 
       - name: Configure AWS credentials (OIDC)
         uses: aws-actions/configure-aws-credentials@v4
         with:
-          role-to-assume: ${{ secrets.AWS_ROLE_ARN }}
+          role-to-assume: ${{ steps.meta.outputs.aws_role_arn }}
           aws-region: ${{ env.AWS_REGION }}
           role-session-name: AppRepoReleaseArtifact
 
-      - name: Login to Amazon ECR
-        uses: aws-actions/amazon-ecr-login@v2
+      - name: Resolve ECR registries for regions
+        id: ecr
+        shell: bash
+        env:
+          AWS_REGIONS_JSON: ${{ env.AWS_REGIONS_JSON }}
+        run: |
+          set -euo pipefail
+
+          if ! echo "${AWS_REGIONS_JSON}" | jq -e 'type == "array" and length > 0 and all(.[]; type == "string" and length > 0)' >/dev/null 2>&1; then
+            echo "Repository variable AWS_REGIONS_JSON must be a non-empty JSON array of regions"
+            exit 1
+          fi
+
+          ACCOUNT_ID="$(aws sts get-caller-identity --query Account --output text)"
+
+          ECR_REGISTRIES_JSON="$(echo "${AWS_REGIONS_JSON}" | jq -c --arg account "${ACCOUNT_ID}" 'map({key: ., value: ($account + ".dkr.ecr." + . + ".amazonaws.com")}) | from_entries')"
+
+          echo "ecr_registries_json=${ECR_REGISTRIES_JSON}" >> "$GITHUB_OUTPUT"
 
       - name: Build and push service images
         env:
           IMAGE_TAG: ${{ steps.meta.outputs.image_tag }}
-          ECR_REGISTRY: ${{ env.ECR_REGISTRY }}
+          AWS_REGIONS_JSON: ${{ env.AWS_REGIONS_JSON }}
+          ECR_REGISTRIES_JSON: ${{ steps.ecr.outputs.ecr_registries_json }}
         run: |
-          yarn nx run-many -t container --projects=catalog,cart,orders,checkout,ui --tags ${ECR_REGISTRY}/retail-store-sample-{projectName}:${IMAGE_TAG} --push true
+          set -euo pipefail
+
+          for region in $(echo "${AWS_REGIONS_JSON}" | jq -r '.[]'); do
+            registry="$(echo "${ECR_REGISTRIES_JSON}" | jq -r --arg r "${region}" '.[$r] // empty')"
+            if [ -z "${registry}" ]; then
+              echo "No registry resolved for region '${region}'"
+              exit 1
+            fi
+
+            echo "Logging in and pushing images to ${registry}"
+            aws ecr get-login-password --region "${region}" | docker login --username AWS --password-stdin "${registry}"
+
+            yarn nx run-many -t container --projects=catalog,cart,orders,checkout,ui --tags ${registry}/retail-store-sample-{projectName}:${IMAGE_TAG} --push true
+          done
 
       - name: Generate release manifest with digests
         env:
@@ -125,10 +170,10 @@ jobs:
           IMAGE_TAG: ${{ steps.meta.outputs.image_tag }}
           CREATED_AT: ${{ steps.meta.outputs.created_at }}
           MANIFEST_FILE: ${{ steps.meta.outputs.manifest_file }}
-          ECR_REGISTRY: ${{ env.ECR_REGISTRY }}
-          AWS_REGION: ${{ env.AWS_REGION }}
+          AWS_REGIONS_JSON: ${{ env.AWS_REGIONS_JSON }}
+          ECR_REGISTRIES_JSON: ${{ steps.ecr.outputs.ecr_registries_json }}
         run: |
-          bash scripts/generate-release-manifest.sh "${MANIFEST_FILE}" "${RELEASE_ID}" "${GITHUB_SHA}" "${CREATED_AT}" "${IMAGE_TAG}" "${ECR_REGISTRY}" "${AWS_REGION}"
+          bash scripts/generate-release-manifest.sh "${MANIFEST_FILE}" "${RELEASE_ID}" "${GITHUB_SHA}" "${CREATED_AT}" "${IMAGE_TAG}" "${ECR_REGISTRIES_JSON}" "${AWS_REGIONS_JSON}"
 
       - name: Install Cosign
         if: ${{ env.COSIGN_PRIVATE_KEY != '' }}
@@ -165,6 +210,7 @@ jobs:
     env:
       INFRA_REPO: ${{ secrets.INFRA_REPO }}
       INFRA_REPO_TOKEN: ${{ secrets.INFRA_REPO_TOKEN }}
+      ENABLE_INFRA_AUTOMERGE: ${{ 'false' }}
     steps:
       - name: Check infra integration configuration
         id: infra-check
@@ -234,10 +280,12 @@ jobs:
         with:
           token: ${{ env.INFRA_REPO_TOKEN }}
           path: infra
-          commit-message: "chore(release): bump app release ${{ needs.release.outputs.release_id }}"
+          commit-message: "chore(release): bump app release ${{
+            needs.release.outputs.release_id }}"
           branch: "chore/release-${{ needs.release.outputs.release_id }}"
           base: ${{ vars.INFRA_BASE_BRANCH || 'main' }}
-          title: "chore(release): app ${{ needs.release.outputs.release_id }} to ${{ needs.release.outputs.target_environment }}"
+          title: "chore(release): app ${{ needs.release.outputs.release_id }} to ${{
+            needs.release.outputs.target_environment }}"
           body: |
             Release artifact update from app repository.
 
@@ -254,7 +302,10 @@ jobs:
             app-repo
 
       - name: Enable auto-merge for test/staging (optional)
-        if: ${{ steps.infra-check.outputs.enabled == 'true' && needs.release.outputs.target_environment != 'prod' && vars.ENABLE_INFRA_AUTOMERGE == 'true' && steps.cpr.outputs.pull-request-number != '' }}
+        if: ${{ steps.infra-check.outputs.enabled == 'true' &&
+          needs.release.outputs.target_environment != 'prod' &&
+          env.ENABLE_INFRA_AUTOMERGE == 'true' &&
+          steps.cpr.outputs.pull-request-number != '' }}
         env:
           GH_TOKEN: ${{ env.INFRA_REPO_TOKEN }}
         run: |
