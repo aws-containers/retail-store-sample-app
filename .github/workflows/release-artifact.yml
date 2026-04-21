@@ -29,9 +29,8 @@ env:
   AWS_REGION: ${{ vars.AWS_REGION }}
   AWS_REGIONS_JSON: ${{ vars.AWS_REGIONS_JSON }}
   AWS_ROLE_ARN_MAP_JSON: ${{ vars.AWS_ROLE_ARN_MAP_JSON }}
-  INFRA_VERSION_FILE_MAP_JSON: ${{ vars.INFRA_VERSION_FILE_MAP_JSON ||
-    '{"test":"environments/test/app-release.yaml","staging":"environments/staging/app-release.yaml","prod":"environments/prod/app-release.yaml"}'
-    }}
+  INFRA_VERSION_FILE_MAP_JSON: ${{ vars.INFRA_VERSION_FILE_MAP_JSON || '{"test":"environments/test/app-release.yaml","staging":"environments/staging/app-release.yaml","prod":"environments/prod/app-release.yaml"}'}}
+
 
 jobs:
   release:
