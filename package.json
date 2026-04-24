@@ -9,8 +9,7 @@
   "scripts": {
     "compose:up": "docker compose --project-directory src/app up --build --detach --wait --wait-timeout 120",
     "compose:down": "docker compose --project-directory src/app down",
-    "prepare": "lefthook install",
-    "lint:pr": "git diff --name-only origin/main...HEAD | xargs yarn prettier --check"
+    "prepare": "lefthook install"
   },
   "workspaces": [
     "oss/attribution"

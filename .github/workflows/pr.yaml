@@ -31,9 +31,9 @@ jobs:
           fetch-depth: 0
       - name: Setup Env
         uses: ./.github/actions/setup-env
-      - name: Test
+      - name: Lint
         run: |
-          yarn lint:pr
+          yarn lefthook run pre-commit-ci --from-ref origin/${{ github.base_ref }} --to-ref HEAD
 
   test:
     name: "Project tests"
