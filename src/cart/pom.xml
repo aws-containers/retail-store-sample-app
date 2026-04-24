@@ -25,6 +25,9 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <java.version>21</java.version>
     <mapstruct.version>1.6.3</mapstruct.version>
+    <spring-framework.version>6.2.11</spring-framework.version>
+    <tomcat.version>10.1.54</tomcat.version>
+    <netty.version>4.1.132.Final</netty.version>
   </properties>
 
   <dependencyManagement>

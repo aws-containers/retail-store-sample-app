@@ -7,7 +7,7 @@
       "executor": "nx:run-commands",
       "options": {
         "cwd": "src/checkout",
-        "command": "yarn install"
+        "command": "YARN_ENABLE_IMMUTABLE_INSTALLS=false yarn install"
       }
     },
     "build": {

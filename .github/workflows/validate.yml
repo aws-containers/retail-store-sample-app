@@ -12,6 +12,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
+          fetch-tags: false
       - name: Setup Env
         uses: ./.github/actions/setup-env
       - name: Lint
@@ -26,6 +27,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
+          fetch-tags: false
       - name: Setup Env
         uses: ./.github/actions/setup-env
       - name: Unit tests

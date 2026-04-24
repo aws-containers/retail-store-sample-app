@@ -1,15 +1,7 @@
 # Build Stage
-FROM public.ecr.aws/amazonlinux/amazonlinux:2023 AS build-env
+FROM golang:1.25.9-alpine AS build-env
 
-# We tell DNF not to install Recommends and Suggests packages, which are
-# weak dependencies in DNF terminology, thus keeping our installed set of
-# packages as minimal as possible.
-RUN dnf --setopt=install_weak_deps=False install -q -y \
-    git \
-    golang \
-    && \
-    dnf clean all && \
-    rm -rf /var/cache/dnf
+RUN apk add --no-cache git
 
 RUN mkdir -p "${GOPATH}/src" "${GOPATH}/bin" /appsrc
 

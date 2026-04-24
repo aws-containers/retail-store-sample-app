@@ -121,6 +121,7 @@ jobs:
       target_arch: amd64
       aws_region: ${{ vars.AWS_REGION || 'ap-southeast-1' }}
       aws_ecr_repository: ${{ vars.AWS_ECR_REPOSITORY }}
+      push_to_ecr: true
     secrets: inherit
 
   handoff-gitops:
@@ -129,7 +130,7 @@ jobs:
       - build
       - resolve-version
       - detect-changes
-    if: needs.detect-changes.outputs.any_service_changed == 'true'
+    if: needs.detect-changes.outputs.any_service_changed == 'true' && github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     env:
       GITOPS_REPO: ${{ github.repository_owner }}/ecommerce-gitops
