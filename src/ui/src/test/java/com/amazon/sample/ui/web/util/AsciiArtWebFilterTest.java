@@ -42,7 +42,7 @@ class AsciiArtWebFilterTest {
   }
 
   @Test
-  void withoutTextHtmlAccept_returnsAsciiPayload() {
+  void rootWithoutTextHtml_returnsAsciiPayload() {
     MockServerWebExchange exchange = MockServerWebExchange.from(
       MockServerHttpRequest.get("/").header(HttpHeaders.ACCEPT, "*/*").build()
     );
@@ -59,23 +59,40 @@ class AsciiArtWebFilterTest {
     assertThat(chainCalled).isFalse();
     assertThat(exchange.getResponse().getStatusCode()).isEqualTo(HttpStatus.OK);
     assertThat(exchange.getResponse().getHeaders().getContentType()).isEqualTo(
-      new org.springframework.http.MediaType(
-        "text",
-        "plain",
-        java.nio.charset.StandardCharsets.UTF_8
-      )
+      new MediaType("text", "plain", java.nio.charset.StandardCharsets.UTF_8)
     );
 
     String body = exchange.getResponse().getBodyAsString().block();
-    assertThat(body).contains("AGENT ACCESS ONLY");
-    assertThat(body).contains("GOOD LUCK OUT THERE, AGENT");
+    assertThat(body).contains("INCOMING TRANSMISSION");
+    assertThat(body).contains("END OF TRANSMISSION");
   }
 
   @Test
-  void withTextHtmlAccept_delegatesToChain() {
+  void rootWithTextHtml_delegatesToChain() {
     MockServerWebExchange exchange = MockServerWebExchange.from(
       MockServerHttpRequest.get("/")
         .header(HttpHeaders.ACCEPT, MediaType.TEXT_HTML_VALUE)
+        .build()
+    );
+
+    AtomicBoolean chainCalled = new AtomicBoolean(false);
+
+    StepVerifier.create(
+      filter.filter(exchange, ex -> {
+        chainCalled.set(true);
+        return Mono.empty();
+      })
+    ).verifyComplete();
+
+    assertThat(chainCalled).isTrue();
+    assertThat(exchange.getResponse().getStatusCode()).isNull();
+  }
+
+  @Test
+  void nonRootWithoutTextHtml_delegatesToChain() {
+    MockServerWebExchange exchange = MockServerWebExchange.from(
+      MockServerHttpRequest.get("/catalog")
+        .header(HttpHeaders.ACCEPT, "*/*")
         .build()
     );
 

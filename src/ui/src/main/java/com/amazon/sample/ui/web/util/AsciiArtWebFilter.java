@@ -46,12 +46,17 @@ public class AsciiArtWebFilter implements WebFilter {
 
   @Override
   public Mono<Void> filter(ServerWebExchange exchange, WebFilterChain chain) {
+    String path = exchange.getRequest().getPath().value();
     String accept = exchange
       .getRequest()
       .getHeaders()
       .getFirst(HttpHeaders.ACCEPT);
 
-    if (accept != null && accept.contains(MediaType.TEXT_HTML_VALUE)) {
+    boolean isRoot = "/".equals(path) || "".equals(path);
+    boolean wantsBrowser =
+      accept != null && accept.contains(MediaType.TEXT_HTML_VALUE);
+
+    if (!isRoot || wantsBrowser) {
       return chain.filter(exchange);
     }
 
