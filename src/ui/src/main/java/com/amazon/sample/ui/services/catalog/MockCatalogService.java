@@ -49,8 +49,9 @@ public class MockCatalogService implements CatalogService {
 
     try {
       // Load the JSON file from classpath
-      InputStream inputStream = getClass()
-        .getResourceAsStream("/data/tags.json");
+      InputStream inputStream = getClass().getResourceAsStream(
+        "/data/tags.json"
+      );
       if (inputStream == null) {
         throw new RuntimeException("Could not find tags.json in classpath");
       }
@@ -83,8 +84,9 @@ public class MockCatalogService implements CatalogService {
 
     try {
       // Load the JSON file from classpath
-      InputStream inputStream = getClass()
-        .getResourceAsStream("/data/products.json");
+      InputStream inputStream = getClass().getResourceAsStream(
+        "/data/products.json"
+      );
       if (inputStream == null) {
         throw new RuntimeException("Could not find products.json in classpath");
       }
@@ -149,13 +151,11 @@ public class MockCatalogService implements CatalogService {
     int page,
     int size
   ) {
-    System.out.println("Tag is " + tag);
-    List<Product> productList =
-      this.products.values()
-        .stream()
-        .sorted(Comparator.comparing(Product::getName))
-        .filter(product -> tag.isBlank() || product.hasTag(tag))
-        .collect(Collectors.toList());
+    List<Product> productList = this.products.values()
+      .stream()
+      .sorted(Comparator.comparing(Product::getName))
+      .filter(product -> tag.isBlank() || product.hasTag(tag))
+      .collect(Collectors.toList());
 
     int end = page * size;
 
