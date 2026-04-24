@@ -31,9 +31,10 @@ jobs:
           fetch-depth: 0
       - name: Setup Env
         uses: ./.github/actions/setup-env
-      - name: Test
+      - name: Lint
         run: |
-          yarn lint:pr
+          git diff --name-only --diff-filter=d origin/${{ github.base_ref }}...HEAD | \
+            yarn lefthook run pre-commit-ci --files-from-stdin
 
   test:
     name: "Project tests"
