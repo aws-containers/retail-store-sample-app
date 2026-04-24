@@ -33,7 +33,8 @@ jobs:
         uses: ./.github/actions/setup-env
       - name: Lint
         run: |
-          yarn lefthook run pre-commit-ci --from-ref origin/${{ github.base_ref }} --to-ref HEAD
+          git diff --name-only --diff-filter=d origin/${{ github.base_ref }}...HEAD | \
+            yarn lefthook run pre-commit-ci --files-from-stdin
 
   test:
     name: "Project tests"

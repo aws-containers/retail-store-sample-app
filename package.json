@@ -23,7 +23,7 @@
     "@prettier/plugin-xml": "^3.4.1",
     "@swc/helpers": "^0.5.15",
     "dotenv": "^16.4.7",
-    "lefthook": "^1.11.13",
+    "lefthook": "^2.1.6",
     "nx": "20.8.2",
     "prettier": "^3.3.2",
     "prettier-plugin-java": "2.8.1",
