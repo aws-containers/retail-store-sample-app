@@ -1,0 +1,22 @@
+╔══════════════════════════════════════════════════════════════╗
+║                  *** AGENT ACCESS ONLY ***                   ║
+║              HEADQUARTERS  ·  SUPPLIES DIVISION              ║
+╚══════════════════════════════════════════════════════════════╝
+
+  Welcome, Agent. Your mission, should you choose to accept it:
+  browse our gadget repository of the finest field equipment.
+
+  ACTIVE AGENTS:       1,337
+  MISSIONS SUPPORTED:  42,069
+  GADGETS DEPLOYED:    99,999
+  ENEMY FOILED:        COUNTLESS
+
+  FIELD STATUS:  ●●●●●●●●●●  OPERATIONAL
+  STOCK LEVEL:   ●●●●●●●●○○  HIGH
+
+  To access the full gadget repository, open this URL in a browser.
+  This message will self-destruct in 5 seconds.
+
+╔══════════════════════════════════════════════════════════════╗
+║     SECURE CHANNEL CLOSED  ·  GOOD LUCK OUT THERE, AGENT    ║
+╚══════════════════════════════════════════════════════════════╝
