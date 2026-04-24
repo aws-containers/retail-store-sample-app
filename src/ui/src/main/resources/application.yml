@@ -5,8 +5,9 @@ server:
 spring:
   messages:
     basename: lang/messages
-  codec:
-    max-in-memory-size: 10MB
+  http:
+    codecs:
+      max-in-memory-size: 10MB
 
 retail:
   ui:
