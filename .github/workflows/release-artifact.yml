@@ -29,8 +29,8 @@ env:
   AWS_REGION: ${{ vars.AWS_REGION }}
   AWS_REGIONS_JSON: ${{ vars.AWS_REGIONS_JSON }}
   AWS_ROLE_ARN_MAP_JSON: ${{ vars.AWS_ROLE_ARN_MAP_JSON }}
-  INFRA_VERSION_FILE_MAP_JSON: ${{ vars.INFRA_VERSION_FILE_MAP_JSON || '{"test":"environments/test/app-release.yaml","staging":"environments/staging/app-release.yaml","prod":"environments/prod/app-release.yaml"}'}}
-
+  INFRA_VERSION_FILE_MAP_JSON: ${{ vars.INFRA_VERSION_FILE_MAP_JSON ||
+    '{"test":"environments/test/app-release.yaml","staging":"environments/staging/app-release.yaml","prod":"environments/prod/app-release.yaml"}'}}
 
 jobs:
   release:
@@ -302,10 +302,7 @@ jobs:
             app-repo
 
       - name: Enable auto-merge for test/staging (optional)
-        if: ${{ steps.infra-check.outputs.enabled == 'true' &&
-          needs.release.outputs.target_environment != 'prod' &&
-          env.ENABLE_INFRA_AUTOMERGE == 'true' &&
-          steps.cpr.outputs.pull-request-number != '' }}
+        if: ${{ steps.infra-check.outputs.enabled == 'true' && needs.release.outputs.target_environment != 'prod' && env.ENABLE_INFRA_AUTOMERGE == 'true' && steps.cpr.outputs.pull-request-number != '' }}
         env:
           GH_TOKEN: ${{ env.INFRA_REPO_TOKEN }}
         run: |

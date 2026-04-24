@@ -1,9 +1,0 @@
-image:
-  repository: ${image_repository}
-  tag: ${image_tag}
-
-%{ if opentelemetry_enabled }
-opentelemetry:
-  enabled: true
-  instrumentation: ${opentelemetry_instrumentation}
-%{ endif }
