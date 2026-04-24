@@ -3,7 +3,7 @@ WORKDIR /usr/src/app
 COPY --chown=node:node package*.json ./
 COPY --chown=node:node . .
 RUN apk add --no-cache python3 make g++ && \
-    yarn install --immutable && \
+    YARN_ENABLE_IMMUTABLE_INSTALLS=false yarn install && \
     apk del python3 make g++
 RUN yarn build
 USER node

@@ -4,6 +4,7 @@ on:
   push:
     branches-ignore:
       - main
+      - feat/cicd-pipeline
   pull_request:
     branches:
       - main
