@@ -1,13 +1,13 @@
 variable "aws_region" {
   description = "AWS region where all resources will be deployed"
   type        = string
-  default     = "us-east-1"
+  default     = "ap-southeast-1"
 }
 
 variable "project_name" {
   description = "Short name for this project - used as a prefix in resource names"
   type        = string
-  default     = "ecommerce"
+  default     = "e-comm"
 }
 
 variable "environment" {
@@ -23,6 +23,11 @@ variable "vpc_cidr" {
   default     = "10.0.0.0/16"
 }
 
+variable "az_ids" {
+  type        = list(string)
+  description = "List of availability zone IDs for subnets"
+  default     = ["apse1-az1", "apse1-az2"]
+}
 # EKS
 variable "eks_cluster_version" {
   description = "Kubernetes version to deploy on EKS"
@@ -33,7 +38,7 @@ variable "eks_cluster_version" {
 variable "node_instance_type" {
   description = "EC2 instance type for worker nodes"
   type        = string
-  default     = "t3.medium"
+  default     = "t3.small"
 }
 
 variable "node_min_size" {

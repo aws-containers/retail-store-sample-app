@@ -21,36 +21,10 @@ data "aws_availability_zones" "available" {
 }
 
 module "vpc" {
-  source  = "terraform-aws-modules/vpc/aws"
-  version = "~> 5.0"
+  source = "./modules/vpc"
 
-  name = "${var.project_name}-${var.environment}-vpc"
-  cidr = var.vpc_cidr
-
-  # Pick the first 2 available AZs dynamically
-  azs = slice(data.aws_availability_zones.available.names, 0, 2)
-
-  # /20 subnets give 4094 IPs each – plenty for pods and nodes
-  private_subnets = [cidrsubnet(var.vpc_cidr, 4, 0), cidrsubnet(var.vpc_cidr, 4, 1)]
-  public_subnets  = [cidrsubnet(var.vpc_cidr, 4, 2), cidrsubnet(var.vpc_cidr, 4, 3)]
-
-  enable_nat_gateway   = true
-  single_nat_gateway   = false # Switch to false in production for HA
-  enable_dns_hostnames = true
-  enable_dns_support   = true
-
-  # Tags required by the AWS Load Balancer Controller to auto-discover subnets
-  public_subnet_tags = {
-    "kubernetes.io/role/elb"                      = "1"
-    "kubernetes.io/cluster/${local.cluster_name}" = "shared"
-  }
-
-  private_subnet_tags = {
-    "kubernetes.io/role/internal-elb"             = "1"
-    "kubernetes.io/cluster/${local.cluster_name}" = "shared"
-  }
-
-  tags = local.common_tags
+  vpc_subnet_az_id = var.az_ids
+  vpc_cidr         = var.vpc_cidr
 }
 
 # ─── ECR ─────────────────────────────────────────────────────────────────────
@@ -75,9 +49,9 @@ module "eks" {
   cluster_name    = local.cluster_name
   cluster_version = var.eks_cluster_version
 
-  vpc_id             = module.vpc.vpc_id
-  private_subnet_ids = module.vpc.private_subnets
-  public_subnet_ids  = module.vpc.public_subnets
+  vpc_id             = module.vpc.output_vpc_id
+  private_subnet_ids = module.vpc.output_private_subnets
+  public_subnet_ids  = module.vpc.output_public_subnets
 
   node_instance_type = var.node_instance_type
   node_min_size      = var.node_min_size

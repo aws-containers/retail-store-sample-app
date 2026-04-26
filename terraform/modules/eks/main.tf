@@ -21,6 +21,8 @@ module "eks" {
 
   enable_irsa = true
 
+  enable_cluster_creator_admin_permissions = true
+
   # ── Core EKS managed add-ons ───────────────────────────────────────────────
   # vpc-cni  : Pod networking (must be before compute so nodes get ENIs before pods)
   # coredns  : In-cluster DNS
@@ -43,6 +45,8 @@ module "eks" {
     kube-proxy = {
       most_recent = true
     }
+
+
   }
 
   # Managed node groups (defined in node_groups.tf)
@@ -51,7 +55,7 @@ module "eks" {
   # Additional security group rules on the shared node SG 
   node_security_group_additional_rules = {
     ingress_self_all = {
-      description = "Node to node – all ports/protocols"
+      description = "Node to node - all ports/protocols"
       protocol    = "-1"
       from_port   = 0
       to_port     = 0
@@ -60,7 +64,7 @@ module "eks" {
     }
 
     egress_all = {
-      description      = "Node egress – all traffic"
+      description      = "Node egress - all traffic"
       protocol         = "-1"
       from_port        = 0
       to_port          = 0
