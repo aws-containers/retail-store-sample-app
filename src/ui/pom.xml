@@ -22,6 +22,10 @@
 		<spring-cloud>2021.0.3</spring-cloud>
 		<spring-cloud-aws.version>2.4.2</spring-cloud-aws.version>
 		<org.mapstruct.version>1.6.3</org.mapstruct.version>
+		<spring-framework.version>6.2.11</spring-framework.version>
+		<netty.version>4.1.132.Final</netty.version>
+		<thymeleaf.version>3.1.4.RELEASE</thymeleaf.version>
+		<spring-ai.version>1.0.5</spring-ai.version>
 	</properties>
 
 	<repositories>
@@ -40,7 +44,7 @@
 			<dependency>
 				<groupId>org.springframework.ai</groupId>
 				<artifactId>spring-ai-bom</artifactId>
-				<version>1.0.0</version>
+				<version>${spring-ai.version}</version>
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>
