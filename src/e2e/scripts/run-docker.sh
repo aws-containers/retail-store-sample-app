@@ -13,6 +13,7 @@ Available options:
 -h, --help      Print this help and exit
 -v, --verbose   Print script debug info
 -n, --network   Docker network to use (Default: bridge)
+-s, --search    Enable search e2e tests (Default: off)
 EOF
   exit
 }
@@ -44,6 +45,7 @@ die() {
 parse_params() {
   # default values of variables set from params
   network='bridge'
+  search_enabled='false'
 
   while :; do
     case "${1-}" in
@@ -54,6 +56,7 @@ parse_params() {
       network="${2-}"
       shift
       ;;
+    -s | --search) search_enabled='true' ;;
     -?*) die "Unknown option: $1" ;;
     *) break ;;
     esac
@@ -75,4 +78,4 @@ cd $script_dir/../
 
 docker build -t retail-store-sample-e2e:run --pull --quiet -f Dockerfile.run .
 
-docker run -i --rm --network $network -v $PWD:/e2e --env CYPRESS_BASE_URL="${args[0]}" -w /e2e retail-store-sample-e2e:run
+docker run -i --rm --network $network -v $PWD:/e2e --env CYPRESS_BASE_URL="${args[0]}" --env CYPRESS_SEARCH_ENABLED="$search_enabled" -w /e2e retail-store-sample-e2e:run

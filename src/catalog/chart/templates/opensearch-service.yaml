@@ -1,0 +1,17 @@
+{{- if and .Values.app.search.enabled (eq .Values.app.search.provider "self-hosted") }}
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "catalog.opensearch.fullname" . }}
+  labels:
+    {{- include "catalog.opensearch.labels" . | nindent 4 }}
+spec:
+  type: {{ .Values.opensearch.service.type }}
+  ports:
+    - port: {{ .Values.opensearch.service.port }}
+      targetPort: opensearch
+      protocol: TCP
+      name: opensearch
+  selector:
+    {{- include "catalog.opensearch.selectorLabels" . | nindent 4 }}
+{{- end }}

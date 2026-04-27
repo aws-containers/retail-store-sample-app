@@ -43,7 +43,7 @@ spec:
           envFrom:
             - configMapRef:
                 name: {{ include "catalog.configMapName" . }}
-            {{- if (eq "mysql" .Values.app.persistence.provider) }}
+            {{- if or (eq "mysql" .Values.app.persistence.provider) (.Values.app.search.enabled) }}
             - secretRef:
                 name: {{ .Values.app.persistence.secret.name }}
             {{- end }}

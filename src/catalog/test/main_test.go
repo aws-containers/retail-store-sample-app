@@ -70,7 +70,7 @@ func router() *gin.Engine {
 		log.Fatal(err)
 	}
 
-	api, err := api.NewCatalogAPI(db)
+	api, err := api.NewCatalogAPI(db, nil)
 	if err != nil {
 		log.Fatal(err)
 	}

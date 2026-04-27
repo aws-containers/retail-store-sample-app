@@ -18,8 +18,9 @@ package config
 
 // Configuration exported
 type AppConfiguration struct {
-	Port     int `env:"PORT,default=8080"`
-	Database DatabaseConfiguration
+	Port       int `env:"PORT,default=8080"`
+	Database   DatabaseConfiguration
+	OpenSearch OpenSearchConfiguration
 }
 
 // DatabaseConfiguration exported
@@ -30,4 +31,15 @@ type DatabaseConfiguration struct {
 	User           string `env:"RETAIL_CATALOG_PERSISTENCE_USER,default=catalog_user"`
 	Password       string `env:"RETAIL_CATALOG_PERSISTENCE_PASSWORD"`
 	ConnectTimeout int    `env:"RETAIL_CATALOG_PERSISTENCE_CONNECT_TIMEOUT,default=5"`
+}
+
+// OpenSearchConfiguration exported
+type OpenSearchConfiguration struct {
+	Enabled       bool   `env:"RETAIL_CATALOG_SEARCH_ENABLED,default=false"`
+	Type          string `env:"RETAIL_CATALOG_SEARCH_PROVIDER,default=self-hosted"`
+	Endpoint      string `env:"RETAIL_CATALOG_SEARCH_OS_ENDPOINT,default=http://localhost:9200"`
+	IndexName     string `env:"RETAIL_CATALOG_SEARCH_OS_INDEX,default=products"`
+	Username      string `env:"RETAIL_CATALOG_SEARCH_OS_USERNAME,default=admin"`
+	Password      string `env:"RETAIL_CATALOG_SEARCH_OS_PASSWORD"`
+	TLSSkipVerify bool   `env:"RETAIL_CATALOG_SEARCH_OS_TLS_SKIP_VERIFY,default=false"`
 }

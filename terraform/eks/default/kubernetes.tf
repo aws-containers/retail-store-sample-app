@@ -96,6 +96,11 @@ resource "helm_release" "catalog" {
       database_username             = module.dependencies.catalog_db_master_username
       database_password             = module.dependencies.catalog_db_master_password
       security_group_id             = aws_security_group.catalog.id
+      search_enabled                = var.search_enabled
+      search_provider               = var.search_provider
+      opensearch_endpoint           = (var.search_enabled && var.search_provider == "aws") ? "https://${module.dependencies.catalog_opensearch_endpoint}" : "http://catalog-opensearch.catalog.svc:9200"
+      opensearch_username           = var.search_username
+      opensearch_password           = var.search_enabled ? "${module.dependencies.catalog_opensearch_master_password}" : ""
     })
   ]
 }
@@ -230,6 +235,7 @@ resource "helm_release" "ui" {
       opentelemetry_enabled         = var.opentelemetry_enabled
       opentelemetry_instrumentation = local.opentelemetry_instrumentation
       istio_enabled                 = var.istio_enabled
+      search_enabled                = var.search_enabled
     })
   ]
 }

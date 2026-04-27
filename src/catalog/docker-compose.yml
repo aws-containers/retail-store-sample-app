@@ -7,6 +7,9 @@ services:
       catalog-db:
         condition: service_healthy
         restart: true
+      opensearch:
+        condition: service_healthy
+        restart: true
     restart: always
     cap_drop:
       - all
@@ -18,6 +21,10 @@ services:
       - RETAIL_CATALOG_PERSISTENCE_PROVIDER=mysql
       - RETAIL_CATALOG_PERSISTENCE_PASSWORD=${DB_PASSWORD}
       - RETAIL_CATALOG_PERSISTENCE_ENDPOINT=catalog-db:3306
+      - RETAIL_CATALOG_SEARCH_ENABLED=${SEARCH_ENABLED:-false}
+      - RETAIL_CATALOG_SEARCH_OS_ENDPOINT=http://opensearch:9200
+      - RETAIL_CATALOG_SEARCH_OS_INDEX=products
+      - RETAIL_CATALOG_SEARCH_OS_TLS_SKIP_VERIFY=true
     ports:
       - "8081:8080"
     healthcheck:
@@ -60,3 +67,29 @@ services:
       timeout: 5s
       retries: 3
       start_period: 30s
+
+  # OpenSearch for product search
+  opensearch:
+    image: opensearchproject/opensearch:3.5.0
+    hostname: opensearch
+    restart: always
+    environment:
+      - discovery.type=single-node
+      - plugins.security.disabled=true
+      - OPENSEARCH_JAVA_OPTS=-Xms512m -Xmx512m
+      - DISABLE_INSTALL_DEMO_CONFIG=true
+    ports:
+      - "9200:9200"
+      - "9600:9600"
+    healthcheck:
+      test:
+        ["CMD-SHELL", "curl -f http://localhost:9200/_cluster/health || exit 1"]
+      interval: 10s
+      timeout: 10s
+      retries: 5
+      start_period: 60s
+    volumes:
+      - opensearch-data:/usr/share/opensearch/data
+
+volumes:
+  opensearch-data:

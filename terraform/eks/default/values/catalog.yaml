@@ -22,3 +22,11 @@ app:
     secret:
       username: ${database_username}
       password: ${database_password}
+  search:
+    enabled: ${search_enabled}
+    provider: ${search_provider}
+   %{ if search_enabled }
+    endpoint: ${opensearch_endpoint}
+    password: "${opensearch_password}"
+    username: ${opensearch_username}
+   %{ endif }

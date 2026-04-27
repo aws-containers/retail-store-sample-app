@@ -9,6 +9,9 @@ app:
     orders: http://orders.orders.svc:80
     checkout: http://checkout.checkout.svc:80
 
+  search:
+    enabled: ${search_enabled}
+
 %{ if opentelemetry_enabled }
 opentelemetry:
   enabled: true

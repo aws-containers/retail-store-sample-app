@@ -16,6 +16,29 @@ variable "opentelemetry_enabled" {
   default     = false
 }
 
+variable "search_enabled" {
+  description = "Boolean value that enables Search functionality."
+  type        = bool
+  default     = false
+}
+
+variable "search_username" {
+  description = "Search provider username"
+  type        = string
+  default     = "admin"
+}
+
+variable "search_provider" {
+  description = "Search provider"
+  type        = string
+  default     = "self-hosted"
+
+  validation {
+    condition     = contains(["self-hosted", "aws"], var.search_provider)
+    error_message = "Environment must be one of: \"aws\" or \"self-hosted\"."
+  }
+}
+
 variable "container_image_overrides" {
   type = object({
     default_repository = optional(string)

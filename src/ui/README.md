@@ -29,6 +29,7 @@ The following environment variables are available for configuring the service:
 | `RETAIL_UI_CHAT_BEDROCK_REGION`   | Amazon Bedrock region                                                                                  | `""`                    |
 | `RETAIL_UI_CHAT_OPENAI_BASE_URL`  | Base URL for OpenAI endpoint                                                                           | `http://localhost:8888` |
 | `RETAIL_UI_CHAT_OPENAI_API_KEY`   | API key for OpenAI endpoint                                                                            | `""`                    |
+| `RETAIL_UI_SEARCH_ENABLED`        | Enable catalog search functionality                                                                    | `false`                 |
 
 ## Endpoints
 

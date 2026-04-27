@@ -182,4 +182,39 @@ public class MockCatalogService implements CatalogService {
   public Flux<ProductTag> getTags() {
     return Flux.fromIterable(this.tags.values());
   }
+
+  @Override
+  public Mono<ProductPage> catalogSearch(String keyword, int page, int size) {
+    List<Product> matchingProducts = this.products.values()
+      .stream()
+      .filter(product -> {
+        if (keyword == null || keyword.isBlank()) {
+          return true;
+        }
+        String lowerKeyword = keyword.toLowerCase();
+        return product.getName().toLowerCase().contains(lowerKeyword) ||
+               product.getDescription().toLowerCase().contains(lowerKeyword);
+      })
+      .sorted(Comparator.comparing(Product::getName))
+      .collect(Collectors.toList());
+
+    int start = (page - 1) * size;
+    int end = page * size;
+
+    if (start >= matchingProducts.size()) {
+      start = matchingProducts.size();
+    }
+    if (end > matchingProducts.size()) {
+      end = matchingProducts.size();
+    }
+
+    return Mono.just(
+      new ProductPage(
+        page,
+        size,
+        matchingProducts.size(),
+        matchingProducts.subList(start, end)
+      )
+    );
+  }
 }

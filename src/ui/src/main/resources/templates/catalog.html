@@ -1,102 +1,144 @@
 <!doctype html>
 <html
-  xmlns:th="http://www.thymeleaf.org"
-  th:replace="~{fragments/layout :: layout (~{::body},'catalog')}"
+        xmlns:th="http://www.thymeleaf.org"
+        th:replace="~{fragments/layout :: layout (~{::body},'catalog')}"
 >
-  <body>
-    <section class="max-w-4xl mx-auto px-4 py-8">
-      <div class="flex flex-col md:flex-row gap-8">
-        <!-- Sidebar Filter -->
-        <div class="w-full md:w-36 h-fit">
-          <h3 class="font-semibold text-gray-800 mb-4 uppercase text-xs">
-            Categories
-          </h3>
-          <ul class="space-y-2 text-sm category-menu">
-            <li>
-              <a
-                href="#"
-                class="text-gray-600 hover:text-primary-500 block py-1"
-                th:href="@{/catalog(page=1)}"
-                >All Products</a
-              >
-            </li>
-            <li th:each="tag : ${tags}">
-              <a
-                href="#"
-                class="text-gray-600 hover:text-primary-500 block py-1"
-                th:text="${tag.displayName}"
-                th:href="@{/catalog(page=1,tag=${tag.name})}"
-                >Smart</a
-              >
-            </li>
-          </ul>
-        </div>
+<body>
+<section class="max-w-4xl mx-auto px-4 py-8">
+  <div class="flex flex-col md:flex-row gap-8">
+    <!-- Sidebar Filter -->
+    <div class="w-full md:w-36 h-fit" th:if="${keyword == null || keyword.isEmpty()}">
+      <h3 class="font-semibold text-gray-800 mb-4 uppercase text-xs">
+        Categories
+      </h3>
+      <ul class="space-y-2 text-sm category-menu">
+        <li>
+          <a
+                  href="#"
+                  class="text-gray-600 hover:text-primary-500 block py-1"
+                  th:href="@{/catalog(page=1)}"
+          >All Products</a
+          >
+        </li>
+        <li th:each="tag : ${tags}">
+          <a
+                  href="#"
+                  class="text-gray-600 hover:text-primary-500 block py-1"
+                  th:text="${tag.displayName}"
+                  th:href="@{/catalog(page=1,tag=${tag.name})}"
+          >Smart</a
+          >
+        </li>
+      </ul>
+    </div>
 
-        <!-- Product Grid -->
-        <div class="flex-1">
-          <div>
-            <div
-              class="text-center mb-4 text-sm text-gray-400"
-              th:if="${!disableDemoWarnings}"
-            >
-              These products are for demonstration purposes only
+    <!-- Product Grid -->
+    <div class="flex-1">
+      <!-- Search Bar -->
+      <div class="mb-6" th:if="${searchEnabled}">
+        <form method="GET" th:action="@{/catalog/search}" class="flex flex-col gap-3">
+          <div class="relative w-full">
+            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+              <i class="fas fa-search text-gray-400"></i>
             </div>
-            <div class="grid grid-cols-2 lg:grid-cols-3 gap-6">
-              <!-- Product Card 1 -->
-              <div th:each="item : ${catalog.products}">
-                <div
-                  th:replace="~{fragments/product_card :: card(${item}) }"
-                ></div>
-              </div>
-            </div>
+            <input
+                    type="text"
+                    name="keyword"
+                    th:value="${keyword}"
+                    placeholder="Search gadgets..."
+                    required
+                    class="block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-md leading-5 bg-white placeholder-gray-500 focus:outline-none focus:placeholder-gray-400 focus:ring-1 focus:ring-primary-500 focus:border-primary-500 sm:text-sm"
+            />
           </div>
-          <!-- Pagination -->
-          <div class="flex justify-center mt-8">
-            <nav
-              class="inline-flex items-center rounded-lg bg-white border border-gray-200 pagination"
-              aria-label="Pagination"
-              th:with="prevIndex=${{catalog.page == 1} ? 1: catalog.page-1}, nextIndex=${{catalog.page == catalog.totalPages} ? catalog.totalPages: catalog.page+1}"
+          <div class="flex flex-row gap-2">
+            <button
+                    type="submit"
+                    class="px-4 py-2 bg-primary-600 text-white rounded-md hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 transition-colors"
             >
-              <a
-                href="#"
-                th:href="@{/catalog(page=${prevIndex},tag=${selectedTag})}"
-              >
-                <button
-                  class="inline-flex items-center justify-center w-10 h-10 border-r border-gray-200 text-gray-500 hover:bg-gray-50"
-                >
-                  <span class="sr-only">Previous</span>
-                  <i class="fas fa-minus text-xs"></i></button
-              ></a>
+              Search
+            </button>
+            <a
+                    th:if="${keyword != null && !keyword.isEmpty()}"
+                    th:href="@{/catalog(tag=${selectedTag})}"
+                    class="px-4 py-2 bg-gray-100 text-gray-700 rounded-md hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 transition-colors"
+            >
+              Clear
+            </a>
+          </div>
+        </form>
 
-              <a
-                href="#"
-                th:each="i : ${#numbers.sequence(1, catalog.totalPages)}"
-                th:href="@{/catalog(page=${i},tag=${selectedTag})}"
-              >
-                <button
-                  class="inline-flex items-center justify-center w-10 h-10 border-r border-gray-200"
-                  th:classappend="${i == catalog.page} ? 'bg-primary-50 text-primary-500' : 'text-gray-700 hover:bg-gray-50'"
-                  th:text="${i}"
-                >
-                  1
-                </button></a
-              >
+        <!-- Search Results Info -->
+        <div th:if="${keyword != null && !keyword.isEmpty()}" class="mt-3 text-sm text-gray-600">
+          <span th:text="'Showing results for &quot;' + ${keyword} + '&quot; (' + ${catalog.totalRecords} + ' products found)'"></span>
+        </div>
+      </div>
 
-              <a
-                href="#"
-                th:href="@{/catalog(page=${nextIndex},tag=${selectedTag})}"
-              >
-                <button
-                  class="inline-flex items-center justify-center w-10 h-10 text-gray-500 hover:bg-gray-50"
-                >
-                  <span class="sr-only">Next</span>
-                  <i class="fas fa-plus text-xs"></i>
-                </button>
-              </a>
-            </nav>
+      <div>
+        <div
+                class="text-center mb-4 text-sm text-gray-400"
+                th:if="${!disableDemoWarnings}"
+        >
+          These products are for demonstration purposes only
+        </div>
+        <div th:if="${#lists.isEmpty(catalog.products)}" class="mt-3 text-md text-center">
+          <p> No gadgets found in the catalog </p>
+        </div>
+        <div class="grid grid-cols-2 lg:grid-cols-3 gap-6">
+          <!-- Product Card 1 -->
+          <div th:each="item : ${catalog.products}">
+            <div
+                    th:replace="~{fragments/product_card :: card(${item}) }"
+            ></div>
           </div>
         </div>
       </div>
-    </section>
-  </body>
+      <!-- Pagination -->
+      <div class="flex justify-center mt-8" th:if="${!#lists.isEmpty(catalog.products)}">
+        <nav
+                class="inline-flex items-center rounded-lg bg-white border border-gray-200 pagination"
+                aria-label="Pagination"
+                th:with="prevIndex=${{catalog.page == 1} ? 1: catalog.page-1}, nextIndex=${{catalog.page == catalog.totalPages} ? catalog.totalPages: catalog.page+1}"
+        >
+          <a
+                  href="#"
+                  th:href="${keyword != null && !keyword.isEmpty()} ? @{/catalog/search(page=${prevIndex},keyword=${keyword})} : @{/catalog(page=${prevIndex},tag=${selectedTag})}"
+          >
+            <button
+                    class="inline-flex items-center justify-center w-10 h-10 border-r border-gray-200 text-gray-500 hover:bg-gray-50"
+            >
+              <span class="sr-only">Previous</span>
+              <i class="fas fa-minus text-xs"></i></button
+            ></a>
+
+          <a
+                  href="#"
+                  th:each="i : ${#numbers.sequence(1, catalog.totalPages)}"
+                  th:href="${keyword != null && !keyword.isEmpty()} ? @{/catalog/search(page=${i},keyword=${keyword})} : @{/catalog(page=${i},tag=${selectedTag})}"
+          >
+            <button
+                    class="inline-flex items-center justify-center w-10 h-10 border-r border-gray-200"
+                    th:classappend="${i == catalog.page} ? 'bg-primary-50 text-primary-500' : 'text-gray-700 hover:bg-gray-50'"
+                    th:text="${i}"
+            >
+              1
+            </button></a
+          >
+
+          <a
+                  href="#"
+                  th:href="${keyword != null && !keyword.isEmpty()} ? @{/catalog/search(page=${nextIndex},keyword=${keyword})} : @{/catalog(page=${nextIndex},tag=${selectedTag})}"
+          >
+            <button
+                    class="inline-flex items-center justify-center w-10 h-10 text-gray-500 hover:bg-gray-50"
+            >
+              <span class="sr-only">Next</span>
+              <i class="fas fa-plus text-xs"></i>
+            </button>
+          </a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</section>
+</body>
 </html>

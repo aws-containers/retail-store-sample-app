@@ -65,6 +65,55 @@ paths:
             application/json:
               schema:
                 "$ref": "#/components/schemas/httputil.HTTPError"
+  "/catalog/search":
+    get:
+      tags:
+        - catalog
+      summary: Catalog search
+      description: Catalog search
+      parameters:
+        - name: keyword
+          in: query
+          description: Search text for catalog
+          schema:
+            type: string
+        - name: page
+          in: query
+          description: Page number
+          schema:
+            type: integer
+        - name: size
+          in: query
+          description: Page size
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  "$ref": "#/components/schemas/model.Product"
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/httputil.HTTPError"
+        "404":
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/httputil.HTTPError"
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/httputil.HTTPError"
   "/catalog/products/{id}":
     get:
       tags:

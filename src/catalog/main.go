@@ -80,7 +80,27 @@ func main() {
 		log.Fatal(err)
 	}
 
-	api, err := api.NewCatalogAPI(db)
+	// Initialize OpenSearch if enabled
+	var searchRepo repository.SearchRepository
+	if config.OpenSearch.Enabled {
+		fmt.Println("OpenSearch is enabled, initializing...")
+		osRepo, err := repository.NewOpenSearchRepository(config.OpenSearch)
+		if err != nil {
+			log.Printf("Warning: Failed to initialize OpenSearch: %v\n", err)
+		} else {
+			// Initialize OpenSearch data
+			if err := osRepo.InitializeData(); err != nil {
+				log.Printf("Warning: Failed to initialize OpenSearch data: %v\n", err)
+			} else {
+				searchRepo = osRepo
+				fmt.Println("OpenSearch initialized successfully")
+			}
+		}
+	} else {
+		fmt.Println("OpenSearch is disabled")
+	}
+
+	api, err := api.NewCatalogAPI(db, searchRepo)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -112,6 +132,8 @@ func main() {
 	catalog.GET("/size", c.CatalogSize)
 	catalog.GET("/tags", c.ListTags)
 	catalog.GET("/products/:id", c.GetProduct)
+	catalog.GET("/search", c.SearchProducts)
+	catalog.POST("/reindex", c.ReindexProducts)
 
 	r.GET("/health", func(c *gin.Context) {
 		if !chaosController.IsHealthy() {

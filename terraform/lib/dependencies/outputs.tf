@@ -132,3 +132,20 @@ output "checkout_elasticache_port" {
   value       = module.checkout_elasticache_redis.port
   description = "Checkout Redis port"
 }
+
+output "catalog_opensearch_endpoint" {
+  description = "Endpoint for the catalog OpenSearch domain"
+  value       = try(module.catalog_opensearch[0].domain_endpoint, "")
+}
+
+output "catalog_opensearch_master_username" {
+  description = "Master username for the catalog OpenSearch domain"
+  value       = var.catalog_search_username
+  sensitive   = true
+}
+
+output "catalog_opensearch_master_password" {
+  description = "Master password for the catalog OpenSearch domain"
+  value       = random_string.catalog_opensearch_master.result
+  sensitive   = true
+}

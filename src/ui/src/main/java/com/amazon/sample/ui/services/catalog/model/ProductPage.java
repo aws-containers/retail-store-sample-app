@@ -35,6 +35,6 @@ public class ProductPage {
   private List<Product> products;
 
   public int getTotalPages() {
-    return (totalRecords + size - 1) / size;
+    return size > 0 ? (totalRecords + size - 1) / size : 0;
   }
 }

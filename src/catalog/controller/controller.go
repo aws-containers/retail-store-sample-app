@@ -17,6 +17,7 @@
 package controller
 
 import (
+	"fmt"
 	"net/http"
 	"strconv"
 	"strings"
@@ -159,6 +160,82 @@ func (c *Controller) ListTags(ctx *gin.Context) {
 		return
 	}
 	ctx.JSON(http.StatusOK, accounts)
+}
+
+// SearchProducts godoc
+// @Summary Search products
+// @Description Search products by keyword using OpenSearch
+// @Tags catalog
+// @Accept  json
+// @Produce  json
+// @Param keyword query string true "Search keyword"
+// @Param page query int false "Page number"
+// @Param size query int false "Page size"
+// @Success 200 {array} model.Product
+// @Failure 400 {object} httputil.HTTPError
+// @Failure 404 {object} httputil.HTTPError
+// @Failure 500 {object} httputil.HTTPError
+// @Router /catalog/search [get]
+func (c *Controller) SearchProducts(ctx *gin.Context) {
+	if !c.api.IsSearchEnabled() {
+		httputil.NewError(ctx, http.StatusServiceUnavailable, fmt.Errorf("Search is not enabled"))
+		return
+	}
+
+	keyword := ctx.Query("keyword")
+
+	if keyword == "" {
+		httputil.NewError(ctx, http.StatusBadRequest, fmt.Errorf("keyword query parameter is required"))
+		return
+	}
+
+	page, err := getQueryInt("page", 1, ctx)
+	if err != nil {
+		httputil.NewError(ctx, http.StatusBadRequest, err)
+		return
+	}
+
+	size, err := getQueryInt("size", 10, ctx)
+	if err != nil {
+		httputil.NewError(ctx, http.StatusBadRequest, err)
+		return
+	}
+
+	products, err := c.api.SearchProducts(keyword, page, size, ctx.Request.Context())
+	if err != nil {
+		httputil.NewError(ctx, http.StatusInternalServerError, err)
+		return
+	}
+
+	if products == nil {
+		httputil.NewError(ctx, http.StatusServiceUnavailable, fmt.Errorf("search service is not available"))
+		return
+	}
+
+	ctx.JSON(http.StatusOK, products)
+}
+
+// ReindexProducts godoc
+// @Summary Reindex products
+// @Description Drop and recreate the search index with fresh product data
+// @Tags catalog
+// @Produce  json
+// @Success 200 {object} map[string]string
+// @Failure 503 {object} httputil.HTTPError
+// @Failure 500 {object} httputil.HTTPError
+// @Router /catalog/reindex [post]
+func (c *Controller) ReindexProducts(ctx *gin.Context) {
+	if !c.api.IsSearchEnabled() {
+		httputil.NewError(ctx, http.StatusServiceUnavailable, fmt.Errorf("search is not enabled"))
+		return
+	}
+
+	if err := c.api.Reindex(); err != nil {
+		httputil.NewError(ctx, http.StatusInternalServerError, err)
+		return
+	}
+
+	ctx.JSON(http.StatusOK, gin.H{"message": "reindex completed successfully"})
 }
 
 func getQueryInt(name string, defaultValue int, ctx *gin.Context) (int, error) {

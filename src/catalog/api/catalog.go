@@ -18,6 +18,7 @@ package api
 
 import (
 	"context"
+	"fmt"
 
 	"github.com/aws-containers/retail-store-sample-app/catalog/model"
 	"github.com/aws-containers/retail-store-sample-app/catalog/repository"
@@ -25,7 +26,8 @@ import (
 
 // CatalogAPI type
 type CatalogAPI struct {
-	repository repository.CatalogRepository
+	repository       repository.CatalogRepository
+	searchRepository repository.SearchRepository
 }
 
 func (a *CatalogAPI) GetProducts(tags []string, order string, pageNum, pageSize int, ctx context.Context) ([]model.Product, error) {
@@ -48,9 +50,28 @@ func (a *CatalogAPI) GetSize(tags []string, ctx context.Context) (int, error) {
 	return a.repository.CountProducts(tags, ctx)
 }
 
+func (a *CatalogAPI) IsSearchEnabled() bool {
+	return a.searchRepository != nil
+}
+
+func (a *CatalogAPI) SearchProducts(keyword string, page, size int, ctx context.Context) ([]model.Product, error) {
+	if a.searchRepository == nil {
+		return nil, nil
+	}
+	return a.searchRepository.SearchProducts(keyword, page, size, ctx)
+}
+
+func (a *CatalogAPI) Reindex() error {
+	if a.searchRepository == nil {
+		return fmt.Errorf("search is not enabled")
+	}
+	return a.searchRepository.Reindex()
+}
+
 // NewCatalogAPI constructor
-func NewCatalogAPI(repository repository.CatalogRepository) (*CatalogAPI, error) {
+func NewCatalogAPI(repository repository.CatalogRepository, searchRepository repository.SearchRepository) (*CatalogAPI, error) {
 	return &CatalogAPI{
-		repository: repository,
+		repository:       repository,
+		searchRepository: searchRepository,
 	}, nil
 }

@@ -77,12 +77,14 @@ configMap:
   name: # if blank this will be generated
 
 app:
-  # theme: default
+  theme: default
   endpoints: {}
     #catalog: http://catalog:80
     #carts: http://carts:80
     #orders: http://orders:80
     #checkout: http://checkout:80
+  search:
+    enabled: false
   chat:
     enabled: false
     provider: ""

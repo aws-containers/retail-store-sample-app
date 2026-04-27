@@ -44,6 +44,7 @@ data:
   {{- end -}}
   {{- if .Values.app.endpoints.assets }}
   RETAIL_UI_ENDPOINTS_ASSETS: {{ .Values.app.endpoints.assets }}
-  {{- end -}}
-  
+  {{- end }}
+  RETAIL_UI_SEARCH_ENABLED: "{{ .Values.app.search.enabled }}"
+
 {{- end }}

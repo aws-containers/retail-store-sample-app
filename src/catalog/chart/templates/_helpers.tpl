@@ -139,3 +139,37 @@ app.kubernetes.io/owner: retail-store-sample
 {{- .Values.app.persistence.endpoint -}}
 {{- end -}}
 {{- end -}}
+
+{{- define "catalog.opensearch.fullname" -}}
+{{- include "catalog.fullname" . }}-opensearch
+{{- end -}}
+
+{{/*
+Common labels for opensearch
+*/}}
+{{- define "catalog.opensearch.labels" -}}
+helm.sh/chart: {{ include "catalog.chart" . }}
+{{ include "catalog.opensearch.selectorLabels" . }}
+{{- if .Chart.AppVersion }}
+app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
+{{- end }}
+app.kubernetes.io/managed-by: {{ .Release.Service }}
+{{- end }}
+
+{{/*
+Selector labels for opensearch
+*/}}
+{{- define "catalog.opensearch.selectorLabels" -}}
+app.kubernetes.io/name: {{ include "catalog.fullname" . }}
+app.kubernetes.io/instance: {{ .Release.Name }}
+app.kubernetes.io/component: opensearch
+app.kubernetes.io/owner: retail-store-sample
+{{- end }}
+
+{{- define "catalog.opensearch.endpoint" -}}
+{{- if .Values.opensearch.create -}}
+{{ include "catalog.opensearch.fullname" . }}:{{ .Values.opensearch.service.port }}
+{{- else }}
+{{- .Values.app.search.endpoint -}}
+{{- end -}}
+{{- end -}}

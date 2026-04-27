@@ -19,6 +19,8 @@ retail:
       carts: # http://localhost:8082
       checkout: # http://localhost:8085
       orders: # http://localhost:8083
+    search:
+      enabled: false
     chat:
       enabled: false
       temperature: 0.6

@@ -1,0 +1,94 @@
+{{- if and .Values.app.search.enabled (eq .Values.app.search.provider "self-hosted") }}
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: {{ include "catalog.opensearch.fullname" . }}
+  labels:
+    {{- include "catalog.opensearch.labels" . | nindent 4 }}
+spec:
+  replicas: 1
+  serviceName: {{ include "catalog.opensearch.fullname" . }}
+  selector:
+    matchLabels:
+      {{- include "catalog.opensearch.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      {{- with .Values.opensearch.podAnnotations }}
+      annotations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      labels:
+        {{- include "catalog.opensearch.selectorLabels" . | nindent 8 }}
+    spec:
+      {{- with .Values.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      containers:
+        - name: opensearch
+          image: "{{ .Values.opensearch.image.repository }}:{{ .Values.opensearch.image.tag }}"
+          imagePullPolicy: {{ .Values.opensearch.image.pullPolicy }}
+          env:
+            - name: discovery.type
+              value: single-node
+            - name: DISABLE_SECURITY_PLUGIN
+              value: "true"
+            - name: OPENSEARCH_JAVA_OPTS
+              value: "-Xms512m -Xmx512m"
+            - name: DISABLE_INSTALL_DEMO_CONFIG
+              value: "true"
+            - name: OPENSEARCH_INITIAL_ADMIN_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .Values.app.persistence.secret.name }}
+                  key: RETAIL_CATALOG_SEARCH_OS_PASSWORD
+          volumeMounts:
+            - name: data
+              mountPath: /usr/share/opensearch/data
+          ports:
+            - name: opensearch
+              containerPort: 9200
+              protocol: TCP
+      {{- with .Values.opensearch.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.opensearch.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.opensearch.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+{{- if .Values.opensearch.persistentVolume.enabled }}
+  volumeClaimTemplates:
+    - metadata:
+        name: data
+        {{- if .Values.opensearch.persistentVolume.annotations }}
+        annotations:
+{{ toYaml .Values.opensearch.persistentVolume.annotations | indent 10 }}
+        {{- end }}
+        {{- if .Values.opensearch.persistentVolume.labels }}
+        labels:
+{{ toYaml .Values.opensearch.persistentVolume.labels | indent 10 }}
+        {{- end }}
+      spec:
+        accessModes:
+{{ toYaml .Values.opensearch.persistentVolume.accessModes | indent 8 }}
+        resources:
+          requests:
+            storage: "{{ .Values.opensearch.persistentVolume.size }}"
+      {{- if .Values.opensearch.persistentVolume.storageClass }}
+      {{- if (eq "-" .Values.opensearch.persistentVolume.storageClass) }}
+        storageClassName: ""
+      {{- else }}
+        storageClassName: "{{ .Values.opensearch.persistentVolume.storageClass }}"
+      {{- end }}
+      {{- end }}
+{{- else }}
+      volumes:
+      - name: data
+        emptyDir: {}
+{{- end }}
+{{- end }}
