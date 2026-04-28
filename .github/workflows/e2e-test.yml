@@ -39,8 +39,17 @@ jobs:
         uses: ./.github/actions/setup-env
       - name: Compose up
         run: |
-          DB_PASSWORD='test123' yarn nx compose:up
-          sleep 60
+          DB_PASSWORD='test123' docker compose \
+            -f src/app/docker-compose.yml \
+            -f src/app/compose.override.yaml \
+            -f src/app/docker-compose.tracetest.yml \
+            up --build --detach --wait
+          sleep 30
+      - name: Install Tracetest CLI
+        run: |
+          curl -L https://raw.githubusercontent.com/kubeshop/tracetest/main/install-cli.sh | bash -s -- v1.6.0
+      - name: Configure Tracetest CLI
+        run: tracetest configure --endpoint http://localhost:11633 --ci
       - name: Test
         run: |
           CYPRESS_BASE_URL='http://localhost:8888' yarn nx execute e2e
@@ -48,9 +57,18 @@ jobs:
         run: |
           cd src/load-generator
           bash scripts/run-test.sh
-      - name: Compose down
+      - name: Run trace tests
         run: |
-          DB_PASSWORD='test123' yarn nx compose:down
+          tracetest run test -f src/tracetest/tests/catalog-products.yml
+          tracetest run test -f src/tracetest/tests/checkout-update.yml
+      - name: Compose down
+        if: always()
+        run: |
+          DB_PASSWORD='test123' docker compose \
+            -f src/app/docker-compose.yml \
+            -f src/app/compose.override.yaml \
+            -f src/app/docker-compose.tracetest.yml \
+            down
 
   kubernetes:
     name: Kubernetes E2E Tests

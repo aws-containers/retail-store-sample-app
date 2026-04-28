@@ -1,0 +1,7 @@
+postgres:
+  host: tracetest-db
+  user: postgres
+  password: postgres
+  port: 5432
+  dbname: tracetest
+  params: sslmode=disable

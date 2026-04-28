@@ -1,0 +1,39 @@
+type: Test
+spec:
+  id: checkout-update
+  name: Checkout - POST update produces traces
+  description: Verifies that the checkout service emits OTLP traces when a checkout is created/updated
+  trigger:
+    type: http
+    httpRequest:
+      method: POST
+      url: http://checkout:8080/checkout/e2e-test-customer/update
+      headers:
+        - key: Content-Type
+          value: application/json
+      body: |
+        {
+          "firstName": "Test",
+          "lastName": "User",
+          "email": "test@example.com",
+          "shippingAddress": {
+            "firstName": "Test",
+            "lastName": "User",
+            "addressLine1": "123 Test St",
+            "city": "Testville",
+            "state": "TX",
+            "postCode": "12345",
+            "country": "US",
+            "phone": "5555555555"
+          }
+        }
+  specs:
+    - selector: span[tracetest.span.type="http" name="POST /checkout/:customerId/update"]
+      name: HTTP span exists for checkout update
+      assertions:
+        - attr:http.status_code = 200
+        - attr:http.method = "POST"
+    - selector: span[tracetest.span.type="database"]
+      name: Redis span exists showing cache interaction was traced
+      assertions:
+        - attr:db.system exists

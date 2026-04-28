@@ -1,0 +1,55 @@
+# Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+# SPDX-License-Identifier: MIT-0
+
+# Overlay that adds Tracetest infrastructure and enables OTLP tracing on
+# instrumented services (checkout, catalog). Apply on top of docker-compose.yml
+# and compose.override.yaml for trace regression testing.
+
+services:
+  tracetest:
+    image: kubeshop/tracetest:v1.6.0
+    hostname: tracetest
+    restart: unless-stopped
+    ports:
+      - "11633:11633"
+    volumes:
+      - ../tracetest/config.yml:/app/tracetest.yml
+      - ../tracetest/provisioning.yml:/app/provisioning.yml
+    command: --config /app/tracetest.yml --provisioning-file /app/provisioning.yml
+    depends_on:
+      tracetest-db:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "wget", "--spider", "-q", "http://localhost:11633/api/version"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 30s
+
+  tracetest-db:
+    image: postgres:15-alpine
+    hostname: tracetest-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: tracetest
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  # Enable OTLP tracing on checkout — point exporter at Tracetest's OTLP receiver
+  checkout:
+    environment:
+      - OTEL_SERVICE_NAME=checkout
+      - OTEL_EXPORTER_OTLP_ENDPOINT=http://tracetest:4318
+      - OTEL_EXPORTER_OTLP_PROTOCOL=http/protobuf
+
+  # Enable OTLP tracing on catalog
+  catalog:
+    environment:
+      - OTEL_SERVICE_NAME=catalog
+      - OTEL_EXPORTER_OTLP_ENDPOINT=http://tracetest:4318
+      - OTEL_EXPORTER_OTLP_PROTOCOL=http/protobuf
