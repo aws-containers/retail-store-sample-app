@@ -3173,13 +3173,13 @@ __metadata:
   linkType: hard
 
 "@types/express@npm:^5.0.3":
-  version: 5.0.3
-  resolution: "@types/express@npm:5.0.3"
+  version: 5.0.6
+  resolution: "@types/express@npm:5.0.6"
   dependencies:
     "@types/body-parser": "npm:*"
     "@types/express-serve-static-core": "npm:^5.0.0"
-    "@types/serve-static": "npm:*"
-  checksum: 10c0/f0fbc8daa7f40070b103cf4d020ff1dd08503477d866d1134b87c0390bba71d5d7949cb8b4e719a81ccba89294d8e1573414e6dcbb5bb1d097a7b820928ebdef
+    "@types/serve-static": "npm:^2"
+  checksum: 10c0/f1071e3389a955d4f9a38aae38634121c7cd9b3171ba4201ec9b56bd534aba07866839d278adc0dda05b942b05a901a02fd174201c3b1f70ce22b10b6c68f24b
   languageName: node
   linkType: hard
 
@@ -3355,14 +3355,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/serve-static@npm:*":
-  version: 1.15.7
-  resolution: "@types/serve-static@npm:1.15.7"
+"@types/serve-static@npm:^2":
+  version: 2.2.0
+  resolution: "@types/serve-static@npm:2.2.0"
   dependencies:
     "@types/http-errors": "npm:*"
     "@types/node": "npm:*"
-    "@types/send": "npm:*"
-  checksum: 10c0/26ec864d3a626ea627f8b09c122b623499d2221bbf2f470127f4c9ebfe92bd8a6bb5157001372d4c4bd0dd37a1691620217d9dc4df5aa8f779f3fd996b1c60ae
+  checksum: 10c0/a3c6126bdbf9685e6c7dc03ad34639666eff32754e912adeed9643bf3dd3aa0ff043002a7f69039306e310d233eb8e160c59308f95b0a619f32366bbc48ee094
   languageName: node
   linkType: hard
 
