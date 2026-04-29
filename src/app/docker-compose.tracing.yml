@@ -30,12 +30,6 @@ services:
     depends_on:
       jaeger:
         condition: service_healthy
-    healthcheck:
-      test: ["CMD", "wget", "--spider", "-q", "http://localhost:13133/"]
-      interval: 5s
-      timeout: 5s
-      retries: 10
-      start_period: 10s
 
   jaeger:
     image: jaegertracing/all-in-one:1.57
