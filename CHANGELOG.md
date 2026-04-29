@@ -1,5 +1,20 @@
 # Changelog
 
+## [1.5.0](https://github.com/aws-containers/retail-store-sample-app/compare/v1.4.2...v1.5.0) (2026-04-29)
+
+
+### Features
+
+* UI text response ([#1017](https://github.com/aws-containers/retail-store-sample-app/issues/1017)) ([5ad97e0](https://github.com/aws-containers/retail-store-sample-app/commit/5ad97e0be1d3d4a3f58bd13fcaf82dd86fca9238))
+
+
+### Bug Fixes
+
+* **deps:** update module go.opentelemetry.io/otel to v1.41.0 [security] ([#1023](https://github.com/aws-containers/retail-store-sample-app/issues/1023)) ([2a36bed](https://github.com/aws-containers/retail-store-sample-app/commit/2a36bed47dd665300288c4a3ed856dc7cd8a0fe3))
+* **deps:** update module go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracehttp to v1.43.0 [security] ([#1004](https://github.com/aws-containers/retail-store-sample-app/issues/1004)) ([5c55137](https://github.com/aws-containers/retail-store-sample-app/commit/5c55137a0af2750235cf827b539acc4e67f73e04))
+* Fix Spring Boot 3 http codec setting ([f8f494a](https://github.com/aws-containers/retail-store-sample-app/commit/f8f494afc52051426fc0b318ef17a4a8c35b7d96))
+* Remove console print in UI ([560f9dd](https://github.com/aws-containers/retail-store-sample-app/commit/560f9dd9f467dab44cf18a8251b3676b16a2c305))
+
 ## [1.4.2](https://github.com/aws-containers/retail-store-sample-app/compare/v1.4.1...v1.4.2) (2026-04-15)
 
 
