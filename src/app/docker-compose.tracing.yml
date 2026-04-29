@@ -1,0 +1,81 @@
+# Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+# SPDX-License-Identifier: MIT-0
+
+# Overlay that adds observability infrastructure and enables OTLP tracing on
+# all services, mirroring the environment variables set by Terraform in
+# production. Apply on top of docker-compose.yml and compose.override.yaml.
+#
+# Services export traces to the OTel Collector, which forwards to Jaeger.
+# The Jaeger query API is used by assert-traces.sh to verify trace coverage.
+
+x-otel-env: &otel-env
+  OTEL_SDK_DISABLED: "false"
+  OTEL_EXPORTER_OTLP_PROTOCOL: "http/protobuf"
+  OTEL_EXPORTER_OTLP_ENDPOINT: "http://otel-collector:4318"
+  OTEL_METRICS_EXPORTER: "none"
+  OTEL_PROPAGATORS: "tracecontext,baggage"
+  OTEL_RESOURCE_PROVIDERS_AWS_ENABLED: "false"
+  OTEL_BSP_SCHEDULE_DELAY: "200"
+
+services:
+  otel-collector:
+    image: otel/opentelemetry-collector-contrib:0.102.0
+    hostname: otel-collector
+    restart: unless-stopped
+    volumes:
+      - ./otel-collector-config.yml:/etc/otel-collector-config.yml
+    command: ["--config=/etc/otel-collector-config.yml"]
+    ports:
+      - "4318:4318"
+    depends_on:
+      jaeger:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "wget", "--spider", "-q", "http://localhost:13133/"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+      start_period: 10s
+
+  jaeger:
+    image: jaegertracing/all-in-one:1.57
+    hostname: jaeger
+    restart: unless-stopped
+    ports:
+      - "16686:16686"
+    environment:
+      - COLLECTOR_OTLP_ENABLED=true
+    healthcheck:
+      test: ["CMD", "wget", "--spider", "-q", "http://localhost:16686/"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+      start_period: 10s
+
+  ui:
+    environment:
+      <<: *otel-env
+      OTEL_SERVICE_NAME: "ui"
+      OTEL_JAVA_GLOBAL_AUTOCONFIGURE_ENABLED: "true"
+
+  catalog:
+    environment:
+      <<: *otel-env
+      OTEL_SERVICE_NAME: "catalog"
+
+  cart:
+    environment:
+      <<: *otel-env
+      OTEL_SERVICE_NAME: "cart"
+      OTEL_JAVA_GLOBAL_AUTOCONFIGURE_ENABLED: "true"
+
+  checkout:
+    environment:
+      <<: *otel-env
+      OTEL_SERVICE_NAME: "checkout"
+
+  orders:
+    environment:
+      <<: *otel-env
+      OTEL_SERVICE_NAME: "orders"
+      OTEL_JAVA_GLOBAL_AUTOCONFIGURE_ENABLED: "true"

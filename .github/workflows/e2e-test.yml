@@ -42,32 +42,28 @@ jobs:
           DB_PASSWORD='test123' docker compose \
             -f src/app/docker-compose.yml \
             -f src/app/compose.override.yaml \
-            -f src/app/docker-compose.tracetest.yml \
+            -f src/app/docker-compose.tracing.yml \
             up --build --detach --wait
           sleep 30
-      - name: Install Tracetest CLI
-        run: |
-          curl -L https://raw.githubusercontent.com/kubeshop/tracetest/main/install-cli.sh | bash -s -- v1.6.0
-      - name: Configure Tracetest CLI
-        run: tracetest configure --endpoint http://localhost:11633 --ci
-      - name: Test
+      - name: Run functional tests
         run: |
           CYPRESS_BASE_URL='http://localhost:8888' yarn nx execute e2e
-      - name: Load Generator
+      - name: Run trace assertions
+        run: |
+          # Wait for traces to be received
+          sleep 90
+          bash src/e2e/scripts/assert-traces.sh
+      - name: Run load test
         run: |
           cd src/load-generator
           bash scripts/run-test.sh
-      - name: Run trace tests
-        run: |
-          tracetest run test -f src/tracetest/tests/catalog-products.yml
-          tracetest run test -f src/tracetest/tests/checkout-update.yml
       - name: Compose down
         if: always()
         run: |
           DB_PASSWORD='test123' docker compose \
             -f src/app/docker-compose.yml \
             -f src/app/compose.override.yaml \
-            -f src/app/docker-compose.tracetest.yml \
+            -f src/app/docker-compose.tracing.yml \
             down
 
   kubernetes:
