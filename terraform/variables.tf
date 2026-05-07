@@ -91,3 +91,78 @@ variable "root_oidc_namespace_service_accounts" {
   type        = list(string)
   default     = []
 }
+
+# ArgoCD variables
+variable "argocd_chart_version" {
+  description = "Version of the argo-cd Helm chart to install"
+  type        = string
+  default     = "6.0.0"
+}
+
+variable "argocd_create_namespace" {
+  description = "Whether to create the argocd namespace if it doesn't exist"
+  type        = bool
+  default     = true
+}
+
+variable "argocd_namespace" {
+  description = "Kubernetes namespace where ArgoCD will be deployed"
+  type        = string
+  default     = "argocd"
+}
+
+variable "gitops_repository_url" {
+  description = "URL of the GitOps repository (e.g., https://github.com/org/ecommerce-gitops.git)"
+  type        = string
+  default     = ""
+}
+
+variable "gitops_repository_branch" {
+  description = "Default branch of the GitOps repository"
+  type        = string
+  default     = "main"
+}
+
+variable "gitops_pat" {
+  description = "GitHub Personal Access Token for ArgoCD to access private GitOps repository"
+  type        = string
+  sensitive   = true
+  default     = ""
+}
+
+variable "gitops_username" {
+  description = "GitHub username for repository authentication"
+  type        = string
+  default     = "ecommerce-cd-bot"
+}
+
+variable "ecr_repository_prefix" {
+  description = "ECR repository prefix used by ArgoCD for image lookups (e.g., 123456789.dkr.ecr.ap-southeast-1.amazonaws.com)"
+  type        = string
+  default     = ""
+}
+
+variable "argocd_server_admin_password_hash" {
+  description = "bcrypt hash of ArgoCD server admin password (leave empty to disable password auth)"
+  type        = string
+  sensitive   = true
+  default     = ""
+}
+
+variable "argocd_helm_values_override" {
+  description = "Additional Helm values to override ArgoCD default configuration (as HCL map)"
+  type        = map(any)
+  default     = {}
+}
+
+variable "enable_argocd_repo_server_irsa" {
+  description = "Whether to enable IRSA for ArgoCD repo server to access ECR"
+  type        = bool
+  default     = true
+}
+
+variable "argocd_repo_server_ecr_read_policy" {
+  description = "Whether to attach ECR read policy to ArgoCD repo server IRSA role"
+  type        = bool
+  default     = true
+}
