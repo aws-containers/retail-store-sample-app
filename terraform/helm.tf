@@ -90,3 +90,46 @@ resource "helm_release" "cluster_autoscaler" {
 
   depends_on = [module.eks]
 }
+
+# ─── Monitoring: Prometheus + Grafana (kube-prometheus-stack) ───────────────
+# Deploy a curated Prometheus + Alertmanager + Grafana stack into the cluster
+
+resource "kubernetes_namespace" "monitoring" {
+  metadata {
+    name = "monitoring"
+    labels = {
+      name = "monitoring"
+    }
+  }
+
+  depends_on = [module.eks]
+}
+
+resource "helm_release" "kube_prometheus_stack" {
+  name       = "kube-prometheus-stack"
+  repository = "https://prometheus-community.github.io/helm-charts"
+  chart      = "kube-prometheus-stack"
+  namespace  = kubernetes_namespace.monitoring.metadata[0].name
+  # Pin to a tested version; update as needed when upgrading
+  version = "45.6.0"
+
+  # Expose Grafana via LoadBalancer so it is accessible for demos.
+  set {
+    name  = "grafana.service.type"
+    value = "LoadBalancer"
+  }
+
+  # Create service accounts inside the chart (IRSA can be added later if required)
+  set {
+    name  = "prometheus.serviceAccount.create"
+    value = "true"
+  }
+
+  set {
+    name  = "grafana.serviceAccount.create"
+    value = "true"
+  }
+
+  # Keep the deployment tied to cluster creation
+  depends_on = [module.eks]
+}
