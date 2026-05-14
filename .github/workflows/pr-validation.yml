@@ -23,18 +23,6 @@ permissions:
   pull-requests: read
 
 jobs:
-  semanticpr:
-    name: Semantic Pull Request
-    runs-on: ubuntu-latest
-    steps:
-      - name: Semantic PR title check
-        if: github.event_name == 'pull_request'
-        uses: amannn/action-semantic-pull-request@v5
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - name: Skip semantic PR check for non-PR events
-        if: github.event_name != 'pull_request'
-        run: echo "Skipping semantic PR check for event '${{ github.event_name }}'."
 
   validate:
     name: Validate
@@ -45,7 +33,6 @@ jobs:
     if: github.event_name == 'pull_request'
     runs-on: ubuntu-latest
     needs:
-      - semanticpr
       - validate
     steps:
       - name: Check out code
