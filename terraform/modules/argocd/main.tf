@@ -77,7 +77,7 @@ resource "helm_release" "argocd" {
 
   # IRSA annotation for repo server, injected when requested
   dynamic "set" {
-    for_each = var.enable_repo_server_irsa_annotation && var.repo_server_iam_role_arn != "" ? [1] : []
+    for_each = var.enable_repo_server_irsa_annotation ? [1] : []
     content {
       name  = "repoServer.serviceAccount.annotations.eks\\.amazonaws\\.com/role-arn"
       value = var.repo_server_iam_role_arn
@@ -174,7 +174,7 @@ resource "helm_release" "argocd" {
 
 # Ensure the SA has the annotation (keeps annotation across helm upgrades)
 resource "kubernetes_service_account" "argocd_repo_server" {
-  count = var.enable_repo_server_irsa_annotation && var.repo_server_iam_role_arn != "" ? 1 : 0
+  count = var.enable_repo_server_irsa_annotation ? 1 : 0
 
   metadata {
     name      = "argocd-repo-server"
