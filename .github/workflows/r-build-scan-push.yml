@@ -70,7 +70,7 @@ jobs:
         run: |
           set -euo pipefail
 
-          repository_name="ecommerce/${{ matrix.service }}"
+          repository_name="e-comm/${{ matrix.service }}"
 
           if aws ecr describe-repositories --repository-names "$repository_name" >/dev/null 2>&1; then
             echo "ECR repository exists: $repository_name"
