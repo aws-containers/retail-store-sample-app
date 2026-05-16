@@ -5,6 +5,7 @@ on:
     # Real image build and publish flow when changes land on main.
     branches:
       - "main"
+      - "feat/argocd"
   workflow_dispatch:
     inputs:
       version:

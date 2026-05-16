@@ -4,7 +4,7 @@ on:
   push:
     branches-ignore:
       - main
-      - feat/cicd-pipeline
+      - feat/argocd
   pull_request:
     branches:
       - main

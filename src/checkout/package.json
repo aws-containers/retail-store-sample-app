@@ -85,6 +85,7 @@
     "minimatch@npm:^9.0.4": "9.0.7",
     "multer@npm:2.0.1": "2.1.1",
     "path-to-regexp@npm:8.2.0": "8.4.0",
+    "protobufjs@npm:8.0.1": "8.0.2",
     "protobufjs@npm:^7.2.5": "8.0.2",
     "protobufjs@npm:^7.3.0": "8.0.2",
     "protobufjs@npm:^7.3.2": "8.0.2",
