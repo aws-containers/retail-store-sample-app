@@ -90,10 +90,10 @@ jobs:
 
           IMAGE_TAG=${TAG_NAME#v}
           if [ "${{ matrix.service }}" = "load-generator" ]; then
-            image_ref="${AWS_ECR_REPOSITORY}/ecommerce/load-generator:load-gen.${IMAGE_TAG}-${TARGET_ARCH}"
+            image_ref="${AWS_ECR_REPOSITORY}/e-comm/load-generator:load-gen.${IMAGE_TAG}-${TARGET_ARCH}"
             yarn nx container load-generator --load true --tags "$image_ref"
           else
-            image_ref="${AWS_ECR_REPOSITORY}/ecommerce/${{ matrix.service }}:${IMAGE_TAG}-${TARGET_ARCH}"
+            image_ref="${AWS_ECR_REPOSITORY}/e-comm/${{ matrix.service }}:${IMAGE_TAG}-${TARGET_ARCH}"
             yarn nx container "${{ matrix.service }}" --load true --tags "$image_ref"
           fi
 
