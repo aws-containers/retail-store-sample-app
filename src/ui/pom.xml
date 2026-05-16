@@ -8,7 +8,7 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>3.5.5</version>
+		<version>3.5.14</version>
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.amazon.sample</groupId>
@@ -23,8 +23,8 @@
 		<spring-cloud-aws.version>2.4.2</spring-cloud-aws.version>
 		<org.mapstruct.version>1.6.3</org.mapstruct.version>
 		<spring-framework.version>6.2.11</spring-framework.version>
-		<netty.version>4.1.132.Final</netty.version>
-		<thymeleaf.version>3.1.4.RELEASE</thymeleaf.version>
+		<netty.version>4.1.133.Final</netty.version>
+		<thymeleaf.version>3.1.5.RELEASE</thymeleaf.version>
 		<spring-ai.version>1.0.5</spring-ai.version>
 	</properties>
 
@@ -165,12 +165,12 @@
 		<dependency>
 			<groupId>com.microsoft.kiota</groupId>
 			<artifactId>microsoft-kiota-bundle</artifactId>
-			<version>1.8.10</version>
+			<version>1.9.1</version>
 		</dependency>
 		<dependency>
 			<groupId>com.microsoft.kiota</groupId>
 			<artifactId>microsoft-kiota-serialization-json</artifactId>
-			<version>1.8.10</version>
+			<version>1.9.1</version>
 		</dependency>
 		<dependency>
 			<groupId>io.opentelemetry.contrib</groupId>

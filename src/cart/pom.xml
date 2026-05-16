@@ -17,7 +17,7 @@
   <parent>
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-parent</artifactId>
-    <version>3.5.5</version>
+    <version>3.5.14</version>
     <relativePath /> <!-- lookup parent from repository -->
   </parent>
 
@@ -27,7 +27,7 @@
     <mapstruct.version>1.6.3</mapstruct.version>
     <spring-framework.version>6.2.11</spring-framework.version>
     <tomcat.version>10.1.54</tomcat.version>
-    <netty.version>4.1.132.Final</netty.version>
+    <netty.version>4.1.133.Final</netty.version>
   </properties>
 
   <dependencyManagement>
