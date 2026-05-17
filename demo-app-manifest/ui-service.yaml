@@ -10,8 +10,8 @@ metadata:
 spec:
   type: LoadBalancer
   ports:
-    - name: "8888"
-      port: 8888
+    - name: "80"
+      port: 80
       targetPort: 8080
   selector:
     io.kompose.service: ui
