@@ -38,7 +38,7 @@ variable "eks_cluster_version" {
 variable "node_instance_type" {
   description = "EC2 instance type for worker nodes"
   type        = string
-  default     = "t3.small"
+  default     = "t3.medium"
 }
 
 variable "node_min_size" {
@@ -50,7 +50,7 @@ variable "node_min_size" {
 variable "node_max_size" {
   description = "Maximum nodes per node group (Cluster Autoscaler ceiling)"
   type        = number
-  default     = 3
+  default     = 6
 }
 
 variable "node_desired_size" {

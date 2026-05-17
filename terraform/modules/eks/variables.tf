@@ -27,7 +27,7 @@ variable "public_subnet_ids" {
 variable "node_instance_type" {
   description = "EC2 instance type for managed worker nodes"
   type        = string
-  default     = "t3.small"
+  default     = "t3.medium"
 }
 
 variable "node_min_size" {
