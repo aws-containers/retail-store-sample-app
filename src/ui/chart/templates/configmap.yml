@@ -26,6 +26,11 @@ data:
   RETAIL_UI_CHAT_OPENAI_API_KEY: {{ .Values.app.chat.openai.apiKey }}
   {{- end }}
   {{- end }}
+  {{- if (eq "anthropic" .Values.app.chat.provider) }}
+  {{- if .Values.app.chat.anthropic.apiKey }}
+  RETAIL_UI_CHAT_ANTHROPIC_API_KEY: {{ .Values.app.chat.anthropic.apiKey }}
+  {{- end }}
+  {{- end }}
   {{- if (eq "bedrock" .Values.app.chat.provider) }}
   RETAIL_UI_CHAT_BEDROCK_REGION: {{ .Values.app.chat.bedrock.region }}
   {{- end }}

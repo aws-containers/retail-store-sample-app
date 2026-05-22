@@ -44,6 +44,66 @@ Several "utility" endpoints are provided with useful functionality for various s
 | `GET`  | `/utility/store/{hash}`        | Return the payload from the file system previously written                  |
 | `GET`  | `/utility/stress/{iterations}` | Stress the CPU with the number of iterations increasing the CPU consumption |
 
+## Chat Configuration
+
+To enable the AI chat feature with a custom OpenAI-compatible API endpoint (like Claude API via KodeKloud or similar providers), follow these steps:
+
+### Setup with Custom OpenAI-Compatible API
+
+1. **Set Environment Variables**:
+
+```bash
+export RETAIL_UI_CHAT_ENABLED=true
+export RETAIL_UI_CHAT_PROVIDER=openai
+export RETAIL_UI_CHAT_MODEL=deepseek/deepseek-v3.2
+export RETAIL_UI_CHAT_OPENAI_BASE_URL=https://api.ai.kodekloud.com
+export RETAIL_UI_CHAT_OPENAI_API_KEY=sk-YOUR-API-KEY-HERE
+export RETAIL_UI_CHAT_TEMPERATURE=0.6
+export RETAIL_UI_CHAT_MAX_TOKENS=300
+```
+
+Or, pass them directly when running the application:
+
+```bash
+./mvnw spring-boot:run \
+  -Dspring-boot.run.arguments="\
+  --retail.ui.chat.enabled=true \
+  --retail.ui.chat.provider=openai \
+  --retail.ui.chat.model=deepseek/deepseek-v3.2 \
+  --retail.ui.chat.openai.base-url=https://api.ai.kodekloud.com \
+  --retail.ui.chat.openai.api-key=sk-YOUR-API-KEY-HERE \
+  --retail.ui.chat.temperature=0.6 \
+  --retail.ui.chat.max-tokens=300"
+```
+
+2. **Example Configuration via Environment Variables** (Recommended):
+
+Create a `.env` file in the UI directory and source it before running:
+
+```bash
+# .env file
+RETAIL_UI_CHAT_ENABLED=true
+RETAIL_UI_CHAT_PROVIDER=openai
+RETAIL_UI_CHAT_MODEL=deepseek/deepseek-v3.2
+RETAIL_UI_CHAT_OPENAI_BASE_URL=https://api.ai.kodekloud.com
+RETAIL_UI_CHAT_OPENAI_API_KEY=sk-YOUR-API-KEY-HERE
+RETAIL_UI_CHAT_TEMPERATURE=0.6
+RETAIL_UI_CHAT_MAX_TOKENS=300
+```
+
+Then run:
+
+```bash
+source .env
+./mvnw spring-boot:run
+```
+
+### Available Chat Providers
+
+- `bedrock` - AWS Bedrock (requires AWS credentials and `RETAIL_UI_CHAT_BEDROCK_REGION`)
+- `openai` - OpenAI-compatible API endpoints (requires `RETAIL_UI_CHAT_OPENAI_BASE_URL` and `RETAIL_UI_CHAT_OPENAI_API_KEY`)
+- `mock` - Mock provider for testing (no API key required)
+
 ## Running
 
 There are two main options for running the service:
@@ -76,4 +136,24 @@ To clean up:
 
 ```
 docker compose down
+```
+
+### Docker with Chat Enabled
+
+To run with chat enabled in Docker, update the `docker-compose.yml` with environment variables or create a `.env` file in the same directory and Docker Compose will automatically load it.
+
+Example `.env` file:
+
+```env
+RETAIL_UI_CHAT_ENABLED=true
+RETAIL_UI_CHAT_PROVIDER=openai
+RETAIL_UI_CHAT_MODEL=deepseek/deepseek-v3.2
+RETAIL_UI_CHAT_OPENAI_BASE_URL=https://api.ai.kodekloud.com
+RETAIL_UI_CHAT_OPENAI_API_KEY=sk-YOUR-API-KEY-HERE
+```
+
+Then run:
+
+```
+docker compose up
 ```

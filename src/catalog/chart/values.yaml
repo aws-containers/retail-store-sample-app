@@ -5,9 +5,9 @@
 replicaCount: 1
 
 image:
-  repository: public.ecr.aws/aws-containers/retail-store-sample-catalog
+  repository: retail-store-sample-catalog   # overridden by Terraform with full private ECR URL
   pullPolicy: IfNotPresent
-  tag: 
+  tag:
 
 imagePullSecrets: []
 nameOverride: ""
@@ -88,7 +88,7 @@ mysql:
   create: false
 
   image:
-    repository: public.ecr.aws/docker/library/mysql
+    repository: retail-store-sample-mysql   # overridden by Terraform with full private ECR URL
     pullPolicy: IfNotPresent
     tag: "8.0"
 

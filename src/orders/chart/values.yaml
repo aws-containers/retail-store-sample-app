@@ -5,9 +5,9 @@
 replicaCount: 1
 
 image:
-  repository: public.ecr.aws/aws-containers/retail-store-sample-orders
+  repository: retail-store-sample-orders   # overridden by Terraform with full private ECR URL
   pullPolicy: IfNotPresent
-  tag: 
+  tag:
 
 imagePullSecrets: []
 nameOverride: ""
@@ -100,7 +100,7 @@ postgresql:
   create: false
 
   image:
-    repository: public.ecr.aws/docker/library/postgres
+    repository: retail-store-sample-postgres   # overridden by Terraform with full private ECR URL
     pullPolicy: IfNotPresent
     tag: "16.1"
 
@@ -129,7 +129,7 @@ rabbitmq:
   create: false
 
   image:
-    repository: "public.ecr.aws/docker/library/rabbitmq"
+    repository: retail-store-sample-rabbitmq   # overridden by Terraform with full private ECR URL
     pullPolicy: IfNotPresent
     tag: "3-management"
 

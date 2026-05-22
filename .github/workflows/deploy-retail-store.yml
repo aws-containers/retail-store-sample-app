@@ -1,0 +1,241 @@
+name: Full Deploy — Build, Push ECR & Deploy to EKS
+
+on:
+  workflow_dispatch:
+    inputs:
+      image_tag:
+        description: 'Image tag (leave blank to use git SHA)'
+        required: false
+        default: ''
+      skip_build:
+        description: 'Skip image build (redeploy an already-pushed tag)'
+        type: boolean
+        required: false
+        default: false
+      skip_mirror:
+        description: 'Skip mirroring third-party dependency images'
+        type: boolean
+        required: false
+        default: false
+      environment:
+        description: 'Kubernetes namespace to deploy into'
+        required: false
+        default: 'default'
+
+permissions:
+  contents: read
+
+env:
+  AWS_REGION: ${{ secrets.AWS_REGION }}
+  TF_DIR:     terraform/retail-store-eks
+  TF_VERSION: '1.9.0'
+
+jobs:
+  # ----------------------------------------------------------------
+  # 1. Resolve image tag once — all downstream jobs share it
+  # ----------------------------------------------------------------
+  resolve-tag:
+    name: Resolve image tag
+    runs-on: ubuntu-latest
+    outputs:
+      image_tag: ${{ steps.tag.outputs.tag }}
+
+    steps:
+      - name: Resolve tag
+        id: tag
+        run: |
+          TAG="${{ inputs.image_tag }}"
+          if [ -z "$TAG" ]; then
+            TAG="sha-$(echo ${{ github.sha }} | cut -c1-8)"
+          fi
+          echo "tag=$TAG" >> "$GITHUB_OUTPUT"
+          echo "Resolved image tag: $TAG"
+
+  # ----------------------------------------------------------------
+  # 2. Mirror third-party dependency images to private ECR
+  # ----------------------------------------------------------------
+  mirror-dependencies:
+    name: Mirror ${{ matrix.name }}
+    runs-on: ubuntu-latest
+    needs: resolve-tag
+    if: ${{ inputs.skip_mirror != true }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - name: mysql
+            source: mysql:8.0
+            repo: retail-store-sample-mysql
+            tag: "8.0"
+          - name: postgres
+            source: postgres:16.1
+            repo: retail-store-sample-postgres
+            tag: "16.1"
+          - name: rabbitmq
+            source: rabbitmq:3-management
+            repo: retail-store-sample-rabbitmq
+            tag: 3-management
+          - name: dynamodb-local
+            source: amazon/dynamodb-local:1.25.1
+            repo: retail-store-sample-dynamodb-local
+            tag: "1.25.1"
+          - name: redis
+            source: redis:6.0-alpine
+            repo: retail-store-sample-redis
+            tag: 6.0-alpine
+
+    steps:
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id:     ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region:            ${{ env.AWS_REGION }}
+
+      - name: Login to private ECR
+        id: login-ecr
+        uses: aws-actions/amazon-ecr-login@v2
+
+      - name: Pull, retag, and push ${{ matrix.name }}
+        run: |
+          DEST="${{ steps.login-ecr.outputs.registry }}/${{ matrix.repo }}"
+          docker pull ${{ matrix.source }}
+          docker tag  ${{ matrix.source }} "${DEST}:${{ matrix.tag }}"
+          docker tag  ${{ matrix.source }} "${DEST}:latest"
+          docker push "${DEST}:${{ matrix.tag }}"
+          docker push "${DEST}:latest"
+
+  # ----------------------------------------------------------------
+  # 3. Build and push application service images
+  # ----------------------------------------------------------------
+  build-services:
+    name: Build ${{ matrix.service }}
+    runs-on: ubuntu-latest
+    needs: resolve-tag
+    if: ${{ inputs.skip_build != true }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - service: ui
+            context: src/ui
+            repo: retail-store-sample-ui
+          - service: catalog
+            context: src/catalog
+            repo: retail-store-sample-catalog
+          - service: cart
+            context: src/cart
+            repo: retail-store-sample-cart
+          - service: checkout
+            context: src/checkout
+            repo: retail-store-sample-checkout
+          - service: orders
+            context: src/orders
+            repo: retail-store-sample-orders
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id:     ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region:            ${{ env.AWS_REGION }}
+
+      - name: Login to private ECR
+        id: login-ecr
+        uses: aws-actions/amazon-ecr-login@v2
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Build and push ${{ matrix.service }}
+        uses: docker/build-push-action@v5
+        with:
+          context: ${{ matrix.context }}
+          push: true
+          tags: |
+            ${{ steps.login-ecr.outputs.registry }}/${{ matrix.repo }}:${{ needs.resolve-tag.outputs.image_tag }}
+            ${{ steps.login-ecr.outputs.registry }}/${{ matrix.repo }}:latest
+          cache-from: type=registry,ref=${{ steps.login-ecr.outputs.registry }}/${{ matrix.repo }}:cache
+          cache-to:   type=registry,ref=${{ steps.login-ecr.outputs.registry }}/${{ matrix.repo }}:cache,mode=max
+
+  # ----------------------------------------------------------------
+  # 4. Terraform apply — provisions ECR repos, EKS cluster,
+  #    ALB controller, and deploys all Helm charts in one pass
+  # ----------------------------------------------------------------
+  terraform-deploy:
+    name: Terraform Apply & Helm Deploy
+    runs-on: ubuntu-latest
+    needs:
+      - resolve-tag
+      - build-services
+      - mirror-dependencies
+    if: |
+      always() &&
+      (needs.build-services.result    == 'success' || needs.build-services.result    == 'skipped') &&
+      (needs.mirror-dependencies.result == 'success' || needs.mirror-dependencies.result == 'skipped')
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id:     ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region:            ${{ env.AWS_REGION }}
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: ${{ env.TF_VERSION }}
+
+      - name: Terraform Init
+        working-directory: ${{ env.TF_DIR }}
+        run: terraform init -input=false
+
+      - name: Terraform Apply
+        working-directory: ${{ env.TF_DIR }}
+        run: |
+          terraform apply \
+            -var="image_tag=${{ needs.resolve-tag.outputs.image_tag }}" \
+            -auto-approve \
+            -input=false
+        env:
+          TF_VAR_aws_region: ${{ env.AWS_REGION }}
+
+      - name: Update kubeconfig
+        working-directory: ${{ env.TF_DIR }}
+        run: |
+          CLUSTER=$(terraform output -raw cluster_name 2>/dev/null || echo "retail-store-eks")
+          aws eks update-kubeconfig \
+            --region ${{ env.AWS_REGION }} \
+            --name   "$CLUSTER"
+
+      - name: Wait for UI rollout
+        run: |
+          kubectl rollout status deployment/ui \
+            -n ${{ inputs.environment || 'default' }} \
+            --timeout=10m
+
+      - name: Deployment summary
+        working-directory: ${{ env.TF_DIR }}
+        run: |
+          ECR=$(terraform output -raw ecr_registry  2>/dev/null || echo "N/A")
+          CLUSTER=$(terraform output -raw cluster_name 2>/dev/null || echo "N/A")
+          ALB=$(kubectl get ingress ui \
+            -n ${{ inputs.environment || 'default' }} \
+            -o jsonpath='{.status.loadBalancer.ingress[0].hostname}' 2>/dev/null || echo "pending")
+
+          echo "### Deployment Complete" >> $GITHUB_STEP_SUMMARY
+          echo "| Field | Value |" >> $GITHUB_STEP_SUMMARY
+          echo "|---|---|" >> $GITHUB_STEP_SUMMARY
+          echo "| Image Tag    | ${{ needs.resolve-tag.outputs.image_tag }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| ECR Registry | $ECR |" >> $GITHUB_STEP_SUMMARY
+          echo "| EKS Cluster  | $CLUSTER |" >> $GITHUB_STEP_SUMMARY
+          echo "| Namespace    | ${{ inputs.environment || 'default' }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| UI URL       | http://$ALB |" >> $GITHUB_STEP_SUMMARY
