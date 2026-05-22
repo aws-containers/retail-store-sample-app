@@ -35,14 +35,7 @@ terraform {
 
 provider "aws" {
   region = var.aws_region
-
-  default_tags {
-    tags = {
-      Project     = "retail-store-sample-app"
-      Environment = var.environment
-      ManagedBy   = "terraform"
-    }
-  }
+  # default_tags omitted — lab IAM users lack iam:TagPolicy / iam:TagRole
 }
 
 provider "kubernetes" {
