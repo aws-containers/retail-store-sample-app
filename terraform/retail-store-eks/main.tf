@@ -78,5 +78,7 @@ provider "helm" {
 }
 
 locals {
-  ecr_registry = "${data.aws_caller_identity.current.account_id}.dkr.ecr.${var.aws_region}.amazonaws.com"
+  account_id      = data.aws_caller_identity.current.account_id
+  ecr_registry    = "${local.account_id}.dkr.ecr.${var.aws_region}.amazonaws.com"
+  tf_state_bucket = "retail-store-tfstate-${local.account_id}"
 }

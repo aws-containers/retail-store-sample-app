@@ -1,3 +1,13 @@
+output "aws_account_id" {
+  value       = local.account_id
+  description = "AWS account ID used for this deployment"
+}
+
+output "tf_state_bucket" {
+  value       = local.tf_state_bucket
+  description = "S3 bucket holding Terraform state for this account"
+}
+
 output "cluster_name" {
   value       = aws_eks_cluster.retail_store.name
   description = "EKS cluster name"
