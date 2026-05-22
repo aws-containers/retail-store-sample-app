@@ -160,11 +160,44 @@ jobs:
             echo "DynamoDB table already exists."
           fi
 
+      # ECR repos must exist before build/mirror jobs try to push images.
+      # Terraform creates them later during apply, but we pre-create them here
+      # so the parallel build jobs don't fail with "repository does not exist".
+      - name: Ensure ECR repositories exist
+        run: |
+          REGION="${{ inputs.aws_region }}"
+          REPOS=(
+            retail-store-sample-ui
+            retail-store-sample-catalog
+            retail-store-sample-cart
+            retail-store-sample-checkout
+            retail-store-sample-orders
+            retail-store-sample-mysql
+            retail-store-sample-postgres
+            retail-store-sample-rabbitmq
+            retail-store-sample-dynamodb-local
+            retail-store-sample-redis
+          )
+          for REPO in "${REPOS[@]}"; do
+            if aws ecr describe-repositories --repository-names "$REPO" --region "$REGION" \
+                 --no-cli-pager 2>/dev/null; then
+              echo "$REPO — already exists"
+            else
+              aws ecr create-repository \
+                --repository-name "$REPO" \
+                --image-tag-mutability MUTABLE \
+                --image-scanning-configuration scanOnPush=true \
+                --region "$REGION" \
+                --no-cli-pager
+              echo "$REPO — created"
+            fi
+          done
+
   # ── 3. Mirror third-party dependency images ───────────────────────────────────
   mirror-dependencies:
     name: Mirror ${{ matrix.name }}
     runs-on: ubuntu-latest
-    needs: [resolve-tag]
+    needs: [resolve-tag, bootstrap]
     if: ${{ inputs.skip_mirror != true && inputs.action != 'destroy' }}
     strategy:
       fail-fast: false
@@ -200,7 +233,7 @@ jobs:
   build-services:
     name: Build ${{ matrix.service }}
     runs-on: ubuntu-latest
-    needs: [resolve-tag]
+    needs: [resolve-tag, bootstrap]
     if: ${{ inputs.skip_build != true && inputs.action != 'destroy' }}
     strategy:
       fail-fast: false
