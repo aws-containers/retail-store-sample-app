@@ -27,6 +27,7 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.client.RestClient;
 
 @Configuration
 @Slf4j
@@ -43,7 +44,7 @@ public class OpenAIChatConfig {
     ChatProperties properties,
     OpenAIChatProperties openaiProperties
   ) {
-    log.warn("Creating OpenAI chat client");
+    log.warn("Creating OpenAI chat client with baseUrl: {}", openaiProperties.getBaseUrl());
 
     var modelOptions = OpenAiChatOptions.builder()
       .model(properties.getModel())
@@ -51,15 +52,21 @@ public class OpenAIChatConfig {
       .maxTokens(properties.getMaxTokens())
       .build();
 
+    // Build the OpenAiApi with custom base URL
+    OpenAiApi.Builder apiBuilder = OpenAiApi.builder()
+      .apiKey(openaiProperties.getApiKey());
+
+    // Set custom base URL if provided
+    if (openaiProperties.getBaseUrl() != null && !openaiProperties.getBaseUrl().isEmpty()) {
+      log.info("Using custom OpenAI base URL: {}", openaiProperties.getBaseUrl());
+      apiBuilder.baseUrl(openaiProperties.getBaseUrl());
+    }
+
     var chatModel = OpenAiChatModel.builder()
-      .openAiApi(
-        OpenAiApi.builder()
-          .baseUrl(openaiProperties.getBaseUrl())
-          .apiKey(openaiProperties.getApiKey())
-          .build()
-      )
+      .openAiApi(apiBuilder.build())
       .defaultOptions(modelOptions)
       .build();
+
     return ChatClient.create(chatModel);
   }
 }

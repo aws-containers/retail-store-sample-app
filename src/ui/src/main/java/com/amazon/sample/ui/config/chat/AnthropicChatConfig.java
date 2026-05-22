@@ -1,15 +1,14 @@
 package com.amazon.sample.ui.config.chat;
 
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.ai.bedrock.converse.BedrockProxyChatModel;
+import org.springframework.ai.anthropic.AnthropicChatModel;
+import org.springframework.ai.anthropic.AnthropicChatOptions;
+import org.springframework.ai.anthropic.api.AnthropicApi;
 import org.springframework.ai.chat.client.ChatClient;
-import org.springframework.ai.model.tool.ToolCallingChatOptions;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import software.amazon.awssdk.auth.credentials.DefaultCredentialsProvider;
-import software.amazon.awssdk.regions.Region;
 
 @Configuration
 @Slf4j
@@ -17,30 +16,32 @@ import software.amazon.awssdk.regions.Region;
 @ConditionalOnProperty(
   prefix = ChatProperties.PREFIX,
   name = "provider",
-  havingValue = "bedrock"
+  havingValue = "anthropic"
 )
-public class BedrockChatConfig {
+public class AnthropicChatConfig {
 
   @Bean
   public ChatClient chatClient(
     ChatProperties properties,
-    BedrockChatProperties bedrockProperties
+    AnthropicChatProperties anthropicProperties
   ) {
-    log.warn("Creating Amazon Bedrock chat client");
+    log.warn("Creating Anthropic chat client with model: {}", properties.getModel());
 
-    var modelOptions = ToolCallingChatOptions.builder()
-      .model(properties.getModel())
-      .maxTokens(properties.getMaxTokens())
-      .temperature(properties.getTemperature())
+    var api = AnthropicApi.builder()
+      .apiKey(anthropicProperties.getApiKey())
       .build();
 
-    var chatModel = BedrockProxyChatModel.builder()
-      .credentialsProvider(DefaultCredentialsProvider.create())
-      .region(Region.of(bedrockProperties.getRegion()))
+    var modelOptions = AnthropicChatOptions.builder()
+      .model(properties.getModel())
+      .temperature(properties.getTemperature())
+      .maxTokens(properties.getMaxTokens())
+      .build();
+
+    var chatModel = AnthropicChatModel.builder()
+      .anthropicApi(api)
       .defaultOptions(modelOptions)
       .build();
 
     return ChatClient.create(chatModel);
   }
 }
-

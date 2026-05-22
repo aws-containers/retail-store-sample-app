@@ -96,6 +96,8 @@ app:
     openai:
       baseUrl: ""
       # apiKey: ""
+    anthropic:
+      apiKey: ""
 
 ## Ingress for load balancer
 ingress:
