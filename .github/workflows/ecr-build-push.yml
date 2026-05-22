@@ -1,14 +1,8 @@
 name: Build & Push to Private ECR
 
 on:
-  push:
-    branches: [main, feature/retail-app]
-    paths:
-      - 'src/ui/**'
-      - 'src/catalog/**'
-      - 'src/cart/**'
-      - 'src/checkout/**'
-      - 'src/orders/**'
+  # Push trigger disabled — ci-cd.yml handles automated end-to-end runs.
+  # This workflow is retained for targeted manual ECR builds only.
   workflow_dispatch:
     inputs:
       image_tag:

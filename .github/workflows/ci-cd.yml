@@ -1,35 +1,54 @@
-name: CI/CD — Build, Push & Deploy to EKS
+name: CI/CD — End-to-End Deployment
 
-# ── Triggers ──────────────────────────────────────────────────────────────────
-# • Push to main: auto-apply when app source or Terraform changes
-# • workflow_dispatch: manual run with selectable action (plan/apply/destroy)
+# ── Trigger: manual only ───────────────────────────────────────────────────────
+# All credentials and options are supplied as inputs when you click
+# "Run workflow" in the GitHub Actions UI — no secrets configuration needed.
 on:
-  push:
-    branches: [main]
-    paths:
-      - 'src/**'
-      - 'terraform/retail-store-eks/**'
-      - '.github/workflows/ci-cd.yml'
   workflow_dispatch:
     inputs:
-      action:
-        description: 'Terraform action to run'
+
+      # ── AWS credentials ──────────────────────────────────────────────────────
+      aws_access_key_id:
+        description: 'AWS Access Key ID'
         required: true
-        default: 'plan'
+
+      aws_secret_access_key:
+        description: 'AWS Secret Access Key'
+        required: true
+
+      aws_region:
+        description: 'AWS Region'
+        required: false
+        default: 'us-east-1'
+
+      # ── OpenAI (optional — enables AI chat in the UI) ────────────────────────
+      openai_api_key:
+        description: 'OpenAI API Key (leave blank to disable AI chat in UI)'
+        required: false
+        default: ''
+
+      # ── Pipeline options ─────────────────────────────────────────────────────
+      action:
+        description: 'Terraform action'
+        required: true
+        default: 'apply'
         type: choice
         options:
           - plan
           - apply
           - destroy
+
       image_tag:
-        description: 'Image tag (leave blank to use git SHA: sha-XXXXXXXX)'
+        description: 'Docker image tag (leave blank → auto: sha-XXXXXXXX)'
         required: false
         default: ''
+
       skip_build:
-        description: 'Skip building service images (redeploy an already-pushed tag)'
+        description: 'Skip building service images (re-use an already-pushed tag)'
         type: boolean
         required: false
         default: false
+
       skip_mirror:
         description: 'Skip mirroring third-party dependency images to ECR'
         type: boolean
@@ -39,13 +58,12 @@ on:
 permissions:
   contents: read
 
-# ── Shared env ────────────────────────────────────────────────────────────────
+# ── Shared constants ───────────────────────────────────────────────────────────
 env:
-  AWS_REGION:   ${{ secrets.AWS_REGION || 'us-east-1' }}
-  TF_DIR:       terraform/retail-store-eks
-  TF_VERSION:   '1.9.0'
   DYNAMO_TABLE: retail-store-terraform-locks
   TF_STATE_KEY: retail-store-eks/terraform.tfstate
+  TF_DIR:       terraform/retail-store-eks
+  TF_VERSION:   '1.9.0'
 
 # ══════════════════════════════════════════════════════════════════════════════
 jobs:
@@ -65,11 +83,11 @@ jobs:
             TAG="sha-$(echo '${{ github.sha }}' | cut -c1-8)"
           fi
           echo "tag=$TAG" >> "$GITHUB_OUTPUT"
-          echo "Image tag: $TAG"
+          echo "Image tag → $TAG"
 
-  # ── 2. Bootstrap Terraform state backend ────────────────────────────────────
-  # Creates the S3 bucket and DynamoDB lock table if they don't exist yet.
-  # Uses the AWS account ID as the bucket-name suffix — unique per account.
+  # ── 2. Bootstrap Terraform state backend ─────────────────────────────────────
+  # Creates the S3 bucket + DynamoDB lock table if they do not exist yet.
+  # Bucket name = retail-store-tfstate-<ACCOUNT_ID>  (unique per account).
   bootstrap:
     name: Bootstrap Terraform state
     runs-on: ubuntu-latest
@@ -79,9 +97,9 @@ jobs:
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v4
         with:
-          aws-access-key-id:     ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region:            ${{ env.AWS_REGION }}
+          aws-access-key-id:     ${{ inputs.aws_access_key_id }}
+          aws-secret-access-key: ${{ inputs.aws_secret_access_key }}
+          aws-region:            ${{ inputs.aws_region }}
 
       - name: Derive bucket name from account ID
         id: bucket
@@ -89,15 +107,15 @@ jobs:
           ACCOUNT_ID=$(aws sts get-caller-identity --query Account --output text)
           BUCKET="retail-store-tfstate-${ACCOUNT_ID}"
           echo "name=$BUCKET" >> "$GITHUB_OUTPUT"
-          echo "Terraform state bucket: $BUCKET"
+          echo "State bucket → $BUCKET"
 
       - name: Ensure S3 bucket exists
         run: |
           BUCKET="${{ steps.bucket.outputs.name }}"
-          REGION="${{ env.AWS_REGION }}"
+          REGION="${{ inputs.aws_region }}"
 
           if aws s3api head-bucket --bucket "$BUCKET" 2>/dev/null; then
-            echo "Bucket already exists — skipping."
+            echo "Bucket already exists."
           else
             if [ "$REGION" = "us-east-1" ]; then
               aws s3api create-bucket --bucket "$BUCKET" --region "$REGION"
@@ -116,13 +134,13 @@ jobs:
               --bucket "$BUCKET" \
               --public-access-block-configuration \
                 BlockPublicAcls=true,IgnorePublicAcls=true,BlockPublicPolicy=true,RestrictPublicBuckets=true
-            echo "Bucket created and secured."
+            echo "Bucket created."
           fi
 
       - name: Ensure DynamoDB lock table exists
         run: |
           TABLE="${{ env.DYNAMO_TABLE }}"
-          REGION="${{ env.AWS_REGION }}"
+          REGION="${{ inputs.aws_region }}"
 
           STATUS=$(aws dynamodb describe-table \
             --table-name "$TABLE" --region "$REGION" \
@@ -139,10 +157,10 @@ jobs:
             aws dynamodb wait table-exists --table-name "$TABLE" --region "$REGION"
             echo "DynamoDB table created."
           else
-            echo "DynamoDB table already exists — skipping."
+            echo "DynamoDB table already exists."
           fi
 
-  # ── 3. Mirror third-party dependency images ──────────────────────────────────
+  # ── 3. Mirror third-party dependency images ───────────────────────────────────
   mirror-dependencies:
     name: Mirror ${{ matrix.name }}
     runs-on: ubuntu-latest
@@ -152,33 +170,18 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - name: mysql
-            source: mysql:8.0
-            repo:   retail-store-sample-mysql
-            tag:    "8.0"
-          - name: postgres
-            source: postgres:16.1
-            repo:   retail-store-sample-postgres
-            tag:    "16.1"
-          - name: rabbitmq
-            source: rabbitmq:3-management
-            repo:   retail-store-sample-rabbitmq
-            tag:    3-management
-          - name: dynamodb-local
-            source: amazon/dynamodb-local:1.25.1
-            repo:   retail-store-sample-dynamodb-local
-            tag:    "1.25.1"
-          - name: redis
-            source: redis:6.0-alpine
-            repo:   retail-store-sample-redis
-            tag:    6.0-alpine
+          - { name: mysql,          source: mysql:8.0,                      repo: retail-store-sample-mysql,         tag: "8.0"         }
+          - { name: postgres,       source: postgres:16.1,                  repo: retail-store-sample-postgres,      tag: "16.1"        }
+          - { name: rabbitmq,       source: rabbitmq:3-management,          repo: retail-store-sample-rabbitmq,      tag: 3-management  }
+          - { name: dynamodb-local, source: amazon/dynamodb-local:1.25.1,   repo: retail-store-sample-dynamodb-local, tag: "1.25.1"    }
+          - { name: redis,          source: redis:6.0-alpine,               repo: retail-store-sample-redis,         tag: 6.0-alpine   }
     steps:
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v4
         with:
-          aws-access-key-id:     ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region:            ${{ env.AWS_REGION }}
+          aws-access-key-id:     ${{ inputs.aws_access_key_id }}
+          aws-secret-access-key: ${{ inputs.aws_secret_access_key }}
+          aws-region:            ${{ inputs.aws_region }}
 
       - name: Login to private ECR
         id: login-ecr
@@ -193,7 +196,7 @@ jobs:
           docker push "${DEST}:${{ matrix.tag }}"
           docker push "${DEST}:latest"
 
-  # ── 4. Build and push application service images ─────────────────────────────
+  # ── 4. Build and push application service images ──────────────────────────────
   build-services:
     name: Build ${{ matrix.service }}
     runs-on: ubuntu-latest
@@ -203,21 +206,11 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - service: ui
-            context: src/ui
-            repo:    retail-store-sample-ui
-          - service: catalog
-            context: src/catalog
-            repo:    retail-store-sample-catalog
-          - service: cart
-            context: src/cart
-            repo:    retail-store-sample-cart
-          - service: checkout
-            context: src/checkout
-            repo:    retail-store-sample-checkout
-          - service: orders
-            context: src/orders
-            repo:    retail-store-sample-orders
+          - { service: ui,       context: src/ui,       repo: retail-store-sample-ui       }
+          - { service: catalog,  context: src/catalog,  repo: retail-store-sample-catalog  }
+          - { service: cart,     context: src/cart,     repo: retail-store-sample-cart     }
+          - { service: checkout, context: src/checkout, repo: retail-store-sample-checkout }
+          - { service: orders,   context: src/orders,   repo: retail-store-sample-orders   }
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -225,9 +218,9 @@ jobs:
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v4
         with:
-          aws-access-key-id:     ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region:            ${{ env.AWS_REGION }}
+          aws-access-key-id:     ${{ inputs.aws_access_key_id }}
+          aws-secret-access-key: ${{ inputs.aws_secret_access_key }}
+          aws-region:            ${{ inputs.aws_region }}
 
       - name: Login to private ECR
         id: login-ecr
@@ -247,20 +240,19 @@ jobs:
           cache-from: type=registry,ref=${{ steps.login-ecr.outputs.registry }}/${{ matrix.repo }}:cache
           cache-to:   type=registry,ref=${{ steps.login-ecr.outputs.registry }}/${{ matrix.repo }}:cache,mode=max
 
-  # ── 5. Terraform plan / apply / destroy ──────────────────────────────────────
+  # ── 5. Terraform — provision infra and deploy via Helm ────────────────────────
   terraform:
-    name: Terraform ${{ inputs.action || 'apply' }}
+    name: Terraform ${{ inputs.action }}
     runs-on: ubuntu-latest
     needs:
       - resolve-tag
       - bootstrap
       - build-services
       - mirror-dependencies
-    # Run even when build/mirror were skipped; fail only on hard failures
     if: |
       always() &&
       needs.bootstrap.result == 'success' &&
-      (needs.build-services.result    == 'success' || needs.build-services.result    == 'skipped') &&
+      (needs.build-services.result      == 'success' || needs.build-services.result      == 'skipped') &&
       (needs.mirror-dependencies.result == 'success' || needs.mirror-dependencies.result == 'skipped')
 
     steps:
@@ -270,9 +262,9 @@ jobs:
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v4
         with:
-          aws-access-key-id:     ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region:            ${{ env.AWS_REGION }}
+          aws-access-key-id:     ${{ inputs.aws_access_key_id }}
+          aws-secret-access-key: ${{ inputs.aws_secret_access_key }}
+          aws-region:            ${{ inputs.aws_region }}
 
       - name: Setup Terraform ${{ env.TF_VERSION }}
         uses: hashicorp/setup-terraform@v3
@@ -282,13 +274,14 @@ jobs:
       - name: Install kubectl
         uses: azure/setup-kubectl@v4
 
-      - name: Terraform Init (partial backend)
+      # ── init ────────────────────────────────────────────────────────────────
+      - name: Terraform Init
         working-directory: ${{ env.TF_DIR }}
         run: |
           terraform init \
             -backend-config="bucket=${{ needs.bootstrap.outputs.tf_state_bucket }}" \
             -backend-config="key=${{ env.TF_STATE_KEY }}" \
-            -backend-config="region=${{ env.AWS_REGION }}" \
+            -backend-config="region=${{ inputs.aws_region }}" \
             -backend-config="encrypt=true" \
             -backend-config="dynamodb_table=${{ env.DYNAMO_TABLE }}" \
             -input=false
@@ -297,66 +290,63 @@ jobs:
         working-directory: ${{ env.TF_DIR }}
         run: terraform validate
 
+      # ── plan ────────────────────────────────────────────────────────────────
       - name: Terraform Plan
-        id: plan
         working-directory: ${{ env.TF_DIR }}
         run: |
           terraform plan \
-            -var="aws_region=${{ env.AWS_REGION }}" \
+            -var="aws_region=${{ inputs.aws_region }}" \
             -var="image_tag=${{ needs.resolve-tag.outputs.image_tag }}" \
-            -var="openai_api_key=${{ secrets.OPENAI_API_KEY }}" \
+            -var="openai_api_key=${{ inputs.openai_api_key }}" \
             -out=tfplan \
             -input=false
 
-      - name: Post plan summary
+      - name: Plan summary
         if: always()
         working-directory: ${{ env.TF_DIR }}
         run: |
           echo "### Terraform Plan" >> $GITHUB_STEP_SUMMARY
           terraform show -no-color tfplan 2>/dev/null | tail -40 >> $GITHUB_STEP_SUMMARY || true
 
+      # ── apply ───────────────────────────────────────────────────────────────
       - name: Terraform Apply
-        if: ${{ inputs.action == 'apply' || inputs.action == '' || (github.event_name == 'push' && github.ref == 'refs/heads/main') }}
+        if: ${{ inputs.action == 'apply' }}
         working-directory: ${{ env.TF_DIR }}
         run: terraform apply -auto-approve -input=false tfplan
 
+      # ── destroy ─────────────────────────────────────────────────────────────
       - name: Terraform Destroy
         if: ${{ inputs.action == 'destroy' }}
         working-directory: ${{ env.TF_DIR }}
         run: |
           terraform destroy \
-            -var="aws_region=${{ env.AWS_REGION }}" \
+            -var="aws_region=${{ inputs.aws_region }}" \
             -var="image_tag=${{ needs.resolve-tag.outputs.image_tag }}" \
-            -var="openai_api_key=${{ secrets.OPENAI_API_KEY }}" \
+            -var="openai_api_key=${{ inputs.openai_api_key }}" \
             -auto-approve \
             -input=false
 
-      # ── Post-apply steps (skipped on plan/destroy) ──────────────────────────
-
+      # ── post-apply: kubeconfig + rollout wait + summary ─────────────────────
       - name: Update kubeconfig
-        if: ${{ inputs.action == 'apply' || inputs.action == '' || (github.event_name == 'push' && github.ref == 'refs/heads/main') }}
+        if: ${{ inputs.action == 'apply' }}
         working-directory: ${{ env.TF_DIR }}
         run: |
           CLUSTER=$(terraform output -raw cluster_name 2>/dev/null || echo "retail-store-eks")
-          aws eks update-kubeconfig \
-            --region "${{ env.AWS_REGION }}" \
-            --name   "$CLUSTER"
+          aws eks update-kubeconfig --region "${{ inputs.aws_region }}" --name "$CLUSTER"
 
       - name: Wait for UI rollout
-        if: ${{ inputs.action == 'apply' || inputs.action == '' || (github.event_name == 'push' && github.ref == 'refs/heads/main') }}
-        run: |
-          kubectl rollout status deployment/ui \
-            -n default \
-            --timeout=10m
+        if: ${{ inputs.action == 'apply' }}
+        run: kubectl rollout status deployment/ui -n default --timeout=10m
 
       - name: Deployment summary
-        if: ${{ inputs.action == 'apply' || inputs.action == '' || (github.event_name == 'push' && github.ref == 'refs/heads/main') }}
+        if: ${{ inputs.action == 'apply' }}
         working-directory: ${{ env.TF_DIR }}
         run: |
           ECR=$(terraform output -raw ecr_registry  2>/dev/null || echo "N/A")
           CLUSTER=$(terraform output -raw cluster_name 2>/dev/null || echo "N/A")
           ALB=$(kubectl get ingress ui -n default \
             -o jsonpath='{.status.loadBalancer.ingress[0].hostname}' 2>/dev/null || echo "pending")
+          CHAT="${{ inputs.openai_api_key != '' && 'enabled (OpenAI)' || 'disabled' }}"
 
           echo "### Deployment Complete" >> $GITHUB_STEP_SUMMARY
           echo "| Field | Value |" >> $GITHUB_STEP_SUMMARY
@@ -365,4 +355,4 @@ jobs:
           echo "| ECR Registry | ${ECR} |" >> $GITHUB_STEP_SUMMARY
           echo "| EKS Cluster  | ${CLUSTER} |" >> $GITHUB_STEP_SUMMARY
           echo "| UI URL       | http://${ALB} |" >> $GITHUB_STEP_SUMMARY
-          echo "| OpenAI Chat  | ${{ secrets.OPENAI_API_KEY != '' && 'enabled' || 'disabled' }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| AI Chat      | ${CHAT} |" >> $GITHUB_STEP_SUMMARY

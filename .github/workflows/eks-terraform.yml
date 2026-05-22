@@ -1,10 +1,8 @@
 name: Provision EKS Cluster (Terraform)
 
 on:
-  push:
-    branches: [main]
-    paths:
-      - 'terraform/retail-store-eks/**'
+  # Push trigger disabled — ci-cd.yml handles automated end-to-end runs.
+  # This workflow is retained for targeted manual Terraform runs only.
   workflow_dispatch:
     inputs:
       action:
