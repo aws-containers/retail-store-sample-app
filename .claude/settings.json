@@ -1,0 +1,26 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(jar tf *)",
+      "Bash(jar xf *)",
+      "Bash(javap -p org/springframework/ai/anthropic/api/AnthropicApi.class)",
+      "Bash(javap -p 'org/springframework/ai/anthropic/api/AnthropicApi$Builder.class')",
+      "Bash(javap -p 'org/springframework/ai/anthropic/AnthropicChatModel.class')",
+      "Bash(javap -p 'org/springframework/ai/anthropic/AnthropicChatModel$Builder.class')",
+      "Bash(kubectl get *)",
+      "Bash(aws sts *)",
+      "Bash(aws ecr *)",
+      "Bash(python3 -c \"import sys,json; repos=json.load\\(sys.stdin\\)['repositories']; [print\\(r['repositoryUri']\\) for r in repos]\")",
+      "Bash(helm list *)",
+      "Bash(git add *)",
+      "Bash(git commit -m ' *)",
+      "Bash(git push *)",
+      "Bash(python3 -c \"import sys,json; [print\\(r['repositoryUri']\\) for r in json.load\\(sys.stdin\\)['repositories']]\")",
+      "Bash(kubectl set *)",
+      "Bash(kubectl rollout *)",
+      "Bash(kubectl logs *)",
+      "Bash(pip install *)",
+      "Bash(pip install *)"
+    ]
+  }
+}

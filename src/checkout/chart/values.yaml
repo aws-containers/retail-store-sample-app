@@ -5,9 +5,9 @@
 replicaCount: 1
 
 image:
-  repository: public.ecr.aws/aws-containers/retail-store-sample-checkout
+  repository: retail-store-sample-checkout   # overridden by Terraform with full private ECR URL
   pullPolicy: IfNotPresent
-  tag: 
+  tag:
 
 imagePullSecrets: []
 nameOverride: ''
@@ -86,7 +86,7 @@ redis:
   create: false
 
   image:
-    repository: redis
+    repository: retail-store-sample-redis   # overridden by Terraform with full private ECR URL
     pullPolicy: IfNotPresent
     tag: '6.0-alpine'
 

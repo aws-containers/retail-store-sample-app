@@ -5,9 +5,9 @@
 replicaCount: 1
 
 image:
-  repository: public.ecr.aws/aws-containers/retail-store-sample-cart
+  repository: retail-store-sample-cart   # overridden by Terraform with full private ECR URL
   pullPolicy: IfNotPresent
-  tag: 
+  tag:
 
 imagePullSecrets: []
 nameOverride: ""
@@ -83,7 +83,7 @@ dynamodb:
   create: false
 
   image:
-    repository: public.ecr.aws/aws-dynamodb-local/aws-dynamodb-local
+    repository: retail-store-sample-dynamodb-local   # overridden by Terraform with full private ECR URL
     pullPolicy: IfNotPresent
     tag: "1.25.1"
 

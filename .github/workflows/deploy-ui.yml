@@ -30,8 +30,6 @@ jobs:
   build-and-push:
     name: Build & Push Image
     runs-on: ubuntu-latest
-    outputs:
-      image: ${{ steps.push.outputs.image }}
 
     steps:
       - name: Checkout
@@ -49,34 +47,25 @@ jobs:
         uses: aws-actions/amazon-ecr-login@v2
 
       - name: Create ECR repository if it does not exist
-        env:
-          REGISTRY: ${{ steps.login-ecr.outputs.registry }}
         run: |
-          aws ecr describe-repositories --repository-names $ECR_REPOSITORY \
+          aws ecr describe-repositories \
+            --repository-names $ECR_REPOSITORY \
             --region ${{ secrets.AWS_REGION }} 2>/dev/null || \
           aws ecr create-repository \
             --repository-name $ECR_REPOSITORY \
             --region ${{ secrets.AWS_REGION }} \
             --image-scanning-configuration scanOnPush=true
 
-      - name: Build Docker image
+      - name: Build and push Docker image
         working-directory: src/ui
         env:
           REGISTRY: ${{ steps.login-ecr.outputs.registry }}
         run: |
-          docker build \
-            --tag $REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG \
-            --tag $REGISTRY/$ECR_REPOSITORY:latest \
-            .
-
-      - name: Push image to ECR
-        id: push
-        env:
-          REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-        run: |
-          docker push $REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
-          docker push $REGISTRY/$ECR_REPOSITORY:latest
-          echo "image=$REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG" >> $GITHUB_OUTPUT
+          FULL_IMAGE="$REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG"
+          echo "Building image: $FULL_IMAGE"
+          docker build --tag "$FULL_IMAGE" --tag "$REGISTRY/$ECR_REPOSITORY:latest" .
+          docker push "$FULL_IMAGE"
+          docker push "$REGISTRY/$ECR_REPOSITORY:latest"
 
   deploy:
     name: Deploy to EKS
@@ -92,6 +81,12 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ${{ secrets.AWS_REGION }}
 
+      # Login to ECR again in deploy job so we can reconstruct the image URL
+      # without relying on cross-job output passing (which can be empty)
+      - name: Login to Amazon ECR
+        id: login-ecr
+        uses: aws-actions/amazon-ecr-login@v2
+
       - name: Update kubeconfig for EKS cluster
         run: |
           aws eks update-kubeconfig \
@@ -100,12 +95,12 @@ jobs:
 
       - name: Deploy new image
         env:
-          IMAGE: ${{ needs.build-and-push.outputs.image }}
+          REGISTRY: ${{ steps.login-ecr.outputs.registry }}
           NAMESPACE: ${{ inputs.environment || 'default' }}
         run: |
-          kubectl set image deployment/ui \
-            ui=$IMAGE \
-            -n $NAMESPACE
+          FULL_IMAGE="$REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG"
+          echo "Deploying image: $FULL_IMAGE"
+          kubectl set image deployment/ui "ui=$FULL_IMAGE" -n "$NAMESPACE"
 
       - name: Configure Anthropic chat provider
         env:
@@ -114,14 +109,14 @@ jobs:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
         run: |
           kubectl set env deployment/ui \
-            -n $NAMESPACE \
+            -n "$NAMESPACE" \
             RETAIL_UI_CHAT_ENABLED=true \
             RETAIL_UI_CHAT_PROVIDER=anthropic \
-            "RETAIL_UI_CHAT_MODEL=$CLAUDE_MODEL" \
-            "RETAIL_UI_CHAT_ANTHROPIC_API_KEY=$ANTHROPIC_API_KEY"
+            RETAIL_UI_CHAT_MODEL="$CLAUDE_MODEL" \
+            RETAIL_UI_CHAT_ANTHROPIC_API_KEY="$ANTHROPIC_API_KEY"
 
-          # Remove leftover OpenAI vars if they exist
-          kubectl set env deployment/ui -n $NAMESPACE \
+          # Remove leftover OpenAI vars if they exist (ignore errors if already absent)
+          kubectl set env deployment/ui -n "$NAMESPACE" \
             RETAIL_UI_CHAT_OPENAI_BASE_URL- \
             RETAIL_UI_CHAT_OPENAI_API_KEY- 2>/dev/null || true
 
@@ -130,20 +125,22 @@ jobs:
           NAMESPACE: ${{ inputs.environment || 'default' }}
         run: |
           kubectl rollout status deployment/ui \
-            -n $NAMESPACE \
+            -n "$NAMESPACE" \
             --timeout=5m
 
       - name: Print deployment summary
         env:
+          REGISTRY: ${{ steps.login-ecr.outputs.registry }}
           NAMESPACE: ${{ inputs.environment || 'default' }}
         run: |
+          FULL_IMAGE="$REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG"
           echo "### Deployment complete" >> $GITHUB_STEP_SUMMARY
           echo "| Field | Value |" >> $GITHUB_STEP_SUMMARY
           echo "|---|---|" >> $GITHUB_STEP_SUMMARY
-          echo "| Image | ${{ needs.build-and-push.outputs.image }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| Image | $FULL_IMAGE |" >> $GITHUB_STEP_SUMMARY
           echo "| Cluster | ${{ secrets.EKS_CLUSTER_NAME }} |" >> $GITHUB_STEP_SUMMARY
           echo "| Namespace | $NAMESPACE |" >> $GITHUB_STEP_SUMMARY
           echo "| Model | ${{ inputs.claude_model || 'claude-3-5-sonnet-20241022' }} |" >> $GITHUB_STEP_SUMMARY
-          kubectl get deployment ui -n $NAMESPACE \
+          kubectl get deployment ui -n "$NAMESPACE" \
             -o=jsonpath='| Pods | {.status.readyReplicas}/{.spec.replicas} |' \
             >> $GITHUB_STEP_SUMMARY
