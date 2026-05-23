@@ -9,14 +9,6 @@ data "aws_vpc" "default_vpc" {
   default = true
 }
 
-# Get Public IP of your broadband account. This allows us to lock down SSH access
-# into the environment from anyone other than yourself, by inserting your public
-# IP to a security group ingress rule.
-# Try this URL in your browser!
-data "http" "cloudshell_ip" {
-  url = "https://checkip.amazonaws.com/"
-}
-
 # Get the subnets to use for the cluster to bind to and the autoscaling group
 # to place nodes in.
 data "aws_subnets" "public" {
