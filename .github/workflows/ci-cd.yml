@@ -1,11 +1,22 @@
 name: CI/CD — End-to-End Deployment
 
-# ── Trigger: manual only ───────────────────────────────────────────────────────
+# ─────────────────────────────────────────────────────────────────────────────
+# Repo layout used by this pipeline:
+#   retail-store-sample-app          ← this repo  (app source + images)
+#   amazon-elastic-kubernetes-service-course  ← cloned at runtime (EKS Terraform)
+#
+# Job order:
+#   resolve-tag + bootstrap  (parallel)
+#       └─► create-ecr       (AWS CLI — ECR repos in account)
+#               ├─► build-services      (parallel)
+#               └─► mirror-dependencies (parallel)
+#                       └─► terraform  (EKS + deploy retail-store with ECR images)
+# ─────────────────────────────────────────────────────────────────────────────
 on:
   workflow_dispatch:
     inputs:
 
-      # ── AWS credentials ──────────────────────────────────────────────────────
+      # ── AWS credentials ─────────────────────────────────────────────────────
       aws_access_key_id:
         description: 'AWS Access Key ID'
         required: true
@@ -56,17 +67,18 @@ on:
 permissions:
   contents: read
 
-# ── Shared constants ───────────────────────────────────────────────────────────
 env:
-  DYNAMO_TABLE: retail-store-terraform-locks
-  TF_STATE_KEY: retail-store-eks/terraform.tfstate
-  TF_DIR:       terraform/retail-store-eks
-  TF_VERSION:   '1.9.0'
+  DYNAMO_TABLE:   retail-store-terraform-locks
+  TF_STATE_KEY:   eks/terraform.tfstate
+  TF_VERSION:     '1.9.0'
+  INFRA_REPO:     https://github.com/abhayjain09/amazon-elastic-kubernetes-service-course.git
+  INFRA_BRANCH:   feature/eks-cluster
+  INFRA_DIR:      infra-repo        # local checkout path inside the runner
 
-# ══════════════════════════════════════════════════════════════════════════════
+# ═════════════════════════════════════════════════════════════════════════════
 jobs:
 
-  # ── 1. Resolve image tag ────────────────────────────────────────────────────
+  # ── 1. Resolve image tag ──────────────────────────────────────────────────
   resolve-tag:
     name: Resolve image tag
     runs-on: ubuntu-latest
@@ -83,13 +95,14 @@ jobs:
           echo "tag=$TAG" >> "$GITHUB_OUTPUT"
           echo "Image tag → $TAG"
 
-  # ── 2. Bootstrap: S3 state bucket + DynamoDB lock table ──────────────────────
-  # Bucket name = retail-store-tfstate-<ACCOUNT_ID> (unique per account, no hardcoding).
+  # ── 2. Bootstrap: S3 state bucket + DynamoDB lock table ──────────────────
+  # Bucket = retail-store-tfstate-<ACCOUNT_ID>  (account-generic, no hardcoding)
   bootstrap:
     name: Bootstrap Terraform state
     runs-on: ubuntu-latest
     outputs:
       tf_state_bucket: ${{ steps.bucket.outputs.name }}
+      ecr_registry:    ${{ steps.bucket.outputs.ecr_registry }}
     steps:
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v4
@@ -98,19 +111,21 @@ jobs:
           aws-secret-access-key: ${{ inputs.aws_secret_access_key }}
           aws-region:            ${{ inputs.aws_region }}
 
-      - name: Derive bucket name from account ID
+      - name: Derive names from account ID
         id: bucket
         run: |
           ACCOUNT_ID=$(aws sts get-caller-identity --query Account --output text)
           BUCKET="retail-store-tfstate-${ACCOUNT_ID}"
-          echo "name=$BUCKET" >> "$GITHUB_OUTPUT"
-          echo "State bucket → $BUCKET"
+          ECR_REGISTRY="${ACCOUNT_ID}.dkr.ecr.${{ inputs.aws_region }}.amazonaws.com"
+          echo "name=$BUCKET"             >> "$GITHUB_OUTPUT"
+          echo "ecr_registry=$ECR_REGISTRY" >> "$GITHUB_OUTPUT"
+          echo "State bucket  → $BUCKET"
+          echo "ECR registry  → $ECR_REGISTRY"
 
       - name: Ensure S3 bucket exists
         run: |
           BUCKET="${{ steps.bucket.outputs.name }}"
           REGION="${{ inputs.aws_region }}"
-
           if aws s3api head-bucket --bucket "$BUCKET" 2>/dev/null; then
             echo "Bucket already exists."
           else
@@ -122,12 +137,10 @@ jobs:
             fi
             aws s3api put-bucket-versioning \
               --bucket "$BUCKET" --versioning-configuration Status=Enabled
-            aws s3api put-bucket-encryption \
-              --bucket "$BUCKET" \
+            aws s3api put-bucket-encryption --bucket "$BUCKET" \
               --server-side-encryption-configuration \
                 '{"Rules":[{"ApplyServerSideEncryptionByDefault":{"SSEAlgorithm":"AES256"},"BucketKeyEnabled":true}]}'
-            aws s3api put-public-access-block \
-              --bucket "$BUCKET" \
+            aws s3api put-public-access-block --bucket "$BUCKET" \
               --public-access-block-configuration \
                 BlockPublicAcls=true,IgnorePublicAcls=true,BlockPublicPolicy=true,RestrictPublicBuckets=true
             echo "Bucket created."
@@ -137,11 +150,9 @@ jobs:
         run: |
           TABLE="${{ env.DYNAMO_TABLE }}"
           REGION="${{ inputs.aws_region }}"
-
           STATUS=$(aws dynamodb describe-table \
             --table-name "$TABLE" --region "$REGION" \
             --query "Table.TableStatus" --output text 2>/dev/null || echo "MISSING")
-
           if [ "$STATUS" = "MISSING" ]; then
             aws dynamodb create-table \
               --table-name "$TABLE" \
@@ -155,18 +166,15 @@ jobs:
             echo "DynamoDB table already exists."
           fi
 
-  # ── 3. Create ECR repositories via Terraform (-target) ───────────────────────
-  # Terraform owns the ECR repos (they land in state here).
-  # Build jobs run after this so the repos exist when Docker tries to push.
+  # ── 3. Create ECR repositories via AWS CLI ───────────────────────────────
+  # ECR is managed here (not in Terraform) so builds can push images before
+  # the EKS cluster exists. Idempotent — safe to re-run.
   create-ecr:
     name: Create ECR repositories
     runs-on: ubuntu-latest
     needs: [bootstrap]
     if: ${{ inputs.action != 'destroy' }}
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v4
         with:
@@ -174,34 +182,36 @@ jobs:
           aws-secret-access-key: ${{ inputs.aws_secret_access_key }}
           aws-region:            ${{ inputs.aws_region }}
 
-      - name: Setup Terraform
-        uses: hashicorp/setup-terraform@v3
-        with:
-          terraform_version: ${{ env.TF_VERSION }}
-
-      - name: Terraform Init
-        working-directory: ${{ env.TF_DIR }}
+      - name: Ensure all ECR repositories exist
         run: |
-          terraform init \
-            -backend-config="bucket=${{ needs.bootstrap.outputs.tf_state_bucket }}" \
-            -backend-config="key=${{ env.TF_STATE_KEY }}" \
-            -backend-config="region=${{ inputs.aws_region }}" \
-            -backend-config="encrypt=true" \
-            -backend-config="dynamodb_table=${{ env.DYNAMO_TABLE }}" \
-            -input=false
+          REGION="${{ inputs.aws_region }}"
+          REPOS=(
+            retail-store-sample-ui
+            retail-store-sample-catalog
+            retail-store-sample-cart
+            retail-store-sample-checkout
+            retail-store-sample-orders
+            retail-store-sample-mysql
+            retail-store-sample-postgres
+            retail-store-sample-rabbitmq
+            retail-store-sample-dynamodb-local
+            retail-store-sample-redis
+          )
+          for REPO in "${REPOS[@]}"; do
+            if aws ecr describe-repositories --repository-names "$REPO" \
+                 --region "$REGION" --no-cli-pager 2>/dev/null; then
+              echo "$REPO — already exists"
+            else
+              aws ecr create-repository \
+                --repository-name "$REPO" \
+                --image-tag-mutability MUTABLE \
+                --image-scanning-configuration scanOnPush=true \
+                --region "$REGION" --no-cli-pager
+              echo "$REPO — created"
+            fi
+          done
 
-      - name: Create ECR repos only
-        working-directory: ${{ env.TF_DIR }}
-        run: |
-          terraform apply \
-            -target=aws_ecr_repository.services \
-            -var="aws_region=${{ inputs.aws_region }}" \
-            -var="image_tag=latest" \
-            -var="openai_api_key=" \
-            -auto-approve \
-            -input=false
-
-  # ── 4. Mirror third-party dependency images ───────────────────────────────────
+  # ── 4. Mirror third-party dependency images ───────────────────────────────
   mirror-dependencies:
     name: Mirror ${{ matrix.name }}
     runs-on: ubuntu-latest
@@ -237,7 +247,7 @@ jobs:
           docker push "${DEST}:${{ matrix.tag }}"
           docker push "${DEST}:latest"
 
-  # ── 5. Build and push application service images ──────────────────────────────
+  # ── 5. Build and push application service images ──────────────────────────
   build-services:
     name: Build ${{ matrix.service }}
     runs-on: ubuntu-latest
@@ -253,7 +263,7 @@ jobs:
           - { service: checkout, context: src/checkout, repo: retail-store-sample-checkout }
           - { service: orders,   context: src/orders,   repo: retail-store-sample-orders   }
     steps:
-      - name: Checkout
+      - name: Checkout app repo
         uses: actions/checkout@v4
 
       - name: Configure AWS credentials
@@ -281,7 +291,9 @@ jobs:
           cache-from: type=registry,ref=${{ steps.login-ecr.outputs.registry }}/${{ matrix.repo }}:cache
           cache-to:   type=registry,ref=${{ steps.login-ecr.outputs.registry }}/${{ matrix.repo }}:cache,mode=max
 
-  # ── 6. Terraform full apply — EKS cluster + Helm deploy ──────────────────────
+  # ── 6. Terraform — EKS cluster + deploy app with ECR images ──────────────
+  # Uses Terraform from: amazon-elastic-kubernetes-service-course/eks/
+  # Images in retail-store.yaml are replaced with private ECR URLs before apply.
   terraform:
     name: Terraform ${{ inputs.action }}
     runs-on: ubuntu-latest
@@ -299,9 +311,6 @@ jobs:
       (needs.mirror-dependencies.result == 'success' || needs.mirror-dependencies.result == 'skipped')
 
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v4
         with:
@@ -309,7 +318,41 @@ jobs:
           aws-secret-access-key: ${{ inputs.aws_secret_access_key }}
           aws-region:            ${{ inputs.aws_region }}
 
-      - name: Setup Terraform
+      # Clone the infra repo (contains EKS Terraform in eks/)
+      - name: Clone infra repo (${{ env.INFRA_BRANCH }})
+        run: |
+          git clone --branch "${{ env.INFRA_BRANCH }}" --depth 1 \
+            "${{ env.INFRA_REPO }}" "${{ env.INFRA_DIR }}"
+
+      # Replace public ECR image URLs in retail-store.yaml with private ECR ones.
+      # The null_resource in retail-store.tf triggers on filesha256 of this file,
+      # so Terraform will re-apply the manifest whenever images change.
+      - name: Patch retail-store.yaml with private ECR images
+        run: |
+          ECR="${{ needs.bootstrap.outputs.ecr_registry }}"
+          TAG="${{ needs.resolve-tag.outputs.image_tag }}"
+          YAML="${{ env.INFRA_DIR }}/eks/retail-store.yaml"
+
+          echo "Patching images → ECR: $ECR  Tag: $TAG"
+
+          # Service images (built from source)
+          sed -i "s|public.ecr.aws/aws-containers/retail-store-sample-ui:[^ \"]*|${ECR}/retail-store-sample-ui:${TAG}|g"         "$YAML"
+          sed -i "s|public.ecr.aws/aws-containers/retail-store-sample-catalog:[^ \"]*|${ECR}/retail-store-sample-catalog:${TAG}|g" "$YAML"
+          sed -i "s|public.ecr.aws/aws-containers/retail-store-sample-cart:[^ \"]*|${ECR}/retail-store-sample-cart:${TAG}|g"       "$YAML"
+          sed -i "s|public.ecr.aws/aws-containers/retail-store-sample-checkout:[^ \"]*|${ECR}/retail-store-sample-checkout:${TAG}|g" "$YAML"
+          sed -i "s|public.ecr.aws/aws-containers/retail-store-sample-orders:[^ \"]*|${ECR}/retail-store-sample-orders:${TAG}|g"   "$YAML"
+
+          # Dependency images (mirrored to private ECR with fixed tags)
+          sed -i "s|public.ecr.aws/docker/library/mysql:8.0|${ECR}/retail-store-sample-mysql:8.0|g"                               "$YAML"
+          sed -i "s|public.ecr.aws/docker/library/postgres:16.1|${ECR}/retail-store-sample-postgres:16.1|g"                       "$YAML"
+          sed -i "s|public.ecr.aws/docker/library/rabbitmq:3-management|${ECR}/retail-store-sample-rabbitmq:3-management|g"       "$YAML"
+          sed -i "s|public.ecr.aws/aws-dynamodb-local/aws-dynamodb-local:1.25.1|${ECR}/retail-store-sample-dynamodb-local:1.25.1|g" "$YAML"
+          sed -i "s|redis:6.0-alpine|${ECR}/retail-store-sample-redis:6.0-alpine|g"                                               "$YAML"
+
+          echo "--- Patched image lines ---"
+          grep "image:" "$YAML"
+
+      - name: Setup Terraform ${{ env.TF_VERSION }}
         uses: hashicorp/setup-terraform@v3
         with:
           terraform_version: ${{ env.TF_VERSION }}
@@ -318,7 +361,7 @@ jobs:
         uses: azure/setup-kubectl@v4
 
       - name: Terraform Init
-        working-directory: ${{ env.TF_DIR }}
+        working-directory: ${{ env.INFRA_DIR }}/eks
         run: |
           terraform init \
             -backend-config="bucket=${{ needs.bootstrap.outputs.tf_state_bucket }}" \
@@ -329,68 +372,61 @@ jobs:
             -input=false
 
       - name: Terraform Validate
-        working-directory: ${{ env.TF_DIR }}
+        working-directory: ${{ env.INFRA_DIR }}/eks
         run: terraform validate
 
       - name: Terraform Plan
-        working-directory: ${{ env.TF_DIR }}
+        working-directory: ${{ env.INFRA_DIR }}/eks
         run: |
           terraform plan \
             -var="aws_region=${{ inputs.aws_region }}" \
-            -var="image_tag=${{ needs.resolve-tag.outputs.image_tag }}" \
-            -var="openai_api_key=${{ inputs.openai_api_key }}" \
             -out=tfplan \
             -input=false
 
       - name: Plan summary
         if: always()
-        working-directory: ${{ env.TF_DIR }}
+        working-directory: ${{ env.INFRA_DIR }}/eks
         run: |
           echo "### Terraform Plan" >> $GITHUB_STEP_SUMMARY
           terraform show -no-color tfplan 2>/dev/null | tail -40 >> $GITHUB_STEP_SUMMARY || true
 
       - name: Terraform Apply
         if: ${{ inputs.action == 'apply' }}
-        working-directory: ${{ env.TF_DIR }}
+        working-directory: ${{ env.INFRA_DIR }}/eks
         run: terraform apply -auto-approve -input=false tfplan
 
       - name: Terraform Destroy
         if: ${{ inputs.action == 'destroy' }}
-        working-directory: ${{ env.TF_DIR }}
+        working-directory: ${{ env.INFRA_DIR }}/eks
         run: |
           terraform destroy \
             -var="aws_region=${{ inputs.aws_region }}" \
-            -var="image_tag=${{ needs.resolve-tag.outputs.image_tag }}" \
-            -var="openai_api_key=${{ inputs.openai_api_key }}" \
             -auto-approve \
             -input=false
 
       - name: Update kubeconfig
         if: ${{ inputs.action == 'apply' }}
-        working-directory: ${{ env.TF_DIR }}
+        working-directory: ${{ env.INFRA_DIR }}/eks
         run: |
-          CLUSTER=$(terraform output -raw cluster_name 2>/dev/null || echo "retail-store-eks")
+          CLUSTER=$(terraform output -raw cluster_name 2>/dev/null || echo "demo-eks")
           aws eks update-kubeconfig --region "${{ inputs.aws_region }}" --name "$CLUSTER"
 
-      - name: Wait for UI rollout
+      - name: Wait for UI deployment
         if: ${{ inputs.action == 'apply' }}
         run: kubectl rollout status deployment/ui -n default --timeout=10m
 
       - name: Deployment summary
         if: ${{ inputs.action == 'apply' }}
-        working-directory: ${{ env.TF_DIR }}
+        working-directory: ${{ env.INFRA_DIR }}/eks
         run: |
-          ECR=$(terraform output -raw ecr_registry  2>/dev/null || echo "N/A")
           CLUSTER=$(terraform output -raw cluster_name 2>/dev/null || echo "N/A")
           ALB=$(kubectl get ingress ui -n default \
             -o jsonpath='{.status.loadBalancer.ingress[0].hostname}' 2>/dev/null || echo "pending")
-          CHAT="${{ inputs.openai_api_key != '' && 'enabled (OpenAI)' || 'disabled' }}"
 
           echo "### Deployment Complete" >> $GITHUB_STEP_SUMMARY
           echo "| Field | Value |" >> $GITHUB_STEP_SUMMARY
           echo "|---|---|" >> $GITHUB_STEP_SUMMARY
           echo "| Image Tag    | ${{ needs.resolve-tag.outputs.image_tag }} |" >> $GITHUB_STEP_SUMMARY
-          echo "| ECR Registry | ${ECR} |" >> $GITHUB_STEP_SUMMARY
+          echo "| ECR Registry | ${{ needs.bootstrap.outputs.ecr_registry }} |" >> $GITHUB_STEP_SUMMARY
           echo "| EKS Cluster  | ${CLUSTER} |" >> $GITHUB_STEP_SUMMARY
           echo "| UI URL       | http://${ALB} |" >> $GITHUB_STEP_SUMMARY
-          echo "| AI Chat      | ${CHAT} |" >> $GITHUB_STEP_SUMMARY
