@@ -20,8 +20,16 @@ module "create_eksClusterRole" {
 ####################################################################
 
 resource "aws_eks_cluster" "demo_eks" {
-  name     = var.cluster_name
-  role_arn = var.use_predefined_role ? module.use_eksClusterRole[0].eksClusterRole_arn : module.create_eksClusterRole[0].eksClusterRole_arn
+  name = var.cluster_name
+  # Stable literal ARN — avoids (known after apply) during plan when the
+  # role's module instance is being created, which would otherwise force
+  # cluster replacement.
+  role_arn = "arn:aws:iam::${data.aws_caller_identity.current.account_id}:role/${var.cluster_role_name}"
+
+  depends_on = [
+    module.create_eksClusterRole,
+    module.use_eksClusterRole,
+  ]
 
   vpc_config {
     subnet_ids = [

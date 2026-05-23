@@ -30,3 +30,8 @@ data "aws_subnets" "public" {
 data "aws_ssm_parameter" "node_ami" {
   name = "/aws/service/eks/optimized-ami/1.31/amazon-linux-2/recommended/image_id"
 }
+
+# Current account ID — used to build the cluster role ARN as a stable literal
+# so the EKS cluster isn't marked for replacement whenever the role's module
+# instance is re-created (the role name is fixed, so the ARN is deterministic).
+data "aws_caller_identity" "current" {}
