@@ -17,8 +17,22 @@ resource "null_resource" "retail_store" {
 
   provisioner "local-exec" {
     command = <<-EOT
+      set -e
       aws eks update-kubeconfig --region ${var.aws_region} --name ${aws_eks_cluster.demo_eks.name}
       kubectl apply -f ${path.module}/retail-store.yaml
+
+      # Block until the ALB controller publishes the ingress hostname so the
+      # kubernetes_ingress_v1 data source below sees a stable value when read.
+      for i in $(seq 1 60); do
+        host=$(kubectl get ingress ui -n default -o jsonpath='{.status.loadBalancer.ingress[0].hostname}' 2>/dev/null || true)
+        if [ -n "$host" ]; then
+          echo "ALB hostname: $host"
+          exit 0
+        fi
+        echo "Waiting for ALB hostname ($i/60)..."
+        sleep 10
+      done
+      echo "WARNING: ALB hostname not available after 10 minutes"
     EOT
   }
 
@@ -34,7 +48,15 @@ resource "null_resource" "retail_store" {
   ]
 }
 
-output "ui_alb_dns_command" {
-  value       = "kubectl get ingress ui -n default -o jsonpath='{.status.loadBalancer.ingress[0].hostname}'"
-  description = "Run this after apply to get the ALB DNS for the UI"
+data "kubernetes_ingress_v1" "ui" {
+  metadata {
+    name      = "ui"
+    namespace = "default"
+  }
+  depends_on = [null_resource.retail_store]
+}
+
+output "ui_alb_url" {
+  value       = "http://${data.kubernetes_ingress_v1.ui.status[0].load_balancer[0].ingress[0].hostname}"
+  description = "Public URL for the retail-store UI (ALB)"
 }
