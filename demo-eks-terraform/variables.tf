@@ -42,15 +42,19 @@ variable "additional_policy_name" {
     default = "eksPolicy"
 }
 
+# KodeKloud sandbox caps the account at 10 vCPU / 20 GiB total. With the
+# default t3.medium worker (2 vCPU, 4 GiB), max=2 keeps cluster usage at
+# 4 vCPU / 8 GiB and leaves headroom for any KodeKloud-managed instances.
+# Do not raise max above 2 without also revisiting the instance type.
 variable "node_group_desired_capacity" {
   type        = number
   description = "Desired capacity of Node Group ASG."
-  default     = 3
+  default     = 2
 }
 variable "node_group_max_size" {
   type        = number
-  description = "Maximum size of Node Group ASG. Set to at least 1 greater than node_group_desired_capacity."
-  default     = 4
+  description = "Maximum size of Node Group ASG. Capped at 2 to stay under the 10 vCPU sandbox limit."
+  default     = 2
 }
 
 variable "node_group_min_size" {
