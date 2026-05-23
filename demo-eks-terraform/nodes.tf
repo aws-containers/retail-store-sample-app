@@ -73,12 +73,9 @@ resource "aws_iam_role_policy_attachment" "node_instance_role_SSMMIC" {
   role       = aws_iam_role.node_instance_role.name
 }
 
-resource "aws_iam_role_policy" "node_instance_role_loadbalancer" {
-  name = "node-loadbalancer-policy"
-  role = aws_iam_role.node_instance_role.name
-
-  policy = jsonencode(yamldecode(file("./policy.yaml")))
-}
+# Legacy in-tree LB controller required ELB perms on worker nodes; the
+# IRSA-based aws-load-balancer-controller (alb-controller.tf) supersedes
+# that, so no inline policy on the node role is needed.
 
 # Instance profile to associate above role with worker nodes
 resource "aws_iam_instance_profile" "node_instance_profile" {

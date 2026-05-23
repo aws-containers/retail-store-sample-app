@@ -35,5 +35,12 @@ resource "aws_eks_cluster" "demo_eks" {
     authentication_mode                         = "CONFIG_MAP"
     bootstrap_cluster_creator_admin_permissions = true
   }
+
+  # describe-cluster returns accessConfig: null on EKS 1.35, which Terraform
+  # reads as drift and tries to fix via UpdateClusterConfig — denied for this
+  # lab's IAM user. The block above only matters at create time.
+  lifecycle {
+    ignore_changes = [access_config]
+  }
 }
 

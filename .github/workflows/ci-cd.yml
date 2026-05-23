@@ -128,21 +128,13 @@ jobs:
           ECR_REGISTRY="${ACCOUNT_ID}.dkr.ecr.${REGION}.amazonaws.com"
           CLUSTER_NAME="retail-store-eks"
 
-          # Auto-detect if eksClusterRole already exists in this account.
-          # In sandbox accounts (e.g. KodeKloud) the caller often lacks iam:GetRole,
-          # so a 403 AccessDenied still means the role most likely exists — only a
-          # true NoSuchEntity proves it's absent.
-          ROLE_OUT=$(aws iam get-role --role-name eksClusterRole 2>&1) || true
-          if echo "$ROLE_OUT" | grep -q '"RoleName"'; then
-            USE_PREDEFINED="true"
-            echo "eksClusterRole found — using predefined role"
-          elif echo "$ROLE_OUT" | grep -qE 'NoSuchEntity|cannot be found'; then
-            USE_PREDEFINED="false"
-            echo "eksClusterRole not found — Terraform will create it"
-          else
-            USE_PREDEFINED="true"
-            echo "get-role unreadable (likely AccessDenied) — assuming predefined role exists"
-          fi
+          # This KodeKloud lab does not pre-create eksClusterRole, and the
+          # lab IAM user has iam:CreateRole/DeleteRole/AttachRolePolicy.
+          # Auto-detecting role existence flipped between runs (absent → false
+          # on run 1, present → true on run 2) and caused a destructive replan,
+          # so we pin it to false. Override here if a future lab predefines the role.
+          USE_PREDEFINED="false"
+          echo "use_predefined_role pinned to false (lab creates the role itself)"
 
           echo "account_id=$ACCOUNT_ID"           >> "$GITHUB_OUTPUT"
           echo "tf_state_bucket=$TF_BUCKET"       >> "$GITHUB_OUTPUT"

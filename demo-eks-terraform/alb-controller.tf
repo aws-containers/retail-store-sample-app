@@ -26,12 +26,13 @@ resource "aws_iam_openid_connect_provider" "eks" {
   url             = aws_eks_cluster.demo_eks.identity[0].oidc[0].issuer
 }
 
-# Inline policy on the ALB controller role.
-# Using aws_iam_role_policy (inline) instead of aws_iam_policy (managed)
-# avoids iam:TagPolicy which KodeKloud lab users don't have.
-resource "aws_iam_role_policy" "alb_controller" {
+# Managed policy + role attachment for the ALB controller.
+# Sandbox IAM users in this lab are explicitly denied iam:PutRolePolicy
+# (which blocks inline aws_iam_role_policy) but iam:CreatePolicy +
+# iam:AttachRolePolicy are allowed, so a customer-managed policy works.
+# Tags must stay empty (iam:TagPolicy is also denied in this account).
+resource "aws_iam_policy" "alb_controller" {
   name = "${var.cluster_name}-alb-controller-policy"
-  role = aws_iam_role.alb_controller.name
 
   policy = jsonencode({
     Version = "2012-10-17"
@@ -268,6 +269,11 @@ resource "aws_iam_role_policy" "alb_controller" {
       }
     ]
   })
+}
+
+resource "aws_iam_role_policy_attachment" "alb_controller" {
+  role       = aws_iam_role.alb_controller.name
+  policy_arn = aws_iam_policy.alb_controller.arn
 }
 
 # Trust policy: the controller's service account in kube-system
