@@ -73,9 +73,11 @@ resource "aws_iam_role_policy_attachment" "node_instance_role_SSMMIC" {
   role       = aws_iam_role.node_instance_role.name
 }
 
-resource "aws_iam_role_policy_attachment" "node_instance_role_loadbalancer" {
-  policy_arn = aws_iam_policy.loadbalancer_policy.arn
-  role       = aws_iam_role.node_instance_role.name
+resource "aws_iam_role_policy" "node_instance_role_loadbalancer" {
+  name = "node-loadbalancer-policy"
+  role = aws_iam_role.node_instance_role.name
+
+  policy = jsonencode(yamldecode(file("./policy.yaml")))
 }
 
 # Instance profile to associate above role with worker nodes
