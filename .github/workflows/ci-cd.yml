@@ -1,9 +1,10 @@
 name: CI/CD — End-to-End Deployment
 
 # ─────────────────────────────────────────────────────────────────────────────
-# Repo layout:
-#   retail-store-sample-app                      ← this repo (app source + images)
-#   amazon-elastic-kubernetes-service-course     ← cloned at runtime (EKS Terraform)
+# Repo layout (single repo):
+#   retail-store-sample-app/
+#     src/                    ← application source + Dockerfiles
+#     demo-eks-terraform/     ← EKS Terraform (copied from eks-course repo)
 #
 # Fully account-generic — zero hardcoded account IDs, bucket names, or role names.
 # Everything is derived at runtime from the AWS credentials provided as inputs.
@@ -73,9 +74,7 @@ permissions:
 env:
   TF_STATE_KEY: eks/terraform.tfstate
   TF_VERSION:   '1.10.0'   # 1.10+ supports native S3 locking — no DynamoDB needed
-  INFRA_REPO:   https://github.com/abhayjain09/amazon-elastic-kubernetes-service-course.git
-  INFRA_BRANCH: feature/eks-cluster
-  INFRA_DIR:    infra-repo
+  TF_DIR:       demo-eks-terraform
 
 # ═════════════════════════════════════════════════════════════════════════════
 jobs:
@@ -302,7 +301,7 @@ jobs:
           cache-to:   type=registry,ref=${{ steps.login-ecr.outputs.registry }}/${{ matrix.repo }}:cache,mode=max
 
   # ── 6. Terraform — EKS cluster + deploy app ──────────────────────────────
-  # Clones amazon-elastic-kubernetes-service-course and runs Terraform from eks/.
+  # Uses demo-eks-terraform/ (committed in this repo) — no external repo clone needed.
   # Patches retail-store.yaml image URLs with private ECR before apply.
   # All Terraform vars are passed explicitly — no variable defaults relied upon.
   terraform:
@@ -322,6 +321,9 @@ jobs:
       (needs.mirror-dependencies.result == 'success' || needs.mirror-dependencies.result == 'skipped')
 
     steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v4
         with:
@@ -329,18 +331,13 @@ jobs:
           aws-secret-access-key: ${{ inputs.aws_secret_access_key }}
           aws-region:            ${{ inputs.aws_region }}
 
-      - name: Clone infra repo (${{ env.INFRA_BRANCH }})
-        run: |
-          git clone --branch "${{ env.INFRA_BRANCH }}" --depth 1 \
-            "${{ env.INFRA_REPO }}" "${{ env.INFRA_DIR }}"
-
       # Replace all public ECR image URLs in retail-store.yaml with private ECR.
       # ECR registry and tag are derived at runtime — nothing hardcoded.
       - name: Patch retail-store.yaml with private ECR images
         run: |
           ECR="${{ needs.bootstrap.outputs.ecr_registry }}"
           TAG="${{ needs.resolve-tag.outputs.image_tag }}"
-          YAML="${{ env.INFRA_DIR }}/eks/retail-store.yaml"
+          YAML="${{ env.TF_DIR }}/retail-store.yaml"
 
           echo "ECR registry : $ECR"
           echo "Image tag    : $TAG"
@@ -371,7 +368,7 @@ jobs:
         uses: azure/setup-kubectl@v4
 
       - name: Terraform Init
-        working-directory: ${{ env.INFRA_DIR }}/eks
+        working-directory: ${{ env.TF_DIR }}
         run: |
           terraform init \
             -backend-config="bucket=${{ needs.bootstrap.outputs.tf_state_bucket }}" \
@@ -382,12 +379,12 @@ jobs:
             -input=false
 
       - name: Terraform Validate
-        working-directory: ${{ env.INFRA_DIR }}/eks
+        working-directory: ${{ env.TF_DIR }}
         run: terraform validate
 
       # All vars passed explicitly — no defaults relied on from variables.tf
       - name: Terraform Plan
-        working-directory: ${{ env.INFRA_DIR }}/eks
+        working-directory: ${{ env.TF_DIR }}
         run: |
           terraform plan \
             -var="aws_region=${{ inputs.aws_region }}" \
@@ -398,19 +395,19 @@ jobs:
 
       - name: Plan summary
         if: always()
-        working-directory: ${{ env.INFRA_DIR }}/eks
+        working-directory: ${{ env.TF_DIR }}
         run: |
           echo "### Terraform Plan" >> $GITHUB_STEP_SUMMARY
           terraform show -no-color tfplan 2>/dev/null | tail -40 >> $GITHUB_STEP_SUMMARY || true
 
       - name: Terraform Apply
         if: ${{ inputs.action == 'apply' }}
-        working-directory: ${{ env.INFRA_DIR }}/eks
+        working-directory: ${{ env.TF_DIR }}
         run: terraform apply -auto-approve -input=false tfplan
 
       - name: Terraform Destroy
         if: ${{ inputs.action == 'destroy' }}
-        working-directory: ${{ env.INFRA_DIR }}/eks
+        working-directory: ${{ env.TF_DIR }}
         run: |
           terraform destroy \
             -var="aws_region=${{ inputs.aws_region }}" \
