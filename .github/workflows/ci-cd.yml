@@ -128,13 +128,20 @@ jobs:
           ECR_REGISTRY="${ACCOUNT_ID}.dkr.ecr.${REGION}.amazonaws.com"
           CLUSTER_NAME="retail-store-eks"
 
-          # Auto-detect if KodeKloud pre-created eksClusterRole in this account
-          if aws iam get-role --role-name eksClusterRole 2>/dev/null | grep -q RoleName; then
+          # Auto-detect if eksClusterRole already exists in this account.
+          # In sandbox accounts (e.g. KodeKloud) the caller often lacks iam:GetRole,
+          # so a 403 AccessDenied still means the role most likely exists — only a
+          # true NoSuchEntity proves it's absent.
+          ROLE_OUT=$(aws iam get-role --role-name eksClusterRole 2>&1) || true
+          if echo "$ROLE_OUT" | grep -q '"RoleName"'; then
             USE_PREDEFINED="true"
             echo "eksClusterRole found — using predefined role"
-          else
+          elif echo "$ROLE_OUT" | grep -qE 'NoSuchEntity|cannot be found'; then
             USE_PREDEFINED="false"
             echo "eksClusterRole not found — Terraform will create it"
+          else
+            USE_PREDEFINED="true"
+            echo "get-role unreadable (likely AccessDenied) — assuming predefined role exists"
           fi
 
           echo "account_id=$ACCOUNT_ID"           >> "$GITHUB_OUTPUT"
