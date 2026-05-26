@@ -1,0 +1,42 @@
+pre-commit:
+  parallel: true
+  commands:
+    prettier:
+      glob: "*.{js,jsx,ts,tsx,json,md,yaml,yml,java,xml}"
+      run: yarn prettier --write {staged_files}
+      stage_fixed: true
+    gofmt:
+      glob: "*.go"
+      run: gofmt -w {staged_files}
+      stage_fixed: true
+    terraform-fmt:
+      glob: "*.tf"
+      run: terraform fmt {staged_files}
+      stage_fixed: true
+    tflint:
+      glob: "*.tf"
+      run: tflint
+    nx-samples:
+      glob: "samples/**/*"
+      run: yarn nx run-many -t update-samples --projects=tag:sample
+      stage_fixed: true
+      skip:
+        - run
+
+pre-commit-ci:
+  parallel: true
+  commands:
+    prettier:
+      glob: "*.{js,jsx,ts,tsx,json,md,yaml,yml,java,xml}"
+      run: yarn prettier --check {all_files}
+    gofmt:
+      glob: "*.go"
+      run: |
+        unformatted=$(gofmt -l {all_files})
+        [ -z "$unformatted" ] || { echo "Unformatted Go files:\n$unformatted"; exit 1; }
+    terraform-fmt:
+      glob: "*.tf"
+      run: terraform fmt -check {all_files}
+    tflint:
+      glob: "*.tf"
+      run: tflint

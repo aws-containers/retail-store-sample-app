@@ -49,6 +49,29 @@ This is a page in the UI component that displays information about the applicati
 
 The page can be found at `/topology`.
 
+### CLI-friendly ASCII response
+
+When the UI service root (`/`) is accessed without a browser — for example via `curl` or any other HTTP client that does not send `Accept: text/html` — it responds with a plain-text ASCII payload instead of HTML. This makes the service friendlier to explore from the command line and adds a bit of character to the application.
+
+```
+$ curl http://localhost:8080
+
+  ── INCOMING TRANSMISSION ──────────────────────── 23:47 UTC ──
+
+  TO   : FIELD AGENT
+  FROM : HEADQUARTERS, SUPPLIES DIVISION
+  RE   : GADGET REPOSITORY ACCESS
+
+  ───────────────────────────────────────────────────────────────
+
+  Agent — welcome to the repository. Your dossier is on file.
+  ...
+
+  ── END OF TRANSMISSION ─────────────────────── EYES ONLY ──────
+```
+
+The response is triggered when the root path `/` is requested without `text/html` in the `Accept` header. All other paths and browser requests are unaffected.
+
 ### Generative AI chat bot
 
 This feature provides a chat bot interface directly in the store UI which can be used to demonstrate basic LLM inference use-cases. It is works with Amazon Bedrock and OpenAI compatible endpoints via configuration properties.

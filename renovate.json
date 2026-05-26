@@ -24,6 +24,10 @@
       "matchPackageNames": ["com.microsoft.kiota:*"]
     },
     {
+      "matchPackagePrefixes": ["go.opentelemetry.io/otel", "go.opentelemetry.io/contrib"],
+      "groupName": "OpenTelemetry Go"
+    },
+    {
       "automerge": true,
       "matchCurrentVersion": ">= 1.0.0",
       "matchUpdateTypes": ["minor", "patch"],
