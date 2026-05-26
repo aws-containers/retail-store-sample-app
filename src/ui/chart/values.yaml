@@ -83,6 +83,7 @@ app:
     #carts: http://carts:80
     #orders: http://orders:80
     #checkout: http://checkout:80
+    #recommendations: http://recommendations:80
   search:
     enabled: false
   chat:

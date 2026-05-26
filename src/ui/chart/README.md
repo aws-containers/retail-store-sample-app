@@ -64,6 +64,7 @@ The following table lists the configurable parameters of the UI chart and their 
 | app.endpoints.carts                        | URL for the carts service                       | http://carts:80                                                                                      |
 | app.endpoints.orders                       | URL for the orders service                      | http://orders:80                                                                                     |
 | app.endpoints.checkout                     | URL for the checkout service                    | http://checkout:80                                                                                   |
+| app.endpoints.recommendations              | URL for the recommendations service             | -                                                                                                    |
 | app.chat.enabled                           | Enable chat feature                             | false                                                                                                |
 | app.chat.provider                          | Chat provider configuration                     | ""                                                                                                   |
 | app.chat.model                             | Chat model configuration                        | ""                                                                                                   |
@@ -117,6 +118,7 @@ app:
     carts: http://carts:80
     orders: http://orders:80
     checkout: http://checkout:80
+    recommendations: http://recommendations:80
 ```
 
 ### Changing App Theme

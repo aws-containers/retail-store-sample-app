@@ -42,6 +42,9 @@ data:
   {{- if .Values.app.endpoints.orders }}
   RETAIL_UI_ENDPOINTS_ORDERS: {{ .Values.app.endpoints.orders }}
   {{- end -}}
+  {{- if .Values.app.endpoints.recommendations }}
+  RETAIL_UI_ENDPOINTS_RECOMMENDATIONS: {{ .Values.app.endpoints.recommendations }}
+  {{- end -}}
   {{- if .Values.app.endpoints.assets }}
   RETAIL_UI_ENDPOINTS_ASSETS: {{ .Values.app.endpoints.assets }}
   {{- end }}
