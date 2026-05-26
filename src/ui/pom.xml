@@ -286,6 +286,14 @@
 							<clientClass>CheckoutClient</clientClass>
 						</configuration>
 					</execution>
+					<execution>
+						<id>recommendations</id>
+						<configuration>
+							<file>../recommendations/openapi.yml</file>
+							<namespace>com.amazon.sample.ui.client.recommendations</namespace>
+							<clientClass>RecommendationsClient</clientClass>
+						</configuration>
+					</execution>
 				</executions>
       </plugin>
 		</plugins>

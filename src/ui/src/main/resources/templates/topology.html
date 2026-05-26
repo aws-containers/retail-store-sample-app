@@ -175,6 +175,37 @@
         </div>
       </div>
 
+      <!-- Recommendations -->
+      <div
+        class="bg-white rounded-lg shadow-sm mb-6"
+        th:with="info=${topology.get('recommendations')}"
+      >
+        <div class="px-6 py-4">
+          <div class="flex items-center space-x-2">
+            <i class="fas fa-thumbs-up text-primary-500"></i>
+            <span class="font-medium">Recommendations</span>
+            <span
+              class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium"
+              retail:status="${info}"
+            >
+            </span>
+          </div>
+        </div>
+
+        <div
+          class="px-6 py-4 text-sm border-t border-gray-200"
+          th:if="${!info.isNone()}"
+        >
+          <div class="mb-4">
+            <div class="text-xs text-gray-500">Endpoint</div>
+            <div
+              class="mt-1 text-sm text-gray-900"
+              th:text="${info.endpoint}"
+            ></div>
+          </div>
+        </div>
+      </div>
+
       <!-- Orders -->
       <div
         class="bg-white rounded-lg shadow-sm mb-6"

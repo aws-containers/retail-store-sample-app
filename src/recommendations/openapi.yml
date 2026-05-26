@@ -1,0 +1,66 @@
+---
+openapi: 3.0.1
+info:
+  title: Recommendations API
+  description: This API serves product recommendations
+  contact: {}
+  version: "1.0"
+servers:
+  - url: "http://localhost:8080/"
+paths:
+  "/recommendations/{productId}":
+    get:
+      tags:
+        - recommendations
+      summary: Get product recommendations
+      description: Returns a list of recommended products for the given product ID
+      parameters:
+        - name: productId
+          in: path
+          description: product ID to get recommendations for
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  "$ref": "#/components/schemas/model.Recommendation"
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/httputil.HTTPError"
+        "404":
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/httputil.HTTPError"
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/httputil.HTTPError"
+components:
+  schemas:
+    httputil.HTTPError:
+      type: object
+      properties:
+        code:
+          type: integer
+          example: 400
+        message:
+          type: string
+          example: status bad request
+    model.Recommendation:
+      type: object
+      properties:
+        productId:
+          type: string

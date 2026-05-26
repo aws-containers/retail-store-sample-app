@@ -62,7 +62,12 @@ public class TopologyController {
       getTopologyForService(webClient, "catalog", endpoints.getCatalog()),
       getTopologyForService(webClient, "carts", endpoints.getCarts()),
       getTopologyForService(webClient, "checkout", endpoints.getCheckout()),
-      getTopologyForService(webClient, "orders", endpoints.getOrders())
+      getTopologyForService(webClient, "orders", endpoints.getOrders()),
+      getTopologyForService(
+        webClient,
+        "recommendations",
+        endpoints.getRecommendations()
+      )
     ).collectMap(TopologyInformation::getServiceName, topology -> topology);
 
     model.addAttribute("topology", topologyMap);

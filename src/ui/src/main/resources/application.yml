@@ -19,6 +19,7 @@ retail:
       carts: # http://localhost:8082
       checkout: # http://localhost:8085
       orders: # http://localhost:8083
+      recommendations: # http://localhost:8086
     search:
       enabled: false
     chat:

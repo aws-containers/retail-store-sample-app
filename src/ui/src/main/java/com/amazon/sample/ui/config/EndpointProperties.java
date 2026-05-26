@@ -16,4 +16,6 @@ public class EndpointProperties {
   private String checkout;
 
   private String orders;
+
+  private String recommendations;
 }

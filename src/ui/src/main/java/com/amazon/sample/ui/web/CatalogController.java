@@ -19,8 +19,8 @@
 package com.amazon.sample.ui.web;
 
 import com.amazon.sample.ui.services.catalog.CatalogService;
+import com.amazon.sample.ui.services.recommendations.RecommendationsService;
 import com.amazon.sample.ui.web.util.RequiresCommonAttributes;
-import java.util.Collections;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -31,7 +31,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import reactor.core.publisher.Flux;
 
 @Controller
 @RequestMapping("/catalog")
@@ -39,16 +38,20 @@ import reactor.core.publisher.Flux;
 @RequiresCommonAttributes
 public class CatalogController {
 
-  private static final Integer DEFAULT_PAGE = 1;
-  private static final Integer DEFAULT_SIZE = 6;
+  private static final Integer RECOMMENDATIONS_SIZE = 3;
 
   @Value("${retail.ui.search.enabled:false}")
   private boolean searchEnabled;
 
   private CatalogService catalogService;
+  private RecommendationsService recommendationsService;
 
-  public CatalogController(@Autowired CatalogService catalogService) {
+  public CatalogController(
+    @Autowired CatalogService catalogService,
+    @Autowired RecommendationsService recommendationsService
+  ) {
     this.catalogService = catalogService;
+    this.recommendationsService = recommendationsService;
   }
 
   @GetMapping("")
@@ -79,13 +82,7 @@ public class CatalogController {
     model.addAttribute("item", catalogService.getProduct(id));
     model.addAttribute(
       "recommendations",
-      catalogService
-        .getProducts("", "", DEFAULT_PAGE, DEFAULT_SIZE)
-        .map(p -> {
-          Collections.shuffle(p.getProducts());
-          return p.getProducts();
-        })
-        .flatMapMany(Flux::fromIterable)
+      recommendationsService.getRecommendations(id, RECOMMENDATIONS_SIZE)
     );
 
     return "detail";
@@ -93,11 +90,11 @@ public class CatalogController {
 
   @GetMapping("/search")
   public String catalogSearch(
-          @RequestParam(required = true, defaultValue = "") String keyword,
-          @RequestParam(required = false, defaultValue = "1") int page,
-          @RequestParam(required = false, defaultValue = "6") int size,
-          ServerHttpRequest request,
-          Model model
+    @RequestParam(required = true, defaultValue = "") String keyword,
+    @RequestParam(required = false, defaultValue = "1") int page,
+    @RequestParam(required = false, defaultValue = "6") int size,
+    ServerHttpRequest request,
+    Model model
   ) {
     if (keyword == null || keyword.trim().isEmpty()) {
       return "redirect:/catalog";
@@ -106,8 +103,8 @@ public class CatalogController {
     model.addAttribute("keyword", keyword);
     model.addAttribute("searchEnabled", searchEnabled);
     model.addAttribute(
-            "catalog",
-            catalogService.catalogSearch(keyword, page, size)
+      "catalog",
+      catalogService.catalogSearch(keyword, page, size)
     );
 
     return "catalog";
