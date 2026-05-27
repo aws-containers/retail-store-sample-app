@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.6.1](https://github.com/aws-containers/retail-store-sample-app/compare/v1.6.0...v1.6.1) (2026-05-27)
+
+
+### Bug Fixes
+
+* UI topology fallback to health endpoint ([#1048](https://github.com/aws-containers/retail-store-sample-app/issues/1048)) ([41752e1](https://github.com/aws-containers/retail-store-sample-app/commit/41752e1ca493a262c9bee974c70ecd5bd0c7aebd))
+
 ## [1.6.0](https://github.com/aws-containers/retail-store-sample-app/compare/v1.5.0...v1.6.0) (2026-05-27)
 
 
