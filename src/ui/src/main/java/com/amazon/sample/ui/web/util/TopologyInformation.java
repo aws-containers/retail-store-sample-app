@@ -41,4 +41,8 @@ public class TopologyInformation {
   public boolean isNone() {
     return status == TopologyStatus.NONE;
   }
+
+  public boolean hasMetadata() {
+    return metadata != null && !metadata.isEmpty();
+  }
 }

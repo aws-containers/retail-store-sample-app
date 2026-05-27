@@ -40,7 +40,7 @@
               th:text="${info.endpoint}"
             ></div>
           </div>
-          <div class="grid grid-cols-3 gap-6">
+          <div class="grid grid-cols-3 gap-6" th:if="${info.hasMetadata()}">
             <div>
               <div class="text-xs text-gray-500">Persistence Provider</div>
               <div
@@ -91,7 +91,7 @@
               th:text="${info.endpoint}"
             ></div>
           </div>
-          <div class="grid grid-cols-3 gap-6">
+          <div class="grid grid-cols-3 gap-6" th:if="${info.hasMetadata()}">
             <div>
               <div class="text-xs text-gray-500">Persistence Provider</div>
               <div
@@ -152,7 +152,7 @@
               th:text="${info.endpoint}"
             ></div>
           </div>
-          <div class="grid grid-cols-3 gap-6">
+          <div class="grid grid-cols-3 gap-6" th:if="${info.hasMetadata()}">
             <div>
               <div class="text-xs text-gray-500">Persistence Provider</div>
               <div
@@ -234,7 +234,7 @@
               th:text="${info.endpoint}"
             ></div>
           </div>
-          <div class="grid grid-cols-3 gap-6">
+          <div class="grid grid-cols-3 gap-6" th:if="${info.hasMetadata()}">
             <div>
               <div class="text-xs text-gray-500">Persistence Provider</div>
               <div
