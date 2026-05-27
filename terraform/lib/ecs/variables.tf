@@ -65,6 +65,21 @@ variable "catalog_db_password" {
   description = "Password for the catalog database"
 }
 
+variable "catalog_opensearch_endpoint" {
+  type        = string
+  description = "URL of the catalog OpenSearch"
+}
+
+variable "catalog_opensearch_username" {
+  type        = string
+  description = "Username for the catalog OpenSearch"
+}
+
+variable "catalog_opensearch_password" {
+  type        = string
+  description = "Password for the catalog OpenSearch"
+}
+
 variable "carts_dynamodb_table_name" {
   type        = string
   description = "DynamoDB table name for the carts service"

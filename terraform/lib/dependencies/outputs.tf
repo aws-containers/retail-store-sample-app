@@ -135,12 +135,12 @@ output "checkout_elasticache_port" {
 
 output "catalog_opensearch_endpoint" {
   description = "Endpoint for the catalog OpenSearch domain"
-  value       = try(module.catalog_opensearch[0].domain_endpoint, "")
+  value       = module.catalog_opensearch.domain_endpoint
 }
 
 output "catalog_opensearch_master_username" {
   description = "Master username for the catalog OpenSearch domain"
-  value       = var.catalog_search_username
+  value       = local.catalog_search_username
   sensitive   = true
 }
 

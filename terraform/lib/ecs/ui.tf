@@ -20,5 +20,6 @@ module "ui_service" {
     RETAIL_UI_ENDPOINTS_CARTS    = "http://${module.carts_service.ecs_service_name}"
     RETAIL_UI_ENDPOINTS_CHECKOUT = "http://${module.checkout_service.ecs_service_name}"
     RETAIL_UI_ENDPOINTS_ORDERS   = "http://${module.orders_service.ecs_service_name}"
+    RETAIL_UI_SEARCH_ENABLED     = "true"
   }
 }

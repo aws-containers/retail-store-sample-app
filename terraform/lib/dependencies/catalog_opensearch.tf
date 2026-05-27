@@ -27,12 +27,13 @@ resource "aws_security_group_rule" "allow_https_from_client" {
   description              = "Allow HTTPS from client"
 }
 
+locals {
+  catalog_search_username = "admin"
+}
 
 module "catalog_opensearch" {
   source  = "terraform-aws-modules/opensearch/aws"
   version = "1.5.0"
-
-  count  = (var.catalog_search_enabled && var.catalog_search_provider == "aws") ? 1 : 0
 
   domain_name    = "${var.environment_name}-catalog"
   engine_version = "OpenSearch_3.3"
@@ -59,7 +60,7 @@ module "catalog_opensearch" {
     enabled                        = true
     internal_user_database_enabled = true
     master_user_options = {
-      master_user_name     = var.catalog_search_username
+      master_user_name     = local.catalog_search_username
       master_user_password = random_string.catalog_opensearch_master.result
     }
   }

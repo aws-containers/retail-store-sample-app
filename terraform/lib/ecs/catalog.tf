@@ -15,12 +15,17 @@ module "catalog_service" {
   environment_variables = {
     RETAIL_CATALOG_PERSISTENCE_PROVIDER = "mysql"
     RETAIL_CATALOG_PERSISTENCE_DB_NAME  = var.catalog_db_name
+    RETAIL_CATALOG_SEARCH_ENABLED       = "true"
+    RETAIL_CATALOG_SEARCH_OS_INDEX      = "products"
+    RETAIL_CATALOG_SEARCH_OS_ENDPOINT   = var.catalog_opensearch_endpoint
   }
 
   secrets = {
     RETAIL_CATALOG_PERSISTENCE_ENDPOINT = "${aws_secretsmanager_secret_version.catalog_db.arn}:host::"
     RETAIL_CATALOG_PERSISTENCE_USER     = "${aws_secretsmanager_secret_version.catalog_db.arn}:username::"
     RETAIL_CATALOG_PERSISTENCE_PASSWORD = "${aws_secretsmanager_secret_version.catalog_db.arn}:password::"
+    RETAIL_CATALOG_SEARCH_OS_USERNAME   = "${aws_secretsmanager_secret_version.catalog_opensearch.arn}:username::"
+    RETAIL_CATALOG_SEARCH_OS_PASSWORD   = "${aws_secretsmanager_secret_version.catalog_opensearch.arn}:password::"
   }
 
   additional_task_execution_role_iam_policy_arns = [
@@ -38,6 +43,7 @@ data "aws_iam_policy_document" "catalog_db_secret" {
     effect = "Allow"
     resources = [
       aws_secretsmanager_secret.catalog_db.arn,
+      aws_secretsmanager_secret.catalog_opensearch.arn,
       aws_kms_key.cmk.arn
     ]
   }
@@ -69,6 +75,22 @@ resource "aws_secretsmanager_secret_version" "catalog_db" {
       username = var.catalog_db_username
       password = var.catalog_db_password
       host     = "${var.catalog_db_endpoint}:${var.catalog_db_port}"
+    }
+  )
+}
+
+resource "aws_secretsmanager_secret" "catalog_opensearch" {
+  name       = "${var.environment_name}-catalog-opensearch-${random_string.random_catalog_secret.result}"
+  kms_key_id = aws_kms_key.cmk.key_id
+}
+
+resource "aws_secretsmanager_secret_version" "catalog_opensearch" {
+  secret_id = aws_secretsmanager_secret.catalog_opensearch.id
+
+  secret_string = jsonencode(
+    {
+      username = var.catalog_opensearch_username
+      password = var.catalog_opensearch_password
     }
   )
 }

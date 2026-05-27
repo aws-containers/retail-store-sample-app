@@ -39,12 +39,14 @@ module "retail_app_ecs" {
   container_insights_setting = var.container_insights_setting
   lifecycle_events_enabled   = var.lifecycle_events_enabled
 
-
-  catalog_db_endpoint = module.dependencies.catalog_db_endpoint
-  catalog_db_port     = module.dependencies.catalog_db_port
-  catalog_db_name     = module.dependencies.catalog_db_database_name
-  catalog_db_username = module.dependencies.catalog_db_master_username
-  catalog_db_password = module.dependencies.catalog_db_master_password
+  catalog_db_endpoint         = module.dependencies.catalog_db_endpoint
+  catalog_db_port             = module.dependencies.catalog_db_port
+  catalog_db_name             = module.dependencies.catalog_db_database_name
+  catalog_db_username         = module.dependencies.catalog_db_master_username
+  catalog_db_password         = module.dependencies.catalog_db_master_password
+  catalog_opensearch_endpoint = "https://${module.dependencies.catalog_opensearch_endpoint}"
+  catalog_opensearch_username = module.dependencies.catalog_opensearch_master_username
+  catalog_opensearch_password = module.dependencies.catalog_opensearch_master_password
 
   carts_dynamodb_table_name = module.dependencies.carts_dynamodb_table_name
   carts_dynamodb_policy_arn = module.dependencies.carts_dynamodb_policy_arn
