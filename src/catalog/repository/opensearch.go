@@ -25,10 +25,12 @@ import (
 	"net/http"
 	"strings"
 
-	"github.com/aws-containers/retail-store-sample-app/catalog/config"
+	"github.com/aws/aws-sdk-go-v2/config"
 	"github.com/aws-containers/retail-store-sample-app/catalog/model"
+	appconfig "github.com/aws-containers/retail-store-sample-app/catalog/config"
 	"github.com/opensearch-project/opensearch-go/v2"
 	"github.com/opensearch-project/opensearch-go/v2/opensearchapi"
+	requestsigner "github.com/opensearch-project/opensearch-go/v2/signer/awsv2"
 )
 
 // SearchRepository interface for search operations
@@ -65,23 +67,40 @@ type SearchResponse struct {
 }
 
 // NewOpenSearchRepository creates a new OpenSearch repository
-func NewOpenSearchRepository(config config.OpenSearchConfiguration) (*OpenSearchRepository, error) {
-	cfg := opensearch.Config{
-		Addresses: []string{config.Endpoint},
+func NewOpenSearchRepository(cfg appconfig.OpenSearchConfiguration) (*OpenSearchRepository, error) {
+	osCfg := opensearch.Config{
+		Addresses: []string{cfg.Endpoint},
 		Transport: &http.Transport{
-			TLSClientConfig: &tls.Config{InsecureSkipVerify: config.TLSSkipVerify},
+			TLSClientConfig: &tls.Config{InsecureSkipVerify: cfg.TLSSkipVerify},
 		},
 	}
 
-	// Add authentication if provided
-	if config.Username != "" && config.Password != "" {
-		cfg.Username = config.Username
-		cfg.Password = config.Password
+	// Configure authentication based on provider type
+	if cfg.Type == "aws" {
+		// Use SigV4 signing - auto-detect "aoss" (serverless) vs "es" (managed) from endpoint
+		service := "es"
+		if strings.Contains(cfg.Endpoint, ".aoss.") {
+			service = "aoss"
+		}
 
-		fmt.Printf("Connecting to OpenSearch as %s\n", config.Username)
+		awsCfg, err := config.LoadDefaultConfig(context.Background())
+		if err != nil {
+			return nil, fmt.Errorf("failed to load AWS config: %w", err)
+		}
+
+		signer, err := requestsigner.NewSignerWithService(awsCfg, service)
+		if err != nil {
+			return nil, fmt.Errorf("failed to create AWS SigV4 signer: %w", err)
+		}
+		osCfg.Signer = signer
+		fmt.Printf("Connecting to OpenSearch using AWS SigV4 (service: %s)\n", service)
+	} else if cfg.Username != "" && cfg.Password != "" {
+		osCfg.Username = cfg.Username
+		osCfg.Password = cfg.Password
+		fmt.Printf("Connecting to OpenSearch as %s\n", cfg.Username)
 	}
 
-	client, err := opensearch.NewClient(cfg)
+	client, err := opensearch.NewClient(osCfg)
 	if err != nil {
 		return nil, fmt.Errorf("failed to create OpenSearch client: %w", err)
 	}
@@ -101,7 +120,7 @@ func NewOpenSearchRepository(config config.OpenSearchConfiguration) (*OpenSearch
 
 	return &OpenSearchRepository{
 		client:    client,
-		indexName: config.IndexName,
+		indexName: cfg.IndexName,
 	}, nil
 }
 
