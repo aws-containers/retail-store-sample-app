@@ -49,7 +49,8 @@ services:
     tmpfs:
       - /tmp:rw,noexec,nosuid
     healthcheck:
-      test: ["CMD-SHELL", "exit 0"]
+      test: ["CMD-SHELL", "curl -sf http://localhost:8000/shell/ > /dev/null 2>&1 || exit 1"]
       interval: 5s
-      timeout: 15s
-      retries: 3
+      timeout: 10s
+      retries: 5
+      start_period: 10s
