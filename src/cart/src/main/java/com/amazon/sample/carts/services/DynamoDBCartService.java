@@ -69,7 +69,11 @@ public class DynamoDBCartService
 
   @Override
   public void onApplicationEvent(final @NonNull ApplicationReadyEvent event) {
-    this.items("test");
+    try {
+      this.items("test");
+    } catch (Exception e) {
+      log.warn("Dynamo table verification query failed: {}", e.getMessage());
+    }
   }
 
   @PostConstruct
@@ -80,28 +84,33 @@ public class DynamoDBCartService
           DeleteTableRequest.builder().tableName(this.tableName).build()
         );
       } catch (ResourceNotFoundException rnfe) {
-        log.warn("Dynamo table not found");
+        log.info("Dynamo table not found (expected on first startup)");
       }
 
-      this.table.createTable(builder ->
-          builder
-            .globalSecondaryIndices(builder3 ->
-              builder3
-                .indexName("idx_global_customerId")
-                .projection(builder2 ->
-                  builder2.projectionType(ProjectionType.ALL)
-                )
-                .provisionedThroughput(builder4 ->
-                  builder4.writeCapacityUnits(1L).readCapacityUnits(1L)
-                )
-            )
-            .provisionedThroughput(b ->
-              b.readCapacityUnits(1L).writeCapacityUnits(1L).build()
-            )
+      try {
+        this.table.createTable(builder ->
+            builder
+              .globalSecondaryIndices(builder3 ->
+                builder3
+                  .indexName("idx_global_customerId")
+                  .projection(builder2 ->
+                    builder2.projectionType(ProjectionType.ALL)
+                  )
+                  .provisionedThroughput(builder4 ->
+                    builder4.writeCapacityUnits(1L).readCapacityUnits(1L)
+                  )
+              )
+              .provisionedThroughput(b ->
+                b.readCapacityUnits(1L).writeCapacityUnits(1L).build()
+              )
         );
 
-      this.dynamoDBClient.waiter()
-        .waitUntilTableExists(b -> b.tableName(this.tableName));
+        this.dynamoDBClient.waiter()
+          .waitUntilTableExists(b -> b.tableName(this.tableName));
+      } catch (Exception e) {
+        log.error("Failed to create Dynamo table: {}", e.getMessage(), e);
+        throw new RuntimeException("Failed to create Dynamo table: " + this.tableName, e);
+      }
     }
   }
 
