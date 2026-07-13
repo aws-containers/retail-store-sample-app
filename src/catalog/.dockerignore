@@ -3,3 +3,13 @@ Dockerfile
 docker-compose.yml
 .gitignore
 scripts
+.git
+README.md
+bin/
+dist/
+tmp/
+*.log
+.env
+.env.*
+ATTRIBUTION.md
+LICENSES.md

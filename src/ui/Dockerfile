@@ -1,68 +1,52 @@
-# Build Stage
-FROM public.ecr.aws/amazonlinux/amazonlinux:2023 AS build-env
+FROM maven:3.9.16-eclipse-temurin-21-alpine AS build
 
-# We tell DNF not to install Recommends and Suggests packages, keeping our
-# installed set of packages as minimal as possible.
-RUN dnf --setopt=install_weak_deps=False install -q -y \
-    maven \
-    java-21-amazon-corretto-headless \
-    which \
-    tar \
-    gzip \
-    && \
-    dnf clean all
+WORKDIR /build
 
-VOLUME /tmp
-WORKDIR /
+COPY .mvn .mvn/
 
-COPY .mvn .mvn
-COPY mvnw .
-COPY pom.xml .
+COPY mvnw pom.xml ./
 
-RUN ./mvnw dependency:go-offline -B -q
+RUN sed -i 's/\r$//' mvnw \
+    && chmod +x mvnw
 
-COPY ./src ./src
+RUN ./mvnw dependency:go-offline -B
 
-RUN ./mvnw -DskipTests package -q && \
-    mv /target/ui-0.0.1-SNAPSHOT.jar /app.jar
+COPY src/ src/
 
-# Package Stage
-FROM public.ecr.aws/amazonlinux/amazonlinux:2023
+ARG JAR_FILE=target/ui-0.0.1-SNAPSHOT.jar
 
-# We tell DNF not to install Recommends and Suggests packages, which are
-# weak dependencies in DNF terminology, thus keeping our installed set of
-# packages as minimal as possible.
-RUN dnf --setopt=install_weak_deps=False install -q -y \
-    java-21-amazon-corretto-headless \
-    shadow-utils \
-    && \
-    dnf clean all
+RUN ./mvnw clean package -DskipTests -B \
+    && test -f "${JAR_FILE}" \
+    && cp "${JAR_FILE}" /app.jar
 
-# use curl-full to use "telnet://" scheme
-# https://docs.aws.amazon.com/linux/al2023/ug/curl-minimal.html
-RUN dnf -q -y swap libcurl-minimal libcurl-full \
-    && dnf -q -y swap curl-minimal curl-full
+FROM eclipse-temurin:21-jre-alpine AS runtime
 
-ENV APPUSER=appuser
-ENV APPUID=1000
-ENV APPGID=1000
+RUN apk add --no-cache \
+    curl \
+    ca-certificates
 
-RUN useradd \
-    --home "/app" \
-    --create-home \
-    --user-group \
-    --uid "$APPUID" \
-    "$APPUSER"
+ARG APP_UID=1000
+ARG APP_GID=1000
 
-ENV JAVA_TOOL_OPTIONS=
-ENV SPRING_PROFILES_ACTIVE=prod
+RUN addgroup -S appgroup \
+        -g "${APP_GID}" \
+    && adduser -S appuser \
+        -G appgroup \
+        -h /app \
+        -u "${APP_UID}"
 
 WORKDIR /app
-USER appuser
 
-COPY ./ATTRIBUTION.md ./LICENSES.md
-COPY --chown=appuser:appuser --from=build-env /app.jar .
+COPY --chown=appuser:appgroup \
+    --from=build \
+    /app.jar \
+    /app/app.jar
+
+ENV SPRING_PROFILES_ACTIVE=prod
+ENV JAVA_TOOL_OPTIONS=""
+
+USER appuser
 
 EXPOSE 8080
 
-ENTRYPOINT ["sh", "-c", "java $JAVA_OPTS -jar /app/app.jar"]
+ENTRYPOINT ["java", "-jar", "/app/app.jar"]
