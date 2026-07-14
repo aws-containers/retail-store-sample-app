@@ -15,10 +15,10 @@ resource "helm_release" "istio_base" {
   namespace  = kubernetes_namespace_v1.istio[0].metadata[0].name
   wait       = true
 
-  set {
+  set = [{
     name  = "defaultRevision"
     value = "default"
-  }
+  }]
 }
 
 resource "helm_release" "istiod" {
@@ -34,10 +34,10 @@ resource "helm_release" "istiod" {
   namespace  = kubernetes_namespace_v1.istio[0].metadata[0].name
   wait       = true
 
-  set {
+  set = [{
     name  = "defaultRevision"
     value = "default"
-  }
+  }]
 }
 
 resource "kubernetes_namespace_v1" "istio_ingress" {
