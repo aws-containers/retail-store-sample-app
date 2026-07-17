@@ -17,6 +17,7 @@ permissions:
 
 env:
   AWS_REGION: us-east-1
+  AWS_ROLE_ARN: ${{ vars.AWS_ROLE_ARN || secrets.AWS_ROLE_ARN }}
   ECR_REGISTRY_ID: "147723036683"
   ECR_REPO_CART: 147723036683.dkr.ecr.us-east-1.amazonaws.com/retail-carts
   ECR_REPO_CATALOG: 147723036683.dkr.ecr.us-east-1.amazonaws.com/retail-catalog
@@ -73,11 +74,22 @@ jobs:
       - name: Setup Docker
         uses: ./.github/actions/setup-docker
 
+      - name: Validate AWS auth configuration
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          if [ -z "${AWS_ROLE_ARN:-}" ]; then
+            echo "::error::Missing AWS role ARN. Set repository variable AWS_ROLE_ARN or secret AWS_ROLE_ARN."
+            exit 1
+          fi
+
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v4
         with:
-          role-to-assume: ${{ secrets.AWS_ROLE_ARN }}
+          role-to-assume: ${{ env.AWS_ROLE_ARN }}
           aws-region: ${{ env.AWS_REGION }}
+          allowed-account-ids: ${{ env.ECR_REGISTRY_ID }}
           role-session-name: GithubActionsSession
 
       - name: Login to Amazon ECR
@@ -125,11 +137,22 @@ jobs:
       - name: Setup Docker
         uses: ./.github/actions/setup-docker
 
+      - name: Validate AWS auth configuration
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          if [ -z "${AWS_ROLE_ARN:-}" ]; then
+            echo "::error::Missing AWS role ARN. Set repository variable AWS_ROLE_ARN or secret AWS_ROLE_ARN."
+            exit 1
+          fi
+
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v4
         with:
-          role-to-assume: ${{ secrets.AWS_ROLE_ARN }}
+          role-to-assume: ${{ env.AWS_ROLE_ARN }}
           aws-region: ${{ env.AWS_REGION }}
+          allowed-account-ids: ${{ env.ECR_REGISTRY_ID }}
           role-session-name: GithubActionsSession
 
       - name: Login to Amazon ECR
