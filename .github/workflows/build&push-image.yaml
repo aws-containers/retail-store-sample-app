@@ -73,9 +73,6 @@ jobs:
       - name: Setup Docker
         uses: ./.github/actions/setup-docker
 
-      - name: Setup Env
-        uses: ./.github/actions/setup-env
-
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v4
         with:
@@ -92,29 +89,29 @@ jobs:
         env:
           IMAGE_TAG: ${{ needs.prepare.outputs.image_tag }}
           TARGET_ARCH: ${{ matrix.arch }}
-          GOPROXY: https://proxy.golang.org,direct
         run: |
           set -euo pipefail
 
-          yarn nx container cart --tags ${ECR_REPO_CART}:${IMAGE_TAG}-${TARGET_ARCH}
-          yarn nx container catalog --tags ${ECR_REPO_CATALOG}:${IMAGE_TAG}-${TARGET_ARCH}
-          yarn nx container checkout --tags ${ECR_REPO_CHECKOUT}:${IMAGE_TAG}-${TARGET_ARCH}
-          yarn nx container orders --tags ${ECR_REPO_ORDERS}:${IMAGE_TAG}-${TARGET_ARCH}
-          yarn nx container ui --tags ${ECR_REPO_UI}:${IMAGE_TAG}-${TARGET_ARCH}
+          bash src/app/scripts/build-image.sh "${IMAGE_TAG}-${TARGET_ARCH}"
 
       - name: Push images
         env:
           IMAGE_TAG: ${{ needs.prepare.outputs.image_tag }}
           TARGET_ARCH: ${{ matrix.arch }}
-          GOPROXY: https://proxy.golang.org,direct
         run: |
           set -euo pipefail
 
-          yarn nx container cart --push true --tags ${ECR_REPO_CART}:${IMAGE_TAG}-${TARGET_ARCH}
-          yarn nx container catalog --push true --tags ${ECR_REPO_CATALOG}:${IMAGE_TAG}-${TARGET_ARCH}
-          yarn nx container checkout --push true --tags ${ECR_REPO_CHECKOUT}:${IMAGE_TAG}-${TARGET_ARCH}
-          yarn nx container orders --push true --tags ${ECR_REPO_ORDERS}:${IMAGE_TAG}-${TARGET_ARCH}
-          yarn nx container ui --push true --tags ${ECR_REPO_UI}:${IMAGE_TAG}-${TARGET_ARCH}
+          docker tag "cart:${IMAGE_TAG}-${TARGET_ARCH}" "${ECR_REPO_CART}:${IMAGE_TAG}-${TARGET_ARCH}"
+          docker tag "catalog:${IMAGE_TAG}-${TARGET_ARCH}" "${ECR_REPO_CATALOG}:${IMAGE_TAG}-${TARGET_ARCH}"
+          docker tag "checkout:${IMAGE_TAG}-${TARGET_ARCH}" "${ECR_REPO_CHECKOUT}:${IMAGE_TAG}-${TARGET_ARCH}"
+          docker tag "orders:${IMAGE_TAG}-${TARGET_ARCH}" "${ECR_REPO_ORDERS}:${IMAGE_TAG}-${TARGET_ARCH}"
+          docker tag "ui:${IMAGE_TAG}-${TARGET_ARCH}" "${ECR_REPO_UI}:${IMAGE_TAG}-${TARGET_ARCH}"
+
+          docker push "${ECR_REPO_CART}:${IMAGE_TAG}-${TARGET_ARCH}"
+          docker push "${ECR_REPO_CATALOG}:${IMAGE_TAG}-${TARGET_ARCH}"
+          docker push "${ECR_REPO_CHECKOUT}:${IMAGE_TAG}-${TARGET_ARCH}"
+          docker push "${ECR_REPO_ORDERS}:${IMAGE_TAG}-${TARGET_ARCH}"
+          docker push "${ECR_REPO_UI}:${IMAGE_TAG}-${TARGET_ARCH}"
 
   publish:
     name: Publish multi-arch manifests
@@ -125,8 +122,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Setup Env
-        uses: ./.github/actions/setup-env
+      - name: Setup Docker
+        uses: ./.github/actions/setup-docker
 
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v4
@@ -146,11 +143,11 @@ jobs:
         run: |
           set -euo pipefail
 
-          yarn nx manifest cart --args="--repository=${ECR_REPO_CART},--tag=${IMAGE_TAG}"
-          yarn nx manifest catalog --args="--repository=${ECR_REPO_CATALOG},--tag=${IMAGE_TAG}"
-          yarn nx manifest checkout --args="--repository=${ECR_REPO_CHECKOUT},--tag=${IMAGE_TAG}"
-          yarn nx manifest orders --args="--repository=${ECR_REPO_ORDERS},--tag=${IMAGE_TAG}"
-          yarn nx manifest ui --args="--repository=${ECR_REPO_UI},--tag=${IMAGE_TAG}"
+          bash src/app/scripts/create-manifest.sh "${ECR_REPO_CART}" "${IMAGE_TAG}"
+          bash src/app/scripts/create-manifest.sh "${ECR_REPO_CATALOG}" "${IMAGE_TAG}"
+          bash src/app/scripts/create-manifest.sh "${ECR_REPO_CHECKOUT}" "${IMAGE_TAG}"
+          bash src/app/scripts/create-manifest.sh "${ECR_REPO_ORDERS}" "${IMAGE_TAG}"
+          bash src/app/scripts/create-manifest.sh "${ECR_REPO_UI}" "${IMAGE_TAG}"
 
       - name: Summarize published images
         env:

@@ -1,16 +1,20 @@
-#!/usr/bin/bash
+#!/usr/bin/env bash
 
-set -e pipefail
-VERSION=${1:-"latest"}
-# Build the cart image 
-cd ../../cart
-docker build -t cart:${VERSION} .
+set -euo pipefail
 
-cd ../catalog
-docker build -t catalog:${VERSION} .
+VERSION="${1:-latest}"
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+SRC_DIR="$(cd "${SCRIPT_DIR}/../.." && pwd)"
 
-cd ../checkout
-docker build -t checkout:${VERSION} .
+services=(
+  cart
+  catalog
+  checkout
+  orders
+  ui
+)
 
-cd ../orders
-docker build -t orders:${VERSION} .
+for service in "${services[@]}"; do
+  echo "Building ${service}:${VERSION}"
+  docker build -t "${service}:${VERSION}" "${SRC_DIR}/${service}"
+done
