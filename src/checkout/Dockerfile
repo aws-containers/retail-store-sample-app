@@ -2,15 +2,11 @@ FROM node:20-alpine AS build
 
 WORKDIR /build
 
-RUN chown node:node /build
-
 COPY package.json ./
-
-USER  node
 
 RUN npm install
 
-COPY --chown=node:node . .
+COPY . .
 
 RUN npm run build
 
@@ -24,16 +20,19 @@ RUN chown node:node /app
 
 COPY --chown=node:node package.json ./
 
-USER node
+
 
 RUN npm install --omit=dev \
-    && npm cache clean --force
+    && npm cache clean --force\
+    && apk add --no-cache \
+        curl \
+        ca-certificates
 
 COPY --chown=node:node \
     --from=build \
     /build/dist \
     ./dist
-
+USER node
 
 EXPOSE 8080
 

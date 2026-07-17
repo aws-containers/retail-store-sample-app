@@ -23,7 +23,7 @@ RUN CGO_ENABLED=0 \
     -o /out/main .
 FROM alpine:latest AS runtime
 
-RUN apk add --no-cache ca-certificates
+RUN apk add --no-cache ca-certificates curl
 
 ARG APP_UID=1000
 ARG APP_GID=1000

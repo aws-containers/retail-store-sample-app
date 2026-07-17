@@ -20,12 +20,11 @@ RUN ./mvnw clean package -DskipTests -B \
     && cp "${JAR_FILE}" /app.jar
 
 FROM eclipse-temurin:21-jre-alpine AS runtime
-
+USER root
 RUN apk add --no-cache \
         curl \
-        ca-certificates \
-    && curl --version \
-    && curl --version | grep -q "telnet"
+        ca-certificates 
+
 
 ARG APP_UID=1000
 ARG APP_GID=1000

@@ -19,7 +19,10 @@ RUN ./mvnw clean package -DskipTests -B \
 FROM eclipse-temurin:21-jre-alpine AS runtime
 
 RUN addgroup -S appgroup \
-    && adduser -S appuser -G appgroup -h /app
+    && adduser -S appuser -G appgroup -h /app \
+    && apk add --no-cache \
+        curl \
+        ca-certificates
 
 WORKDIR /app
 
