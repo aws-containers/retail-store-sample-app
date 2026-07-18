@@ -62,5 +62,5 @@ data "aws_iam_policy_document" "ecr_push" {
 resource "aws_iam_role_policy" "ecr_push" {
    name = "${var.project_name}-${var.environment}-ecr-push"
    policy = data.aws_iam_policy_document.ecr_push.json
-   role = data.aws_iam_policy_document.ecr_push.id
+   role = aws_iam_role.github_ecr.name
 }
