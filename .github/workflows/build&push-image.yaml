@@ -18,6 +18,9 @@ permissions:
 env:
   AWS_REGION: us-east-1
   AWS_ROLE_ARN: ${{ vars.AWS_ROLE_ARN || secrets.AWS_ROLE_ARN }}
+  AWS_ACCESS_KEY_ID_VALUE: ${{ secrets.AWS_ACCESS_KEY_ID }}
+  AWS_SECRET_ACCESS_KEY_VALUE: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+  AWS_SESSION_TOKEN_VALUE: ${{ secrets.AWS_SESSION_TOKEN }}
   ECR_REGISTRY_ID: "147723036683"
   ECR_REPO_CART: 147723036683.dkr.ecr.us-east-1.amazonaws.com/retail-carts
   ECR_REPO_CATALOG: 147723036683.dkr.ecr.us-east-1.amazonaws.com/retail-catalog
@@ -79,18 +82,35 @@ jobs:
         run: |
           set -euo pipefail
 
-          if [ -z "${AWS_ROLE_ARN:-}" ]; then
-            echo "::error::Missing AWS role ARN. Set repository variable AWS_ROLE_ARN or secret AWS_ROLE_ARN."
-            exit 1
+          if [ -n "${AWS_ROLE_ARN:-}" ]; then
+            exit 0
           fi
 
-      - name: Configure AWS credentials
+          if [ -n "${AWS_ACCESS_KEY_ID_VALUE:-}" ] && [ -n "${AWS_SECRET_ACCESS_KEY_VALUE:-}" ]; then
+            exit 0
+          fi
+
+          echo "::error::Missing AWS credentials. Configure AWS_ROLE_ARN for OIDC, or set AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY as GitHub secrets."
+          exit 1
+
+      - name: Configure AWS credentials with OIDC role
+        if: ${{ env.AWS_ROLE_ARN != '' }}
         uses: aws-actions/configure-aws-credentials@v4
         with:
           role-to-assume: ${{ env.AWS_ROLE_ARN }}
           aws-region: ${{ env.AWS_REGION }}
           allowed-account-ids: ${{ env.ECR_REGISTRY_ID }}
           role-session-name: GithubActionsSession
+
+      - name: Configure AWS credentials with access keys
+        if: ${{ env.AWS_ROLE_ARN == '' && env.AWS_ACCESS_KEY_ID_VALUE != '' && env.AWS_SECRET_ACCESS_KEY_VALUE != '' }}
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ env.AWS_ACCESS_KEY_ID_VALUE }}
+          aws-secret-access-key: ${{ env.AWS_SECRET_ACCESS_KEY_VALUE }}
+          aws-session-token: ${{ env.AWS_SESSION_TOKEN_VALUE }}
+          aws-region: ${{ env.AWS_REGION }}
+          allowed-account-ids: ${{ env.ECR_REGISTRY_ID }}
 
       - name: Login to Amazon ECR
         uses: aws-actions/amazon-ecr-login@v2
@@ -142,18 +162,35 @@ jobs:
         run: |
           set -euo pipefail
 
-          if [ -z "${AWS_ROLE_ARN:-}" ]; then
-            echo "::error::Missing AWS role ARN. Set repository variable AWS_ROLE_ARN or secret AWS_ROLE_ARN."
-            exit 1
+          if [ -n "${AWS_ROLE_ARN:-}" ]; then
+            exit 0
           fi
 
-      - name: Configure AWS credentials
+          if [ -n "${AWS_ACCESS_KEY_ID_VALUE:-}" ] && [ -n "${AWS_SECRET_ACCESS_KEY_VALUE:-}" ]; then
+            exit 0
+          fi
+
+          echo "::error::Missing AWS credentials. Configure AWS_ROLE_ARN for OIDC, or set AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY as GitHub secrets."
+          exit 1
+
+      - name: Configure AWS credentials with OIDC role
+        if: ${{ env.AWS_ROLE_ARN != '' }}
         uses: aws-actions/configure-aws-credentials@v4
         with:
           role-to-assume: ${{ env.AWS_ROLE_ARN }}
           aws-region: ${{ env.AWS_REGION }}
           allowed-account-ids: ${{ env.ECR_REGISTRY_ID }}
           role-session-name: GithubActionsSession
+
+      - name: Configure AWS credentials with access keys
+        if: ${{ env.AWS_ROLE_ARN == '' && env.AWS_ACCESS_KEY_ID_VALUE != '' && env.AWS_SECRET_ACCESS_KEY_VALUE != '' }}
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ env.AWS_ACCESS_KEY_ID_VALUE }}
+          aws-secret-access-key: ${{ env.AWS_SECRET_ACCESS_KEY_VALUE }}
+          aws-session-token: ${{ env.AWS_SESSION_TOKEN_VALUE }}
+          aws-region: ${{ env.AWS_REGION }}
+          allowed-account-ids: ${{ env.ECR_REGISTRY_ID }}
 
       - name: Login to Amazon ECR
         uses: aws-actions/amazon-ecr-login@v2
