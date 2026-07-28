@@ -22,7 +22,7 @@ Pre-requisites for this are:
 After cloning this repository run the following commands:
 
 ```shell
-cd terraform/apprunner
+cd terraform/apprunner/default
 
 terraform init
 terraform plan

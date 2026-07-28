@@ -19,7 +19,7 @@ Pre-requisites for this are:
 After cloning this repository run the following commands:
 
 ```shell
-cd terraform/eks
+cd terraform/eks/minimal
 
 terraform init
 terraform plan
