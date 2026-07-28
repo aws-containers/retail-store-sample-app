@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.6.2](https://github.com/aws-containers/retail-store-sample-app/compare/v1.6.1...v1.6.2) (2026-07-28)
+
+
+### Bug Fixes
+
+* **terraform:** align Helm provider version for EKS ([#1076](https://github.com/aws-containers/retail-store-sample-app/issues/1076)) ([76bc651](https://github.com/aws-containers/retail-store-sample-app/commit/76bc651aa77673c2759b036696c66c40ad823714))
+
 ## [1.6.1](https://github.com/aws-containers/retail-store-sample-app/compare/v1.6.0...v1.6.1) (2026-05-27)
 
 
