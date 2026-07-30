@@ -8109,8 +8109,8 @@ __metadata:
   linkType: hard
 
 "nestjs-otel@npm:^7.0.0":
-  version: 7.0.0
-  resolution: "nestjs-otel@npm:7.0.0"
+  version: 7.0.1
+  resolution: "nestjs-otel@npm:7.0.1"
   dependencies:
     "@opentelemetry/api": "npm:^1.9.0"
     "@opentelemetry/host-metrics": "npm:^0.36.0"
@@ -8118,7 +8118,7 @@ __metadata:
   peerDependencies:
     "@nestjs/common": ">= 11 < 12"
     "@nestjs/core": ">= 11 < 12"
-  checksum: 10c0/d91358f9e85b604c1cc68ff9e9a05d1db875109e5183466d0003001020000c3bb85a34ff208b62cebabc0c7d0b9f48b7ed266fcd472483db28e7d305a8b3189f
+  checksum: 10c0/5bc1c35447081e313e2fcfe0078948e9de052080aa44571b3bc55b40dd65a5e4a0fe3b74c3726d3ac67c78afad7acc4fb2a4134cbda09e94630b4d37d0cda09d
   languageName: node
   linkType: hard
 
