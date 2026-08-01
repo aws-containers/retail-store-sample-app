@@ -1,0 +1,9 @@
+{
+  "scripts": {
+    "build": "nest build",
+    "serve:prod": "node dist/main"
+  },
+  "dependencies": {},
+  "devDependencies": {},
+  "packageManager": "yarn@4.11.0"
+}
