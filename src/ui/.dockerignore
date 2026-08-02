@@ -1,8 +1,13 @@
 Dockerfile
 .dockerignore
 docker-compose.yml
+.git
 .gitignore
+.idea
+target
 chart
 scripts
-target
-.idea
+README.md
+ATTRIBUTION.md
+project.json
+*.log

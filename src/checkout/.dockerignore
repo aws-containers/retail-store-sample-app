@@ -1,8 +1,31 @@
-Dockerfile
-.dockerignore
-docker-compose.yml
-.gitignore
-chart
-scripts
-dist
+# Local dependency and build outputs
 node_modules
+dist
+coverage
+
+# Temporary npm files
+npm-debug
+npm-debug.log*
+*.log
+
+# Local configuration and secrets
+.env
+.env.*
+
+# Git metadata
+.git
+.gitignore
+
+# Docker and Compose development files
+Dockerfile*
+docker-compose*.yml
+compose*.yml
+
+# Previous Yarn artifacts
+.yarn
+.yarnrc.yml
+yarn.lock
+
+# Documentation not required in the runtime build
+README*
+*.md
