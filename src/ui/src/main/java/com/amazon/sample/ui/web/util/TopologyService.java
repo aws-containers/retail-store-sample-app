@@ -18,6 +18,7 @@
 
 package com.amazon.sample.ui.web.util;
 
+import com.amazon.sample.ui.config.EndpointProperties;
 import io.netty.channel.ChannelOption;
 import java.time.Duration;
 import java.util.Map;
@@ -63,7 +64,7 @@ public class TopologyService {
     topology.setEndpoint(endpoint);
     topology.setStatus(TopologyStatus.NONE);
 
-    if (endpoint == null || endpoint.isEmpty()) {
+    if (!EndpointProperties.isConfigured(endpoint)) {
       return Mono.just(topology);
     }
 

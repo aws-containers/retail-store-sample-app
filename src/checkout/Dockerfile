@@ -5,7 +5,7 @@
 # Installs all dependencies because NestJS/TypeScript build
 # tools are development dependencies.
 # =========================================================
-FROM node:20-alpine AS build
+FROM node:20-alpine@sha256:fb4cd12c85ee03686f6af5362a0b0d56d50c58a04632e6c0fb8363f609372293 AS build
 
 WORKDIR /app
 
@@ -26,7 +26,7 @@ RUN npm run build
 # Production dependencies stage
 # Installs runtime dependencies only.
 # =========================================================
-FROM node:20-alpine AS production-dependencies
+FROM node:20-alpine@sha256:fb4cd12c85ee03686f6af5362a0b0d56d50c58a04632e6c0fb8363f609372293 AS production-dependencies
 
 WORKDIR /app
 
@@ -42,7 +42,7 @@ RUN npm ci --omit=dev \
 # Runtime stage
 # Contains only compiled code and production dependencies.
 # =========================================================
-FROM node:20-alpine AS runtime
+FROM node:20-alpine@sha256:fb4cd12c85ee03686f6af5362a0b0d56d50c58a04632e6c0fb8363f609372293 AS runtime
 
 ARG BUILD_VERSION=dev
 ARG BUILD_REVISION=unknown
@@ -75,6 +75,8 @@ COPY --chown=node:node package.json ./
 
 # Avoid running the application as root.
 USER node
+
+HEALTHCHECK --interval=10s --timeout=5s --start-period=20s --retries=5 CMD node -e "fetch('http://127.0.0.1:8080/health').then(r => { if (!r.ok) process.exit(1) }).catch(() => process.exit(1))"
 
 EXPOSE 8080
 

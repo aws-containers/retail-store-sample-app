@@ -40,3 +40,6 @@ screenshots
 !.yarn/releases
 !.yarn/sdks
 !.yarn/versions
+
+# Local vulnerability scanner cache
+.trivy-cache/
