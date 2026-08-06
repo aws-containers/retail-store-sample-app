@@ -67,6 +67,20 @@ class TopologyServiceTest {
   }
 
   @Test
+  void returnsNoneWhenEndpointIsDisabled() {
+    var recorder = new RequestRecorder(req -> response(HttpStatus.OK, ""));
+    var service = new TopologyService(buildClient(recorder));
+
+    StepVerifier.create(service.getTopologyForService("svc", "false"))
+      .assertNext(info ->
+        assertThat(info.getStatus()).isEqualTo(TopologyStatus.NONE)
+      )
+      .verifyComplete();
+
+    assertThat(recorder.requestedPaths).isEmpty();
+  }
+
+  @Test
   void healthyWithMetadataWhenTopologySucceeds() {
     var recorder = new RequestRecorder(req ->
       jsonResponse(

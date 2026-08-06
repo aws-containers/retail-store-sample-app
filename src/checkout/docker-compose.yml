@@ -9,6 +9,8 @@ services:
     cap_add:
       - NET_BIND_SERVICE
     read_only: true
+    security_opt:
+      - no-new-privileges:true
     tmpfs:
       - /tmp:rw,noexec,nosuid
     environment:
@@ -17,7 +19,11 @@ services:
     ports:
       - '8085:8080'
     healthcheck:
-      test: ['CMD-SHELL', 'curl -f http://localhost:8080/health || exit 1']
+      test:
+        [
+          'CMD-SHELL',
+          'wget -q -O /dev/null http://localhost:8080/health || exit 1',
+        ]
       interval: 10s
       timeout: 10s
       retries: 3

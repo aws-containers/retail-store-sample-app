@@ -19,7 +19,6 @@
 package com.amazon.sample.ui.web;
 
 import com.amazon.sample.ui.config.EndpointProperties;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.gateway.webflux.ProxyExchange;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -32,8 +31,11 @@ import reactor.core.publisher.Mono;
 @RequestMapping("/proxy")
 public class ProxyController {
 
-  @Autowired
-  private EndpointProperties endpoints;
+  private final EndpointProperties endpoints;
+
+  public ProxyController(EndpointProperties endpoints) {
+    this.endpoints = endpoints;
+  }
 
   @GetMapping("/catalog/**")
   public Mono<ResponseEntity<byte[]>> catalogProxy(ProxyExchange<byte[]> proxy)
@@ -65,7 +67,7 @@ public class ProxyController {
     String service,
     String endpoint
   ) throws Exception {
-    if (isEmpty(endpoint)) {
+    if (!EndpointProperties.isConfigured(endpoint)) {
       return Mono.just(
         new ResponseEntity<>(
           ("Endpoint not provided for " + service).getBytes(),
@@ -79,9 +81,5 @@ public class ProxyController {
       .uri(endpoint + path)
       .header("Content-Type", "application/json")
       .forward();
-  }
-
-  private boolean isEmpty(String check) {
-    return check.equals("false");
   }
 }

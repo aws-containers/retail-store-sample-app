@@ -43,16 +43,17 @@ import io.opentelemetry.api.OpenTelemetry;
 import io.opentelemetry.instrumentation.okhttp.v3_0.OkHttpTelemetry;
 import okhttp3.Call;
 import okhttp3.OkHttpClient;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.util.StringUtils;
 
 @Configuration
 public class StoreServices {
 
-  @Autowired
-  private EndpointProperties endpoints;
+  private final EndpointProperties endpoints;
+
+  public StoreServices(EndpointProperties endpoints) {
+    this.endpoints = endpoints;
+  }
 
   public RequestAdapter getRequestAdapter(
     String endpoint,
@@ -82,7 +83,7 @@ public class StoreServices {
     CatalogMapper mapper,
     Call.Factory factory
   ) {
-    if (StringUtils.hasText(this.endpoints.getCatalog())) {
+    if (EndpointProperties.isConfigured(this.endpoints.getCatalog())) {
       return new KiotaCatalogService(
         new CatalogClient(
           getRequestAdapter(this.endpoints.getCatalog(), factory)
@@ -99,7 +100,7 @@ public class StoreServices {
     CatalogService catalogService,
     Call.Factory factory
   ) {
-    if (StringUtils.hasText(this.endpoints.getCarts())) {
+    if (EndpointProperties.isConfigured(this.endpoints.getCarts())) {
       return new KiotaCartsService(
         new CartClient(getRequestAdapter(this.endpoints.getCarts(), factory)),
         catalogService
@@ -115,7 +116,7 @@ public class StoreServices {
     CheckoutMapper mapper,
     Call.Factory factory
   ) {
-    if (StringUtils.hasText(this.endpoints.getCheckout())) {
+    if (EndpointProperties.isConfigured(this.endpoints.getCheckout())) {
       return new KiotaCheckoutService(
         new CheckoutClient(
           getRequestAdapter(this.endpoints.getCheckout(), factory)
@@ -133,7 +134,9 @@ public class StoreServices {
     CatalogService catalogService,
     Call.Factory factory
   ) {
-    if (StringUtils.hasText(this.endpoints.getRecommendations())) {
+    if (
+      EndpointProperties.isConfigured(this.endpoints.getRecommendations())
+    ) {
       return new KiotaRecommendationsService(
         new RecommendationsClient(
           getRequestAdapter(this.endpoints.getRecommendations(), factory)

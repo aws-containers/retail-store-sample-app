@@ -3,7 +3,7 @@
 # =========================================================
 # Build stage
 # =========================================================
-FROM maven:3.9.16-eclipse-temurin-21-alpine AS build
+FROM maven:3.9.16-eclipse-temurin-21-alpine@sha256:d88e5b38297858f65f97bc7e7964c760ab988fd18ace41589176f1468c49a489 AS build
 
 WORKDIR /build
 
@@ -29,7 +29,7 @@ RUN ./mvnw clean package -DskipTests -B \
 # =========================================================
 # Runtime stage
 # =========================================================
-FROM eclipse-temurin:21-jre-alpine AS runtime
+FROM eclipse-temurin:21-jre-alpine@sha256:3f08b13888f595cc49edabea7250ba69499ba25602b267da591720769400e08c AS runtime
 
 ARG BUILD_VERSION=dev
 ARG BUILD_REVISION=unknown

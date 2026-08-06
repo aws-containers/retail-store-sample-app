@@ -20,6 +20,7 @@
     <properties>
         <java.version>21</java.version>
         <mapstruct.version>1.6.3</mapstruct.version>
+        <tomcat.version>10.1.55</tomcat.version>
     </properties>
 
     <dependencyManagement>
