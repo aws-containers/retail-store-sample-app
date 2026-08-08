@@ -57,13 +57,13 @@ jobs:
           echo "Head SHA: $head_sha"
           echo "Event Name: $event_name"
 
-          if ["$event_name" == "pull_request" ]; then
-            DIFF_BASE=(git merge-base $base_sha $head_sha)
+          if [ "$event_name" == "pull_request" ]; then
+            DIFF_BASE=$(git merge-base $base_sha $head_sha)
           else
             DIFF_BASE=$base_sha
           fi
 
-          if [-z "$DIFF_BASE" ] || [["$DIFF_BASE" =~ ^0+$]]; then
+          if [ -z "$DIFF_BASE" ] || [[ "$DIFF_BASE" =~ ^0+$ ]] ; then
             DIFF_BASE=$(git rev-parse "$HEAD_SHA^" 2>/dev/null || git rev-list --max-parents=0 "$HEAD_SHA")
             exit 1
           fi
@@ -97,8 +97,8 @@ jobs:
             HAS_CHANGES=false
             SERVICE_LIST='none'
           else
-            JSON_ITEM = $(printf '"%s",' "${services[@]}")
-            MATRIX="[${JSON_ITEM%,}]"
+            JSON_ITEMS=$(printf '"%s",' "${services[@]}")
+            MATRIX="[${JSON_ITEMS%,}]"
             HAS_CHANGES=true
             SERVICE_LIST=$(IFS=,; echo "${services[*]}")
           fi
