@@ -30104,3 +30104,84 @@ At line:1 char:1
 ]633;A]633;P;Cwd=C:\x5cscripts\x5cprojects\x5cretail-store-sample-appPS C:\scripts\projects\retail-store-sample-app> ]633;B
 ]633;A]633;P;Cwd=C:\x5cscripts\x5cprojects\x5cretail-store-sample-appPS C:\scripts\projects\retail-store-sample-app> ]633;B
 ]633;A]633;P;Cwd=C:\x5cscripts\x5cprojects\x5cretail-store-sample-appPS C:\scripts\projects\retail-store-sample-app> ]633;B
+]633;A]633;P;Cwd=C:\x5cscripts\x5cprojects\x5cretail-store-sample-appPS C:\scripts\projects\retail-store-sample-app> ]633;B
+PS>$global:__psEditorServices_userInput = $args[0]
+PS>$global:__psEditorServices_userInput = ""
+PS>clear
+]633;D;0]633;A]633;P;Cwd=C:\x5cscripts\x5cprojects\x5cretail-store-sample-appPS C:\scripts\projects\retail-store-sample-app> ]633;B
+PS>$global:__psEditorServices_userInput = $args[0]
+PS>$global:__psEditorServices_userInput = ""
+PS>git add .
+
+]633;D;0]633;A]633;P;Cwd=C:\x5cscripts\x5cprojects\x5cretail-store-sample-appPS C:\scripts\projects\retail-store-sample-app> ]633;B
+PS>$global:__psEditorServices_userInput = $args[0]
+PS>$global:__psEditorServices_userInput = ""
+PS>git push -u origin ci/day-09-changed-service-detection
+Total 0 (delta 0), reused 0 (delta 0), pack-reused 0 (from 0)
+remote:
+remote: Create a pull request for 'ci/day-09-changed-service-detection' on GitHub by visiting:
+remote:      https://github.com/ahmedmohsen5/retail-store-sample-app/pull/new/ci/day-09-changed-servi
+ce-detection
+remote:
+To https://github.com/ahmedmohsen5/retail-store-sample-app.git
+ * [new branch]      ci/day-09-changed-service-detection -> ci/day-09-changed-service-detection
+branch 'ci/day-09-changed-service-detection' set up to track 'origin/ci/day-09-changed-service-detect
+ion'.
+]633;D;0]633;A]633;P;Cwd=C:\x5cscripts\x5cprojects\x5cretail-store-sample-appPS C:\scripts\projects\retail-store-sample-app> ]633;B
+]633;A]633;P;Cwd=C:\x5cscripts\x5cprojects\x5cretail-store-sample-appPS C:\scripts\projects\retail-store-sample-app> ]633;B
+]633;A]633;P;Cwd=C:\x5cscripts\x5cprojects\x5cretail-store-sample-appPS C:\scripts\projects\retail-store-sample-app> ]633;B
+]633;A]633;P;Cwd=C:\x5cscripts\x5cprojects\x5cretail-store-sample-appPS C:\scripts\projects\retail-store-sample-app> ]633;B
+PS>$global:__psEditorServices_userInput = $args[0]
+PS>$global:__psEditorServices_userInput = ""
+PS>git push -u origin ci/day-09-changed-service-detection
+branch 'ci/day-09-changed-service-detection' set up to track 'origin/ci/day-09-changed-service-detect
+ion'.
+Everything up-to-date
+]633;D;0]633;A]633;P;Cwd=C:\x5cscripts\x5cprojects\x5cretail-store-sample-appPS C:\scripts\projects\retail-store-sample-app> ]633;B
+]633;A]633;P;Cwd=C:\x5cscripts\x5cprojects\x5cretail-store-sample-appPS C:\scripts\projects\retail-store-sample-app> ]633;B
+]633;A]633;P;Cwd=C:\x5cscripts\x5cprojects\x5cretail-store-sample-appPS C:\scripts\projects\retail-store-sample-app> ]633;B
+PS>$global:__psEditorServices_userInput = $args[0]
+PS>$global:__psEditorServices_userInput = ""
+PS>git commit -m "ci: add changed-service detection matrix"
+
+]633;D;0]633;A]633;P;Cwd=C:\x5cscripts\x5cprojects\x5cretail-store-sample-appPS C:\scripts\projects\retail-store-sample-app> ]633;B
+]633;A]633;P;Cwd=C:\x5cscripts\x5cprojects\x5cretail-store-sample-appPS C:\scripts\projects\retail-store-sample-app> ]633;B
+]633;A]633;P;Cwd=C:\x5cscripts\x5cprojects\x5cretail-store-sample-appPS C:\scripts\projects\retail-store-sample-app> ]633;B
+]633;A]633;P;Cwd=C:\x5cscripts\x5cprojects\x5cretail-store-sample-appPS C:\scripts\projects\retail-store-sample-app> ]633;B
+]633;A]633;P;Cwd=C:\x5cscripts\x5cprojects\x5cretail-store-sample-appPS C:\scripts\projects\retail-store-sample-app> ]633;B
+PS>$global:__psEditorServices_userInput = $args[0]
+PS>$global:__psEditorServices_userInput = ""
+PS>git push -u origin ci/day-09-changed-service-detection
+
+]633;D;0]633;A]633;P;Cwd=C:\x5cscripts\x5cprojects\x5cretail-store-sample-appPS C:\scripts\projects\retail-store-sample-app> ]633;B
+PS>$global:__psEditorServices_userInput = $args[0]
+PS>$global:__psEditorServices_userInput = ""
+PS>gh
+>> TerminatingError(): "The term 'gh' is not recognized as the name of a cmdlet, function, script file, or operable program. Check the spelling of the name, or if a path was included, verify that the path is correct and try again."
+The term 'gh' is not recognized as the name of a cmdlet, function, script file, or operable program. Check the spelling of the name, or if a path was included, verify that the path is correct and try again.
+gh : The term 'gh' is not recognized as the name of a cmdlet, function, script file, or operable
+program. Check the spelling of the name, or if a path was included, verify that the path is correct
+and try again.
+At line:1 char:1
++ gh
++ ~~
+    + CategoryInfo          : ObjectNotFound: (gh:String) [], ParentContainsErrorRecordException
+    + FullyQualifiedErrorId : CommandNotFoundException
+
+]633;D;1]633;A]633;P;Cwd=C:\x5cscripts\x5cprojects\x5cretail-store-sample-appPS C:\scripts\projects\retail-store-sample-app> ]633;B
+PS>$global:__psEditorServices_userInput = $args[0]
+PS>$global:__psEditorServices_userInput = ""
+PS>gh
+>> TerminatingError(): "The term 'gh' is not recognized as the name of a cmdlet, function, script file, or operable program. Check the spelling of the name, or if a path was included, verify that the path is correct and try again."
+The term 'gh' is not recognized as the name of a cmdlet, function, script file, or operable program. Check the spelling of the name, or if a path was included, verify that the path is correct and try again.
+gh : The term 'gh' is not recognized as the name of a cmdlet, function,
+script file, or operable program. Check the spelling of the name, or if a
+path was included, verify that the path is correct and try again.
+At line:1 char:1
++ gh
++ ~~
+    + CategoryInfo          : ObjectNotFound: (gh:String) [], ParentConta
+   insErrorRecordException
+    + FullyQualifiedErrorId : CommandNotFoundException
+
+]633;D;1]633;A]633;P;Cwd=C:\x5cscripts\x5cprojects\x5cretail-store-sample-appPS C:\scripts\projects\retail-store-sample-app> ]633;B
