@@ -30085,3 +30085,22 @@ Report:        C:\scripts\projects\retail-store-sample-app\proof\day05\pre-pr-20
 JSON summary:  C:\scripts\projects\retail-store-sample-app\proof\day05\pre-pr-20260806-081725\pre-pr-summary.json
 Proof ZIP:     C:\scripts\projects\retail-store-sample-app\proof\day05\pre-pr-20260806-081725.zip
 ]633;D;1]633;A]633;P;Cwd=C:\x5cscripts\x5cprojects\x5cretail-store-sample-appPS C:\scripts\projects\retail-store-sample-app> ]633;B
+PS>$global:__psEditorServices_userInput = $args[0]
+PS>$global:__psEditorServices_userInput = ""
+PS>Invoke-Day05PrePRReview-v5.ps1
+>> TerminatingError(): "The term 'Invoke-Day05PrePRReview-v5.ps1' is not recognized as the name of a cmdlet, function, script file, or operable program. Check the spelling of the name, or if a path was included, verify that the path is correct and try again."
+The term 'Invoke-Day05PrePRReview-v5.ps1' is not recognized as the name of a cmdlet, function, script file, or operable program. Check the spelling of the name, or if a path was included, verify that the path is correct and try again.
+Invoke-Day05PrePRReview-v5.ps1 : The term 'Invoke-Day05PrePRReview-v5.ps1' is not recognized as the
+name of a cmdlet, function, script file, or operable program. Check the spelling of the name, or if
+a path was included, verify that the path is correct and try again.
+At line:1 char:1
++ Invoke-Day05PrePRReview-v5.ps1
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : ObjectNotFound: (Invoke-Day05PrePRReview-v5.ps1:String) [], ParentCon
+   tainsErrorRecordException
+    + FullyQualifiedErrorId : CommandNotFoundException
+
+]633;D;1]633;A]633;P;Cwd=C:\x5cscripts\x5cprojects\x5cretail-store-sample-appPS C:\scripts\projects\retail-store-sample-app> ]633;B
+]633;A]633;P;Cwd=C:\x5cscripts\x5cprojects\x5cretail-store-sample-appPS C:\scripts\projects\retail-store-sample-app> ]633;B
+]633;A]633;P;Cwd=C:\x5cscripts\x5cprojects\x5cretail-store-sample-appPS C:\scripts\projects\retail-store-sample-app> ]633;B
+]633;A]633;P;Cwd=C:\x5cscripts\x5cprojects\x5cretail-store-sample-appPS C:\scripts\projects\retail-store-sample-app> ]633;B

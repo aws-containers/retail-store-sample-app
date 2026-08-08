@@ -1,0 +1,19 @@
+name: Publish Build
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: "Version"
+        required: true
+
+permissions:
+  id-token: write
+  contents: write
+
+jobs:
+  artifacts:
+    uses: ./.github/workflows/artifacts.yaml
+    with:
+      version: ${{ inputs.version }}
+    secrets: inherit
