@@ -44,7 +44,7 @@ jobs:
           echo "Commit SHA: $GITHUB_SHA"
           echo 
           echo "Latest Commit:"
-          git log -1 --online
+          git log -1 --oneline
 
       - name: Detect changed services
         id: changes
