@@ -5,10 +5,12 @@ on:
     branches:
       - main
       - develop
+      - ci/day-10-quality-gates
   push:
     branches:
       - main
       - develop
+      - ci/day-10-quality-gates
 
 permissions:
   contents: read
