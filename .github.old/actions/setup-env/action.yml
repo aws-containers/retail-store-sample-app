@@ -1,0 +1,11 @@
+name: "Setup env"
+description: "Install required environment components"
+runs:
+  using: "composite"
+  steps:
+    - uses: jdx/mise-action@v3
+    - name: yarn install
+      shell: bash
+      run: |
+        corepack enable
+        yarn install

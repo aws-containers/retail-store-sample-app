@@ -1,0 +1,86 @@
+{
+  "$schema": "./node_modules/nx/schemas/nx-schema.json",
+  "defaultBase": "main",
+  "plugins": [
+    {
+      "plugin": "@nx-tools/nx-container",
+      "options": {
+        "defaultEngine": "docker",
+        "registry": "public.ecr.aws"
+      }
+    },
+    "@nx-go/nx-go"
+  ],
+  "targetDefaults": {
+    "build": {
+      "executor": "nx:run-commands",
+      "options": {
+        "cwd": "{projectRoot}"
+      }
+    },
+    "test": {
+      "executor": "nx:run-commands",
+      "options": {
+        "cwd": "{projectRoot}"
+      }
+    },
+    "test:integration": {
+      "executor": "nx:run-commands",
+      "options": {
+        "cwd": "{projectRoot}"
+      }
+    },
+    "lint": {
+      "executor": "nx:run-commands",
+      "options": {
+        "cwd": "{projectRoot}"
+      }
+    },
+    "serve": {
+      "executor": "nx:run-commands",
+      "options": {
+        "cwd": "{projectRoot}"
+      }
+    },
+    "container": {
+      "executor": "@nx-tools/nx-container:build",
+      "cache": true,
+      "dependsOn": [],
+      "options": {
+        "context": "{projectRoot}",
+        "tags": ["aws-containers/retail-store-sample-{projectName}"]
+      },
+      "configurations": {
+        "publish": {
+          "push": true,
+          "platforms": ["linux/amd64", "linux/arm64"]
+        }
+      }
+    },
+    "manifest": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "bash scripts/create-manifest.sh {args.repository} {args.tag}"
+      }
+    },
+    "helm": {
+      "executor": "@nx-extensions/helm:package",
+      "outputs": ["{options.outputFolder}"],
+      "options": {
+        "chartFolder": "{projectRoot}/chart",
+        "outputFolder": "{workspaceRoot}/dist/charts/{projectName}",
+        "push": false,
+        "dependencies": {
+          "update": true,
+          "build": true,
+          "repositories": []
+        }
+      }
+    }
+  },
+  "namedInputs": {
+    "sharedGlobals": ["{workspaceRoot}/go.work"],
+    "default": ["{projectRoot}/**/*"],
+    "production": ["default", "!{projectRoot}/src/test/**/*"]
+  }
+}

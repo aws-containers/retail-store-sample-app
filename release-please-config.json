@@ -1,0 +1,29 @@
+{
+  "$schema": "https://raw.githubusercontent.com/googleapis/release-please/main/schemas/config.json",
+  "release-type": "simple",
+  "include-component-in-tag": false,
+  "bootstrap-sha": "adc57547da91f96e98fa5ab8df484474e72d09dc",
+  "extra-files": [
+    {
+      "type": "yaml",
+      "path": "src/**/chart/Chart.yaml",
+      "glob": true,
+      "jsonpath": "$.version"
+    },
+    {
+      "type": "yaml",
+      "path": "src/app/chart/Chart.yaml",
+      "jsonpath": "$.dependencies[*].version"
+    },
+    {
+      "type": "json",
+      "path": "terraform/lib/images/generated.tf.json",
+      "jsonpath": "$.locals.published_tag"
+    }
+  ],
+  "packages": {
+    ".": {
+      "always-update": true
+    }
+  }
+}

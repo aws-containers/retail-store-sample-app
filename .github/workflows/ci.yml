@@ -1,0 +1,180 @@
+name: CI - Changed Services
+
+on:
+  pull_request:
+    branches:
+      - main
+      - develop
+  push:
+    branches:
+      - main
+      - develop
+
+permissions:
+  contents: read
+
+concurrency:
+  group: day09-${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  detect:
+    name: Detect changed services
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    outputs:
+      matrix: ${{ steps.changes.outputs.matrix }}
+      has_changes: ${{ steps.changes.outputs.has_changes }}
+      services: ${{ steps.changes.outputs.services }}
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+
+
+      - name: print pipline information
+        run: |
+          echo "Event: $GITHUB_EVENT_NAME"
+          echo "Repository: $GITHUB_REPOSITORY"
+          echo "Ref: $GITHUB_REF"
+          echo "Commit SHA: $GITHUB_SHA"
+          echo 
+          echo "Latest Commit:"
+          git log -1 --oneline
+
+      - name: Detect changed services
+        id: changes
+        env:
+          event_name: ${{ github.event_name }}
+          base_sha: ${{ github.event.pull_request.base.sha || github.event.before }}
+          head_sha: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: |
+          echo "Base SHA: $base_sha"
+          echo "Head SHA: $head_sha"
+          echo "Event Name: $event_name"
+
+          if [ "$event_name" == "pull_request" ]; then
+            DIFF_BASE=$(git merge-base $base_sha $head_sha)
+          else
+            DIFF_BASE=$base_sha
+          fi
+
+          if [ -z "$DIFF_BASE" ] || [[ "$DIFF_BASE" =~ ^0+$ ]] ; then
+            DIFF_BASE=$(git rev-parse "$HEAD_SHA^" 2>/dev/null || git rev-list --max-parents=0 "$HEAD_SHA")
+            exit 1
+          fi
+          echo
+          echo "comparing "
+          echo "  base: $DIFF_BASE"
+          echo "  head: $head_sha"
+          changed_files=$(git diff --name-only $DIFF_BASE $head_sha)
+          echo "Changed files:" 
+          echo "$changed_files"
+          services=()
+
+          if echo "$changed_files" | grep -q "^.github/workflows/ci.yml$"; then 
+            services=(
+              "cart"
+              "catalog"
+              "checkout"
+              "orders"
+              "ui"
+            )
+          else
+            for services in cart catalog checkout orders ui; do
+              if echo "$changed_files" | grep -q "^src/${services}/"; then
+                services+=("$services")
+              fi
+            done
+          fi
+          if [ ${#services[@]} -eq 0 ]; then
+            echo "No services changed."
+            MATRIX='[]'
+            HAS_CHANGES=false
+            SERVICE_LIST='none'
+          else
+            JSON_ITEMS=$(printf '"%s",' "${services[@]}")
+            MATRIX="[${JSON_ITEMS%,}]"
+            HAS_CHANGES=true
+            SERVICE_LIST=$(IFS=,; echo "${services[*]}")
+          fi
+          echo
+          echo "Matrix:"
+          echo "$MATRIX"
+
+          echo "matrix=$MATRIX" >> $GITHUB_OUTPUT
+          echo "has_changes=$HAS_CHANGES" >> $GITHUB_OUTPUT
+          echo "services=$SERVICE_LIST" >> $GITHUB_OUTPUT
+
+  service-ci:
+    name: CI - ${{matrix.service}}
+    needs: detect
+    runs-on: ubuntu-latest
+    if: needs.detect.outputs.has_changes == 'true'
+    strategy:
+      fail-fast: false
+      matrix:
+        service: ${{fromJSON(needs.detect.outputs.matrix)}}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      
+      - name: Show selected service
+        run: |
+          echo "================================"
+          echo "Service: ${{ matrix.service }}"
+          echo "================================"
+      
+      - name: Validate service directory
+        run: |
+          SERVICE_PATH="src/${{ matrix.service }}"
+          echo "Checking....."
+          echo "Service Path: $SERVICE_PATH"
+          if [ ! -d "$SERVICE_PATH" ]; then
+            echo "Error: Service directory '$SERVICE_PATH' does not exist."
+            exit 1
+          fi
+          echo "Service directory exists: $SERVICE_PATH"
+      
+      - name: Validate Dockerfile 
+        run: |
+          Dockerfile_PATH="src/${{ matrix.service }}/Dockerfile"
+          echo "Checking....."
+          echo "Dockerfile Path: $Dockerfile_PATH"
+          if [ ! -f "$Dockerfile_PATH" ]; then
+            echo "Error: Dockerfile '$Dockerfile_PATH' does not exist."
+            exit 1
+          fi
+          echo "Dockerfile exists: $Dockerfile_PATH"
+      
+      - name: CI plan
+        run: |
+          echo "Service selected successfully:"
+          echo "${{ matrix.service }}"
+          echo
+          echo "Future pipeline steps:"
+          echo "1. Lint"
+          echo "2. Unit tests"
+          echo "3. Docker build"
+          echo "4. Security scan"
+          echo "5. Push image"
+      
+  no-service-changes:
+    name: No application changes
+    needs: detect
+    runs-on: ubuntu-latest
+    if: needs.detect.outputs.has_changes == 'false'
+    steps:
+      - name: Skip application CI
+        run: |
+          echo "No application service changed."
+          echo "Application build jobs are skipped."
+
+          

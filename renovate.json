@@ -1,0 +1,37 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": ["config:recommended", ":automergeStableNonMajor"],
+  "enabledManagers": ["github-actions", "terraform", "npm", "maven", "gomod"],
+  "rebaseWhen": "conflicted",
+  "minimumReleaseAge": "14 days",
+  "internalChecksFilter": "strict",
+  "prCreation": "not-pending",
+  "packageRules": [
+    {
+      "matchManagers": ["github-actions"],
+      "groupName": "GitHub Actions"
+    },
+    {
+      "matchManagers": ["terraform"],
+      "groupName": "Terraform"
+    },
+    {
+      "matchDepTypes": ["required_version"],
+      "enabled": false
+    },
+    {
+      "groupName": "kiota",
+      "matchPackageNames": ["com.microsoft.kiota:*"]
+    },
+    {
+      "matchPackagePrefixes": ["go.opentelemetry.io/otel", "go.opentelemetry.io/contrib"],
+      "groupName": "OpenTelemetry Go"
+    },
+    {
+      "automerge": true,
+      "matchCurrentVersion": ">= 1.0.0",
+      "matchUpdateTypes": ["minor", "patch"],
+      "matchManagers": ["custom.regex"]
+    }
+  ]
+}

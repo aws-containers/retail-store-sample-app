@@ -1,0 +1,40 @@
+name: OSS
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  attribution:
+    strategy:
+      fail-fast: false
+      matrix:
+        component: [cart, catalog, checkout, orders, ui]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: "Setup Env"
+        uses: ./.github/actions/setup-env
+      - name: Run
+        env:
+          COMPONENT_NAME: ${{ matrix.component }}
+        run: |
+          yarn nx build attribution
+
+          sudo bash oss/run.sh -s $COMPONENT_NAME --root
+
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v4
+        with:
+          add-path: src/**/ATTRIBUTION.md
+          branch: attribution-updates-${{ matrix.component }}
+          title: "chore(deps): Update OSS attribution for ${{ matrix.component }}"
+          commit-message: "chore: Updating OSS attribution for ${{ matrix.component }}"
+          delete-branch: true
+          labels: |
+            automerge
+          add-paths: |
+            src/*/ATTRIBUTION.md
