@@ -5,12 +5,12 @@ on:
     branches:
       - main
       - develop
-      - ci/day-11-quality-gates
+      - ci/day-11-security-gates
   push:
     branches:
       - main
       - develop
-      - ci/day-11-quality-gates
+      - ci/day-11-security-gates
 
 permissions:
   contents: read
