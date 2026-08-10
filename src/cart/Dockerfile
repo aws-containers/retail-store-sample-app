@@ -2,6 +2,8 @@ FROM maven:3.9.16-eclipse-temurin-21-alpine@sha256:d88e5b38297858f65f97bc7e7964c
 
 WORKDIR /build
 
+
+
 COPY .mvn .mvn/
 COPY pom.xml .
 COPY mvnw .
