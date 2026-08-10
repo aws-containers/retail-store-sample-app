@@ -261,6 +261,42 @@ jobs:
           docker image inspect "$IMAGE" 
           echo "Image $IMAGE built successfully."
           docker image inspect "$IMAGE" --format '{{json .Config.Labels}}' 
+
+      - name: scan service dependencies
+        uses: aquasecurity/trivy-action@v0.36.0
+        with:
+          scan-type: "fs"
+          scan-ref: src/${{ matrix.service }}
+          scanners: "vuln"
+          format: sarif
+          output: trivy-fs-${{ matrix.service }}.sarif
+          severity: "CRITICAL,HIGH"
+          exit-code: "1"
+          timeout: "15m0s"
+          limit-severities-for-sarif: true
+
+      - name: scan built service image
+        uses: aquasecurity/trivy-action@v0.36.0
+        with:
+          scan-type: "image"
+          image-ref: retail-${{ matrix.service }}:sha-${{ steps.image_meta.outputs.short_sha }}
+          format: sarif
+          output: trivy-image-${{ matrix.service }}.sarif
+          severity: "CRITICAL,HIGH"
+          exit-code: "1"
+          timeout: "15m0s"
+          limit-severities-for-sarif: true
+
+      - name: Upload service security reports
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: security-${{ matrix.service }}-${{ github.run_id }}
+          path: |
+            trivy-fs-${{ matrix.service }}.sarif
+            trivy-image-${{ matrix.service }}.sarif
+          if-no-files-found: warn
+          retention-days: 14
   no-service-changes:
     name: No application changes
     needs: detect
@@ -308,6 +344,7 @@ jobs:
           output: "trivy-config.sarif"
           severity: "CRITICAL,HIGH"
           exit-code: "1"
+          timeout: "15m0s"
           limit-severities-for-sarif: true
       - name: Upload Trivy SARIF report
         if: always()
@@ -315,38 +352,6 @@ jobs:
         with:
           name: trivy-config-sarif-${{ github.run_id }}
           path: trivy-config.sarif
-          if-no-files-found: warn
-          retention-days: 14
-      - name: scan services dependencies
-        if: always()
-        uses: aquasecurity/trivy-action@v0.36.0
-        with:
-          scan-type: "fs"
-          scan-ref: src/${{ matrix.service }}
-          format: sarif
-          output: "trivy-deps.sarif"
-          severity: "CRITICAL,HIGH"
-          exit-code: "1"
-          limit-severities-for-sarif: true
-      - name: scan built service image
-        uses: aquasecurity/trivy-action@v0.36.0
-        with:
-          scan-type: "image"
-          scan-ref: retail-${{ matrix.service }}:sha-${{ needs.service-ci.outputs.image_meta.outputs.short_sha }}
-          format: sarif
-          output: "trivy-image-${{ matrix.service }}.sarif"
-          severity: "CRITICAL,HIGH"
-          exit-code: "1"
-          limit-severities-for-sarif: true
-          skip-setup-trivy: true
-      - name: Upload service security reports
-        if: always()
-        uses: actions/upload-artifact@v7
-        with:
-          name: security-${{ matrix.service }}-${{ github.run_id }}
-          path: |
-            trivy-fs-${{ matrix.service }}.sarif
-            trivy-image-${{ matrix.service }}.sarif
           if-no-files-found: warn
           retention-days: 14
   
@@ -363,7 +368,7 @@ jobs:
         run: |
           echo "Repository security: $REPOSITORY_SECURITY"
           echo "Service CI: $SERVICE_CI"
-          if [ "$REPOSITORY_SECURITY" == "failure" ] ]; then
+          if [ "$REPOSITORY_SECURITY" = "failure" ]; then
             echo "Release gate failed due to security issues or service CI failures."
             exit 1
           else
@@ -371,7 +376,7 @@ jobs:
           fi
           if [ "$SERVICE_CI" != "success" ] && [ "$SERVICE_CI" != "skipped" ]; then
             echo "Release block: service ci failed"
-            exit1
+            exit 1
           fi
 
           echo "Release gate passed. No security issues or service CI failures detected."
