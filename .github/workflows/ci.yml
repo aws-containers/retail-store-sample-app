@@ -274,4 +274,99 @@ jobs:
       
   
 
-          
+  repository-security:
+    name: Repository Security
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout repository for security scans
+        uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Scan repository for secrets
+        uses: gitleaks/gitleaks-action@v3
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITLEAKS_ENABLE_COMMENTS: "false"
+          GITLEAKS_ENABLE_UPLOAD_ARTIFACT: "true"
+      
+      - name: scan dockerfile and iac
+        if: always()
+        uses: aquasecurity/trivy-action@v0.36.0
+        with:
+          scan-type: "config"
+          scan-ref: .
+          format: sarif
+          output: "trivy-config.sarif"
+          severity: "CRITICAL,HIGH"
+          exit-code: "1"
+          limit-severities-for-sarif: true
+      - name: Upload Trivy SARIF report
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: trivy-config-sarif-${{ github.run_id }}
+          path: trivy-config.sarif
+          if-no-files-found: warn
+          retention-days: 14
+      - name: scan services dependencies
+        if: always()
+        uses: aquasecurity/trivy-action@v0.36.0
+        with:
+          scan-type: "fs"
+          scan-ref: src/${{ matrix.service }}
+          format: sarif
+          output: "trivy-deps.sarif"
+          severity: "CRITICAL,HIGH"
+          exit-code: "1"
+          limit-severities-for-sarif: true
+      - name: scan built service image
+        uses: aquasecurity/trivy-action@v0.36.0
+        with:
+          scan-type: "image"
+          scan-ref: retail-${{ matrix.service }}:sha-${{ needs.service-ci.outputs.image_meta.outputs.short_sha }}
+          format: sarif
+          output: "trivy-image-${{ matrix.service }}.sarif"
+          severity: "CRITICAL,HIGH"
+          exit-code: "1"
+          limit-severities-for-sarif: true
+          skip-setup-trivy: true
+      - name: Upload service security reports
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: security-${{ matrix.service }}-${{ github.run_id }}
+          path: |
+            trivy-fs-${{ matrix.service }}.sarif
+            trivy-image-${{ matrix.service }}.sarif
+          if-no-files-found: warn
+          retention-days: 14
+  
+  security-gate:
+    name: Release Security Gate
+    needs: [service-ci, repository-security, no-service-changes]
+    runs-on: ubuntu-latest  
+    if: always()
+    steps:
+      - name: enforce release gate
+        env:
+          REPOSITORY_SECURITY: ${{ needs.repository-security.result }}
+          SERVICE_CI: ${{ needs.service-ci.result }}
+        run: |
+          echo "Repository security: $REPOSITORY_SECURITY"
+          echo "Service CI: $SERVICE_CI"
+          if [ "$REPOSITORY_SECURITY" == "failure" ] ]; then
+            echo "Release gate failed due to security issues or service CI failures."
+            exit 1
+          else
+            echo "Release gate passed. No security issues or service CI failures detected."
+          fi
+          if [ "$SERVICE_CI" != "success" ] && [ "$SERVICE_CI" != "skipped" ]; then
+            echo "Release block: service ci failed"
+            exit1
+          fi
+
+          echo "Release gate passed. No security issues or service CI failures detected."
