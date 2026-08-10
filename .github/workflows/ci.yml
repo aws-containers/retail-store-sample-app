@@ -255,7 +255,7 @@ jobs:
           cache-to: type=gha,mode=max,scope=${{ matrix.service }}
       - name: verify service image
         run: |
-          IMAGE= retail-${{ matrix.service }}:sha-${{ steps.image_meta.outputs.short_sha }}
+          IMAGE=retail-${{ matrix.service }}:sha-${{ steps.image_meta.outputs.short_sha }}
           echo "Image: $IMAGE"
           docker image inspect "$IMAGE" 
           echo "Image $IMAGE built successfully."
