@@ -173,6 +173,7 @@ jobs:
           AWS_SECRET_ACCESS_KEY: test
           AWS_REGION: us-east-1
         run: |
+          sed -i 's/\r$//' mvnw
           chmod +x mvnw
           set -o pipefail
           ./mvnw --batch-mode --no-transfer-progress verify 2>&1 | tee "$RUNNER_TEMP/cart-test.log"
@@ -180,6 +181,7 @@ jobs:
         if: matrix.service == 'orders' || matrix.service == 'ui'
         working-directory: src/${{ matrix.service }}
         run: |
+          sed -i 's/\r$//' mvnw
           chmod +x mvnw
           set -o pipefail
           ./mvnw --batch-mode --no-transfer-progress verify 2>&1 | tee "$RUNNER_TEMP/${{ matrix.service }}-test.log"
@@ -243,7 +245,7 @@ jobs:
           context: src/${{ matrix.service }}
           file: src/${{ matrix.service }}/Dockerfile
           push: false
-          tags: retail-/${{ matrix.service }}:sha-${{ steps.image_meta.outputs.short_sha }}
+          tags: retail-${{ matrix.service }}:sha-${{ steps.image_meta.outputs.short_sha }}
           load: true
           labels: |
             org.opencontainers.image.source=${{ github.server_url }}/${{ github.repository }}
