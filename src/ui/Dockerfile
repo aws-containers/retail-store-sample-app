@@ -38,6 +38,7 @@ ARG APP_GID=1000
 
 USER root
 
+
 RUN apk add --no-cache \
         curl \
         ca-certificates \

@@ -5,10 +5,12 @@ on:
     branches:
       - main
       - develop
+      - ci/day-10-quality-gates
   push:
     branches:
       - main
       - develop
+      - ci/day-10-quality-gates
 
 permissions:
   contents: read
@@ -64,8 +66,7 @@ jobs:
           fi
 
           if [ -z "$DIFF_BASE" ] || [[ "$DIFF_BASE" =~ ^0+$ ]] ; then
-            DIFF_BASE=$(git rev-parse "$HEAD_SHA^" 2>/dev/null || git rev-list --max-parents=0 "$HEAD_SHA")
-            exit 1
+            DIFF_BASE=$(git rev-parse "$head_sha^" 2>/dev/null || git rev-list --max-parents=0 "$head_sha")
           fi
           echo
           echo "comparing "
@@ -85,9 +86,9 @@ jobs:
               "ui"
             )
           else
-            for services in cart catalog checkout orders ui; do
-              if echo "$changed_files" | grep -q "^src/${services}/"; then
-                services+=("$services")
+            for service in cart catalog checkout orders ui; do
+              if echo "$changed_files" | grep -q "^src/${service}/"; then
+                services+=("$service")
               fi
             done
           fi
@@ -154,18 +155,112 @@ jobs:
           fi
           echo "Dockerfile exists: $Dockerfile_PATH"
       
-      - name: CI plan
+      - name: set up java 21
+        if: >
+          matrix.service == 'cart' ||  matrix.service == 'orders' || matrix.service == 'ui'
+        uses: actions/setup-java@v5
+        with:
+          cache: maven
+          cache-dependency-path: src/${{ matrix.service }}/pom.xml
+          java-version: 21
+          distribution: temurin
+      - name: validate cart service
+        if: matrix.service == 'cart'
+        working-directory: src/cart
+        env:
+          AWS_ACCESS_KEY_ID: test
+          AWS_SECRET_ACCESS_KEY: test
+          AWS_REGION: us-east-1
         run: |
-          echo "Service selected successfully:"
-          echo "${{ matrix.service }}"
-          echo
-          echo "Future pipeline steps:"
-          echo "1. Lint"
-          echo "2. Unit tests"
-          echo "3. Docker build"
-          echo "4. Security scan"
-          echo "5. Push image"
+          sed -i 's/\r$//' mvnw
+          chmod +x mvnw
+          set -o pipefail
+          ./mvnw --batch-mode --no-transfer-progress verify 2>&1 | tee "$RUNNER_TEMP/cart-test.log"
+      - name: validate java service 
+        if: matrix.service == 'orders' || matrix.service == 'ui'
+        working-directory: src/${{ matrix.service }}
+        run: |
+          sed -i 's/\r$//' mvnw
+          chmod +x mvnw
+          set -o pipefail
+          ./mvnw --batch-mode --no-transfer-progress verify 2>&1 | tee "$RUNNER_TEMP/${{ matrix.service }}-test.log"
+
+      - name: setup node 20
+        if: matrix.service == 'checkout' 
+        uses: actions/setup-node@v6
+        with:
+          node-version: 20
+          cache: 'npm'
+          cache-dependency-path: src/checkout/package-lock.json
+      - name: validate checkout service
+        if: matrix.service == 'checkout'
+        working-directory: src/checkout
+        run: |
+          npm ci
+          npm run lint --if-present
+          set -o pipefail
+          npm test 2>&1 | tee "$RUNNER_TEMP/checkout-test.log"
+          npm run build 
+      - name: setup go 1.21
+        if: matrix.service == 'catalog'
+        uses: actions/setup-go@v7
+        with:
+          go-version-file: src/catalog/go.mod
+          cache: true
+          cache-dependency-path: src/catalog/go.sum
+      - name: validate catalog service
+        if: matrix.service == 'catalog'
+        working-directory: src/catalog
+        env:
+          CGO_ENABLED: '1'
+        run: |
+          
+          go vet ./...
+          
+          set -o pipefail
+          go test -v ./... 2>&1 | tee "$RUNNER_TEMP/catalog-test.log"
+          go build ./...
+      - name: Upload test logs
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: test-${{ matrix.service }}-${{ github.run_id }}
+          path: |
+              ${{ runner.temp }}/${{ matrix.service }}-test.log
+              src/${{ matrix.service }}/target/surefire-reports/**
+              src/${{ matrix.service }}/target/failsafe-reports/**
+              src/checkout/coverage/**
+          if-no-files-found: warn
+          retention-days: 7
+      - name: setup docker buildx
+        uses: docker/setup-buildx-action@v4
       
+      - name: prepare image metadata
+        id: image_meta
+        run: |
+          echo "short_sha=${GITHUB_SHA::12}" >> $GITHUB_OUTPUT
+          echo "created=$(date -u +'%Y-%m-%dT%H:%M:%SZ')" >> $GITHUB_OUTPUT
+      - name: build service image
+        uses: docker/build-push-action@v7
+        with:
+          context: src/${{ matrix.service }}
+          file: src/${{ matrix.service }}/Dockerfile
+          push: false
+          tags: retail-${{ matrix.service }}:sha-${{ steps.image_meta.outputs.short_sha }}
+          load: true
+          labels: |
+            org.opencontainers.image.source=${{ github.server_url }}/${{ github.repository }}
+            org.opencontainers.image.revision=${{ github.sha }}
+            org.opencontainers.image.created=${{ steps.image_meta.outputs.created }}
+          cache-from: type=gha,scope=${{ matrix.service }}
+          cache-to: type=gha,mode=max,scope=${{ matrix.service }}
+      - name: verify service image
+        run: |
+          IMAGE=retail-${{ matrix.service }}:sha-${{ steps.image_meta.outputs.short_sha }}
+          echo "Image: $IMAGE"
+          docker image inspect "$IMAGE" 
+          echo "Image $IMAGE built successfully."
+          docker image inspect "$IMAGE" --format '{{json .Config.Labels}}' 
   no-service-changes:
     name: No application changes
     needs: detect
@@ -176,5 +271,7 @@ jobs:
         run: |
           echo "No application service changed."
           echo "Application build jobs are skipped."
+      
+  
 
           

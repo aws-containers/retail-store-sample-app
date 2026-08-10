@@ -49,8 +49,6 @@ WORKDIR /app
 COPY --from=build \
     --chown=appuser:appgroup \
     /out/main /app/main
-
-
 LABEL org.opencontainers.image.title="retail-catalog" \
       org.opencontainers.image.description="Catalog service for the AWS Retail Store application" \
       org.opencontainers.image.version="${BUILD_VERSION}" \
