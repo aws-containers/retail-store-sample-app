@@ -293,6 +293,11 @@ jobs:
           GITLEAKS_ENABLE_COMMENTS: "false"
           GITLEAKS_ENABLE_UPLOAD_ARTIFACT: "true"
       
+      - name: setup helm chart 
+        uses: azure/setup-helm@v4
+      
+      - name: prepare helm dependency
+        run: helm dependency update src/app/chart
       - name: scan dockerfile and iac
         if: always()
         uses: aquasecurity/trivy-action@v0.36.0
