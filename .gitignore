@@ -44,3 +44,4 @@ screenshots
 # Local vulnerability scanner cache
 .trivy-cache/
 .cache/trivy/
+trivy*

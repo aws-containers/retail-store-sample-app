@@ -19,8 +19,14 @@
 
 	<properties>
 		<java.version>21</java.version>
+		<jackson.version>2.21.4</jackson.version>
+		<kiota.version>1.9.1</kiota.version>
+		<micrometer.version>1.15.12</micrometer.version>
+		<netty.version>4.1.136.Final</netty.version>
+		<spring-ai.version>1.0.5</spring-ai.version>
 		<spring-cloud>2021.0.3</spring-cloud>
 		<spring-cloud-aws.version>2.4.2</spring-cloud-aws.version>
+		<spring-framework.version>6.2.19</spring-framework.version>
 		<org.mapstruct.version>1.6.3</org.mapstruct.version>
 		<thymeleaf.version>3.1.5.RELEASE</thymeleaf.version>
 	</properties>
@@ -30,7 +36,7 @@
 			<dependency>
 				<groupId>org.springframework.ai</groupId>
 				<artifactId>spring-ai-bom</artifactId>
-				<version>1.0.0</version>
+				<version>${spring-ai.version}</version>
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>
@@ -40,6 +46,35 @@
 				<version>2.17.0</version>
 				<type>pom</type>
 				<scope>import</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-framework-bom</artifactId>
+				<version>${spring-framework.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+			<dependency>
+				<groupId>io.netty</groupId>
+				<artifactId>netty-bom</artifactId>
+				<version>${netty.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+			<dependency>
+				<groupId>com.fasterxml.jackson.core</groupId>
+				<artifactId>jackson-core</artifactId>
+				<version>${jackson.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>io.micrometer</groupId>
+				<artifactId>micrometer-core</artifactId>
+				<version>${micrometer.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.microsoft.kiota</groupId>
+				<artifactId>microsoft-kiota-abstractions</artifactId>
+				<version>${kiota.version}</version>
 			</dependency>
 		</dependencies>
     </dependencyManagement>
@@ -109,7 +144,7 @@
     <dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>
 			<artifactId>jackson-databind</artifactId>
-			<version>2.21.4</version>
+			<version>${jackson.version}</version>
 		</dependency>
     <dependency>
 			<groupId>com.google.code.findbugs</groupId>
@@ -152,12 +187,12 @@
 		<dependency>
 			<groupId>com.microsoft.kiota</groupId>
 			<artifactId>microsoft-kiota-bundle</artifactId>
-			<version>1.8.10</version>
+			<version>${kiota.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>com.microsoft.kiota</groupId>
 			<artifactId>microsoft-kiota-serialization-json</artifactId>
-			<version>1.8.10</version>
+			<version>${kiota.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>io.opentelemetry.contrib</groupId>
