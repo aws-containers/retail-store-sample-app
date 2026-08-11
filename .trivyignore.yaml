@@ -1,0 +1,25 @@
+misconfigurations:
+  - id: DS-0002
+    paths:
+      - "src/e2e/Dockerfile.run"
+      - "src/load-generator/Dockerfile"
+      - "src/load-generator/Dockerfile.run"
+    statement: "These helper/demo images intentionally rely on upstream defaults and are not production service runtime images."
+    expired_at: 2026-09-30
+  - id: AWS-0104
+    paths:
+      - "terraform2/eks/default/sg.tf"
+      - "terraform2/lib/apprunner/carts.tf"
+      - "terraform2/lib/apprunner/catalog.tf"
+      - "terraform2/lib/apprunner/checkout.tf"
+      - "terraform2/lib/apprunner/orders.tf"
+      - "terraform2/lib/apprunner/ui.tf"
+      - "terraform2/lib/apprunner/vpc.tf"
+      - "terraform2/lib/ecs/service/sg.tf"
+    statement: "These sample infrastructure modules currently allow broad egress for demo connectivity and are baselined until the network model is tightened."
+    expired_at: 2026-09-30
+  - id: AWS-0107
+    paths:
+      - "terraform2/lib/apprunner/vpc.tf"
+    statement: "The sample App Runner template exposes ingress intentionally for the public demo path and is baselined here."
+    expired_at: 2026-09-30

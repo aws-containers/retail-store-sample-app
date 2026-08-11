@@ -21,14 +21,15 @@ RUN CGO_ENABLED=0 \
     -trimpath \
     -ldflags="-s -w" \
     -o /out/main .
-FROM alpine:latest@sha256:25109184c71bdad752c8312a8623239686a9a2071e8825f20acb8f2198c3f659 AS runtime
+FROM alpine:3.23@sha256:fd791d74b68913cbb027c6546007b3f0d3bc45125f797758156952bc2d6daf40 AS runtime
 
 ARG BUILD_VERSION=dev
 ARG BUILD_REVISION=unknown
 ARG BUILD_DATE=unknown
 
 
-RUN apk add --no-cache ca-certificates curl
+RUN apk upgrade --no-cache \
+    && apk add --no-cache ca-certificates curl
 
 ARG APP_UID=1000
 ARG APP_GID=1000

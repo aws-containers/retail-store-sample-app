@@ -5,12 +5,14 @@ on:
     branches:
       - main
       - develop
-      - ci/day-10-quality-gates
+      - ci/day-11-security-gates
+
+      
   push:
     branches:
       - main
       - develop
-      - ci/day-10-quality-gates
+      - ci/day-11-security-gates
 
 permissions:
   contents: read
@@ -261,6 +263,42 @@ jobs:
           docker image inspect "$IMAGE" 
           echo "Image $IMAGE built successfully."
           docker image inspect "$IMAGE" --format '{{json .Config.Labels}}' 
+
+      - name: scan service dependencies
+        uses: aquasecurity/trivy-action@v0.36.0
+        with:
+          scan-type: "fs"
+          scan-ref: src/${{ matrix.service }}
+          scanners: "vuln"
+          format: sarif
+          output: trivy-fs-${{ matrix.service }}.sarif
+          severity: "CRITICAL,HIGH"
+          exit-code: "1"
+          timeout: "15m0s"
+          limit-severities-for-sarif: true
+
+      - name: scan built service image
+        uses: aquasecurity/trivy-action@v0.36.0
+        with:
+          scan-type: "image"
+          image-ref: retail-${{ matrix.service }}:sha-${{ steps.image_meta.outputs.short_sha }}
+          format: sarif
+          output: trivy-image-${{ matrix.service }}.sarif
+          severity: "CRITICAL,HIGH"
+          exit-code: "1"
+          timeout: "15m0s"
+          limit-severities-for-sarif: true
+
+      - name: Upload service security reports
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: security-${{ matrix.service }}-${{ github.run_id }}
+          path: |
+            trivy-fs-${{ matrix.service }}.sarif
+            trivy-image-${{ matrix.service }}.sarif
+          if-no-files-found: warn
+          retention-days: 14
   no-service-changes:
     name: No application changes
     needs: detect
@@ -274,4 +312,77 @@ jobs:
       
   
 
-          
+
+  repository-security:
+    name: Repository Security
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout repository for security scans
+        uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Scan repository for secrets
+        uses: gitleaks/gitleaks-action@v3
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITLEAKS_ENABLE_COMMENTS: "false"
+          GITLEAKS_ENABLE_UPLOAD_ARTIFACT: "true"
+      
+      - name: setup helm chart 
+        uses: azure/setup-helm@v4
+      
+      - name: prepare helm dependency
+        run: helm dependency update src/app/chart
+      - name: scan dockerfile and iac
+        if: always()
+        uses: aquasecurity/trivy-action@v0.36.0
+        env:
+          TRIVY_TF_EXCLUDE_DOWNLOADED_MODULES: "true"
+        with:
+          scan-type: "config"
+          scan-ref: .
+          format: sarif
+          output: "trivy-config.sarif"
+          severity: "CRITICAL,HIGH"
+          exit-code: "1"
+          timeout: "15m0s"
+          trivyignores: ".trivyignore.yaml"
+          limit-severities-for-sarif: true
+      - name: Upload Trivy SARIF report
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: trivy-config-sarif-${{ github.run_id }}
+          path: trivy-config.sarif
+          if-no-files-found: warn
+          retention-days: 14
+  
+  security-gate:
+    name: Release Security Gate
+    needs: [service-ci, repository-security, no-service-changes]
+    runs-on: ubuntu-latest  
+    if: always()
+    steps:
+      - name: enforce release gate
+        env:
+          REPOSITORY_SECURITY: ${{ needs.repository-security.result }}
+          SERVICE_CI: ${{ needs.service-ci.result }}
+        run: |
+          echo "Repository security: $REPOSITORY_SECURITY"
+          echo "Service CI: $SERVICE_CI"
+          if [ "$REPOSITORY_SECURITY" = "failure" ]; then
+            echo "Release gate failed due to security issues or service CI failures."
+            exit 1
+          else
+            echo "Release gate passed. No security issues or service CI failures detected."
+          fi
+          if [ "$SERVICE_CI" != "success" ] && [ "$SERVICE_CI" != "skipped" ]; then
+            echo "Release block: service ci failed"
+            exit 1
+          fi
+
+          echo "Release gate passed. No security issues or service CI failures detected."

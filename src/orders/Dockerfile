@@ -41,7 +41,8 @@ ARG APP_GID=1000
 USER root
 
 # curl is used by the image health check.
-RUN apk add --no-cache \
+RUN apk upgrade --no-cache \
+    && apk add --no-cache \
         curl \
         ca-certificates \
     && addgroup -S appgroup -g "${APP_GID}" \

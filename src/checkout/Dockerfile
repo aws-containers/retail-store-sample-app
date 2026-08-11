@@ -36,7 +36,8 @@ COPY package.json package-lock.json ./
 # Exclude development dependencies such as Nest CLI,
 # TypeScript, Jest, ESLint, and build tooling.
 RUN npm ci --omit=dev \
-    && npm cache clean --force
+    && npm cache clean --force \
+    && rm -f node_modules/.package-lock.json
 
 
 # =========================================================
@@ -52,6 +53,14 @@ ARG BUILD_DATE=unknown
 ENV NODE_ENV=production
 
 WORKDIR /app
+
+RUN apk upgrade --no-cache
+
+# The runtime container only needs the Node.js binary.
+# Removing bundled package-manager tooling shrinks the image
+# and avoids carrying npm's unrelated vulnerable transitive deps.
+RUN rm -rf /usr/local/lib/node_modules/npm \
+    && rm -f /usr/local/bin/npm /usr/local/bin/npx
 
 LABEL org.opencontainers.image.title="retail-checkout" \
       org.opencontainers.image.description="Checkout service for the AWS Retail Store application" \
