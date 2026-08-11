@@ -5,6 +5,7 @@ misconfigurations:
       - "src/load-generator/Dockerfile"
       - "src/load-generator/Dockerfile.run"
     statement: "These helper/demo images intentionally rely on upstream defaults and are not production service runtime images."
+    expired_at: 2026-09-30
   - id: AWS-0104
     paths:
       - "terraform2/eks/default/sg.tf"
