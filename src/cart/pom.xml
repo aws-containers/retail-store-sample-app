@@ -17,7 +17,7 @@
   <parent>
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-parent</artifactId>
-    <version>3.5.5</version>
+    <version>3.5.14</version>
     <relativePath /> <!-- lookup parent from repository -->
   </parent>
 
@@ -130,6 +130,7 @@
     <dependency>
       <groupId>com.fasterxml.jackson.core</groupId>
       <artifactId>jackson-databind</artifactId>
+      <version>2.21.4</version>
     </dependency>
     <dependency>
       <groupId>io.opentelemetry.instrumentation</groupId>

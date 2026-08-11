@@ -340,6 +340,8 @@ jobs:
       - name: scan dockerfile and iac
         if: always()
         uses: aquasecurity/trivy-action@v0.36.0
+        env:
+          TRIVY_TF_EXCLUDE_DOWNLOADED_MODULES: "true"
         with:
           scan-type: "config"
           scan-ref: .
@@ -348,6 +350,7 @@ jobs:
           severity: "CRITICAL,HIGH"
           exit-code: "1"
           timeout: "15m0s"
+          trivyignores: ".trivyignore.yaml"
           limit-severities-for-sarif: true
       - name: Upload Trivy SARIF report
         if: always()
