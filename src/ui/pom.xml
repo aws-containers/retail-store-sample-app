@@ -23,7 +23,7 @@
 		<kiota.version>1.9.1</kiota.version>
 		<micrometer.version>1.15.12</micrometer.version>
 		<netty.version>4.1.136.Final</netty.version>
-		<spring-ai.version>1.0.5</spring-ai.version>
+		<spring-ai.version>1.0.7</spring-ai.version>
 		<spring-cloud>2021.0.3</spring-cloud>
 		<spring-cloud-aws.version>2.4.2</spring-cloud-aws.version>
 		<spring-framework.version>6.2.19</spring-framework.version>

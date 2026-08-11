@@ -38,8 +38,8 @@ ARG APP_GID=1000
 
 USER root
 
-
-RUN apk add --no-cache \
+RUN apk upgrade --no-cache \
+    && apk add --no-cache \
         curl \
         ca-certificates \
     && addgroup -S appgroup -g "${APP_GID}" \

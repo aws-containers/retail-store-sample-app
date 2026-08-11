@@ -33,6 +33,7 @@ LABEL org.opencontainers.image.title="retail-cart" \
 
 RUN addgroup -S appgroup \
     && adduser -S appuser -G appgroup -h /app \
+    && apk upgrade --no-cache \
     && apk add --no-cache \
         curl \
         ca-certificates
