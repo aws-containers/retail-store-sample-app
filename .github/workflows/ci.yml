@@ -6,6 +6,8 @@ on:
       - main
       - develop
       - ci/day-11-security-gates
+
+      
   push:
     branches:
       - main
@@ -309,6 +311,7 @@ jobs:
           echo "Application build jobs are skipped."
       
   
+
 
   repository-security:
     name: Repository Security
