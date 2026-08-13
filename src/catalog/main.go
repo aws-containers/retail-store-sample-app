@@ -34,7 +34,7 @@ import (
 	"github.com/aws-containers/retail-store-sample-app/catalog/repository"
 	"github.com/gin-gonic/gin"
 	_ "github.com/go-sql-driver/mysql"
-	"github.com/sethvargo/go-envconfig/pkg/envconfig"
+	"github.com/sethvargo/go-envconfig"
 	ginprometheus "github.com/zsais/go-gin-prometheus"
 
 	"go.opentelemetry.io/contrib/detectors/aws/ec2"
