@@ -1,6 +1,6 @@
 data "aws_iam_policy_document" "trust" {
   statement {
-    effect = "Allow"
+    effect  = "Allow"
     actions = ["sts:AssumeRoleWithWebIdentity"]
 
     principals {
@@ -9,18 +9,18 @@ data "aws_iam_policy_document" "trust" {
         var.oidc_provider_arn
       ]
     }
-    
+
     condition {
-      test = "StringEquals"
+      test     = "StringEquals"
       variable = "token.actions.githubusercontent.com:aud"
 
-      values = [ 
+      values = [
         "sts.amazonaws.com"
-       ]
+      ]
     }
 
     condition {
-      test = "StringLike"
+      test     = "StringLike"
       variable = "token.actions.githubusercontent.com:sub"
       values = [
         "repo:${var.github_repo}:ref:refs/heads/${var.github_branch}"
@@ -30,29 +30,29 @@ data "aws_iam_policy_document" "trust" {
 }
 
 resource "aws_iam_role" "github_ecr" {
-  name = "${var.project_name}-${var.environment}-github-ecr"
+  name               = "${var.project_name}-${var.environment}-github-ecr"
   assume_role_policy = data.aws_iam_policy_document.trust.json
 }
 
 data "aws_iam_policy_document" "ecr_push" {
   statement {
     effect = "Allow"
-    actions = [ 
-        "ecr:GetAuthorizationToken"
-     ]
-     resources = ["*"]
+    actions = [
+      "ecr:GetAuthorizationToken"
+    ]
+    resources = ["*"]
   }
 
   statement {
     effect = "Allow"
     actions = [
-        "ecr:BatchCheckLayerAvailability",
-        "ecr:BatchGetImage",
-        "ecr:CompleteLayerUpload",
-        "ecr:GetDownloadUrlForLayer",
-        "ecr:InitiateLayerUpload",
-        "ecr:PutImage",
-        "ecr:UploadLayerPart"
+      "ecr:BatchCheckLayerAvailability",
+      "ecr:BatchGetImage",
+      "ecr:CompleteLayerUpload",
+      "ecr:GetDownloadUrlForLayer",
+      "ecr:InitiateLayerUpload",
+      "ecr:PutImage",
+      "ecr:UploadLayerPart"
     ]
     resources = var.ecr_repository_arns
   }
@@ -60,7 +60,7 @@ data "aws_iam_policy_document" "ecr_push" {
 
 
 resource "aws_iam_role_policy" "ecr_push" {
-   name = "${var.project_name}-${var.environment}-ecr-push"
-   policy = data.aws_iam_policy_document.ecr_push.json
-   role = aws_iam_role.github_ecr.name
+  name   = "${var.project_name}-${var.environment}-ecr-push"
+  policy = data.aws_iam_policy_document.ecr_push.json
+  role   = aws_iam_role.github_ecr.name
 }

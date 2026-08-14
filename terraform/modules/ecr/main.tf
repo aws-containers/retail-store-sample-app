@@ -1,9 +1,9 @@
 resource "aws_ecr_repository" "main" {
   for_each = var.repo_name
 
-  name = each.value
+  name                 = each.value
   image_tag_mutability = "IMMUTABLE"
-  force_delete = false
+  force_delete         = false
 
 
   image_scanning_configuration {
@@ -23,7 +23,7 @@ resource "aws_ecr_repository" "main" {
 }
 
 resource "aws_ecr_lifecycle_policy" "main" {
-  for_each = aws_ecr_repository.main
+  for_each   = aws_ecr_repository.main
   repository = each.value.name
   policy = jsonencode({
     rules = [

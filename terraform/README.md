@@ -1,108 +1,219 @@
-# Terraform Overview
+# Terraform Foundation
 
-This `terraform/` directory is currently a scaffold for a newer layout. The complete, working Terraform implementation in this repository lives in the sibling `terraform2/` directory.
+This `terraform/` directory contains the Day 12 Terraform foundation for the AWS Retail Store DevOps Platform. The goal of this stage is to define the structure, validation path, environment layout, module boundaries, tagging rules, and safe state handling before creating larger AWS platform resources.
 
-If you want to understand or run the existing infrastructure code today, start with `terraform2/`.
+## Current outcome
 
-## What `terraform2/` contains
+The active root module is:
 
-The `terraform2/` folder is organized into deployable stacks and shared library modules.
+- `terraform/env/dev`
 
-### Deployable stacks
+The current reusable modules are:
 
-- `terraform2/apprunner/default/`
-  - Deploys the retail sample application to AWS App Runner.
-  - Creates a VPC, shared backing services, and one App Runner service per application component.
-  - Exposes the UI publicly while keeping backend connectivity inside the VPC.
+- `terraform/modules/vpc`
+- `terraform/modules/ecr`
+- `terraform/modules/iam/github-oidc`
+- `terraform/modules/iam/github-ecr-role`
+- `terraform/modules/eks` is reserved for later implementation
+- `terraform/modules/mq` is reserved for later implementation
 
-- `terraform2/ecs/default/`
-  - Deploys the application to Amazon ECS on Fargate.
-  - Creates the VPC, ECS cluster, shared dependencies, and ECS services for the application.
-  - Includes optional OpenTelemetry support, Container Insights settings, and lifecycle event logging.
+The current environment layout is:
 
-- `terraform2/eks/default/`
-  - Full Amazon EKS deployment for the sample application.
-  - Provisions the VPC, EKS cluster, managed node groups, shared dependencies, and Kubernetes/Helm resources for the app.
-  - Supports optional OpenTelemetry and Istio integration.
-  - Contains a `values/` folder with service-specific Helm values for `assets`, `carts`, `catalog`, `checkout`, `orders`, `ui`, and OpenTelemetry.
+- `terraform/env/dev` is the working development root module
+- `terraform/env/staging` is reserved for a future staging root module
+- `terraform/env/prod` is reserved for a future production root module
 
-- `terraform2/eks/minimal/`
-  - Minimal EKS foundation.
-  - Provisions the VPC and EKS cluster, but does not create the managed application dependencies such as RDS, DynamoDB, ElastiCache, OpenSearch, or Amazon MQ.
+## What this foundation will build
 
-### Shared library modules
+The Day 12 foundation defines the Terraform structure that later days will use to provision:
 
-- `terraform2/lib/apprunner/`
-  - Reusable App Runner module that defines the application services and networking integration.
+- a VPC with public and private subnets
+- ECR repositories for the retail services
+- GitHub Actions OIDC trust for AWS authentication
+- a GitHub ECR push role scoped to the retail repositories
 
-- `terraform2/lib/ecs/`
-  - Reusable ECS module for the application.
-  - Includes cluster, ALB, EventBridge, service definitions, and the nested `service/` submodule.
+Later days can extend this structure to support:
 
-- `terraform2/lib/eks/`
-  - Reusable EKS module.
-  - Defines the cluster, managed node groups, add-ons, ADOT integration, and optional Istio setup.
+- EKS cluster resources
+- queueing and messaging resources
+- additional shared platform services
 
-- `terraform2/lib/dependencies/`
-  - Central module for backing services used by the retail app.
-  - Provisions resources such as:
-    - Catalog database
-    - Orders database
-    - Carts DynamoDB table
-    - Checkout ElastiCache Redis
-    - Catalog OpenSearch
-    - Amazon MQ
+## Version constraints
 
-- `terraform2/lib/vpc/`
-  - Shared VPC module.
-  - Builds a 3-AZ network layout with public and private subnets, NAT gateway, DNS hostnames, and standard tagging.
+The development root module pins:
 
-- `terraform2/lib/images/`
-  - Central image-resolution module.
-  - Produces default container image URLs and supports overriding registry, tag, or specific images.
+- Terraform `>= 1.10.0, < 2.0.0`
+- AWS provider `~> 6.0`
 
-- `terraform2/lib/tags/`
-  - Shared tagging helper used across stacks.
+These constraints are defined in `terraform/env/dev/versions.tf`.
 
-## File layout pattern
+## Environment strategy
 
-Most Terraform stacks and modules in `terraform2/` follow a consistent structure:
+This repository uses separate root modules for each environment instead of mixing all environments into one root:
 
-- `main.tf`: main resources and module wiring
-- `variables.tf`: input variables
-- `output.tf` or `outputs.tf`: exported values
-- `versions.tf`: Terraform and provider version constraints
+- `dev`
+- `staging`
+- `prod`
 
-Some stacks also split concerns into focused files such as:
+For Day 12, only `dev` is implemented and validated. `staging` and `prod` remain placeholders so the layout is explicit before more infrastructure is added.
 
-- `data.tf`
-- `iam.tf`
-- `sg.tf`
-- `kubernetes.tf`
-- `opentelemetry.tf`
+## Module boundaries
 
-## Nx project metadata
+### `vpc`
 
-Each deployable stack in `terraform2/` includes a `project.json` file so it can be managed through Nx. These project definitions use simple Terraform commands such as:
+Responsible for:
 
-- `terraform init`
-- `terraform validate`
+- VPC creation
+- public subnets
+- private subnets
+- internet gateway
+- route tables
+- route table associations
 
-One thing to be aware of: some `project.json` files and embedded README examples still reference paths under `terraform/...`, but the checked-in implementation currently exists under `terraform2/...`.
+Inputs include:
 
-## Current state of `terraform/`
+- project name
+- environment name
+- VPC CIDR
+- public subnet map
+- private subnet map
 
-The `terraform/` folder itself is not yet equivalent to `terraform2/`. Right now it contains:
+Outputs include:
 
-- `env/prod/` and `env/stage/`
-  - Each has `main.tf`, `output.tf`, and `variabels.tf`, but those files are currently empty.
+- VPC ID and ARN
+- route table IDs
+- subnet IDs
+- subnet CIDRs
 
-- `modules/ecr/`
-  - Scaffolded module with empty Terraform files.
+### `ecr`
 
-- `modules/vpc/`
-  - Scaffolded module with starter `main.tf` and `variabels.tf`, while other files are still empty.
+Responsible for:
 
-## Recommendation
+- ECR repository creation
+- image scanning on push
+- immutable image tags
+- ECR lifecycle retention rules
 
-Use `terraform2/` as the source of truth for understanding the existing Terraform architecture in this repository. Treat `terraform/` as an in-progress structure unless it is expanded to match the modules and environments already implemented in `terraform2/`.
+Inputs include:
+
+- repository names
+- project name
+- environment name
+- untagged image expiration days
+- maximum image count
+
+Outputs include:
+
+- repository URLs
+- repository ARNs
+- repository names
+- registry ID
+
+### `iam/github-oidc`
+
+Responsible for:
+
+- GitHub Actions OIDC provider creation
+
+Output includes:
+
+- OIDC provider ARN
+
+### `iam/github-ecr-role`
+
+Responsible for:
+
+- GitHub Actions IAM role for ECR push
+- trust policy limited to the configured repository and branch
+- ECR push permissions limited to the target repositories
+
+Inputs include:
+
+- project name
+- environment
+- GitHub repository
+- GitHub branch
+- OIDC provider ARN
+- ECR repository ARNs
+
+Output includes:
+
+- role ARN
+
+## Naming and tags
+
+The current naming pattern follows:
+
+- `${project_name}-${environment}-vpc`
+- `${project_name}-${environment}-public-${subnet_key}`
+- `${project_name}-${environment}-private-${subnet_key}`
+- `${project_name}-${environment}-igw`
+- `${project_name}-${environment}-public-route-table`
+- `${project_name}-${environment}-private-route-table`
+- `${project_name}-${environment}-github-ecr`
+
+The current default tags applied through the AWS provider are:
+
+- `Project`
+- `Environment`
+- `ManagedBy=Terraform`
+- `Owner`
+- `costcenter`
+
+## Region and cost guardrails
+
+The current development region is:
+
+- `us-east-1`
+
+Current cost and safety controls include:
+
+- ECR repositories use immutable tags
+- scan on push is enabled
+- untagged images expire after 7 days
+- image retention keeps only the latest 20 images
+- Terraform state and variable files are excluded from Git
+
+## State strategy
+
+For the Day 12 lab foundation, the current workflow uses local Terraform state inside the root module working directory.
+
+This is acceptable for a single-user development lab because:
+
+- the work is still in foundation stage
+- only `dev` is actively implemented
+- no shared team workflow is using this root module yet
+
+Before shared staging or production use, this configuration should move to a protected remote backend such as:
+
+- S3 for remote state storage
+- DynamoDB locking or the modern backend locking mechanism chosen for the platform
+
+The production rule is:
+
+- do not commit state
+- do not commit secrets
+- do not share local state between environments
+
+## Validation proof
+
+The current Day 12 foundation has been validated locally from `terraform/env/dev` with:
+
+```powershell
+terraform fmt -check -recursive .\terraform
+Set-Location .\terraform\env\dev
+terraform init -backend=false
+terraform validate
+```
+
+Validation result:
+
+- formatting check passed
+- module initialization passed
+- Terraform validation passed
+
+## Next action
+
+The next implementation step after this foundation is:
+
+- build the VPC and subnet infrastructure on top of the validated `dev` root module
