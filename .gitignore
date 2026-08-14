@@ -6,7 +6,6 @@
 *.log
 .vscode
 reports
-env
 oss-output
 kubeconfig_*
 .idea
@@ -45,3 +44,14 @@ screenshots
 .trivy-cache/
 .cache/trivy/
 trivy*
+ **/.terraform/*
+*.tfstate 
+*.tfstate.* 
+*.tfvars 
+*.tfvars.json 
+*.tfplan 
+!*.tfvars.example 
+crash.log 
+crash.*.log 
+.terraformrc 
+terraform.rc
