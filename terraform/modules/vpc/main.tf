@@ -29,7 +29,8 @@ resource "aws_subnet" "private_subnets" {
   availability_zone       = each.value.availability_zone
   map_public_ip_on_launch = false
   tags = {
-    Name = "${var.project_name}-${var.environment}-private-${each.key}"
+    Name                              = "${var.project_name}-${var.environment}-private-${each.key}"
+    "kubernetes.io/role/internal-elb" = "1"
   }
 }
 
