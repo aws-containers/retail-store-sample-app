@@ -52,26 +52,3 @@ output "private_route_table_id" {
 }
 
 
-output "ecr_repository_urls" {
-  description = "Development ECR repository URLs"
-  value       = module.ecr_repo.repository_urls
-}
-
-output "ecr_repository_arns" {
-  description = "Development ECR repository ARNs"
-  value       = module.ecr_repo.repository_arns
-}
-
-output "ecr_registry_id" {
-  description = "AWS ECR registry ID"
-  value       = module.ecr_repo.registry_id
-}
-
-output "github_ecr_role_arn" {
-  value = module.github_ecr_role.role_arn
-}
-
-output "github_oidc_provider_arn" {
-  description = "GitHub Actions OIDC provider ARN"
-  value       = module.github_oidc.provider_arn
-}
