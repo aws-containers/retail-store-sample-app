@@ -1,0 +1,29 @@
+name: AWS OIDC Authentication Test
+
+on:
+    workflow_dispatch:
+    
+
+
+permissions:
+    id-token: write
+    contents: read
+
+
+
+jobs:
+    aws-auth:
+        name: AWS OIDC Authentication Test
+        runs-on: ubuntu-latest
+    
+        steps:
+            - name: Configure AWS credentials using OIDC
+              uses: aws-actions/configure-aws-credentials@v6.2.3
+              with:
+                role-to-assume: ${{vars.AWS_ROLE_ARN }}
+                aws-region: ${{ vars.AWS_REGION }}
+            - name: verify assume aws identity
+              run: aws sts get-caller-identity
+            - name: verify ecr reps
+              run: aws ecr describe-repositories
+    

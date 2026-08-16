@@ -55,3 +55,4 @@ crash.log
 crash.*.log 
 .terraformrc 
 terraform.rc
+tfplan
