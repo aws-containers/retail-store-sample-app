@@ -6,7 +6,7 @@ provider "aws" {
       Environment = var.env
       ManagedBy   = "Terraform"
       Owner       = var.owner
-      costcenter  = "100$"
+      costcenter  = "100"
     }
   }
 }

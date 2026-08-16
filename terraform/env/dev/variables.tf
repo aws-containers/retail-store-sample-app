@@ -46,8 +46,7 @@ variable "ecr_repository_names" {
 variable "github_repository" {
   type = string
 }
-
-variable "github_oidc_provider_arn" {
+variable "github_branch" {
   type = string
 }
 

@@ -51,4 +51,19 @@ output "private_route_table_id" {
   value = module.vpc.private_route_table_id
 }
 
+output "ecr_repository_urls" {
+  value = module.ecr.repository_urls
+}
+
+output "ecr_repository_arns" {
+  value = module.ecr.repository_arns
+}
+
+output "github_oidc_provider_arn" {
+  value = module.github_oidc.provider_arn
+}
+
+output "github_ecr_role_arn" {
+  value = module.github_ecr_role.role_arn
+}
 
