@@ -1,4 +1,4 @@
-resource "aws_ecr_repository" "main" {
+resource "aws_ecr_repository" "this" {
   for_each = var.repo_name
 
   name                 = each.value
@@ -19,11 +19,12 @@ resource "aws_ecr_repository" "main" {
     Name        = each.value
     Project     = var.project_name
     Environment = var.env
+    managed_by  = "terraform"
   }
 }
 
-resource "aws_ecr_lifecycle_policy" "main" {
-  for_each   = aws_ecr_repository.main
+resource "aws_ecr_lifecycle_policy" "this" {
+  for_each   = aws_ecr_repository.this
   repository = each.value.name
   policy = jsonencode({
     rules = [
