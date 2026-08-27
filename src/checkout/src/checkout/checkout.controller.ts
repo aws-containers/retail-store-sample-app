@@ -34,15 +34,15 @@ import { ApiCreatedResponse } from '@nestjs/swagger';
 export class CheckoutController {
   constructor(private readonly checkoutService: CheckoutService) {}
 
-  @Get(':customerId')
+  @Get(':customer_Id')
   @ApiCreatedResponse({
     description: 'The record has been successfully created.',
     type: Checkout,
   })
   async getCheckout(
-    @Param('customerId') customerId: string,
+    @Param('customer_Id') customer_Id: string,
   ): Promise<Checkout> {
-    const checkout = this.checkoutService.get(customerId);
+    const checkout = this.checkoutService.get(customer_Id);
 
     return checkout.then(function (data) {
       if (!data) {
@@ -53,26 +53,26 @@ export class CheckoutController {
     });
   }
 
-  @Post(':customerId/update')
+  @Post(':customer_Id/update')
   @ApiCreatedResponse({
     description: 'The record has been successfully created.',
     type: Checkout,
   })
   async updateCheckout(
-    @Param('customerId') customerId: string,
+    @Param('customer_Id') customer_Id: string,
     @Body() request: CheckoutRequest,
   ): Promise<Checkout> {
-    return this.checkoutService.update(customerId, request);
+    return this.checkoutService.update(customer_Id, request);
   }
 
-  @Post(':customerId/submit')
+  @Post(':customer_Id/submit')
   @ApiCreatedResponse({
     description: 'The record has been successfully created.',
     type: CheckoutSubmitted,
   })
   async submitCheckout(
-    @Param('customerId') customerId: string,
+    @Param('customer_Id') customer_Id: string,
   ): Promise<CheckoutSubmitted> {
-    return this.checkoutService.submit(customerId);
+    return this.checkoutService.submit(customer_Id);
   }
 }
