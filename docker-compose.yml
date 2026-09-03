@@ -1,0 +1,116 @@
+services:
+  checkout-redis:
+    image: redis:6.0-alpine
+    ports:
+      - '6379:6379'
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+  checkout:
+    build:
+      context: ./src/checkout
+    environment:
+      - RETAIL_CHECKOUT_PERSISTENCE_PROVIDER=redis
+      - RETAIL_CHECKOUT_PERSISTENCE_REDIS_URL=redis://checkout-redis:6379
+    ports:
+      - '8085:8080'
+    depends_on:
+      checkout-redis:
+        condition: service_healthy
+  orders-postgres:
+    image: postgres:16.1
+    environment:
+      POSTGRES_PASSWORD: mysecretpassword
+      POSTGRES_USER: postgres
+      POSTGRES_DB: orders
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+  orders:
+    build:
+      context: ./src/orders
+    environment:
+      - RETAIL_ORDERS_PERSISTENCE_PROVIDER=postgres
+      - RETAIL_ORDERS_PERSISTENCE_ENDPOINT=orders-postgres:5432
+      - RETAIL_ORDERS_PERSISTENCE_NAME=orders
+      - RETAIL_ORDERS_PERSISTENCE_USERNAME=postgres
+      - RETAIL_ORDERS_PERSISTENCE_PASSWORD=mysecretpassword
+    ports:
+      - '8084:8080'
+    depends_on:
+      orders-postgres:
+        condition: service_healthy
+  cart-dynamodb:
+    image: amazon/dynamodb-local:1.20.0
+    ports:
+      - "8000:8000"
+  cart:
+    build:
+      context: ./src/cart
+    environment:
+      - RETAIL_CART_PERSISTENCE_PROVIDER=dynamodb
+      - RETAIL_CART_PERSISTENCE_DYNAMODB_ENDPOINT=http://cart-dynamodb:8000
+      - RETAIL_CART_PERSISTENCE_DYNAMODB_CREATE_TABLE=true
+      - RETAIL_CART_PERSISTENCE_DYNAMODB_TABLE_NAME=Items
+      - AWS_ACCESS_KEY_ID=dummy
+      - AWS_SECRET_ACCESS_KEY=dummy
+    ports:
+      - '8083:8080'
+    depends_on:
+      - cart-dynamodb
+  catalog-mysql:
+    image: mariadb:10.9
+    environment:
+      MARIADB_ROOT_PASSWORD: myrootpassword
+      MARIADB_DATABASE: catalogdb
+      MARIADB_USER: catalog_user
+      MARIADB_PASSWORD: mysecretpassword
+    healthcheck:
+      test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
+      start_period: 10s
+      interval: 10s
+      timeout: 5s
+      retries: 3
+  catalog:
+    build:
+      context: ./src/catalog
+    ports:
+      - '8082:8080'
+    environment:
+      - RETAIL_CATALOG_PERSISTENCE_PROVIDER=mysql
+      - RETAIL_CATALOG_PERSISTENCE_ENDPOINT=catalog-mysql:3306
+      - RETAIL_CATALOG_PERSISTENCE_DB_NAME=catalogdb
+      - RETAIL_CATALOG_PERSISTENCE_USER=catalog_user
+      - RETAIL_CATALOG_PERSISTENCE_PASSWORD=mysecretpassword
+    depends_on:
+      catalog-mysql:
+        condition: service_healthy
+  ui:
+    build:
+      context: ./src/ui
+    ports:
+      - '8080:8080'
+    environment:
+      - RETAIL_UI_ENDPOINTS_CATALOG=http://catalog:8080
+      - RETAIL_UI_ENDPOINTS_CARTS=http://cart:8080
+      - RETAIL_UI_ENDPOINTS_CHECKOUT=http://checkout:8080
+      - RETAIL_UI_ENDPOINTS_ORDERS=http://orders:8080
+    depends_on:
+      catalog:
+        condition: service_healthy
+      cart:
+        condition: service_healthy
+      checkout:
+        condition: service_healthy
+      orders:
+        condition: service_healthy
+volumes:
+  postgres_data:

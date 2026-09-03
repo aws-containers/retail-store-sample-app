@@ -6,3 +6,5 @@ chart
 scripts
 dist
 node_modules
+.env
+.env.*
