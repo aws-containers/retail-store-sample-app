@@ -1,0 +1,14 @@
+# .github/workflows/test-oidc.yml
+name: test-oidc
+on: workflow_dispatch
+permissions:
+    id-token: write
+    contents: read
+jobs:
+    test:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Decode OIDC token
+              run: |
+                  TOKEN=$(curl -sLS "$ACTIONS_ID_TOKEN_REQUEST_URL&audience=sts.amazonaws.com" -H "Authorization: bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN" | jq -r '.value')
+                  echo "$TOKEN" | cut -d. -f2 | base64 -d 2>/dev/null | jq .
