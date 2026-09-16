@@ -19,12 +19,12 @@
 import { Checkout } from '../models/Checkout';
 import { ExistingOrder } from '../../clients/orders/api';
 import { IOrdersService } from './IOrdersService';
-import { v4 as uuidv4 } from 'uuid';
+import { randomUUID } from 'node:crypto';
 
 export class MockOrdersService implements IOrdersService {
   async create(checkout: Checkout): Promise<ExistingOrder> {
     return {
-      id: uuidv4(),
+      id: randomUUID(),
       shippingAddress: {
         firstName: checkout.shippingAddress.firstName,
         lastName: checkout.shippingAddress.lastName,
