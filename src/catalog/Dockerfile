@@ -1,10 +1,19 @@
 # Build Stage
 FROM public.ecr.aws/amazonlinux/amazonlinux:2023 AS build-env
 
+# Apply all available security updates before installing packages. Amazon Linux
+# 2023 locks DNF to the release snapshot the base image was built from, so
+# --releasever=latest is required to pick up newer patched packages. In this
+# stage it also ensures the Go toolchain (and the stdlib compiled into the
+# binary) is the latest patched version.
+# https://docs.aws.amazon.com/linux/al2023/ug/deterministic-upgrades-usage.html
+#
 # We tell DNF not to install Recommends and Suggests packages, which are
 # weak dependencies in DNF terminology, thus keeping our installed set of
 # packages as minimal as possible.
-RUN dnf --setopt=install_weak_deps=False install -q -y \
+RUN dnf --releasever=latest upgrade -q -y \
+    && \
+    dnf --setopt=install_weak_deps=False install -q -y \
     git \
     golang \
     && \
@@ -30,10 +39,17 @@ ENV APPUSER=appuser
 ENV APPUID=1000
 ENV APPGID=1000
 
+# Apply all available security updates before installing packages. Amazon Linux
+# 2023 locks DNF to the release snapshot the base image was built from, so
+# --releasever=latest is required to pick up newer patched packages.
+# https://docs.aws.amazon.com/linux/al2023/ug/deterministic-upgrades-usage.html
+#
 # We tell DNF not to install Recommends and Suggests packages, which are
 # weak dependencies in DNF terminology, thus keeping our installed set of
 # packages as minimal as possible.
-RUN dnf --setopt=install_weak_deps=False install -q -y \
+RUN dnf --releasever=latest upgrade -q -y \
+    && \
+    dnf --setopt=install_weak_deps=False install -q -y \
     shadow-utils \
     && \
     dnf clean all

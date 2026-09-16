@@ -31,10 +31,17 @@ RUN ./mvnw -DskipTests package -q && \
 # Package Stage
 FROM public.ecr.aws/amazonlinux/amazonlinux:2023
 
+# Apply all available security updates before installing packages. Amazon Linux
+# 2023 locks DNF to the release snapshot the base image was built from, so
+# --releasever=latest is required to pick up newer patched packages.
+# https://docs.aws.amazon.com/linux/al2023/ug/deterministic-upgrades-usage.html
+#
 # We tell DNF not to install Recommends and Suggests packages, which are
 # weak dependencies in DNF terminology, thus keeping our installed set of
 # packages as minimal as possible.
-RUN dnf --setopt=install_weak_deps=False install -q -y \
+RUN dnf --releasever=latest upgrade -q -y \
+    && \
+    dnf --setopt=install_weak_deps=False install -q -y \
     java-21-amazon-corretto-headless \
     shadow-utils \
     && \
