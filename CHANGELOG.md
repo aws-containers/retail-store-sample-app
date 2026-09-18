@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.6.3](https://github.com/aws-containers/retail-store-sample-app/compare/v1.6.2...v1.6.3) (2026-09-18)
+
+
+### Bug Fixes
+
+* **docker:** Apply OS security updates when building images [security] ([#1116](https://github.com/aws-containers/retail-store-sample-app/issues/1116)) ([d2bb5bd](https://github.com/aws-containers/retail-store-sample-app/commit/d2bb5bd84fc26bbe9e51fde5c4deb68f5c288cd9))
+
 ## [1.6.2](https://github.com/aws-containers/retail-store-sample-app/compare/v1.6.1...v1.6.2) (2026-07-28)
 
 
