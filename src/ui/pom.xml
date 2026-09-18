@@ -8,7 +8,7 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>3.5.5</version>
+		<version>3.5.16</version>
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.amazon.sample</groupId>
@@ -22,6 +22,12 @@
 		<spring-cloud>2021.0.3</spring-cloud>
 		<spring-cloud-aws.version>2.4.2</spring-cloud-aws.version>
 		<org.mapstruct.version>1.6.3</org.mapstruct.version>
+		<!-- Override Spring Boot managed versions to pick up security fixes -->
+		<httpclient5.version>5.6.4</httpclient5.version>
+		<httpcore5.version>5.4.3</httpcore5.version>
+		<jackson-bom.version>2.21.6</jackson-bom.version>
+		<log4j2.version>2.25.5</log4j2.version>
+		<netty.version>4.1.138.Final</netty.version>
 	</properties>
 
 	<repositories>
@@ -40,7 +46,7 @@
 			<dependency>
 				<groupId>org.springframework.ai</groupId>
 				<artifactId>spring-ai-bom</artifactId>
-				<version>1.0.0</version>
+				<version>1.0.9</version>
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>
@@ -161,12 +167,12 @@
 		<dependency>
 			<groupId>com.microsoft.kiota</groupId>
 			<artifactId>microsoft-kiota-bundle</artifactId>
-			<version>1.8.10</version>
+			<version>1.9.3</version>
 		</dependency>
 		<dependency>
 			<groupId>com.microsoft.kiota</groupId>
 			<artifactId>microsoft-kiota-serialization-json</artifactId>
-			<version>1.8.10</version>
+			<version>1.9.3</version>
 		</dependency>
 		<dependency>
 			<groupId>io.opentelemetry.contrib</groupId>

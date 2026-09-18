@@ -19,9 +19,9 @@
 package com.amazon.sample.ui.config.chat;
 
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.ai.bedrock.converse.BedrockChatOptions;
 import org.springframework.ai.bedrock.converse.BedrockProxyChatModel;
 import org.springframework.ai.chat.client.ChatClient;
-import org.springframework.ai.model.tool.ToolCallingChatOptions;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
@@ -46,7 +46,7 @@ public class BedrockChatConfig {
   ) {
     log.warn("Creating Amazon Bedrock chat client");
 
-    var modelOptions = ToolCallingChatOptions.builder()
+    var modelOptions = BedrockChatOptions.builder()
       .model(properties.getModel())
       .maxTokens(properties.getMaxTokens())
       .temperature(properties.getTemperature())
