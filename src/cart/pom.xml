@@ -17,7 +17,7 @@
   <parent>
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-parent</artifactId>
-    <version>3.5.5</version>
+    <version>3.5.16</version>
     <relativePath /> <!-- lookup parent from repository -->
   </parent>
 
@@ -25,6 +25,12 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <java.version>21</java.version>
     <mapstruct.version>1.6.3</mapstruct.version>
+    <!-- Override Spring Boot managed versions to pick up security fixes -->
+    <commons-lang3.version>3.18.0</commons-lang3.version>
+    <jackson-bom.version>2.21.6</jackson-bom.version>
+    <log4j2.version>2.25.5</log4j2.version>
+    <netty.version>4.1.138.Final</netty.version>
+    <tomcat.version>10.1.60</tomcat.version>
   </properties>
 
   <dependencyManagement>
