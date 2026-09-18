@@ -19,11 +19,10 @@
 export * from './ordersApi';
 import { OrdersApi } from './ordersApi';
 import * as fs from 'fs';
-import * as http from 'http';
 
 export class HttpError extends Error {
   constructor(
-    public response: http.IncomingMessage,
+    public response: Response,
     public body: any,
     public statusCode?: number,
   ) {

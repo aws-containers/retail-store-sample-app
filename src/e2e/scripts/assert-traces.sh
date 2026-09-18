@@ -63,8 +63,10 @@ assert "Checkout service span exists showing trace propagation" \
   '.data[0].spans[] | select(.operationName == "POST /checkout/:customerId/update")' \
   "$TRACES"
 
+# Newer OpenTelemetry instrumentations emit the stable database semantic
+# conventions (db.system.name) instead of the legacy db.system attribute.
 assert "Redis set span exists showing checkout session was persisted" \
-  '.data[0].spans[] | select(.operationName == "set" and (.tags[] | select(.key == "db.system" and .value == "redis")))' \
+  '.data[0].spans[] | select(.operationName == "set" and (.tags[] | select((.key == "db.system" or .key == "db.system.name") and .value == "redis")))' \
   "$TRACES"
 
 echo ""
