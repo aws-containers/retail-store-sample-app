@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.6.3](https://github.com/aws-containers/retail-store-sample-app/compare/v1.6.2...v1.6.3) (2026-09-25)
+
+
+### Bug Fixes
+
+* **checkout:** Replace request package and update dependencies [security] ([#1121](https://github.com/aws-containers/retail-store-sample-app/issues/1121)) ([0fe5ef8](https://github.com/aws-containers/retail-store-sample-app/commit/0fe5ef8345fc999a27c17516f4847576835bca8b))
+* **deps:** Update cart Java dependencies with security fixes [security] ([#1118](https://github.com/aws-containers/retail-store-sample-app/issues/1118)) ([47500fc](https://github.com/aws-containers/retail-store-sample-app/commit/47500fc7934926ddd720176a67e4ccab220f5adb))
+* **deps:** Update catalog Go modules with security fixes [security] ([#1117](https://github.com/aws-containers/retail-store-sample-app/issues/1117)) ([d4c050d](https://github.com/aws-containers/retail-store-sample-app/commit/d4c050d95f6980d8eb6787b41503705aba20e103))
+* **deps:** Update orders Java dependencies with security fixes [security] ([#1119](https://github.com/aws-containers/retail-store-sample-app/issues/1119)) ([41a4832](https://github.com/aws-containers/retail-store-sample-app/commit/41a4832dbecd623255886d914a93a8e47902f636))
+* **deps:** Update ui Java dependencies with security fixes [security] ([#1120](https://github.com/aws-containers/retail-store-sample-app/issues/1120)) ([10becbd](https://github.com/aws-containers/retail-store-sample-app/commit/10becbd5954839d055a592f08deba6df78a2e2d0))
+* **docker:** Apply OS security updates when building images [security] ([#1116](https://github.com/aws-containers/retail-store-sample-app/issues/1116)) ([d2bb5bd](https://github.com/aws-containers/retail-store-sample-app/commit/d2bb5bd84fc26bbe9e51fde5c4deb68f5c288cd9))
+
 ## [1.6.2](https://github.com/aws-containers/retail-store-sample-app/compare/v1.6.1...v1.6.2) (2026-07-28)
 
 
