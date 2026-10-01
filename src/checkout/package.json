@@ -67,7 +67,9 @@
     "typescript-eslint": "^8.35.1"
   },
   "resolutions": {
-    "multer": "^2.3.0"
+    "multer": "^2.3.0",
+    "@grpc/grpc-js": "^1.14.5",
+    "@nestjs/swagger/js-yaml": "5.4.2"
   },
   "jest": {
     "moduleFileExtensions": [

@@ -25,7 +25,7 @@
 		<!-- Override Spring Boot managed versions to pick up security fixes -->
 		<httpclient5.version>5.6.4</httpclient5.version>
 		<httpcore5.version>5.4.3</httpcore5.version>
-		<jackson-bom.version>2.21.6</jackson-bom.version>
+		<jackson-bom.version>2.21.7</jackson-bom.version>
 		<log4j2.version>2.25.5</log4j2.version>
 		<netty.version>4.1.138.Final</netty.version>
 	</properties>
