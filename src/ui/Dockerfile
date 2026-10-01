@@ -47,8 +47,11 @@ RUN dnf --releasever=latest upgrade -q -y \
 
 # use curl-full to use "telnet://" scheme
 # https://docs.aws.amazon.com/linux/al2023/ug/curl-minimal.html
-RUN dnf -q -y swap libcurl-minimal libcurl-full \
-    && dnf -q -y swap curl-minimal curl-full
+# --releasever=latest is required here too, otherwise curl-full is installed
+# from the base image's locked release snapshot and misses security fixes.
+RUN dnf --releasever=latest -q -y swap libcurl-minimal libcurl-full \
+    && dnf --releasever=latest -q -y swap curl-minimal curl-full \
+    && dnf clean all
 
 ENV APPUSER=appuser
 ENV APPUID=1000
