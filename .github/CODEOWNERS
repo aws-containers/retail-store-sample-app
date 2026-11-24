@@ -1,0 +1,12 @@
+# Replace the handles. A = Infra, B = CI/CD & Security, C = Observability & Serverless
+/terraform/      @USER_A
+/scripts/        @USER_A
+/Makefile        @USER_A
+/jenkins/        @USER_B
+/Jenkinsfile     @USER_B
+/k8s/            @USER_B
+/argocd/         @USER_B
+/helm-values/    @USER_C
+/lambda/         @USER_C
+/dashboards/     @USER_C
+/docs/conventions.md @USER_A @USER_B @USER_C
