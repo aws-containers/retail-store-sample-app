@@ -1,0 +1,36 @@
+id	sprint	title	owner	depends	est	flags	doc
+S1-M01	S1	Set up tools and Learner Lab access (each member)	ALL		1 h each		docs/implementation/sprint_01_init_finops/s1_m01.md
+S1-M02	S1	Billing alert and FinOps rules	ALL	S1-M01	30 min each		docs/implementation/sprint_01_init_finops/s1_m02.md
+S1-M03	S1	Terraform remote state: S3 bucket + DynamoDB lock table	A	S1-M01	45 min		docs/implementation/sprint_01_init_finops/s1_m03.md
+S2-M01	S2	Terraform skeleton: providers, versions, module layout	A	S1-M03	45 min		docs/implementation/sprint_02_terraform_foundation/s2_m01.md
+S2-M02	S2	Network module: VPC 10.0.0.0/16, 2 public subnets, IGW, routes	A	S2-M01	45 min		docs/implementation/sprint_02_terraform_foundation/s2_m02.md
+S2-M03	S2	ECR module: repositories for the retail services	A	S2-M01	30 min		docs/implementation/sprint_02_terraform_foundation/s2_m03.md
+S2-M04	S2	EKS module: cluster + 2 t3.medium managed nodes with LabRole	A	S2-M02	1.5 h		docs/implementation/sprint_02_terraform_foundation/s2_m04.md
+S2-M05	S2	EKS add-ons (EBS CSI, metrics-server) + gp3 StorageClass	A	S2-M04	1 h	risk	docs/implementation/sprint_02_terraform_foundation/s2_m05.md
+S2-M06	S2	Data module: DynamoDB (carts, incidents) + S3 incident bucket	A	S2-M01	45 min		docs/implementation/sprint_02_terraform_foundation/s2_m06.md
+S2-M07	S2	`make up`, `make down` and cleanup script with CLI verification	A	S2-M04,S2-M05,S2-M06	1 h		docs/implementation/sprint_02_terraform_foundation/s2_m07.md
+S3-M01	S3	Import the upstream manifests into k8s/ with kustomize (namespace retail)	B	S2-M04	45 min		docs/implementation/sprint_03_retail_store/s3_m01.md
+S3-M02	S3	Deploy the 5 services and expose `ui` with a LoadBalancer	B	S3-M01,S2-M05	1 h	risk	docs/implementation/sprint_03_retail_store/s3_m02.md
+S3-M03	S3	Connect the cart service to the DynamoDB table	B	S3-M02,S2-M06,S2-M04	1 h		docs/implementation/sprint_03_retail_store/s3_m03.md
+S3-M04	S3	Liveness/readiness probes and resource requests/limits	B	S3-M02	1 h		docs/implementation/sprint_03_retail_store/s3_m04.md
+S3-M05	S3	End-to-end smoke test script	B	S3-M03,S3-M04	45 min		docs/implementation/sprint_03_retail_store/s3_m05.md
+S4-M01	S4	Jenkins EC2 instance via Terraform (t3.small, LabInstanceProfile, user-data)	B	S2-M02	1.5 h	risk	docs/implementation/sprint_04_jenkins_cicd/s4_m01.md
+S4-M02	S4	Jenkins reproducible setup (Configuration as Code + plugins)	B	S4-M01	1.5 h	risk	docs/implementation/sprint_04_jenkins_cicd/s4_m02.md
+S4-M03	S4	Jenkinsfile: Docker build -> Trivy scan -> push to ECR	B	S4-M02,S2-M03	1.5 h		docs/implementation/sprint_04_jenkins_cicd/s4_m03.md
+S4-M04	S4	GitHub webhook trigger (and a script to refresh it each session)	B	S4-M03	1 h		docs/implementation/sprint_04_jenkins_cicd/s4_m04.md
+S4-M05	S4	Deploy stage: Jenkins updates the cluster and checks the rollout	B	S4-M03,S3-M02	1.5 h	risk	docs/implementation/sprint_04_jenkins_cicd/s4_m05.md
+S5-M01	S5	Install kube-prometheus-stack with persistent gp3 volumes	C	S2-M05,S3-M02	1.5 h	risk	docs/implementation/sprint_05_prometheus_grafana/s5_m01.md
+S5-M02	S5	Prove persistence and import the Kubernetes dashboard	C	S5-M01	1 h		docs/implementation/sprint_05_prometheus_grafana/s5_m02.md
+S5-M03	S5	PrometheusRule alert for CrashLoopBackOff and test it	C	S5-M01,S3-M02	1 h		docs/implementation/sprint_05_prometheus_grafana/s5_m03.md
+S6-M01	S6	Terraform: SNS topic + CloudWatch alarm on node CPU > 75%	C	S2-M04	1 h		docs/implementation/sprint_06_cloudwatch_serverless/s6_m01.md
+S6-M02	S6	Python Lambda: write the incident to DynamoDB and a JSON report to S3	C	S6-M01,S2-M06	1.5 h		docs/implementation/sprint_06_cloudwatch_serverless/s6_m02.md
+S6-M03	S6	End-to-end alarm test and CloudWatch vs Prometheus comparison	C	S6-M02,S5-M03	1 h		docs/implementation/sprint_06_cloudwatch_serverless/s6_m03.md
+S7-M01	S7	HorizontalPodAutoscaler on `ui` (2 to 5 replicas)	C	S3-M04,S2-M05	45 min		docs/implementation/sprint_07_hpa_resilience_cleanup/s7_m01.md
+S7-M02	S7	Load test and observe autoscaling	C	S7-M01,S5-M02	1 h		docs/implementation/sprint_07_hpa_resilience_cleanup/s7_m02.md
+S7-M03	S7	Rolling update and rollback demonstration	B	S4-M05,S3-M04	1 h		docs/implementation/sprint_07_hpa_resilience_cleanup/s7_m03.md
+S7-M04	S7	Blameless post-mortem (1 page)	C	S7-M02	1 h		docs/implementation/sprint_07_hpa_resilience_cleanup/s7_m04.md
+S7-M05	S7	Final cleanup and CLI-verified zero-cost state	A	S2-M07	45 min		docs/implementation/sprint_07_hpa_resilience_cleanup/s7_m05.md
+S8-M01	S8	Clean-room deployment test in the integration account	A	S7-M03,S6-M03	2 h		docs/implementation/sprint_08_documentation_defense/s8_m01.md
+S8-M02	S8	README.md and architecture diagram	ALL	S8-M01	2 h		docs/implementation/sprint_08_documentation_defense/s8_m02.md
+S8-M03	S8	Demo video (5 to 8 minutes)	ALL	S8-M01	2 h		docs/implementation/sprint_08_documentation_defense/s8_m03.md
+S8-M04	S8	Defense rehearsal (15 minutes) and final verification	ALL	S8-M02,S8-M03,S7-M04,S7-M05	2 h		docs/implementation/sprint_08_documentation_defense/s8_m04.md

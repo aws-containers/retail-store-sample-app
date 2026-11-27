@@ -1,0 +1,19 @@
+# Replace the handles. A = Infra, B = CI/CD & Security, C = Observability & Serverless
+# A = Ghada (Infrastructure)
+/terraform/      @ghadaDib04
+/scripts/        @ghadaDib04
+/Makefile        @ghadaDib04
+
+# B = Sara (CI/CD & Security)
+/jenkins/        @sarasansh0
+/Jenkinsfile     @sarasansh0
+/k8s/            @sarasansh0
+/argocd/         @sarasansh0
+
+# C = Khadidja (Observability & Serverless)
+/helm-values/    @khadidjasg
+/lambda/         @khadidjasg
+/dashboards/     @khadidjasg
+
+# Shared conventions ownership
+/docs/conventions.md @ghadaDib04 @sarasansh0 @khadidjasg
