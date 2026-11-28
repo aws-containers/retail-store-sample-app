@@ -4,6 +4,12 @@ variable "environment_name" {
   default     = "retail-store"
 }
 
+variable "region" {
+  description = "AWS region to deploy into. Pinned so the provider does not fall back to the host's env/IMDS region (which caused a region flip when run from a different host)."
+  type        = string
+  default     = "us-east-1"
+}
+
 variable "istio_enabled" {
   description = "Boolean value that enables istio."
   type        = bool
